@@ -27,4 +27,9 @@ platform :ios do
     # diawi(token: "l4VvYe6lBNgZUyAG0R3BTgGMGHXrjF6OdVXEJ9CYEO", callback_emails:"ykulanbekov@nu.edu.kz")
     diawi(token: "l4VvYe6lBNgZUyAG0R3BTgGMGHXrjF6OdVXEJ9CYEO")
   end
+
+  desc "Adhoc build"
+  lane :adhoc do
+    gym(scheme: "DosKaz", export_method: "ad-hoc", output_directory: "../build", configuration: "Debug")
+  end
 end
