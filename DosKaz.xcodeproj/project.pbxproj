@@ -16,9 +16,12 @@
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
+		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DosKaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
+		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +53,8 @@
 			children = (
 				4486E89623F6EBEF00E8AAB2 /* DosKaz */,
 				4486E89523F6EBEF00E8AAB2 /* Products */,
+				B289990EF20176B259D53FF2 /* Pods */,
+				45FCC4BE32D131198C776816 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +91,24 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		45FCC4BE32D131198C776816 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B289990EF20176B259D53FF2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */,
+				3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4486E8A823F6EBF100E8AAB2 /* Build configuration list for PBXNativeTarget "DosKaz" */;
 			buildPhases = (
+				B7B65AFE2F77E642C54B87DB /* [CP] Check Pods Manifest.lock */,
 				4486E89023F6EBEF00E8AAB2 /* Sources */,
 				4486E89123F6EBEF00E8AAB2 /* Frameworks */,
 				4486E89223F6EBEF00E8AAB2 /* Resources */,
+				3A2C94A83D14995FEE1D5EB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +176,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A2C94A83D14995FEE1D5EB4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7B65AFE2F77E642C54B87DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DosKaz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4486E89023F6EBEF00E8AAB2 /* Sources */ = {
@@ -302,6 +371,7 @@
 		};
 		4486E8A923F6EBF100E8AAB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -321,6 +391,7 @@
 		};
 		4486E8AA23F6EBF100E8AAB2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
