@@ -27,13 +27,14 @@ public extension UIView {
 
 public struct UViewWrapper {
 	let view: UIView
-}
 	
-extension UViewWrapper {
 	private func activate(this constraint : Constraint) -> Self {
 		constraint(self.view).isActive = true
 		return self
 	}
+}
+	
+extension UViewWrapper {
 	
 	/// Describes relation between Y anchors of two views
 	/// Example: 'pin(my: .top, to: .bottom, of: view, plus: 40)'
