@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	private func setRootViewController() {
 		window = UIWindow(frame: UIScreen.main.bounds)
 		window?.makeKeyAndVisible()
-		window?.rootViewController = UIViewController()
+		window?.rootViewController = MainTabBarViewController()
 		if #available(iOS 13.0, *) {
 			window?.overrideUserInterfaceStyle = .light
 		}

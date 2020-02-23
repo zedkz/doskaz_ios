@@ -10,6 +10,7 @@
 		445CDC4B24028D1D0072F4BC /* SharedCodeFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; };
 		445CDC4C24028D1D0072F4BC /* SharedCodeFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */; };
+		445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC532402D6530072F4BC /* MainTabBarViewController.swift */; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
 		4486E89A23F6EBEF00E8AAB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */; };
 		4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89B23F6EBEF00E8AAB2 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
 		445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SharedCodeFramework.xcframework; path = Externals/SharedCodeFramework.xcframework; sourceTree = "<group>"; };
 		445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		445CDC532402D6530072F4BC /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		445CDC522402D5D60072F4BC /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		4486E88B23F6EBEF00E8AAB2 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 				445CDC512402B80B0072F4BC /* Storyboards */,
 				445CDC4E2402A6AA0072F4BC /* Common */,
 				4490E2EB24026CAA00F70B40 /* Services */,
+				445CDC522402D5D60072F4BC /* Modules */,
 			);
 			path = DosKaz;
 			sourceTree = "<group>";
@@ -263,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
+				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
