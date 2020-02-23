@@ -1,0 +1,256 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.2 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target arm64-apple-ios12.1 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name SharedCodeFramework
+import Foundation
+@_exported import SharedCodeFramework
+import Swift
+import UIKit
+public typealias Constraint = (UIKit.UIView) -> UIKit.NSLayoutConstraint
+extension UIView {
+  @discardableResult
+  public func addConstraints(_ constraintDescriptions: [SharedCodeFramework.Constraint]) -> [UIKit.NSLayoutConstraint]
+  @discardableResult
+  public func addConstraints(_ constraintDescriptions: SharedCodeFramework.Constraint...) -> [UIKit.NSLayoutConstraint]
+  @discardableResult
+  public func addNonActiveConstraints(_ constraintDescriptions: [SharedCodeFramework.Constraint]) -> [UIKit.NSLayoutConstraint]
+}
+public enum Dimensions {
+  case width
+  case height
+  public static func == (a: SharedCodeFramework.Dimensions, b: SharedCodeFramework.Dimensions) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum YEdge {
+  case top
+  case bottom
+  case verticalCenter
+  case firstBaseline
+  case lastBaseline
+  public static func == (a: SharedCodeFramework.YEdge, b: SharedCodeFramework.YEdge) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum XEdge {
+  case leading
+  case trailing
+  case horizontalCenter
+  public static func == (a: SharedCodeFramework.XEdge, b: SharedCodeFramework.XEdge) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public func make(my xEdge: SharedCodeFramework.XEdge, _ relation: UIKit.NSLayoutConstraint.Relation, to viewsXEdge: SharedCodeFramework.XEdge, of view: UIKit.UIView, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func pin(my xEdge: SharedCodeFramework.XEdge, to viewsXEdge: SharedCodeFramework.XEdge, of view: UIKit.UIView, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func pin(my xEdge: SharedCodeFramework.XEdge, andOf view: UIKit.UIView, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func make(my yEdge: SharedCodeFramework.YEdge, _ relation: UIKit.NSLayoutConstraint.Relation, to viewsYEdge: SharedCodeFramework.YEdge, of view: UIKit.UIView, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func pin(my yEdge: SharedCodeFramework.YEdge, to viewsYEdge: SharedCodeFramework.YEdge, of view: UIKit.UIView, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func pin(my yEdge: SharedCodeFramework.YEdge, andOf view: UIKit.UIView, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func make(my dimension: SharedCodeFramework.Dimensions, _ relation: UIKit.NSLayoutConstraint.Relation, to viewsDimension: SharedCodeFramework.Dimensions, of view: UIKit.UIView, times x: CoreGraphics.CGFloat = 1, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func align(my dimension: SharedCodeFramework.Dimensions, and viewsDimension: SharedCodeFramework.Dimensions, of view: UIKit.UIView, times x: CoreGraphics.CGFloat = 1, plus c: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint
+public func set(my dimension: SharedCodeFramework.Dimensions, _ relation: UIKit.NSLayoutConstraint.Relation = .equal, to constant: CoreGraphics.CGFloat) -> SharedCodeFramework.Constraint
+public func pinToSuper(with insets: UIKit.UIEdgeInsets = UIEdgeInsets(all: 0)) -> [SharedCodeFramework.Constraint]
+public func pinToSuperSafeArea(with insets: UIKit.UIEdgeInsets = UIEdgeInsets(all: 0)) -> [SharedCodeFramework.Constraint]
+public protocol LoadingHandler {
+  func showLoading()
+  func hideLoading()
+}
+extension LoadingHandler where Self : UIKit.UIViewController {
+  public func showLoading()
+  public func hideLoading()
+}
+public protocol Renderable {
+  associatedtype Properties
+  func render(with props: Self.Properties)
+  func layout()
+}
+public protocol UIViewLayout {
+  func paint()
+  func addSubViews()
+  func addConstraints()
+}
+extension UIViewLayout {
+  public func paint()
+}
+public typealias Command = SharedCodeFramework.CommandWith<Swift.Void>
+public struct CommandWith<T> {
+  public static var nop: SharedCodeFramework.CommandWith<T> {
+    get
+  }
+  public init(action: @escaping (T) -> Swift.Void)
+  public func perform(with value: T)
+}
+extension CommandWith where T == Swift.Void {
+  public func perform()
+}
+extension CommandWith {
+  public func bind(to value: T) -> SharedCodeFramework.Command
+  public func map<U>(block: @escaping (U) -> T) -> SharedCodeFramework.CommandWith<U>
+}
+extension CommandWith : Swift.Codable {
+  public enum CodingError : Swift.Error {
+    case decoding(Swift.String)
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum Style {
+  public enum Label {
+    public static func headline(_ label: UIKit.UILabel)
+    public static func subheadline(_ label: UIKit.UILabel)
+    public static func body(_ label: UIKit.UILabel)
+    public static func white(_ label: UIKit.UILabel)
+    public static func adjustFont(_ label: UIKit.UILabel)
+  }
+}
+public enum Stack {
+  public static func vStack(_ stack: UIKit.UIStackView)
+  public static func hStack(_ stack: UIKit.UIStackView)
+  public static func padStack(_ stack: UIKit.UIStackView)
+}
+public enum Color {
+  public static let mango: UIKit.UIColor
+  public static let gray: UIKit.UIColor
+  public static let lightGray: UIKit.UIColor
+  public static let darkGray: UIKit.UIColor
+  public static let purpleApp: UIKit.UIColor
+}
+public enum Layout {
+  public static func falseMask(_ view: UIKit.UIView)
+}
+extension UIView {
+  public func fillSuperview()
+  public func fillSuperviewWithDirectionalMargins()
+  public func fillSuperviewWithsafeAreaLayoutGuide()
+  public func anchorSize(to view: UIKit.UIView)
+  public func anchor(top: UIKit.NSLayoutYAxisAnchor? = nil, leading: UIKit.NSLayoutXAxisAnchor? = nil, bottom: UIKit.NSLayoutYAxisAnchor? = nil, trailing: UIKit.NSLayoutXAxisAnchor? = nil, padding: UIKit.UIEdgeInsets = .zero, size: CoreGraphics.CGSize = .zero)
+}
+public func equal<Anchor>(_ view: UIKit.UIView, _ from: Swift.KeyPath<UIKit.UIView, Anchor>, _ to: Swift.KeyPath<UIKit.UIView, Anchor>, multiplier: CoreGraphics.CGFloat = 1, constant: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint where Anchor : UIKit.NSLayoutDimension
+public func equal<Anchor, Axis>(_ view: UIKit.UIView, _ to: Swift.KeyPath<UIKit.UIView, Anchor>) -> SharedCodeFramework.Constraint where Anchor : UIKit.NSLayoutAnchor<Axis>, Axis : AnyObject
+public func equal<LayoutDimension>(dimension keyPath: Swift.KeyPath<UIKit.UIView, LayoutDimension>, to constant: CoreGraphics.CGFloat) -> SharedCodeFramework.Constraint where LayoutDimension : UIKit.NSLayoutDimension
+public func equal<Anchor, Axis>(_ view: UIKit.UIView, _ from: Swift.KeyPath<UIKit.UIView, Anchor>, _ to: Swift.KeyPath<UIKit.UIView, Anchor>, constant: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint where Anchor : UIKit.NSLayoutAnchor<Axis>, Axis : AnyObject
+public func equal<Anchor, Axis>(_ view: UIKit.UIView, _ from: Swift.KeyPath<UIKit.UIView, Anchor>, _ to: Swift.KeyPath<UIKit.UIView, Anchor>, lessOrEqual: CoreGraphics.CGFloat) -> SharedCodeFramework.Constraint where Anchor : UIKit.NSLayoutAnchor<Axis>, Axis : AnyObject
+public func equal<Anchor, Axis>(_ view: UIKit.UIView, _ from: Swift.KeyPath<UIKit.UIView, Anchor>, _ to: Swift.KeyPath<UIKit.UIView, Anchor>, greaterOrEqual: CoreGraphics.CGFloat) -> SharedCodeFramework.Constraint where Anchor : UIKit.NSLayoutAnchor<Axis>, Axis : AnyObject
+public func equal<Axis, Anchor>(_ view: UIKit.UIView, _ keyPath: Swift.KeyPath<UIKit.UIView, Anchor>, constant: CoreGraphics.CGFloat = 0) -> SharedCodeFramework.Constraint where Axis : AnyObject, Anchor : UIKit.NSLayoutAnchor<Axis>
+public func equalToSafeArea(superView view: UIKit.UIView, with insets: UIKit.UIEdgeInsets = .zero) -> [SharedCodeFramework.Constraint]
+public func equalTo(superView view: UIKit.UIView, with insets: UIKit.UIEdgeInsets = .zero) -> [SharedCodeFramework.Constraint]
+public struct Dims {
+  public static let width: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutDimension>
+  public static let height: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutDimension>
+}
+public struct Ancs {
+  public static let top: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutYAxisAnchor>
+  public static let bottom: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutYAxisAnchor>
+  public static let leading: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutXAxisAnchor>
+  public static let trailing: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutXAxisAnchor>
+  public static let verticalCenter: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutXAxisAnchor>
+  public static let horizontalCenter: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutYAxisAnchor>
+  public static let firstBaseline: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutYAxisAnchor>
+  public static let lastBaseline: Swift.KeyPath<UIKit.UIView, UIKit.NSLayoutYAxisAnchor>
+}
+extension UIView {
+  @nonobjc convenience public init(style: ((UIKit.UIView) -> Swift.Void)...)
+}
+extension UILabel {
+  @nonobjc convenience public init(style: ((UIKit.UILabel) -> Swift.Void)...)
+}
+extension UIButton {
+  @nonobjc convenience public init(type: UIKit.UIButton.ButtonType = .system, style: ((UIKit.UIButton) -> Swift.Void)...)
+}
+extension UIImageView {
+  @nonobjc convenience public init(style: ((UIKit.UIImageView) -> Swift.Void)...)
+}
+extension UIStackView {
+  @nonobjc convenience public init(style: ((UIKit.UIStackView) -> Swift.Void)..., views: [UIKit.UIView])
+}
+extension UIStackView {
+  @nonobjc convenience public init(_ style: ((UIKit.UIStackView) -> Swift.Void)...)
+}
+extension UITextView {
+  @nonobjc convenience public init(style: ((UIKit.UITextView) -> Swift.Void)...)
+}
+extension UITextView : UIKit.UITextViewDelegate {
+  @objc override dynamic open var bounds: CoreGraphics.CGRect {
+    @objc get
+    @objc set
+  }
+  public var placeholder: Swift.String? {
+    get
+    set
+  }
+  @objc dynamic public func textViewDidChange(_ textView: UIKit.UITextView)
+}
+extension UIStackView {
+  public func addArrangedSubviews(_ subViews: [UIKit.UIView])
+}
+extension UIStackView {
+  @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+}
+public typealias Insets = UIKit.UIEdgeInsets
+extension UIEdgeInsets {
+  public init(all: CoreGraphics.CGFloat)
+  public init(ver: CoreGraphics.CGFloat = 0, hor: CoreGraphics.CGFloat = 0)
+}
+public protocol LoadingDelegate {
+  func startAnimation()
+  func stopAnimation()
+}
+public protocol Failable {
+  func didFail(with error: Swift.Error)
+}
+public protocol HasViewController {
+  func getVC() -> UIKit.UIViewController
+}
+extension HasViewController {
+  public func getVC() -> UIKit.UIViewController
+}
+public protocol DisplaysAlert {
+  func displayAlert(with message: Swift.String)
+  func disPlayAlert(with message: Swift.String, action: @escaping () -> Swift.Void)
+}
+extension DisplaysAlert where Self : UIKit.UIViewController {
+  public func displayAlert(with message: Swift.String)
+  public func disPlayAlert(with message: Swift.String, action: @escaping () -> Swift.Void)
+}
+public struct AlertPresenter {
+  public let message: Swift.String
+  public let acceptTitle: Swift.String
+  public let handler: () -> Swift.Void
+  public func present(in viewController: UIKit.UIViewController)
+}
+public enum Outcome {
+  case accepted
+  public static func == (a: SharedCodeFramework.Outcome, b: SharedCodeFramework.Outcome) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+@objc public class EmptyContentView : UIKit.UIView {
+  public struct Props {
+    public let title: Swift.String
+    public let subtitle: Swift.String
+    public init(title: Swift.String, subtitle: Swift.String)
+  }
+  public var props: SharedCodeFramework.EmptyContentView.Props {
+    get
+    set
+  }
+  @objc deinit
+}
+extension SharedCodeFramework.Dimensions : Swift.Equatable {}
+extension SharedCodeFramework.Dimensions : Swift.Hashable {}
+extension SharedCodeFramework.YEdge : Swift.Equatable {}
+extension SharedCodeFramework.YEdge : Swift.Hashable {}
+extension SharedCodeFramework.XEdge : Swift.Equatable {}
+extension SharedCodeFramework.XEdge : Swift.Hashable {}
+extension SharedCodeFramework.Outcome : Swift.Equatable {}
+extension SharedCodeFramework.Outcome : Swift.Hashable {}

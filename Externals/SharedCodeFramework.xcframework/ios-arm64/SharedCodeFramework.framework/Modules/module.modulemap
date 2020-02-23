@@ -1,0 +1,11 @@
+framework module SharedCodeFramework {
+  umbrella header "SharedCodeFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module SharedCodeFramework.Swift {
+    header "SharedCodeFramework-Swift.h"
+    requires objc
+}

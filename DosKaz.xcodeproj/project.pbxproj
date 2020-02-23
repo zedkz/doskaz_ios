@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		445CDC4B24028D1D0072F4BC /* SharedCodeFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; };
+		445CDC4C24028D1D0072F4BC /* SharedCodeFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
 		4486E89A23F6EBEF00E8AAB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */; };
 		4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89B23F6EBEF00E8AAB2 /* ViewController.swift */; };
@@ -19,9 +21,24 @@
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		445CDC4D24028D1D0072F4BC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				445CDC4C24028D1D0072F4BC /* SharedCodeFramework.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DosKaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
+		445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SharedCodeFramework.xcframework; path = Externals/SharedCodeFramework.xcframework; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				445CDC4B24028D1D0072F4BC /* SharedCodeFramework.xcframework in Frameworks */,
 				8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +112,7 @@
 		45FCC4BE32D131198C776816 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */,
 				21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */,
 			);
 			name = Frameworks;
@@ -105,7 +124,6 @@
 				87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */,
 				3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -121,6 +139,7 @@
 				4486E89123F6EBEF00E8AAB2 /* Frameworks */,
 				4486E89223F6EBEF00E8AAB2 /* Resources */,
 				3A2C94A83D14995FEE1D5EB4 /* [CP] Embed Pods Frameworks */,
+				445CDC4D24028D1D0072F4BC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
