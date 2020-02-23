@@ -17,8 +17,8 @@ class MainTabBarViewController: UITabBarController {
 		tabBar.barTintColor = UIColor(red:1, green:1, blue:1, alpha:0.53)
 		tabBar.unselectedItemTintColor = UIColor(red:0.28, green:0.29, blue:0.4, alpha:1)
 		
-		let firstTab = UIViewController()
-		viewControllers = [firstTab]
+		let map = MapModuleConfigurator().assembleTab()
+		viewControllers = [map]
 		
 	}
 
@@ -26,16 +26,11 @@ class MainTabBarViewController: UITabBarController {
 }
 
 
-protocol Tabbable {
-	static var tab: UIViewController { get }
-}
-
-extension Tabbable {
-	static var tab: UIViewController {
-		let mainViewController = UIViewController()
-		let navigationController = UINavigationController(rootViewController: mainViewController)
-		let image = UIImage(named: "main_tab_icon")
-		let tabBarItem = UITabBarItem(title: "Main", image: image, selectedImage: image)
+extension UIViewController {
+	func tab(with imageName: String, title: String) -> UINavigationController {
+		let navigationController = UINavigationController(rootViewController: self)
+		let image = UIImage(named: imageName)
+		let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: image)
 		navigationController.tabBarItem = tabBarItem
 		return navigationController
 	}
