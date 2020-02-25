@@ -72,7 +72,7 @@ extension SectionedTableViewDataSource: UITableViewDataSource {
 
 extension UITableViewCell {
 	static var reuseIdentifier: String {
-		return String(describing: UITableViewCell.self)
+		return String(describing: Self.self)
 	}
 }
 
