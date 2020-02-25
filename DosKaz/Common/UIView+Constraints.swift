@@ -23,13 +23,22 @@ public extension UIView {
 		translatesAutoresizingMaskIntoConstraints = false
 		return UViewWrapper(view: self)
 	}
+	
+	var safeLayoutGuide: UILayoutGuide {
+		if #available(iOS 11, *) {
+			return safeAreaLayoutGuide
+		} else {
+			return layoutMarginsGuide
+		}
+	}
+	
 }
 
 public struct UViewWrapper {
 	let view: UIView
 	
 	private func activate(this constraint : Constraint) -> Self {
-		constraint(self.view).isActive = true
+		constraint(view).isActive = true
 		return self
 	}
 }
@@ -47,6 +56,7 @@ extension UViewWrapper {
 	) -> Self {
 		return activate(this: make(my: yEdge, .equal, to: viewsYEdge, of: view, plus: c))
 	}
+	
 	
 	/// Describes relation between Y anchors of two views
 	/// Example: 'pin(my: .top, andOf: view, plus: 16)'
@@ -72,6 +82,7 @@ extension UViewWrapper {
 		return activate(this:  make(my: xEdge, .equal, to: viewsXEdge, of: view, plus: c))
 	}
 	
+	
 	/// Describes relation between X anchors of two views
 	/// Example: 'pin(my: .leading, andOf: view, plus: 16)'
 	@discardableResult
@@ -82,5 +93,36 @@ extension UViewWrapper {
 	) -> Self {
 		return pin(my: xEdge, to: xEdge, of: view, plus: c)
 	}
+	
+	
+	/// Pin view to its superview
+	@discardableResult
+	public func pinToSuper(with insets: UIEdgeInsets = UIEdgeInsets(all: 0)) -> Self {
+		
+		self.pin(my: .top, andOf: view.superview!)
+			.pin(my: .bottom, andOf: view.superview!)
+			.pin(my: .leading, andOf: view.superview!)
+			.pin(my: .trailing, andOf: view.superview!)
+				
+		return self
+	}
+	
+	
+	/// Pin view to its superview's safe area
+	@discardableResult
+	public func pinToSuperSafeArea(with insets: UIEdgeInsets = UIEdgeInsets(all: 0)) -> Self {
+		
+		let constraints =  [
+			view.topAnchor.constraint(equalTo: view.superview!.safeLayoutGuide.topAnchor, constant: insets.top ),
+			view.bottomAnchor.constraint(equalTo: view.superview!.safeLayoutGuide.bottomAnchor, constant: -insets.bottom ),
+			view.leadingAnchor.constraint(equalTo: view.superview!.safeLayoutGuide.leadingAnchor, constant: insets.left ),
+			view.trailingAnchor.constraint(equalTo: view.superview!.safeLayoutGuide.trailingAnchor, constant: -insets.right )
+		]
+
+		NSLayoutConstraint.activate(constraints)
+		
+		return self
+	}
+	
 	
 }
