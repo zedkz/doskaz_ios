@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
+		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
+		445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2C2403F62800131990 /* CategoryPickerPresenter.swift */; };
+		445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2E2403F62800131990 /* CategoryPickerViewController.swift */; };
+		445C3F362403F62800131990 /* CategoryPickerModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F302403F62800131990 /* CategoryPickerModuleIO.swift */; };
+		445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F312403F62800131990 /* CategoryPickerConfigurator.swift */; };
+		445C3F392404432100131990 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F382404432100131990 /* TableViewDataSource.swift */; };
 		445CDC4B24028D1D0072F4BC /* SharedCodeFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; };
 		445CDC4C24028D1D0072F4BC /* SharedCodeFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */; };
@@ -46,6 +53,13 @@
 /* Begin PBXFileReference section */
 		21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DosKaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
+		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
+		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
+		445C3F2C2403F62800131990 /* CategoryPickerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerPresenter.swift; sourceTree = "<group>"; };
+		445C3F2E2403F62800131990 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		445C3F302403F62800131990 /* CategoryPickerModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerModuleIO.swift; sourceTree = "<group>"; };
+		445C3F312403F62800131990 /* CategoryPickerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerConfigurator.swift; sourceTree = "<group>"; };
+		445C3F382404432100131990 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SharedCodeFramework.xcframework; path = Externals/SharedCodeFramework.xcframework; sourceTree = "<group>"; };
 		445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		445CDC532402D6530072F4BC /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -82,10 +96,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		445C3F282403F62800131990 /* CategoryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				445C3F2D2403F62800131990 /* View */,
+				445C3F292403F62800131990 /* Presenter */,
+				445C3F2F2403F62800131990 /* Configurator */,
+			);
+			path = CategoryPicker;
+			sourceTree = "<group>";
+		};
+		445C3F292403F62800131990 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				445C3F2C2403F62800131990 /* CategoryPickerPresenter.swift */,
+				445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */,
+				445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		445C3F2D2403F62800131990 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				445C3F2E2403F62800131990 /* CategoryPickerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		445C3F2F2403F62800131990 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				445C3F312403F62800131990 /* CategoryPickerConfigurator.swift */,
+				445C3F302403F62800131990 /* CategoryPickerModuleIO.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		445CDC4E2402A6AA0072F4BC /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */,
+				445C3F382404432100131990 /* TableViewDataSource.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -103,6 +155,7 @@
 		445CDC522402D5D60072F4BC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				445C3F282403F62800131990 /* CategoryPicker */,
 				445CDC752402E5F90072F4BC /* Map */,
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
 			);
@@ -323,16 +376,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
+				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
+				445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				445CDC812402E5F90072F4BC /* MapInteractor.swift in Sources */,
+				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
+				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
+				445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */,
+				445C3F362403F62800131990 /* CategoryPickerModuleIO.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
 				4486E89A23F6EBEF00E8AAB2 /* SceneDelegate.swift in Sources */,
