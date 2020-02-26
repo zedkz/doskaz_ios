@@ -33,6 +33,7 @@
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
+		44FC63F62406D9F400CFCB58 /* UIViewPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */; };
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
+		44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreviews.swift; sourceTree = "<group>"; };
 		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 			children = (
 				445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */,
 				445C3F382404432100131990 /* TableViewDataSource.swift */,
+				44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
+				44FC63F62406D9F400CFCB58 /* UIViewPreviews.swift in Sources */,
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
 				445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
