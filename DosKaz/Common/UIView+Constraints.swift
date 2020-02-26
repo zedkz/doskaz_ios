@@ -99,10 +99,10 @@ extension UViewWrapper {
 	@discardableResult
 	public func pinToSuper(with insets: UIEdgeInsets = UIEdgeInsets(all: 0)) -> Self {
 		
-		self.pin(my: .top, andOf: view.superview!)
-			.pin(my: .bottom, andOf: view.superview!)
-			.pin(my: .leading, andOf: view.superview!)
-			.pin(my: .trailing, andOf: view.superview!)
+		self.pin(my: .top, andOf: view.superview!, plus: insets.top)
+			.pin(my: .bottom, andOf: view.superview!, plus: -insets.top)
+			.pin(my: .leading, andOf: view.superview!, plus: insets.top)
+			.pin(my: .trailing, andOf: view.superview!, plus: -insets.top)
 				
 		return self
 	}
