@@ -54,11 +54,13 @@ class CategoryPickerViewController: UIViewController {
 		headerView.backgroundColor = UIColor(named: "CategoryPickerHeaderBackground")
 		tableView.tableHeaderView = headerView
 		let titleLabel = UILabel()
-		titleLabel.text = "Категория пользователя"
+		titleLabel.font = SFDisplay.semibold.with(size: 13)
+		titleLabel.text = "КАТЕГОРИЯ ПОЛЬЗОВАТЕЛЯ"
 		headerView.addSubview(titleLabel)
 		titleLabel.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: headerView, plus: 24)
 			.pin(my: .top, andOf: headerView, plus: 11)
+			.pin(my: .bottom, andOf: headerView, plus: -9)
 		tableView.tableFooterView = UIView()
 		self.tableView = tableView
 	}
@@ -74,6 +76,7 @@ class CategoryPickerViewController: UIViewController {
 			c.textLabel?.numberOfLines = 0
 			c.accessoryType = .disclosureIndicator
 			c.textLabel?.text = "\(p.name)"
+			c.textLabel?.font = SFDisplay.regular.with(size: 14)
 			c.imageView?.image = UIImage(named: p.imageName)
 			let backgroundView = UIView()
 			backgroundView.backgroundColor = UIColor(named: "CategoryPickerSelectedCell")
