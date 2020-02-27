@@ -66,6 +66,9 @@ class CategoryPickerViewController: UIViewController {
 			c.accessoryType = .disclosureIndicator
 			c.textLabel?.text = "\(p.name)"
 			c.imageView?.image = UIImage(named: p.imageName)
+			let backgroundView = UIView()
+			backgroundView.backgroundColor = UIColor(named: "CategoryPickerSelectedCell")
+			c.selectedBackgroundView = backgroundView
 		}
 		
 		tableView.dataSource = dataSource
