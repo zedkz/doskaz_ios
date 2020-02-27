@@ -50,6 +50,15 @@ class CategoryPickerViewController: UIViewController {
 	
 	private func configureTableViewStyle() {
 		let tableView = UITableView(frame: .zero, style: .plain)
+		let headerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: 44)))
+		headerView.backgroundColor = UIColor(named: "CategoryPickerHeaderBackground")
+		tableView.tableHeaderView = headerView
+		let titleLabel = UILabel()
+		titleLabel.text = "Категория пользователя"
+		headerView.addSubview(titleLabel)
+		titleLabel.addConstraintsProgrammatically
+			.pin(my: .leading, andOf: headerView, plus: 24)
+			.pin(my: .top, andOf: headerView, plus: 11)
 		tableView.tableFooterView = UIView()
 		self.tableView = tableView
 	}
