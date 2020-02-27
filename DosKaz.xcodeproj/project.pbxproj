@@ -33,6 +33,7 @@
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
+		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
+		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreviews.swift; sourceTree = "<group>"; };
 		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,7 +227,7 @@
 				4486E8A523F6EBF100E8AAB2 /* Info.plist */,
 				4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */,
 				4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */,
-				4486E8A023F6EBF100E8AAB2 /* Assets.xcassets */,
+				44C376702407EA910050961F /* Resources */,
 				445CDC512402B80B0072F4BC /* Storyboards */,
 				445CDC4E2402A6AA0072F4BC /* Common */,
 				4490E2EB24026CAA00F70B40 /* Services */,
@@ -242,6 +244,15 @@
 				4490E2F02402776500F70B40 /* StringResourceGenerator.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		44C376702407EA910050961F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4486E8A023F6EBF100E8AAB2 /* Assets.xcassets */,
+				44C376712407EAF60050961F /* DeveloperAssets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		45FCC4BE32D131198C776816 /* Frameworks */ = {
@@ -324,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4486E8A423F6EBF100E8AAB2 /* LaunchScreen.storyboard in Resources */,
+				44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */,
 				4486E8A123F6EBF100E8AAB2 /* Assets.xcassets in Resources */,
 				4486E89F23F6EBEF00E8AAB2 /* Main.storyboard in Resources */,
 			);
@@ -544,6 +556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = DosKaz/Resources/DeveloperAssets.xcassets;
 				DEVELOPMENT_TEAM = 69HEK9F837;
 				INFOPLIST_FILE = DosKaz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -564,6 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = DosKaz/Resources/DeveloperAssets.xcassets;
 				DEVELOPMENT_TEAM = 69HEK9F837;
 				INFOPLIST_FILE = DosKaz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
