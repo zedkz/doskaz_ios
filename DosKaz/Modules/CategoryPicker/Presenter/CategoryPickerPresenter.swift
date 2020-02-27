@@ -24,6 +24,11 @@ protocol CategoryPickerViewOutput {
 extension CategoryPickerPresenter: CategoryPickerViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		let categories = [
+			CategoryPickerViewController.Category(name: "Люди, передвигающиеся на кресло-коляске", imageName: "category_pick_ellipse"),
+			CategoryPickerViewController.Category(name: "Люди с нарушением опорно-двигательного аппарата", imageName: "category_pick_ellipse")
+		]
+		view.update(with: categories)
 	}
 
 }

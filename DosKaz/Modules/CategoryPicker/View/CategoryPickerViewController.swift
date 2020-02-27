@@ -12,6 +12,7 @@ import UIKit
 
 protocol CategoryPickerViewInput: class {
 	func setupInitialState()
+	func update(with categories: [CategoryPickerViewController.Category])
 }
 
 extension CategoryPickerViewController: CategoryPickerViewInput {
@@ -22,6 +23,11 @@ extension CategoryPickerViewController: CategoryPickerViewInput {
 		configureTableViewLayout()
 		configureTableViewDataSource()
 	}
+	
+	func update(with categories: [Category]) {
+		dataSource.cellsProps = categories
+		tableView.reloadData()
+	}
 
 }
 
@@ -31,7 +37,7 @@ class CategoryPickerViewController: UIViewController {
 	// MARK: Properties
 	var output: CategoryPickerViewOutput!
 	private var tableView: UITableView!
-	private var dataSource: TableViewDataSource<Int, UITableViewCell>!
+	private var dataSource: TableViewDataSource<Category, UITableViewCell>!
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -43,7 +49,7 @@ class CategoryPickerViewController: UIViewController {
 	// MARK: Private methods
 	
 	private func configureTableViewStyle() {
-		let tableView = UITableView(frame: .zero, style: .grouped)
+		let tableView = UITableView(frame: .zero, style: .plain)
 		tableView.tableFooterView = UIView()
 		self.tableView = tableView
 	}
@@ -55,8 +61,11 @@ class CategoryPickerViewController: UIViewController {
 	}
 	
 	private func configureTableViewDataSource() {
-		dataSource = TableViewDataSource(tableView){ (p: Int,c: UITableViewCell) in
-			c.textLabel?.text = "\(p)"
+		dataSource = TableViewDataSource(tableView){ (p: Category,c: UITableViewCell) in
+			c.textLabel?.numberOfLines = 0
+			c.accessoryType = .disclosureIndicator
+			c.textLabel?.text = "\(p.name)"
+			c.imageView?.image = UIImage(named: p.imageName)
 		}
 		
 		tableView.dataSource = dataSource
@@ -64,4 +73,11 @@ class CategoryPickerViewController: UIViewController {
 	
 }
 
+
+extension CategoryPickerViewController {
+	struct Category {
+		let name: String
+		let imageName: String
+	}
+}
 
