@@ -13,9 +13,9 @@ class MainTabBarViewController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tabBar.tintColor = UIColor.systemBlue
-		tabBar.barTintColor = UIColor(red:1, green:1, blue:1, alpha:0.53)
-		tabBar.unselectedItemTintColor = UIColor(red:0.28, green:0.29, blue:0.4, alpha:1)
+		tabBar.tintColor = UIColor(named: "SelectedTabbarTintColor")
+		tabBar.barTintColor = UIColor(red:1, green:1, blue:1, alpha:1)
+		tabBar.unselectedItemTintColor = UIColor(named: "UnselectedTabbarTintColor")
 		
 		let map = MapModuleConfigurator().assembleTab()
 		viewControllers = [map]

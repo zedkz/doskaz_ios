@@ -11,7 +11,7 @@ import UIKit
 struct MapModuleConfigurator {
 	
 	func assembleTab() -> UIViewController {
-		return assembleModule().tab(with: "tab_icon_map", title: l10n(.map))
+		return assembleModule().tab(with: "tab_map", title: l10n(.map))
 	}
 
 	func assembleModule() -> MapViewController {
