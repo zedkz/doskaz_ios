@@ -24,10 +24,8 @@ func l10n(_ localizableString: LocalizableStringKeyValue) -> String {
 /// and app code uses this to display strings
 
 enum LocalizableStringKeyValue: String, CaseIterable {
-	case blog    = "Блог"
-	case profile = "Профиль"
-	case профиль
-	case page = "Страница"
+	case map = "Карта"
+
 	
 	var l10n: String {
 		return self.rawValue.localized
