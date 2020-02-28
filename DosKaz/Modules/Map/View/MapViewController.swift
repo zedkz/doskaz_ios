@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 // MARK: View input protocol
 
@@ -17,7 +18,8 @@ protocol MapViewInput: class {
 extension MapViewController: MapViewInput {
 
 	func setupInitialState() {
-	
+		configureMapViewLayout()
+		configureMapView()
 	}
 
 }
@@ -25,7 +27,10 @@ extension MapViewController: MapViewInput {
 
 class MapViewController: UIViewController {
 
+	// MARK: Properties
 	var output: MapViewOutput!
+	private var mapView: MKMapView!
+	private let regionRadius: CLLocationDistance = 1000
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -33,6 +38,53 @@ class MapViewController: UIViewController {
 		view.backgroundColor = .white
 		output.viewIsReady()
 	}
+	
+	private func configureMapViewLayout() {
+		let mapView = MKMapView()
+		view.addSubview(mapView)
+		mapView.addConstraintsProgrammatically
+			.pinToSuperSafeArea()
+		self.mapView = mapView
+	}
+	
+	private func configureMapView() {
+		// set initial location in Astana
+		let baiterek = (lat: 51.128566, lon: 71.432326)
+		let initialLocation = CLLocation(latitude: baiterek.lat, longitude: baiterek.lon)
+		centerMapOnLocation(location: initialLocation)
+		
+		mapView.delegate = self
+		mapView.register(VenueView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+		
+		let venue = Venue(
+			title: "Poliknikia",
+			locationName: "Baiterek",
+			coordinate: CLLocationCoordinate2D(latitude: baiterek.lat, longitude: baiterek.lon)
+		)
+		mapView.addAnnotation(venue)
+		
+	}
+	
+	// MARK: - Helper methods
+	
+	private func centerMapOnLocation(location: CLLocation) {
+		let coordinateRegion = MKCoordinateRegion(
+			center: location.coordinate,
+			latitudinalMeters: regionRadius,
+			longitudinalMeters: regionRadius
+		)
+		mapView.setRegion(coordinateRegion, animated: true)
+	}
+	
+}
 
+
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+		let location = view.annotation as! Venue
+		print(location.coordinate)
+	}
 }
 
