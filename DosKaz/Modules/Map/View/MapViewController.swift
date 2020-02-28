@@ -85,6 +85,7 @@ extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		let location = view.annotation as! Venue
 		print(location.coordinate)
+		mapView.deselectAnnotation(view.annotation, animated: false)
 	}
 }
 
