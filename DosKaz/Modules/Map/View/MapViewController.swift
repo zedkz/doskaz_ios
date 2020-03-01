@@ -71,7 +71,7 @@ class MapViewController: UIViewController {
 	
 	private func configureNavigationView() {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
-			image: UIImage(named: "marker_example")?.withRenderingMode(.alwaysOriginal),
+			image: UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal),
 			style: .plain,
 			target: nil,
 			action: nil
