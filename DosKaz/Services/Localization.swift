@@ -25,6 +25,7 @@ func l10n(_ localizableString: LocalizableStringKeyValue) -> String {
 
 enum LocalizableStringKeyValue: String, CaseIterable {
 	case map = "Карта"
+	case searchPlaceholder = "Название или адрес"
 
 	
 	var l10n: String {

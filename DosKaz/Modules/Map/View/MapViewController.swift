@@ -84,7 +84,7 @@ class MapViewController: UIViewController {
 		let searchController = UISearchController(searchResultsController: resultsController)
 		searchController.searchResultsUpdater = resultsController
 		searchController.hidesNavigationBarDuringPresentation = false
-		searchController.searchBar.placeholder = "Search"
+		searchController.searchBar.placeholder = l10n(.searchPlaceholder)
 		definesPresentationContext = true
 		navigationItem.titleView = searchController.searchBar
 		self.searchController = searchController
