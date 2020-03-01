@@ -8,11 +8,13 @@
 
 import UIKit
 import MapKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
 protocol MapViewInput: class {
 	func setupInitialState()
+	func buildSearch(with command: Command)
 }
 
 extension MapViewController: MapViewInput {
@@ -20,6 +22,7 @@ extension MapViewController: MapViewInput {
 	func setupInitialState() {
 		configureMapViewLayout()
 		configureMapView()
+		configureNavigationView()
 	}
 
 }
@@ -31,6 +34,7 @@ class MapViewController: UIViewController {
 	var output: MapViewOutput!
 	private var mapView: MKMapView!
 	private let regionRadius: CLLocationDistance = 1000
+	private var searchController: UISearchController!
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -63,6 +67,27 @@ class MapViewController: UIViewController {
 		)
 		mapView.addAnnotation(venue)
 		
+	}
+	
+	private func configureNavigationView() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			image: UIImage(named: "marker_example")?.withRenderingMode(.alwaysOriginal),
+			style: .plain,
+			target: nil,
+			action: nil
+		)
+	}
+	
+	func buildSearch(with command: Command) {
+		let resultsController = SearchResultsViewControllerModuleConfigurator().assembleModule()
+		resultsController.output.initView(with: command)
+		let searchController = UISearchController(searchResultsController: resultsController)
+		searchController.searchResultsUpdater = resultsController
+		searchController.hidesNavigationBarDuringPresentation = false
+		searchController.searchBar.placeholder = "Search"
+		definesPresentationContext = true
+		navigationItem.titleView = searchController.searchBar
+		self.searchController = searchController
 	}
 	
 	// MARK: - Helper methods
