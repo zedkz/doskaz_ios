@@ -88,37 +88,7 @@ class MapViewController: UIViewController {
 		definesPresentationContext = true
 		navigationItem.titleView = searchController.searchBar
 		self.searchController = searchController
-		customizeSearchBarAppearance()
-	}
-	
-	private func customizeSearchBarAppearance() {
-		let search = searchController.searchBar
-		search.layer.shadowOffset = CGSize(width: 0, height: 0)
-		search.layer.shadowColor = UIColor(named: "CategoryPickerHeaderBackground")?.cgColor
-		search.layer.shadowOpacity = 0.6
-		search.layer.shadowRadius = 2
-		search.setImage(UIImage(named: "clear_search"), for: .clear, state: .normal)
-		
-		if #available(iOS 13.0, *) {
-			search.searchTextField.backgroundColor = UIColor(named: "CategoryPickerHeaderBackground")
-			search.searchTextField.textColor = .black
-			search.searchTextField.attributedPlaceholder = NSAttributedString(
-				string: l10n(.searchPlaceholder),
-				attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray]
-			)
-			search.searchTextField.leftViewMode = .never
-			
-		} else {
-			let textField = search.value(forKey: "searchField") as? UITextField
-			textField?.backgroundColor = UIColor(named: "CategoryPickerHeaderBackground")
-			textField?.textColor = .black
-			textField?.attributedPlaceholder = NSAttributedString(
-				string: l10n(.searchPlaceholder),
-				attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray]
-			)
-			textField?.leftViewMode = .never
-		}
-		
+		searchController.searchBar.customize()
 	}
 	
 	// MARK: - Helper methods
