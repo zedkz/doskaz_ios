@@ -108,6 +108,10 @@ extension UViewWrapper {
 	}
 	
 	
+	// Need implementation
+	public func pinToSuperView(with layoutGuide: UILayoutGuide? = nil) -> Self { return self }
+	
+	
 	/// Pin view to its superview's safe area
 	@discardableResult
 	public func pinToSuperSafeArea(with insets: UIEdgeInsets = UIEdgeInsets(all: 0)) -> Self {

@@ -24,6 +24,9 @@
 		445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7B2402E5F90072F4BC /* MapViewController.swift */; };
 		445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7D2402E5F90072F4BC /* MapModuleIO.swift */; };
 		445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */; };
+		44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D88241385EA006EB35D /* DrawerViewController.swift */; };
+		44653D8B24138610006EB35D /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8A24138610006EB35D /* DrawerView.swift */; };
+		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
 		4486E89A23F6EBEF00E8AAB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */; };
 		4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89B23F6EBEF00E8AAB2 /* ViewController.swift */; };
@@ -37,6 +40,7 @@
 		448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A4475240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift */; };
 		448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A4476240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift */; };
 		448A447F240C2E60007305D4 /* UISearchAppearanceCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A447E240C2E60007305D4 /* UISearchAppearanceCustomizer.swift */; };
+		448A8A732431171000C81788 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A8A722431171000C81788 /* Sugar.swift */; };
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
@@ -80,6 +84,9 @@
 		445CDC7B2402E5F90072F4BC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		445CDC7D2402E5F90072F4BC /* MapModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModuleIO.swift; sourceTree = "<group>"; };
 		445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapConfigurator.swift; sourceTree = "<group>"; };
+		44653D88241385EA006EB35D /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		44653D8A24138610006EB35D /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
+		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4486E89923F6EBEF00E8AAB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +102,7 @@
 		448A4475240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewControllerModuleIO.swift; sourceTree = "<group>"; };
 		448A4476240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewControllerConfigurator.swift; sourceTree = "<group>"; };
 		448A447E240C2E60007305D4 /* UISearchAppearanceCustomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchAppearanceCustomizer.swift; sourceTree = "<group>"; };
+		448A8A722431171000C81788 /* Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 				445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */,
 				445C3F382404432100131990 /* TableViewDataSource.swift */,
 				44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */,
+				448A8A722431171000C81788 /* Sugar.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -179,10 +188,11 @@
 		445CDC522402D5D60072F4BC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
+				44653D87241385CE006EB35D /* Drawer */,
 				445C3F282403F62800131990 /* CategoryPicker */,
 				445CDC752402E5F90072F4BC /* Map */,
 				448A446D240BF5D0007305D4 /* SearchResultsViewController */,
-				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -224,6 +234,16 @@
 				445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */,
 			);
 			path = Configurator;
+			sourceTree = "<group>";
+		};
+		44653D87241385CE006EB35D /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				44653D88241385EA006EB35D /* DrawerViewController.swift */,
+				44653D8A24138610006EB35D /* DrawerView.swift */,
+				44653D8D2413864F006EB35D /* DrawerPosition.swift */,
+			);
+			path = Drawer;
 			sourceTree = "<group>";
 		};
 		4486E88B23F6EBEF00E8AAB2 = {
@@ -464,12 +484,15 @@
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
+				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
+				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				445CDC812402E5F90072F4BC /* MapInteractor.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
+				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
@@ -477,6 +500,7 @@
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
 				445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */,
+				44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */,
 				448A447F240C2E60007305D4 /* UISearchAppearanceCustomizer.swift in Sources */,
 				445C3F362403F62800131990 /* CategoryPickerModuleIO.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,

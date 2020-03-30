@@ -43,6 +43,17 @@ class MapViewController: UIViewController {
 		output.viewIsReady()
 	}
 	
+	let drawerVC = DrawerViewController()
+		
+	func addDrawerViewController() {
+		addChild(drawerVC)
+		view.addSubview(drawerVC.drawerView)
+		drawerVC.didMove(toParent: self)
+		
+		drawerVC.drawerView.addConstraintsProgrammatically
+			.pinToSuper()
+	}
+
 	private func configureMapViewLayout() {
 		let mapView = MKMapView()
 		view.addSubview(mapView)
