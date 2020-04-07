@@ -30,7 +30,7 @@ class LanguageChoiceViewController: UIViewController {
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .systemGreen
+		view.backgroundColor = .white
 		output.viewIsReady()
 	}
 
