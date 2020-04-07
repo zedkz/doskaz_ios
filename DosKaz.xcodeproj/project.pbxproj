@@ -56,6 +56,7 @@
 		44F0EE23243CC340000B3022 /* LanguageChoiceModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */; };
 		44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */; };
 		44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE25243CC65D000B3022 /* LanguageChoiceView.swift */; };
+		44F0EE28243CF874000B3022 /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE27243CF874000B3022 /* Decorator.swift */; };
 		44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F527EC24092A7800AEBAC3 /* Annotation.swift */; };
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 		44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceModuleIO.swift; sourceTree = "<group>"; };
 		44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceConfigurator.swift; sourceTree = "<group>"; };
 		44F0EE25243CC65D000B3022 /* LanguageChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageChoiceView.swift; sourceTree = "<group>"; };
+		44F0EE27243CF874000B3022 /* Decorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
 		44F527EC24092A7800AEBAC3 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreviews.swift; sourceTree = "<group>"; };
 		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				445C3F382404432100131990 /* TableViewDataSource.swift */,
 				44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */,
 				448A8A722431171000C81788 /* Sugar.swift */,
+				44F0EE27243CF874000B3022 /* Decorator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
+				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,

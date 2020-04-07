@@ -32,6 +32,11 @@ class LanguageChoiceView: UIView {
 			kazakhBtn.setTitle("Қазақша", for: .normal)
 			rusBtn.setTitle("Русский", for: .normal)
 		}
+		
+		func style() {
+			kazakhBtn.decorate(with: Style.languageButton)
+			rusBtn.decorate(with: Style.languageButton)
+		}
 	}
 	
 	/// Properties
@@ -52,6 +57,7 @@ class LanguageChoiceView: UIView {
 		styleSubviews()
 		sv.render(with: Props.zero)
 		sv.renderConstantData()
+		sv.style()
 		LanguageChoiceViewLayout(for: self).paint()
 	}
 	
@@ -85,6 +91,7 @@ struct LanguageChoiceViewLayout {
 	var buttonStack: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
+		stack.spacing = 19
 		return stack
 	}()
 
@@ -119,6 +126,14 @@ extension LanguageChoiceViewLayout {
 		buttonStack.addConstraintsProgrammatically
 			.pinEdgeToSupers(.horizontalCenter)
 			.pinEdgeToSupers(.bottom, plus: -143)
+		
+		sv.kazakhBtn.addConstraintsProgrammatically
+			.set(my: .width, to: 148)
+			.set(my: .height, to: 44)
+		
+		sv.rusBtn.addConstraintsProgrammatically
+			.set(my: .width, to: 148)
+			.set(my: .height, to: 44)
 	}
 	
 }
