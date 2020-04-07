@@ -20,6 +20,8 @@ class LanguageChoiceView: UIView {
 	struct Subviews {
 		
 		var backGroundImage = UIImageView()
+		var kazakhBtn = UIButton(type: .system)
+		var rusBtn = UIButton(type: .system)
 		
 		func render(with props: Props) {
 			
@@ -27,6 +29,8 @@ class LanguageChoiceView: UIView {
 		
 		func renderConstantData() {
 			backGroundImage.image = UIImage(named: "green_map_background")
+			kazakhBtn.setTitle("Қазақша", for: .normal)
+			rusBtn.setTitle("Русский", for: .normal)
 		}
 	}
 	
@@ -78,6 +82,13 @@ struct LanguageChoiceViewLayout {
 	var rootView: LanguageChoiceView
 	var sv: LanguageChoiceView.Subviews
 	
+	var buttonStack: UIStackView = {
+		let stack = UIStackView()
+		stack.axis = .vertical
+		return stack
+	}()
+
+	
 	init(for rootView: LanguageChoiceView) {
 		self.rootView = rootView
 		self.sv = rootView.sv
@@ -94,15 +105,21 @@ extension LanguageChoiceViewLayout {
 	
 	func addSubViews() {
 		rootView.addSubview(sv.backGroundImage)
+		rootView.addSubview(buttonStack)
+		buttonStack.addArrangedSubviews([
+			sv.kazakhBtn,
+			sv.rusBtn
+		])
 	}
 	
 	func addConstraints() {
 		sv.backGroundImage.addConstraintsProgrammatically
 		.pinToSuper()
+		
+		buttonStack.addConstraintsProgrammatically
+			.pinEdgeToSupers(.horizontalCenter)
+			.pinEdgeToSupers(.bottom, plus: -143)
 	}
 	
 }
-
-
-
 
