@@ -17,7 +17,9 @@ protocol LanguageChoiceViewInput: class {
 extension LanguageChoiceViewController: LanguageChoiceViewInput {
 
 	func setupInitialState() {
-	
+		view.addSubview(rootView)
+		rootView.addConstraintsProgrammatically
+		.pinToSuperSafeArea()
 	}
 
 }
@@ -26,6 +28,7 @@ extension LanguageChoiceViewController: LanguageChoiceViewInput {
 class LanguageChoiceViewController: UIViewController {
 
 	var output: LanguageChoiceViewOutput!
+	var rootView = LanguageChoiceView()
 
 	// MARK: Life cycle
 	override func viewDidLoad() {

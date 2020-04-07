@@ -340,9 +340,9 @@ extension Anchor {
 	) -> Self {
 		let superview = callingView.superview!
 		return constrain(anchor: YEdge.top.keyPath, to: \.safeLayoutGuide.topAnchor, of: superview, plus: i.top)
-			.constrain(anchor: YEdge.bottom.keyPath, to: \.safeLayoutGuide.bottomAnchor, of: superview, plus: i.bottom)
+			.constrain(anchor: YEdge.bottom.keyPath, to: \.safeLayoutGuide.bottomAnchor, of: superview, plus: -i.bottom)
 			.constrain(anchor: XEdge.leading.keyPath, to: \.safeLayoutGuide.leadingAnchor, of: superview, plus: i.left)
-			.constrain(anchor: XEdge.trailing.keyPath, to: \.safeLayoutGuide.trailingAnchor, of: superview, plus: i.right)
+			.constrain(anchor: XEdge.trailing.keyPath, to: \.safeLayoutGuide.trailingAnchor, of: superview, plus: -i.right)
 	}
 	
 	/// Pin view to its superview
@@ -351,9 +351,9 @@ extension Anchor {
 		inset i: UIEdgeInsets = UIEdgeInsets(all: 0)
 	) -> Self {
 		return pinEdgeToSupers(.leading, plus: i.left)
-			.pinEdgeToSupers(.trailing, plus: i.right)
+			.pinEdgeToSupers(.trailing, plus: -i.right)
 			.pinEdgeToSupers(.top, plus: i.top)
-			.pinEdgeToSupers(.bottom, plus: i.bottom)
+			.pinEdgeToSupers(.bottom, plus: -i.bottom)
 	}
 	
 }

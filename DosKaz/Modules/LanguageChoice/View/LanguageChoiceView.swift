@@ -18,12 +18,15 @@ class LanguageChoiceView: UIView {
 	}
 	
 	struct Subviews {
+		
+		var backGroundImage = UIImageView()
+		
 		func render(with props: Props) {
 			
 		}
 		
 		func renderConstantData() {
-			
+			backGroundImage.image = UIImage(named: "green_map_background")
 		}
 	}
 	
@@ -90,11 +93,12 @@ struct LanguageChoiceViewLayout {
 extension LanguageChoiceViewLayout {
 	
 	func addSubViews() {
-		
+		rootView.addSubview(sv.backGroundImage)
 	}
 	
 	func addConstraints() {
-		
+		sv.backGroundImage.addConstraintsProgrammatically
+		.pinToSuper()
 	}
 	
 }
