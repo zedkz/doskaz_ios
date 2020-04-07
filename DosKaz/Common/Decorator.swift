@@ -31,15 +31,23 @@ struct Decorator<T> {
 	}
 }
 
+protocol Decorable: class {}
+
+extension Decorable {
+	static func decoration(closure: @escaping Decoration<Self>) -> Decoration<Self> {
+		return closure
+	}
+}
+
+extension NSObject: Decorable {}
+
 struct Style {
 	
-	static var languageButton: Decoration<UIButton> {
-		return { (view: UIButton) in
-			view.setTitleColor(.white, for: .normal)
-			view.backgroundColor = .systemGreen
-			view.layer.borderWidth = 1
-			view.layer.borderColor = UIColor.white.cgColor
-		}
+	static let languageButton = UIButton.decoration { (view) in
+		view.setTitleColor(.white, for: .normal)
+		view.backgroundColor = .systemGreen
+		view.layer.borderWidth = 1
+		view.layer.borderColor = UIColor.white.cgColor
 	}
 		
 	static func corners(rounded: Bool) -> Decoration<UIView> {
