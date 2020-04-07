@@ -26,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			window?.overrideUserInterfaceStyle = .light
 		}
 	}
+	
+	private func setMockViewController(_ viewController: UIViewController) {
+		window = UIWindow(frame: UIScreen.main.bounds)
+		window?.makeKeyAndVisible()
+		window?.rootViewController = viewController
+		if #available(iOS 13.0, *) {
+			window?.overrideUserInterfaceStyle = .light
+		}
+	}
 
 	// MARK: UISceneSession Lifecycle
 

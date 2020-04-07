@@ -49,6 +49,12 @@
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
+		44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */; };
+		44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */; };
+		44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */; };
+		44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1B243CC340000B3022 /* LanguageChoiceViewController.swift */; };
+		44F0EE23243CC340000B3022 /* LanguageChoiceModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */; };
+		44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */; };
 		44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F527EC24092A7800AEBAC3 /* Annotation.swift */; };
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +119,12 @@
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoicePresenter.swift; sourceTree = "<group>"; };
+		44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceRouter.swift; sourceTree = "<group>"; };
+		44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceInteractor.swift; sourceTree = "<group>"; };
+		44F0EE1B243CC340000B3022 /* LanguageChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceViewController.swift; sourceTree = "<group>"; };
+		44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceModuleIO.swift; sourceTree = "<group>"; };
+		44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceConfigurator.swift; sourceTree = "<group>"; };
 		44F527EC24092A7800AEBAC3 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreviews.swift; sourceTree = "<group>"; };
 		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
+				44F0EE15243CC340000B3022 /* LanguageChoice */,
 				44653D87241385CE006EB35D /* Drawer */,
 				445C3F282403F62800131990 /* CategoryPicker */,
 				445CDC752402E5F90072F4BC /* Map */,
@@ -343,6 +356,43 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		44F0EE15243CC340000B3022 /* LanguageChoice */ = {
+			isa = PBXGroup;
+			children = (
+				44F0EE1A243CC340000B3022 /* View */,
+				44F0EE16243CC340000B3022 /* Presenter */,
+				44F0EE1C243CC340000B3022 /* Configurator */,
+			);
+			path = LanguageChoice;
+			sourceTree = "<group>";
+		};
+		44F0EE16243CC340000B3022 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */,
+				44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */,
+				44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44F0EE1A243CC340000B3022 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44F0EE1B243CC340000B3022 /* LanguageChoiceViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44F0EE1C243CC340000B3022 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */,
+				44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		45FCC4BE32D131198C776816 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,11 +539,13 @@
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
+				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
+				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,
 				445CDC812402E5F90072F4BC /* MapInteractor.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
@@ -501,16 +553,20 @@
 				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
+				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
+				44F0EE23243CC340000B3022 /* LanguageChoiceModuleIO.swift in Sources */,
 				445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */,
 				44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */,
 				448A447F240C2E60007305D4 /* UISearchAppearanceCustomizer.swift in Sources */,
 				445C3F362403F62800131990 /* CategoryPickerModuleIO.swift in Sources */,
+				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				44B26BC72433EADD00E7B29C /* URLService.swift in Sources */,
+				44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
 				4486E89A23F6EBEF00E8AAB2 /* SceneDelegate.swift in Sources */,
