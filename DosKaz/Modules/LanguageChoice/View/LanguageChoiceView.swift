@@ -20,8 +20,8 @@ class LanguageChoiceView: UIView {
 	struct Subviews {
 		
 		var backGroundImage = UIImageView()
-		var kazakhBtn = UIButton(type: .system)
-		var rusBtn = UIButton(type: .system)
+		var kazakhBtn = UIButton()
+		var rusBtn = UIButton()
 		
 		func render(with props: Props) {
 			

@@ -45,9 +45,12 @@ struct Style {
 	
 	static let languageButton = UIButton.decoration { (view) in
 		view.setTitleColor(.white, for: .normal)
-		view.backgroundColor = .systemGreen
+		view.setTitleColor(UIColor(named: "LanguageButtonColor")!, for: .highlighted)
+		
 		view.layer.borderWidth = 1
 		view.layer.borderColor = UIColor.white.cgColor
+		view.setBackgroundColor(UIColor(named: "LanguageButtonColor")!, for: .normal)
+		view.setBackgroundColor(.white, for: UIControl.State.highlighted)
 	}
 		
 	static func corners(rounded: Bool) -> Decoration<UIView> {

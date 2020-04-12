@@ -36,6 +36,15 @@ class LanguageChoiceViewController: UIViewController {
 		view.backgroundColor = .white
 		output.viewIsReady()
 	}
+	
+	override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+		return .portrait
+	}
+	
+	override var shouldAutorotate: Bool {
+		return false
+	}
+	
 
 }
 
