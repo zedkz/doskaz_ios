@@ -6,6 +6,8 @@
 //  Copyright © 2020-04-07 14:08:05 +0000 lobster.kz. All rights reserved.
 //
 		
+import SharedCodeFramework
+
 class LanguageChoicePresenter: LanguageChoiceModuleInput {
 	
 	weak var view: LanguageChoiceViewInput!
@@ -24,6 +26,16 @@ protocol LanguageChoiceViewOutput {
 extension LanguageChoicePresenter: LanguageChoiceViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		view.setupView(with:
+			LanguageChoiceView.Props(
+				chooseKazakh: Command{
+					self.router.presentGreeting()
+				},
+				chooseRus: Command{
+					self.router.presentGreeting()
+			})
+		)
+		
 	}
 
 }

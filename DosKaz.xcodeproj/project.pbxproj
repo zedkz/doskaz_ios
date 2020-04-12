@@ -43,6 +43,12 @@
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
+		44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1E2443B21100FAD014 /* GreetingRouter.swift */; };
+		44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1F2443B21100FAD014 /* GreetingPresenter.swift */; };
+		44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E202443B21100FAD014 /* GreetingInteractor.swift */; };
+		44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E222443B21100FAD014 /* GreetingViewController.swift */; };
+		44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E242443B21100FAD014 /* GreetingConfigurator.swift */; };
+		44989E2B2443B21100FAD014 /* GreetingModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E252443B21100FAD014 /* GreetingModuleIO.swift */; };
 		44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC42433CE2700E7B29C /* MoyaRequest.swift */; };
 		44B26BC72433EADD00E7B29C /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC62433EADD00E7B29C /* URLService.swift */; };
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
@@ -114,6 +120,12 @@
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
+		44989E1E2443B21100FAD014 /* GreetingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
+		44989E1F2443B21100FAD014 /* GreetingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingPresenter.swift; sourceTree = "<group>"; };
+		44989E202443B21100FAD014 /* GreetingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingInteractor.swift; sourceTree = "<group>"; };
+		44989E222443B21100FAD014 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
+		44989E242443B21100FAD014 /* GreetingConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingConfigurator.swift; sourceTree = "<group>"; };
+		44989E252443B21100FAD014 /* GreetingModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingModuleIO.swift; sourceTree = "<group>"; };
 		44B26BC42433CE2700E7B29C /* MoyaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRequest.swift; sourceTree = "<group>"; };
 		44B26BC62433EADD00E7B29C /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
@@ -209,6 +221,7 @@
 			children = (
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
 				44F0EE15243CC340000B3022 /* LanguageChoice */,
+				44989E1C2443B21100FAD014 /* Greeting */,
 				44653D87241385CE006EB35D /* Drawer */,
 				445C3F282403F62800131990 /* CategoryPicker */,
 				445CDC752402E5F90072F4BC /* Map */,
@@ -345,6 +358,43 @@
 				44B26BC62433EADD00E7B29C /* URLService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		44989E1C2443B21100FAD014 /* Greeting */ = {
+			isa = PBXGroup;
+			children = (
+				44989E1D2443B21100FAD014 /* Presenter */,
+				44989E212443B21100FAD014 /* View */,
+				44989E232443B21100FAD014 /* Configurator */,
+			);
+			path = Greeting;
+			sourceTree = "<group>";
+		};
+		44989E1D2443B21100FAD014 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44989E1E2443B21100FAD014 /* GreetingRouter.swift */,
+				44989E1F2443B21100FAD014 /* GreetingPresenter.swift */,
+				44989E202443B21100FAD014 /* GreetingInteractor.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44989E212443B21100FAD014 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44989E222443B21100FAD014 /* GreetingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44989E232443B21100FAD014 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				44989E242443B21100FAD014 /* GreetingConfigurator.swift */,
+				44989E252443B21100FAD014 /* GreetingModuleIO.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 		44C376702407EA910050961F /* Resources */ = {
@@ -545,23 +595,29 @@
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
+				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,
+				44989E2B2443B21100FAD014 /* GreetingModuleIO.swift in Sources */,
 				445CDC812402E5F90072F4BC /* MapInteractor.swift in Sources */,
+				44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
 				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
+				44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
+				44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */,
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
+				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
 				44F0EE23243CC340000B3022 /* LanguageChoiceModuleIO.swift in Sources */,

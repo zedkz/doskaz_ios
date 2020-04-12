@@ -6,22 +6,25 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
 class LanguageChoiceView: UIView {
 	
 	struct Props {
 		
+		var chooseKazakh: Command
+		var chooseRus: Command
+		
 		static let zero = Props(
-			
+			chooseKazakh: .nop, chooseRus: .nop
 		)
 	}
 	
 	struct Subviews {
 		
 		var backGroundImage = UIImageView()
-		var kazakhBtn = UIButton()
-		var rusBtn = UIButton()
+		var kazakhBtn = Button()
+		var rusBtn = Button()
 		
 		func render(with props: Props) {
 			
@@ -75,7 +78,13 @@ extension LanguageChoiceView {
 	}
 	
 	private func configureSubViews() {
+		sv.kazakhBtn.didTouchUpInside = {
+			self.props.chooseKazakh.perform()
+		}
 		
+		sv.rusBtn.didTouchUpInside = {
+			self.props.chooseRus.perform()
+		}
 	}
 }
 

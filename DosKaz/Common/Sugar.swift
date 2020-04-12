@@ -49,3 +49,28 @@ extension UIButton {
 		self.setBackgroundImage(image(withColor: color), for: state)
 	}
 }
+
+class Button: UIButton {
+	
+	typealias DidTapButton = () -> Void
+	
+	var didTouchUpInside: DidTapButton? {
+		didSet {
+			if didTouchUpInside != nil {
+				addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
+			} else {
+				removeTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
+			}
+		}
+	}
+	
+	// MARK: - Actions
+	
+	@objc
+	func didTouchUpInside(_ sender: UIButton) {
+		if let handler = didTouchUpInside {
+			handler()
+		}
+	}
+	
+}

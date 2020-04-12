@@ -26,7 +26,7 @@ struct LanguageChoiceModuleConfigurator {
 	private func configure(viewController: LanguageChoiceViewController) {
 
 		let router = LanguageChoiceRouter()
-
+		router.viewController = viewController
 		let presenter = LanguageChoicePresenter()
 		presenter.view = viewController
 		presenter.router = router

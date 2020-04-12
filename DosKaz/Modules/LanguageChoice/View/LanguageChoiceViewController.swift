@@ -12,16 +12,22 @@ import UIKit
 
 protocol LanguageChoiceViewInput: class {
 	func setupInitialState()
+	func setupView(with props: LanguageChoiceView.Props)
 }
 
 extension LanguageChoiceViewController: LanguageChoiceViewInput {
 
 	func setupInitialState() {
+		navigationController?.navigationBar.isHidden = true
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 		view.addSubview(rootView)
 		rootView.addConstraintsProgrammatically
 		.pinToSuperSafeArea()
 	}
 
+	func setupView(with props: LanguageChoiceView.Props) {
+		rootView.props = props
+	}
 }
 
 

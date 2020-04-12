@@ -9,11 +9,19 @@
 import UIKit
 
 protocol LanguageChoiceRouterInput {
-
+	func presentGreeting()
 }
 
 // MARK: Implementation
 
 class LanguageChoiceRouter: LanguageChoiceRouterInput {
+	
+	var viewController: UIViewController?
+	
+	func presentGreeting() {
+		viewController?.navigationController?.pushViewController(
+			GreetingModuleConfigurator().assembleModule(), animated: true
+		)
+	}
 
 }
