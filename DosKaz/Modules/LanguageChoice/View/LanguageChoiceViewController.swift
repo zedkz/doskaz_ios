@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: View input protocol
 
-protocol LanguageChoiceViewInput: class {
+protocol LanguageChoiceViewInput where Self: UIViewController {
 	func setupInitialState()
 	func setupView(with props: LanguageChoiceView.Props)
 }

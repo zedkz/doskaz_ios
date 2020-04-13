@@ -8,7 +8,7 @@
 		
 import SharedCodeFramework
 
-class LanguageChoicePresenter: LanguageChoiceModuleInput {
+class LanguageChoicePresenter {
 	
 	weak var view: LanguageChoiceViewInput!
 	var interactor: LanguageChoiceInteractorInput!
@@ -28,11 +28,11 @@ extension LanguageChoicePresenter: LanguageChoiceViewOutput {
 		view.setupInitialState()
 		view.setupView(with:
 			LanguageChoiceView.Props(
-				chooseKazakh: Command{
-					self.router.presentGreeting()
+				chooseKazakh: Command {
+					self.router.presentGreeting(with: self.view)
 				},
-				chooseRus: Command{
-					self.router.presentGreeting()
+				chooseRus: Command {
+					self.router.presentGreeting(with: self.view)
 			})
 		)
 		

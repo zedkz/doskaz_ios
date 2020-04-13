@@ -58,7 +58,6 @@
 		44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */; };
 		44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */; };
 		44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1B243CC340000B3022 /* LanguageChoiceViewController.swift */; };
-		44F0EE23243CC340000B3022 /* LanguageChoiceModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */; };
 		44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */; };
 		44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE25243CC65D000B3022 /* LanguageChoiceView.swift */; };
 		44F0EE28243CF874000B3022 /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE27243CF874000B3022 /* Decorator.swift */; };
@@ -135,7 +134,6 @@
 		44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceRouter.swift; sourceTree = "<group>"; };
 		44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceInteractor.swift; sourceTree = "<group>"; };
 		44F0EE1B243CC340000B3022 /* LanguageChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceViewController.swift; sourceTree = "<group>"; };
-		44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceModuleIO.swift; sourceTree = "<group>"; };
 		44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceConfigurator.swift; sourceTree = "<group>"; };
 		44F0EE25243CC65D000B3022 /* LanguageChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageChoiceView.swift; sourceTree = "<group>"; };
 		44F0EE27243CF874000B3022 /* Decorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
@@ -440,7 +438,6 @@
 		44F0EE1C243CC340000B3022 /* Configurator */ = {
 			isa = PBXGroup;
 			children = (
-				44F0EE1D243CC340000B3022 /* LanguageChoiceModuleIO.swift */,
 				44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */,
 			);
 			path = Configurator;
@@ -620,7 +617,6 @@
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
-				44F0EE23243CC340000B3022 /* LanguageChoiceModuleIO.swift in Sources */,
 				445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */,
 				44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */,
 				448A447F240C2E60007305D4 /* UISearchAppearanceCustomizer.swift in Sources */,
