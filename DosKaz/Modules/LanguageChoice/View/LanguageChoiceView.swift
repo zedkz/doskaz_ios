@@ -25,6 +25,7 @@ class LanguageChoiceView: UIView {
 		var backGroundImage = UIImageView()
 		var kazakhBtn = Button()
 		var rusBtn = Button()
+		var logoImage = UIImageView()
 		
 		func render(with props: Props) {
 			
@@ -34,6 +35,7 @@ class LanguageChoiceView: UIView {
 			backGroundImage.image = UIImage(named: "green_map_background")
 			kazakhBtn.setTitle("Қазақша", for: .normal)
 			rusBtn.setTitle("Русский", for: .normal)
+			logoImage.image = UIImage(named: "logo")
 		}
 		
 		func style() {
@@ -96,6 +98,10 @@ struct LanguageChoiceViewLayout {
 	
 	var rootView: LanguageChoiceView
 	var sv: LanguageChoiceView.Subviews
+	var logoStack: UIStackView = {
+		let stack = UIStackView()
+		return stack
+	}()
 	
 	var buttonStack: UIStackView = {
 		let stack = UIStackView()
@@ -126,6 +132,8 @@ extension LanguageChoiceViewLayout {
 			sv.kazakhBtn,
 			sv.rusBtn
 		])
+		rootView.addSubview(logoStack)
+		logoStack.addArrangedSubview(sv.logoImage)
 	}
 	
 	func addConstraints() {
@@ -134,7 +142,7 @@ extension LanguageChoiceViewLayout {
 		
 		buttonStack.addConstraintsProgrammatically
 			.pinEdgeToSupers(.horizontalCenter)
-			.pinEdgeToSupers(.bottom, plus: -143)
+			.pin(my: .top, to: .bottom, of: logoStack, plus: 110)
 		
 		sv.kazakhBtn.addConstraintsProgrammatically
 			.set(my: .width, to: 148)
@@ -143,6 +151,10 @@ extension LanguageChoiceViewLayout {
 		sv.rusBtn.addConstraintsProgrammatically
 			.set(my: .width, to: 148)
 			.set(my: .height, to: 44)
+		
+		logoStack.addConstraintsProgrammatically
+			.pinEdgeToSupers(.horizontalCenter)
+			.pin(my: .top, andOf: rootView, plus: 209)
 	}
 	
 }
