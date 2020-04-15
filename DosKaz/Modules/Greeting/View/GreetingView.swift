@@ -16,6 +16,7 @@ class GreetingView: UIView {
 		super.init(frame: .zero)
 		renderConstantData()
 		style()
+		configureSubviews()
 		GreetingViewLayout(rv: self).draw()
 	}
 	
@@ -30,6 +31,8 @@ class GreetingView: UIView {
 	let backgroundImage = UIImageView()
 	let logoImage				= UIImageView()
 	let whiteBackground = UIView()
+	let collectionView	= UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+	
 	
 	func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
@@ -39,6 +42,16 @@ class GreetingView: UIView {
 	func style() {
 		logoImage.contentMode = .scaleAspectFit
 		whiteBackground.decorate(with: Style.topCornersRounded)
+		collectionView.backgroundColor = .systemRed
+	}
+	
+	func configureSubviews() {
+		let flowLayout = UICollectionViewFlowLayout()
+		flowLayout.scrollDirection = .horizontal
+		collectionView.collectionViewLayout = flowLayout
+		collectionView.isPagingEnabled = true
+		collectionView.alwaysBounceHorizontal = true
+		collectionView.showsHorizontalScrollIndicator = false
 	}
 
 }
@@ -59,6 +72,7 @@ extension GreetingViewLayout {
 		rv.addSubview(rv.backgroundImage)
 		rv.addSubview(rv.logoImage)
 		rv.addSubview(rv.whiteBackground)
+		rv.addSubview(rv.collectionView)
 	}
 	
 	func addConstraints() {
@@ -75,6 +89,12 @@ extension GreetingViewLayout {
 			.pinEdgeToSupers(.bottom)
 			.pinEdgeToSupers(.trailing)
 			.pin(my: .top, to: .bottom, of: rv.logoImage, plus: 51)
+		
+		rv.collectionView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.bottom)
+			.pin(my: .top, andOf: rv.whiteBackground, plus: 15)
 	}
 	
 }
