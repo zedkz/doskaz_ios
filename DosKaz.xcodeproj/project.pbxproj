@@ -44,6 +44,7 @@
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
+		44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44951D2124473E2E0029275F /* CollectionViewDataSource.swift */; };
 		44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1E2443B21100FAD014 /* GreetingRouter.swift */; };
 		44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1F2443B21100FAD014 /* GreetingPresenter.swift */; };
 		44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E202443B21100FAD014 /* GreetingInteractor.swift */; };
@@ -120,6 +121,7 @@
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
+		44951D2124473E2E0029275F /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		44989E1E2443B21100FAD014 /* GreetingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
 		44989E1F2443B21100FAD014 /* GreetingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingPresenter.swift; sourceTree = "<group>"; };
 		44989E202443B21100FAD014 /* GreetingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingInteractor.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */,
 				448A8A722431171000C81788 /* Sugar.swift */,
 				44F0EE27243CF874000B3022 /* Decorator.swift */,
+				44951D2124473E2E0029275F /* CollectionViewDataSource.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
+				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

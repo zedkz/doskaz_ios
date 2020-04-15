@@ -26,32 +26,41 @@ class GreetingView: UIView {
 	
 	//MARK: - Public properties and methods
 	
-	//MARK: - Private
-	
 	let backgroundImage = UIImageView()
 	let logoImage				= UIImageView()
 	let whiteBackground = UIView()
 	let collectionView	= UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 	
+	//MARK: - Private
+
+	private var collectionDataSource: CollectionViewDataSource<String, UICollectionViewCell>!
 	
-	func renderConstantData() {
+	private func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
 		logoImage.image = UIImage(named: "logo")
 	}
 	
-	func style() {
+	private func style() {
 		logoImage.contentMode = .scaleAspectFit
 		whiteBackground.decorate(with: Style.topCornersRounded)
 		collectionView.backgroundColor = .systemRed
 	}
 	
-	func configureSubviews() {
+	private func configureSubviews() {
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .horizontal
 		collectionView.collectionViewLayout = flowLayout
 		collectionView.isPagingEnabled = true
 		collectionView.alwaysBounceHorizontal = true
 		collectionView.showsHorizontalScrollIndicator = false
+		
+		
+		collectionDataSource = CollectionViewDataSource(collectionView) { text, cell in
+			cell.backgroundColor = .systemGreen
+		}
+		collectionDataSource.cellsProps = ["1", "2", "3"]
+		collectionView.dataSource = collectionDataSource
+		
 	}
 
 }
