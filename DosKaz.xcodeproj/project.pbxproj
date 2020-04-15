@@ -45,6 +45,7 @@
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
 		44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44951D2124473E2E0029275F /* CollectionViewDataSource.swift */; };
+		44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */; };
 		44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1E2443B21100FAD014 /* GreetingRouter.swift */; };
 		44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1F2443B21100FAD014 /* GreetingPresenter.swift */; };
 		44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E202443B21100FAD014 /* GreetingInteractor.swift */; };
@@ -122,6 +123,7 @@
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
 		44951D2124473E2E0029275F /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCollectionDelegate.swift; sourceTree = "<group>"; };
 		44989E1E2443B21100FAD014 /* GreetingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
 		44989E1F2443B21100FAD014 /* GreetingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingPresenter.swift; sourceTree = "<group>"; };
 		44989E202443B21100FAD014 /* GreetingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingInteractor.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			children = (
 				44989E222443B21100FAD014 /* GreetingViewController.swift */,
 				4459CCF4244727B8002DA95F /* GreetingView.swift */,
+				44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 			files = (
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
+				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,

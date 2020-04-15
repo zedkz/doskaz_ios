@@ -34,6 +34,7 @@ class GreetingView: UIView {
 	//MARK: - Private
 
 	private var collectionDataSource: CollectionViewDataSource<String, UICollectionViewCell>!
+	private let collectionDelegate = GreetingCollectionDelegate()
 	
 	private func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
@@ -60,6 +61,7 @@ class GreetingView: UIView {
 		}
 		collectionDataSource.cellsProps = ["1", "2", "3"]
 		collectionView.dataSource = collectionDataSource
+		collectionView.delegate = collectionDelegate
 		
 	}
 
