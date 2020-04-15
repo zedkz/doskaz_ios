@@ -29,6 +29,7 @@ class GreetingView: UIView {
 	
 	let backgroundImage = UIImageView()
 	let logoImage				= UIImageView()
+	let whiteBackground = UIView()
 	
 	func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
@@ -37,6 +38,7 @@ class GreetingView: UIView {
 	
 	func style() {
 		logoImage.contentMode = .scaleAspectFit
+		whiteBackground.decorate(with: Style.topCornersRounded)
 	}
 
 }
@@ -56,17 +58,23 @@ extension GreetingViewLayout {
 	func addSubviews() {
 		rv.addSubview(rv.backgroundImage)
 		rv.addSubview(rv.logoImage)
+		rv.addSubview(rv.whiteBackground)
 	}
 	
 	func addConstraints() {
 		rv.backgroundImage.addConstraintsProgrammatically
 		.pinToSuper()
 		
-		
 		rv.logoImage.addConstraintsProgrammatically
 			.pinEdgeToSupers(.horizontalCenter)
 			.pinEdgeToSupers(.top, plus: 51)
 			.set(my: .width, to: 173)
+		
+		rv.whiteBackground.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.trailing)
+			.pin(my: .top, to: .bottom, of: rv.logoImage, plus: 51)
 	}
 	
 }

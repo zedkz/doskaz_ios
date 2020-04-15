@@ -43,6 +43,12 @@ extension NSObject: Decorable {}
 
 struct Style {
 	
+	static let topCornersRounded = UIView.decoration { (view) in
+		view.backgroundColor = .white
+		view.layer.cornerRadius = 15
+		view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+	}
+	
 	static let languageButton = UIButton.decoration { (view) in
 		view.setTitleColor(.white, for: .normal)
 		view.setTitleColor(UIColor(named: "LanguageButtonColor")!, for: .highlighted)
@@ -70,9 +76,16 @@ struct Style {
 	}
 }
 
+// MARK: - Convenience methods
 
 extension UIButton {
 	func decorate(with decorations: Decoration<UIButton>...) {
 		decorations.forEach({ decorator.apply($0) })
+	}
+}
+
+extension UIView {
+	func decorate(with decorations: Decoration<UIView>...) {
+		decorations.forEach{ decorator.apply($0) }
 	}
 }
