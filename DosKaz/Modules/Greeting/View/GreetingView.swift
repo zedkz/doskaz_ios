@@ -15,6 +15,7 @@ class GreetingView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
 		renderConstantData()
+		style()
 		GreetingViewLayout(rv: self).draw()
 	}
 	
@@ -27,9 +28,15 @@ class GreetingView: UIView {
 	//MARK: - Private
 	
 	let backgroundImage = UIImageView()
+	let logoImage				= UIImageView()
 	
 	func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
+		logoImage.image = UIImage(named: "logo")
+	}
+	
+	func style() {
+		logoImage.contentMode = .scaleAspectFit
 	}
 
 }
@@ -48,11 +55,18 @@ extension GreetingViewLayout {
 	
 	func addSubviews() {
 		rv.addSubview(rv.backgroundImage)
+		rv.addSubview(rv.logoImage)
 	}
 	
 	func addConstraints() {
 		rv.backgroundImage.addConstraintsProgrammatically
 		.pinToSuper()
+		
+		
+		rv.logoImage.addConstraintsProgrammatically
+			.pinEdgeToSupers(.horizontalCenter)
+			.pinEdgeToSupers(.top, plus: 51)
+			.set(my: .width, to: 173)
 	}
 	
 }
