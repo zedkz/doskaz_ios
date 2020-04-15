@@ -6,7 +6,7 @@
 //  Copyright © 2020-04-12 20:30:47 +0000 lobster.kz. All rights reserved.
 //
 		
-class GreetingPresenter: GreetingModuleInput {
+class GreetingPresenter {
 	
 	weak var view: GreetingViewInput!
 	var interactor: GreetingInteractorInput!

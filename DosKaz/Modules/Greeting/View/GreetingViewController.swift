@@ -17,7 +17,10 @@ protocol GreetingViewInput: class {
 extension GreetingViewController: GreetingViewInput {
 
 	func setupInitialState() {
-	
+		view.backgroundColor = .white
+		view.addSubview(rootView)
+		rootView.addConstraintsProgrammatically
+		.pinToSuperSafeArea()
 	}
 
 }
@@ -26,11 +29,11 @@ extension GreetingViewController: GreetingViewInput {
 class GreetingViewController: UIViewController {
 
 	var output: GreetingViewOutput!
+	let rootView = GreetingView()
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .white
 		output.viewIsReady()
 	}
 
