@@ -25,6 +25,15 @@ class GreetingCell: UICollectionViewCell {
 	
 	//MARK: - Public properties and methods
 	
+	var props: Props! {
+		didSet {
+			guard let props = props else { return }
+			heading.text = props.heading
+			mainText.text = props.mainText
+			topImage.image = UIImage(named: props.imageName)
+		}
+	}
+	
 	let topImage = UIImageView()
 	let heading  = UILabel()
 	let mainText = UILabel()
@@ -45,6 +54,14 @@ class GreetingCell: UICollectionViewCell {
 		mainText.numberOfLines = 0
 		mainText.textAlignment = .center
 		mainText.font = .systemFont(ofSize: 14, weight: .regular)
+	}
+	
+	// MARK: - Subtypes
+	
+	struct Props {
+		let heading: String
+		let mainText: String
+		let imageName: String
 	}
 		
 }
