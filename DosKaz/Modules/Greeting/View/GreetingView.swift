@@ -61,14 +61,14 @@ class GreetingView: UIView {
 		}
 		
 		let cellsProps: [GreetingCell.Props] = [
-			.init(heading: "Проверьте доступность",
-						mainText: "Доступность объектов обозначена системой светофора: зеленая иконка обозначает полностью доступные объекты, желтая — частично доступные, красная — недоступные объекты.",
+			.init(heading: l10n(.greetingHeading1),
+						mainText: l10n(.greeting1),
 						imageName: "greetin_icon_page_one"),
-			.init(heading: "Добавьте объект",
-						mainText: "В случае отсутствия объекта на карте, вы можете сами разместить о нем информацию, воспользовавшись функцией «Добавить объект», потратив на это пару минут. Для этого вам понадобятся фотографии объекта, сделанные вами.",
+			.init(heading: l10n(.greetingHeading2),
+						mainText: l10n(.greeting2),
 						imageName: "add_object"),
-			.init(heading: "Будьте в курсе",
-						mainText: "Также на сайте карты вы сможете ознакомиться с различными полезными материалами в разделе «Блог». Там вы найдете советы, рекомендации, анонсы мероприятий и много другое.",
+			.init(heading: l10n(.greetingHeading3),
+						mainText: l10n(.greeting3),
 						imageName: "greetin_icon_page_three")
 		]
 		collectionDataSource.cellsProps = cellsProps
