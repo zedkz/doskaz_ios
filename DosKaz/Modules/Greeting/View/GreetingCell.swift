@@ -14,7 +14,6 @@ class GreetingCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
-		renderConstantData()
 		style()
 		GreetingCellLayout(rv: self).draw()
 	}
@@ -39,13 +38,7 @@ class GreetingCell: UICollectionViewCell {
 	let mainText = UILabel()
 	
 	//MARK: - Private
-	
-	private func renderConstantData() {
-		heading.text = "Проверьте доступность"
-		mainText.text = "Доступность объектов обозначена системой светофора: зеленая иконка обозначает полностью доступные объекты, желтая — частично доступные, красная — недоступные объекты."
-		topImage.image = UIImage(named: "greetin_icon_page_one")
-	}
-	
+		
 	private func style() {
 		heading.numberOfLines = 0
 		heading.textAlignment = .center
@@ -54,6 +47,8 @@ class GreetingCell: UICollectionViewCell {
 		mainText.numberOfLines = 0
 		mainText.textAlignment = .center
 		mainText.font = .systemFont(ofSize: 14, weight: .regular)
+		
+		topImage.contentMode = .scaleAspectFit
 	}
 	
 	// MARK: - Subtypes
@@ -89,8 +84,9 @@ extension GreetingCellLayout {
 			.pin(my: .top, to: .bottom, of: rv.topImage, plus: 16)
 		
 		rv.topImage.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top, plus: 32)
+			.pinEdgeToSupers(.top, plus: 22)
 			.pinEdgeToSupers(.horizontalCenter)
+			.set(my: .height, to: 90)
 		
 		rv.mainText.addConstraintsProgrammatically
 			.pinEdgeToSupers(.horizontalCenter)
