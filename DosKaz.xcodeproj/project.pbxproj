@@ -46,6 +46,7 @@
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
 		44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44951D2124473E2E0029275F /* CollectionViewDataSource.swift */; };
 		44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */; };
+		44951D262447777E0029275F /* GreetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44951D252447777E0029275F /* GreetingCell.swift */; };
 		44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1E2443B21100FAD014 /* GreetingRouter.swift */; };
 		44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E1F2443B21100FAD014 /* GreetingPresenter.swift */; };
 		44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E202443B21100FAD014 /* GreetingInteractor.swift */; };
@@ -124,6 +125,7 @@
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
 		44951D2124473E2E0029275F /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCollectionDelegate.swift; sourceTree = "<group>"; };
+		44951D252447777E0029275F /* GreetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCell.swift; sourceTree = "<group>"; };
 		44989E1E2443B21100FAD014 /* GreetingRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingRouter.swift; sourceTree = "<group>"; };
 		44989E1F2443B21100FAD014 /* GreetingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingPresenter.swift; sourceTree = "<group>"; };
 		44989E202443B21100FAD014 /* GreetingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingInteractor.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				44989E222443B21100FAD014 /* GreetingViewController.swift */,
 				4459CCF4244727B8002DA95F /* GreetingView.swift */,
 				44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */,
+				44951D252447777E0029275F /* GreetingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
+				44951D262447777E0029275F /* GreetingCell.swift in Sources */,
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
 				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 			);

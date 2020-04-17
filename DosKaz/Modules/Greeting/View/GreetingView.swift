@@ -33,7 +33,7 @@ class GreetingView: UIView {
 	
 	//MARK: - Private
 
-	private var collectionDataSource: CollectionViewDataSource<String, UICollectionViewCell>!
+	private var collectionDataSource: CollectionViewDataSource<String, GreetingCell>!
 	private let collectionDelegate = GreetingCollectionDelegate()
 	
 	private func renderConstantData() {
@@ -44,7 +44,7 @@ class GreetingView: UIView {
 	private func style() {
 		logoImage.contentMode = .scaleAspectFit
 		whiteBackground.decorate(with: Style.topCornersRounded)
-		collectionView.backgroundColor = .systemRed
+		collectionView.backgroundColor = .white
 	}
 	
 	private func configureSubviews() {
@@ -57,7 +57,7 @@ class GreetingView: UIView {
 		
 		
 		collectionDataSource = CollectionViewDataSource(collectionView) { text, cell in
-			cell.backgroundColor = .systemGreen
+			
 		}
 		collectionDataSource.cellsProps = ["1", "2", "3"]
 		collectionView.dataSource = collectionDataSource
