@@ -30,6 +30,10 @@ class GreetingView: UIView {
 	let logoImage				= UIImageView()
 	let whiteBackground = UIView()
 	let collectionView	= UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+	let toolBar					= UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
+	let backButton = Button(type: .system)
+	let nextButton = Button(type: .system)
+	let pageControl = UIPageControl()
 	
 	//MARK: - Private
 
@@ -39,12 +43,21 @@ class GreetingView: UIView {
 	private func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
 		logoImage.image = UIImage(named: "logo")
+		backButton.setTitle("Назад", for: .normal)
+		nextButton.setTitle("Далее", for: .normal)
+		pageControl.numberOfPages = 3
 	}
 	
 	private func style() {
 		logoImage.contentMode = .scaleAspectFit
 		whiteBackground.decorate(with: Style.topCornersRounded)
 		collectionView.backgroundColor = .white
+		
+		toolBar.clipsToBounds = true
+		toolBar.barTintColor = .white
+		
+		pageControl.pageIndicatorTintColor = .systemGray
+		pageControl.currentPageIndicatorTintColor = .systemBlue
 	}
 	
 	private func configureSubviews() {
@@ -75,6 +88,15 @@ class GreetingView: UIView {
 		collectionView.dataSource = collectionDataSource
 		collectionView.delegate = collectionDelegate
 		
+		
+		backButton.didTouchUpInside = {
+			print("back")
+		}
+		
+		nextButton.didTouchUpInside = {
+			print("next")
+		}
+	
 	}
 
 }
@@ -96,6 +118,14 @@ extension GreetingViewLayout {
 		rv.addSubview(rv.logoImage)
 		rv.addSubview(rv.whiteBackground)
 		rv.addSubview(rv.collectionView)
+		rv.addSubview(rv.toolBar)
+		
+		let spaceTwo = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let spaceOne = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+		let pagesItem = UIBarButtonItem(customView: rv.pageControl)
+		let back = UIBarButtonItem(customView: rv.backButton)
+		let next = UIBarButtonItem(customView: rv.nextButton)
+		rv.toolBar.setItems([back, spaceOne, pagesItem, spaceTwo, next], animated: true)
 	}
 	
 	func addConstraints() {
@@ -116,8 +146,14 @@ extension GreetingViewLayout {
 		rv.collectionView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom)
+			
 			.pin(my: .top, andOf: rv.whiteBackground, plus: 15)
+		
+		rv.toolBar.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: rv.collectionView)
+			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
 	}
 	
 }
