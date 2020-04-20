@@ -9,11 +9,15 @@
 import UIKit
 
 protocol GreetingRouterInput {
-
+	func presentCategories(with viewController: UIViewController)
 }
 
 // MARK: Implementation
 
 class GreetingRouter: GreetingRouterInput {
-
+	func presentCategories(with viewController: UIViewController) {
+		viewController.navigationController?.pushViewController(
+			CategoryPickerModuleConfigurator().assembleModule(), animated: true
+		)
+	}
 }

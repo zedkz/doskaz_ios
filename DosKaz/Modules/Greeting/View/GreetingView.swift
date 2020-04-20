@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 class GreetingView: UIView {
 	
@@ -25,6 +26,13 @@ class GreetingView: UIView {
 	}
 	
 	//MARK: - Public properties and methods
+	
+	var props: Props! {
+		didSet {
+			guard let props = props else { return }
+			print("GreetingView props has been set:", props)
+		}
+	}
 	
 	let backgroundImage = UIImageView()
 	let logoImage				= UIImageView()
@@ -98,10 +106,19 @@ class GreetingView: UIView {
 		
 		nextButton.didTouchUpInside = { [unowned self] in
 			let nextPage = self.pageControl.currentPage + 1
-			guard nextPage < 3 else { return }
+			guard nextPage < 3 else {
+				self.props.onPressNext.perform()
+				return
+			}
 			self.collectionView.scrollToItem(at: IndexPath(item: nextPage, section: 0), at: .left, animated: true)
 		}
 	
+	}
+	
+	// MARK: - Subtypes
+	
+	struct Props {
+		let onPressNext: Command
 	}
 
 }

@@ -10,8 +10,9 @@ import UIKit
 
 // MARK: View input protocol
 
-protocol GreetingViewInput: class {
+protocol GreetingViewInput where Self: UIViewController {
 	func setupInitialState()
+	func renderRootview(with props: GreetingView.Props)
 }
 
 extension GreetingViewController: GreetingViewInput {
@@ -21,6 +22,10 @@ extension GreetingViewController: GreetingViewInput {
 		view.addSubview(rootView)
 		rootView.addConstraintsProgrammatically
 		.pinToSuperSafeArea()
+	}
+	
+	func renderRootview(with props: GreetingView.Props) {
+		rootView.props = props
 	}
 
 }
