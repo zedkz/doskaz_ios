@@ -66,7 +66,7 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 			c.textLabel?.numberOfLines = 0
 			c.accessoryType = .disclosureIndicator
 			c.textLabel?.text = "\(p)"
-			c.textLabel?.font = SFDisplay.regular.with(size: 14)
+			c.textLabel?.font = .systemFont(ofSize: 14)
 		}
 		
 		tableView.dataSource = dataSource
