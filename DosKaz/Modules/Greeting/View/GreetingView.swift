@@ -30,7 +30,6 @@ class GreetingView: UIView {
 	let logoImage				= UIImageView()
 	let whiteBackground = UIView()
 	let collectionView	= UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-	let toolBar					= UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
 	let backButton = Button(type: .system)
 	let nextButton = Button(type: .system)
 	let pageControl = UIPageControl()
@@ -52,9 +51,6 @@ class GreetingView: UIView {
 		logoImage.contentMode = .scaleAspectFit
 		whiteBackground.decorate(with: Style.topCornersRounded)
 		collectionView.backgroundColor = .white
-		
-		toolBar.clipsToBounds = true
-		toolBar.barTintColor = .white
 		
 		pageControl.pageIndicatorTintColor = .systemGray
 		pageControl.currentPageIndicatorTintColor = .systemBlue
