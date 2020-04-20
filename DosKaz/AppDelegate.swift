@@ -39,3 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+class PortraitNavigationController: UINavigationController {
+	
+	override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+		return .portrait
+	}
+	
+	override var shouldAutorotate: Bool {
+		return false
+	}
+}
