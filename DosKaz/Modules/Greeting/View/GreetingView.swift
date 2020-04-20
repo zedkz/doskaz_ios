@@ -86,15 +86,24 @@ class GreetingView: UIView {
 		]
 		collectionDataSource.cellsProps = cellsProps
 		collectionView.dataSource = collectionDataSource
+	
+		collectionDelegate.didScrollToPage = { [pageControl, backButton] page in
+			pageControl.currentPage = page
+			backButton.isEnabled = (page != 0)
+		}
 		collectionView.delegate = collectionDelegate
 		
-		
-		backButton.didTouchUpInside = {
-			print("back")
+		backButton.isEnabled = false
+		backButton.didTouchUpInside = { [unowned self] in
+			let previousPage = self.pageControl.currentPage - 1
+			guard previousPage >= 0 else { return }
+			self.collectionView.scrollToItem(at: IndexPath(item: previousPage, section: 0), at: .left, animated: true)
 		}
 		
-		nextButton.didTouchUpInside = {
-			print("next")
+		nextButton.didTouchUpInside = { [unowned self] in
+			let nextPage = self.pageControl.currentPage + 1
+			guard nextPage < 3 else { return }
+			self.collectionView.scrollToItem(at: IndexPath(item: nextPage, section: 0), at: .left, animated: true)
 		}
 	
 	}
@@ -104,6 +113,15 @@ class GreetingView: UIView {
 
 struct GreetingViewLayout {
 	weak var rv: GreetingView!
+	
+	let buttonStack: UIStackView = {
+		let stack = UIStackView()
+		stack.axis = .horizontal
+		stack.distribution = .equalSpacing
+		stack.isLayoutMarginsRelativeArrangement = true
+		stack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+		return stack
+	}()
 	
 	func draw() {
 		addSubviews()
@@ -118,14 +136,9 @@ extension GreetingViewLayout {
 		rv.addSubview(rv.logoImage)
 		rv.addSubview(rv.whiteBackground)
 		rv.addSubview(rv.collectionView)
-		rv.addSubview(rv.toolBar)
-		
-		let spaceTwo = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		let spaceOne = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		let pagesItem = UIBarButtonItem(customView: rv.pageControl)
-		let back = UIBarButtonItem(customView: rv.backButton)
-		let next = UIBarButtonItem(customView: rv.nextButton)
-		rv.toolBar.setItems([back, spaceOne, pagesItem, spaceTwo, next], animated: true)
+		rv.addSubview(buttonStack)
+		[rv.backButton, rv.pageControl, rv.nextButton]
+			.forEach(buttonStack.addArrangedSubview)
 	}
 	
 	func addConstraints() {
@@ -149,11 +162,12 @@ extension GreetingViewLayout {
 			
 			.pin(my: .top, andOf: rv.whiteBackground, plus: 15)
 		
-		rv.toolBar.addConstraintsProgrammatically
+		buttonStack.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: rv.collectionView)
 			.pinEdgeToSupers(.bottom)
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
+			.set(my: .height, to: 35)
 	}
 	
 }

@@ -10,6 +10,17 @@ import UIKit
 
 class GreetingCollectionDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 	
+	var didScrollToPage: (Int) -> Void = { _ in }
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offSet = scrollView.contentOffset.x
+		let width = scrollView.frame.width
+		let horizontalCenter = width / 2
+		
+		let currentPage = Int(offSet + horizontalCenter) / Int(width)
+		didScrollToPage(currentPage)
+	}
+	
 	func collectionView(_ collectionView: UICollectionView,
 											layout collectionViewLayout: UICollectionViewLayout,
 											sizeForItemAt indexPath: IndexPath) -> CGSize {
