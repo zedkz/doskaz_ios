@@ -113,9 +113,9 @@ struct GreetingViewLayout {
 	let buttonStack: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .horizontal
-		stack.distribution = .equalSpacing
+		stack.distribution = .fillEqually
 		stack.isLayoutMarginsRelativeArrangement = true
-		stack.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+		stack.layoutMargins = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
 		return stack
 	}()
 	
@@ -160,7 +160,7 @@ extension GreetingViewLayout {
 		
 		buttonStack.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: rv.collectionView)
-			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.bottom, plus: -8)
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
 			.set(my: .height, to: 35)
