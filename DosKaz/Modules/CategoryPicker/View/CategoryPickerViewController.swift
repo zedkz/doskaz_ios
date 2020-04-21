@@ -6,7 +6,7 @@
 //  Copyright © 2020-02-24 12:15:36 +0000 lobster.kz. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
@@ -84,8 +84,15 @@ class CategoryPickerViewController: UIViewController {
 		}
 		
 		tableView.dataSource = dataSource
+		tableView.delegate = self
 	}
 	
+}
+
+extension CategoryPickerViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		dataSource.cellsProps[indexPath.row].pick()
+	}
 }
 
 
@@ -93,6 +100,12 @@ extension CategoryPickerViewController {
 	struct Category {
 		let name: String
 		let imageName: String
+		let onPickCategory: CommandWith<Category>
+		
+		func pick() {
+			onPickCategory.perform(with: self)
+		}
+		
 	}
 }
 

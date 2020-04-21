@@ -9,11 +9,24 @@
 import UIKit
 
 protocol CategoryPickerRouterInput {
-
+	func presentMainTabbar()
 }
 
 // MARK: Implementation
 
 class CategoryPickerRouter: CategoryPickerRouterInput {
-
+	func presentMainTabbar() {
+		guard let keyWindow = UIApplication.shared.keyWindow else { return }
+		
+		UIView.transition(
+			with: keyWindow,
+			duration: 0.2,
+			options: .transitionFlipFromLeft,
+			animations: {
+				keyWindow.rootViewController = MainTabBarViewController()
+			},
+			completion: nil
+		)
+		
+	}
 }
