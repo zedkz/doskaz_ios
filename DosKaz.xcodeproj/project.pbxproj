@@ -57,6 +57,7 @@
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
+		44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11C92451883D009B92BF /* api_objects_map.swift */; };
 		44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */; };
 		44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */; };
 		44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */; };
@@ -136,6 +137,7 @@
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		44ED11C92451883D009B92BF /* api_objects_map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_map.swift; sourceTree = "<group>"; };
 		44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoicePresenter.swift; sourceTree = "<group>"; };
 		44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceRouter.swift; sourceTree = "<group>"; };
 		44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceInteractor.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 		4490E2EB24026CAA00F70B40 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				44ED11C824518811009B92BF /* Doskaz */,
 				4490E2EC24026CE900F70B40 /* AppSettings.swift */,
 				4490E2EE2402711300F70B40 /* Localization.swift */,
 				4490E2F02402776500F70B40 /* StringResourceGenerator.swift */,
@@ -405,6 +408,14 @@
 				44C3767524083F050050961F /* Font.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		44ED11C824518811009B92BF /* Doskaz */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11C92451883D009B92BF /* api_objects_map.swift */,
+			);
+			path = Doskaz;
 			sourceTree = "<group>";
 		};
 		44F0EE15243CC340000B3022 /* LanguageChoice */ = {
@@ -582,6 +593,7 @@
 			files = (
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
+				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
 				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,

@@ -86,7 +86,7 @@ extension MoyaRequest {
 		
 }
 
-let multiProvider = MoyaProvider<MultiTarget>()
+let multiProvider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin()])
 
 extension MoyaRequest where Self: TargetType {
 	func dispatch() {
