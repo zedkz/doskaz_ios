@@ -143,12 +143,21 @@ open class DrawerView: UIView {
 	
 	// MARK: - Private
 	
+	/// Adds a view as a subview of `contentView` and sets it to be full size.
+	func displayViewInContentView(_ view: UIView) {
+		contentView.addSubview(view)
+		displayedView = view
+		displayedView?.translatesAutoresizingMaskIntoConstraints = false
+	}
+	
+	private var displayedView: UIView?
+		
 	private func configureView() {
 		
 		addSubview(panningView)
 		
 		// Content view.
-		contentView.clipsToBounds = true
+		contentView.clipsToBounds = false
 		contentView.backgroundColor = .systemGreen
 		panningView.addSubview(contentView)
 		

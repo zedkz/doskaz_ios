@@ -10,6 +10,8 @@ import UIKit
 
 class DrawerViewController: UIViewController {
 	
+	var currentViewController: UIViewController?
+	
 	override open func loadView() {
 		super.loadView()
 		view = DrawerView()
@@ -19,6 +21,30 @@ class DrawerViewController: UIViewController {
 		return view as! DrawerView
 	}
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+	}
+	
+	// MARK: - Display view controllers
+	
+	/// Shows a view controller in the drawer view's content view.
+	///
+	/// - Parameter viewController: The view controller to show.
+	func show(viewController: UIViewController) {
+		guard viewController != currentViewController else { return }
+		
+		// If a VC's view was already added to the drawer, remove it.
+		if let currentViewController = currentViewController {
+			currentViewController.view.removeFromSuperview()
+			currentViewController.removeFromParent()
+		}
+		
+		// Add the VC's view to the drawer.
+		currentViewController = viewController
+		addChild(currentViewController!)
+		drawerView.displayViewInContentView(currentViewController!.view)
+	}
 	
 	// MARK: - Drawer Position
 	
