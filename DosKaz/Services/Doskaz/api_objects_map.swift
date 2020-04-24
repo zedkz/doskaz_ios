@@ -45,7 +45,6 @@ struct APIObjectsMap: DoskazRequest {
 		return Task.requestParameters(parameters: p, encoding: URLEncoding.default)
 	}
 	
-//	APIObjectsMap(zoom: 14, box: [52.2523,76.8384,52.3332,77.1021]).dispatch()
 }
 
 

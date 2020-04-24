@@ -15,6 +15,7 @@ import SharedCodeFramework
 protocol MapViewInput: class {
 	func setupInitialState()
 	func buildSearch(with command: Command)
+	func show(_ points: [Venue])
 }
 
 extension MapViewController: MapViewInput {
@@ -25,6 +26,9 @@ extension MapViewController: MapViewInput {
 		configureNavigationView()
 	}
 
+	func show(_ points: [Venue]) {
+		mapView.addAnnotations(points)
+	}
 }
 
 
@@ -33,7 +37,7 @@ class MapViewController: UIViewController {
 	// MARK: Properties
 	var output: MapViewOutput!
 	private var mapView: MKMapView!
-	private let regionRadius: CLLocationDistance = 1000
+	private let regionRadius: CLLocationDistance = 5000
 	private var searchController: UISearchController!
 
 	// MARK: Life cycle
@@ -63,20 +67,13 @@ class MapViewController: UIViewController {
 	}
 	
 	private func configureMapView() {
-		// set initial location in Astana
-		let baiterek = (lat: 51.128566, lon: 71.432326)
+		// set initial location
+		let baiterek = (lat: 52.288218, lon: 76.969872)
 		let initialLocation = CLLocation(latitude: baiterek.lat, longitude: baiterek.lon)
 		centerMapOnLocation(location: initialLocation)
 		
 		mapView.delegate = self
 		mapView.register(VenueView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-		
-		let venue = Venue(
-			title: "Poliknikia",
-			locationName: "Baiterek",
-			coordinate: CLLocationCoordinate2D(latitude: baiterek.lat, longitude: baiterek.lon)
-		)
-		mapView.addAnnotation(venue)
 		
 	}
 	

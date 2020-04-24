@@ -6,6 +6,7 @@
 //  Copyright © 2020-02-23 16:55:07 +0000 lobster.kz. All rights reserved.
 //
 import SharedCodeFramework
+import CoreLocation
 		
 class MapPresenter: MapModuleInput {
 	
@@ -28,6 +29,8 @@ extension MapPresenter: MapViewOutput {
 		view.buildSearch(with: Command { [weak self] in
 			print("search started")
 		})
+		
+		interactor.loadPointsOnMap()
 	}
 
 }
@@ -36,10 +39,29 @@ extension MapPresenter: MapViewOutput {
 // MARK: Interactor output protocol
 
 protocol MapInteractorOutput: class {
-
+	func didLoad(_ points: [Point])
+	func didFailLoadPoints(with error: Error)
 }
 
 extension MapPresenter: MapInteractorOutput {
-
+	func didLoad(_ points: [Point]) {
+		let venues = points.map { point in
+			return Venue(
+				title: point.icon ?? "",
+				locationName: String(point.id) ,
+				coordinate: CLLocationCoordinate2D(
+					latitude: point.coordinates[0],
+					longitude: point.coordinates[1]
+				)
+			)
+		}
+		
+		view.show(venues)
+		
+	}
+	
+	func didFailLoadPoints(with error: Error) {
+		
+	}
 }
 
