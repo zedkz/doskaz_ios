@@ -277,7 +277,7 @@ open class DrawerView: UIView {
 	/// - Parameter distance: The distance to pan the drawer.
 	private func pan(distance: CGFloat) {
 		// Update the panning view's pan distance to a value clamped between open full and peeking.
-		let range = (openFullPosition.panDistance...peekingPosition.panDistance)
+		let range = ((openFullPosition.panDistance-1000)...(peekingPosition.panDistance + 1000))
 		let clampedPanDistance = range.clamp(panDistance(withAdditionalPan: distance))
 		currentPanDistance = clampedPanDistance
 	}
