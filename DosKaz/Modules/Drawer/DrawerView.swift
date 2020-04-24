@@ -169,8 +169,7 @@ open class DrawerView: UIView {
 	private var availableHeight: CGFloat?
 	
 	private func updateContentViewHeight() {
-		contentView.frame.size.height =	safeAreaInsetsOrZero.bottom +
-			max(openHalfPosition.contentHeight, currentPosition.contentHeight)
+	
 	}
 	
 	private let minimumAnimationDuration = 0.1
@@ -225,10 +224,6 @@ open class DrawerView: UIView {
 			// Update the panning view's y origin for the pan distance.
 			panningView.frame.origin.y = panningViewOriginY
 			
-			// Pan distance is how far the panning view has moved up the screen (negative view coordinate
-			// direction). The visible height of the content view is the same amount (but non-negative).
-			contentView.frame.size.height = safeAreaInsetsOrZero.bottom +
-				max(openHalfPosition.contentHeight, -currentPanDistance)
 		}
 	}
 
