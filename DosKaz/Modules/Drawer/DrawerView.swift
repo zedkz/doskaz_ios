@@ -97,6 +97,7 @@ open class DrawerView: UIView {
 				options: [.curveEaseOut],
 				animations: {
 					self.currentPanDistance = position.panDistance
+					self.layoutIfNeeded()
 			},
 				completion: { (_) in
 					//self.delegate?.drawerView(self, didChangePosition: self.currentPosition)
@@ -114,17 +115,6 @@ open class DrawerView: UIView {
 	open override func layoutSubviews() {
 		super.layoutSubviews()
 		
-		// Panning view.
-		panningView.frame = CGRect(
-			x: 0,
-			y: panningViewOriginY,
-			width: bounds.width,
-			height: bounds.height
-		)
-		
-		// Content view.
-		contentView.frame.origin.y = 0
-		contentView.frame.size.width = panningView.bounds.width
 	}
 	
 	override open func safeAreaInsetsDidChange() {
@@ -145,21 +135,37 @@ open class DrawerView: UIView {
 	
 	/// Adds a view as a subview of `contentView` and sets it to be full size.
 	func displayViewInContentView(_ view: UIView) {
-		contentView.addSubview(view)
-		displayedView = view
-		displayedView?.translatesAutoresizingMaskIntoConstraints = false
+		view.translatesAutoresizingMaskIntoConstraints = false
+		stackView.addArrangedSubview(view)
 	}
 	
-	private var displayedView: UIView?
+	var topConstraint: NSLayoutConstraint!
 		
 	private func configureView() {
 		
 		addSubview(panningView)
 		
+		panningView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.bottom )
+		
+		topConstraint = panningView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.top)
+			.constraint
+		
 		// Content view.
-		contentView.clipsToBounds = false
+		contentView.isScrollEnabled = false
 		contentView.backgroundColor = .systemGreen
 		panningView.addSubview(contentView)
+		
+		contentView.addConstraintsProgrammatically
+			.pinToSuper()
+		
+		contentView.addSubview(stackView)
+		stackView.addConstraintsProgrammatically
+			.pinToSuper()
+			.equate(my: .width, and: .width, of: contentView)
 		
 	}
 	
@@ -181,7 +187,13 @@ open class DrawerView: UIView {
 	private let panningView = UIView()
 	
 	// The content view for a view controller's view to be displayed.
-	private let contentView = UIView()
+	private let contentView = UIScrollView()
+	
+	private let stackView: UIStackView = {
+		let stack = UIStackView()
+		stack.axis = .vertical
+		return stack
+	}()
 	
 	/// Whether or not the drawer can be open half. This should be set to false when the device is in
 	/// landscape.
@@ -222,8 +234,7 @@ open class DrawerView: UIView {
 	private var currentPanDistance: CGFloat = 0 {
 		didSet {
 			// Update the panning view's y origin for the pan distance.
-			panningView.frame.origin.y = panningViewOriginY
-			
+			topConstraint.constant = panningViewOriginY
 		}
 	}
 
