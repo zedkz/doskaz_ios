@@ -25,9 +25,47 @@ class DrawerViewController: UIViewController {
 		super.viewDidLoad()
 		setPosition(drawerView.openFullPosition)
 		drawerView.decorateContent(with: Style.topCornersRounded)
-		let venuePanel = VenueBuilder().assembleModule()
-		show(viewController: venuePanel)
+		
+		configureTopView()
+		configureTab()
 	}
+	
+	// MARK: - Display permanent view controllers
+	
+	private func configureTopView() {
+		let venueViewController = VenueBuilder().assembleModule()
+		addChild(venueViewController)
+		drawerView.displayViewInContentView(venueViewController.view)
+		venueViewController.didMove(toParent: self)
+	}
+	
+	var tabBar: UITabBar!
+
+	private func configureTab() {
+		let tabBar = UITabBar()
+		
+		let items = [
+			UITabBarItem(title: nil, image: UIImage(named: "object_description"), selectedImage: UIImage(named: "object_description_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "object_photo"), selectedImage: UIImage(named: "object_photo_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "object_reviews"), selectedImage: UIImage(named: "object_reviews_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "object_video"), selectedImage: UIImage(named: "object_video_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "object_history"), selectedImage: UIImage(named: "object_history_active"))
+		]
+		
+		items.enumerated().forEach { args in
+			args.element.tag = args.offset
+			args.element.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+		}
+		
+		tabBar.setItems(items, animated: false)
+		tabBar.delegate = self
+		tabBar.selectedItem = items.first
+		drawerView.displayViewInContentView(tabBar)
+		self.tabBar(tabBar, didSelect: items.first!)
+		self.tabBar = tabBar
+	}
+	
+
 	
 	// MARK: - Display view controllers
 	
@@ -94,3 +132,17 @@ class DrawerViewController: UIViewController {
 	
 }
 
+extension DrawerViewController: UITabBarDelegate {
+	
+	func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+		switch item.tag {
+		case 0:
+			show(viewController: GreetingModuleConfigurator().assembleModule())
+		case 1:
+			show(viewController: GreetingModuleConfigurator().assembleModule())
+		default:
+			break
+		}
+	}
+	
+}
