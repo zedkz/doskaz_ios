@@ -115,6 +115,11 @@ open class DrawerView: UIView {
 	open override func layoutSubviews() {
 		super.layoutSubviews()
 		
+		guard let topView = stackView.arrangedSubviews.first else { return }
+		let venueView = topView.subviews.first as? UIVenueView
+		let height = venueView?.tableView.frame.origin.y ?? 60
+		peekingPosition.contentHeightClosure = { height }
+		
 	}
 	
 	override open func safeAreaInsetsDidChange() {
