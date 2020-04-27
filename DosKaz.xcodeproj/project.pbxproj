@@ -58,6 +58,13 @@
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
 		44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11C92451883D009B92BF /* api_objects_map.swift */; };
+		44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */; };
+		44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */; };
+		44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CF2455B9EA009B92BF /* VenueRouter.swift */; };
+		44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11D02455B9EA009B92BF /* VenuePresenter.swift */; };
+		44ED11D72455B9EA009B92BF /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11D22455B9EA009B92BF /* VenueViewController.swift */; };
+		44ED11D92455BA97009B92BF /* VenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11D82455BA97009B92BF /* VenueView.swift */; };
+		44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */; };
 		44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */; };
 		44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */; };
 		44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */; };
@@ -138,6 +145,13 @@
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		44ED11C92451883D009B92BF /* api_objects_map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_map.swift; sourceTree = "<group>"; };
+		44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInteractor.swift; sourceTree = "<group>"; };
+		44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueConfigurator.swift; sourceTree = "<group>"; };
+		44ED11CF2455B9EA009B92BF /* VenueRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueRouter.swift; sourceTree = "<group>"; };
+		44ED11D02455B9EA009B92BF /* VenuePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePresenter.swift; sourceTree = "<group>"; };
+		44ED11D22455B9EA009B92BF /* VenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueViewController.swift; sourceTree = "<group>"; };
+		44ED11D82455BA97009B92BF /* VenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueView.swift; sourceTree = "<group>"; };
+		44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoicePresenter.swift; sourceTree = "<group>"; };
 		44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceRouter.swift; sourceTree = "<group>"; };
 		44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceInteractor.swift; sourceTree = "<group>"; };
@@ -209,6 +223,7 @@
 				448A8A722431171000C81788 /* Sugar.swift */,
 				44F0EE27243CF874000B3022 /* Decorator.swift */,
 				44951D2124473E2E0029275F /* CollectionViewDataSource.swift */,
+				44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -233,6 +248,7 @@
 				445C3F282403F62800131990 /* CategoryPicker */,
 				445CDC752402E5F90072F4BC /* Map */,
 				448A446D240BF5D0007305D4 /* SearchResultsViewController */,
+				44ED11CB2455B9EA009B92BF /* Venue */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -418,6 +434,35 @@
 			path = Doskaz;
 			sourceTree = "<group>";
 		};
+		44ED11CB2455B9EA009B92BF /* Venue */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11D12455B9EA009B92BF /* View */,
+				44ED11CC2455B9EA009B92BF /* Presenter */,
+			);
+			path = Venue;
+			sourceTree = "<group>";
+		};
+		44ED11CC2455B9EA009B92BF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11D02455B9EA009B92BF /* VenuePresenter.swift */,
+				44ED11CF2455B9EA009B92BF /* VenueRouter.swift */,
+				44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */,
+				44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44ED11D12455B9EA009B92BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11D22455B9EA009B92BF /* VenueViewController.swift */,
+				44ED11D82455BA97009B92BF /* VenueView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		44F0EE15243CC340000B3022 /* LanguageChoice */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +638,7 @@
 			files = (
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
+				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
 				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
@@ -620,16 +666,20 @@
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
 				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
 				44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */,
+				44ED11D92455BA97009B92BF /* VenueView.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
 				44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */,
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
+				44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
+				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
+				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
 				445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */,
 				44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */,
@@ -638,10 +688,12 @@
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				44B26BC72433EADD00E7B29C /* URLService.swift in Sources */,
 				44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */,
+				44ED11D72455B9EA009B92BF /* VenueViewController.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
 				44951D262447777E0029275F /* GreetingCell.swift in Sources */,
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
+				44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */,
 				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

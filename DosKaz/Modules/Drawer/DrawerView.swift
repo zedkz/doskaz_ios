@@ -156,7 +156,6 @@ open class DrawerView: UIView {
 		
 		// Content view.
 		contentView.isScrollEnabled = false
-		contentView.backgroundColor = .systemGreen
 		panningView.addSubview(contentView)
 		
 		contentView.addConstraintsProgrammatically
@@ -167,6 +166,10 @@ open class DrawerView: UIView {
 			.pinToSuper()
 			.equate(my: .width, and: .width, of: contentView)
 		
+	}
+	
+	func decorateContent(with decoration: @escaping Decoration<UIView>) {
+		contentView.decorate(with: decoration)
 	}
 	
 	// The total available height the drawer view can fill, set externally in

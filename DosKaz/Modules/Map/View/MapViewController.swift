@@ -24,6 +24,7 @@ extension MapViewController: MapViewInput {
 		configureMapViewLayout()
 		configureMapView()
 		configureNavigationView()
+		addDrawerViewController()
 	}
 
 	func show(_ points: [Venue]) {

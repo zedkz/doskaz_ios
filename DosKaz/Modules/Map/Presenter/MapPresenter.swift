@@ -30,7 +30,7 @@ extension MapPresenter: MapViewOutput {
 			print("search started")
 		})
 		
-		interactor.loadPointsOnMap()
+//		interactor.loadPointsOnMap()
 	}
 
 }

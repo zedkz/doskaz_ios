@@ -89,3 +89,9 @@ extension UIView {
 		decorations.forEach{ decorator.apply($0) }
 	}
 }
+
+extension UIImageView {
+	func decorate(with decorations: Decoration<UIImageView>...) {
+		decorations.forEach{ decorator.apply($0) }
+	}
+}
