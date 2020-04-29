@@ -12,17 +12,28 @@ class VenueDescriptionPresenter {
 	var interactor: VenueDescriptionInteractorInput!
 	var router: VenueDescriptionRouterInput!
 
+	var venue: DoskazVenue!
 }
 
 // MARK: ViewController output protocol
 
-protocol VenueDescriptionViewOutput {
+protocol VenueDescriptionModuleInput {
+	func render(doskazVenue: DoskazVenue)
+}
+
+protocol VenueDescriptionViewOutput: VenueDescriptionModuleInput {
 	func viewIsReady()
 }
 
 extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		guard let venue = venue else { return }
+		view.rootView.props = VenueDescriptionView.Props(venue: venue)
+	}
+	
+	func render(doskazVenue: DoskazVenue) {
+		venue = doskazVenue
 	}
 
 }

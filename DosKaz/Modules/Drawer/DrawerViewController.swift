@@ -10,14 +10,22 @@ import UIKit
 
 class DrawerViewController: UIViewController {
 	
-	// MARK: - Modes of drawer vc. 1) Venue sheet and Profile vc
+	// MARK: - Venue sheet methods
 	
 	func render(venue: DoskazVenue) {
+		currentDoskazVenue = venue
+		if let items = tabBar.items, let first = items.first {
+			tabBar(tabBar, didSelect: first)
+		}
 		currentVenueViewController?.output.show(venue)
  		setPositionToHalf()
 	}
 	
+	var currentDoskazVenue: DoskazVenue!
+	
 	var currentVenueViewController: VenueViewController?
+	
+	// MARK - Beginning
 
 	var currentViewController: UIViewController?
 	
@@ -146,7 +154,11 @@ extension DrawerViewController: UITabBarDelegate {
 	func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 		switch item.tag {
 		case 0:
-			show(viewController: VenueDescriptionBuilder().assembleModule())
+			let vc = VenueDescriptionBuilder().assembleModule()
+			if let venue = currentDoskazVenue {
+				vc.output.render(doskazVenue: venue)
+			}
+			show(viewController: vc)
 		case 1:
 			show(viewController: GreetingModuleConfigurator().assembleModule())
 		default:

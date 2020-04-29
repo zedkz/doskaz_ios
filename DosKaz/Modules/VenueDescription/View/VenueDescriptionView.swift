@@ -24,7 +24,22 @@ class VenueDescriptionView: UIView {
 		super.init(coder: coder)
 	}
 	
+	// MARK: - Sub types
+	
+	struct Props {
+		let venue: DoskazVenue
+	}
+	
 	//MARK: - Public properties and methods
+	
+	var props: Props! {
+		didSet {
+			guard let props = props else { return }
+			
+			mainText.text  = props.venue.description
+			venueStatus.text = props.venue.verificationStatus
+		}
+	}
 	
 	let title = UILabel()
 	let mainText = UILabel()
@@ -78,9 +93,6 @@ class VenueDescriptionView: UIView {
 	private func configureBehaviour() {
 		
 	}
-	
-	// MARK: - Sub types
-	
 	
 }
 

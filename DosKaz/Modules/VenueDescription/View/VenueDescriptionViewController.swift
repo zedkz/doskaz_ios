@@ -12,6 +12,7 @@ import UIKit
 
 protocol VenueDescriptionViewInput where Self: UIViewController {
 	func setupInitialState()
+	var rootView: VenueDescriptionView { get set }
 }
 
 extension VenueDescriptionViewController: VenueDescriptionViewInput {
