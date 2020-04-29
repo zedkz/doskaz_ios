@@ -8,32 +8,22 @@
 
 import UIKit
 
+typealias Decoration<T> = (T) -> Void
+
 protocol DecoratorCompatible {
 	associatedtype CompatibleType
-	var decorator: Decorator<CompatibleType> { get }
+	func decorate(with decorations: Decoration<CompatibleType>...)
 }
 
 extension DecoratorCompatible {
-	var decorator: Decorator<Self> {
-		return Decorator(object: self)
-	}
-	
 	func decorate(with decorations: Decoration<Self>...) {
-		decorations.forEach({ decorator.apply($0) })
+		decorations.forEach{ $0(self) }
 	}
 }
 
 extension UIView: DecoratorCompatible {}
 
-
-typealias Decoration<T> = (T) -> Void
-
-struct Decorator<T> {
-	let object: T
-	func apply(_ decorations: Decoration<T>...) -> Void {
-		decorations.forEach({ $0(object) })
-	}
-}
+// MARK: - Protocol Decorable makes it easer to create new styles
 
 protocol Decorable: class {}
 
@@ -44,6 +34,8 @@ extension Decorable {
 }
 
 extension NSObject: Decorable {}
+
+// MARK: - Styles
 
 struct Style {
 	
