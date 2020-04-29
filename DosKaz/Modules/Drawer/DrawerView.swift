@@ -35,9 +35,16 @@ open class DrawerView: UIView {
 			return height - self.safeAreaInsetsOrZero.top -	self.safeAreaInsetsOrZero.bottom
 		}
 		openHalfPosition.contentHeightClosure = { [unowned self] in
-			self.openFullPosition.contentHeight / 2
+			guard let topView = self.stackView.arrangedSubviews.first else { return 0 }
+			let venueView = topView.subviews.first as? UIVenueView
+			let height = venueView?.tableView.frame.origin.y ?? 0
+			guard height != 0 else { return 0 }
+			return height
 		}
-		peekingPosition.contentHeightClosure = { 60 }
+		
+		peekingPosition.contentHeightClosure = {
+			return 0
+		}
 		
 		let panGestureRecognizer = UIPanGestureRecognizer(target: self,
 																											action: #selector(handlePanGesture(_:)))
@@ -114,12 +121,7 @@ open class DrawerView: UIView {
 	
 	open override func layoutSubviews() {
 		super.layoutSubviews()
-		
-		guard let topView = stackView.arrangedSubviews.first else { return }
-		let venueView = topView.subviews.first as? UIVenueView
-		let height = venueView?.tableView.frame.origin.y ?? 60
-		peekingPosition.contentHeightClosure = { height }
-		
+	
 	}
 	
 	override open func safeAreaInsetsDidChange() {
@@ -252,7 +254,13 @@ open class DrawerView: UIView {
 	}
 	
 	/// The current drawer position.
-	private var currentPosition: DrawerPosition
+	private var currentPosition: DrawerPosition {
+		didSet {
+			if currentPosition == openFullPosition {
+//				contentView.isScrollEnabled = true
+			}
+		}
+	}
 	
 	/// Pans the distance associated with the current position. Needed because the pan distance
 	/// changes per position when the size of the view changes.

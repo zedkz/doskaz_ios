@@ -16,6 +16,7 @@ protocol MapViewInput: class {
 	func setupInitialState()
 	func buildSearch(with command: Command)
 	func show(_ points: [Venue])
+	func showSheet(for doskazVenue: DoskazVenue)
 	
 	var onSelectVenue: CommandWith<Int> { get set }
 }
@@ -31,6 +32,10 @@ extension MapViewController: MapViewInput {
 
 	func show(_ points: [Venue]) {
 		mapView.addAnnotations(points)
+	}
+	
+	func showSheet(for doskazVenue: DoskazVenue) {
+		drawerVC.setPositionToHalf()
 	}
 }
 

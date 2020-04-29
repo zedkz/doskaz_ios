@@ -23,7 +23,6 @@ class DrawerViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setPosition(drawerView.openFullPosition)
 		drawerView.decorateContent(with: Style.topCornersRounded)
 		
 		configureTopView()

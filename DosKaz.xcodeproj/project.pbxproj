@@ -281,9 +281,9 @@
 		445CDC762402E5F90072F4BC /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				445CDC772402E5F90072F4BC /* MapRouter.swift */,
 				445CDC782402E5F90072F4BC /* MapPresenter.swift */,
 				445CDC792402E5F90072F4BC /* MapInteractor.swift */,
+				445CDC772402E5F90072F4BC /* MapRouter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";

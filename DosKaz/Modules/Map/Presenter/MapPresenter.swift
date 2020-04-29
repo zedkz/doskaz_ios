@@ -30,7 +30,7 @@ extension MapPresenter: MapViewOutput {
 			print("search started")
 		})
 		
-//		interactor.loadPointsOnMap()
+		interactor.loadPointsOnMap()
 
 		view.onSelectVenue = CommandWith<Int> {
 			self.interactor.loadObject(with: $0)
@@ -45,6 +45,9 @@ extension MapPresenter: MapViewOutput {
 protocol MapInteractorOutput: class {
 	func didLoad(_ points: [Point])
 	func didFailLoadPoints(with error: Error)
+	
+	func didLoad(_ venue: DoskazVenue)
+	func didFailLoadVenue(with error: Error)
 }
 
 extension MapPresenter: MapInteractorOutput {
@@ -68,5 +71,14 @@ extension MapPresenter: MapInteractorOutput {
 	func didFailLoadPoints(with error: Error) {
 		
 	}
+	
+	func didLoad(_ venue: DoskazVenue) {
+		view.showSheet(for: venue)
+	}
+	
+	func didFailLoadVenue(with error: Error) {
+		
+	}
+	
 }
 
