@@ -17,6 +17,10 @@ extension DecoratorCompatible {
 	var decorator: Decorator<Self> {
 		return Decorator(object: self)
 	}
+	
+	func decorate(with decorations: Decoration<Self>...) {
+		decorations.forEach({ decorator.apply($0) })
+	}
 }
 
 extension UIView: DecoratorCompatible {}
@@ -42,6 +46,49 @@ extension Decorable {
 extension NSObject: Decorable {}
 
 struct Style {
+	
+	// MARK: - UIView
+	
+	static func backgroundColor(color: UIColor? = .white) -> Decoration<UIView> {
+		return { $0.backgroundColor = color }
+	}
+	
+	static func corneredBorder(radius: CGFloat, color: UIColor?) -> Decoration<UIView> {
+		return { (view: UIView) -> Void in
+			view.layer.borderWidth = 1
+			view.layer.borderColor = color?.cgColor ?? UIColor.systemGray.cgColor
+			view.layer.cornerRadius = radius
+		}
+	}
+	
+	// MARK: - UIButton
+
+	static func titleColor(color: UIColor? = .black) -> Decoration<UIButton> {
+		return { $0.setTitleColor(color, for: .normal) }
+	}
+	
+	static func systemFont(size: CGFloat = 14, weight: UIFont.Weight = .regular) -> Decoration<UIButton> {
+		return { view in
+			view.titleLabel?.font = .systemFont(ofSize: size, weight: weight)
+		}
+	}
+	
+	static let commonButton = UIButton.decoration { (button) in
+		button.decorate(with: Style.systemFont(), titleColor())
+	}
+	
+	// MARK: - UILabel
+	
+	static func systemFont(size: CGFloat = 14, weight: UIFont.Weight = .regular) -> Decoration<UILabel> {
+		return { $0.font = .systemFont(ofSize: size, weight: weight) }
+	}
+	
+	static func multiline(with size: CGFloat = 14) -> Decoration<UILabel> {
+		return {
+			$0.numberOfLines = 0
+			$0.font = .systemFont(ofSize: size)
+		}
+	}
 	
 	static let topCornersRounded = UIView.decoration { (view) in
 		view.backgroundColor = .white
@@ -76,22 +123,4 @@ struct Style {
 	}
 }
 
-// MARK: - Convenience methods
 
-extension UIButton {
-	func decorate(with decorations: Decoration<UIButton>...) {
-		decorations.forEach({ decorator.apply($0) })
-	}
-}
-
-extension UIView {
-	func decorate(with decorations: Decoration<UIView>...) {
-		decorations.forEach{ decorator.apply($0) }
-	}
-}
-
-extension UIImageView {
-	func decorate(with decorations: Decoration<UIImageView>...) {
-		decorations.forEach{ decorator.apply($0) }
-	}
-}

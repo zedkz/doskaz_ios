@@ -137,7 +137,7 @@ extension DrawerViewController: UITabBarDelegate {
 	func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 		switch item.tag {
 		case 0:
-			show(viewController: GreetingModuleConfigurator().assembleModule())
+			show(viewController: VenueDescriptionBuilder().assembleModule())
 		case 1:
 			show(viewController: GreetingModuleConfigurator().assembleModule())
 		default:

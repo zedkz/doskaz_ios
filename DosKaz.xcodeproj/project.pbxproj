@@ -65,6 +65,12 @@
 		44ED11D72455B9EA009B92BF /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11D22455B9EA009B92BF /* VenueViewController.swift */; };
 		44ED11D92455BA97009B92BF /* VenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11D82455BA97009B92BF /* VenueView.swift */; };
 		44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */; };
+		44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11DE24573EC5009B92BF /* VenueDescriptionRouter.swift */; };
+		44ED11E524573EC5009B92BF /* VenueDescriptionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11DF24573EC5009B92BF /* VenueDescriptionConfigurator.swift */; };
+		44ED11E624573EC5009B92BF /* VenueDescriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11E024573EC5009B92BF /* VenueDescriptionInteractor.swift */; };
+		44ED11E724573EC5009B92BF /* VenueDescriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11E124573EC5009B92BF /* VenueDescriptionPresenter.swift */; };
+		44ED11E824573EC5009B92BF /* VenueDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11E324573EC5009B92BF /* VenueDescriptionViewController.swift */; };
+		44ED11EA24573F0E009B92BF /* VenueDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11E924573F0E009B92BF /* VenueDescriptionView.swift */; };
 		44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */; };
 		44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */; };
 		44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */; };
@@ -152,6 +158,12 @@
 		44ED11D22455B9EA009B92BF /* VenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueViewController.swift; sourceTree = "<group>"; };
 		44ED11D82455BA97009B92BF /* VenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueView.swift; sourceTree = "<group>"; };
 		44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
+		44ED11DE24573EC5009B92BF /* VenueDescriptionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDescriptionRouter.swift; sourceTree = "<group>"; };
+		44ED11DF24573EC5009B92BF /* VenueDescriptionConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDescriptionConfigurator.swift; sourceTree = "<group>"; };
+		44ED11E024573EC5009B92BF /* VenueDescriptionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDescriptionInteractor.swift; sourceTree = "<group>"; };
+		44ED11E124573EC5009B92BF /* VenueDescriptionPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDescriptionPresenter.swift; sourceTree = "<group>"; };
+		44ED11E324573EC5009B92BF /* VenueDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueDescriptionViewController.swift; sourceTree = "<group>"; };
+		44ED11E924573F0E009B92BF /* VenueDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDescriptionView.swift; sourceTree = "<group>"; };
 		44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoicePresenter.swift; sourceTree = "<group>"; };
 		44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceRouter.swift; sourceTree = "<group>"; };
 		44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceInteractor.swift; sourceTree = "<group>"; };
@@ -241,6 +253,7 @@
 		445CDC522402D5D60072F4BC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				44ED11DC24573EC5009B92BF /* VenueDescription */,
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
 				44F0EE15243CC340000B3022 /* LanguageChoice */,
 				44989E1C2443B21100FAD014 /* Greeting */,
@@ -463,6 +476,35 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		44ED11DC24573EC5009B92BF /* VenueDescription */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11E224573EC5009B92BF /* View */,
+				44ED11DD24573EC5009B92BF /* Presenter */,
+			);
+			path = VenueDescription;
+			sourceTree = "<group>";
+		};
+		44ED11DD24573EC5009B92BF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11E124573EC5009B92BF /* VenueDescriptionPresenter.swift */,
+				44ED11E024573EC5009B92BF /* VenueDescriptionInteractor.swift */,
+				44ED11DE24573EC5009B92BF /* VenueDescriptionRouter.swift */,
+				44ED11DF24573EC5009B92BF /* VenueDescriptionConfigurator.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44ED11E224573EC5009B92BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44ED11E324573EC5009B92BF /* VenueDescriptionViewController.swift */,
+				44ED11E924573F0E009B92BF /* VenueDescriptionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		44F0EE15243CC340000B3022 /* LanguageChoice */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +682,7 @@
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
+				44ED11E624573EC5009B92BF /* VenueDescriptionInteractor.swift in Sources */,
 				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,
@@ -652,9 +695,11 @@
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
+				44ED11E524573EC5009B92BF /* VenueDescriptionConfigurator.swift in Sources */,
 				4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */,
 				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
+				44ED11E824573EC5009B92BF /* VenueDescriptionViewController.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,
@@ -669,12 +714,15 @@
 				44ED11D92455BA97009B92BF /* VenueView.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
+				44ED11EA24573F0E009B92BF /* VenueDescriptionView.swift in Sources */,
 				44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */,
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
+				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
+				44ED11E724573EC5009B92BF /* VenueDescriptionPresenter.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
