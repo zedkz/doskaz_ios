@@ -97,6 +97,7 @@ open class DrawerView: UIView {
 		//let previousPosition = currentPosition
 		currentPosition = position
 		
+		layoutIfNeeded()
 		func animatePan(completion panCompletion: (() -> Void)? = nil) {
 			UIView.animate(
 				withDuration: duration,
@@ -144,6 +145,11 @@ open class DrawerView: UIView {
 	func displayViewInContentView(_ view: UIView) {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		stackView.addArrangedSubview(view)
+	}
+	
+	func displayViewFirst(_ view: UIView) {
+		view.translatesAutoresizingMaskIntoConstraints = false
+		stackView.insertArrangedSubview(view, at: 0)
 	}
 	
 	var topConstraint: NSLayoutConstraint!

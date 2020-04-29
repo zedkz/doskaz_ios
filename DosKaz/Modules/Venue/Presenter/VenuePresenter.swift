@@ -16,13 +16,23 @@ class VenuePresenter {
 
 // MARK: ViewController output protocol
 
-protocol VenueViewOutput {
+protocol VenueModuleInput {
+	func show(_ venue: DoskazVenue)
+}
+
+protocol VenueViewOutput: VenueModuleInput {
 	func viewIsReady()
 }
 
 extension VenuePresenter: VenueViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+	}
+	
+	func show(_ venue: DoskazVenue) {
+		print("VenuePresenter:",venue.title)
+		guard let view = view else { return }
+		view.setup(venueProps: UIVenueView.VenueProps(doskazVenue: venue))
 	}
 
 }

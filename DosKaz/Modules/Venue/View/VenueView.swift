@@ -26,6 +26,40 @@ class UIVenueView: UIView {
 	
 	//MARK: - Public properties and methods
 	
+	var props: VenueProps! {
+		didSet {
+			guard let props = props else { return }
+			let venue = props.doskazVenue
+			func update(_ label: UILabel, with text: String) {
+				UIView.transition(
+					with: label,
+					duration: 0.25,
+					options: .transitionCrossDissolve,
+					animations: { [label] in label.text = text },
+					completion: nil
+				)
+			}
+			update(title, with: venue.title)
+			update(subTitle,with: venue.address)
+			update(categoryAndSub, with: "\(venue.category) > \(venue.subCategory)")
+			
+			let firstCellProps = Props(icon: "available_32", text: venue.overallScore, isMain: true)
+			let scoreByZones = venue.scoreByZones
+			let cellsProps = [
+				Props(icon: "available_16", text: scoreByZones.parking),
+				Props(icon: "available_16", text: scoreByZones.entrance),
+				Props(icon: "available_16", text: scoreByZones.movement),
+				Props(icon: "available_16", text: scoreByZones.navigation),
+				Props(icon: "available_16", text: scoreByZones.serviceAccessibility),
+				Props(icon: "available_16", text: scoreByZones.toilet),
+			]
+			
+			dataSource.cellsProps = [firstCellProps] + cellsProps
+			tableView.reloadData()
+		}
+	}
+
+	
 	let panelDragger = UIImageView()
 	let title = UILabel()
 	let subTitle = UILabel()
@@ -66,8 +100,11 @@ class UIVenueView: UIView {
 	private func configureStyle() {
 		panelDragger.contentMode = .center
 		title.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+		title.numberOfLines = 0
 		subTitle.font = .systemFont(ofSize: 14)
+		subTitle.numberOfLines = 0
 		categoryAndSub.font = .systemFont(ofSize: 12)
+		categoryAndSub.numberOfLines = 0
 		categoryAndSub.textColor = .systemGray
 		backgroundColor = .white
 	}
@@ -77,6 +114,10 @@ class UIVenueView: UIView {
 	}
 	
 	// MARK: - Sub types
+	
+	struct VenueProps {
+		var doskazVenue: DoskazVenue
+	}
 	
 	struct Props {
 		let icon: String

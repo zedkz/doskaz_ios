@@ -35,7 +35,7 @@ extension MapViewController: MapViewInput {
 	}
 	
 	func showSheet(for doskazVenue: DoskazVenue) {
-		drawerVC.setPositionToHalf()
+		drawerVC.render(venue: doskazVenue)
 	}
 }
 

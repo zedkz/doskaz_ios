@@ -12,6 +12,7 @@ import UIKit
 
 protocol VenueViewInput where Self: UIViewController {
 	func setupInitialState()
+	func setup(venueProps: UIVenueView.VenueProps)
 }
 
 extension VenueViewController: VenueViewInput {
@@ -21,6 +22,10 @@ extension VenueViewController: VenueViewInput {
 		view.addSubview(rootView)
 		rootView.addConstraintsProgrammatically
 			.pinToSuper()
+	}
+	
+	func setup(venueProps: UIVenueView.VenueProps) {
+		rootView.props = venueProps
 	}
 
 }

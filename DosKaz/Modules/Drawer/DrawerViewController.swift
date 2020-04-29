@@ -10,6 +10,15 @@ import UIKit
 
 class DrawerViewController: UIViewController {
 	
+	// MARK: - Modes of drawer vc. 1) Venue sheet and Profile vc
+	
+	func render(venue: DoskazVenue) {
+		currentVenueViewController?.output.show(venue)
+ 		setPositionToHalf()
+	}
+	
+	var currentVenueViewController: VenueViewController?
+
 	var currentViewController: UIViewController?
 	
 	override open func loadView() {
@@ -34,8 +43,9 @@ class DrawerViewController: UIViewController {
 	private func configureTopView() {
 		let venueViewController = VenueBuilder().assembleModule()
 		addChild(venueViewController)
-		drawerView.displayViewInContentView(venueViewController.view)
+		drawerView.displayViewFirst(venueViewController.view)
 		venueViewController.didMove(toParent: self)
+		currentVenueViewController = venueViewController
 	}
 	
 	var tabBar: UITabBar!
