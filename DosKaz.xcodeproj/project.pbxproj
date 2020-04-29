@@ -255,7 +255,6 @@
 		445CDC522402D5D60072F4BC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				44ED11DC24573EC5009B92BF /* VenueDescription */,
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
 				44F0EE15243CC340000B3022 /* LanguageChoice */,
 				44989E1C2443B21100FAD014 /* Greeting */,
@@ -264,6 +263,7 @@
 				445CDC752402E5F90072F4BC /* Map */,
 				448A446D240BF5D0007305D4 /* SearchResultsViewController */,
 				44ED11CB2455B9EA009B92BF /* Venue */,
+				44ED11DC24573EC5009B92BF /* VenueDescription */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
