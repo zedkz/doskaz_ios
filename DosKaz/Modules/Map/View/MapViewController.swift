@@ -16,6 +16,8 @@ protocol MapViewInput: class {
 	func setupInitialState()
 	func buildSearch(with command: Command)
 	func show(_ points: [Venue])
+	
+	var onSelectVenue: CommandWith<Int> { get set }
 }
 
 extension MapViewController: MapViewInput {
@@ -40,6 +42,8 @@ class MapViewController: UIViewController {
 	private var mapView: MKMapView!
 	private let regionRadius: CLLocationDistance = 5000
 	private var searchController: UISearchController!
+	
+	var onSelectVenue: CommandWith<Int> = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -121,6 +125,7 @@ extension MapViewController: MKMapViewDelegate {
 		let location = view.annotation as! Venue
 		print(location.coordinate)
 		mapView.deselectAnnotation(view.annotation, animated: false)
+		onSelectVenue.perform(with: location.id)
 	}
 }
 

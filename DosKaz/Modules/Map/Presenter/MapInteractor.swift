@@ -8,6 +8,7 @@
 
 protocol MapInteractorInput {
 	func loadPointsOnMap()
+	func loadObject(with id: Int)
 }
 
 // MARK: Implementation
@@ -34,6 +35,20 @@ class MapInteractor: MapInteractorInput {
 		)
 		
 		request.dispatch()
+
+	}
+	
+	func loadObject(with id: Int) {
+		var onSuccess = { (doskazVenue: DoskazVenue) in
+			debugPrint(doskazVenue)
+		}
+		
+		var onFailure = { (error: Error) in
+			debugPrint(error)
+		}
+		
+		let r = APIGetObject(onSuccess: onSuccess, onFailure: onFailure, id: id)
+		r.dispatch()
 
 	}
 

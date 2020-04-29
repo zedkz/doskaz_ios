@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4404F21024597A0600EB7184 /* api_object_id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F20F24597A0600EB7184 /* api_object_id.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -99,6 +100,7 @@
 /* Begin PBXFileReference section */
 		21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DosKaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
+		4404F20F24597A0600EB7184 /* api_object_id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_object_id.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				44ED11C92451883D009B92BF /* api_objects_map.swift */,
+				4404F20F24597A0600EB7184 /* api_object_id.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				44ED11E824573EC5009B92BF /* VenueDescriptionViewController.swift in Sources */,
+				4404F21024597A0600EB7184 /* api_object_id.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,

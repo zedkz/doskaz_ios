@@ -31,6 +31,10 @@ extension MapPresenter: MapViewOutput {
 		})
 		
 //		interactor.loadPointsOnMap()
+
+		view.onSelectVenue = CommandWith<Int> {
+			self.interactor.loadObject(with: $0)
+		}
 	}
 
 }
@@ -47,6 +51,7 @@ extension MapPresenter: MapInteractorOutput {
 	func didLoad(_ points: [Point]) {
 		let venues = points.map { point in
 			return Venue(
+				id: point.id,
 				title: point.icon ?? "",
 				locationName: String(point.id) ,
 				coordinate: CLLocationCoordinate2D(
