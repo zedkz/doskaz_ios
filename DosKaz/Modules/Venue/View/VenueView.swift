@@ -197,7 +197,7 @@ extension VenueViewLayout {
 		
 		rv.categoryAndSub.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 16)
-			.pinEdgeToSupers(.trailing)
+			.pin(my: .trailing, to: .leading, of: rv.editButton, plus: -4)
 			.pin(my: .top, to: .bottom, of: rv.subTitle, plus: 8)
 		
 		rv.editButton.addConstraintsProgrammatically
