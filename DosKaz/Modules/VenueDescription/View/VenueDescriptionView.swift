@@ -36,7 +36,7 @@ class VenueDescriptionView: UIView {
 		didSet {
 			guard let props = props else { return }
 			
-			mainText.text  = props.venue.description
+			mainText.text = String(props.venue.description.filter { !"\n\t\r".contains($0) })
 			venueStatus.text = props.venue.verificationStatus
 		}
 	}
@@ -52,16 +52,9 @@ class VenueDescriptionView: UIView {
 	
 	private func configureConstantData() {
 		title.text = l10n(.description)
-		mainText.text = """
-		Суши бар находится на первом этаже, входная группа выполнена на одном уровне с землёй,
-		заезжать на коляске удобно и просторно. Есть парковка с двумя специально отведёнными местами
-		для инвалидов. Пути движения по объекту достаточно просторны, можно проехать не мешая
-		движению других. Возле кассовой стойки можно комфортно общаться с продавцом. Туалет с чашами генуя,
-		не оборудован для людей, передвигающихся на колясках. Навигация представлена только в виде табличек
-		на парковке, внутри помещения никаких специальных указателей нет.
-		"""
+		mainText.text = "-"
 		detailInfo.setTitle(l10n(.detailInfo), for: .normal)
-		venueStatus.text = "Объект частично верифицирован"
+		venueStatus.text = "-"
 		verifyInfo.setTitle(l10n(.verifyInfo), for: .normal)
 		verifyInfo.setImage(UIImage(named: "confirm_button"), for: .normal)
 		complain.setTitle(l10n(.complain), for: .normal)
