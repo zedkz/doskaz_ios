@@ -293,6 +293,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 			let isFull = currentPosition == openFullPosition
 			contentView.isScrollEnabled = isFull
 			contentView.layer.cornerRadius = isFull ? 0 : 15
+			contentView.showsVerticalScrollIndicator = isFull
 		}
 	}
 	
