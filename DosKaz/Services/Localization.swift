@@ -40,6 +40,13 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case accessiblePartial = "Частично доступно"
 	case accessibleNone = "Не доступно"
 	case accessbleNotProvided = "Неизвестно"
+	case parking = "Парковка"
+	case entrance = "Входная группа"
+	case movement = "Пути движения по объекту"
+	case service = "Зона оказания услуги"
+	case toilet = "Туалет"
+	case navigation = "Навигация"
+	case serviceAccessibility = "Доступность услуги"
 	
 	var l10n: String {
 		return self.rawValue.localized

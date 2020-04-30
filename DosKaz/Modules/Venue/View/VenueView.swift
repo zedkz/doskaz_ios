@@ -54,15 +54,15 @@ class UIVenueView: UIView {
 			
 			tableView.backgroundColor = backGroundColor
 			
-			let firstCellProps = Props(score: venue.overallScore, isMain: true)
+			let firstCellProps = Props(score: venue.overallScore, text: "Overall Score", isMain: true)
 			let scoreByZones = venue.scoreByZones
 			let cellsProps = [
-				Props(score: scoreByZones.parking),
-				Props(score: scoreByZones.entrance),
-				Props(score: scoreByZones.movement),
-				Props(score: scoreByZones.navigation),
-				Props(score: scoreByZones.serviceAccessibility),
-				Props(score: scoreByZones.toilet),
+				Props(score: scoreByZones.parking, text: l10n(.parking)),
+				Props(score: scoreByZones.entrance, text: l10n(.entrance)),
+				Props(score: scoreByZones.movement, text: l10n(.movement)),
+				Props(score: scoreByZones.navigation, text: l10n(.navigation)),
+				Props(score: scoreByZones.serviceAccessibility, text: l10n(.serviceAccessibility)),
+				Props(score: scoreByZones.toilet, text: l10n(.toilet)),
 			]
 			
 			dataSource.cellsProps = [firstCellProps] + cellsProps
@@ -91,7 +91,7 @@ class UIVenueView: UIView {
 		editButton.setImage(UIImage(named: "edit"), for: .disabled)
 		
 		dataSource = TableViewDataSource(tableView) { (props, cell) in
-			cell.textLabel?.text = props.text
+			cell.textLabel?.text = props.textDisplayed
 			cell.imageView?.image = UIImage(named:props.icon)
 			cell.isMainCell = props.isMain
 			cell.backgroundColor = .clear
@@ -128,6 +128,7 @@ class UIVenueView: UIView {
 	
 	struct Props {
 		let score: OverallScore
+		let text: String
 		var isMain: Bool = false
 
 		var icon: String {
@@ -143,7 +144,8 @@ class UIVenueView: UIView {
 			}
 		}
 		
-		var text: String {
+		var textDisplayed: String {
+			guard isMain else { return text }
 			switch score {
 			case .fullAccessible: return l10n(.accessibleFull)
 			case .partialAccessible: return l10n(.accessiblePartial)
