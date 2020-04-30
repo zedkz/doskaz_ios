@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4404F21024597A0600EB7184 /* api_object_id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F20F24597A0600EB7184 /* api_object_id.swift */; };
+		4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F213245AF9C500EB7184 /* DrawerPanner.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -101,6 +102,7 @@
 		21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DosKaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
 		4404F20F24597A0600EB7184 /* api_object_id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_object_id.swift; sourceTree = "<group>"; };
+		4404F213245AF9C500EB7184 /* DrawerPanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanner.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				44653D88241385EA006EB35D /* DrawerViewController.swift */,
 				44653D8A24138610006EB35D /* DrawerView.swift */,
 				44653D8D2413864F006EB35D /* DrawerPosition.swift */,
+				4404F213245AF9C500EB7184 /* DrawerPanner.swift */,
 			);
 			path = Drawer;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
 				44ED11E524573EC5009B92BF /* VenueDescriptionConfigurator.swift in Sources */,
 				4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */,
+				4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */,
 				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				44ED11E824573EC5009B92BF /* VenueDescriptionViewController.swift in Sources */,

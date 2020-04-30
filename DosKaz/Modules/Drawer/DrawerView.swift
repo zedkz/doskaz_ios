@@ -11,17 +11,32 @@ import UIKit
 /// A container view that slides up from the bottom over a parent view. Can be
 /// minimized, cover the bottom half of the view or display fullscreen
 /// (parent view is hidden).
-open class DrawerView: UIView {
+open class DrawerView: UIView, UIScrollViewDelegate {
 	
 	// MARK: - Public
 	
 	/// Designated initializer.
+	
+	private var drawerPanner: DrawerPanner?
 	
 	public init() {
 		
 		currentPosition = peekingPosition
 		
 		super.init(frame: .zero)
+		
+		contentView.panGestureRecognizer.addTarget(
+			self,
+			action: #selector(handleContentViewScrollPanGesture(_:))
+		)
+		contentView.delegate = self
+		contentView.bounces = false
+		
+		drawerPanner = DrawerPanner(
+			drawerView: self,
+			scrollView: contentView,
+			allowsPanningUp: false
+		)
 		
 		// Set drawer position content height closures.
 		openFullPosition.contentHeightClosure = { [unowned self] in
@@ -51,6 +66,19 @@ open class DrawerView: UIView {
 		addGestureRecognizer(panGestureRecognizer)
 		
 		configureView()
+	}
+	
+	@objc func handleContentViewScrollPanGesture(_ panGestureRecognizer: UIPanGestureRecognizer) {
+		drawerPanner?.handlePanGesture(panGestureRecognizer)
+	}
+	
+	public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+		drawerPanner?.scrollViewWillBeginDragging(scrollView)
+	}
+	
+	public func scrollViewDidEndDragging(_ scrollView: UIScrollView,
+																			 willDecelerate decelerate: Bool) {
+		drawerPanner?.scrollViewDidEndDragging(scrollView, willDecelerate: decelerate)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -168,7 +196,7 @@ open class DrawerView: UIView {
 			.constraint
 		
 		// Content view.
-		contentView.isScrollEnabled = false
+		
 		panningView.addSubview(contentView)
 		
 		contentView.addConstraintsProgrammatically
@@ -262,9 +290,9 @@ open class DrawerView: UIView {
 	/// The current drawer position.
 	private var currentPosition: DrawerPosition {
 		didSet {
-			if currentPosition == openFullPosition {
-//				contentView.isScrollEnabled = true
-			}
+			let isFull = currentPosition == openFullPosition
+			contentView.isScrollEnabled = isFull
+			contentView.layer.cornerRadius = isFull ? 0 : 15
 		}
 	}
 	
@@ -279,7 +307,7 @@ open class DrawerView: UIView {
 	/// Completes the pan by snapping to the proper drawer position.
 	///
 	/// - Parameter velocity: The ending velocity of the pan.
-	private func completePan(withVelocity velocity: CGFloat) {
+	func completePan(withVelocity velocity: CGFloat) {
 		let isVelocityHigh = abs(velocity) > 500
 		
 		// Is the drawer's pan distance below the pan distance of the previous position? If not, it is
@@ -303,9 +331,9 @@ open class DrawerView: UIView {
 	/// Pans the drawer by a distance.
 	///
 	/// - Parameter distance: The distance to pan the drawer.
-	private func pan(distance: CGFloat) {
+	func pan(distance: CGFloat) {
 		// Update the panning view's pan distance to a value clamped between open full and peeking.
-		let range = ((openFullPosition.panDistance-1000)...(peekingPosition.panDistance + 1000))
+		let range = ((openFullPosition.panDistance)...(peekingPosition.panDistance))
 		let clampedPanDistance = range.clamp(panDistance(withAdditionalPan: distance))
 		currentPanDistance = clampedPanDistance
 	}
@@ -399,10 +427,15 @@ open class DrawerView: UIView {
 	@objc private func handlePanGesture(_ panGestureRecognizer: UIPanGestureRecognizer) {
 		
 		let gestureDistance = panGestureRecognizer.translation(in: self).y
+		let totalPanDistance = panDistance(withAdditionalPan: gestureDistance)
 		
 		switch panGestureRecognizer.state {
 		case .changed:
 			pan(distance: gestureDistance)
+			let panDistanceBeyondBounds = -totalPanDistance - openFullPosition.contentHeight
+			if panDistanceBeyondBounds > 0 {
+				//contentView.contentOffset = CGPoint(x: 0, y: panDistanceBeyondBounds)
+			}
 		case .ended:
 			completePan(withVelocity: panGestureRecognizer.velocity(in: self).y)
 		default:
