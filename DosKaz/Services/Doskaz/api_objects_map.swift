@@ -82,4 +82,5 @@ enum OverallScore: String, Codable {
 	case fullAccessible = "full_accessible"
 	case notAccessible = "not_accessible"
 	case partialAccessible = "partial_accessible"
+	case notProvided = "not_provided"
 }

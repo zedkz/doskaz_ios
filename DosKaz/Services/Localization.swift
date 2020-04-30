@@ -36,6 +36,10 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case detailInfo = "Подробная информация"
 	case verifyInfo = "Подтвердить данные"
 	case complain = "Подать жалобу на объект"
+	case accessibleFull = "Доступно"
+	case accessiblePartial = "Частично доступно"
+	case accessibleNone = "Не доступно"
+	case accessbleNotProvided = "Неизвестно"
 	
 	var l10n: String {
 		return self.rawValue.localized

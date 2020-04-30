@@ -31,7 +31,7 @@ struct DoskazVenue: Codable {
 	let category: String
 	let subCategory: String
 	let coordinates: [Double]
-	let overallScore: String
+	let overallScore: OverallScore
 	let scoreByZones: ScoreByZones
 	let icon: String
 	let photos: [Photo]
@@ -90,6 +90,6 @@ struct Review: Codable {
 
 // MARK: - ScoreByZones
 struct ScoreByZones: Codable {
-	let parking, entrance, movement, service: String
-	let toilet, navigation, serviceAccessibility: String
+	let parking, entrance, movement, service: OverallScore
+	let toilet, navigation, serviceAccessibility: OverallScore
 }

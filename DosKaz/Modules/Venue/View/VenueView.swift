@@ -43,15 +43,26 @@ class UIVenueView: UIView {
 			update(subTitle,with: venue.address)
 			update(categoryAndSub, with: "\(venue.category) > \(venue.subCategory)")
 			
-			let firstCellProps = Props(icon: "available_32", text: venue.overallScore, isMain: true)
+			var backGroundColor: UIColor? {
+				switch venue.overallScore {
+				case .fullAccessible: return UIColor(named: "AccessFull")
+				case .partialAccessible: return UIColor(named: "AccessPartial")
+				case .notAccessible: return UIColor(named: "AccessNone")
+				case .notProvided: return .white
+				}
+			}
+			
+			tableView.backgroundColor = backGroundColor
+			
+			let firstCellProps = Props(score: venue.overallScore, isMain: true)
 			let scoreByZones = venue.scoreByZones
 			let cellsProps = [
-				Props(icon: "available_16", text: scoreByZones.parking),
-				Props(icon: "available_16", text: scoreByZones.entrance),
-				Props(icon: "available_16", text: scoreByZones.movement),
-				Props(icon: "available_16", text: scoreByZones.navigation),
-				Props(icon: "available_16", text: scoreByZones.serviceAccessibility),
-				Props(icon: "available_16", text: scoreByZones.toilet),
+				Props(score: scoreByZones.parking),
+				Props(score: scoreByZones.entrance),
+				Props(score: scoreByZones.movement),
+				Props(score: scoreByZones.navigation),
+				Props(score: scoreByZones.serviceAccessibility),
+				Props(score: scoreByZones.toilet),
 			]
 			
 			dataSource.cellsProps = [firstCellProps] + cellsProps
@@ -83,14 +94,10 @@ class UIVenueView: UIView {
 			cell.textLabel?.text = props.text
 			cell.imageView?.image = UIImage(named:props.icon)
 			cell.isMainCell = props.isMain
-			cell.backgroundColor = .brown
+			cell.backgroundColor = .clear
 			cell.selectionStyle = .none
 			cell.isUserInteractionEnabled = false
 		}
-		
-		let firstCellProps = Props(icon: "available_32", text: "Dostupno", isMain: true)
-		let cellsProps = [Props(icon: "available_16", text: "Parkovka")]
-		dataSource.cellsProps = [firstCellProps] + cellsProps
 		
 		tableView.dataSource = dataSource
 		tableView.separatorStyle = .none
@@ -120,9 +127,31 @@ class UIVenueView: UIView {
 	}
 	
 	struct Props {
-		let icon: String
-		let text: String
+		let score: OverallScore
 		var isMain: Bool = false
+
+		var icon: String {
+			switch score {
+			case .fullAccessible:
+				return evaluate(isMain, ifTrue: "available_32", ifFalse: "available_16")
+			case .partialAccessible:
+				return evaluate(isMain, ifTrue: "partially_available_32", ifFalse: "partially_available_16")
+			case .notAccessible:
+				return evaluate(isMain, ifTrue: "not_available_32", ifFalse: "not_available_16")
+			case .notProvided:
+				return evaluate(isMain, ifTrue: "partially_available_16", ifFalse: "partially_available_16")
+			}
+		}
+		
+		var text: String {
+			switch score {
+			case .fullAccessible: return l10n(.accessibleFull)
+			case .partialAccessible: return l10n(.accessiblePartial)
+			case .notAccessible: return l10n(.accessibleNone)
+			case .notProvided: return l10n(.accessbleNotProvided)
+			}
+		}
+		
 	}
 	
 }
@@ -176,7 +205,7 @@ extension VenueViewLayout {
 		rv.tableView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
-			.pin(my: .top, to: .bottom, of: rv.editButton)
+			.pin(my: .top, to: .bottom, of: rv.editButton, plus: 8)
 			.pinEdgeToSupers(.bottom)
 	}
 	
