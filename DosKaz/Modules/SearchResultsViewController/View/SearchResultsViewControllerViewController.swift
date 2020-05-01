@@ -32,7 +32,7 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	var output: SearchResultsViewControllerViewOutput!
 	
 	private var tableView: UITableView!
-	private var dataSource: TableViewDataSource<Int, UITableViewCell>!
+	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
 	
 
 	// MARK: Life cycle
@@ -43,7 +43,14 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	
 	func updateSearchResults(for searchController: UISearchController) {
 		guard let text = searchController.searchBar.text else { return }
-		dataSource.cellsProps = text.compactMap { Int(String($0)) }
+		dataSource.cellsProps = text.compactMap {
+			BasicCell.Props(
+				text:String($0),
+				icon: "available_32",
+				rightIcon: "complaint_button"
+			)
+			
+		}
 		tableView.reloadData()
 	}
 	
@@ -62,11 +69,8 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	}
 	
 	private func configureTableViewDataSource() {
-		dataSource = TableViewDataSource(tableView){ (p: Int,c: UITableViewCell) in
-			c.textLabel?.numberOfLines = 0
-			c.accessoryType = .disclosureIndicator
-			c.textLabel?.text = "\(p)"
-			c.textLabel?.font = .systemFont(ofSize: 14)
+		dataSource = TableViewDataSource(tableView){ (props: BasicCell.Props, cell: BasicCell) in
+			cell.props = props
 		}
 		
 		tableView.dataSource = dataSource

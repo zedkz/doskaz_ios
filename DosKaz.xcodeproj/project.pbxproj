@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4404F21024597A0600EB7184 /* api_object_id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F20F24597A0600EB7184 /* api_object_id.swift */; };
 		4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F213245AF9C500EB7184 /* DrawerPanner.swift */; };
+		4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F215245C39AE00EB7184 /* BasicCell.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -103,6 +104,7 @@
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
 		4404F20F24597A0600EB7184 /* api_object_id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_object_id.swift; sourceTree = "<group>"; };
 		4404F213245AF9C500EB7184 /* DrawerPanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanner.swift; sourceTree = "<group>"; };
+		4404F215245C39AE00EB7184 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				44F0EE27243CF874000B3022 /* Decorator.swift */,
 				44951D2124473E2E0029275F /* CollectionViewDataSource.swift */,
 				44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */,
+				4404F215245C39AE00EB7184 /* BasicCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,
+				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
 				445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */,
