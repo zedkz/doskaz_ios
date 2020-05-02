@@ -14,6 +14,7 @@ protocol SearchResultsViewControllerViewInput: class {
 	func setupInitialState()
 	func showResults(with results: [BasicCell.Props])
 	var updateSearchResults: CommandWith<String> { get set }
+	var didTouchUpInside: Button.DidTapButton? { get set }
 }
 
 extension SearchResultsViewControllerViewController: SearchResultsViewControllerViewInput {
@@ -40,6 +41,12 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	
 	private var tableView: UITableView!
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
+	private var showOnMapButton = Button(type: .system)
+	var didTouchUpInside: Button.DidTapButton? = nil {
+		didSet {
+			showOnMapButton.didTouchUpInside = didTouchUpInside
+		}
+	}
 	
 	var updateSearchResults: CommandWith<String> = .nop
 
@@ -61,12 +68,38 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 		tableView.tableFooterView = UIView()
 		tableView.keyboardDismissMode = .onDrag
 		self.tableView = tableView
+		
+		showOnMapButton.decorate(with:
+			Style.systemFont(size: 14),
+			Style.titleColor(color: .white),
+			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
+		)
+		
+		showOnMapButton.setTitle(l10n(.showOnMap), for: .normal)
 	}
 	
 	private func configureTableViewLayout() {
 		view.addSubview(tableView)
-		tableView.addConstraintsProgrammatically
-			.pinToSuperSafeArea()
+		view.addSubview(showOnMapButton)
+		
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		showOnMapButton.translatesAutoresizingMaskIntoConstraints = false
+		
+		let tc = [
+			tableView.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor),
+			tableView.topAnchor.constraint(equalTo: view.safeLayoutGuide.topAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor),
+		]
+		
+		let bc = [
+			showOnMapButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 4),
+			showOnMapButton.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor),
+			showOnMapButton.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor),
+			showOnMapButton.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor),
+			showOnMapButton.heightAnchor.constraint(equalToConstant: 56)
+		]
+		
+		NSLayoutConstraint.activate(tc + bc)
 	}
 	
 	private func configureTableViewDataSource() {

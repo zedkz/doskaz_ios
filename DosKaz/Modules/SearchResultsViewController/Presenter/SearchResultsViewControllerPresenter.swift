@@ -14,6 +14,7 @@ class SearchResultsViewControllerPresenter: SearchResultsViewControllerModuleInp
 	var router: SearchResultsViewControllerRouterInput!
 
 	var didPressShowOnMap: Command = .nop
+	var currentResults = SearchResults()
 }
 
 
@@ -34,6 +35,9 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewO
 		view.setupInitialState()
 		view.updateSearchResults = CommandWith<String> { searchText in
 			self.interactor.search(for: searchText, with: 9103)
+		}
+		view.didTouchUpInside = { [weak self] in
+			self?.didPressShowOnMap.perform()
 		}
 	}
 
@@ -56,7 +60,8 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerInter
 				rightIcon: "complaint_button"
 			)
 		}
-		self.view.showResults(with: searchResultsToShow)
+		view.showResults(with: searchResultsToShow)
+		currentResults = results
 	}
 	
 	func didFailSearch(with error: Error) {
