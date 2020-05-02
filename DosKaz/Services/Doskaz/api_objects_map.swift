@@ -76,6 +76,10 @@ enum Color: String, Codable {
 	case de1220 = "#DE1220"
 	case f8Ac1A = "#F8AC1A"
 	case the3Dba3B = "#3DBA3B"
+	
+	var uiColor: UIColor {
+		return UIColor(hex: rawValue) ?? .gray
+	}
 }
 
 enum OverallScore: String, Codable {

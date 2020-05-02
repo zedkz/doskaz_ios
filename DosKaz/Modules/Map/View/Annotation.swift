@@ -9,6 +9,7 @@
 import Foundation
 import MapKit
 import Contacts
+import FontAwesome_swift
 
 class VenueView: MKAnnotationView {
 	
@@ -16,11 +17,17 @@ class VenueView: MKAnnotationView {
 		willSet {
 			guard let venue = newValue as? Venue else {return}
 			
-			if let imageName = venue.imageName {
-				image = UIImage(named: imageName)
-			} else {
-				image = nil
-			}
+			guard let imageName = venue.imageName else { image = nil; return }
+			guard let solidImage = UIImage.fontAwesomeIcon(
+				code: imageName,
+				style: .solid,
+				textColor: .white,
+				size: CGSize(width: 12, height: 12)
+				) else { image = nil; return }
+			
+			let baseImage = UIImage(named: "mapobject_26_available")?.withRenderingMode(.alwaysTemplate)
+			let finalImage = baseImage?.overlayWith(image: solidImage, color: venue.color)
+			image = finalImage
 
 		}
 	}
@@ -31,29 +38,32 @@ class VenueView: MKAnnotationView {
 
 class Venue: NSObject, MKAnnotation {
 	let id: Int
-	let title: String?
+	let icon: String?
+	let color: UIColor
 	let locationName: String
 	let coordinate: CLLocationCoordinate2D
 	
-	init(id: Int, title: String, locationName: String, coordinate: CLLocationCoordinate2D) {
+	init(id: Int, icon: String, color: UIColor, locationName: String, coordinate: CLLocationCoordinate2D) {
 		self.id = id
-		self.title = title
+		self.icon = icon
 		self.locationName = locationName
 		self.coordinate = coordinate
-		
+		self.color = color
 		super.init()
 	}
 	
+	var title: String? {
+		return locationName
+	}
 	
 	var subtitle: String? {
 		return locationName
 	}
 		
 	var imageName: String? {
-		return "marker_example"
+		return icon
 	}
 	
 }
-
 
 

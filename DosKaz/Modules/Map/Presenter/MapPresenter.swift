@@ -55,7 +55,8 @@ extension MapPresenter: MapInteractorOutput {
 		let venues = points.map { point in
 			return Venue(
 				id: point.id,
-				title: point.icon ?? "",
+				icon: point.icon?.filter { !" ".contains($0) } ?? "",
+				color: point.color.uiColor,
 				locationName: String(point.id) ,
 				coordinate: CLLocationCoordinate2D(
 					latitude: point.coordinates[0],
