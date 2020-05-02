@@ -52,7 +52,7 @@ class BasicCell: UITableViewCell {
 			let solidImage = UIImage.fontAwesomeIcon(
 				code: props.icon,
 				style: .solid,
-				textColor: .gray,
+				textColor: UIColor(named: "UnselectedTabbarTintColor") ?? .gray,
 				size: CGSize(width: 24, height: 24)
 			)
 			leftImageView.image = solidImage

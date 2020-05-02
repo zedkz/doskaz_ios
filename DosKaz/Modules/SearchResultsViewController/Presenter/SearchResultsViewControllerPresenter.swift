@@ -58,7 +58,7 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerInter
 			BasicCell.Props(
 				text: $0.title,
 				icon: $0.icon?.filter { !" ".contains($0) } ?? "",
-				rightIcon: "complaint_button"
+				rightIcon: "chevron_right_passive"
 			)
 		}
 		view.showResults(with: searchResultsToShow)
