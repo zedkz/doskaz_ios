@@ -26,8 +26,8 @@ protocol MapViewOutput {
 extension MapPresenter: MapViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
-		view.buildSearch(with: Command { [weak self] in
-			print("search started")
+		view.buildSearch(with: CommandWith<SearchResults> { [weak self] results in
+			print("search started", results)
 		})
 		
 		interactor.loadPointsOnMap()

@@ -13,7 +13,7 @@ class SearchResultsViewControllerPresenter: SearchResultsViewControllerModuleInp
 	var interactor: SearchResultsViewControllerInteractorInput!
 	var router: SearchResultsViewControllerRouterInput!
 
-	var didPressShowOnMap: Command = .nop
+	var didPressShowOnMap: CommandWith<SearchResults> = .nop
 	var currentResults = SearchResults()
 }
 
@@ -22,12 +22,12 @@ class SearchResultsViewControllerPresenter: SearchResultsViewControllerModuleInp
 
 protocol SearchResultsViewControllerViewOutput {
 	func viewIsReady()
-	func initView(with command: Command)
+	func initView(with command: CommandWith<SearchResults>)
 }
 
 extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewOutput {
 	
-	func initView(with command: Command) {
+	func initView(with command: CommandWith<SearchResults>) {
 		self.didPressShowOnMap = command
 	}
 	
@@ -37,7 +37,8 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewO
 			self.interactor.search(for: searchText, with: 9103)
 		}
 		view.didTouchUpInside = { [weak self] in
-			self?.didPressShowOnMap.perform()
+			guard let self = self else { return }
+			self.didPressShowOnMap.perform(with: self.currentResults)
 		}
 	}
 

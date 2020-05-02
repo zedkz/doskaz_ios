@@ -14,7 +14,7 @@ import SharedCodeFramework
 
 protocol MapViewInput: class {
 	func setupInitialState()
-	func buildSearch(with command: Command)
+	func buildSearch(with command: CommandWith<SearchResults>)
 	func show(_ points: [Venue])
 	func showSheet(for doskazVenue: DoskazVenue)
 	
@@ -96,7 +96,7 @@ class MapViewController: UIViewController {
 		)
 	}
 	
-	func buildSearch(with command: Command) {
+	func buildSearch(with command: CommandWith<SearchResults>) {
 		let resultsController = SearchResultsViewControllerModuleConfigurator().assembleModule()
 		resultsController.output.initView(with: command)
 		let searchController = UISearchController(searchResultsController: resultsController)
