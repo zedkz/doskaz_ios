@@ -57,7 +57,7 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerInter
 		let searchResultsToShow = results.map {
 			BasicCell.Props(
 				text: $0.title,
-				icon:"available_32",
+				icon: $0.icon?.filter { !" ".contains($0) } ?? "",
 				rightIcon: "complaint_button"
 			)
 		}

@@ -14,6 +14,7 @@
 /// //MARK: - Layout
 
 import UIKit
+import FontAwesome_swift
 
 class ReverseButton: Button {
 	
@@ -48,7 +49,13 @@ class BasicCell: UITableViewCell {
 		didSet {
 			guard let props = props else { return }
 			label.text = props.text
-			leftImageView.image = UIImage(named: props.icon)
+			let solidImage = UIImage.fontAwesomeIcon(
+				code: props.icon,
+				style: .solid,
+				textColor: .gray,
+				size: CGSize(width: 24, height: 24)
+			)
+			leftImageView.image = solidImage
 			button.setImage(UIImage(named: props.rightIcon), for: .normal)
 		}
 	}
@@ -105,6 +112,7 @@ extension BasicCellLayout {
 			.pinEdgeToSupers(.top)
 			.set(my: .width, .equal, to: .height, of: rv.leftImageView)
 			.set(my: .bottom, .lessThanOrEqual, to: .bottom, of: wrapperView)
+			.set(my: .width, to: 24)
 
 		rv.label.addConstraintsProgrammatically
 			.pin(my: .leading, to: .trailing, of: rv.leftImageView, plus: 16)
