@@ -11,5 +11,6 @@ target 'DosKaz' do
   # Pods for DosKaz
 
   pod 'Moya', '~> 14.0', :binary => true
+	pod 'FontAwesome.swift', :binary => true
 
 end
