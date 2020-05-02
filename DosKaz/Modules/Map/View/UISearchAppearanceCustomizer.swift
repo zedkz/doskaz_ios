@@ -19,6 +19,8 @@ extension UISearchBar {
 		self.setImage(UIImage(named: "clear_search"), for: .clear, state: .normal)
 		self.setImage(UIImage(), for: .search, state: .normal)
 		
+		self.showsCancelButton = false
+		
 		if #available(iOS 13.0, *) {
 			self.searchTextField.backgroundColor = UIColor(named: "CategoryPickerHeaderBackground")
 			self.searchTextField.textColor = .black
