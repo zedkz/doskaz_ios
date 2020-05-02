@@ -59,6 +59,7 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	private func configureTableViewStyle() {
 		let tableView = UITableView(frame: .zero, style: .plain)
 		tableView.tableFooterView = UIView()
+		tableView.keyboardDismissMode = .onDrag
 		self.tableView = tableView
 	}
 	
