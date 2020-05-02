@@ -10,6 +10,7 @@
 		4404F21024597A0600EB7184 /* api_object_id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F20F24597A0600EB7184 /* api_object_id.swift */; };
 		4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F213245AF9C500EB7184 /* DrawerPanner.swift */; };
 		4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F215245C39AE00EB7184 /* BasicCell.swift */; };
+		4404F218245C966600EB7184 /* api_objects_search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F217245C966600EB7184 /* api_objects_search.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -105,6 +106,7 @@
 		4404F20F24597A0600EB7184 /* api_object_id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_object_id.swift; sourceTree = "<group>"; };
 		4404F213245AF9C500EB7184 /* DrawerPanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanner.swift; sourceTree = "<group>"; };
 		4404F215245C39AE00EB7184 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
+		4404F217245C966600EB7184 /* api_objects_search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_search.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				44ED11C92451883D009B92BF /* api_objects_map.swift */,
 				4404F20F24597A0600EB7184 /* api_object_id.swift */,
+				4404F217245C966600EB7184 /* api_objects_search.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
+				4404F218245C966600EB7184 /* api_objects_search.swift in Sources */,
 				44ED11E724573EC5009B92BF /* VenueDescriptionPresenter.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,

@@ -6,12 +6,14 @@
 //  Copyright © 2020-03-01 13:52:49 +0000 lobster.kz. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
 protocol SearchResultsViewControllerViewInput: class {
 	func setupInitialState()
+	func showResults(with results: [BasicCell.Props])
+	var updateSearchResults: CommandWith<String> { get set }
 }
 
 extension SearchResultsViewControllerViewController: SearchResultsViewControllerViewInput {
@@ -21,6 +23,11 @@ extension SearchResultsViewControllerViewController: SearchResultsViewController
 		configureTableViewStyle()
 		configureTableViewLayout()
 		configureTableViewDataSource()
+	}
+	
+	func showResults(with results: [BasicCell.Props]) {
+		dataSource.cellsProps = results
+		tableView.reloadData()
 	}
 
 }
@@ -34,6 +41,7 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	private var tableView: UITableView!
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
 	
+	var updateSearchResults: CommandWith<String> = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -43,15 +51,7 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	
 	func updateSearchResults(for searchController: UISearchController) {
 		guard let text = searchController.searchBar.text else { return }
-		dataSource.cellsProps = text.compactMap {
-			BasicCell.Props(
-				text:String($0),
-				icon: "available_32",
-				rightIcon: "complaint_button"
-			)
-			
-		}
-		tableView.reloadData()
+		updateSearchResults.perform(with: text)
 	}
 	
 	// MARK: Private methods

@@ -32,7 +32,9 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewO
 	
 	func viewIsReady() {
 		view.setupInitialState()
-		didPressShowOnMap.perform()
+		view.updateSearchResults = CommandWith<String> { searchText in
+			self.interactor.search(for: searchText, with: 9103)
+		}
 	}
 
 }
@@ -41,10 +43,24 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewO
 // MARK: Interactor output protocol
 
 protocol SearchResultsViewControllerInteractorOutput: class {
-	
+	func didFind(_ results: SearchResults)
+	func didFailSearch(with error: Error)
 }
 
 extension SearchResultsViewControllerPresenter: SearchResultsViewControllerInteractorOutput {
-
+	func didFind(_ results: SearchResults) {
+		let searchResultsToShow = results.map {
+			BasicCell.Props(
+				text: $0.title,
+				icon:"available_32",
+				rightIcon: "complaint_button"
+			)
+		}
+		self.view.showResults(with: searchResultsToShow)
+	}
+	
+	func didFailSearch(with error: Error) {
+		print("didFailSearch: ",error.localizedDescription)
+	}
 }
 

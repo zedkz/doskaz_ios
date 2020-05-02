@@ -7,7 +7,7 @@
 //
 
 protocol SearchResultsViewControllerInteractorInput {
-
+	func search(for query: String, with cityID: Int)
 }
 
 // MARK: Implementation
@@ -15,6 +15,22 @@ protocol SearchResultsViewControllerInteractorInput {
 class SearchResultsViewControllerInteractor: SearchResultsViewControllerInteractorInput {
 
 	weak var output: SearchResultsViewControllerInteractorOutput!
+	
+	func search(for query: String, with cityID: Int) {
+		let onSuccess = { [weak self] (results: SearchResults) -> Void in
+			self?.output.didFind(results)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailSearch(with: error)
+		}
+		
+		APISearch(
+			onSuccess: onSuccess,
+			onFailure: onFailure,
+			cityId: cityID,
+			query: query
+		).dispatch()
+	}
 
 }
-		
