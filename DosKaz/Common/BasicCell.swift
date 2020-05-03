@@ -15,15 +15,25 @@
 
 import UIKit
 import FontAwesome_swift
+import Eureka
+
+final class FormTextRow: Row<BasicCell>, RowType {
+	required init(tag: String?) {
+		super.init(tag: tag)
+		displayValueFor = { (row) -> String? in
+			return nil
+		}
+	}
+}
 
 class ReverseButton: Button {
 	
 }
 
-class BasicCell: UITableViewCell {
+class BasicCell: Cell<BasicCell.Props>, CellType {
 	
 	//MARK: -inits
-	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+	required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		configureConstantData()
 		configureStyle()
@@ -33,6 +43,17 @@ class BasicCell: UITableViewCell {
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
+	}
+	
+	//MARK: Eureka methods
+	
+	override func setup() {
+		super.setup()
+	}
+	
+	override func update() {
+		super.update()
+		props = row.value
 	}
 	
 	//MARK: - Sub types
@@ -81,6 +102,8 @@ class BasicCell: UITableViewCell {
 	}
 	
 }
+
+extension BasicCell.Props: Equatable { }
 
 //MARK: - Layout
 

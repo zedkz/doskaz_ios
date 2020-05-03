@@ -41,6 +41,15 @@ class FilterViewController: FormViewController {
 			$0.title = "Text row"
 			$0.value = "Value of a text row"
 		})
+		
+		<<< FormTextRow("2", {
+			
+			$0.value = BasicCell.Props(
+				text: "Form Text",
+				icon: "fa-print",
+				rightIcon: "not_available_32"
+			)
+		})
 
 	}
 
