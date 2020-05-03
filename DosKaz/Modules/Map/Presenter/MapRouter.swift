@@ -17,6 +17,7 @@ protocol MapRouterInput {
 class MapRouter: MapRouterInput {
 	func presentFilter(with vc: UIViewController) {
 		let filter = FilterBuilder().assembleModule()
-		vc.navigationController?.present(filter, animated: true, completion: nil)
+		let nvc = UINavigationController(rootViewController: filter)
+		vc.navigationController?.present(nvc, animated: true, completion: nil)
 	}
 }

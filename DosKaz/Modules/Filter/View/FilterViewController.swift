@@ -17,19 +17,19 @@ protocol FilterViewInput where Self: UIViewController {
 extension FilterViewController: FilterViewInput {
 
 	func setupInitialState() {
-	
+		view.backgroundColor = .white
+		navigationItem.title = l10n(.filter)
 	}
 
 }
 
-class FilterViewController: UIViewController {
+class FilterViewController: FormViewController {
 
 	var output: FilterViewOutput!
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .white
 		output.viewIsReady()
 	}
 
