@@ -17,6 +17,7 @@
 		4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F248245F0CD900EB7184 /* FilterRouter.swift */; };
 		4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F24A245F0CD900EB7184 /* FilterViewController.swift */; };
 		4404F251245F1D3700EB7184 /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F250245F1D3700EB7184 /* Templates.swift */; };
+		4404F253245F216100EB7184 /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F252245F216100EB7184 /* Eureka.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -119,6 +120,7 @@
 		4404F248245F0CD900EB7184 /* FilterRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
 		4404F24A245F0CD900EB7184 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		4404F250245F1D3700EB7184 /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
+		4404F252245F216100EB7184 /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */,
 				4404F215245C39AE00EB7184 /* BasicCell.swift */,
 				4404F250245F1D3700EB7184 /* Templates.swift */,
+				4404F252245F216100EB7184 /* Eureka.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
 				4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */,
 				4404F24C245F0CD900EB7184 /* FilterInteractor.swift in Sources */,
+				4404F253245F216100EB7184 /* Eureka.swift in Sources */,
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
 				445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */,
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,

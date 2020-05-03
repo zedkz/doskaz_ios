@@ -78,9 +78,8 @@ class ShortTemplateView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
 		
-		//MARK: - Public properties and methods
 		//MARK: - Configure constant data
-		//MARK: - Configure stye
+		//MARK: - Configure style
 		//MARK: - Configure behavior
 		//MARK: - Layout
 		
