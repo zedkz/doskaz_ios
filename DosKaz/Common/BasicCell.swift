@@ -60,7 +60,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	
 	struct Props {
 		let text: String
-		let icon: String
+		let icon: Asset?
 		let rightIcon: String
 	}
 	
@@ -70,13 +70,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 		didSet {
 			guard let props = props else { return }
 			label.text = props.text
-			let solidImage = UIImage.fontAwesomeIcon(
-				code: props.icon,
-				style: .solid,
-				textColor: UIColor(named: "UnselectedTabbarTintColor") ?? .gray,
-				size: CGSize(width: 24, height: 24)
-			)
-			leftImageView.image = solidImage
+			leftImageView.image = props.icon?.image
 			button.setImage(UIImage(named: props.rightIcon), for: .normal)
 		}
 	}

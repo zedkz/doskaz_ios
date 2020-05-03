@@ -46,7 +46,7 @@ class FilterViewController: FormViewController {
 			
 			$0.value = BasicCell.Props(
 				text: "Form Text",
-				icon: "fa-print",
+				icon: Asset.local("available_32"),
 				rightIcon: "not_available_32"
 			)
 		})

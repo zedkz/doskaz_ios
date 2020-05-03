@@ -57,7 +57,9 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerInter
 		let searchResultsToShow = results.map {
 			BasicCell.Props(
 				text: $0.title,
-				icon: $0.icon?.filter { !" ".contains($0) } ?? "",
+				icon: Asset.fontAwesome(
+					$0.icon?.filter { !" ".contains($0) }
+				),
 				rightIcon: "chevron_right_passive"
 			)
 		}

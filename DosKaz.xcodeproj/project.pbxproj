@@ -18,6 +18,7 @@
 		4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F24A245F0CD900EB7184 /* FilterViewController.swift */; };
 		4404F251245F1D3700EB7184 /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F250245F1D3700EB7184 /* Templates.swift */; };
 		4404F253245F216100EB7184 /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F252245F216100EB7184 /* Eureka.swift */; };
+		4404F255245F2D9800EB7184 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F254245F2D9800EB7184 /* Asset.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -121,6 +122,7 @@
 		4404F24A245F0CD900EB7184 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		4404F250245F1D3700EB7184 /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
 		4404F252245F216100EB7184 /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
+		4404F254245F2D9800EB7184 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				4404F215245C39AE00EB7184 /* BasicCell.swift */,
 				4404F250245F1D3700EB7184 /* Templates.swift */,
 				4404F252245F216100EB7184 /* Eureka.swift */,
+				4404F254245F2D9800EB7184 /* Asset.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
+				4404F255245F2D9800EB7184 /* Asset.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
 				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
