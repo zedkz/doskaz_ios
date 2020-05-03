@@ -16,6 +16,7 @@
 		4404F24D245F0CD900EB7184 /* FilterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F247245F0CD900EB7184 /* FilterConfigurator.swift */; };
 		4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F248245F0CD900EB7184 /* FilterRouter.swift */; };
 		4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F24A245F0CD900EB7184 /* FilterViewController.swift */; };
+		4404F251245F1D3700EB7184 /* Templates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F250245F1D3700EB7184 /* Templates.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -117,6 +118,7 @@
 		4404F247245F0CD900EB7184 /* FilterConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterConfigurator.swift; sourceTree = "<group>"; };
 		4404F248245F0CD900EB7184 /* FilterRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
 		4404F24A245F0CD900EB7184 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		4404F250245F1D3700EB7184 /* Templates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templates.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				44951D2124473E2E0029275F /* CollectionViewDataSource.swift */,
 				44ED11DA2456E5C6009B92BF /* ContentSizedTableView.swift */,
 				4404F215245C39AE00EB7184 /* BasicCell.swift */,
+				4404F250245F1D3700EB7184 /* Templates.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				4404F218245C966600EB7184 /* api_objects_search.swift in Sources */,
 				44ED11E724573EC5009B92BF /* VenueDescriptionPresenter.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
+				4404F251245F1D3700EB7184 /* Templates.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,

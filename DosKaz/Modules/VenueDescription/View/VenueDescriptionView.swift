@@ -144,65 +144,7 @@ extension VenueDescriptionViewLayout {
 			.pin(my: .top, to: .bottom, of: rv.verifyInfo, plus: 12)
 			.pinEdgeToSupers(.bottom, plus: -30)
 			.set(my: .height, .greaterThanOrEqual, to: 44)
-		
-	}
-		
-}
-
-
-class TemplateView: UIView {
 	
-	//MARK: -inits
-	
-	override init(frame: CGRect) {
-		super.init(frame: .zero)
-		configureConstantData()
-		configureStyle()
-		configureBehaviour()
-		TemplateViewLayout(rv: self).draw()
-	}
-	
-	required init?(coder: NSCoder) {
-		super.init(coder: coder)
-	}
-	
-	//MARK: - Public properties and methods
-	
-	//MARK: - Private
-	
-	private func configureConstantData() {
-		
-	}
-	
-	private func configureStyle() {
-		
-	}
-	
-	private func configureBehaviour() {
-		
-	}
-	
-	// MARK: - Sub types
-	
-	
-}
-
-struct TemplateViewLayout {
-	weak var rv: TemplateView!
-	
-	func draw() {
-		addSubviews()
-		addConstraints()
-	}
-}
-
-extension TemplateViewLayout {
-	
-	func addSubviews() {
-		
-	}
-	
-	func addConstraints() {
 		
 	}
 	
