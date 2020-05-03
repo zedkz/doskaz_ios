@@ -9,11 +9,14 @@
 import UIKit
 
 protocol MapRouterInput {
-
+	func presentFilter(with vc: UIViewController)
 }
 
 // MARK: Implementation
 
 class MapRouter: MapRouterInput {
-
+	func presentFilter(with vc: UIViewController) {
+		let filter = FilterBuilder().assembleModule()
+		vc.navigationController?.present(filter, animated: true, completion: nil)
+	}
 }

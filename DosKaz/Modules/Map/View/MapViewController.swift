@@ -12,13 +12,14 @@ import SharedCodeFramework
 
 // MARK: View input protocol
 
-protocol MapViewInput: class {
+protocol MapViewInput where Self: UIViewController {
 	func setupInitialState()
 	func buildSearch(with command: CommandWith<SearchResults>)
 	func show(_ points: [Venue])
 	func showSheet(for doskazVenue: DoskazVenue)
 	
 	var onSelectVenue: CommandWith<Int> { get set }
+	var onPressFilter: Command { get set }
 }
 
 extension MapViewController: MapViewInput {
@@ -49,6 +50,7 @@ class MapViewController: UIViewController {
 	private var searchController: UISearchController!
 	
 	var onSelectVenue: CommandWith<Int> = .nop
+	var onPressFilter: Command = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -91,9 +93,14 @@ class MapViewController: UIViewController {
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			image: UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal),
 			style: .plain,
-			target: nil,
-			action: nil
+			target: self,
+			action: #selector(didPressFilter)
 		)
+	}
+	
+	@objc
+	func didPressFilter() {
+		onPressFilter.perform()
 	}
 	
 	func buildSearch(with command: CommandWith<SearchResults>) {

@@ -35,6 +35,11 @@ extension MapPresenter: MapViewOutput {
 		view.onSelectVenue = CommandWith<Int> {
 			self.interactor.loadObject(with: $0)
 		}
+		
+		view.onPressFilter = Command { [weak self] _ in
+			guard let self = self else { return }
+			self.router.presentFilter(with: self.view)
+		}
 	}
 
 }
