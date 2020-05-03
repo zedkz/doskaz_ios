@@ -12,5 +12,6 @@ target 'DosKaz' do
 
   pod 'Moya', '~> 14.0', :binary => true
 	pod 'FontAwesome.swift', :binary => true
+	pod 'Eureka', :binary => true
 
 end

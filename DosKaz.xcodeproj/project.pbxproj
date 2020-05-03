@@ -11,6 +11,11 @@
 		4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F213245AF9C500EB7184 /* DrawerPanner.swift */; };
 		4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F215245C39AE00EB7184 /* BasicCell.swift */; };
 		4404F218245C966600EB7184 /* api_objects_search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F217245C966600EB7184 /* api_objects_search.swift */; };
+		4404F24B245F0CD900EB7184 /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F245245F0CD900EB7184 /* FilterPresenter.swift */; };
+		4404F24C245F0CD900EB7184 /* FilterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F246245F0CD900EB7184 /* FilterInteractor.swift */; };
+		4404F24D245F0CD900EB7184 /* FilterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F247245F0CD900EB7184 /* FilterConfigurator.swift */; };
+		4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F248245F0CD900EB7184 /* FilterRouter.swift */; };
+		4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F24A245F0CD900EB7184 /* FilterViewController.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -107,6 +112,11 @@
 		4404F213245AF9C500EB7184 /* DrawerPanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanner.swift; sourceTree = "<group>"; };
 		4404F215245C39AE00EB7184 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
 		4404F217245C966600EB7184 /* api_objects_search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_search.swift; sourceTree = "<group>"; };
+		4404F245245F0CD900EB7184 /* FilterPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
+		4404F246245F0CD900EB7184 /* FilterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterInteractor.swift; sourceTree = "<group>"; };
+		4404F247245F0CD900EB7184 /* FilterConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterConfigurator.swift; sourceTree = "<group>"; };
+		4404F248245F0CD900EB7184 /* FilterRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
+		4404F24A245F0CD900EB7184 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -197,6 +207,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4404F243245F0CD900EB7184 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				4404F249245F0CD900EB7184 /* View */,
+				4404F244245F0CD900EB7184 /* Presenter */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		4404F244245F0CD900EB7184 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4404F245245F0CD900EB7184 /* FilterPresenter.swift */,
+				4404F246245F0CD900EB7184 /* FilterInteractor.swift */,
+				4404F248245F0CD900EB7184 /* FilterRouter.swift */,
+				4404F247245F0CD900EB7184 /* FilterConfigurator.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4404F249245F0CD900EB7184 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4404F24A245F0CD900EB7184 /* FilterViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		445C3F282403F62800131990 /* CategoryPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +309,7 @@
 				448A446D240BF5D0007305D4 /* SearchResultsViewController */,
 				44ED11CB2455B9EA009B92BF /* Venue */,
 				44ED11DC24573EC5009B92BF /* VenueDescription */,
+				4404F243245F0CD900EB7184 /* Filter */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -700,6 +739,8 @@
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,
 				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
+				4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */,
+				4404F24C245F0CD900EB7184 /* FilterInteractor.swift in Sources */,
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
 				445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */,
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,
@@ -709,6 +750,7 @@
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
 				44ED11E524573EC5009B92BF /* VenueDescriptionConfigurator.swift in Sources */,
+				4404F24D245F0CD900EB7184 /* FilterConfigurator.swift in Sources */,
 				4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */,
 				4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */,
 				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
@@ -742,6 +784,7 @@
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
+				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
@@ -758,6 +801,7 @@
 				44951D262447777E0029275F /* GreetingCell.swift in Sources */,
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
 				44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */,
+				4404F24B245F0CD900EB7184 /* FilterPresenter.swift in Sources */,
 				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
