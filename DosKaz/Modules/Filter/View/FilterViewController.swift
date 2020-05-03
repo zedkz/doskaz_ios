@@ -18,7 +18,9 @@ extension FilterViewController: FilterViewInput {
 
 	func setupInitialState() {
 		view.backgroundColor = .white
+		tableView.tableFooterView = UIView()
 		navigationItem.title = l10n(.filter)
+		createForm()
 	}
 
 }
@@ -31,6 +33,15 @@ class FilterViewController: FormViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		output.viewIsReady()
+	}
+	
+	private func createForm() { form
+		+++ Section(l10n(.objectAccessibility))
+		<<< TextRow("1", {
+			$0.title = "Text row"
+			$0.value = "Value of a text row"
+		})
+
 	}
 
 }
