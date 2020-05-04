@@ -23,6 +23,7 @@ protocol FilterViewOutput {
 extension FilterPresenter: FilterViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		view.filter = Filter()
 	}
 
 }

@@ -12,6 +12,7 @@ import Eureka
 
 protocol FilterViewInput where Self: UIViewController {
 	func setupInitialState()
+	var filter: Filter { get set }
 }
 
 extension FilterViewController: FilterViewInput {
@@ -20,7 +21,6 @@ extension FilterViewController: FilterViewInput {
 		view.backgroundColor = .white
 		tableView.tableFooterView = UIView()
 		navigationItem.title = l10n(.filter)
-		createForm()
 	}
 
 }
@@ -28,6 +28,12 @@ extension FilterViewController: FilterViewInput {
 class FilterViewController: FormViewController {
 
 	var output: FilterViewOutput!
+	
+	var filter = Filter() {
+		didSet {
+			createForm()
+		}
+	}
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -42,7 +48,7 @@ class FilterViewController: FormViewController {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessibleFull),
 				icon: Asset.local("available_32"),
-				rightIcon: "check_not_activated"
+				rightIcon: filter.icon(.fullAccessible)
 			)
 		})
 		
@@ -50,7 +56,7 @@ class FilterViewController: FormViewController {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessiblePartial),
 				icon: Asset.local("partially_available_32"),
-				rightIcon: "check_activated"
+				rightIcon: filter.icon(.partialAccessible)
 			)
 		})
 		
@@ -58,7 +64,7 @@ class FilterViewController: FormViewController {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessibleNone),
 				icon: Asset.local("not_available_32"),
-				rightIcon: "check_activated"
+				rightIcon: filter.icon(.notAccessible)
 			)
 		})
 		
