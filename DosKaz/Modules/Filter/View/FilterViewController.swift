@@ -42,15 +42,42 @@ class FilterViewController: FormViewController {
 			$0.value = "Value of a text row"
 		})
 		
-		<<< FormTextRow("2", {
-			
+		<<< FormTextRow(Tag.accessibleFull.raw, {
 			$0.value = BasicCell.Props(
-				text: "Form Text",
+				text: l10n(.accessibleFull),
 				icon: Asset.local("available_32"),
 				rightIcon: "not_available_32"
 			)
 		})
-
+		
+		<<< FormTextRow(Tag.accessiblePartial.raw, {
+			$0.value = BasicCell.Props(
+				text: l10n(.accessiblePartial),
+				icon: Asset.local("partially_available_32"),
+				rightIcon: "not_available_32"
+			)
+		})
+		
+		<<< FormTextRow(Tag.accessibleNone.raw, {
+			$0.value = BasicCell.Props(
+				text: l10n(.accessibleNone),
+				icon: Asset.local("not_available_32"),
+				rightIcon: "not_available_32"
+			)
+		})
+		
+	}
+	
+	// MARK: -Subtypes
+	
+	enum Tag: String {
+		case accessibleFull
+		case accessiblePartial
+		case accessibleNone
+		
+		var raw: String {
+			return rawValue
+		}
 	}
 
 }
