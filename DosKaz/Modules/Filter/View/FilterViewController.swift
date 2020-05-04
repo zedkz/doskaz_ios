@@ -37,11 +37,7 @@ class FilterViewController: FormViewController {
 	
 	private func createForm() { form
 		+++ FF.section(with: l10n(.objectAccessibility))
-		<<< TextRow("1", {
-			$0.title = "Text row"
-			$0.value = "Value of a text row"
-		})
-		
+
 		<<< FormTextRow(Tag.accessibleFull.raw, {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessibleFull),
