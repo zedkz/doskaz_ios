@@ -7,17 +7,20 @@
 //
 
 import Eureka
+import SharedCodeFramework
 
 // MARK: View input protocol
 
 protocol FilterViewInput where Self: UIViewController {
-	func setupInitialState()
+	func setupInitialState(with filter: Filter)
 	var filter: Filter { get set }
 }
 
 extension FilterViewController: FilterViewInput {
 
-	func setupInitialState() {
+	func setupInitialState(with filter: Filter) {
+		self.filter = filter
+		createForm()
 		view.backgroundColor = .white
 		tableView.tableFooterView = UIView()
 		navigationItem.title = l10n(.filter)
@@ -31,7 +34,7 @@ class FilterViewController: FormViewController {
 	
 	var filter = Filter() {
 		didSet {
-			createForm()
+			print("Filter has been set")
 		}
 	}
 

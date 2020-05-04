@@ -9,6 +9,9 @@
 import Foundation
 
 class Filter {
+	
+	static let shared = Filter()
+	
 	var acc: [OverallScore: Bool]
 	
 	init() {
