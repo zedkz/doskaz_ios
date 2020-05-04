@@ -24,7 +24,13 @@ protocol FilterViewOutput {
 
 extension FilterPresenter: FilterViewOutput {
 	func viewIsReady() {
-		view.setupInitialState(with: sharedFilter)
+		view.setupInitialState()
+		view.onRightButtonTouch = CommandWith<OverallScore> { score in
+			self.sharedFilter.acc[score]?.toggle()
+			self.view.updateForm(with: self.sharedFilter)
+		}
+		view.makeForm(with: sharedFilter)
+		
 	}
 
 }

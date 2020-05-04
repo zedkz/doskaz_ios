@@ -62,8 +62,12 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	struct Props {
 		let text: String
 		let icon: Asset?
-		let rightIcon: String
+		var rightIcon: String
 		var onRightButtonTouch: Command = .nop
+	}
+	
+	func update<T>(_ path: WritableKeyPath<BasicCell.Props, T>, with value: T) {
+		props[keyPath: path] = value
 	}
 	
 	//MARK: - Public properties and methods
