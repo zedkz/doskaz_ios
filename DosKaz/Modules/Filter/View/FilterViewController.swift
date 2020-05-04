@@ -34,7 +34,9 @@ extension FilterViewController: FilterViewInput {
 		
 	func updateForm(with filter: Filter) {
 		self.filter = filter
-		form.sectionBy(tag: Tag.firstSection.raw)?.reload()
+		form.rowBy(tag: Tag.accessibleFull.raw)?.reload()
+		form.rowBy(tag: Tag.accessiblePartial.raw)?.reload()
+		form.rowBy(tag: Tag.accessibleNone.raw)?.reload()
 	}
 	
 	func makeForm(with filter: Filter) {

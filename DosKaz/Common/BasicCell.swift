@@ -98,11 +98,17 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	}
 	
 	private func configureBehaviour() {
-		button.backgroundColor = .red
+		
 		button.didTouchUpInside = { [weak self] in
 			print("Right button pressed")
-			self?.props.onRightButtonTouch.perform()
 		}
+		let tapG = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+		addGestureRecognizer(tapG)
+		button.isUserInteractionEnabled = false
+	}
+	
+	@objc func handleTap() {
+		self.props.onRightButtonTouch.perform()
 	}
 	
 }
