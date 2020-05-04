@@ -16,6 +16,7 @@
 import UIKit
 import FontAwesome_swift
 import Eureka
+import SharedCodeFramework
 
 final class FormTextRow: Row<BasicCell>, RowType {
 	required init(tag: String?) {
@@ -62,6 +63,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 		let text: String
 		let icon: Asset?
 		let rightIcon: String
+		var onRightButtonTouch: Command = .nop
 	}
 	
 	//MARK: - Public properties and methods
@@ -77,7 +79,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	
 	let leftImageView = UIImageView()
 	let label = UILabel()
-	let button = UIButton()
+	let button = Button()
 	
 	//MARK: - Private
 	
@@ -92,12 +94,20 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	}
 	
 	private func configureBehaviour() {
-		
+		button.didTouchUpInside = { [weak self] in
+			self?.props.onRightButtonTouch.perform()
+		}
 	}
 	
 }
 
-extension BasicCell.Props: Equatable { }
+extension BasicCell.Props: Equatable {
+	static func == (lhs: BasicCell.Props, rhs: BasicCell.Props) -> Bool {
+		return lhs.text == rhs.text &&
+			lhs.icon == rhs.icon &&
+			lhs.rightIcon == rhs.rightIcon
+	}
+}
 
 //MARK: - Layout
 

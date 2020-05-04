@@ -42,7 +42,7 @@ class FilterViewController: FormViewController {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessibleFull),
 				icon: Asset.local("available_32"),
-				rightIcon: "not_available_32"
+				rightIcon: "check_not_activated"
 			)
 		})
 		
@@ -50,7 +50,7 @@ class FilterViewController: FormViewController {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessiblePartial),
 				icon: Asset.local("partially_available_32"),
-				rightIcon: "not_available_32"
+				rightIcon: "check_activated"
 			)
 		})
 		
@@ -58,7 +58,7 @@ class FilterViewController: FormViewController {
 			$0.value = BasicCell.Props(
 				text: l10n(.accessibleNone),
 				icon: Asset.local("not_available_32"),
-				rightIcon: "not_available_32"
+				rightIcon: "check_activated"
 			)
 		})
 		
