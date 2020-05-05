@@ -7,7 +7,7 @@
 //
 
 protocol FilterInteractorInput {
-
+	func loadCategories()
 }
 
 // MARK: Implementation
@@ -15,6 +15,19 @@ protocol FilterInteractorInput {
 class FilterInteractor: FilterInteractorInput {
 
 	weak var output: FilterInteractorOutput!
+	
+	func loadCategories() {
+		let onSuccess = { [weak self] (categories: [Category]) -> Void in
+			self?.output.didLoad(categories)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadCategories(with: error)
+		}
+		
+		APICategories(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+		
+	}
 
 }
 		

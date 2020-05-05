@@ -38,9 +38,16 @@ extension FilterPresenter: FilterViewOutput {
 // MARK: Interactor output protocol
 
 protocol FilterInteractorOutput: class {
-
+	func didLoad(_ categories: [Category])
+	func didFailLoadCategories(with error: Error)
 }
 
 extension FilterPresenter: FilterInteractorOutput {
-
+	func didLoad(_ categories: [Category]) {
+		debugPrint(categories)
+	}
+	
+	func didFailLoadCategories(with error: Error) {
+		print("didFailLoacCategories", error)
+	}
 }
