@@ -45,7 +45,7 @@ extension FilterViewController: FilterViewInput {
 	}
 	
 	@objc func closeFilterForm() {
-		
+		dismiss(animated: true, completion: nil)
 	}
 
 }
