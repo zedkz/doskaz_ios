@@ -37,7 +37,7 @@ extension FilterPresenter: FilterViewOutput {
 					rightIcon: "chevron_right_passive"
 				)
 			}
-			self.router.presentPicker(with: self.view, cellsProps, catergory: category)
+			self.router.presentPicker(with: self.view, cellsProps, category: category)
 		}
 		interactor.loadCategories()
 		

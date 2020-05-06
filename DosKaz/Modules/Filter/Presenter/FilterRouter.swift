@@ -9,16 +9,16 @@
 import UIKit
 
 protocol FilterRouterInput {
-	func presentPicker(with vc: UIViewController, _ cellsProps: [BasicCell.Props], catergory: Category)
+	func presentPicker(with vc: UIViewController, _ cellsProps: [BasicCell.Props], category: Category)
 }
 
 // MARK: Implementation
 
 class FilterRouter: FilterRouterInput {
-	func presentPicker(with vc: UIViewController, _ cellsProps: [BasicCell.Props], catergory: Category) {
+	func presentPicker(with vc: UIViewController, _ cellsProps: [BasicCell.Props], category: Category) {
 		let picker = ObjectCategoryPickerViewController()
 		picker.cellsProps = cellsProps
-		picker.title = catergory.title
+		picker.title = category.title
 		vc.navigationController?.pushViewController(picker, animated: true)
 	}
 }
