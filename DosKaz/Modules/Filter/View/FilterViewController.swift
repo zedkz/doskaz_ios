@@ -79,8 +79,8 @@ class FilterViewController: UIViewController {
 		tableView.tableFooterView = UIView()
 		
 		/// Data sources
-		sectionOneDataSource = TableViewDataSource(tableView, l10n(.objectAccessibility)) { $1.props = $0 }
-		sectionTwoDataSource = TableViewDataSource(tableView, l10n(.objectCategories)) { $1.props = $0 }
+		sectionOneDataSource = TableViewDataSource(tableView, l10n(.objectAccessibility).uppercased()) { $1.props = $0 }
+		sectionTwoDataSource = TableViewDataSource(tableView, l10n(.objectCategories).uppercased()) { $1.props = $0 }
 		tableViewDataSource  = SectionedTableViewDataSource(dataSources: [sectionOneDataSource, sectionTwoDataSource])
 		tableView.dataSource = tableViewDataSource
 		
@@ -178,6 +178,7 @@ extension FilterViewController: UITableViewDelegate {
 		let cell = UITableViewCell()
 		cell.backgroundColor = UIColor(named:"FilterHeaderColor")
 		cell.textLabel?.textColor = UIColor(named: "FilterHeaderTextColor")
+		cell.textLabel?.font = .systemFont(ofSize: 13)
 		cell.textLabel?.text = tableViewDataSource.titles[section]
 		return cell
 	}
