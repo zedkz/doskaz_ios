@@ -79,8 +79,8 @@ class FilterViewController: UIViewController {
 		tableView.tableFooterView = UIView()
 		
 		/// Data sources
-		sectionOneDataSource = TableViewDataSource(tableView, "Dostip") { $1.props = $0 }
-		sectionTwoDataSource = TableViewDataSource(tableView, "Catego") { $1.props = $0 }
+		sectionOneDataSource = TableViewDataSource(tableView, l10n(.objectAccessibility)) { $1.props = $0 }
+		sectionTwoDataSource = TableViewDataSource(tableView, l10n(.objectCategories)) { $1.props = $0 }
 		tableViewDataSource  = SectionedTableViewDataSource(dataSources: [sectionOneDataSource, sectionTwoDataSource])
 		tableView.dataSource = tableViewDataSource
 		
