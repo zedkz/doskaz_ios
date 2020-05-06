@@ -11,7 +11,7 @@ import UIKit
 struct FilterBuilder {
 
 	func assembleModule() -> FilterViewController {
-		let viewController = FilterViewController(style: .plain)
+		let viewController = FilterViewController()
 		configure(viewController: viewController)
 		return viewController
 	}
