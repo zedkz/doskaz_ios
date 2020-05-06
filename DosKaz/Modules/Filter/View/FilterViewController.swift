@@ -176,8 +176,8 @@ class FilterViewController: UIViewController {
 extension FilterViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let cell = UITableViewCell()
-		cell.backgroundColor = .systemBlue
-		cell.textLabel?.textColor = .gray
+		cell.backgroundColor = UIColor(named:"FilterHeaderColor")
+		cell.textLabel?.textColor = UIColor(named: "FilterHeaderTextColor")
 		cell.textLabel?.text = tableViewDataSource.titles[section]
 		return cell
 	}
