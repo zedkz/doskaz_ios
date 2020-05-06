@@ -99,7 +99,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	
 	private func configureBehaviour() {
 		
-		button.didTouchUpInside = { [weak self] in
+		button.didTouchUpInside = { 
 			print("Right button pressed")
 		}
 		let tapG = UITapGestureRecognizer(target: self, action: #selector(handleTap))

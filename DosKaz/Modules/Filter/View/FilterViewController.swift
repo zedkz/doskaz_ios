@@ -16,6 +16,7 @@ protocol FilterViewInput where Self: UIViewController {
 	func updateForm(with filter: Filter)
 	
 	var onRightButtonTouch: CommandWith<OverallScore> { get set }
+	var onSelectCategory: CommandWith<Category> { get set }
 }
 
 extension FilterViewController: FilterViewInput {
@@ -56,6 +57,7 @@ class FilterViewController: UIViewController {
 	let tableView = UITableView(frame: .zero, style: .plain)
 	let clearFilter = Button(type: .system)
 	var onRightButtonTouch: CommandWith<OverallScore> = .nop
+	var onSelectCategory: CommandWith<Category> = .nop
 	
 	var filter = Filter() {
 		didSet {
@@ -162,7 +164,7 @@ class FilterViewController: UIViewController {
 				icon: Asset.fontAwesome(categ.icon),
 				rightIcon: "chevron_right_passive",
 				onRightButtonTouch: CommandWith {
-					print("Cate is chosen")
+					self.onSelectCategory.perform(with: categ)
 				}
 			)
 		}

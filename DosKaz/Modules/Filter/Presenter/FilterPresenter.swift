@@ -29,6 +29,9 @@ extension FilterPresenter: FilterViewOutput {
 			self.sharedFilter.acc[score]?.toggle()
 			self.view.updateForm(with: self.sharedFilter)
 		}
+		view.onSelectCategory  = CommandWith<Category> { category in
+			print("Category is", category)
+		}
 		interactor.loadCategories()
 		
 	}
