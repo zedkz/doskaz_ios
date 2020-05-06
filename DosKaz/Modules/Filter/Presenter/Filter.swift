@@ -13,6 +13,7 @@ class Filter {
 	static let shared = Filter()
 	
 	var acc: [OverallScore: Bool]
+	var cat: [Category]
 	
 	init() {
 		self.acc = [
@@ -20,6 +21,8 @@ class Filter {
 			OverallScore.partialAccessible: false,
 			OverallScore.notAccessible: true
 		]
+		
+		self.cat = [Category]()
 		
 	}
 	

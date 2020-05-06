@@ -29,7 +29,7 @@ extension FilterPresenter: FilterViewOutput {
 			self.sharedFilter.acc[score]?.toggle()
 			self.view.updateForm(with: self.sharedFilter)
 		}
-		view.makeForm(with: sharedFilter)
+		interactor.loadCategories()
 		
 	}
 
@@ -44,7 +44,8 @@ protocol FilterInteractorOutput: class {
 
 extension FilterPresenter: FilterInteractorOutput {
 	func didLoad(_ categories: [Category]) {
-		debugPrint(categories)
+		sharedFilter.cat = categories
+		view.makeForm(with: sharedFilter)
 	}
 	
 	func didFailLoadCategories(with error: Error) {

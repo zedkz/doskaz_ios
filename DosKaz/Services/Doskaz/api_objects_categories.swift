@@ -24,7 +24,7 @@ struct APICategories: DoskazRequest {
 
 
 // MARK: - CategoryElement
-struct Category: Codable {
+struct Category: Codable, Equatable, Hashable {
 	let id: Int
 	let title: String
 	let icon: String?
