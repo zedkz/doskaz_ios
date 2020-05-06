@@ -11,19 +11,22 @@ import UIKit
 /// Data source class for section of the
 /// table view. It also registers the cell
 /// needed for dequeuing
-class TableViewDataSource<Props, Cell>: NSObject, UITableViewDataSource where Cell: UITableViewCell {
+class TableViewDataSource<Props, Cell>: NSObject, UITableViewDataSource, HasTitle where Cell: UITableViewCell {
 	
 	typealias CellConfigurator = (Props, Cell) -> Void
 	
 	var cellsProps: [Props]
+	var sectionTitle = ""
 	private let reuseIdentifier: String
 	private let cellConfigurator: CellConfigurator
 
 	init(_ tableView: UITableView,
+			 _ sectionTitle: String = "",
 			 cellsProps: [Props] = [Props](),
 			 reuseIdentifier: String = Cell.reuseIdentifier,
 			 cellConfigurator: @escaping CellConfigurator) {
 		tableView.register(Cell.self, forCellReuseIdentifier: reuseIdentifier)
+		self.sectionTitle = sectionTitle
 		self.cellsProps = cellsProps
 		self.reuseIdentifier = reuseIdentifier
 		self.cellConfigurator = cellConfigurator
@@ -41,12 +44,22 @@ class TableViewDataSource<Props, Cell>: NSObject, UITableViewDataSource where Ce
 	}
 }
 
+protocol HasTitle {
+	var sectionTitle: String { get }
+}
+
+typealias TableViewSection = UITableViewDataSource & HasTitle
+
 /// Data source class for all the sections of the
 /// table view. It's made my combining TableViewDataSource
 class SectionedTableViewDataSource: NSObject {
-	private let dataSources: [UITableViewDataSource]
+	private let dataSources: [TableViewSection]
 	
-	init(dataSources: [UITableViewDataSource]) {
+	var titles: [String] {
+		return dataSources.map{ $0.sectionTitle }
+	}
+	
+	init(dataSources: [TableViewSection]) {
 		self.dataSources = dataSources
 	}
 }

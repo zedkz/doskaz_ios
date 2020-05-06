@@ -77,10 +77,13 @@ class FilterViewController: UIViewController {
 		tableView.tableFooterView = UIView()
 		
 		/// Data sources
-		sectionOneDataSource = TableViewDataSource(tableView) { $1.props = $0 }
-		sectionTwoDataSource = TableViewDataSource(tableView) { $1.props = $0 }
-		tableViewDataSource = SectionedTableViewDataSource(dataSources: [sectionOneDataSource, sectionTwoDataSource])
+		sectionOneDataSource = TableViewDataSource(tableView, "Dostip") { $1.props = $0 }
+		sectionTwoDataSource = TableViewDataSource(tableView, "Catego") { $1.props = $0 }
+		tableViewDataSource  = SectionedTableViewDataSource(dataSources: [sectionOneDataSource, sectionTwoDataSource])
 		tableView.dataSource = tableViewDataSource
+		
+		/// Header views for sections
+		tableView.delegate = self
 		
 		/// Table view layout
 		view.addSubview(tableView)
@@ -134,6 +137,17 @@ class FilterViewController: UIViewController {
 		
 		sectionTwoDataSource.cellsProps = cells
 		tableView.reloadData()
+	}
+	
+}
+
+extension FilterViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let cell = UITableViewCell()
+		cell.backgroundColor = .systemBlue
+		cell.textLabel?.textColor = .gray
+		cell.textLabel?.text = tableViewDataSource.titles[section]
+		return cell
 	}
 	
 }
