@@ -52,6 +52,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case objectAccessibility = "Доступность объекта"
 	case objectCategories = "Категории объектов"
 	case done = "Готово"
+	case pickAll = "Выбрать всё"
+	case clearAll = "Сбросить"
 	
 	var l10n: String {
 		return self.rawValue.localized

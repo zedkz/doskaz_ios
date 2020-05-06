@@ -6,7 +6,7 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
 class TableViewController: UIViewController {
 	let tableView = UITableView()
@@ -23,6 +23,27 @@ class TableViewController: UIViewController {
 
 class ObjectCategoryPickerViewController: TableViewController {
 		
+	var category: Category! {
+		didSet {
+			navigationItem.title = category.title
+			updateCellsProps()
+		}
+	}
+
+	func updateCellsProps() {
+		cellsProps = category.subCategories.map { subCategory in
+			return BasicCell.Props(
+				text: subCategory.title,
+				icon: Asset.fontAwesome(subCategory.icon),
+				rightIcon: Filter.shared.icon(category, sub: subCategory),
+				onRightButtonTouch: Command {
+					Filter.shared.toggle(self.category, subCategory)
+					self.updateCellsProps()
+					self.render(cellsProps: self.cellsProps)
+				}
+			)
+		}
+	}
 	var cellsProps = [BasicCell.Props]()
 	
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
@@ -34,7 +55,19 @@ class ObjectCategoryPickerViewController: TableViewController {
 	}
 	
 	private func render(cellsProps: [BasicCell.Props]) {
+		let pickAll = BasicCell.Props(
+			text: l10n(.pickAll),
+			icon: Asset.local("confirm_button"),
+			rightIcon: Filter.shared.iconPickAll(for: category),
+			onRightButtonTouch: Command {
+				Filter.shared.toggleAll(for: self.category)
+				self.updateCellsProps()
+				self.render(cellsProps: self.cellsProps)
+			}
+		)
+		
 		dataSource.cellsProps = cellsProps
+		dataSource.cellsProps.insert(pickAll, at: 0)
 		tableView.reloadData()
 	}
 	

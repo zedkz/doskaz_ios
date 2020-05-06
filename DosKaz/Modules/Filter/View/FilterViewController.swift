@@ -125,7 +125,7 @@ class FilterViewController: UIViewController {
 			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
 		)
 		
-		clearFilter.setTitle(l10n(.showOnMap), for: .normal)
+		clearFilter.setTitle(l10n(.clearAll), for: .normal)
 	}
 
 	private func updateFirstSectionData() {

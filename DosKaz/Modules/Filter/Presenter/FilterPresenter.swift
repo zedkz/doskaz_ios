@@ -30,14 +30,7 @@ extension FilterPresenter: FilterViewOutput {
 			self.view.updateForm(with: self.sharedFilter)
 		}
 		view.onSelectCategory  = CommandWith<Category> { category in
-			let cellsProps = category.subCategories.map { categ in
-				return BasicCell.Props(
-					text: categ.title,
-					icon: Asset.fontAwesome(categ.icon),
-					rightIcon: "chevron_right_passive"
-				)
-			}
-			self.router.presentPicker(with: self.view, cellsProps, category: category)
+			self.router.presentPicker(with: self.view, category: category)
 		}
 		interactor.loadCategories()
 		
