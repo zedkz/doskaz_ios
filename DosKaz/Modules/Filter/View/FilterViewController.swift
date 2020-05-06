@@ -29,6 +29,7 @@ extension FilterViewController: FilterViewInput {
 			action: #selector(closeFilterForm)
 		)
 		configureTableView()
+		configureButton()
 	}
 		
 	func updateForm(with filter: Filter) {
@@ -53,6 +54,7 @@ class FilterViewController: UIViewController {
 
 	var output: FilterViewOutput!
 	let tableView = UITableView(frame: .zero, style: .plain)
+	let clearFilter = Button(type: .system)
 	var onRightButtonTouch: CommandWith<OverallScore> = .nop
 	
 	var filter = Filter() {
@@ -87,8 +89,38 @@ class FilterViewController: UIViewController {
 		
 		/// Table view layout
 		view.addSubview(tableView)
-		tableView.addConstraintsProgrammatically
-		.pinToSuperSafeArea()
+		
+		view.addSubview(clearFilter)
+		
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		clearFilter.translatesAutoresizingMaskIntoConstraints = false
+		
+		let tc = [
+			tableView.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor),
+			tableView.topAnchor.constraint(equalTo: view.safeLayoutGuide.topAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor),
+		]
+		
+		let bc = [
+			clearFilter.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0),
+			clearFilter.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor),
+			clearFilter.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor),
+			clearFilter.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor),
+			clearFilter.heightAnchor.constraint(equalToConstant: 56)
+		]
+		
+		NSLayoutConstraint.activate(tc + bc)
+		
+	}
+	
+	private func configureButton() {
+		clearFilter.decorate(with:
+			Style.systemFont(size: 14),
+			Style.titleColor(color: .white),
+			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
+		)
+		
+		clearFilter.setTitle(l10n(.showOnMap), for: .normal)
 	}
 
 	private func updateFirstSectionData() {
