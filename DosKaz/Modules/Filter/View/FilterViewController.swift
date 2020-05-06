@@ -24,6 +24,9 @@ extension FilterViewController: FilterViewInput {
 	func setupInitialState() {
 		view.backgroundColor = .white
 		navigationItem.title = l10n(.filter)
+		let backItem = UIBarButtonItem()
+		backItem.title = l10n(.done)
+		navigationItem.backBarButtonItem = backItem
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			barButtonSystemItem: .cancel,
 			target: self,
