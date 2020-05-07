@@ -171,7 +171,7 @@ class FilterViewController: UIViewController {
 			return BasicCell.Props(
 				text: categ.title,
 				icon: Asset.fontAwesome(categ.icon),
-				count: filter.count(for: categ),
+				count: filter.count(for: categ).picked,
 				rightIcon: "chevron_right_passive",
 				onRightButtonTouch: CommandWith {
 					self.onSelectCategory.perform(with: categ)
