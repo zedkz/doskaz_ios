@@ -32,6 +32,10 @@ extension FilterPresenter: FilterViewOutput {
 		view.onSelectCategory  = CommandWith<Category> { category in
 			self.router.presentPicker(with: self.view, category: category)
 		}
+		view.onClearFilter = Command {
+			self.sharedFilter.reset()
+			self.view.updateForm(with: self.sharedFilter)
+		}
 		interactor.loadCategories()
 		
 	}

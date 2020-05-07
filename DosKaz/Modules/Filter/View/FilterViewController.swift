@@ -17,6 +17,7 @@ protocol FilterViewInput where Self: UIViewController {
 	
 	var onRightButtonTouch: CommandWith<OverallScore> { get set }
 	var onSelectCategory: CommandWith<Category> { get set }
+	var onClearFilter: Command { get set }
 }
 
 extension FilterViewController: FilterViewInput {
@@ -61,6 +62,7 @@ class FilterViewController: UIViewController {
 	let clearFilter = Button(type: .system)
 	var onRightButtonTouch: CommandWith<OverallScore> = .nop
 	var onSelectCategory: CommandWith<Category> = .nop
+	var onClearFilter: Command = .nop
 	
 	var filter = Filter() {
 		didSet {
@@ -132,6 +134,9 @@ class FilterViewController: UIViewController {
 		)
 		
 		clearFilter.setTitle(l10n(.clearAll), for: .normal)
+		clearFilter.didTouchUpInside = {
+			self.onClearFilter.perform()
+		}
 	}
 
 	private func updateFirstSectionData() {

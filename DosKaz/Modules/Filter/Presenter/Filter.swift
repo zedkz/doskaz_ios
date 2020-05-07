@@ -32,12 +32,25 @@ class Filter {
 	
 	init() {
 		self.acc = [
-			OverallScore.fullAccessible: true,
+			OverallScore.fullAccessible: false,
 			OverallScore.partialAccessible: false,
-			OverallScore.notAccessible: true
+			OverallScore.notAccessible: false
 		]
 		
 		self.cat = [Category]()
+		
+	}
+	
+	func reset(){
+		for (overallScore, _) in acc {
+			acc[overallScore] = false
+		}
+		
+		for (category, subStatuses) in catStatus {
+			for (subCategory, _) in subStatuses {
+				catStatus[category]?[subCategory] = false
+			}
+		}
 		
 	}
 	
