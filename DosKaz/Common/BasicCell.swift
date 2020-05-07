@@ -28,6 +28,19 @@ final class FormTextRow: Row<BasicCell>, RowType {
 }
 
 class ReverseButton: Button {
+		
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		if let imageView = imageView, let titleLabel = titleLabel {
+			let imw = imageView.frame.width
+			let tlw = titleLabel.frame.width
+
+
+			contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
+			titleEdgeInsets = UIEdgeInsets(top: 0, left: -((imw*2) + 8) , bottom: 0, right: 0)
+			imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -tlw*2)
+		}
+	}
 	
 }
 
@@ -83,12 +96,12 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	
 	let leftImageView = UIImageView()
 	let label = UILabel()
-	let button = Button()
+	let button = ReverseButton()
 	
 	//MARK: - Private
 	
 	private func configureConstantData() {
-		
+		button.decorate(with: Style.titleColor(color: .black))
 	}
 	
 	private func configureStyle() {
