@@ -76,8 +76,30 @@ extension MoyaRequest {
 	}
 	
 	private func onMoyaRequestCompletion(_ result: Result<Moya.Response, MoyaError>) {
+		let defaultEntryDateFormatter: DateFormatter = {
+			let formatter = DateFormatter()
+			formatter.timeStyle = .short
+			formatter.dateStyle = .short
+			return formatter
+		}()
+		
+		let entry:(String,String) -> String = { (identifier, message) in
+			let date = defaultEntryDateFormatter.string(from: Date())
+			return """
+			---------------------------------------------------------------------------------------------
+			||| Moya_Logger: [\(date)] \(identifier):\n\(message)
+			---------------------------------------------------------------------------------------------
+			"""
+		}
 		switch result {
 		case let .success(response):
+			let message = """
+			||| [ Status Code: \(response.statusCode) ]
+			||| [ Method: \(response.request?.httpMethod ?? "Method is unknown")]
+			||| [ URL: \(response.request?.url?.description ?? "Path is unknown")]
+			"""
+			print(entry("Response", message))
+
 			parseData(response.data)
 		case let .failure(moyaError):
 			parseError(moyaError)
@@ -86,7 +108,7 @@ extension MoyaRequest {
 		
 }
 
-let multiProvider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin()])
+let multiProvider = MoyaProvider<MultiTarget>(plugins: [])
 
 extension MoyaRequest where Self: TargetType {
 	func dispatch() {
