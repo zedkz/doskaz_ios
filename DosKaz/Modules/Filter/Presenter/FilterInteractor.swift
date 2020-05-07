@@ -17,8 +17,12 @@ class FilterInteractor: FilterInteractorInput {
 	weak var output: FilterInteractorOutput!
 	
 	func loadCategories() {
+		let storedCats = CategoriesStorage.shared.retrieveCategories()
+		output.didLoad(storedCats)
+		
 		let onSuccess = { [weak self] (categories: [Category]) -> Void in
 			self?.output.didLoad(categories)
+			CategoriesStorage.shared.store(categories)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
