@@ -31,12 +31,14 @@ class DrawerViewController: UIViewController {
 	
 	override open func loadView() {
 		super.loadView()
-		view = DrawerView()
+		view = DrawerView(delegate: self)
 	}
 	
 	var drawerView: DrawerView {
 		return view as! DrawerView
 	}
+	
+	weak var delegate: DrawerViewDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -166,4 +168,10 @@ extension DrawerViewController: UITabBarDelegate {
 		}
 	}
 	
+}
+
+extension DrawerViewController: DrawerViewDelegate {
+	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition) {
+		delegate?.drawerView(drawerView, didChangePosition: position)
+	}
 }

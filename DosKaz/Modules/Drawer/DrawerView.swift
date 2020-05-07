@@ -8,6 +8,18 @@
 
 import UIKit
 
+/// A protocol for the drawer view to update its delegate about selected items.
+public protocol DrawerViewDelegate: class {
+		
+	/// Called when the drawer changed its position.
+	///
+	/// - Parameters:
+	///   - drawerView: The drawer view.
+	///   - position: The drawer position.
+	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition)
+	
+}
+
 /// A container view that slides up from the bottom over a parent view. Can be
 /// minimized, cover the bottom half of the view or display fullscreen
 /// (parent view is hidden).
@@ -17,10 +29,12 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	
 	/// Designated initializer.
 	
+	private weak var delegate: DrawerViewDelegate?
+	
 	private var drawerPanner: DrawerPanner?
 	
-	public init() {
-		
+	public init(delegate: DrawerViewDelegate) {
+		self.delegate = delegate
 		currentPosition = peekingPosition
 		
 		super.init(frame: .zero)
@@ -124,7 +138,8 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 		//delegate?.drawerView(self, willChangePosition: position)
 		//let previousPosition = currentPosition
 		currentPosition = position
-		
+		delegate?.drawerView(self, didChangePosition: self.currentPosition)
+
 		layoutIfNeeded()
 		func animatePan(completion panCompletion: (() -> Void)? = nil) {
 			UIView.animate(

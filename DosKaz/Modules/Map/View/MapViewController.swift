@@ -29,6 +29,7 @@ extension MapViewController: MapViewInput {
 		configureMapView()
 		configureNavigationView()
 		addDrawerViewController()
+		configureChromeButtons()
 	}
 
 	func show(_ points: [Venue]) {
@@ -48,6 +49,7 @@ class MapViewController: UIViewController {
 	private var mapView: MKMapView!
 	private let regionRadius: CLLocationDistance = 5000
 	private var searchController: UISearchController!
+	private let addButton = Button()
 	
 	var onSelectVenue: CommandWith<Int> = .nop
 	var onPressFilter: Command = .nop
@@ -62,6 +64,7 @@ class MapViewController: UIViewController {
 	let drawerVC = DrawerViewController()
 		
 	func addDrawerViewController() {
+		drawerVC.delegate = self
 		addChild(drawerVC)
 		view.addSubview(drawerVC.drawerView)
 		drawerVC.didMove(toParent: self)
@@ -116,6 +119,15 @@ class MapViewController: UIViewController {
 		searchController.searchBar.customize()
 	}
 	
+	private func configureChromeButtons() {
+		addButton.setImage(UIImage(named: "add_object"), for: .normal)
+		
+		view.addSubview(addButton)
+		addButton.translatesAutoresizingMaskIntoConstraints = false
+		addButton.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor, constant: -10).isActive = true
+		addButton.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor, constant: -10).isActive = true
+	}
+	
 	// MARK: - Helper methods
 	
 	private func centerMapOnLocation(location: CLLocation) {
@@ -141,3 +153,14 @@ extension MapViewController: MKMapViewDelegate {
 	}
 }
 
+extension MapViewController: DrawerViewDelegate {
+	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition) {
+		print("Position:", position.contentHeight)
+		let time = evaluate(addButton.alpha == 1.0, ifTrue: 0.0, ifFalse: 0.4)
+		UIView.animate(withDuration: time) {
+			let alpha: CGFloat = evaluate(position.contentHeight > 0, ifTrue: 0.0, ifFalse: 1.0)
+			self.addButton.alpha = alpha
+		}
+		
+	}
+}
