@@ -74,6 +74,12 @@ class FilterViewController: UIViewController {
 		output.viewIsReady()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		guard sectionTwoDataSource != nil else { return }
+		updateSecondSectionData()
+	}
+	
 	// MARK: - Private fields
 	
 	var sectionOneDataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
@@ -165,6 +171,7 @@ class FilterViewController: UIViewController {
 			return BasicCell.Props(
 				text: categ.title,
 				icon: Asset.fontAwesome(categ.icon),
+				count: filter.count(for: categ),
 				rightIcon: "chevron_right_passive",
 				onRightButtonTouch: CommandWith {
 					self.onSelectCategory.perform(with: categ)

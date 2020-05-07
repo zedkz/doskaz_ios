@@ -68,6 +68,12 @@ class Filter {
 		return isNotAllPicked
 	}
 	
+	func count(for category: Category) -> Int {
+		guard let subStatuses = catStatus[category] else { return 0 }
+		let onlyTrue = subStatuses.map { $1 }.filter { $0 == true }
+		return onlyTrue.count
+	}
+	
 	func iconPickAll(for category: Category) -> String {
 		return (!isNotAllPicked(for: category)).accIcon
 	}

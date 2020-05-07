@@ -75,6 +75,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	struct Props {
 		let text: String
 		let icon: Asset?
+		var count: Int = 0
 		var rightIcon: String
 		var onRightButtonTouch: Command = .nop
 	}
@@ -91,6 +92,9 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 			label.text = props.text
 			leftImageView.image = props.icon?.image
 			button.setImage(UIImage(named: props.rightIcon), for: .normal)
+			button.setTitle(String(props.count), for: .normal)
+			let color = evaluate(props.count == 0, ifTrue: UIColor.clear, ifFalse: .black)
+			button.decorate(with: Style.titleColor(color: color))
 		}
 	}
 	
@@ -101,7 +105,7 @@ class BasicCell: Cell<BasicCell.Props>, CellType {
 	//MARK: - Private
 	
 	private func configureConstantData() {
-		button.decorate(with: Style.titleColor(color: .black))
+		button.decorate(with: Style.titleColor(color: .clear))
 	}
 	
 	private func configureStyle() {
