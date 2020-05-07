@@ -20,7 +20,7 @@ class Filter {
 			var catStatus = [Category: [SubCategory: Bool]]()
 			cat.forEach { category in
 				let subCategoryStatuses = category.subCategories.map { subCategory in
-					return (subCategory,false)
+					return (subCategory, self.catStatus[category]?[subCategory] ?? false)
 				}
 				catStatus[category] = Dictionary(uniqueKeysWithValues: subCategoryStatuses)
 			}
