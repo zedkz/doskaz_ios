@@ -20,6 +20,7 @@
 		4404F253245F216100EB7184 /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F252245F216100EB7184 /* Eureka.swift */; };
 		4404F255245F2D9800EB7184 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F254245F2D9800EB7184 /* Asset.swift */; };
 		4404F25824602B0300EB7184 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F25724602B0300EB7184 /* Filter.swift */; };
+		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -127,6 +128,7 @@
 		4404F252245F216100EB7184 /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
 		4404F254245F2D9800EB7184 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		4404F25724602B0300EB7184 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				4404F250245F1D3700EB7184 /* Templates.swift */,
 				4404F252245F216100EB7184 /* Eureka.swift */,
 				4404F254245F2D9800EB7184 /* Asset.swift */,
+				4444E24524647BEE0035CA8A /* Archive.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
+				4444E24624647BEE0035CA8A /* Archive.swift in Sources */,
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,

@@ -10,10 +10,18 @@ import Foundation
 
 typealias SubCategory = Category
 
-class Filter {
+class Filter: Codable {
 	
-	static let shared = Filter()
-	
+	static var shared: Filter = {
+		if let filter = FilterStorage.shared.retrieveData() {
+			return filter
+		} else {
+			let filter = Filter()
+			FilterStorage.shared.store(filter)
+			return filter
+		}
+	}()
+
 	var acc: [OverallScore: Bool]
 	var cat: [Category] {
 		didSet {
@@ -97,3 +105,13 @@ extension Bool {
 		evaluate(self, ifTrue: "check_activated", ifFalse: "check_not_activated")
 	}
 }
+
+
+class FilterStorage: Archive {
+	typealias Model = Filter
+	
+	static let shared = FilterStorage()
+	
+	var fileName: String = "FilterStorageFile"
+}
+

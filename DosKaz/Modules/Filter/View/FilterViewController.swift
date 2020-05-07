@@ -50,6 +50,7 @@ extension FilterViewController: FilterViewInput {
 	}
 	
 	@objc func closeFilterForm() {
+		FilterStorage.shared.store(Filter.shared)
 		dismiss(animated: true, completion: nil)
 	}
 

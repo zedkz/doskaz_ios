@@ -15,9 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		setMockViewController(
-			UINavigationController(
-				rootViewController: FilterBuilder().assembleModule())
-			)
+			MainTabBarViewController()
+		)
 		return true
 	}
 	
@@ -50,6 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
+	
+	func applicationWillTerminate(_ application: UIApplication) {
+		FilterStorage.shared.store(Filter.shared)
+	}
 
 }
 
