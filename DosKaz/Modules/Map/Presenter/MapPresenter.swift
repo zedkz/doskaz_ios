@@ -26,11 +26,9 @@ protocol MapViewOutput {
 extension MapPresenter: MapViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
-		view.buildSearch(with: CommandWith<SearchResults> { [weak self] results in
+		view.buildSearch(with: CommandWith<SearchResults> { results in
 			print("search started", results)
 		})
-		
-		interactor.loadPointsOnMap()
 
 		view.onSelectVenue = CommandWith<Int> {
 			self.interactor.loadObject(with: $0)
@@ -40,7 +38,11 @@ extension MapPresenter: MapViewOutput {
 			guard let self = self else { return }
 			self.router.presentFilter(with: self.view)
 		}
-	}
+		
+		view.onRegionChanged = CommandWith<MapRect> { mapInfo in
+			self.interactor.loadPointsOnMap(with: mapInfo)
+		}
+ 	}
 
 }
 

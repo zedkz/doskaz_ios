@@ -53,11 +53,11 @@ class Venue: NSObject, MKAnnotation {
 	}
 	
 	var title: String? {
-		return locationName
+		return nil
 	}
 	
 	var subtitle: String? {
-		return locationName
+		return nil
 	}
 		
 	var imageName: String? {

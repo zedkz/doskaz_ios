@@ -7,7 +7,7 @@
 //
 
 protocol MapInteractorInput {
-	func loadPointsOnMap()
+	func loadPointsOnMap(with mapRect: MapRect)
 	func loadObject(with id: Int)
 }
 
@@ -17,7 +17,7 @@ class MapInteractor: MapInteractorInput {
 
 	weak var output: MapInteractorOutput!
 	
-	func loadPointsOnMap() {
+	func loadPointsOnMap(with mapRect: MapRect) {
 		
 		let onSuccess = { [weak self] (mapObjects: MapObjects) -> Void in
 			self?.output.didLoad(mapObjects.points)
@@ -30,8 +30,8 @@ class MapInteractor: MapInteractorInput {
 		let request = APIObjectsMap(
 			onSuccess: onSuccess,
 			onFailure: onFailure,
-			zoom: 14,
-			box: [52.2523,76.8384,52.3332,77.1021]
+			zoom: mapRect.zoomLevel,
+			box: mapRect.box
 		)
 		
 		request.dispatch()

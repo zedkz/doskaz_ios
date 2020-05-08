@@ -20,6 +20,7 @@ protocol MapViewInput where Self: UIViewController {
 	
 	var onSelectVenue: CommandWith<Int> { get set }
 	var onPressFilter: Command { get set }
+	var onRegionChanged: CommandWith<MapRect> { get set }
 }
 
 extension MapViewController: MapViewInput {
@@ -33,6 +34,7 @@ extension MapViewController: MapViewInput {
 	}
 
 	func show(_ points: [Venue]) {
+		oldAnnotations.append(contentsOf: mapView.annotations)
 		mapView.addAnnotations(points)
 	}
 	
@@ -43,6 +45,14 @@ extension MapViewController: MapViewInput {
 
 
 class MapViewController: UIViewController {
+	
+	var oldAnnotations = [MKAnnotation]() {
+		didSet {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+				self.mapView.removeAnnotations(self.oldAnnotations)
+			}
+		}
+	}
 
 	// MARK: Properties
 	var output: MapViewOutput!
@@ -53,6 +63,7 @@ class MapViewController: UIViewController {
 	
 	var onSelectVenue: CommandWith<Int> = .nop
 	var onPressFilter: Command = .nop
+	var onRegionChanged: CommandWith<MapRect> = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -139,6 +150,12 @@ class MapViewController: UIViewController {
 		mapView.setRegion(coordinateRegion, animated: true)
 	}
 	
+	private func center(on annotation: MKAnnotation) {		
+		var currentRegion = mapView.region
+		currentRegion.center = annotation.coordinate
+		mapView.setRegion(currentRegion, animated: true)
+	}
+	
 }
 
 
@@ -149,8 +166,25 @@ extension MapViewController: MKMapViewDelegate {
 		let location = view.annotation as! Venue
 		print(location.coordinate)
 		mapView.deselectAnnotation(view.annotation, animated: false)
+		center(on: location)
 		onSelectVenue.perform(with: location.id)
 	}
+	
+	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		print("Region has changed")
+		onRegionChanged.perform(with: MapRect(zoomLevel: mapView.zoomLevel, edges: mapView.edges))
+	}
+	
+
+	func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+		views.forEach { view in
+			view.alpha = 0
+			UIView.animate(withDuration: 0.3) {
+				view.alpha = 1.0
+			}
+		}
+	}
+	
 }
 
 extension MapViewController: DrawerViewDelegate {

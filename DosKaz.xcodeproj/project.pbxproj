@@ -39,6 +39,7 @@
 		445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7B2402E5F90072F4BC /* MapViewController.swift */; };
 		445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7D2402E5F90072F4BC /* MapModuleIO.swift */; };
 		445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */; };
+		445D51932465A2A800C2E02A /* MKMapView+Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D51922465A2A800C2E02A /* MKMapView+Zoom.swift */; };
 		44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D88241385EA006EB35D /* DrawerViewController.swift */; };
 		44653D8B24138610006EB35D /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8A24138610006EB35D /* DrawerView.swift */; };
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
@@ -146,6 +147,7 @@
 		445CDC7B2402E5F90072F4BC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		445CDC7D2402E5F90072F4BC /* MapModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModuleIO.swift; sourceTree = "<group>"; };
 		445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapConfigurator.swift; sourceTree = "<group>"; };
+		445D51922465A2A800C2E02A /* MKMapView+Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Zoom.swift"; sourceTree = "<group>"; };
 		44653D88241385EA006EB35D /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		44653D8A24138610006EB35D /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				4404F252245F216100EB7184 /* Eureka.swift */,
 				4404F254245F2D9800EB7184 /* Asset.swift */,
 				4444E24524647BEE0035CA8A /* Archive.swift */,
+				445D51922465A2A800C2E02A /* MKMapView+Zoom.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				44ED11E524573EC5009B92BF /* VenueDescriptionConfigurator.swift in Sources */,
 				4404F24D245F0CD900EB7184 /* FilterConfigurator.swift in Sources */,
 				4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */,
+				445D51932465A2A800C2E02A /* MKMapView+Zoom.swift in Sources */,
 				4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */,
 				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
