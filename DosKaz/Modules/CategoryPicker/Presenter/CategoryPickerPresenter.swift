@@ -26,22 +26,18 @@ protocol CategoryPickerViewOutput {
 extension CategoryPickerPresenter: CategoryPickerViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
-		let categories = [
-			CategoryPickerViewController.Category(
-				name: "Люди, передвигающиеся на кресло-коляске",
-				imageName: "category_pick_ellipse",
-				onPickCategory: CommandWith<CategoryPickerViewController.Category> { category in
-					print(category)
-					self.router.presentMainTabbar()
-			}),
-			CategoryPickerViewController.Category(
-				name: "Люди с нарушением опорно-двигательного аппарата",
+		let handicaps = DisabilityCategories().load()
+		
+		let categories = handicaps.map { handicap in
+			return CategoryPickerViewController.Category(
+				name: handicap.title,
 				imageName: "category_pick_ellipse",
 				onPickCategory: CommandWith<CategoryPickerViewController.Category> { category in
 					print(category)
 					self.router.presentMainTabbar()
 			})
-		]
+		}
+		
 		view.update(with: categories)
 	}
 
