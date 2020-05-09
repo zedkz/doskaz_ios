@@ -60,6 +60,7 @@ class MapViewController: UIViewController {
 	private let regionRadius: CLLocationDistance = 5000
 	private var searchController: UISearchController!
 	private let addButton = Button()
+	private let addComplaint = Button()
 	
 	var onSelectVenue: CommandWith<Int> = .nop
 	var onPressFilter: Command = .nop
@@ -137,6 +138,13 @@ class MapViewController: UIViewController {
 		addButton.translatesAutoresizingMaskIntoConstraints = false
 		addButton.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor, constant: -10).isActive = true
 		addButton.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor, constant: -10).isActive = true
+		
+		addComplaint.setImage(UIImage(named: "add_complaint"), for: .normal)
+
+		view.addSubview(addComplaint)
+		addComplaint.translatesAutoresizingMaskIntoConstraints = false
+		addComplaint.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor, constant: -10).isActive = true
+		addComplaint.bottomAnchor.constraint(equalTo: addButton.safeLayoutGuide.topAnchor, constant: -16).isActive = true
 	}
 	
 	// MARK: - Helper methods
