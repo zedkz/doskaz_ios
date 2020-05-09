@@ -40,6 +40,8 @@
 		445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7D2402E5F90072F4BC /* MapModuleIO.swift */; };
 		445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */; };
 		445D51932465A2A800C2E02A /* MKMapView+Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D51922465A2A800C2E02A /* MKMapView+Zoom.swift */; };
+		445D51952466D92700C2E02A /* disabilityCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = 445D51942466D92700C2E02A /* disabilityCategories.json */; };
+		445D51972466D96800C2E02A /* local_disability_categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445D51962466D96800C2E02A /* local_disability_categories.swift */; };
 		44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D88241385EA006EB35D /* DrawerViewController.swift */; };
 		44653D8B24138610006EB35D /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8A24138610006EB35D /* DrawerView.swift */; };
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
@@ -148,6 +150,8 @@
 		445CDC7D2402E5F90072F4BC /* MapModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModuleIO.swift; sourceTree = "<group>"; };
 		445CDC7E2402E5F90072F4BC /* MapConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapConfigurator.swift; sourceTree = "<group>"; };
 		445D51922465A2A800C2E02A /* MKMapView+Zoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Zoom.swift"; sourceTree = "<group>"; };
+		445D51942466D92700C2E02A /* disabilityCategories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = disabilityCategories.json; sourceTree = "<group>"; };
+		445D51962466D96800C2E02A /* local_disability_categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = local_disability_categories.swift; sourceTree = "<group>"; };
 		44653D88241385EA006EB35D /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		44653D8A24138610006EB35D /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
@@ -507,6 +511,7 @@
 				44C376712407EAF60050961F /* DeveloperAssets.xcassets */,
 				44C37673240804680050961F /* Colors.xcassets */,
 				44C3767524083F050050961F /* Font.swift */,
+				445D51942466D92700C2E02A /* disabilityCategories.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 				4404F20F24597A0600EB7184 /* api_object_id.swift */,
 				4404F217245C966600EB7184 /* api_objects_search.swift */,
 				447DEC05246170A300AB5478 /* api_objects_categories.swift */,
+				445D51962466D96800C2E02A /* local_disability_categories.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -697,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44C37674240804680050961F /* Colors.xcassets in Resources */,
+				445D51952466D92700C2E02A /* disabilityCategories.json in Resources */,
 				4486E8A423F6EBF100E8AAB2 /* LaunchScreen.storyboard in Resources */,
 				44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */,
 				4486E8A123F6EBF100E8AAB2 /* Assets.xcassets in Resources */,
@@ -830,6 +837,7 @@
 				44ED11D72455B9EA009B92BF /* VenueViewController.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
+				445D51972466D96800C2E02A /* local_disability_categories.swift in Sources */,
 				44951D262447777E0029275F /* GreetingCell.swift in Sources */,
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
 				44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */,
