@@ -137,7 +137,7 @@ class MapViewController: UIViewController {
 		view.addSubview(addButton)
 		addButton.translatesAutoresizingMaskIntoConstraints = false
 		addButton.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor, constant: -10).isActive = true
-		addButton.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor, constant: -10).isActive = true
+		addButton.bottomAnchor.constraint(equalTo: drawerVC.drawerView.panningView.topAnchor, constant: -10).isActive = true
 		
 		addComplaint.setImage(UIImage(named: "add_complaint"), for: .normal)
 
@@ -198,10 +198,11 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: DrawerViewDelegate {
 	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition) {
 		print("Position:", position.contentHeight)
-		let time = evaluate(addButton.alpha == 1.0, ifTrue: 0.0, ifFalse: 0.4)
+		let time = evaluate(addButton.alpha == 1.0, ifTrue: 0.2, ifFalse: 0.5)
 		UIView.animate(withDuration: time) {
-			let alpha: CGFloat = evaluate(position.contentHeight > 0, ifTrue: 0.0, ifFalse: 1.0)
+			let alpha: CGFloat = evaluate(position.contentHeight > self.view.bounds.height/2, ifTrue: 0.0, ifFalse: 1.0)
 			self.addButton.alpha = alpha
+			self.addComplaint.alpha = alpha
 		}
 		
 	}

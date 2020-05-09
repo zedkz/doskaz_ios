@@ -140,7 +140,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 		currentPosition = position
 		delegate?.drawerView(self, didChangePosition: self.currentPosition)
 
-		layoutIfNeeded()
+		superview?.layoutIfNeeded()
 		func animatePan(completion panCompletion: (() -> Void)? = nil) {
 			UIView.animate(
 				withDuration: duration,
@@ -148,7 +148,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 				options: [.curveEaseOut],
 				animations: {
 					self.currentPanDistance = position.panDistance
-					self.layoutIfNeeded()
+					self.superview?.layoutIfNeeded()
 			},
 				completion: { (_) in
 					//self.delegate?.drawerView(self, didChangePosition: self.currentPosition)
@@ -243,7 +243,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	private let fullToPeekingAnimationDuration = 0.5
 	
 	/// The panning view.
-	private let panningView = UIView()
+	let panningView = UIView()
 	
 	// The content view for a view controller's view to be displayed.
 	private let contentView = UIScrollView()
