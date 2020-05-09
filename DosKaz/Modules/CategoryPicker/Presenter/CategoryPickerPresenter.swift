@@ -31,7 +31,7 @@ extension CategoryPickerPresenter: CategoryPickerViewOutput {
 		let categories = handicaps.map { handicap in
 			return CategoryPickerViewController.Category(
 				name: handicap.title,
-				imageName: "category_pick_ellipse",
+				imageName: handicap.icon,
 				onPickCategory: CommandWith<CategoryPickerViewController.Category> { category in
 					print(category)
 					self.router.presentMainTabbar()

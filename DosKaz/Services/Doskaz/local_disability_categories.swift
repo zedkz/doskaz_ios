@@ -32,6 +32,6 @@ struct DisabilityCategories {
 
 // MARK: - DisabilityElement
 struct Disability: Codable {
-	let key, title, categoryForAPI: String
+	let key, title, categoryForAPI, icon: String
 }
 

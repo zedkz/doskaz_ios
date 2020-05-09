@@ -1,14 +1,14 @@
 [
-	{"key": "movement", "title": "Люди, передвигающиеся на кресло-коляске", "categoryForAPI": "movement"},
-	{"key": "vision", "title": "Люди с инвалидностью по зрению", "categoryForAPI": "vision"},
-	{"key": "limb", "title": "Люди с нарушением опорно-двигательного аппарата", "categoryForAPI": "limb"},
-	{"key": "hearing", "title": "Люди с инвалидностью по слуху", "categoryForAPI": "hearing"},
-	{"key": "temporal", "title": "Временно травмированные люди", "categoryForAPI": "limb"},
-	{"key": "babyCarriage", "title": "Люди с детскими колясками", "categoryForAPI": "movement"},
-	{"key": "missingLimbs", "title": "Люди с отсутствующими конечностями", "categoryForAPI": "limb"},
-	{"key": "pregnant", "title": "Беременные женщины", "categoryForAPI": "limb"},
-	{"key": "intellectual", "title": "Люди с интелектуальной инвалидностью", "categoryForAPI": "intellectual"},
-	{"key": "agedPeople", "title": "Пожилые люди", "categoryForAPI": "limb"},
-	{"key": "justView", "title": "Просто посмотреть", "categoryForAPI": "movement"}
+	{"key": "movement", "title": "Люди, передвигающиеся на кресло-коляске", "categoryForAPI": "movement", "icon": "wheelchair"},
+	{"key": "vision", "title": "Люди с инвалидностью по зрению", "categoryForAPI": "vision", "icon": "visual_impairment" },
+	{"key": "limb", "title": "Люди с нарушением опорно-двигательного аппарата", "categoryForAPI": "limb", "icon": "musculoskeletal_system" },
+	{"key": "hearing", "title": "Люди с инвалидностью по слуху", "categoryForAPI": "hearing", "icon": "hearing_impairment" },
+	{"key": "temporal", "title": "Временно травмированные люди", "categoryForAPI": "limb", "icon": "temporarily_injured" },
+	{"key": "babyCarriage", "title": "Люди с детскими колясками", "categoryForAPI": "movement", "icon": "baby_carriage" },
+	{"key": "missingLimbs", "title": "Люди с отсутствующими конечностями", "categoryForAPI": "limb", "icon": "missing_limb" },
+	{"key": "pregnant", "title": "Беременные женщины", "categoryForAPI": "limb", "icon": "pregnant_women" },
+	{"key": "intellectual", "title": "Люди с интелектуальной инвалидностью", "categoryForAPI": "intellectual", "icon": "intellectual_disability" },
+	{"key": "agedPeople", "title": "Пожилые люди", "categoryForAPI": "limb", "icon": "aged_people" },
+	{"key": "justView", "title": "Просто посмотреть", "categoryForAPI": "movement", "icon": "without_category" }
 ]
 
