@@ -206,4 +206,13 @@ extension MapViewController: DrawerViewDelegate {
 		}
 		
 	}
+	
+	func drawerViewIsPanning(_ drawerView: DrawerView) {
+		let y = drawerView.panningView.frame.origin.y
+		UIView.animate(withDuration: 0.1) {
+			let alpha: CGFloat = evaluate(y < self.view.bounds.height/3, ifTrue: 0.0, ifFalse: 1.0)
+			self.addButton.alpha = alpha
+			self.addComplaint.alpha = alpha
+		}
+	}
 }

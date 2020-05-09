@@ -174,4 +174,8 @@ extension DrawerViewController: DrawerViewDelegate {
 	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition) {
 		delegate?.drawerView(drawerView, didChangePosition: position)
 	}
+	
+	func drawerViewIsPanning(_ drawerView: DrawerView) {
+		delegate?.drawerViewIsPanning(drawerView)
+	}
 }

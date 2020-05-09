@@ -18,6 +18,12 @@ public protocol DrawerViewDelegate: class {
 	///   - position: The drawer position.
 	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition)
 	
+	/// Called when the drawer is panning.
+	///
+	/// - Parameters:
+	///   - drawerView: The drawer view.
+	func drawerViewIsPanning(_ drawerView: DrawerView)
+	
 }
 
 /// A container view that slides up from the bottom over a parent view. Can be
@@ -448,6 +454,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 		switch panGestureRecognizer.state {
 		case .changed:
 			pan(distance: gestureDistance)
+			delegate?.drawerViewIsPanning(self)
 			let panDistanceBeyondBounds = -totalPanDistance - openFullPosition.contentHeight
 			if panDistanceBeyondBounds > 0 {
 				//contentView.contentOffset = CGPoint(x: 0, y: panDistanceBeyondBounds)
