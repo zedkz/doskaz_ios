@@ -46,6 +46,7 @@
 		44653D8B24138610006EB35D /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8A24138610006EB35D /* DrawerView.swift */; };
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
 		446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C524680C2300075A47 /* api_objects_attributes.swift */; };
+		446E78C82468402000075A47 /* api_objects_requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C72468402000075A47 /* api_objects_requests.swift */; };
 		447DEC06246170A300AB5478 /* api_objects_categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447DEC05246170A300AB5478 /* api_objects_categories.swift */; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
 		4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89B23F6EBEF00E8AAB2 /* ViewController.swift */; };
@@ -157,6 +158,7 @@
 		44653D8A24138610006EB35D /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
 		446E78C524680C2300075A47 /* api_objects_attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_attributes.swift; sourceTree = "<group>"; };
+		446E78C72468402000075A47 /* api_objects_requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_requests.swift; sourceTree = "<group>"; };
 		447DEC05246170A300AB5478 /* api_objects_categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_categories.swift; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				447DEC05246170A300AB5478 /* api_objects_categories.swift */,
 				445D51962466D96800C2E02A /* local_disability_categories.swift */,
 				446E78C524680C2300075A47 /* api_objects_attributes.swift */,
+				446E78C72468402000075A47 /* api_objects_requests.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */,
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				44ED11E824573EC5009B92BF /* VenueDescriptionViewController.swift in Sources */,
+				446E78C82468402000075A47 /* api_objects_requests.swift in Sources */,
 				4404F21024597A0600EB7184 /* api_object_id.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,

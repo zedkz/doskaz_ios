@@ -107,6 +107,7 @@ extension MoyaRequest {
 			||| [ URL: \(response.request?.url?.description ?? "Path is unknown")]
 			"""
 			print(entry("Response", message))
+//			print("Data,", String(data:response.data, encoding: .utf8) ?? "no data")
 
 			parseData(response.data)
 		case let .failure(moyaError):
