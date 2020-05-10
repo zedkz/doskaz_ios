@@ -45,6 +45,7 @@
 		44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D88241385EA006EB35D /* DrawerViewController.swift */; };
 		44653D8B24138610006EB35D /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8A24138610006EB35D /* DrawerView.swift */; };
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
+		446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C524680C2300075A47 /* api_objects_attributes.swift */; };
 		447DEC06246170A300AB5478 /* api_objects_categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447DEC05246170A300AB5478 /* api_objects_categories.swift */; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
 		4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89B23F6EBEF00E8AAB2 /* ViewController.swift */; };
@@ -155,6 +156,7 @@
 		44653D88241385EA006EB35D /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 		44653D8A24138610006EB35D /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
+		446E78C524680C2300075A47 /* api_objects_attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_attributes.swift; sourceTree = "<group>"; };
 		447DEC05246170A300AB5478 /* api_objects_categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_categories.swift; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				4404F217245C966600EB7184 /* api_objects_search.swift */,
 				447DEC05246170A300AB5478 /* api_objects_categories.swift */,
 				445D51962466D96800C2E02A /* local_disability_categories.swift */,
+				446E78C524680C2300075A47 /* api_objects_attributes.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,
 				445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */,
 				447DEC06246170A300AB5478 /* api_objects_categories.swift in Sources */,
+				446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */,
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
