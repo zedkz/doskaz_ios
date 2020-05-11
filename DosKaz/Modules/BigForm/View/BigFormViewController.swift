@@ -21,7 +21,7 @@ extension BigFormViewController: BigFormViewInput {
 		navigationItem.title = l10n(.addObject)
 		toLeftButton.setImage(UIImage(named: "chevron_left_active"), for: .normal)
 		toRightButton.setImage(UIImage(named: "chevron_right_active"), for: .normal)
-		formTitleLabel.text = "Simple Form"
+		currentTitleIndex = 0
 		
 		//MARK: - Configure style
 		view.backgroundColor = .white
@@ -30,6 +30,8 @@ extension BigFormViewController: BigFormViewInput {
 		formTitleLabel.decorate(with: Style.systemFont(size: 14))
 
 		//MARK: - Configure behavior
+		toLeftButton.addTarget(self, action: #selector(toLeft), for: .touchUpInside)
+		toRightButton.addTarget(self, action: #selector(toRight), for: .touchUpInside)
 	
 		//MARK: - Layout
 		view.addSubview(toLeftButton)
@@ -72,11 +74,37 @@ class BigFormViewController: UIViewController {
 	let toLeftButton = Button()
 	let toRightButton = Button()
 	let formTitleLabel = UILabel()
+	
+	private var titles = [l10n(.formSmall), l10n(.formMedium), l10n(.formFull)]
+	private var currentTitleIndex = 0 {
+		didSet {
+			func update(_ label: UILabel, with text: String) {
+				UIView.transition(
+					with: label,
+					duration: 0.25,
+					options: .transitionCrossDissolve,
+					animations: { [label] in label.text = text },
+					completion: nil
+				)
+			}
+			update(formTitleLabel, with: titles[currentTitleIndex])
+		}
+	}
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		output.viewIsReady()
+	}
+	
+	@objc func toLeft() {
+		guard currentTitleIndex > 0 else { return }
+		currentTitleIndex -= 1
+	}
+	
+	@objc func toRight() {
+		guard currentTitleIndex < 2 else { return }
+		currentTitleIndex += 1
 	}
 
 }

@@ -55,6 +55,9 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case pickAll = "Выбрать всё"
 	case clearAll = "Сбросить"
 	case addObject = "Добавить объект"
+	case formSmall = "Простая форма"
+	case formMedium = "Средняя форма"
+	case formFull = "Большая форма"
 	
 	var l10n: String {
 		return self.rawValue.localized
