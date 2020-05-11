@@ -66,6 +66,7 @@
 		448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC524693C8E006C9961 /* BigFormRouter.swift */; };
 		448EBACC24693C8F006C9961 /* BigFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC624693C8E006C9961 /* BigFormPresenter.swift */; };
 		448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC824693C8E006C9961 /* BigFormViewController.swift */; };
+		448EBACF24696985006C9961 /* FormControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBACE24696985006C9961 /* FormControllers.swift */; };
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
@@ -185,6 +186,7 @@
 		448EBAC524693C8E006C9961 /* BigFormRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormRouter.swift; sourceTree = "<group>"; };
 		448EBAC624693C8E006C9961 /* BigFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormPresenter.swift; sourceTree = "<group>"; };
 		448EBAC824693C8E006C9961 /* BigFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormViewController.swift; sourceTree = "<group>"; };
+		448EBACE24696985006C9961 /* FormControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormControllers.swift; sourceTree = "<group>"; };
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				448EBAC824693C8E006C9961 /* BigFormViewController.swift */,
+				448EBACE24696985006C9961 /* FormControllers.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
+				448EBACF24696985006C9961 /* FormControllers.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
 				448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,

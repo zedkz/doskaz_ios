@@ -6,7 +6,7 @@
 //  Copyright © 2020-05-11 07:55:30 +0000 lobster.kz. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
@@ -64,6 +64,10 @@ extension BigFormViewController: BigFormViewInput {
 			.pinEdgeToSupersSafe(.trailing, plus: -20)
 			.set(my: .height, to: height)
 			.set(my: .width, to: buttonWidth)
+		
+		// MARK: - Table Views for form
+		
+		add(asChildViewController: SmallFormViewController())
 	}
 
 }
@@ -74,6 +78,7 @@ class BigFormViewController: UIViewController {
 	let toLeftButton = Button()
 	let toRightButton = Button()
 	let formTitleLabel = UILabel()
+	var currentViewController: UIViewController!
 	
 	private var titles = [l10n(.formSmall), l10n(.formMedium), l10n(.formFull)]
 	private var currentTitleIndex = 0 {
@@ -105,6 +110,44 @@ class BigFormViewController: UIViewController {
 	@objc func toRight() {
 		guard currentTitleIndex < 2 else { return }
 		currentTitleIndex += 1
+	}
+	
+	private func add(asChildViewController viewController: UIViewController) {
+		guard viewController != currentViewController else { return }
+		
+		// If a VC's view was already added to the drawer, remove it.
+		if let currentViewController = currentViewController {
+			remove(asChildViewController: currentViewController)
+		}
+		
+		currentViewController = viewController
+
+		// Add Child View Controller
+		addChild(viewController)
+		
+		// Add Child View as Subview
+		view.addSubview(viewController.view)
+		
+		// Configure Child View
+		viewController.view.addConstraintsProgrammatically
+			.pinEdgeToSupersSafe(.leading)
+			.pinEdgeToSupersSafe(.trailing)
+			.pinEdgeToSupersSafe(.bottom)
+			.pin(my: .top, to: .bottom, of: toLeftButton)
+		
+		// Notify Child View Controller
+		viewController.didMove(toParent: self)
+	}
+	
+	private func remove(asChildViewController viewController: UIViewController) {
+		// Notify Child View Controller
+		viewController.willMove(toParent: nil)
+		
+		// Remove Child View From Superview
+		viewController.view.removeFromSuperview()
+		
+		// Notify Child View Controller
+		viewController.removeFromParent()
 	}
 
 }
