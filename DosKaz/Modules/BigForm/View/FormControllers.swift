@@ -61,27 +61,30 @@ class SmallFormViewController: TableViewController, HasForm {
 	}
 	
 	private func setup() {
-		genInfoSectionSource = TableViewDataSource(tableView, "General Information") { $1.props = $0}
+		tableView.register(cellClass: TextFormCell.self)
+		tableView.register(cellClass: BasicCell.self)
+		genInfoSectionSource = FormTableViewDataSource("General Information")
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 		tableView.tableFooterView = UIView()
+		tableView.keyboardDismissMode = .onDrag
 	}
 	
 	//MARK: - Update methods
 	private func update() {
-		let cellsProps = [
-			TextFormCell.Props(title: "Наименование")
+		let cellProps = TextFormCell.Props(title: "Наименование")
+		let configurators: [CellConfiguratorType] = [
+			CellConfigurator<TextFormCell>(props: cellProps),
 		]
-		
-		genInfoSectionSource.cellsProps = cellsProps
+		genInfoSectionSource.configurators = configurators
 		tableView.reloadData()
 	}
 	
 	//MARK: - Section Data Sources
 	private var dataSource: SectionedTableViewDataSource!
 	
-	private var genInfoSectionSource: TableViewDataSource<TextFormCell.Props, TextFormCell>!
+	private var genInfoSectionSource: FormTableViewDataSource!
 	
 }
 

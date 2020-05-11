@@ -8,7 +8,7 @@
 
 import SharedCodeFramework
 
-class TextFormCell: UITableViewCell {
+class TextFormCell: UITableViewCell, Updatable {
 	
 	//MARK: -inits
 	
