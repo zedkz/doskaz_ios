@@ -12,6 +12,7 @@ import SharedCodeFramework
 
 protocol BigFormViewInput where Self: UIViewController {
 	func setupInitialState()
+	var onPressReady: CommandWith<FullForm> { get set }
 }
 
 extension BigFormViewController: BigFormViewInput {
@@ -79,6 +80,8 @@ extension BigFormViewController: BigFormViewInput {
 class BigFormViewController: UIViewController {
 
 	var output: BigFormViewOutput!
+	var onPressReady: CommandWith<FullForm> = .nop
+
 	let toLeftButton = Button()
 	let toRightButton = Button()
 	let formTitleLabel = UILabel()
