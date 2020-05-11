@@ -69,6 +69,7 @@
 		448EBACF24696985006C9961 /* FormControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBACE24696985006C9961 /* FormControllers.swift */; };
 		448EBAD124696CA1006C9961 /* FormCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAD024696CA1006C9961 /* FormCells.swift */; };
 		448EBAD324699374006C9961 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAD224699374006C9961 /* CellConfigurator.swift */; };
+		448EBAD52469C8F8006C9961 /* UTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAD42469C8F8006C9961 /* UTableViewDataSource.swift */; };
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
@@ -191,6 +192,7 @@
 		448EBACE24696985006C9961 /* FormControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormControllers.swift; sourceTree = "<group>"; };
 		448EBAD024696CA1006C9961 /* FormCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCells.swift; sourceTree = "<group>"; };
 		448EBAD224699374006C9961 /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
+		448EBAD42469C8F8006C9961 /* UTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTableViewDataSource.swift; sourceTree = "<group>"; };
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			children = (
 				445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */,
 				445C3F382404432100131990 /* TableViewDataSource.swift */,
+				448EBAD42469C8F8006C9961 /* UTableViewDataSource.swift */,
 				44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */,
 				448A8A722431171000C81788 /* Sugar.swift */,
 				44F0EE27243CF874000B3022 /* Decorator.swift */,
@@ -864,6 +867,7 @@
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
 				44653D89241385EA006EB35D /* DrawerViewController.swift in Sources */,
 				44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */,
+				448EBAD52469C8F8006C9961 /* UTableViewDataSource.swift in Sources */,
 				44ED11D92455BA97009B92BF /* VenueView.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
