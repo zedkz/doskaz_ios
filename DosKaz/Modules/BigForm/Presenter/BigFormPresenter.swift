@@ -30,39 +30,7 @@ extension BigFormPresenter: BigFormViewOutput {
 		}
 	}
 	
-	private func submit(_ form: FullForm) {
-//		let first = First(
-//			name: "name",
-//			description: "desc",
-//			otherNames: "other",
-//			address: "adr",
-//			categoryId: 13,
-//			point: [3423,32423],
-//			videos: [FullFormPhoto(data: "dsf")],
-//			photos: [FullFormPhoto(data: "34")]
-//		)
-//		
-//		let parkingSection = FormSection(
-//			attributes: FormAttributeGenerator.generate(),
-//			comment: "dsf"
-//		)
-//		let entranceSection = FormSection(
-//			attributes: FormAttributeGenerator.generate(),
-//			comment: "dsf"
-//		)
-//		
-//		let form = FullForm(
-//			form: "small",
-//			first: first,
-//			parking: parkingSection,
-//			entrance1: entranceSection,
-//			movement: parkingSection,
-//			service: parkingSection,
-//			toilet: parkingSection,
-//			navigation: parkingSection,
-//			serviceAccessibility: parkingSection
-//		)
-		
+	private func submit(_ form: FullForm) {		
 		interactor.submit(form)
 	}
 
