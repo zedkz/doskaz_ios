@@ -23,16 +23,13 @@ class SmallFormViewController: TableViewController {
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
+		tableView.tableFooterView = UIView()
 	}
 	
 	//MARK: - Update methods
 	private func update() {
 		let cellsProps = [
-			BasicCell.Props(
-				text: "Gavel",
-				icon: Asset.fontAwesome("fa-gavel"),
-				rightIcon: "chevron_right_active"
-			)
+			TextFormCell.Props(title: "Наименование")
 		]
 		
 		genInfoSectionSource.cellsProps = cellsProps
@@ -42,7 +39,7 @@ class SmallFormViewController: TableViewController {
 	//MARK: - Section Data Sources
 	private var dataSource: SectionedTableViewDataSource!
 	
-	private var genInfoSectionSource: TableViewDataSource<BasicCell.Props, BasicCell>!
+	private var genInfoSectionSource: TableViewDataSource<TextFormCell.Props, TextFormCell>!
 	
 }
 
