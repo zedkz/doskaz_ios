@@ -17,8 +17,51 @@ protocol BigFormViewInput where Self: UIViewController {
 extension BigFormViewController: BigFormViewInput {
 
 	func setupInitialState() {
-		view.backgroundColor = .white
+		//MARK: - Configure constant data
 		navigationItem.title = l10n(.addObject)
+		toLeftButton.setImage(UIImage(named: "chevron_left_active"), for: .normal)
+		toRightButton.setImage(UIImage(named: "chevron_right_active"), for: .normal)
+		formTitleLabel.text = "Simple Form"
+		
+		//MARK: - Configure style
+		view.backgroundColor = .white
+		formTitleLabel.textAlignment = .center
+		formTitleLabel.textColor = .systemBlue
+		formTitleLabel.decorate(with: Style.systemFont(size: 14))
+
+		//MARK: - Configure behavior
+	
+		//MARK: - Layout
+		view.addSubview(toLeftButton)
+		view.addSubview(formTitleLabel)
+		view.addSubview(toRightButton)
+		
+//		toLeftButton.backgroundColor = .yellow
+//		toRightButton.backgroundColor = .yellow
+		
+		formTitleLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+		toLeftButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+		toRightButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+		
+		let height: CGFloat = 40
+		let buttonWidth: CGFloat = 28
+		toLeftButton.addConstraintsProgrammatically
+			.pinEdgeToSupersSafe(.top, plus: 12)
+			.pinEdgeToSupersSafe(.leading, plus: 20)
+			.set(my: .height, to: height)
+			.set(my: .width, to: buttonWidth)
+		
+		formTitleLabel.addConstraintsProgrammatically
+			.pin(my: .leading, to: .trailing, of: toLeftButton, plus: 8)
+			.pin(my: .verticalCenter, andOf: toLeftButton)
+			.set(my: .height, to: height)
+		
+		toRightButton.addConstraintsProgrammatically
+			.pin(my: .verticalCenter, andOf: toLeftButton)
+			.pin(my: .leading, to: .trailing, of: formTitleLabel, plus: 8)
+			.pinEdgeToSupersSafe(.trailing, plus: -20)
+			.set(my: .height, to: height)
+			.set(my: .width, to: buttonWidth)
 	}
 
 }
@@ -26,6 +69,9 @@ extension BigFormViewController: BigFormViewInput {
 class BigFormViewController: UIViewController {
 
 	var output: BigFormViewOutput!
+	let toLeftButton = Button()
+	let toRightButton = Button()
+	let formTitleLabel = UILabel()
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
