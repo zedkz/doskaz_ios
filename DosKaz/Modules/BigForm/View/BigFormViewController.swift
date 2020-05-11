@@ -19,6 +19,7 @@ extension BigFormViewController: BigFormViewInput {
 	func setupInitialState() {
 		//MARK: - Configure constant data
 		navigationItem.title = l10n(.addObject)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: l10n(.done), style: .done, target: self, action: #selector(formDone))
 		toLeftButton.setImage(UIImage(named: "chevron_left_active"), for: .normal)
 		toRightButton.setImage(UIImage(named: "chevron_right_active"), for: .normal)
 		
@@ -70,6 +71,9 @@ extension BigFormViewController: BigFormViewInput {
 		currentTitleIndex = 0
 	}
 
+	@objc func formDone() {
+		
+	}
 }
 
 class BigFormViewController: UIViewController {
