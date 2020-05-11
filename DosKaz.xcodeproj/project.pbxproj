@@ -67,6 +67,7 @@
 		448EBACC24693C8F006C9961 /* BigFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC624693C8E006C9961 /* BigFormPresenter.swift */; };
 		448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC824693C8E006C9961 /* BigFormViewController.swift */; };
 		448EBACF24696985006C9961 /* FormControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBACE24696985006C9961 /* FormControllers.swift */; };
+		448EBAD124696CA1006C9961 /* FormCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAD024696CA1006C9961 /* FormCells.swift */; };
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
@@ -187,6 +188,7 @@
 		448EBAC624693C8E006C9961 /* BigFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormPresenter.swift; sourceTree = "<group>"; };
 		448EBAC824693C8E006C9961 /* BigFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormViewController.swift; sourceTree = "<group>"; };
 		448EBACE24696985006C9961 /* FormControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormControllers.swift; sourceTree = "<group>"; };
+		448EBAD024696CA1006C9961 /* FormCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCells.swift; sourceTree = "<group>"; };
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			children = (
 				448EBAC824693C8E006C9961 /* BigFormViewController.swift */,
 				448EBACE24696985006C9961 /* FormControllers.swift */,
+				448EBAD024696CA1006C9961 /* FormCells.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
+				448EBAD124696CA1006C9961 /* FormCells.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,

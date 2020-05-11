@@ -7,7 +7,7 @@
 //
 
 protocol BigFormInteractorInput {
-
+	func submit(_ form: FullForm)
 }
 
 // MARK: Implementation
@@ -15,6 +15,20 @@ protocol BigFormInteractorInput {
 class BigFormInteractor: BigFormInteractorInput {
 
 	weak var output: BigFormInteractorOutput!
+	
+	func submit(_ form: FullForm) {
+		
+		let onSuccess = { [weak self] (noContent: Empty) -> Void in
+			debugPrint(noContent)
+			self?.output.didSucceedSubmitForm()
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailSubmitForm(with: error)
+		}
+		
+		APIAddObject(onSuccess: onSuccess, onFailure: onFailure, fullForm: form).dispatch()
+	}
 
 }
 		

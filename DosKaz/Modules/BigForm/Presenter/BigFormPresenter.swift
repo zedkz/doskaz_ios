@@ -24,15 +24,59 @@ extension BigFormPresenter: BigFormViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 	}
+	
+	private func submitForm() {
+		let first = First(
+			name: "name",
+			description: "desc",
+			otherNames: "other",
+			address: "adr",
+			categoryId: 13,
+			point: [3423,32423],
+			videos: [FullFormPhoto(data: "dsf")],
+			photos: [FullFormPhoto(data: "34")]
+		)
+		
+		let parkingSection = FormSection(
+			attributes: FormAttributeGenerator.generate(),
+			comment: "dsf"
+		)
+		let entranceSection = FormSection(
+			attributes: FormAttributeGenerator.generate(),
+			comment: "dsf"
+		)
+		
+		let form = FullForm(
+			form: "small",
+			first: first,
+			parking: parkingSection,
+			entrance1: entranceSection,
+			movement: parkingSection,
+			service: parkingSection,
+			toilet: parkingSection,
+			navigation: parkingSection,
+			serviceAccessibility: parkingSection
+		)
+		
+		interactor.submit(form)
+	}
 
 }
 
 // MARK: Interactor output protocol
 
 protocol BigFormInteractorOutput: class {
-
+	func didSucceedSubmitForm()
+	func didFailSubmitForm(with error: Error)
 }
 
 extension BigFormPresenter: BigFormInteractorOutput {
+	func didSucceedSubmitForm() {
+		print("didSucceedSubmitForm")
+	}
+	
+	func didFailSubmitForm(with error: Error) {
+		print("didFailSubmitForm with error: ",error.localizedDescription)
+	}
 
 }
