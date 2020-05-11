@@ -26,6 +26,11 @@ Description of what the lane does
 fastlane ios beta
 ```
 Upload adhoc version to diawi and send the link to email
+### ios adhoc
+```
+fastlane ios adhoc
+```
+Adhoc build
 
 ----
 

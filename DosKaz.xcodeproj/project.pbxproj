@@ -61,6 +61,11 @@
 		448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A4476240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift */; };
 		448A447F240C2E60007305D4 /* UISearchAppearanceCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A447E240C2E60007305D4 /* UISearchAppearanceCustomizer.swift */; };
 		448A8A732431171000C81788 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448A8A722431171000C81788 /* Sugar.swift */; };
+		448EBAC924693C8F006C9961 /* BigFormInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC324693C8E006C9961 /* BigFormInteractor.swift */; };
+		448EBACA24693C8F006C9961 /* BigFormConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC424693C8E006C9961 /* BigFormConfigurator.swift */; };
+		448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC524693C8E006C9961 /* BigFormRouter.swift */; };
+		448EBACC24693C8F006C9961 /* BigFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC624693C8E006C9961 /* BigFormPresenter.swift */; };
+		448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448EBAC824693C8E006C9961 /* BigFormViewController.swift */; };
 		4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EC24026CE900F70B40 /* AppSettings.swift */; };
 		4490E2EF2402711300F70B40 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2EE2402711300F70B40 /* Localization.swift */; };
 		4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4490E2F02402776500F70B40 /* StringResourceGenerator.swift */; };
@@ -175,6 +180,11 @@
 		448A4476240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewControllerConfigurator.swift; sourceTree = "<group>"; };
 		448A447E240C2E60007305D4 /* UISearchAppearanceCustomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchAppearanceCustomizer.swift; sourceTree = "<group>"; };
 		448A8A722431171000C81788 /* Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
+		448EBAC324693C8E006C9961 /* BigFormInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormInteractor.swift; sourceTree = "<group>"; };
+		448EBAC424693C8E006C9961 /* BigFormConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormConfigurator.swift; sourceTree = "<group>"; };
+		448EBAC524693C8E006C9961 /* BigFormRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormRouter.swift; sourceTree = "<group>"; };
+		448EBAC624693C8E006C9961 /* BigFormPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormPresenter.swift; sourceTree = "<group>"; };
+		448EBAC824693C8E006C9961 /* BigFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigFormViewController.swift; sourceTree = "<group>"; };
 		4490E2EC24026CE900F70B40 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4490E2EE2402711300F70B40 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		4490E2F02402776500F70B40 /* StringResourceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringResourceGenerator.swift; sourceTree = "<group>"; };
@@ -341,6 +351,7 @@
 				44ED11CB2455B9EA009B92BF /* Venue */,
 				44ED11DC24573EC5009B92BF /* VenueDescription */,
 				4404F243245F0CD900EB7184 /* Filter */,
+				448EBAC124693C8E006C9961 /* BigForm */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -462,6 +473,34 @@
 				448A4475240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift */,
 			);
 			path = Configurator;
+			sourceTree = "<group>";
+		};
+		448EBAC124693C8E006C9961 /* BigForm */ = {
+			isa = PBXGroup;
+			children = (
+				448EBAC724693C8E006C9961 /* View */,
+				448EBAC224693C8E006C9961 /* Presenter */,
+			);
+			path = BigForm;
+			sourceTree = "<group>";
+		};
+		448EBAC224693C8E006C9961 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				448EBAC624693C8E006C9961 /* BigFormPresenter.swift */,
+				448EBAC324693C8E006C9961 /* BigFormInteractor.swift */,
+				448EBAC524693C8E006C9961 /* BigFormRouter.swift */,
+				448EBAC424693C8E006C9961 /* BigFormConfigurator.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		448EBAC724693C8E006C9961 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				448EBAC824693C8E006C9961 /* BigFormViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4490E2EB24026CAA00F70B40 /* Services */ = {
@@ -801,10 +840,12 @@
 				446E78C82468402000075A47 /* api_objects_requests.swift in Sources */,
 				4404F21024597A0600EB7184 /* api_object_id.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
+				448EBACC24693C8F006C9961 /* BigFormPresenter.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,
 				445CDC812402E5F90072F4BC /* MapInteractor.swift in Sources */,
 				44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */,
+				448EBACA24693C8F006C9961 /* BigFormConfigurator.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
 				4404F255245F2D9800EB7184 /* Asset.swift in Sources */,
@@ -821,6 +862,7 @@
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
+				448EBAC924693C8F006C9961 /* BigFormInteractor.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
@@ -833,12 +875,14 @@
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
+				448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
 				445C3F342403F62800131990 /* CategoryPickerPresenter.swift in Sources */,
 				44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */,
 				448A447F240C2E60007305D4 /* UISearchAppearanceCustomizer.swift in Sources */,
 				445C3F362403F62800131990 /* CategoryPickerModuleIO.swift in Sources */,
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
+				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,
 				44B26BC72433EADD00E7B29C /* URLService.swift in Sources */,
 				44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */,
