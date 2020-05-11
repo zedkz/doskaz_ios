@@ -21,7 +21,7 @@ extension BigFormViewController: BigFormViewInput {
 		navigationItem.title = l10n(.addObject)
 		toLeftButton.setImage(UIImage(named: "chevron_left_active"), for: .normal)
 		toRightButton.setImage(UIImage(named: "chevron_right_active"), for: .normal)
-		currentTitleIndex = 0
+		
 		
 		//MARK: - Configure style
 		view.backgroundColor = .white
@@ -67,7 +67,7 @@ extension BigFormViewController: BigFormViewInput {
 		
 		// MARK: - Table Views for form
 		
-		add(asChildViewController: SmallFormViewController())
+		currentTitleIndex = 0
 	}
 
 }
@@ -78,8 +78,16 @@ class BigFormViewController: UIViewController {
 	let toLeftButton = Button()
 	let toRightButton = Button()
 	let formTitleLabel = UILabel()
-	var currentViewController: UIViewController!
+
+	//MARK: - Child view controllers
+	private var currentViewController: UIViewController!
+	private var childControllers = [
+		SmallFormViewController(),
+		MiddleFormViewController(),
+		FullFormViewController()
+	]
 	
+	//MARK: - Titles of tables
 	private var titles = [l10n(.formSmall), l10n(.formMedium), l10n(.formFull)]
 	private var currentTitleIndex = 0 {
 		didSet {
@@ -93,6 +101,8 @@ class BigFormViewController: UIViewController {
 				)
 			}
 			update(formTitleLabel, with: titles[currentTitleIndex])
+			
+			add(asChildViewController: childControllers[currentTitleIndex])
 		}
 	}
 
