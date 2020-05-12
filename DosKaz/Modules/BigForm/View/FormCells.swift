@@ -94,7 +94,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		validationLabel.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: titleLabel)
 			.pin(my: .top, to: .bottom, of: textField,plus: 2)
-			.pinEdgeToSupers(.bottom, plus: -12)
+			.pinEdgeToSupers(.bottom, plus: -8)
 			.pinEdgeToSupers(.trailing, plus: -22)
 		
 		set(mode: .onlyTextField)
@@ -109,12 +109,14 @@ class TextFormCell: UITableViewCell, Updatable {
 	var props: Props! {
 		didSet {
 			set(mode: props.mode)
+			handle(isShowRedAlert: props.isShowRedAlert)
 		}
 	}
 	
 	//MARK: - Sub types
 	struct Props {
 		var title: String
+		var isShowRedAlert: Bool = false
 		var mode: TextfieldMode = .onlyTextField
 	}
 	
@@ -137,6 +139,13 @@ class TextFormCell: UITableViewCell, Updatable {
 		contentView.setNeedsLayout()
 	}
 	
+	private func handle(isShowRedAlert: Bool) {
+		let color = evaluate(isShowRedAlert, ifTrue: UIColor.red, ifFalse: UIColor(named: "TextFieldBorderColor"))
+		textField.layer.borderColor = color?.cgColor
+		validationLabel.isHidden = !isShowRedAlert
+		contentView.setNeedsLayout()
+	}
+
 }
 
 enum TextfieldMode {
