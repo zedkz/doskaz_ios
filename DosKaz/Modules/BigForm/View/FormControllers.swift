@@ -8,6 +8,15 @@
 
 import UIKit
 
+class FormViewController: TableViewController {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		tableView.tableFooterView = UIView()
+		tableView.keyboardDismissMode = .onDrag
+		tableView.separatorStyle = .none
+	}
+}
+
 //MARL: - Type that produces form
 protocol HasForm {
 	var form: FullForm { get }
@@ -16,7 +25,7 @@ protocol HasForm {
 
 //MARK: - SmallFormViewController
 
-class SmallFormViewController: TableViewController, HasForm {
+class SmallFormViewController: FormViewController, HasForm {
 	
 	var form: FullForm {
 		let first = First(
@@ -67,8 +76,6 @@ class SmallFormViewController: TableViewController, HasForm {
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
-		tableView.tableFooterView = UIView()
-		tableView.keyboardDismissMode = .onDrag
 	}
 	
 	//MARK: - Update methods
@@ -102,7 +109,7 @@ extension SmallFormViewController: UITableViewDelegate {
 
 //MARK: - MiddleFormViewController
 
-class MiddleFormViewController: TableViewController {
+class MiddleFormViewController: FormViewController {
 	
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
 	
@@ -131,7 +138,7 @@ class MiddleFormViewController: TableViewController {
 
 //MARK: - FullFormViewController
 
-class FullFormViewController: TableViewController {
+class FullFormViewController: FormViewController {
 	
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
 	
