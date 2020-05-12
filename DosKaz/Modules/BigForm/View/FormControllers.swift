@@ -73,7 +73,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: BasicCell.self)
 		genInfoSectionSource = FormTableViewDataSource("General Information")
-		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
+		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource, genInfoSectionSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 	}
@@ -83,6 +83,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		let cellProps = TextFormCell.Props(title: "Наименование")
 		let configurators: [CellConfiguratorType] = [
 			CellConfigurator<TextFormCell>(props: cellProps),
+			CellConfigurator<TextFormCell>(props: cellProps)
 		]
 		genInfoSectionSource.configurators = configurators
 		tableView.reloadData()

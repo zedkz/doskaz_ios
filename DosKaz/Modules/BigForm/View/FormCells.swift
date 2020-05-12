@@ -38,25 +38,38 @@ class TextFormCell: UITableViewCell, Updatable {
 		}
 		
 		//MARK: - Configure constant data
-		textField.text = "ya know oeopyotototoep peppers and dida"
+		textField.text = "Астана"
 		textField.placeholder = "Наименование"
+		titleLabel.text = "Наличие оборудованных парковочных мест (Не менее 1 места на парковке)"
+		titleLabel.numberOfLines = 0
 		
 		//MARK: - Configure style
 		textField.borderStyle = .none
-		textField.layer.borderColor = UIColor.red.cgColor
+		textField.layer.borderColor = UIColor(named: "TextFieldBorderColor")?.cgColor
 		textField.layer.borderWidth = 1
 		textField.layer.cornerRadius = 3
+		textField.font = .systemFont(ofSize: 14)
+		titleLabel.decorate(with: Style.systemFont(size: 14))
 		
 		//MARK: - Configure behavior
 		//MARK: - Layout
+		contentView.addSubview(titleLabel)
 		contentView.addSubview(textField)
+		titleLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.top, plus: 8)
+			.pinEdgeToSupers(.leading,plus: 24)
+			.pinEdgeToSupers(.trailing, plus: -24)
+			.pin(my: .bottom, to: .top, of: textField, plus: -8)
 		textField.addConstraintsProgrammatically
-			.pinToSuper(inset: UIEdgeInsets(all: 8))
-			.set(my: .height, to: 50)
+			.pin(my: .leading, andOf: titleLabel)
+			.pinEdgeToSupers(.trailing, plus: -24)
+			.pinEdgeToSupers(.bottom, plus: -8)
+			.set(my: .height, to: 40)
 	}
 	
 	//MARK: - Public properties and methods
 	let textField = UITextField()
+	let titleLabel = UILabel()
 	
 	var props: Props! {
 		didSet {
