@@ -15,15 +15,37 @@ class TextFormCell: UITableViewCell, Updatable {
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 	}
+	@objc func handleTexfieldOverlay() {
+		print("dfnsjdnfsdfsdnfdsk")
+	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		//MARK: - Configure text field overlay
+		
+		if let overlayImage = UIImage(named: "available_16") {
+			let overlayButton = UIButton(type: .custom)
+			overlayButton.setImage(UIImage(named: "available_16"), for: .normal)
+			overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
+			overlayButton.frame = CGRect(x: 0, y: 0, width: overlayImage.size.width + 20, height: overlayImage.size.height)
+			
+			textField.rightView = overlayButton
+			textField.rightViewMode = .always
+			
+			let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
+			textField.leftView = spaceView
+			textField.leftViewMode = .always
+		}
 		
 		//MARK: - Configure constant data
+		textField.text = "ya know oeopyotototoep peppers and dida"
 		textField.placeholder = "Наименование"
 		
 		//MARK: - Configure style
-		textField.borderStyle = .roundedRect
+		textField.borderStyle = .none
+		textField.layer.borderColor = UIColor.red.cgColor
+		textField.layer.borderWidth = 1
+		textField.layer.cornerRadius = 3
 		
 		//MARK: - Configure behavior
 		//MARK: - Layout
