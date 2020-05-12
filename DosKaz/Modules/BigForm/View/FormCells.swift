@@ -55,6 +55,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		
 		//MARK: - Configure behavior
 		rightButton.addTarget(self, action: #selector(handleRightButtonTouch), for: .touchUpInside)
+		textField.delegate = self
 		
 		//MARK: - Layout
 		contentView.addSubview(titleLabel)
@@ -103,7 +104,9 @@ class TextFormCell: UITableViewCell, Updatable {
 				let overlayButton = UIButton(type: .custom)
 				overlayButton.setImage(overlayImage, for: .normal)
 				overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
-				overlayButton.frame = CGRect(x: 0, y: 0, width: overlayImage.size.width + 20, height: overlayImage.size.height)
+				overlayButton.addConstraintsProgrammatically
+					.set(my: .width, to: overlayImage.size.width + 20)
+					.set(my: .height, to: overlayImage.size.height)
 				
 				textField.rightView = overlayButton
 				textField.rightViewMode = .always
@@ -152,6 +155,10 @@ class TextFormCell: UITableViewCell, Updatable {
 		contentView.setNeedsLayout()
 	}
 
+}
+
+extension TextFormCell: UITextFieldDelegate {
+	
 }
 
 enum TextfieldMode {

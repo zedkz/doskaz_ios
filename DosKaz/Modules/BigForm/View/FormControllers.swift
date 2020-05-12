@@ -12,7 +12,7 @@ class FormViewController: TableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.tableFooterView = UIView()
-		tableView.keyboardDismissMode = .onDrag
+		
 		tableView.separatorStyle = .none
 	}
 }
