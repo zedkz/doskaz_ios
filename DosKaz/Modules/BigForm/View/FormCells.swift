@@ -28,28 +28,16 @@ class TextFormCell: UITableViewCell, Updatable {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		selectionStyle = .none
 		
-		//MARK: - Configure text field overlay
+		//MARK: - Configure text field left padding
 		
-		if let overlayImage = UIImage(named: "available_16") {
-			let overlayButton = UIButton(type: .custom)
-			overlayButton.setImage(UIImage(named: "available_16"), for: .normal)
-			overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
-			overlayButton.frame = CGRect(x: 0, y: 0, width: overlayImage.size.width + 20, height: overlayImage.size.height)
-			
-			textField.rightView = overlayButton
-			textField.rightViewMode = .always
-			
-			let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
-			textField.leftView = spaceView
-			textField.leftViewMode = .always
-		}
+		let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
+		textField.leftView = spaceView
+		textField.leftViewMode = .always
 		
 		//MARK: - Configure constant data
-		textField.text = "Астана"
-		textField.placeholder = "Наименование"
-		titleLabel.text = "Наличие оборудованных парковочных мест (Не менее 1 места на парковке)"
+		textField.placeholder = "-"
+		titleLabel.text = "-"
 		titleLabel.numberOfLines = 0
-		rightButton.setImage(UIImage(named: "clear_search"), for: .normal)
 		validationLabel.text = l10n(.fillTheField)
 		validationLabel.numberOfLines = 0
 		
@@ -110,12 +98,26 @@ class TextFormCell: UITableViewCell, Updatable {
 		didSet {
 			set(mode: props.mode)
 			handle(isShowRedAlert: props.isShowRedAlert)
+			titleLabel.text = props.title
+			if let imageName = props.overlay ,let overlayImage = UIImage(named: imageName) {
+				let overlayButton = UIButton(type: .custom)
+				overlayButton.setImage(overlayImage, for: .normal)
+				overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
+				overlayButton.frame = CGRect(x: 0, y: 0, width: overlayImage.size.width + 20, height: overlayImage.size.height)
+				
+				textField.rightView = overlayButton
+				textField.rightViewMode = .always
+			
+			}
+			
 		}
 	}
 	
 	//MARK: - Sub types
 	struct Props {
 		var title: String
+		var overlay: String?
+		var rightImage: String?
 		var isShowRedAlert: Bool = false
 		var mode: TextfieldMode = .onlyTextField
 	}
@@ -125,7 +127,9 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	private func set(mode: TextfieldMode) {
 		switch mode {
-		case .full:
+		case .full(let imageName):
+			rightButton.setImage(UIImage(named: imageName), for: .normal)
+			
 			buttonWidth.constant = 44.0
 			rightButton.isHidden = false
 		case .withoutButton:
@@ -149,7 +153,7 @@ class TextFormCell: UITableViewCell, Updatable {
 }
 
 enum TextfieldMode {
-	case full
+	case full(icon: String)
 	case withoutButton
 	case onlyTextField
 }

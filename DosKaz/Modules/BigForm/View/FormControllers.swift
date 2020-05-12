@@ -80,10 +80,13 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	//MARK: - Update methods
 	private func update() {
-		let cellProps = TextFormCell.Props(title: "Наименование", mode: .full)
-		let cellProps1 = TextFormCell.Props(title: "Наименование", mode: .withoutButton)
+		let exTitle = "Наличие оборудованных парковочных мест (Не менее 1 места на парковке)"
+		
+		
+		let cellProps = TextFormCell.Props(title: exTitle, mode: .full(icon:"clear_search"))
+		let cellProps1 = TextFormCell.Props(title: "Наименование", overlay: "available_16", mode: .withoutButton)
 		let cellProps2 = TextFormCell.Props(title: "Наименование", mode: .onlyTextField)
-		let cellProps3 = TextFormCell.Props(title: "Наименование")
+		let cellProps3 = TextFormCell.Props(title: "Наименование", overlay: "available_16")
 
 
 		let configurators: [CellConfiguratorType] = [
