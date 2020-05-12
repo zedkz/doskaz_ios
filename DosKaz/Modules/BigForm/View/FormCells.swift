@@ -82,17 +82,33 @@ class TextFormCell: UITableViewCell, Updatable {
 		textField.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: titleLabel)
 			.set(my: .height, to: 40)
+
+		textToButton = textField.addConstraintsProgrammatically
+			.pin(my: .trailing, to: .leading, of: rightButton)
+			.constraint
+		textToButton.isActive = false
+
+		textToSuper = textField.addConstraintsProgrammatically
+			.pinEdgeToSupers(.trailing, plus: -22)
+			.constraint
+		textToSuper.isActive = false
+		
+		let buttonWidth = rightButton.widthAnchor.constraint(equalToConstant: 44)
+		buttonWidth.priority = .defaultLow
+		buttonWidth.isActive = true
+
 		rightButton.addConstraintsProgrammatically
 			.pin(my: .top, andOf: textField)
 			.pin(my: .bottom, andOf: textField)
-			.pin(my: .leading, to: .trailing, of: textField)
-			.pinEdgeToSupers(.trailing, plus: -22)
-			.set(my: .width, to: 28)
+			.pinEdgeToSupers(.trailing)
+			
 		validationLabel.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: titleLabel)
 			.pin(my: .top, to: .bottom, of: textField,plus: 2)
 			.pinEdgeToSupers(.bottom, plus: -12)
 			.pinEdgeToSupers(.trailing, plus: -22)
+		
+		set(mode: .onlyTextField)
 	}
 	
 	//MARK: - Public properties and methods
@@ -103,13 +119,43 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	var props: Props! {
 		didSet {
-			
+			set(mode: props.mode)
 		}
 	}
 	
 	//MARK: - Sub types
 	struct Props {
 		var title: String
+		var mode: TextfieldMode = .onlyTextField
 	}
 	
+	//MARK: - Private
+	var textToButton: NSLayoutConstraint!
+	var textToSuper: NSLayoutConstraint!
+	
+	private func set(mode: TextfieldMode) {
+		switch mode {
+		case .full:
+			textToButton.isActive = true
+			textToSuper.isActive = false
+			rightButton.isHidden = false
+		case .withoutButton:
+			textToButton.isActive = true
+			textToSuper.isActive = false
+			rightButton.isHidden = true
+		case .onlyTextField:
+			textToButton.isActive = false
+			textToSuper.isActive = true
+			rightButton.isHidden = true
+		}
+		
+		contentView.setNeedsLayout()
+	}
+	
+}
+
+enum TextfieldMode {
+	case full
+	case withoutButton
+	case onlyTextField
 }
