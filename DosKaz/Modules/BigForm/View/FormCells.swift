@@ -82,25 +82,14 @@ class TextFormCell: UITableViewCell, Updatable {
 		textField.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: titleLabel)
 			.set(my: .height, to: 40)
-
-		textToButton = textField.addConstraintsProgrammatically
 			.pin(my: .trailing, to: .leading, of: rightButton)
-			.constraint
-		textToButton.isActive = false
-
-		textToSuper = textField.addConstraintsProgrammatically
-			.pinEdgeToSupers(.trailing, plus: -22)
-			.constraint
-		textToSuper.isActive = false
 		
-		let buttonWidth = rightButton.widthAnchor.constraint(equalToConstant: 44)
-		buttonWidth.priority = .defaultLow
-		buttonWidth.isActive = true
-
-		rightButton.addConstraintsProgrammatically
+		buttonWidth = rightButton.addConstraintsProgrammatically
 			.pin(my: .top, andOf: textField)
 			.pin(my: .bottom, andOf: textField)
 			.pinEdgeToSupers(.trailing)
+			.set(my: .width, to: 44)
+			.constraint
 			
 		validationLabel.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: titleLabel)
@@ -130,22 +119,18 @@ class TextFormCell: UITableViewCell, Updatable {
 	}
 	
 	//MARK: - Private
-	var textToButton: NSLayoutConstraint!
-	var textToSuper: NSLayoutConstraint!
+	var buttonWidth: NSLayoutConstraint!
 	
 	private func set(mode: TextfieldMode) {
 		switch mode {
 		case .full:
-			textToButton.isActive = true
-			textToSuper.isActive = false
+			buttonWidth.constant = 44.0
 			rightButton.isHidden = false
 		case .withoutButton:
-			textToButton.isActive = true
-			textToSuper.isActive = false
+			buttonWidth.constant = 44.0
 			rightButton.isHidden = true
 		case .onlyTextField:
-			textToButton.isActive = false
-			textToSuper.isActive = true
+			buttonWidth.constant = 22.0
 			rightButton.isHidden = true
 		}
 		
