@@ -50,6 +50,8 @@ class TextFormCell: UITableViewCell, Updatable {
 		titleLabel.text = "Наличие оборудованных парковочных мест (Не менее 1 места на парковке)"
 		titleLabel.numberOfLines = 0
 		rightButton.setImage(UIImage(named: "clear_search"), for: .normal)
+		validationLabel.text = l10n(.fillTheField)
+		validationLabel.numberOfLines = 0
 		
 		//MARK: - Configure style
 		textField.borderStyle = .none
@@ -59,6 +61,10 @@ class TextFormCell: UITableViewCell, Updatable {
 		textField.font = .systemFont(ofSize: 14)
 		titleLabel.decorate(with: Style.systemFont(size: 14))
 		
+		validationLabel.decorate(with: Style.systemFont(size: 12), { (label) in
+			label.textColor = .red
+		})
+		
 		//MARK: - Configure behavior
 		rightButton.addTarget(self, action: #selector(handleRightButtonTouch), for: .touchUpInside)
 		
@@ -66,6 +72,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(textField)
 		contentView.addSubview(rightButton)
+		contentView.addSubview(validationLabel)
 		
 		titleLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top, plus: 12)
@@ -80,14 +87,19 @@ class TextFormCell: UITableViewCell, Updatable {
 			.pin(my: .bottom, andOf: textField)
 			.pin(my: .leading, to: .trailing, of: textField)
 			.pinEdgeToSupers(.trailing, plus: -22)
-			.pinEdgeToSupers(.bottom, plus: -12)
 			.set(my: .width, to: 28)
+		validationLabel.addConstraintsProgrammatically
+			.pin(my: .leading, andOf: titleLabel)
+			.pin(my: .top, to: .bottom, of: textField,plus: 2)
+			.pinEdgeToSupers(.bottom, plus: -12)
+			.pinEdgeToSupers(.trailing, plus: -22)
 	}
 	
 	//MARK: - Public properties and methods
 	let textField = UITextField()
 	let titleLabel = UILabel()
 	let rightButton = Button()
+	let validationLabel = UILabel()
 	
 	var props: Props! {
 		didSet {
