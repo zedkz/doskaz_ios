@@ -17,11 +17,11 @@ class TextFormCell: UITableViewCell, Updatable {
 	}
 	
 	@objc func handleTexfieldOverlay() {
-		print("dfnsjdnfsdfsdnfdsk")
+		props.onOverlayTouch.perform()
 	}
 	
 	@objc func handleRightButtonTouch() {
-		textField.text = nil
+		props.onRightTouch.perform()
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -116,6 +116,8 @@ class TextFormCell: UITableViewCell, Updatable {
 	//MARK: - Sub types
 	struct Props {
 		var title: String
+		var onRightTouch: Command = .nop
+		var onOverlayTouch: Command = .nop
 		var overlay: String?
 		var rightImage: String?
 		var isShowRedAlert: Bool = false
