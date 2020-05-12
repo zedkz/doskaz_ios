@@ -56,14 +56,14 @@ class TextFormCell: UITableViewCell, Updatable {
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(textField)
 		titleLabel.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top, plus: 8)
+			.pinEdgeToSupers(.top, plus: 12)
 			.pinEdgeToSupers(.leading,plus: 24)
 			.pinEdgeToSupers(.trailing, plus: -24)
 			.pin(my: .bottom, to: .top, of: textField, plus: -8)
 		textField.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: titleLabel)
 			.pinEdgeToSupers(.trailing, plus: -24)
-			.pinEdgeToSupers(.bottom, plus: -8)
+			.pinEdgeToSupers(.bottom, plus: -12)
 			.set(my: .height, to: 40)
 	}
 	
