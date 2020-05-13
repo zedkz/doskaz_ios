@@ -37,6 +37,16 @@ class SmallFormViewController: FormViewController, HasForm {
 			point: [],
 			videos: [],
 			photos: [])
+//		let second = First(
+//			name: "name",
+//			description: "desc",
+//			otherNames: "other",
+//			address: "adr",
+//			categoryId: 13,
+//			point: [3423,32423],
+//			videos: [FullFormPhoto(data: "dsf")],
+//			photos: [FullFormPhoto(data: "34")]
+//		)
 		return first
 	}()
 	
