@@ -50,10 +50,10 @@ struct FullForm: Codable {
 
 // MARK: - First
 struct First: Codable {
-	let name, description, otherNames, address: String
-	let categoryId: Int
-	let point: [Double]
-	let videos, photos: [FullFormPhoto]
+	var name, description, otherNames, address: String
+	var categoryId: Int
+	var point: [Double]
+	var videos, photos: [FullFormPhoto]
 
 }
 

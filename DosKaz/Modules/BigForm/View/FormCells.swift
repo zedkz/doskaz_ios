@@ -6,6 +6,8 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
+typealias Text = CommandWith<String>
+
 import SharedCodeFramework
 
 class TextFormCell: UITableViewCell, Updatable {
@@ -22,6 +24,10 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	@objc func handleRightButtonTouch() {
 		props.onRightTouch.perform()
+	}
+	
+	@objc func handleTextfiled(_ textField: UITextField) {
+		props.onEditText.perform(with: textField.text ?? "")
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -67,6 +73,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
 		rightButton.addTarget(self, action: #selector(handleRightButtonTouch), for: .touchUpInside)
 		textField.delegate = self
+		textField.addTarget(self, action: #selector(handleTextfiled(_:)), for: .editingChanged)
 		
 		//MARK: - Layout
 		contentView.addSubview(titleLabel)
@@ -110,6 +117,7 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	var props: Props! {
 		didSet {
+			textField.text = props.text
 			set(mode: props.mode)
 			handle(isShowRedAlert: props.isShowRedAlert)
 			titleLabel.text = props.title
@@ -126,13 +134,15 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	//MARK: - Sub types
 	struct Props {
+		var text: String
 		var title: String
-		var onRightTouch: Command = .nop
-		var onOverlayTouch: Command = .nop
 		var overlay: String?
 		var rightImage: String?
 		var isShowRedAlert: Bool = false
 		var mode: TextfieldMode = .onlyTextField
+		var onRightTouch: Command = .nop
+		var onOverlayTouch: Command = .nop
+		var onEditText: Text = .nop
 	}
 	
 	//MARK: - Private
@@ -166,6 +176,13 @@ class TextFormCell: UITableViewCell, Updatable {
 }
 
 extension TextFormCell: UITextFieldDelegate {
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		props.onEditText.perform(with: textField.text ?? "")
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		props.onEditText.perform(with: textField.text ?? "")
+	}
 	
 }
 

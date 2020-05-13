@@ -27,18 +27,21 @@ protocol HasForm {
 
 class SmallFormViewController: FormViewController, HasForm {
 	
+	var first: First = {
+		var first = First(
+			name: "",
+			description: "",
+			otherNames: "",
+			address: "",
+			categoryId: 0,
+			point: [],
+			videos: [],
+			photos: [])
+		return first
+	}()
+	
 	var form: FullForm {
-		let first = First(
-			name: "name",
-			description: "desc",
-			otherNames: "other",
-			address: "adr",
-			categoryId: 13,
-			point: [3423,32423],
-			videos: [FullFormPhoto(data: "dsf")],
-			photos: [FullFormPhoto(data: "34")]
-		)
-		
+
 		let parkingSection = FormSection(
 			attributes: FormAttributeGenerator.generate(),
 			comment: "dsf"
@@ -80,28 +83,16 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	//MARK: - Update methods
 	private func update() {
-		let exTitle = "Наличие оборудованных парковочных мест (Не менее 1 места на парковке)"
 		
-		
-		let cellProps = TextFormCell.Props(title: exTitle, mode: .full(icon:"clear_search"))
-		let cellProps1 = TextFormCell.Props(title: "Наименование", overlay: "available_16", mode: .withoutButton)
-		let cellProps2 = TextFormCell.Props(title: "Наименование", mode: .onlyTextField)
-		let cellProps3 = TextFormCell.Props(title: "Наименование", overlay: "available_16")
-
+		let objectName = TextFormCell.Props(
+			text: first.name,
+			title: l10n(.objName),
+			mode: .full(icon: "help_in_form"),
+			onEditText: Text { self.first.name = $0 }
+		)
 
 		let configurators: [CellConfiguratorType] = [
-			CellConfigurator<TextFormCell>(props: cellProps),
-			CellConfigurator<TextFormCell>(props: cellProps1),
-			CellConfigurator<TextFormCell>(props: cellProps2),
-			CellConfigurator<TextFormCell>(props: cellProps3),
-			CellConfigurator<TextFormCell>(props: cellProps),
-			CellConfigurator<TextFormCell>(props: cellProps1),
-			CellConfigurator<TextFormCell>(props: cellProps2),
-			CellConfigurator<TextFormCell>(props: cellProps3),
-			CellConfigurator<TextFormCell>(props: cellProps),
-			CellConfigurator<TextFormCell>(props: cellProps1),
-			CellConfigurator<TextFormCell>(props: cellProps2),
-			CellConfigurator<TextFormCell>(props: cellProps3)
+			CellConfigurator<TextFormCell>(props: objectName)
 		]
 		genInfoSectionSource.configurators = configurators
 		tableView.reloadData()
