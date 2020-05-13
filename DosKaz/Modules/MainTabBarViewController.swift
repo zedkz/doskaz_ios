@@ -18,8 +18,12 @@ class MainTabBarViewController: UITabBarController {
 		tabBar.unselectedItemTintColor = UIColor(named: "UnselectedTabbarTintColor")
 		
 		let map = MapModuleConfigurator().assembleTab()
+		let blog = UnderConstruction().tab(with: "blog", title: l10n(.blog))
 		let instruction = InstructionViewController().tab(with: "instruction", title: l10n(.instruction))
-		viewControllers = [map,instruction]
+		let profile = UnderConstruction().tab(with: "user", title: l10n(.profile))
+		let more = UnderConstruction().tab(with: "more", title: l10n(.more))
+
+		viewControllers = [map,blog,instruction,profile, more]
 		
 	}
 
@@ -34,5 +38,35 @@ extension UIViewController {
 		let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: image)
 		navigationController.tabBarItem = tabBarItem
 		return navigationController
+	}
+}
+
+class UnderConstruction: UIViewController {
+	override func viewDidLoad() {
+		view.backgroundColor = .black
+		navigationItem.title = "Ведутся работы..."
+		let label = UILabel()
+		label.text = "Ведутся работы..."
+		label.decorate { (label) in
+			label.font = .systemFont(ofSize: 28, weight: .bold)
+			label.textAlignment = .center
+			label.numberOfLines = 0
+			label.textColor = .white
+		}
+		view.addSubview(label)
+		label.addConstraintsProgrammatically
+			.pinToSuper()
+		var ai: UIActivityIndicatorView
+		if #available(iOS 13.0, *) {
+			ai = UIActivityIndicatorView(style: .large)
+		} else {
+			ai = UIActivityIndicatorView(style: .whiteLarge)
+		}
+		ai.color = .systemTeal
+		view.addSubview(ai)
+		ai.addConstraintsProgrammatically
+			.pinEdgeToSupers(.verticalCenter, plus: -130)
+			.pinEdgeToSupers(.horizontalCenter)
+		ai.startAnimating()
 	}
 }
