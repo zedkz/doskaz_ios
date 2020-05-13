@@ -14,8 +14,9 @@ class InstructionViewController: UIViewController {
 	var contentView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
+		stack.spacing = 18
 		stack.isLayoutMarginsRelativeArrangement = true
-		stack.layoutMargins = UIEdgeInsets(all: 20)
+		stack.layoutMargins = UIEdgeInsets(all: 24)
 		return stack
 	}()
 	
@@ -27,6 +28,28 @@ class InstructionViewController: UIViewController {
 	let titleOne = UILabel()
 	let titleTwo = UILabel()
 	let titleThree = UILabel()
+	
+	
+	var picOne: UIImageView = {
+		let image = UIImage(named: "ins_pic_1")
+		let view = UIImageView(image: image)
+		view.contentMode = .scaleAspectFit
+		return view
+	}()
+	
+	var picTwo: UIImageView = {
+		let image = UIImage(named: "ins_pic_2")
+		let view = UIImageView(image: image)
+		view.contentMode = .scaleAspectFit
+		return view
+	}()
+	
+	var picThree: UIImageView = {
+		let image = UIImage(named: "ins_pic_2")
+		let view = UIImageView(image: image)
+		view.contentMode = .scaleAspectFit
+		return view
+	}()
 	
 	override func viewDidLoad() {
 		navigationItem.title = l10n(.instruction)
@@ -42,13 +65,13 @@ class InstructionViewController: UIViewController {
 		
 		contentView.addArrangedSubview(textZero)
 		contentView.addArrangedSubview(titleOne)
-
+		contentView.addArrangedSubview(picOne)
 		contentView.addArrangedSubview(textOne)
 		contentView.addArrangedSubview(titleTwo)
-
+		contentView.addArrangedSubview(picTwo)
 		contentView.addArrangedSubview(textTwo)
 		contentView.addArrangedSubview(titleThree)
-
+		contentView.addArrangedSubview(picThree)
 		contentView.addArrangedSubview(textThree)
 		
 		//MARK: Data
@@ -63,9 +86,17 @@ class InstructionViewController: UIViewController {
 		
 		//MARK: Style
 		[textZero,textOne,textTwo,textThree].forEach { label in
-			label.decorate { (label) in
+			label.decorate(with: Style.systemFont(size: 14) ,{ (label) in
 				label.numberOfLines = 0
-			}
+			})
+		}
+		
+		[titleOne,titleTwo,titleThree].forEach{ label in
+			label.decorate(with: Style.systemFont(size: 20, weight: .semibold) ,{ (label) in
+				label.numberOfLines = 0
+				label.textAlignment = .center
+
+			})
 		}
 		
 	}
