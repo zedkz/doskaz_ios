@@ -19,7 +19,7 @@ class MainTabBarViewController: UITabBarController {
 		
 		let map = MapModuleConfigurator().assembleTab()
 		let instruction = InstructionViewController().tab(with: "tab_map", title: "Instruction")
-		viewControllers = [instruction,map]
+		viewControllers = [map,instruction]
 		
 	}
 
