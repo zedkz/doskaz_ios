@@ -75,7 +75,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	private func setup() {
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: BasicCell.self)
-		genInfoSectionSource = FormTableViewDataSource("General Information")
+		genInfoSectionSource = FormTableViewDataSource(l10n(.genInfo))
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
@@ -109,11 +109,37 @@ class SmallFormViewController: FormViewController, HasForm {
 			mode: .withoutButton,
 			onEditText: Text { _ in self.first.point = [12,43] }
 		)
+		
+		let category = TextFormCell.Props(
+			text: "",
+			title: l10n(.objCategory),
+			overlay: "chevron_down",
+			mode: .full(icon: "help_in_form"),
+			onEditText: Text { print($0) }
+		)
+		
+		let subCategory = TextFormCell.Props(
+			text: "",
+			title: l10n(.objSubCategory),
+			overlay: "chevron_down",
+			mode: .full(icon: "help_in_form"),
+			onEditText: Text { print($0) }
+		)
+		
+		let videoLink = TextFormCell.Props(
+			text: "",
+			title: l10n(.videoLink),
+			mode: .full(icon: "x_in_form"),
+			onEditText: Text { print($0) }
+		)
 
 		let configurators: [CellConfiguratorType] = [
 			CellConfigurator<TextFormCell>(props: objectName),
 			CellConfigurator<TextFormCell>(props: address),
-			CellConfigurator<TextFormCell>(props: objOnmap)
+			CellConfigurator<TextFormCell>(props: objOnmap),
+			CellConfigurator<TextFormCell>(props: category),
+			CellConfigurator<TextFormCell>(props: subCategory),
+			CellConfigurator<TextFormCell>(props: videoLink)
 		]
 		genInfoSectionSource.configurators = configurators
 		tableView.reloadData()

@@ -62,6 +62,10 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case objName = "Наименование"
 	case objAddress = "Адрес"
 	case objOnMap = "Объект на карте"
+	case objCategory = "Категория"
+	case objSubCategory = "Подкатегория"
+	case videoLink = "Ссылка на видео (не обязательно)"
+	case genInfo = "Общая информация"
 	
 	var l10n: String {
 		return self.rawValue.localized
