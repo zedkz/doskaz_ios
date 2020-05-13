@@ -60,6 +60,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case formFull = "Большая форма"
 	case fillTheField = "Поле должно быть заполнено"
 	case objName = "Наименование"
+	case objAddress = "Адрес"
+	case objOnMap = "Объект на карте"
 	
 	var l10n: String {
 		return self.rawValue.localized

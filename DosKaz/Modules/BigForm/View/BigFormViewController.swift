@@ -74,7 +74,7 @@ extension BigFormViewController: BigFormViewInput {
 
 	@objc func formDone() {
 		guard let hasForm = currentViewController as? HasForm else { return }
-		print("Form: first: name:", hasForm.form.first.name)
+		print("Form: first:", hasForm.form.first)
 //		onPressReady.perform(with: hasForm.form)
 	}
 }

@@ -37,7 +37,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		//MARK: - Configure text field right view
 
 		rightViewWidth = overlayButton.addConstraintsProgrammatically
-			.set(my: .height, to: 16)
+			.set(my: .height, to: 40)
 			.set(my: .width, to: 16 + 20)
 			.constraint
 		

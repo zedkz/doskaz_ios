@@ -90,9 +90,30 @@ class SmallFormViewController: FormViewController, HasForm {
 			mode: .full(icon: "help_in_form"),
 			onEditText: Text { self.first.name = $0 }
 		)
+		
+		let address = TextFormCell.Props(
+			text: first.address,
+			title: l10n(.objAddress),
+			mode: .full(icon: "help_in_form"),
+			onEditText: Text { self.first.address = $0 }
+		)
+		
+		let points = first.point.reduce("") { (partial, point) -> String in
+			return partial + String(point)
+		}
+		
+		let objOnmap = TextFormCell.Props(
+			text: points,
+			title: l10n(.objOnMap),
+			overlay: "map_1",
+			mode: .withoutButton,
+			onEditText: Text { _ in self.first.point = [12,43] }
+		)
 
 		let configurators: [CellConfiguratorType] = [
-			CellConfigurator<TextFormCell>(props: objectName)
+			CellConfigurator<TextFormCell>(props: objectName),
+			CellConfigurator<TextFormCell>(props: address),
+			CellConfigurator<TextFormCell>(props: objOnmap)
 		]
 		genInfoSectionSource.configurators = configurators
 		tableView.reloadData()
