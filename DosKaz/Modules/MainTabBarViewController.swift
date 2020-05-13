@@ -18,7 +18,8 @@ class MainTabBarViewController: UITabBarController {
 		tabBar.unselectedItemTintColor = UIColor(named: "UnselectedTabbarTintColor")
 		
 		let map = MapModuleConfigurator().assembleTab()
-		viewControllers = [map]
+		let instruction = InstructionViewController().tab(with: "tab_map", title: "Instruction")
+		viewControllers = [instruction,map]
 		
 	}
 

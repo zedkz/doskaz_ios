@@ -20,6 +20,7 @@
 		4404F253245F216100EB7184 /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F252245F216100EB7184 /* Eureka.swift */; };
 		4404F255245F2D9800EB7184 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F254245F2D9800EB7184 /* Asset.swift */; };
 		4404F25824602B0300EB7184 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F25724602B0300EB7184 /* Filter.swift */; };
+		440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AC3BA246C152E00AAC348 /* InstructionViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
@@ -142,6 +143,7 @@
 		4404F252245F216100EB7184 /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
 		4404F254245F2D9800EB7184 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		4404F25724602B0300EB7184 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		440AC3BA246C152E00AAC348 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
@@ -279,6 +281,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		440AC3B9246C150A00AAC348 /* Instruction */ = {
+			isa = PBXGroup;
+			children = (
+				440AC3BA246C152E00AAC348 /* InstructionViewController.swift */,
+			);
+			path = Instruction;
+			sourceTree = "<group>";
+		};
 		445C3F282403F62800131990 /* CategoryPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +371,7 @@
 				44ED11DC24573EC5009B92BF /* VenueDescription */,
 				4404F243245F0CD900EB7184 /* Filter */,
 				448EBAC124693C8E006C9961 /* BigForm */,
+				440AC3B9246C150A00AAC348 /* Instruction */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -817,6 +828,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */,
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
 				448EBAD124696CA1006C9961 /* FormCells.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
