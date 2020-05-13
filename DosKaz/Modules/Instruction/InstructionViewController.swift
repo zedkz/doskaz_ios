@@ -13,18 +13,23 @@ class InstructionViewController: UIViewController {
 	let scrollView = UIScrollView()
 	var contentView: UIStackView = {
 		let stack = UIStackView()
+		stack.axis = .vertical
 		stack.isLayoutMarginsRelativeArrangement = true
 		stack.layoutMargins = UIEdgeInsets(all: 20)
 		return stack
 	}()
 	
+	let textZero = UILabel()
 	let textOne = UILabel()
+	let textTwo = UILabel()
+	let textThree = UILabel()
 	
 	let titleOne = UILabel()
 	let titleTwo = UILabel()
 	let titleThree = UILabel()
 	
 	override func viewDidLoad() {
+		navigationItem.title = l10n(.instruction)
 		view.backgroundColor = .white
 		view.addSubview(scrollView)
 		scrollView.addConstraintsProgrammatically
@@ -35,14 +40,33 @@ class InstructionViewController: UIViewController {
 			.pinToSuper()
 			.set(my: .width, .equal, to: .width, of: scrollView)
 		
+		contentView.addArrangedSubview(textZero)
+		contentView.addArrangedSubview(titleOne)
+
 		contentView.addArrangedSubview(textOne)
+		contentView.addArrangedSubview(titleTwo)
+
+		contentView.addArrangedSubview(textTwo)
+		contentView.addArrangedSubview(titleThree)
+
+		contentView.addArrangedSubview(textThree)
 		
 		//MARK: Data
-		textOne.text = """
-		Добро пожаловать!
+		textZero.text = l10n(.instructionTextZero)
+		textOne.text = l10n(.greeting1)
+		textTwo.text = l10n(.greeting2)
+		textThree.text = l10n(.greeting3)
 		
-		Приветствуем вас на онлайн-карте «Доступный Павлодар», с помощью которой вы сможете получить информацию о доступности городских объектов и услуг для людей, передвигающимся на креслах-колясках, маломобильных групп населения, а также людей с инвалидностью по зрению и слуху.
-		"""
+		titleOne.text = l10n(.greetingHeading1)
+		titleTwo.text = l10n(.greetingHeading2)
+		titleThree.text = l10n(.greetingHeading3)
+		
+		//MARK: Style
+		[textZero,textOne,textTwo,textThree].forEach { label in
+			label.decorate { (label) in
+				label.numberOfLines = 0
+			}
+		}
 		
 	}
 	
