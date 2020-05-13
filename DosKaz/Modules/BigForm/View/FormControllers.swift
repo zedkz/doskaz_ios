@@ -12,7 +12,7 @@ class FormViewController: TableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.tableFooterView = UIView()
-		
+		tableView.keyboardDismissMode = .interactive
 		tableView.separatorStyle = .none
 	}
 }
@@ -73,7 +73,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: BasicCell.self)
 		genInfoSectionSource = FormTableViewDataSource("General Information")
-		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource, genInfoSectionSource])
+		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 	}
@@ -90,6 +90,14 @@ class SmallFormViewController: FormViewController, HasForm {
 
 
 		let configurators: [CellConfiguratorType] = [
+			CellConfigurator<TextFormCell>(props: cellProps),
+			CellConfigurator<TextFormCell>(props: cellProps1),
+			CellConfigurator<TextFormCell>(props: cellProps2),
+			CellConfigurator<TextFormCell>(props: cellProps3),
+			CellConfigurator<TextFormCell>(props: cellProps),
+			CellConfigurator<TextFormCell>(props: cellProps1),
+			CellConfigurator<TextFormCell>(props: cellProps2),
+			CellConfigurator<TextFormCell>(props: cellProps3),
 			CellConfigurator<TextFormCell>(props: cellProps),
 			CellConfigurator<TextFormCell>(props: cellProps1),
 			CellConfigurator<TextFormCell>(props: cellProps2),

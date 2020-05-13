@@ -28,6 +28,16 @@ class TextFormCell: UITableViewCell, Updatable {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		selectionStyle = .none
 		
+		//MARK: - Configure text field right view
+
+		rightViewWidth = overlayButton.addConstraintsProgrammatically
+			.set(my: .height, to: 16)
+			.set(my: .width, to: 16 + 20)
+			.constraint
+		
+		textField.rightView = overlayButton
+		textField.rightViewMode = .always
+		
 		//MARK: - Configure text field left padding
 		
 		let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
@@ -54,6 +64,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		})
 		
 		//MARK: - Configure behavior
+		overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
 		rightButton.addTarget(self, action: #selector(handleRightButtonTouch), for: .touchUpInside)
 		textField.delegate = self
 		
@@ -94,6 +105,8 @@ class TextFormCell: UITableViewCell, Updatable {
 	let titleLabel = UILabel()
 	let rightButton = Button()
 	let validationLabel = UILabel()
+	let overlayButton = UIButton(type: .custom)
+	var rightViewWidth: NSLayoutConstraint!
 	
 	var props: Props! {
 		didSet {
@@ -101,16 +114,11 @@ class TextFormCell: UITableViewCell, Updatable {
 			handle(isShowRedAlert: props.isShowRedAlert)
 			titleLabel.text = props.title
 			if let imageName = props.overlay ,let overlayImage = UIImage(named: imageName) {
-				let overlayButton = UIButton(type: .custom)
 				overlayButton.setImage(overlayImage, for: .normal)
-				overlayButton.addTarget(self, action: #selector(handleTexfieldOverlay), for: .touchUpInside)
-				overlayButton.addConstraintsProgrammatically
-					.set(my: .width, to: overlayImage.size.width + 20)
-					.set(my: .height, to: overlayImage.size.height)
-				
-				textField.rightView = overlayButton
-				textField.rightViewMode = .always
-			
+				rightViewWidth.constant = 36
+			} else {
+				overlayButton.setImage(nil, for: .normal)
+				rightViewWidth.constant = 0
 			}
 			
 		}
