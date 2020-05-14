@@ -19,14 +19,17 @@ struct APIBlogPosts: DoskazRequest {
 	}
 	
 	var page: Int?
+	
+	var search: String?
 		
 	var method: Method { .get }
 	
 	var path: String { "blog/posts" }
 	
 	var task: Task {
-		let parameters = [
-			"page": page
+		let parameters: [String: Any?] = [
+			"page": page,
+			"search": search
 		]
 		let paramenters = parameters.compactMapValues{ $0 }
 		

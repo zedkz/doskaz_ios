@@ -6,13 +6,14 @@
 //  Copyright © 2020-05-14 17:21:04 +0000 lobster.kz. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
 protocol BlogsViewInput where Self: UIViewController {
 	func setupInitialState()
 	func updateTable(with cellsProps: [BlogCell.Props])
+	var onSearchFieldEdit: CommandWith<String> { get set }
 }
 
 extension BlogsViewController: BlogsViewInput {
@@ -35,6 +36,7 @@ class BlogsViewController: TableViewController {
 
 	var output: BlogsViewOutput!
 	var dataSource: UTableViewDataSource<BlogCell>!
+	var onSearchFieldEdit: CommandWith<String> = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -77,7 +79,8 @@ class BlogsViewController: TableViewController {
 
 extension BlogsViewController: UISearchResultsUpdating {
 	func updateSearchResults(for searchController: UISearchController) {
-		
+		guard let text = searchController.searchBar.text else { return }
+		onSearchFieldEdit.perform(with: text)
 	}
 
 }
