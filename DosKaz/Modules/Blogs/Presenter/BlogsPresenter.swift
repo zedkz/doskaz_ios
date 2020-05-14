@@ -38,9 +38,10 @@ protocol BlogsInteractorOutput: class {
 extension BlogsPresenter: BlogsInteractorOutput {
 	func didload(_ blogResponse: BlogResponse) {
 		print("Blog post count:", blogResponse.items.count)
+		view.updateTable(with: blogResponse.items)
 	}
 	
 	func didFailLoadBlogResponse(with error: Error) {
-		
+		view.updateTable(with: [])
 	}
 }

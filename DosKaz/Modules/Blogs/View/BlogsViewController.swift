@@ -12,24 +12,33 @@ import UIKit
 
 protocol BlogsViewInput where Self: UIViewController {
 	func setupInitialState()
+	func updateTable(with items: [Item])
 }
 
 extension BlogsViewController: BlogsViewInput {
 
 	func setupInitialState() {
+		view.backgroundColor = .white
+		dataSource = UTableViewDataSource<BlogCell>(tableView)
+		tableView.dataSource = dataSource
+	}
 	
+	func updateTable(with items: [Item]) {
+		let cellsProps = items.map { BlogCell.Props(title: $0.title) }
+		dataSource.cellsProps = cellsProps
+		tableView.reloadData()
 	}
 
 }
 
-class BlogsViewController: UIViewController {
+class BlogsViewController: TableViewController {
 
 	var output: BlogsViewOutput!
+	var dataSource: UTableViewDataSource<BlogCell>!
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .white
 		output.viewIsReady()
 	}
 

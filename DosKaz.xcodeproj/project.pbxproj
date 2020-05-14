@@ -22,6 +22,7 @@
 		4404F25824602B0300EB7184 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F25724602B0300EB7184 /* Filter.swift */; };
 		440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AC3BA246C152E00AAC348 /* InstructionViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
+		44565DA1246DC28000476016 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44565DA0246DC28000476016 /* BlogCell.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -151,6 +152,7 @@
 		4404F25724602B0300EB7184 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		440AC3BA246C152E00AAC348 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		44565DA0246DC28000476016 /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				44EE3039246DB5B000926817 /* BlogsViewController.swift */,
+				44565DA0246DC28000476016 /* BlogCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				44ED11EA24573F0E009B92BF /* VenueDescriptionView.swift in Sources */,
 				44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */,
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
+				44565DA1246DC28000476016 /* BlogCell.swift in Sources */,
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,

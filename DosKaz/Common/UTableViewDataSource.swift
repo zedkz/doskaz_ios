@@ -27,7 +27,7 @@ where Cell: UITableViewCell, Cell: Updatable {
 			 _ sectionTitle: String = "",
 			 cellsProps: [Cell.CellProps] = [],
 			 reuseIdentifier: String = Cell.reuseIdentifier,
-			 cellConfigurator: @escaping CellConfigurator
+			 cellConfigurator: @escaping CellConfigurator = { _ in }
 	) {
 		tableView.register(Cell.self, forCellReuseIdentifier: reuseIdentifier)
 		self.sectionTitle = sectionTitle
