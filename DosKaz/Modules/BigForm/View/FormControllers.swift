@@ -19,7 +19,7 @@ class FormViewController: TableViewController {
 
 //MARL: - Type that produces form
 protocol HasForm {
-	var form: FullForm { get }
+	var form: FullForm? { get }
 }
 
 
@@ -50,7 +50,13 @@ class SmallFormViewController: FormViewController, HasForm {
 		return first
 	}()
 	
-	var form: FullForm {
+	
+	func validated(_ fullForm: FullForm) -> FullForm? {
+		update(isAfterValidation: true)
+		return evaluate(fullForm.first.name.isEmpty, ifTrue: nil, ifFalse: fullForm)
+	}
+	
+	var form: FullForm? {
 
 		let parkingSection = FormSection(
 			attributes: FormAttributeGenerator.generate(),
@@ -73,7 +79,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			serviceAccessibility: parkingSection
 		)
 		
-		return form
+		return validated(form)
 	}	
 	
 	override func viewDidLoad() {
@@ -92,9 +98,14 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	//MARK: - Update methods
-	private func update() {
+	private func update(isAfterValidation: Bool = false) {
+		
+		func shouldBeRed(_ condition: Bool) -> Bool {
+			return condition && isAfterValidation
+		}
 		
 		let objectName = TextFormCell.Props(
+			isShowRedAlert: shouldBeRed(first.name.isEmpty),
 			text: first.name,
 			title: l10n(.objName),
 			mode: .full(icon: "help_in_form"),

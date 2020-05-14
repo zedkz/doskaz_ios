@@ -134,11 +134,11 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	//MARK: - Sub types
 	struct Props {
+		var isShowRedAlert: Bool = false
 		var text: String
 		var title: String
 		var overlay: String?
 		var rightImage: String?
-		var isShowRedAlert: Bool = false
 		var mode: TextfieldMode = .onlyTextField
 		var onRightTouch: Command = .nop
 		var onOverlayTouch: Command = .nop
