@@ -12,7 +12,7 @@ import UIKit
 
 protocol BlogsViewInput where Self: UIViewController {
 	func setupInitialState()
-	func updateTable(with items: [Item])
+	func updateTable(with cellsProps: [BlogCell.Props])
 }
 
 extension BlogsViewController: BlogsViewInput {
@@ -24,8 +24,7 @@ extension BlogsViewController: BlogsViewInput {
 		configureTable()
 	}
 	
-	func updateTable(with items: [Item]) {
-		let cellsProps = items.map { BlogCell.Props(title: $0.title) }
+	func updateTable(with cellsProps: [BlogCell.Props]) {
 		dataSource.cellsProps = cellsProps
 		tableView.reloadData()
 	}

@@ -22,14 +22,20 @@ class BlogCell: UITableViewCell, Updatable {
 		titleLabel.numberOfLines = 0
 		
 		//MARK: - Configure style
+		picture.backgroundColor = .systemGray
 		//MARK: - Configure behavior
 		//MARK: - Layout
-		contentView.addSubview(titleLabel)
-		titleLabel.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top)
-			.pinEdgeToSupers(.leading)
-			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom)
+		contentView.addSubview(container)
+		
+		container.addConstraintsProgrammatically
+			.pinToSuper()
+		
+		container.addArrangedSubview(titleLabel)
+		container.addArrangedSubview(picture)
+		
+		picture.addConstraintsProgrammatically
+			.set(my: .height, to: 184)
+			
 	}
 	
 	//MARK: - Public properties and methods
@@ -38,11 +44,20 @@ class BlogCell: UITableViewCell, Updatable {
 			titleLabel.text = props.title
 		}
 	}
+	let container: UIStackView = {
+		let s = UIStackView()
+		s.axis = .vertical
+		s.isLayoutMarginsRelativeArrangement = true
+		s.layoutMargins = UIEdgeInsets(all: 24)
+		return s
+	}()
 	let titleLabel = UILabel()
+	let picture = UIImageView()
 	
 	//MARK: - Sub types
 	struct Props {
 		var title: String
+		var imageURL: String
 	}
 	
 }
