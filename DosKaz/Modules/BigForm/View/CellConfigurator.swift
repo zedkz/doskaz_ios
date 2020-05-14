@@ -14,10 +14,18 @@ protocol Updatable: class {
 	var props: CellProps! { get set }
 }
 
-protocol CellConfiguratorType {
+protocol CellConfiguratorType: HasValidatable{
 	var reuseIdentifier: String { get }
 	var onSelect: Command { get }
 	func update(cell: UITableViewCell)
+}
+
+protocol HasValidatable {
+	var validatable: Validatable? { get }
+}
+
+extension HasValidatable {
+	var validatable: Validatable? { nil }
 }
 
 struct CellConfigurator<Cell>: CellConfiguratorType where Cell: Updatable, Cell: UITableViewCell {
@@ -32,6 +40,9 @@ struct CellConfigurator<Cell>: CellConfiguratorType where Cell: Updatable, Cell:
 		}
 	}
 	
+	var validatable: Validatable? {
+		return props as? Validatable
+	}
 }
 
 class FormTableViewDataSource: NSObject, UITableViewDataSource, HasTitle {

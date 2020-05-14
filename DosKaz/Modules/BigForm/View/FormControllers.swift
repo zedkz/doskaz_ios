@@ -53,7 +53,8 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	func validated(_ fullForm: FullForm) -> FullForm? {
 		update(isAfterValidation: true)
-		return evaluate(fullForm.first.name.isEmpty, ifTrue: nil, ifFalse: fullForm)
+		let hasUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
+		return evaluate(hasUnfilledRow != nil, ifTrue: nil, ifFalse: fullForm)
 	}
 	
 	var form: FullForm? {
@@ -98,6 +99,9 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	//MARK: - Update methods
+	
+	var validatables = [Validatable?]()
+	
 	private func update(isAfterValidation: Bool = false) {
 		
 		func shouldBeRed(_ condition: Bool) -> Bool {
@@ -164,6 +168,12 @@ class SmallFormViewController: FormViewController, HasForm {
 		]
 		genInfoSectionSource.configurators = configurators
 		tableView.reloadData()
+		
+		validatables = configurators.map { $0.validatable }
+		
+		if let firstUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+			tableView.scrollToRow(at: IndexPath(row: firstUnfilledRow, section: 0), at: .top, animated: true)
+		}
 	}
 	
 	//MARK: - Section Data Sources
