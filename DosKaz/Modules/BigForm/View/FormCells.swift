@@ -186,6 +186,14 @@ extension TextFormCell: UITextFieldDelegate {
 	
 }
 
+extension TextFormCell.Props: Validatable {
+	
+}
+
+protocol Validatable  {
+	var canShowRedAlert: Bool { get set }
+}
+
 enum TextfieldMode {
 	case full(icon: String)
 	case withoutButton
