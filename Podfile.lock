@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (5.0.1)
   - FontAwesome.swift (1.9.0)
+  - Kingfisher (5.14.0):
+    - Kingfisher/Core (= 5.14.0)
+  - Kingfisher/Core (5.14.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -8,19 +11,22 @@ PODS:
 
 DEPENDENCIES:
   - FontAwesome.swift
+  - Kingfisher (~> 5.0)
   - Moya (~> 14.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - FontAwesome.swift
+    - Kingfisher
     - Moya
 
 SPEC CHECKSUMS:
   Alamofire: 41c162d645ba6a78e7fd030fcdaf6aa394ca39a0
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
+  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
 
-PODFILE CHECKSUM: 54769d29044cb29b11215b4af60b715558674191
+PODFILE CHECKSUM: 8b8f6bdfca07f2cc01aea3d9dfbcfae290c0718d
 
 COCOAPODS: 1.8.4

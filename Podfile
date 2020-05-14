@@ -12,5 +12,5 @@ target 'DosKaz' do
 
   pod 'Moya', '~> 14.0', :binary => true
 	pod 'FontAwesome.swift', :binary => true
-
+	pod 'Kingfisher', '~> 5.0', :binary => true
 end
