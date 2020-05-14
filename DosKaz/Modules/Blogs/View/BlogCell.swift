@@ -22,7 +22,15 @@ class BlogCell: UITableViewCell, Updatable {
 		titleLabel.numberOfLines = 0
 		
 		//MARK: - Configure style
-		picture.backgroundColor = .systemGray
+		var random: UIColor {
+			return UIColor(
+				red: .random(in: 0...1),
+				green: .random(in: 0...1),
+				blue: .random(in: 0...1),
+				alpha: 1.0
+			)
+		}
+		picture.backgroundColor = random
 		//MARK: - Configure behavior
 		//MARK: - Layout
 		contentView.addSubview(container)
@@ -47,6 +55,7 @@ class BlogCell: UITableViewCell, Updatable {
 	let container: UIStackView = {
 		let s = UIStackView()
 		s.axis = .vertical
+		s.spacing = 10
 		s.isLayoutMarginsRelativeArrangement = true
 		s.layoutMargins = UIEdgeInsets(all: 24)
 		return s
