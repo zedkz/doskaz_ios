@@ -43,6 +43,7 @@ class BlogCell: UITableViewCell, Updatable {
 		container.addArrangedSubview(titleLabel)
 		container.addArrangedSubview(picture)
 		container.addArrangedSubview(content)
+		container.addArrangedSubview(lastLineLabel)
 		
 		picture.addConstraintsProgrammatically
 			.set(my: .height, to: 184)
@@ -64,8 +65,11 @@ class BlogCell: UITableViewCell, Updatable {
 				range:NSMakeRange(0, attributedString.length)
 			)
 			content.attributedText = attributedString
+			
+			lastLineLabel.text = props.lastLine
 		}
 	}
+	
 	let container: UIStackView = {
 		let s = UIStackView()
 		s.axis = .vertical
@@ -74,15 +78,18 @@ class BlogCell: UITableViewCell, Updatable {
 		s.layoutMargins = UIEdgeInsets(all: 24)
 		return s
 	}()
+	
 	let titleLabel = UILabel()
 	let picture = UIImageView()
 	let content = UILabel()
+	let lastLineLabel = UILabel()
 	
 	//MARK: - Sub types
 	struct Props {
 		var title: String
 		var imageURL: String
 		var content: String
+		var lastLine: String
 	}
 	
 }
