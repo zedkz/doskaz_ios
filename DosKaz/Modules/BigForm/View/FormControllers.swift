@@ -30,8 +30,8 @@ class SmallFormViewController: FormViewController, HasForm {
 	var first: First = {
 		var first = First(
 			name: "",
-			description: "",
-			otherNames: "",
+			description: "description",
+			otherNames: "otherNames",
 			address: "",
 			categoryId: 0,
 			point: [],
