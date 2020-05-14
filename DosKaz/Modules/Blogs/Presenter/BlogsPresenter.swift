@@ -41,7 +41,8 @@ extension BlogsPresenter: BlogsInteractorOutput {
 		let cellsProps = blogResponse.items.map {
 			BlogCell.Props(
 				title: $0.title,
-				imageURL: $0.previewImage
+				imageURL: $0.previewImage,
+				content: $0.slug
 			)
 		}
 		view.updateTable(with: cellsProps)

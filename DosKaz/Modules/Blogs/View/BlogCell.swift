@@ -20,6 +20,8 @@ class BlogCell: UITableViewCell, Updatable {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		//MARK: - Configure constant data
 		titleLabel.numberOfLines = 0
+		content.numberOfLines = 3
+		
 		
 		//MARK: - Configure style
 		var random: UIColor {
@@ -40,6 +42,7 @@ class BlogCell: UITableViewCell, Updatable {
 		
 		container.addArrangedSubview(titleLabel)
 		container.addArrangedSubview(picture)
+		container.addArrangedSubview(content)
 		
 		picture.addConstraintsProgrammatically
 			.set(my: .height, to: 184)
@@ -50,6 +53,17 @@ class BlogCell: UITableViewCell, Updatable {
 	var props: Props! {
 		didSet {
 			titleLabel.text = props.title
+			content.text = props.content
+			
+			let attributedString = NSMutableAttributedString(string: props.content)
+			let paragraphStyle = NSMutableParagraphStyle()
+			paragraphStyle.lineHeightMultiple = 1.68
+			attributedString.addAttribute(
+				NSAttributedString.Key.paragraphStyle,
+				value:paragraphStyle,
+				range:NSMakeRange(0, attributedString.length)
+			)
+			content.attributedText = attributedString
 		}
 	}
 	let container: UIStackView = {
@@ -62,11 +76,13 @@ class BlogCell: UITableViewCell, Updatable {
 	}()
 	let titleLabel = UILabel()
 	let picture = UIImageView()
+	let content = UILabel()
 	
 	//MARK: - Sub types
 	struct Props {
 		var title: String
 		var imageURL: String
+		var content: String
 	}
 	
 }
