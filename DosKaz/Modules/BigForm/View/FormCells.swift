@@ -119,7 +119,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		didSet {
 			textField.text = props.text
 			set(mode: props.mode)
-			handle(isShowRedAlert: props.isShowRedAlert)
+			handle(isShowRedAlert: props.canShowRedAlert)
 			titleLabel.text = props.title
 			if let imageName = props.overlay ,let overlayImage = UIImage(named: imageName) {
 				overlayButton.setImage(overlayImage, for: .normal)
@@ -134,7 +134,7 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	//MARK: - Sub types
 	struct Props {
-		var isShowRedAlert: Bool = false
+		var canShowRedAlert: Bool = false
 		var text: String
 		var title: String
 		var overlay: String?

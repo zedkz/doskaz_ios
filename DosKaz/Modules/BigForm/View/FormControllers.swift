@@ -105,7 +105,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		}
 		
 		let objectName = TextFormCell.Props(
-			isShowRedAlert: shouldBeRed(first.name.isEmpty),
+			canShowRedAlert: shouldBeRed(first.name.isEmpty),
 			text: first.name,
 			title: l10n(.objName),
 			mode: .full(icon: "help_in_form"),
