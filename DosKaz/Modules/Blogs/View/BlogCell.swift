@@ -37,6 +37,13 @@ class BlogCell: UITableViewCell, Updatable {
 		picture.layer.cornerRadius = 2
 		picture.clipsToBounds = true
 		
+		titleLabel.decorate(with: Style.systemFont(size: 16, weight: .bold))
+		content.decorate(with: Style.systemFont(size: 12))
+		lastLineLabel.decorate(with: Style.systemFont(size: 10), { label in
+			label.textColor = UIColor(named: "UnselectedTabbarTintColor")
+		})
+
+		
 		//MARK: - Configure behavior
 		//MARK: - Layout
 		contentView.addSubview(container)
@@ -62,7 +69,7 @@ class BlogCell: UITableViewCell, Updatable {
 			
 			let attributedString = NSMutableAttributedString(string: props.content)
 			let paragraphStyle = NSMutableParagraphStyle()
-			paragraphStyle.lineHeightMultiple = 1.2
+			paragraphStyle.lineHeightMultiple = 1.68
 			attributedString.addAttribute(
 				NSAttributedString.Key.paragraphStyle,
 				value:paragraphStyle,
