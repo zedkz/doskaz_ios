@@ -18,7 +18,7 @@ class MainTabBarViewController: UITabBarController {
 		tabBar.unselectedItemTintColor = UIColor(named: "UnselectedTabbarTintColor")
 		
 		let map = MapModuleConfigurator().assembleTab()
-		let blog = UnderConstruction().tab(with: "blog", title: l10n(.blog))
+		let blog = BlogsBuilder().assembleTab()
 		let instruction = InstructionViewController().tab(with: "instruction", title: l10n(.instruction))
 		let profile = UnderConstruction().tab(with: "user", title: l10n(.profile))
 		let more = UnderConstruction().tab(with: "more", title: l10n(.more))
