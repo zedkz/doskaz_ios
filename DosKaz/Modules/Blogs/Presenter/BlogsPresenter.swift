@@ -23,6 +23,7 @@ protocol BlogsViewOutput {
 extension BlogsPresenter: BlogsViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		interactor.loadPosts()
 	}
 
 }
@@ -30,9 +31,16 @@ extension BlogsPresenter: BlogsViewOutput {
 // MARK: Interactor output protocol
 
 protocol BlogsInteractorOutput: class {
-
+	func didload(_ blogResponse: BlogResponse)
+	func didFailLoadBlogResponse(with error: Error)
 }
 
 extension BlogsPresenter: BlogsInteractorOutput {
-
+	func didload(_ blogResponse: BlogResponse) {
+		print("Blog post count:", blogResponse.items.count)
+	}
+	
+	func didFailLoadBlogResponse(with error: Error) {
+		
+	}
 }

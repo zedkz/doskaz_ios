@@ -107,6 +107,7 @@
 		44EE303C246DB5B100926817 /* BlogsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE3036246DB5B000926817 /* BlogsInteractor.swift */; };
 		44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE3037246DB5B000926817 /* BlogsPresenter.swift */; };
 		44EE303E246DB5B100926817 /* BlogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE3039246DB5B000926817 /* BlogsViewController.swift */; };
+		44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE303F246DB88D00926817 /* api_blog_posts.swift */; };
 		44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */; };
 		44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */; };
 		44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */; };
@@ -236,6 +237,7 @@
 		44EE3036246DB5B000926817 /* BlogsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogsInteractor.swift; sourceTree = "<group>"; };
 		44EE3037246DB5B000926817 /* BlogsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogsPresenter.swift; sourceTree = "<group>"; };
 		44EE3039246DB5B000926817 /* BlogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogsViewController.swift; sourceTree = "<group>"; };
+		44EE303F246DB88D00926817 /* api_blog_posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_blog_posts.swift; sourceTree = "<group>"; };
 		44F0EE17243CC340000B3022 /* LanguageChoicePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoicePresenter.swift; sourceTree = "<group>"; };
 		44F0EE18243CC340000B3022 /* LanguageChoiceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceRouter.swift; sourceTree = "<group>"; };
 		44F0EE19243CC340000B3022 /* LanguageChoiceInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceInteractor.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 				445D51962466D96800C2E02A /* local_disability_categories.swift */,
 				446E78C524680C2300075A47 /* api_objects_attributes.swift */,
 				446E78C72468402000075A47 /* api_objects_requests.swift */,
+				44EE303F246DB88D00926817 /* api_blog_posts.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				44EE303B246DB5B100926817 /* BlogsConfigurator.swift in Sources */,
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				44EE303E246DB5B100926817 /* BlogsViewController.swift in Sources */,
+				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,
 				44B26BC72433EADD00E7B29C /* URLService.swift in Sources */,

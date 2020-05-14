@@ -7,7 +7,7 @@
 //
 
 protocol BlogsInteractorInput {
-
+	func loadPosts()
 }
 
 // MARK: Implementation
@@ -15,6 +15,24 @@ protocol BlogsInteractorInput {
 class BlogsInteractor: BlogsInteractorInput {
 
 	weak var output: BlogsInteractorOutput!
+	
+	func loadPosts() {
+		let onSuccess = { [weak self] (blogResponse: BlogResponse) -> Void in
+			self?.output.didload(blogResponse)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadBlogResponse(with: error)
+		}
+		
+		let r = APIBlogPosts(
+			onSuccess: onSuccess,
+			onFailure: onFailure,
+			page: 1
+		)
+		
+		r.dispatch()
+	}
 
 }
 		
