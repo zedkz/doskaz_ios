@@ -19,8 +19,9 @@ extension BlogsViewController: BlogsViewInput {
 
 	func setupInitialState() {
 		view.backgroundColor = .white
-		dataSource = UTableViewDataSource<BlogCell>(tableView)
-		tableView.dataSource = dataSource
+		configureNavigationView()
+		buildSearch()
+		configureTable()
 	}
 	
 	func updateTable(with items: [Item]) {
@@ -40,6 +41,44 @@ class BlogsViewController: TableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		output.viewIsReady()
+	}
+	
+	private func configureTable() {
+		dataSource = UTableViewDataSource<BlogCell>(tableView)
+		tableView.dataSource = dataSource
+		tableView.tableFooterView = UIView()
+		tableView.separatorInset = UIEdgeInsets(all: 0)
+	}
+	
+	private func configureNavigationView() {
+		navigationItem.title = l10n(.blog)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			image: UIImage(named: "filter")?.withRenderingMode(.alwaysOriginal),
+			style: .plain,
+			target: self,
+			action: #selector(didPressFilter)
+		)
+	}
+	
+	@objc
+	func didPressFilter() {
+		print("didpre sep filter")
+	}
+	
+	private func buildSearch() {
+		let searchController = UISearchController(searchResultsController: nil)
+		searchController.searchResultsUpdater = self
+		searchController.hidesNavigationBarDuringPresentation = false
+		definesPresentationContext = true
+		navigationItem.searchController = searchController
+		navigationItem.hidesSearchBarWhenScrolling = false
+	}
+
+}
+
+extension BlogsViewController: UISearchResultsUpdating {
+	func updateSearchResults(for searchController: UISearchController) {
+		
 	}
 
 }
