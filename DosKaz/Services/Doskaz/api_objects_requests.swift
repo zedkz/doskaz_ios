@@ -53,13 +53,7 @@ struct First: Codable {
 	var name, description, otherNames, address: String
 	var categoryId: Int
 	var point: [Double]
-	var videos, photos: [FullFormPhoto]
-
-}
-
-// MARK: - Photo
-struct FullFormPhoto: Codable {
-	let data: String
+	var videos, photos: [String]
 }
 
 // MARK: - FormSection
@@ -104,8 +98,8 @@ let first = First(
 	address: "adr",
 	categoryId: 13,
 	point: [3423,32423],
-	videos: [FullFormPhoto(data: "dsf")],
-	photos: [FullFormPhoto(data: "34")]
+	videos: ["youtube_link"],
+	photos: ["linktostoredfileindoskaz"]
 )
 
 let parkingSection = FormSection(
