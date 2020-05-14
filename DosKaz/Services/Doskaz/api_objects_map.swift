@@ -8,6 +8,10 @@
 
 import Moya
 
+struct Constants {
+	static let mainURL = "https://doskaz.vps3.zed.kz"
+}
+
 protocol DoskazRequest: MoyaRequest, TargetType { }
 
 extension DoskazRequest {

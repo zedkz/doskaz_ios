@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BlogCell: UITableViewCell, Updatable {
 	
@@ -33,6 +34,9 @@ class BlogCell: UITableViewCell, Updatable {
 			)
 		}
 		picture.backgroundColor = random
+		picture.layer.cornerRadius = 2
+		picture.clipsToBounds = true
+		
 		//MARK: - Configure behavior
 		//MARK: - Layout
 		contentView.addSubview(container)
@@ -58,7 +62,7 @@ class BlogCell: UITableViewCell, Updatable {
 			
 			let attributedString = NSMutableAttributedString(string: props.content)
 			let paragraphStyle = NSMutableParagraphStyle()
-			paragraphStyle.lineHeightMultiple = 1.68
+			paragraphStyle.lineHeightMultiple = 1.2
 			attributedString.addAttribute(
 				NSAttributedString.Key.paragraphStyle,
 				value:paragraphStyle,
@@ -67,6 +71,16 @@ class BlogCell: UITableViewCell, Updatable {
 			content.attributedText = attributedString
 			
 			lastLineLabel.text = props.lastLine
+			
+			let url = URL(string: Constants.mainURL + props.imageURL)
+			picture.kf.indicatorType = .activity
+			picture.kf.setImage(
+				with: url,
+				options: [
+					.scaleFactor(UIScreen.main.scale),
+					.transition(.fade(1)),
+					.cacheOriginalImage
+			])
 		}
 	}
 	

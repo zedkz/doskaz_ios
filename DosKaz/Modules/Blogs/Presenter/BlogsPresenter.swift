@@ -42,8 +42,8 @@ extension BlogsPresenter: BlogsInteractorOutput {
 			BlogCell.Props(
 				title: $0.title,
 				imageURL: $0.previewImage,
-				content: $0.slug,
-				lastLine: $0.publishedAt + "   " + $0.categoryTitle
+				content: $0.annotation,
+				lastLine: $0.publishedAt + "  " + $0.categoryTitle
 			)
 		}
 		view.updateTable(with: cellsProps)
