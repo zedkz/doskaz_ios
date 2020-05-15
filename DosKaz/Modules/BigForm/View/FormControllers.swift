@@ -16,6 +16,48 @@ class FormViewController: TableViewController {
 		tableView.separatorStyle = .none
 	}
 	
+	func cellConfigurators(from formGroups: [Group]) -> [CellConfiguratorType] {
+		var cellsProps = [Any]()
+		//begin loop
+		formGroups.forEach { group in
+			
+			if let groupTitle  = group.title {
+				let titleCellProps = Header(title: groupTitle)
+				cellsProps.append(titleCellProps)
+			}
+			
+			group.subGroups?.forEach { subGroup in
+				
+				if let subGroupTitle = subGroup.title {
+					let titleCellProps = Header(title: subGroupTitle, fontSize: 12)
+					cellsProps.append(titleCellProps)
+				}
+				
+				subGroup.attributes?.forEach { attribute in
+					let cellProps = TextFormCell.Props(
+						text: "",
+						title: attribute.finalTitle,
+						overlay: "chevron_down",
+						mode: .onlyTextField,
+						onEditText: Text { print($0) }
+					)
+					cellsProps.append(cellProps)
+				}
+			}
+		}
+		//end loop
+		
+		let configurators: [CellConfiguratorType] = cellsProps.map {
+			if let textCellProps = $0 as? TextFormCell.Props {
+				return CellConfigurator<TextFormCell>(props: textCellProps)
+			} else {
+				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
+			}
+		}
+
+		return configurators
+	}
+	
 	func buildForm(with formAttrs: FormAttributes) {
 		print("Super's implementation of build form")
 	}
@@ -120,48 +162,11 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 		//MARK: - Parking Section
-		let parkings = formAttrs.full.entrance
-		
-		var cellsProps = [Any]()
-		//begin loop
-		parkings.forEach { group in
-			
-			if let groupTitle  = group.title {
-				let titleCellProps = Header(title: groupTitle)
-				cellsProps.append(titleCellProps)
-			}
-			
-			group.subGroups?.forEach { subGroup in
-				
-				if let subGroupTitle = subGroup.title {
-					let titleCellProps = Header(title: subGroupTitle, fontSize: 12)
-					cellsProps.append(titleCellProps)
-				}
-				
-				subGroup.attributes?.forEach { attribute in
-					let cellProps = TextFormCell.Props(
-						text: "",
-						title: attribute.finalTitle,
-						overlay: "chevron_down",
-						mode: .onlyTextField,
-						onEditText: Text { print($0) }
-					)
-					cellsProps.append(cellProps)
-				}
-			}
-		}
-		//end loop
-		
-		let configurators: [CellConfiguratorType] = cellsProps.map {
-			if let textCellProps = $0 as? TextFormCell.Props {
-				return CellConfigurator<TextFormCell>(props: textCellProps)
-			} else {
-				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
-			}
-		}
-		
+		let configurators = cellConfigurators(from: formAttrs.full.entrance)
 		let parkingDataSource = FormTableViewDataSource("Parking", configurators)
 		dynamicDataSources.append(parkingDataSource)
+		
+		//MARK: - Update main datasource
 		dataSource.replaceDatasources(with: [genInfoSectionSource] + dynamicDataSources)
 		
 		updateValidatables(with: configurators)
