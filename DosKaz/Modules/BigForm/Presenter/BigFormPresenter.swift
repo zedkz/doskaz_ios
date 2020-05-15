@@ -28,6 +28,7 @@ extension BigFormPresenter: BigFormViewOutput {
 		view.onPressReady = CommandWith<FullForm> { fullForm in
 			self.submit(fullForm)
 		}
+		interactor.loadAttributes()
 	}
 	
 	private func submit(_ form: FullForm) {		
@@ -41,9 +42,19 @@ extension BigFormPresenter: BigFormViewOutput {
 protocol BigFormInteractorOutput: class {
 	func didSucceedSubmitForm()
 	func didFailSubmitForm(with error: Error)
+	func didLoad(_ formAttributes: FormAttributes)
+	func didFailLoadAttributes(with error: Error)
 }
 
 extension BigFormPresenter: BigFormInteractorOutput {
+	func didLoad(_ formAttributes: FormAttributes) {
+		print("Form attrs:", formAttributes.small)
+	}
+	
+	func didFailLoadAttributes(with error: Error) {
+		print("Fail loading attributes:", error)
+	}
+	
 	func didSucceedSubmitForm() {
 		print("didSucceedSubmitForm")
 	}

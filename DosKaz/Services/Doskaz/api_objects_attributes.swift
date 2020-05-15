@@ -56,3 +56,11 @@ struct Attribute: Codable {
 	var title: String?
 	var subTitle: String?
 }
+
+class FormAttributesStorage: Archive {
+	typealias Model = FormAttributes
+	
+	static let shared = FormAttributesStorage()
+	
+	var fileName: String = "FormAttributesStorage"
+}

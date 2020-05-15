@@ -8,6 +8,7 @@
 
 protocol BigFormInteractorInput {
 	func submit(_ form: FullForm)
+	func loadAttributes()
 }
 
 // MARK: Implementation
@@ -28,6 +29,24 @@ class BigFormInteractor: BigFormInteractorInput {
 		}
 		
 		APIAddObject(onSuccess: onSuccess, onFailure: onFailure, fullForm: form).dispatch()
+	}
+	
+	
+	func loadAttributes() {
+		if let attrs = FormAttributesStorage.shared.retrieveData() {
+			output.didLoad(attrs)
+		}
+		let onSuccess = { [weak self] (formAttributes: FormAttributes) -> Void in
+			self?.output.didLoad(formAttributes)
+			FormAttributesStorage.shared.store(formAttributes)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadAttributes(with: error)
+		}
+		
+		APIFormAttributes(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+		
 	}
 
 }
