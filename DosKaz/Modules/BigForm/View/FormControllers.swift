@@ -100,6 +100,17 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	var validatables = [Validatable?]()
 	
+	private func updateValidatables(with configurators: [CellConfiguratorType]) {
+		validatables = configurators.map { $0.validatable }
+	}
+	
+	private func reloadAndScroll() {
+		tableView.reloadData()
+		if let firstUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+			tableView.scrollToRow(at: IndexPath(row: firstUnfilledRow, section: 0), at: .top, animated: true)
+		}
+	}
+	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 		//MARK: - Parking Section
 		let parkings = formAttrs.small.parking
@@ -129,7 +140,8 @@ class SmallFormViewController: FormViewController, HasForm {
 		let parkingDataSource = FormTableViewDataSource("Parking", configurators)
 		dynamicDataSources.append(parkingDataSource)
 		dataSource.replaceDatasources(with: [genInfoSectionSource] + dynamicDataSources)
-		tableView.reloadData()
+		
+		updateValidatables(with: configurators)
 	}
 	
 	private func update(isAfterValidation: Bool = false) {
@@ -197,13 +209,8 @@ class SmallFormViewController: FormViewController, HasForm {
 			CellConfigurator<TextFormCell>(props: videoLink)
 		]
 		genInfoSectionSource.configurators = configurators
-		tableView.reloadData()
 		
-		validatables = configurators.map { $0.validatable }
-		
-		if let firstUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
-			tableView.scrollToRow(at: IndexPath(row: firstUnfilledRow, section: 0), at: .top, animated: true)
-		}
+		updateValidatables(with: configurators)
 	}
 	
 	//MARK: - Section Data Sources
