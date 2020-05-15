@@ -55,6 +55,22 @@ struct Attribute: Codable {
 	var key: Int
 	var title: String?
 	var subTitle: String?
+	
+	var finalTitle: String {
+		var finalTitle = ""
+	
+		switch (title, subTitle) {
+		case (.some(let title), .some(let subtitle)):
+			finalTitle = title + ". " +  subtitle
+		case (.some(let title), .none):
+			finalTitle = title
+		case (.none, .some(let subTitle)):
+			finalTitle = subTitle
+		case (.none, .none):
+			break
+		}
+		return finalTitle
+	}
 }
 
 class FormAttributesStorage: Archive {

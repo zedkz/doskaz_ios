@@ -120,7 +120,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 		//MARK: - Parking Section
-		let parkings = formAttrs.small.parking
+		let parkings = formAttrs.full.parking
 		
 		var cellsProps = [TextFormCell.Props]()
 		//begin loop
@@ -129,7 +129,7 @@ class SmallFormViewController: FormViewController, HasForm {
 				subGroup.attributes?.forEach { attribute in
 					let cellProps = TextFormCell.Props(
 						text: "",
-						title: (attribute.title ?? "No title") + (attribute.subTitle ?? "No Subtitle"),
+						title: attribute.finalTitle,
 						overlay: "chevron_down",
 						mode: .onlyTextField,
 						onEditText: Text { print($0) }

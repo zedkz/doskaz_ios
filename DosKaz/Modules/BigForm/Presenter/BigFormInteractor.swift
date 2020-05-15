@@ -37,15 +37,15 @@ class BigFormInteractor: BigFormInteractorInput {
 			output.didLoad(attrs)
 		}
 		let onSuccess = { [weak self] (formAttributes: FormAttributes) -> Void in
-			self?.output.didLoad(formAttributes)
-			FormAttributesStorage.shared.store(formAttributes)
+//			self?.output.didLoad(formAttributes)
+//			FormAttributesStorage.shared.store(formAttributes)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
 			self?.output.didFailLoadAttributes(with: error)
 		}
 		
-		APIFormAttributes(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+//		APIFormAttributes(onSuccess: onSuccess, onFailure: onFailure).dispatch()
 		
 	}
 
