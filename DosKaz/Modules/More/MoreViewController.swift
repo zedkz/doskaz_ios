@@ -34,7 +34,7 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 				self.present(CategoryPickerModuleConfigurator().assembleModule())
 			},
 			Command {
-				self.present(BigFormBuilder().assembleModule())
+				self.present(LanguageViewController())
 			},
 			
 		]

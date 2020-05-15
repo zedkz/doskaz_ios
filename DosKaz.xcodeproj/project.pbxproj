@@ -23,6 +23,7 @@
 		440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AC3BA246C152E00AAC348 /* InstructionViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		444F35DF246EF548001C7A27 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F35DE246EF548001C7A27 /* MoreViewController.swift */; };
+		444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */; };
 		44565DA1246DC28000476016 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44565DA0246DC28000476016 /* BlogCell.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
@@ -155,6 +156,7 @@
 		440AC3BA246C152E00AAC348 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		444F35DE246EF548001C7A27 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		44565DA0246DC28000476016 /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				444F35DE246EF548001C7A27 /* MoreViewController.swift */,
+				444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				448EBAD124696CA1006C9961 /* FormCells.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				448EBAD324699374006C9961 /* CellConfigurator.swift in Sources */,
+				444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
 				44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */,
