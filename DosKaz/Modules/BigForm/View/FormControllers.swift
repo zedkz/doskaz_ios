@@ -120,12 +120,32 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 		//MARK: - Parking Section
-		let parkings = formAttrs.full.parking
+		let parkings = formAttrs.middle.parking
 		
-		var cellsProps = [TextFormCell.Props]()
+		var cellsProps = [Any]()
 		//begin loop
 		parkings.forEach { group in
+			
+			if let groupTitle  = group.title {
+				let titleCellProps = BasicCell.Props(
+					text: groupTitle,
+					icon: Asset.fontAwesome("fa-credit-card"),
+					rightIcon: ""
+				)
+				cellsProps.append(titleCellProps)
+			}
+			
 			group.subGroups?.forEach { subGroup in
+				
+				if let subGroupTitle = subGroup.title {
+					let titleCellProps = BasicCell.Props(
+						text: subGroupTitle,
+						icon: Asset.fontAwesome("fa-gavel"),
+						rightIcon: ""
+					)
+					cellsProps.append(titleCellProps)
+				}
+				
 				subGroup.attributes?.forEach { attribute in
 					let cellProps = TextFormCell.Props(
 						text: "",
@@ -141,7 +161,11 @@ class SmallFormViewController: FormViewController, HasForm {
 		//end loop
 		
 		let configurators: [CellConfiguratorType] = cellsProps.map {
-			return CellConfigurator<TextFormCell>(props: $0)
+			if let textCellProps = $0 as? TextFormCell.Props {
+				return CellConfigurator<TextFormCell>(props: textCellProps)
+			} else {
+				return CellConfigurator<BasicCell>(props: $0 as! BasicCell.Props)
+			}
 		}
 		
 		let parkingDataSource = FormTableViewDataSource("Parking", configurators)
@@ -227,6 +251,10 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private var dynamicDataSources = [FormTableViewDataSource]()
 
+}
+
+extension BasicCell: Updatable {
+	
 }
 
 extension SmallFormViewController: UITableViewDelegate {
