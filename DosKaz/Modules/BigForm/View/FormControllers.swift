@@ -15,6 +15,10 @@ class FormViewController: TableViewController {
 		tableView.keyboardDismissMode = .interactive
 		tableView.separatorStyle = .none
 	}
+	
+	func buildForm(with formAttrs: FormAttributes) {
+		print("Super's implementation of build form")
+	}
 }
 
 //MARL: - Type that produces form
@@ -26,6 +30,11 @@ protocol HasForm {
 //MARK: - SmallFormViewController
 
 class SmallFormViewController: FormViewController, HasForm {
+	
+	override func buildForm(with formAttrs: FormAttributes) {
+		super.buildForm(with: formAttrs)
+		print("SmallFormViewController attrs:", formAttrs.small)
+	}
 	
 	var first: First = {
 		var first = First(

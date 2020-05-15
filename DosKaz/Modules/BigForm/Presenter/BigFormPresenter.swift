@@ -48,7 +48,7 @@ protocol BigFormInteractorOutput: class {
 
 extension BigFormPresenter: BigFormInteractorOutput {
 	func didLoad(_ formAttributes: FormAttributes) {
-		print("Form attrs:", formAttributes.small)
+		view.buildForm(with: formAttributes)
 	}
 	
 	func didFailLoadAttributes(with error: Error) {

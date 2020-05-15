@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		setMockViewController(
-			BigFormBuilder().assembleModule()
+			UINavigationController(rootViewController: BigFormBuilder().assembleModule() )
 		)
 		return true
 	}
