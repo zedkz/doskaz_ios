@@ -38,7 +38,7 @@ class InstructionViewController: UIViewController {
 	}()
 	
 	var picTwo: UIImageView = {
-		let image = UIImage(named: "ins_pic_2")
+		let image = UIImage(named: "ins_pic_3")
 		let view = UIImageView(image: image)
 		view.contentMode = .scaleAspectFit
 		return view
