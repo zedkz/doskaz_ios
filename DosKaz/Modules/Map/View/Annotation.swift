@@ -70,21 +70,39 @@ class Venue: NSObject, MKAnnotation {
 //MARK: - Clusters
 
 class ClusterAnnotationView: MKAnnotationView {
+
+	let label = UILabel()
+
 	override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
 		super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
 		image = UIImage(named: "circle")
+		
+		label.decorate(with: Style.systemFont(size: 12))
+		addSubview(label)
+		label.addConstraintsProgrammatically
+			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.horizontalCenter)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
+	override var annotation: MKAnnotation? {
+		willSet {
+			guard let cluster = newValue as? ClusterAnnotation else {return}
+			label.text = String(cluster.count)
+		}
+	}
 }
 
 class ClusterAnnotation: NSObject, MKAnnotation {
 	var coordinate: CLLocationCoordinate2D
+	var count: Int
 	
-	init(point: CLLocationCoordinate2D) {
+	init(point: CLLocationCoordinate2D, count: Int) {
 		self.coordinate = point
+		self.count = count
 	}
 	
 	var title: String? = "Cluster"

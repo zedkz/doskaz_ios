@@ -73,10 +73,13 @@ extension MapPresenter: MapInteractorOutput {
 		}
 		
 		let clusters = mapObjects.clusters.map { cluster in
-			return ClusterAnnotation(point: CLLocationCoordinate2D(
-				latitude: cluster.coordinates[0],
-				longitude: cluster.coordinates[1]
-			))
+			return ClusterAnnotation(
+				point: CLLocationCoordinate2D(
+					latitude: cluster.coordinates[0],
+					longitude: cluster.coordinates[1]
+				),
+				count: cluster.itemsCount
+			)
 		}
 		view.show(venues + clusters)
 		
