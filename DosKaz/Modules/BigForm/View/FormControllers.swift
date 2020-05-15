@@ -33,7 +33,6 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	override func buildForm(with formAttrs: FormAttributes) {
 		super.buildForm(with: formAttrs)
-		print("SmallFormViewController attrs:", formAttrs.small)
 	}
 	
 	var first: First = {
@@ -100,6 +99,38 @@ class SmallFormViewController: FormViewController, HasForm {
 	//MARK: - Update methods
 	
 	var validatables = [Validatable?]()
+	
+	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
+		//MARK: - Parking Section
+		let parkings = formAttrs.small.parking
+		
+		var cellsProps = [TextFormCell.Props]()
+		//begin loop
+		parkings.forEach { group in
+			group.subGroups?.forEach { subGroup in
+				subGroup.attributes?.forEach { attribute in
+					let cellProps = TextFormCell.Props(
+						text: "",
+						title: (attribute.title ?? "No title") + (attribute.subTitle ?? "No Subtitle"),
+						overlay: "chevron_down",
+						mode: .onlyTextField,
+						onEditText: Text { print($0) }
+					)
+					cellsProps.append(cellProps)
+				}
+			}
+		}
+		//end loop
+		
+		let configurators: [CellConfiguratorType] = cellsProps.map {
+			return CellConfigurator<TextFormCell>(props: $0)
+		}
+		
+		let parkingDataSource = FormTableViewDataSource("Parking", configurators)
+		dynamicDataSources.append(parkingDataSource)
+		dataSource.replaceDatasources(with: [genInfoSectionSource] + dynamicDataSources)
+		tableView.reloadData()
+	}
 	
 	private func update(isAfterValidation: Bool = false) {
 		
@@ -180,6 +211,8 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private var genInfoSectionSource: FormTableViewDataSource!
 	
+	private var dynamicDataSources = [FormTableViewDataSource]()
+
 }
 
 extension SmallFormViewController: UITableViewDelegate {

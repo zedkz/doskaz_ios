@@ -53,13 +53,17 @@ typealias TableViewSection = UITableViewDataSource & HasTitle
 /// Data source class for all the sections of the
 /// table view. It's made my combining TableViewDataSource
 class SectionedTableViewDataSource: NSObject {
-	private let dataSources: [TableViewSection]
+	private var dataSources: [TableViewSection]
 	
 	var titles: [String] {
 		return dataSources.map{ $0.sectionTitle }
 	}
 	
 	init(dataSources: [TableViewSection]) {
+		self.dataSources = dataSources
+	}
+	
+	func replaceDatasources(with dataSources: [TableViewSection]) {
 		self.dataSources = dataSources
 	}
 }
