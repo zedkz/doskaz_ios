@@ -196,11 +196,12 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-		let location = view.annotation as! Venue
-		print(location.coordinate)
-		mapView.deselectAnnotation(view.annotation, animated: false)
-		center(on: location)
-		onSelectVenue.perform(with: location.id)
+		if let location = view.annotation as? Venue {
+			print(location.coordinate)
+			mapView.deselectAnnotation(view.annotation, animated: false)
+			center(on: location)
+			onSelectVenue.perform(with: location.id)
+		}
 	}
 	
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
