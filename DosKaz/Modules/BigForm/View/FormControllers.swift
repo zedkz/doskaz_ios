@@ -33,6 +33,11 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	override func buildForm(with formAttrs: FormAttributes) {
 		super.buildForm(with: formAttrs)
+		//Updates all data sources
+		update()
+		update(with: formAttrs)
+		//Reload table and optionally scroll to cell that's not validated
+		reloadAndScroll()
 	}
 	
 	var first: First = {
@@ -51,6 +56,9 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	func validated(_ fullForm: FullForm) -> FullForm? {
 		update(isAfterValidation: true)
+		//update(with: formAttrs)
+		reloadAndScroll()
+		
 		let hasUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
 		return evaluate(hasUnfilledRow != nil, ifTrue: nil, ifFalse: fullForm)
 	}
@@ -84,7 +92,6 @@ class SmallFormViewController: FormViewController, HasForm {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setup()
-		update()
 	}
 	
 	private func setup() {
