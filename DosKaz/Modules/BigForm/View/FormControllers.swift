@@ -96,7 +96,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private func setup() {
 		tableView.register(cellClass: TextFormCell.self)
-		tableView.register(cellClass: BasicCell.self)
+		tableView.register(cellClass: SubSectionHeaderCell.self)
 		genInfoSectionSource = FormTableViewDataSource(l10n(.genInfo))
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
@@ -120,29 +120,21 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 		//MARK: - Parking Section
-		let parkings = formAttrs.middle.parking
+		let parkings = formAttrs.full.entrance
 		
 		var cellsProps = [Any]()
 		//begin loop
 		parkings.forEach { group in
 			
 			if let groupTitle  = group.title {
-				let titleCellProps = BasicCell.Props(
-					text: groupTitle,
-					icon: Asset.fontAwesome("fa-credit-card"),
-					rightIcon: ""
-				)
+				let titleCellProps = Header(title: groupTitle)
 				cellsProps.append(titleCellProps)
 			}
 			
 			group.subGroups?.forEach { subGroup in
 				
 				if let subGroupTitle = subGroup.title {
-					let titleCellProps = BasicCell.Props(
-						text: subGroupTitle,
-						icon: Asset.fontAwesome("fa-gavel"),
-						rightIcon: ""
-					)
+					let titleCellProps = Header(title: subGroupTitle, fontSize: 12)
 					cellsProps.append(titleCellProps)
 				}
 				
@@ -164,7 +156,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			if let textCellProps = $0 as? TextFormCell.Props {
 				return CellConfigurator<TextFormCell>(props: textCellProps)
 			} else {
-				return CellConfigurator<BasicCell>(props: $0 as! BasicCell.Props)
+				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
 			}
 		}
 		
@@ -253,9 +245,6 @@ class SmallFormViewController: FormViewController, HasForm {
 
 }
 
-extension BasicCell: Updatable {
-	
-}
 
 extension SmallFormViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

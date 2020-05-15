@@ -116,6 +116,7 @@
 		44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */; };
 		44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE25243CC65D000B3022 /* LanguageChoiceView.swift */; };
 		44F0EE28243CF874000B3022 /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE27243CF874000B3022 /* Decorator.swift */; };
+		44F4D883246EBFD3003A50BC /* SubSectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F4D882246EBFD3003A50BC /* SubSectionHeaderCell.swift */; };
 		44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F527EC24092A7800AEBAC3 /* Annotation.swift */; };
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
@@ -247,6 +248,7 @@
 		44F0EE1E243CC340000B3022 /* LanguageChoiceConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageChoiceConfigurator.swift; sourceTree = "<group>"; };
 		44F0EE25243CC65D000B3022 /* LanguageChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageChoiceView.swift; sourceTree = "<group>"; };
 		44F0EE27243CF874000B3022 /* Decorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
+		44F4D882246EBFD3003A50BC /* SubSectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionHeaderCell.swift; sourceTree = "<group>"; };
 		44F527EC24092A7800AEBAC3 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreviews.swift; sourceTree = "<group>"; };
 		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				448EBACE24696985006C9961 /* FormControllers.swift */,
 				448EBAD024696CA1006C9961 /* FormCells.swift */,
 				448EBAD224699374006C9961 /* CellConfigurator.swift */,
+				44F4D882246EBFD3003A50BC /* SubSectionHeaderCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
 				44565DA1246DC28000476016 /* BlogCell.swift in Sources */,
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
+				44F4D883246EBFD3003A50BC /* SubSectionHeaderCell.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
 				448EBAC924693C8F006C9961 /* BigFormInteractor.swift in Sources */,
