@@ -89,7 +89,7 @@ class UIVenueView: UIView {
 		categoryAndSub.text = "Pitanie > Bary"
 		editButton.setImage(UIImage(named: "edit_active"), for: .normal)
 		editButton.setImage(UIImage(named: "edit"), for: .disabled)
-		
+		editButton.isHidden = true
 		dataSource = TableViewDataSource(tableView) { (props, cell) in
 			cell.textLabel?.text = props.textDisplayed
 			cell.imageView?.image = UIImage(named:props.icon)
