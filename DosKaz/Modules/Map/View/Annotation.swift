@@ -72,7 +72,7 @@ class Venue: NSObject, MKAnnotation {
 class ClusterAnnotationView: MKAnnotationView {
 	override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
 		super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-		image = UIImage(named: "aged_people")
+		image = UIImage(named: "circle")
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
