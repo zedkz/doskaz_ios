@@ -17,7 +17,7 @@ class UpdatableCell: UITableViewCell, Updatable {
 		didSet {
 			textLabel?.text = props.title
 			if props.isChecked {
-				accessoryView = UIImageView(image: UIImage(named: "confirm_button"))
+				accessoryView = UIImageView(image: UIImage(named: "check_in_form"))
 			} else {
 				accessoryView = nil
 			}
