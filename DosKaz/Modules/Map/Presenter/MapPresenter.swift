@@ -50,7 +50,7 @@ extension MapPresenter: MapViewOutput {
 // MARK: Interactor output protocol
 
 protocol MapInteractorOutput: class {
-	func didLoad(_ points: [Point])
+	func didLoad(_ mapObjects: MapObjects)
 	func didFailLoadPoints(with error: Error)
 	
 	func didLoad(_ venue: DoskazVenue)
@@ -58,8 +58,8 @@ protocol MapInteractorOutput: class {
 }
 
 extension MapPresenter: MapInteractorOutput {
-	func didLoad(_ points: [Point]) {
-		let venues = points.map { point in
+	func didLoad(_ mapObjects: MapObjects) {
+		let venues = mapObjects.points.map { point in
 			return Venue(
 				id: point.id,
 				icon: point.icon?.filter { !" ".contains($0) } ?? "",
@@ -72,7 +72,13 @@ extension MapPresenter: MapInteractorOutput {
 			)
 		}
 		
-		view.show(venues)
+		let clusters = mapObjects.clusters.map { cluster in
+			return ClusterAnnotation(point: CLLocationCoordinate2D(
+				latitude: cluster.coordinates[0],
+				longitude: cluster.coordinates[1]
+			))
+		}
+		view.show(venues + clusters)
 		
 	}
 	

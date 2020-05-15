@@ -20,7 +20,7 @@ class MapInteractor: MapInteractorInput {
 	func loadPointsOnMap(with mapRect: MapRect) {
 		
 		let onSuccess = { [weak self] (mapObjects: MapObjects) -> Void in
-			self?.output.didLoad(mapObjects.points)
+			self?.output.didLoad(mapObjects)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in

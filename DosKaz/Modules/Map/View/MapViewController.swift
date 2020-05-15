@@ -15,7 +15,7 @@ import SharedCodeFramework
 protocol MapViewInput where Self: UIViewController {
 	func setupInitialState()
 	func buildSearch(with command: CommandWith<SearchResults>)
-	func show(_ points: [Venue])
+	func show(_ annotations: [MKAnnotation])
 	func showSheet(for doskazVenue: DoskazVenue)
 	
 	var onSelectVenue: CommandWith<Int> { get set }
@@ -33,9 +33,9 @@ extension MapViewController: MapViewInput {
 		configureChromeButtons()
 	}
 
-	func show(_ points: [Venue]) {
+	func show(_ annotations: [MKAnnotation]) {
 		oldAnnotations.append(contentsOf: mapView.annotations)
-		mapView.addAnnotations(points)
+		mapView.addAnnotations(annotations)
 	}
 	
 	func showSheet(for doskazVenue: DoskazVenue) {
@@ -100,8 +100,33 @@ class MapViewController: UIViewController {
 		centerMapOnLocation(location: initialLocation)
 		
 		mapView.delegate = self
-		mapView.register(VenueView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+		mapView.register(
+			VenueView.self,
+			forAnnotationViewWithReuseIdentifier: NSStringFromClass(Venue.self)
+		)
+		mapView.register(
+			ClusterAnnotationView.self,
+			forAnnotationViewWithReuseIdentifier: NSStringFromClass(ClusterAnnotation.self)
+		)
 		
+	}
+	
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		guard !annotation.isKind(of: MKUserLocation.self) else {
+			return nil
+		}
+		
+		var annotationView: MKAnnotationView?
+		
+		if let annotation = annotation as? Venue {
+			let reuseIdentifier = NSStringFromClass(Venue.self)
+			annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+		} else if let annotation = annotation as? ClusterAnnotation {
+			let reuseIdentifier = NSStringFromClass(ClusterAnnotation.self)
+			annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+		}
+
+		return annotationView
 	}
 	
 	private func configureNavigationView() {

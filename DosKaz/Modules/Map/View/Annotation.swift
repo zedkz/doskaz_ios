@@ -67,3 +67,28 @@ class Venue: NSObject, MKAnnotation {
 }
 
 
+//MARK: - Clusters
+
+class ClusterAnnotationView: MKAnnotationView {
+	override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+		super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+		image = UIImage(named: "aged_people")
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+class ClusterAnnotation: NSObject, MKAnnotation {
+	var coordinate: CLLocationCoordinate2D
+	
+	init(point: CLLocationCoordinate2D) {
+		self.coordinate = point
+	}
+	
+	var title: String? = "Cluster"
+	
+	var subtitle: String? = "Buck"
+	
+}
