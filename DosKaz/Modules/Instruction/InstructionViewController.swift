@@ -88,7 +88,6 @@ class InstructionViewController: UIViewController {
 		[textZero,textOne,textTwo,textThree].forEach { label in
 			label.decorate(with: Style.systemFont(size: 14) ,{ (label) in
 				label.numberOfLines = 0
-				label.textAlignment = .justified
 			})
 		}
 		
