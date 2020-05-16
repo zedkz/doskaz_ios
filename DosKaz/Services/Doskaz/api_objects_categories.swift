@@ -24,11 +24,13 @@ struct APICategories: DoskazRequest {
 
 
 // MARK: - CategoryElement
-struct Category: Codable, Equatable, Hashable {
+struct Category: Codable, Equatable, Hashable, CustomStringConvertible {
 	let id: Int
 	let title: String
 	let icon: String?
 	let subCategories: [Category]
+	
+	var description: String { title }
 }
 
 

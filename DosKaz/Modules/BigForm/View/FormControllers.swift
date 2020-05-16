@@ -60,7 +60,7 @@ class FormViewController: TableViewController {
 		return configurators
 	}
 	
-	func buildForm(with formAttrs: FormAttributes) {
+	func buildForm(with formAttrs: FormAttributes, and categories: [Category] ) {
 		print("Super's implementation of build form")
 	}
 }
@@ -75,14 +75,17 @@ protocol HasForm {
 
 class SmallFormViewController: FormViewController, HasForm {
 	
-	override func buildForm(with formAttrs: FormAttributes) {
-		super.buildForm(with: formAttrs)
+	override func buildForm(with formAttrs: FormAttributes, and categories: [Category] ) {
+		super.buildForm(with: formAttrs, and: categories)
 		//Updates all data sources
+		self.categories = categories
 		update()
 		update(with: formAttrs)
 		//Reload table and optionally scroll to cell that's not validated
 		reloadAndScroll()
 	}
+	
+	var categories = [Category]()
 	
 	var first: First = {
 		var first = First(
@@ -254,8 +257,8 @@ class SmallFormViewController: FormViewController, HasForm {
 			onOverlayTouch: Command {
 				self.pick(
 					with: OnPick { print($0) },
-					currentValue: "Baif",
-					choices: ["City", "Baif"]
+					currentValue: self.categories[0],
+					choices: self.categories
 				)
 			},
 			onEditText: Text { print($0) }
@@ -267,6 +270,13 @@ class SmallFormViewController: FormViewController, HasForm {
 			title: l10n(.objSubCategory),
 			overlay: "chevron_down",
 			mode: .full(icon: "help_in_form"),
+			onOverlayTouch: Command {
+				self.pick(
+					with: OnPick { print($0) },
+					currentValue: self.categories[1].subCategories[2],
+					choices: self.categories[1].subCategories
+				)
+			},
 			onEditText: Text { print($0) }
 		)
 		

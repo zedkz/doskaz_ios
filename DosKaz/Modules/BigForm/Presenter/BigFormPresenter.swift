@@ -19,7 +19,7 @@ class BigFormPresenter {
 	
 	func render() {
 		if let atrs = _atrs, let cats = _cats {
-			view.buildForm(with: atrs)
+			view.buildForm(with: atrs, and: cats)
 		}
 	}
 

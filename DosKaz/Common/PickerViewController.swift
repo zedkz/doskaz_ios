@@ -49,6 +49,19 @@ where Model: CustomStringConvertible, Model: Equatable {
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		selected = choices[row]
 	}
+	
+	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+		let label = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 40, height: 44))
+		label.lineBreakMode = .byCharWrapping
+		label.numberOfLines = 0
+		label.textAlignment = .center
+		label.text = choices.map{ $0.description }[row]
+		return label
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+		return 44
+	}
 
 	override func viewDidLoad() {
 		layout()

@@ -13,13 +13,13 @@ import SharedCodeFramework
 protocol BigFormViewInput where Self: UIViewController {
 	func setupInitialState()
 	var onPressReady: CommandWith<FullForm> { get set }
-	func buildForm(with formAttrs: FormAttributes)
+	func buildForm(with formAttrs: FormAttributes, and categories: [Category])
 }
 
 extension BigFormViewController: BigFormViewInput {
 	
-	func buildForm(with formAttrs: FormAttributes) {
-		childControllers.forEach{ $0.buildForm(with: formAttrs) }
+	func buildForm(with formAttrs: FormAttributes, and categories: [Category]) {
+		childControllers.forEach{ $0.buildForm(with: formAttrs, and: categories) }
 	}
 
 	func setupInitialState() {
