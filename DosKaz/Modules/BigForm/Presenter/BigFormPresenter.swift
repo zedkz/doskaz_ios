@@ -13,6 +13,15 @@ class BigFormPresenter {
 	weak var view: BigFormViewInput!
 	var interactor: BigFormInteractorInput!
 	var router: BigFormRouterInput!
+	
+	var _atrs: FormAttributes? { didSet { render() } }
+	var _cats: [Category]? { didSet { render() } }
+	
+	func render() {
+		if let atrs = _atrs, let cats = _cats {
+			view.buildForm(with: atrs)
+		}
+	}
 
 }
 
@@ -29,6 +38,7 @@ extension BigFormPresenter: BigFormViewOutput {
 			self.submit(fullForm)
 		}
 		interactor.loadAttributes()
+		interactor.loadCategories()
 	}
 	
 	private func submit(_ form: FullForm) {		
@@ -51,7 +61,7 @@ protocol BigFormInteractorOutput: class {
 
 extension BigFormPresenter: BigFormInteractorOutput {
 	func didLoad(_ categories: [Category]) {
-		print("Loaded categoruies:", categories)
+		_cats = categories
 	}
 	
 	func didFailLoadCategories(with error: Error) {
@@ -59,7 +69,7 @@ extension BigFormPresenter: BigFormInteractorOutput {
 	}
 	
 	func didLoad(_ formAttributes: FormAttributes) {
-		view.buildForm(with: formAttributes)
+		_atrs = formAttributes
 	}
 	
 	func didFailLoadAttributes(with error: Error) {
