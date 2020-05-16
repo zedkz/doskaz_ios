@@ -36,6 +36,7 @@ class FormViewController: TableViewController {
 				
 				subGroup.attributes?.forEach { attribute in
 					let cellProps = TextFormCell.Props(
+						shouldEdit: false,
 						text: "",
 						title: attribute.finalTitle,
 						overlay: "chevron_down",
