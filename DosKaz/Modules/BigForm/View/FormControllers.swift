@@ -195,17 +195,22 @@ class SmallFormViewController: FormViewController, HasForm {
 		)
 		
 		let address = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(first.address.isEmpty),
 			text: first.address,
 			title: l10n(.objAddress),
 			mode: .full(icon: "help_in_form"),
 			onEditText: Text { self.first.address = $0 }
 		)
 		
-		let points = first.point.reduce("") { (partial, point) -> String in
-			return partial + String(point)
+		let points = first.point.enumerated().reduce("") { (partialResult, args) -> String in
+			let (index, element) = args
+			let returned = partialResult + String(element)
+			let isLastIndex = index == first.point.count - 1
+			return evaluate(isLastIndex, ifTrue: returned, ifFalse: returned + ", ")
 		}
 		
 		let objOnmap = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(first.point.isEmpty),
 			text: points,
 			title: l10n(.objOnMap),
 			overlay: "map_1",
