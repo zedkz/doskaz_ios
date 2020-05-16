@@ -14,10 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		setMockViewController(
-			MainTabBarViewController()
-		)
+		form()
 		return true
+	}
+	
+	private func form() {
+		setMockViewController(UINavigationController(rootViewController: BigFormBuilder().assembleModule()))
 	}
 	
 	private func setRootViewController() {
@@ -27,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			window?.overrideUserInterfaceStyle = .light
 		}
 		
-		let isUserIntroducedToApp = false
+		let isUserIntroducedToApp = Bool.random()
 		if isUserIntroducedToApp {
 			window?.rootViewController = MainTabBarViewController()
 		} else {

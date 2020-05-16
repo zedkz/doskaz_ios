@@ -87,11 +87,11 @@ class SmallFormViewController: FormViewController, HasForm {
 			name: "",
 			description: "description",
 			otherNames: "otherNames",
-			address: "",
+			address: "addresss",
 			categoryId: 0,
-			point: [],
+			point: [52.25,76.94],
 			videos: [],
-			photos: [])
+			photos: ["dsfds"])
 		return first
 	}()
 	
