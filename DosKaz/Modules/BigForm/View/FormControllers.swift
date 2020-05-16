@@ -86,7 +86,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		var first = First(
 			name: "",
 			description: "description",
-			otherNames: "otherNames",
+			otherNames: "",
 			address: "addresss",
 			categoryId: 0,
 			point: [52.25,76.94],
@@ -186,6 +186,14 @@ class SmallFormViewController: FormViewController, HasForm {
 			onEditText: Text { self.first.name = $0 }
 		)
 		
+		let otherNames = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(first.otherNames.isEmpty),
+			text: first.otherNames,
+			title: l10n(.otherNames),
+			mode: .full(icon: "help_in_form"),
+			onEditText: Text { self.first.otherNames = $0 }
+		)
+		
 		let address = TextFormCell.Props(
 			text: first.address,
 			title: l10n(.objAddress),
@@ -230,6 +238,7 @@ class SmallFormViewController: FormViewController, HasForm {
 
 		let configurators: [CellConfiguratorType] = [
 			CellConfigurator<TextFormCell>(props: objectName),
+			CellConfigurator<TextFormCell>(props: otherNames),
 			CellConfigurator<TextFormCell>(props: address),
 			CellConfigurator<TextFormCell>(props: objOnmap),
 			CellConfigurator<TextFormCell>(props: category),
