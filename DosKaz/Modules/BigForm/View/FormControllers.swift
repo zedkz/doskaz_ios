@@ -259,7 +259,7 @@ class SmallFormViewController: FormViewController, HasForm {
 				text: link,
 				title: l10n(.videoLink),
 				mode: .full(icon: "x_in_form"),
-				onRightTouch: Command {
+				onRightTouch: Text { _ in
 					self.first.videos.remove(at: index)
 					self.update()
 					self.reloadAndScroll()
@@ -269,11 +269,11 @@ class SmallFormViewController: FormViewController, HasForm {
 		}
 		
 		let emptyLinkCell = TextFormCell.Props(
-			text: "new",
+			text: "",
 			title: l10n(.videoLink),
 			mode: .full(icon: "plus_in_form"),
-			onRightTouch: Command {
-				self.first.videos.append("something new")
+			onRightTouch: Text { newText in
+				self.first.videos.append(newText)
 				self.update()
 				self.reloadAndScroll()
 			},

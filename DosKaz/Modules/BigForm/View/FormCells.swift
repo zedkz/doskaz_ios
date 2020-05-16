@@ -24,7 +24,7 @@ class TextFormCell: UITableViewCell, Updatable {
 	}
 	
 	@objc func handleRightButtonTouch() {
-		props.onRightTouch.perform()
+		props.onRightTouch.perform(with: textField.text ?? "")
 	}
 	
 	@objc func handleTextfiled(_ textField: UITextField) {
@@ -142,7 +142,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		var overlay: String?
 		var rightImage: String?
 		var mode: TextfieldMode = .onlyTextField
-		var onRightTouch: Command = .nop
+		var onRightTouch: Text = .nop
 		var onOverlayTouch: Command = .nop
 		var onEditText: Text = .nop
 	}
