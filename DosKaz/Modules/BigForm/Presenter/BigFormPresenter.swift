@@ -44,9 +44,20 @@ protocol BigFormInteractorOutput: class {
 	func didFailSubmitForm(with error: Error)
 	func didLoad(_ formAttributes: FormAttributes)
 	func didFailLoadAttributes(with error: Error)
+	func didLoad(_ categories: [Category])
+	func didFailLoadCategories(with error: Error)
+	
 }
 
 extension BigFormPresenter: BigFormInteractorOutput {
+	func didLoad(_ categories: [Category]) {
+		print("Loaded categoruies:", categories)
+	}
+	
+	func didFailLoadCategories(with error: Error) {
+		print("Fail categoruies:", error)
+	}
+	
 	func didLoad(_ formAttributes: FormAttributes) {
 		view.buildForm(with: formAttributes)
 	}

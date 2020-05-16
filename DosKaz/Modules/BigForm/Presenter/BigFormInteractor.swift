@@ -9,6 +9,7 @@
 protocol BigFormInteractorInput {
 	func submit(_ form: FullForm)
 	func loadAttributes()
+	func loadCategories()
 }
 
 // MARK: Implementation
@@ -16,6 +17,23 @@ protocol BigFormInteractorInput {
 class BigFormInteractor: BigFormInteractorInput {
 
 	weak var output: BigFormInteractorOutput!
+	
+	func loadCategories() {
+		if let storedCats = CategoriesStorage.shared.retrieveData() {
+			output.didLoad(storedCats)
+		}
+		
+		let onSuccess = { [weak self] (categories: [Category]) -> Void in
+			self?.output.didLoad(categories)
+			CategoriesStorage.shared.store(categories)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadCategories(with: error)
+		}
+		
+		APICategories(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+	}
 	
 	func submit(_ form: FullForm) {
 		
@@ -37,15 +55,15 @@ class BigFormInteractor: BigFormInteractorInput {
 			output.didLoad(attrs)
 		}
 		let onSuccess = { [weak self] (formAttributes: FormAttributes) -> Void in
-//			self?.output.didLoad(formAttributes)
-//			FormAttributesStorage.shared.store(formAttributes)
+			self?.output.didLoad(formAttributes)
+			FormAttributesStorage.shared.store(formAttributes)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
 			self?.output.didFailLoadAttributes(with: error)
 		}
 		
-//		APIFormAttributes(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+		APIFormAttributes(onSuccess: onSuccess, onFailure: onFailure).dispatch()
 		
 	}
 
