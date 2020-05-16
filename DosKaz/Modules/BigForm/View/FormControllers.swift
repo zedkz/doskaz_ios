@@ -214,8 +214,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: points,
 			title: l10n(.objOnMap),
 			overlay: "map_1",
-			mode: .withoutButton,
-			onEditText: Text { _ in self.first.point = [12,43] }
+			mode: .withoutButton
 		)
 		
 		let category = TextFormCell.Props(
