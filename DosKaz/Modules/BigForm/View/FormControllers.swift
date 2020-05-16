@@ -251,6 +251,13 @@ class SmallFormViewController: FormViewController, HasForm {
 			title: l10n(.objCategory),
 			overlay: "chevron_down",
 			mode: .full(icon: "help_in_form"),
+			onOverlayTouch: Command {
+				self.pick(
+					with: OnPick { print($0) },
+					currentValue: "Baif",
+					choices: ["City", "Baif"]
+				)
+			},
 			onEditText: Text { print($0) }
 		)
 		
