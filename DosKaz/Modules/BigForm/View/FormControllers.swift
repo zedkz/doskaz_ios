@@ -87,6 +87,9 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	var categories = [Category]()
 	
+	var currentCategory: Category?
+	var currentSub: Category?
+	
 	var first: First = {
 		var first = First(
 			name: "",
@@ -250,18 +253,21 @@ class SmallFormViewController: FormViewController, HasForm {
 		
 		let category = TextFormCell.Props(
 			shouldEdit: false,
-			text: "",
+			text: currentCategory?.title ?? "",
 			title: l10n(.objCategory),
 			overlay: "chevron_down",
 			mode: .full(icon: "help_in_form"),
 			onOverlayTouch: Command {
 				self.pick(
-					with: OnPick { print($0) },
-					currentValue: self.categories[0],
+					with: OnPick {
+						self.currentCategory = $0
+						self.update()
+						self.reloadAndScroll()
+					},
+					currentValue: self.currentCategory ?? self.categories[0],
 					choices: self.categories
 				)
-			},
-			onEditText: Text { print($0) }
+			}
 		)
 		
 		let subCategory = TextFormCell.Props(
