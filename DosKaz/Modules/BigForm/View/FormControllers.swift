@@ -6,6 +6,7 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
+import SharedCodeFramework
 import UIKit
 
 class FormViewController: TableViewController {
@@ -90,7 +91,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			address: "addresss",
 			categoryId: 0,
 			point: [52.25,76.94],
-			videos: [],
+			videos: ["you1"],
 			photos: ["dsfds"])
 		return first
 	}()
@@ -236,25 +237,53 @@ class SmallFormViewController: FormViewController, HasForm {
 			onEditText: Text { print($0) }
 		)
 		
-		let videoLink = TextFormCell.Props(
-			text: "",
-			title: l10n(.videoLink),
-			mode: .full(icon: "x_in_form"),
-			onEditText: Text { print($0) }
-		)
-
-		let configurators: [CellConfiguratorType] = [
+		var configurators: [CellConfiguratorType] = [
 			CellConfigurator<TextFormCell>(props: objectName),
 			CellConfigurator<TextFormCell>(props: otherNames),
 			CellConfigurator<TextFormCell>(props: address),
 			CellConfigurator<TextFormCell>(props: objOnmap),
 			CellConfigurator<TextFormCell>(props: category),
-			CellConfigurator<TextFormCell>(props: subCategory),
-			CellConfigurator<TextFormCell>(props: videoLink)
+			CellConfigurator<TextFormCell>(props: subCategory)
 		]
+		configurators.append(contentsOf: videoLinks)
 		genInfoSectionSource.configurators = configurators
 		
 		updateValidatables(with: configurators)
+	}
+	
+	
+	var videoLinks: [CellConfigurator<TextFormCell>] {
+		
+		var links: [TextFormCell.Props] = first.videos.enumerated().map { (index, link) in
+			return TextFormCell.Props(
+				text: link,
+				title: l10n(.videoLink),
+				mode: .full(icon: "x_in_form"),
+				onRightTouch: Command {
+					self.first.videos.remove(at: index)
+					self.update()
+					self.reloadAndScroll()
+				},
+				onEditText: Text { self.first.videos[index] = $0 }
+			)
+		}
+		
+		let emptyLinkCell = TextFormCell.Props(
+			text: "new",
+			title: l10n(.videoLink),
+			mode: .full(icon: "plus_in_form"),
+			onRightTouch: Command {
+				self.first.videos.append("something new")
+				self.update()
+				self.reloadAndScroll()
+			},
+			onEditText: Text { print($0) }
+		)
+		
+		links.append(emptyLinkCell)
+		
+		let cells = links.map { CellConfigurator<TextFormCell>(props: $0)}
+		return cells
 	}
 	
 	//MARK: - Section Data Sources
