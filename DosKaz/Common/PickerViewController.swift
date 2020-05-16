@@ -14,7 +14,7 @@ typealias OnPick<T> = CommandWith<T>
 class PickerViewController<Model>: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
 where Model: CustomStringConvertible, Model: Equatable {
 	
-	init(choices: [Model], currentValue: Model, onPick: OnPick<Model>) {
+	init(choices: [Model], currentValue: Model?, onPick: OnPick<Model>) {
 		super.init(nibName: nil, bundle: nil)
 		self.choices = choices
 		self.selected = currentValue
@@ -136,7 +136,7 @@ where Model: CustomStringConvertible, Model: Equatable {
 }
 
 extension UIViewController {
-	func pick<T>(with onPick: OnPick<T>, currentValue: T, choices: [T]) where T: CustomStringConvertible, T: Equatable {
+	func pick<T>(with onPick: OnPick<T>, currentValue: T?, choices: [T]) where T: CustomStringConvertible, T: Equatable {
 		let picker = PickerViewController(
 			choices: choices,
 			currentValue: currentValue,

@@ -261,10 +261,11 @@ class SmallFormViewController: FormViewController, HasForm {
 				self.pick(
 					with: OnPick {
 						self.currentCategory = $0
+						self.currentSub = nil
 						self.update()
 						self.reloadAndScroll()
 					},
-					currentValue: self.currentCategory ?? self.categories[0],
+					currentValue: self.currentCategory,
 					choices: self.categories
 				)
 			}
@@ -272,18 +273,21 @@ class SmallFormViewController: FormViewController, HasForm {
 		
 		let subCategory = TextFormCell.Props(
 			shouldEdit: false,
-			text: "",
+			text: currentSub?.title ?? "",
 			title: l10n(.objSubCategory),
 			overlay: "chevron_down",
 			mode: .full(icon: "help_in_form"),
 			onOverlayTouch: Command {
 				self.pick(
-					with: OnPick { print($0) },
-					currentValue: self.categories[1].subCategories[2],
-					choices: self.categories[1].subCategories
+					with: OnPick {
+						self.currentSub = $0
+						self.update()
+						self.reloadAndScroll()
+					},
+					currentValue: self.currentSub,
+					choices: self.currentCategory?.subCategories ?? []
 				)
-			},
-			onEditText: Text { print($0) }
+			}
 		)
 		
 		var configurators: [CellConfiguratorType] = [
