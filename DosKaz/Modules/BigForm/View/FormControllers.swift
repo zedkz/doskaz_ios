@@ -148,6 +148,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	//MARK: - Update methods
 	
+	// Add second set of these
 	var validatables = [Validatable?]()
 	
 	private func updateValidatables(with configurators: [CellConfiguratorType]) {
@@ -162,15 +163,39 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
+
+		func addSection(for groups: [Group], title: String) {
+			let configurators = cellConfigurators(from: groups)
+			let dataSource = FormTableViewDataSource(title, configurators)
+			dynamicDataSources.append(dataSource)
+		}
+		
+		let formType = formAttrs.small
+		
 		//MARK: - Parking Section
-		let configurators = cellConfigurators(from: formAttrs.full.entrance)
-		let parkingDataSource = FormTableViewDataSource("Parking", configurators)
-		dynamicDataSources.append(parkingDataSource)
+		addSection(for: formType.parking, title: l10n(.parking))
+		
+		//MARK: - Entrance 1
+		addSection(for: formType.entrance, title: l10n(.entrance))
+
+		//MARK: - Movement
+		addSection(for: formType.movement, title: l10n(.movement))
+		
+		//MARK: - Service
+		addSection(for: formType.service, title: l10n(.service))
+		
+		//MARK: - Toilet
+		addSection(for: formType.toilet, title: l10n(.toilet))
+		
+		//MARK: - Navigation
+		addSection(for: formType.navigation, title: l10n(.navigation))
+		
+		//MARK: - Service accessibility
+		addSection(for: formType.serviceAccessibility, title: l10n(.serviceAccessibility))
 		
 		//MARK: - Update main datasource
 		dataSource.replaceDatasources(with: [genInfoSectionSource] + dynamicDataSources)
 		
-		updateValidatables(with: configurators)
 	}
 	
 	private func update(isAfterValidation: Bool = false) {
