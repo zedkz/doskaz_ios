@@ -210,6 +210,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		}
 		
 		let objOnmap = TextFormCell.Props(
+			shouldEdit: false,
 			canShowRedAlert: shouldBeRed(first.point.isEmpty),
 			text: points,
 			title: l10n(.objOnMap),
@@ -218,6 +219,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		)
 		
 		let category = TextFormCell.Props(
+			shouldEdit: false,
 			text: "",
 			title: l10n(.objCategory),
 			overlay: "chevron_down",
@@ -226,6 +228,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		)
 		
 		let subCategory = TextFormCell.Props(
+			shouldEdit: false,
 			text: "",
 			title: l10n(.objSubCategory),
 			overlay: "chevron_down",

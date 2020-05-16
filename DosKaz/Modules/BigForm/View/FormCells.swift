@@ -19,6 +19,7 @@ class TextFormCell: UITableViewCell, Updatable {
 	}
 	
 	@objc func handleTexfieldOverlay() {
+		print("handleTexfieldOverlay")
 		props.onOverlayTouch.perform()
 	}
 	
@@ -134,6 +135,7 @@ class TextFormCell: UITableViewCell, Updatable {
 	
 	//MARK: - Sub types
 	struct Props {
+		var shouldEdit: Bool = true
 		var canShowRedAlert: Bool = false
 		var text: String
 		var title: String
@@ -184,6 +186,9 @@ extension TextFormCell: UITextFieldDelegate {
 		props.onEditText.perform(with: textField.text ?? "")
 	}
 	
+	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+		return props.shouldEdit
+	}
 }
 
 extension TextFormCell.Props: Validatable {
