@@ -79,6 +79,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case otherNames = "Другие названия"
 	case succeedFormMessage = "Ваш запрос принят"
 	case errorMessage = "Произошла ошибка, попробуйте позже"
+	case close = "Закрыть"
 
 	
 	

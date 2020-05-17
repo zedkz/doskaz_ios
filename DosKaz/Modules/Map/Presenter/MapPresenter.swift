@@ -42,6 +42,10 @@ extension MapPresenter: MapViewOutput {
 		view.onRegionChanged = CommandWith<MapRect> { mapInfo in
 			self.interactor.loadPointsOnMap(with: mapInfo)
 		}
+		
+		view.onTouchPlus = Command {
+			self.router.presentBigForm(with: self.view)
+		}
  	}
 
 }

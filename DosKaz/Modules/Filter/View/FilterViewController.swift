@@ -29,7 +29,7 @@ extension FilterViewController: FilterViewInput {
 		backItem.title = l10n(.done)
 		navigationItem.backBarButtonItem = backItem
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
-			barButtonSystemItem: .cancel,
+			title: l10n(.close), style: .done,
 			target: self,
 			action: #selector(closeFilterForm)
 		)

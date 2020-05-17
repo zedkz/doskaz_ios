@@ -26,6 +26,7 @@ extension BigFormViewController: BigFormViewInput {
 		//MARK: - Configure constant data
 		navigationItem.title = l10n(.addObject)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: l10n(.done), style: .done, target: self, action: #selector(formDone))
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: l10n(.close), style: .plain, target: self, action: #selector(closeForm))
 		toLeftButton.setImage(UIImage(named: "chevron_left_active"), for: .normal)
 		toRightButton.setImage(UIImage(named: "chevron_right_active"), for: .normal)
 		
@@ -125,6 +126,10 @@ class BigFormViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		output.viewIsReady()
+	}
+	
+	@objc func closeForm() {
+		dismiss(animated: true, completion: nil)
 	}
 	
 	@objc func toLeft() {

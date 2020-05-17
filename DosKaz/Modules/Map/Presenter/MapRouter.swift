@@ -10,6 +10,7 @@ import UIKit
 
 protocol MapRouterInput {
 	func presentFilter(with vc: UIViewController)
+	func presentBigForm(with vc: UIViewController)
 }
 
 // MARK: Implementation
@@ -19,5 +20,19 @@ class MapRouter: MapRouterInput {
 		let filter = FilterBuilder().assembleModule()
 		let nvc = UINavigationController(rootViewController: filter)
 		vc.navigationController?.present(nvc, animated: true, completion: nil)
+	}
+	
+	func presentBigForm(with vc: UIViewController) {
+		let form = BigFormBuilder().assembleModule()
+		vc.presentEmbedded(form)
+	}
+
+}
+
+
+extension UIViewController {
+	func presentEmbedded(_ viewController: UIViewController) {
+		let nvc = UINavigationController(rootViewController: viewController)
+		self.navigationController?.present(nvc, animated: true, completion: nil)
 	}
 }
