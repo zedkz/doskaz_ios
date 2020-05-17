@@ -76,25 +76,50 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	var form: FullForm? {
 
-		let parkingSection = FormSection(
-			attributes: FormAttributeGenerator.generate(),
-			comment: "dsf"
-		)
-		let entranceSection = FormSection(
-			attributes: FormAttributeGenerator.generate(),
+		let parking = FormSection(
+			attributes: allSections[l10n(.parking)] ?? [:],
 			comment: "dsf"
 		)
 		
+		let entrance1 = FormSection(
+			attributes: allSections[l10n(.entrance)] ?? [:],
+			comment: "dsf"
+		)
+		
+		let movement = FormSection(
+			attributes: allSections[l10n(.movement)] ?? [:],
+			comment: "dsf"
+		)
+		
+		let service = FormSection(
+			attributes: allSections[l10n(.service)] ?? [:],
+			comment: "dsf"
+		)
+		
+		let toilet = FormSection(
+			attributes: allSections[l10n(.toilet)] ?? [:],
+			comment: "dsf"
+		)
+		let navigation = FormSection(
+			attributes: allSections[l10n(.navigation)] ?? [:],
+			comment: "dsf"
+		)
+		
+		let serviceAccessibility = FormSection(
+			attributes: allSections[l10n(.serviceAccessibility)] ?? [:],
+			comment: "dsf"
+		)
+				
 		let form = FullForm(
 			form: "small",
 			first: first,
-			parking: parkingSection,
-			entrance1: entranceSection,
-			movement: parkingSection,
-			service: parkingSection,
-			toilet: parkingSection,
-			navigation: parkingSection,
-			serviceAccessibility: parkingSection
+			parking: parking,
+			entrance1: entrance1,
+			movement: movement,
+			service: service,
+			toilet: toilet,
+			navigation: navigation,
+			serviceAccessibility: serviceAccessibility
 		)
 		
 		return validated(form)
@@ -370,12 +395,12 @@ extension SmallFormViewController {
 						onOverlayTouch: Command {
 							self.pick(
 								with: OnPick {
-									self.allSections[title]?[atrName] = $0
+									self.allSections[title]?[atrName] = $0.rawValue
 									self.update(with: self.formAttrs)
 									self.reloadAndScroll(nil, section)
 								},
-								currentValue: "Нет",
-								choices: ["Да","Нет"]
+								currentValue: FormValue.not_provided,
+								choices: FormValue.allCases
 							)
 						}
 					)

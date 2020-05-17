@@ -59,8 +59,28 @@ struct First: Codable {
 // MARK: - FormSection
 
 struct FormSection: Codable {
-	let attributes: String
+	let attributes: [String: String]
 	let comment: String
+}
+
+enum FormValue: String, CustomStringConvertible, CaseIterable {
+	case yes
+	case no
+	case unknown
+	case not_provided
+	
+	var description: String {
+		switch self {
+		case .yes:
+			return "Да"
+		case .no:
+			return "Нет"
+		case .unknown:
+			return "Неизвестно"
+		case .not_provided:
+			return "Не предусмотрено"
+		}
+	}
 }
 
 // MARK: - Parking
@@ -91,38 +111,38 @@ struct FormAttributeGenerator {
 
 // MARK: - Example
 
-let first = First(
-	name: "name",
-	description: "desc",
-	otherNames: "other",
-	address: "adr",
-	categoryId: 13,
-	point: [3423,32423],
-	videos: ["youtube_link"],
-	photos: ["linktostoredfileindoskaz"]
-)
+//let first = First(
+//	name: "name",
+//	description: "desc",
+//	otherNames: "other",
+//	address: "adr",
+//	categoryId: 13,
+//	point: [3423,32423],
+//	videos: ["youtube_link"],
+//	photos: ["linktostoredfileindoskaz"]
+//)
+//
+//let parkingSection = FormSection(
+//	attributes: FormAttributeGenerator.generate(),
+//	comment: "dsf"
+//)
+//let entranceSection = FormSection(
+//	attributes: FormAttributeGenerator.generate(),
+//	comment: "dsf"
+//)
 
-let parkingSection = FormSection(
-	attributes: FormAttributeGenerator.generate(),
-	comment: "dsf"
-)
-let entranceSection = FormSection(
-	attributes: FormAttributeGenerator.generate(),
-	comment: "dsf"
-)
-
-let form = FullForm(
-	form: "small",
-	first: first,
-	parking: parkingSection,
-	entrance1: entranceSection,
-	movement: parkingSection,
-	service: parkingSection,
-	toilet: parkingSection,
-	navigation: parkingSection,
-	serviceAccessibility: parkingSection
-)
-
+//let form = FullForm(
+//	form: "small",
+//	first: first,
+//	parking: ["":""],
+//	entrance1: entranceSection,
+//	movement: parkingSection,
+//	service: parkingSection,
+//	toilet: parkingSection,
+//	navigation: parkingSection,
+//	serviceAccessibility: parkingSection
+//)
+//
 
 
 
