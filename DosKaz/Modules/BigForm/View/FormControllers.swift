@@ -128,6 +128,10 @@ class SmallFormViewController: FormViewController, HasForm {
 		if let rows = rows, let section = section {
 			let indexPaths = rows.map { IndexPath(row: $0, section: section)}
 			tableView.reloadRows(at: indexPaths, with: .left)
+		} else if let section = section {
+			UIView.performWithoutAnimation {
+				tableView.reloadSections([section], with: .none)
+			}
 		} else {
 			tableView.reloadData()
 		}
@@ -139,8 +143,8 @@ class SmallFormViewController: FormViewController, HasForm {
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 
 		var localDynamicDataSources = [FormTableViewDataSource]()
-		func addSection(for groups: [Group], title: String) {
-			let configurators = cellConfigurators(from: groups, title: title)
+		func addSection(for groups: [Group], title: String, section: Int) {
+			let configurators = cellConfigurators(from: groups, title: title, section: section)
 			let dataSource = FormTableViewDataSource(title, configurators)
 			localDynamicDataSources.append(dataSource)
 		}
@@ -148,25 +152,25 @@ class SmallFormViewController: FormViewController, HasForm {
 		let formType = formAttrs.small
 		
 		//MARK: - Parking Section
-		addSection(for: formType.parking, title: l10n(.parking))
+		addSection(for: formType.parking, title: l10n(.parking), section: 1)
 		
 		//MARK: - Entrance 1
-		addSection(for: formType.entrance, title: l10n(.entrance))
+		addSection(for: formType.entrance, title: l10n(.entrance), section: 2)
 
 		//MARK: - Movement
-		addSection(for: formType.movement, title: l10n(.movement))
+		addSection(for: formType.movement, title: l10n(.movement), section: 3)
 		
 		//MARK: - Service
-		addSection(for: formType.service, title: l10n(.service))
+		addSection(for: formType.service, title: l10n(.service), section: 4)
 		
 		//MARK: - Toilet
-		addSection(for: formType.toilet, title: l10n(.toilet))
+		addSection(for: formType.toilet, title: l10n(.toilet), section: 5)
 		
 		//MARK: - Navigation
-		addSection(for: formType.navigation, title: l10n(.navigation))
+		addSection(for: formType.navigation, title: l10n(.navigation), section: 6)
 		
 		//MARK: - Service accessibility
-		addSection(for: formType.serviceAccessibility, title: l10n(.serviceAccessibility))
+		addSection(for: formType.serviceAccessibility, title: l10n(.serviceAccessibility), section: 7)
 		
 		//MARK: - Update main datasource
 		dataSource.replaceDatasources(with: [genInfoSectionSource] + localDynamicDataSources)
@@ -283,7 +287,7 @@ class SmallFormViewController: FormViewController, HasForm {
 				onRightTouch: Text { _ in
 					self.first.videos.remove(at: index)
 					self.update()
-					self.reloadAndScroll()
+					self.reloadAndScroll(nil, 0)
 				},
 				onEditText: Text { self.first.videos[index] = $0 }
 			)
@@ -296,7 +300,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			onRightTouch: Text { newText in
 				self.first.videos.append(newText)
 				self.update()
-				self.reloadAndScroll()
+				self.reloadAndScroll(nil, 0)
 			},
 			onEditText: Text { print($0) }
 		)
@@ -326,7 +330,7 @@ extension SmallFormViewController: UITableViewDelegate {
 
 extension SmallFormViewController {
 	
-	func cellConfigurators(from formGroups: [Group], title: String) -> [CellConfiguratorType] {
+	func cellConfigurators(from formGroups: [Group], title: String, section: Int) -> [CellConfiguratorType] {
 		
 		if !allSections.keys.contains(title) {
 			allSections[title] = [String:String]()
@@ -362,7 +366,7 @@ extension SmallFormViewController {
 								with: OnPick {
 									self.allSections[title]?[atrName] = $0
 									self.update(with: self.formAttrs)
-									self.reloadAndScroll()
+									self.reloadAndScroll(nil, section)
 								},
 								currentValue: "Нет",
 								choices: ["Да","Нет"]
