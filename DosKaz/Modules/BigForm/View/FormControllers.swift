@@ -49,7 +49,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	var currentCategory: Category?
 	var currentSub: Category?
 	
-	var allSections = [String: [String: String]]()
+	var allSections = [String: [String: FormValue]]()
 	
 	var first: First = {
 		var first = First(
@@ -364,7 +364,7 @@ extension SmallFormViewController {
 	func cellConfigurators(from formGroups: [Group], title: String, section: Int) -> [CellConfiguratorType] {
 		
 		if !allSections.keys.contains(title) {
-			allSections[title] = [String:String]()
+			allSections[title] = [String:FormValue]()
 		}
 	
 		var cellsProps = [Any]()
@@ -388,18 +388,18 @@ extension SmallFormViewController {
 					
 					let cellProps = TextFormCell.Props(
 						shouldEdit: false,
-						text: allSections[title]?[atrName] ?? "",
+						text: allSections[title]?[atrName]?.description ?? "",
 						title: attribute.finalTitle,
 						overlay: "chevron_down",
 						mode: .onlyTextField,
 						onOverlayTouch: Command {
 							self.pick(
 								with: OnPick {
-									self.allSections[title]?[atrName] = $0.rawValue
+									self.allSections[title]?[atrName] = $0
 									self.update(with: self.formAttrs)
 									self.reloadAndScroll(nil, section)
 								},
-								currentValue: FormValue.not_provided,
+								currentValue: FormValue.yes,
 								choices: FormValue.allCases
 							)
 						}

@@ -80,7 +80,7 @@ extension BigFormViewController: BigFormViewInput {
 	@objc func formDone() {
 		guard let hasForm = currentViewController as? HasForm else { return }
 		guard let form = hasForm.form else { return }
-		print("Form General Information Section: \n", form.first)
+		print("Form General Information Section: \n", form)
 		onPressReady.perform(with: form)
 	}
 }

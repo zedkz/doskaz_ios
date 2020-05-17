@@ -59,11 +59,11 @@ struct First: Codable {
 // MARK: - FormSection
 
 struct FormSection: Codable {
-	let attributes: [String: String]
+	let attributes: [String: FormValue]
 	let comment: String
 }
 
-enum FormValue: String, CustomStringConvertible, CaseIterable {
+enum FormValue: String, CustomStringConvertible, CaseIterable, Codable{
 	case yes
 	case no
 	case unknown
