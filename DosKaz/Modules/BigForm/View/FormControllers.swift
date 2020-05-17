@@ -49,7 +49,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	var currentCategory: Category?
 	var currentSub: Category?
 	
-	var parkingSection = [String: String]()
+	var allSections = [String: [String: String]]()
 	
 	var first: First = {
 		var first = First(
@@ -134,7 +134,7 @@ class SmallFormViewController: FormViewController, HasForm {
 
 		var localDynamicDataSources = [FormTableViewDataSource]()
 		func addSection(for groups: [Group], title: String) {
-			let configurators = cellConfigurators(from: groups)
+			let configurators = cellConfigurators(from: groups, title: title)
 			let dataSource = FormTableViewDataSource(title, configurators)
 			localDynamicDataSources.append(dataSource)
 		}
@@ -322,7 +322,12 @@ extension SmallFormViewController: UITableViewDelegate {
 
 extension SmallFormViewController {
 	
-	func cellConfigurators(from formGroups: [Group]) -> [CellConfiguratorType] {
+	func cellConfigurators(from formGroups: [Group], title: String) -> [CellConfiguratorType] {
+		
+		if !allSections.keys.contains(title) {
+			allSections[title] = [String:String]()
+		}
+	
 		var cellsProps = [Any]()
 		//begin loop
 		formGroups.forEach { group in
@@ -344,14 +349,14 @@ extension SmallFormViewController {
 					
 					let cellProps = TextFormCell.Props(
 						shouldEdit: false,
-						text: parkingSection[atrName] ?? "empty",
+						text: allSections[title]?[atrName] ?? "",
 						title: attribute.finalTitle,
 						overlay: "chevron_down",
 						mode: .onlyTextField,
 						onOverlayTouch: Command {
 							self.pick(
 								with: OnPick {
-									self.parkingSection[atrName] = $0
+									self.allSections[title]?[atrName] = $0
 									self.update(with: self.formAttrs)
 									self.reloadAndScroll()
 								},
