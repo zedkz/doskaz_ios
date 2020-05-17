@@ -53,3 +53,51 @@ class SubSectionHeaderCell: UITableViewCell, Updatable {
 }
 
 typealias Header = SubSectionHeaderCell.Props
+
+
+class HeaderCell: UITableViewHeaderFooterView {
+	
+	//MARK: -inits
+	
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+	}
+	
+	override init(reuseIdentifier: String?) {
+		super.init(reuseIdentifier: reuseIdentifier)
+		//MARK: - Configure constant data
+		//MARK: - Configure style
+		
+	
+		//UIColor(named: "UnselectedTabbarTintColor")?.withAlphaComponent(0.7)
+		titleLabel.decorate(with: { label in
+			label.numberOfLines = 0
+			label.textColor = UIColor(named: "FilterHeaderTextColor")
+		})
+		
+		//MARK: - Configure behavior
+		//MARK: - Layout
+		contentView.backgroundColor = UIColor(named:"FilterHeaderColor")
+		contentView.addSubview(titleLabel)
+		titleLabel.addConstraintsProgrammatically
+			.pinToSuper(inset: UIEdgeInsets(top: 12, left: 22, bottom: 12, right: 8))
+	}
+	
+	//MARK: - Public properties and methods
+	var props: Props! {
+		didSet {
+			titleLabel.text = props.title
+			titleLabel.decorate(with: Style.systemFont(size: props.fontSize))
+		}
+	}
+	
+	let titleLabel = UILabel()
+	
+	//MARK: - Sub types
+	
+	struct Props {
+		let title: String
+		var fontSize: CGFloat = 14
+	}
+	
+}

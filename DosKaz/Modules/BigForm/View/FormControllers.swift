@@ -106,6 +106,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	private func setup() {
+		tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: "HeaderCell")
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: SubSectionHeaderCell.self)
 		genInfoSectionSource = FormTableViewDataSource(l10n(.genInfo))
@@ -123,8 +124,13 @@ class SmallFormViewController: FormViewController, HasForm {
 		validatables = configurators.map { $0.validatable }
 	}
 	
-	private func reloadAndScroll() {
-		tableView.reloadData()
+	private func reloadAndScroll(_ rows: [Int]? = nil, _ section: Int? = nil) {
+		if let rows = rows, let section = section {
+			let indexPaths = rows.map { IndexPath(row: $0, section: section)}
+			tableView.reloadRows(at: indexPaths, with: .left)
+		} else {
+			tableView.reloadData()
+		}
 		if let firstUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
 			tableView.scrollToRow(at: IndexPath(row: firstUnfilledRow, section: 0), at: .top, animated: true)
 		}
@@ -225,7 +231,7 @@ class SmallFormViewController: FormViewController, HasForm {
 						self.currentCategory = $0
 						self.currentSub = nil
 						self.update()
-						self.reloadAndScroll()
+						self.reloadAndScroll([4,5],0)
 					},
 					currentValue: self.currentCategory,
 					choices: self.categories
@@ -244,7 +250,7 @@ class SmallFormViewController: FormViewController, HasForm {
 					with: OnPick {
 						self.currentSub = $0
 						self.update()
-						self.reloadAndScroll()
+						self.reloadAndScroll([5],0)
 					},
 					currentValue: self.currentSub,
 					choices: self.currentCategory?.subCategories ?? []
@@ -311,12 +317,10 @@ class SmallFormViewController: FormViewController, HasForm {
 
 extension SmallFormViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let cell = UITableViewCell()
-		cell.backgroundColor = UIColor(named:"FilterHeaderColor")
-		cell.textLabel?.textColor = UIColor(named: "FilterHeaderTextColor")
-		cell.textLabel?.font = .systemFont(ofSize: 13)
-		cell.textLabel?.text = dataSource.titles[section].uppercased()
-		return cell
+		let title = dataSource.titles[section].uppercased()
+		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as? HeaderCell
+		header?.props = HeaderCell.Props(title: title, fontSize: 13)
+		return header
 	}
 }
 
