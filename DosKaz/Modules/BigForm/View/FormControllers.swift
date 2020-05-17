@@ -17,49 +17,6 @@ class FormViewController: TableViewController {
 		tableView.separatorStyle = .none
 	}
 	
-	func cellConfigurators(from formGroups: [Group]) -> [CellConfiguratorType] {
-		var cellsProps = [Any]()
-		//begin loop
-		formGroups.forEach { group in
-			
-			if let groupTitle  = group.title {
-				let titleCellProps = Header(title: groupTitle)
-				cellsProps.append(titleCellProps)
-			}
-			
-			group.subGroups?.forEach { subGroup in
-				
-				if let subGroupTitle = subGroup.title {
-					let titleCellProps = Header(title: subGroupTitle, fontSize: 12)
-					cellsProps.append(titleCellProps)
-				}
-				
-				subGroup.attributes?.forEach { attribute in
-					let cellProps = TextFormCell.Props(
-						shouldEdit: false,
-						text: "",
-						title: attribute.finalTitle,
-						overlay: "chevron_down",
-						mode: .onlyTextField,
-						onEditText: Text { print($0) }
-					)
-					cellsProps.append(cellProps)
-				}
-			}
-		}
-		//end loop
-		
-		let configurators: [CellConfiguratorType] = cellsProps.map {
-			if let textCellProps = $0 as? TextFormCell.Props {
-				return CellConfigurator<TextFormCell>(props: textCellProps)
-			} else {
-				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
-			}
-		}
-
-		return configurators
-	}
-	
 	func buildForm(with formAttrs: FormAttributes, and categories: [Category] ) {
 		print("Super's implementation of build form")
 	}
@@ -79,6 +36,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		super.buildForm(with: formAttrs, and: categories)
 		//Updates all data sources
 		self.categories = categories
+		self.formAttrs = formAttrs
 		update()
 		update(with: formAttrs)
 		//Reload table and optionally scroll to cell that's not validated
@@ -86,9 +44,12 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	var categories = [Category]()
+	var formAttrs: FormAttributes!
 	
 	var currentCategory: Category?
 	var currentSub: Category?
+	
+	var parkingSection = [String: String]()
 	
 	var first: First = {
 		var first = First(
@@ -171,10 +132,11 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
 
+		var localDynamicDataSources = [FormTableViewDataSource]()
 		func addSection(for groups: [Group], title: String) {
 			let configurators = cellConfigurators(from: groups)
 			let dataSource = FormTableViewDataSource(title, configurators)
-			dynamicDataSources.append(dataSource)
+			localDynamicDataSources.append(dataSource)
 		}
 		
 		let formType = formAttrs.small
@@ -201,7 +163,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		addSection(for: formType.serviceAccessibility, title: l10n(.serviceAccessibility))
 		
 		//MARK: - Update main datasource
-		dataSource.replaceDatasources(with: [genInfoSectionSource] + dynamicDataSources)
+		dataSource.replaceDatasources(with: [genInfoSectionSource] + localDynamicDataSources)
 		
 	}
 	
@@ -343,8 +305,6 @@ class SmallFormViewController: FormViewController, HasForm {
 	private var dataSource: SectionedTableViewDataSource!
 	
 	private var genInfoSectionSource: FormTableViewDataSource!
-	
-	private var dynamicDataSources = [FormTableViewDataSource]()
 
 }
 
@@ -360,6 +320,63 @@ extension SmallFormViewController: UITableViewDelegate {
 	}
 }
 
+extension SmallFormViewController {
+	
+	func cellConfigurators(from formGroups: [Group]) -> [CellConfiguratorType] {
+		var cellsProps = [Any]()
+		//begin loop
+		formGroups.forEach { group in
+			
+			if let groupTitle  = group.title {
+				let titleCellProps = Header(title: groupTitle)
+				cellsProps.append(titleCellProps)
+			}
+			
+			group.subGroups?.forEach { subGroup in
+				
+				if let subGroupTitle = subGroup.title {
+					let titleCellProps = Header(title: subGroupTitle, fontSize: 12)
+					cellsProps.append(titleCellProps)
+				}
+				
+				subGroup.attributes?.forEach { attribute in
+					let atrName = "attribute\(attribute.key)"
+					
+					let cellProps = TextFormCell.Props(
+						shouldEdit: false,
+						text: parkingSection[atrName] ?? "empty",
+						title: attribute.finalTitle,
+						overlay: "chevron_down",
+						mode: .onlyTextField,
+						onOverlayTouch: Command {
+							self.pick(
+								with: OnPick {
+									self.parkingSection[atrName] = $0
+									self.update(with: self.formAttrs)
+									self.reloadAndScroll()
+								},
+								currentValue: "Нет",
+								choices: ["Да","Нет"]
+							)
+						}
+					)
+					cellsProps.append(cellProps)
+				}
+			}
+		}
+		//end loop
+		
+		let configurators: [CellConfiguratorType] = cellsProps.map {
+			if let textCellProps = $0 as? TextFormCell.Props {
+				return CellConfigurator<TextFormCell>(props: textCellProps)
+			} else {
+				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
+			}
+		}
+		
+		return configurators
+	}
+}
 
 //MARK: - MiddleFormViewController
 
