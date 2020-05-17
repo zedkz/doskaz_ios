@@ -10,7 +10,7 @@ import SharedCodeFramework
 
 // MARK: View input protocol
 
-protocol BigFormViewInput where Self: UIViewController {
+protocol BigFormViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	var onPressReady: CommandWith<FullForm> { get set }
 	func buildForm(with formAttrs: FormAttributes, and categories: [Category])

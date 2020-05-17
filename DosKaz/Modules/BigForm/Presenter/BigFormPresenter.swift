@@ -78,10 +78,14 @@ extension BigFormPresenter: BigFormInteractorOutput {
 	
 	func didSucceedSubmitForm() {
 		print("didSucceedSubmitForm")
+		view.disPlayAlert(with: l10n(.succeedFormMessage)) {
+			self.view.dismiss(animated: true, completion: nil)
+		}
 	}
 	
 	func didFailSubmitForm(with error: Error) {
 		print("didFailSubmitForm with error: ",error.localizedDescription)
+		view.displayAlert(with: l10n(.errorMessage))
 	}
 
 }
