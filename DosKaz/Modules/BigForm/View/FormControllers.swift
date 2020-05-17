@@ -386,6 +386,10 @@ extension SmallFormViewController {
 				subGroup.attributes?.forEach { attribute in
 					let atrName = "attribute\(attribute.key)"
 					
+					if self.allSections[title]?[atrName] == nil {
+					 self.allSections[title]?[atrName] = FormValue.not_provided
+					}
+					
 					let cellProps = TextFormCell.Props(
 						shouldEdit: false,
 						text: allSections[title]?[atrName]?.description ?? "",
