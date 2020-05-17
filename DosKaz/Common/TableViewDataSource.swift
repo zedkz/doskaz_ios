@@ -61,11 +61,16 @@ class SectionedTableViewDataSource: NSObject {
 	
 	init(dataSources: [TableViewSection]) {
 		self.dataSources = dataSources
+		for index in 0...7 {
+			openBook[index] = true
+		}
 	}
 	
 	func replaceDatasources(with dataSources: [TableViewSection]) {
 		self.dataSources = dataSources
 	}
+	
+	var openBook = [Int: Bool]()
 }
 
 extension SectionedTableViewDataSource: UITableViewDataSource {
@@ -76,7 +81,7 @@ extension SectionedTableViewDataSource: UITableViewDataSource {
 	func tableView(_ tableView: UITableView,
 								 numberOfRowsInSection section: Int) -> Int {
 		let dataSource = dataSources[section]
-		return dataSource.tableView(tableView, numberOfRowsInSection: 0)
+		return openBook[section]! ? dataSource.tableView(tableView, numberOfRowsInSection: 0) : 0
 	}
 	
 	func tableView(_ tableView: UITableView,

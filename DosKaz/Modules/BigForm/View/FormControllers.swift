@@ -323,8 +323,16 @@ extension SmallFormViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let title = dataSource.titles[section].uppercased()
 		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as? HeaderCell
-		header?.props = HeaderCell.Props(title: title, fontSize: 13)
+		header?.props = HeaderCell.Props(title: title, fontSize: 13, section: section, onTap: CommandWith<Int> { section in
+			self.dataSource.openBook[section]?.toggle()
+			self.update()
+			self.reloadAndScroll(nil, section)
+		})
 		return header
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 50
 	}
 }
 

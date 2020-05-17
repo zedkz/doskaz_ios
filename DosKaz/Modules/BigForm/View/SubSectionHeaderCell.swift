@@ -54,6 +54,7 @@ class SubSectionHeaderCell: UITableViewCell, Updatable {
 
 typealias Header = SubSectionHeaderCell.Props
 
+import SharedCodeFramework
 
 class HeaderCell: UITableViewHeaderFooterView {
 	
@@ -80,7 +81,14 @@ class HeaderCell: UITableViewHeaderFooterView {
 		contentView.backgroundColor = UIColor(named:"FilterHeaderColor")
 		contentView.addSubview(titleLabel)
 		titleLabel.addConstraintsProgrammatically
-			.pinToSuper(inset: UIEdgeInsets(top: 12, left: 22, bottom: 12, right: 8))
+			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.leading, plus: 22)
+		let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+		addGestureRecognizer(tap)
+	}
+	
+	@objc func handleTap() {
+		props.onTap.perform(with: props.section)
 	}
 	
 	//MARK: - Public properties and methods
@@ -98,6 +106,8 @@ class HeaderCell: UITableViewHeaderFooterView {
 	struct Props {
 		let title: String
 		var fontSize: CGFloat = 14
+		var section: Int
+		var onTap: CommandWith<Int> = .nop
 	}
 	
 }
