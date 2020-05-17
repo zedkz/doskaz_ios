@@ -188,7 +188,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: first.name,
 			title: l10n(.objName),
 			mode: .full(icon: "help_in_form"),
-			onEditText: Text { self.first.name = $0 }
+			onEditText: Text { self.first.name = $0; self.update() }
 		)
 		
 		let otherNames = TextFormCell.Props(
@@ -196,7 +196,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: first.otherNames,
 			title: l10n(.otherNames),
 			mode: .full(icon: "help_in_form"),
-			onEditText: Text { self.first.otherNames = $0 }
+			onEditText: Text { self.first.otherNames = $0; self.update() }
 		)
 		
 		let address = TextFormCell.Props(
@@ -204,7 +204,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: first.address,
 			title: l10n(.objAddress),
 			mode: .full(icon: "help_in_form"),
-			onEditText: Text { self.first.address = $0 }
+			onEditText: Text { self.first.address = $0; self.update() }
 		)
 		
 		let points = first.point.enumerated().reduce("") { (partialResult, args) -> String in
@@ -276,7 +276,6 @@ class SmallFormViewController: FormViewController, HasForm {
 		updateValidatables(with: configurators)
 	}
 	
-	
 	var videoLinks: [CellConfigurator<TextFormCell>] {
 		
 		var links: [TextFormCell.Props] = first.videos.enumerated().map { (index, link) in
@@ -325,7 +324,6 @@ extension SmallFormViewController: UITableViewDelegate {
 		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as? HeaderCell
 		header?.props = HeaderCell.Props(title: title, fontSize: 13, section: section, onTap: CommandWith<Int> { section in
 			self.dataSource.openBook[section]?.toggle()
-			self.update()
 			self.reloadAndScroll(nil, section)
 		})
 		return header

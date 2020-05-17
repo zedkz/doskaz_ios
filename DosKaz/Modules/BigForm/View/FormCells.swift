@@ -189,6 +189,11 @@ extension TextFormCell: UITextFieldDelegate {
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		return props.shouldEdit
 	}
+	
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		textField.resignFirstResponder()
+		return true
+	}
 }
 
 extension TextFormCell.Props: Validatable {
