@@ -81,6 +81,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case errorMessage = "Произошла ошибка, попробуйте позже"
 	case close = "Закрыть"
 
+	case myProfile = "Мой профиль"
 	
 	
 	var l10n: String {

@@ -17,7 +17,8 @@ protocol ProfileViewInput where Self: UIViewController {
 extension ProfileViewController: ProfileViewInput {
 
 	func setupInitialState() {
-	
+		view.backgroundColor = .white
+		navigationItem.title = l10n(.myProfile)
 	}
 
 }
@@ -29,7 +30,6 @@ class ProfileViewController: UIViewController {
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = .white
 		output.viewIsReady()
 	}
 
