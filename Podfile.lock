@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.1)
+  - Alamofire (5.2.0)
   - FontAwesome.swift (1.9.0)
   - Kingfisher (5.14.0):
     - Kingfisher/Core (= 5.14.0)
@@ -22,7 +22,7 @@ SPEC REPOS:
     - Moya
 
 SPEC CHECKSUMS:
-  Alamofire: 41c162d645ba6a78e7fd030fcdaf6aa394ca39a0
+  Alamofire: c1ca147559e730bfb2182c8c7aafbdd90a867987
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
   Kingfisher: 7b64389a43139c903ec434788344c288217c792d
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
