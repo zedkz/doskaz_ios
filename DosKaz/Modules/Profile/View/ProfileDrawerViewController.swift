@@ -28,17 +28,13 @@ class ProfileDrawerViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		drawerView.panToPosition(drawerView.openFullPosition, animated: true, completion: nil)
-		configureTopView()
-		configureTab()
 	}
 	
 	// MARK: - Display permanent view controllers
 	
-	private func configureTopView() {
-		let venueViewController = VenueBuilder().assembleModule()
-		addChild(venueViewController)
-		drawerView.displayViewFirst(venueViewController.view)
-		venueViewController.didMove(toParent: self)
+	func configureViews(with profileView: ProfileView) {
+		drawerView.displayViewFirst(profileView)
+		configureTab()
 	}
 	
 	var tabBar: UITabBar!

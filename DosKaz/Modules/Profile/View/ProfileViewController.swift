@@ -19,6 +19,7 @@ extension ProfileViewController: ProfileViewInput {
 	func setupInitialState() {
 		view.backgroundColor = .white
 		navigationItem.title = l10n(.myProfile)
+		configureViews(with: profileView)
 	}
 
 }
@@ -26,6 +27,7 @@ extension ProfileViewController: ProfileViewInput {
 class ProfileViewController: ProfileDrawerViewController {
 
 	var output: ProfileViewOutput!
+	let profileView = ProfileView()
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
