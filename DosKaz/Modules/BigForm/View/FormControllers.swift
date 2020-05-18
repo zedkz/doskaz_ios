@@ -43,6 +43,15 @@ class SmallFormViewController: FormViewController, HasForm {
 		reloadAndScroll()
 	}
 	
+	var formType: FormType! {
+		didSet {
+			if let formAttrs = formAttrs {
+				update(with: formAttrs)
+				reloadAndScroll()
+			}
+		}
+	}
+	
 	var categories = [Category]()
 	var formAttrs: FormAttributes!
 	
@@ -174,7 +183,16 @@ class SmallFormViewController: FormViewController, HasForm {
 			localDynamicDataSources.append(dataSource)
 		}
 		
-		let formType = formAttrs.small
+		var value: Full {
+			switch self.formType {
+			case .small: return formAttrs.small
+			case .middle: return formAttrs.middle
+			case .full: return formAttrs.full
+			case .none: return formAttrs.small
+			}
+		}
+		
+		let formType = value
 		
 		//MARK: - Parking Section
 		addSection(for: formType.parking, title: l10n(.parking), section: 1)

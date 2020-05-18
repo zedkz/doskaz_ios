@@ -19,7 +19,7 @@ protocol BigFormViewInput: DisplaysAlert where Self: UIViewController {
 extension BigFormViewController: BigFormViewInput {
 	
 	func buildForm(with formAttrs: FormAttributes, and categories: [Category]) {
-		childControllers.forEach{ $0.buildForm(with: formAttrs, and: categories) }
+		currentViewController.buildForm(with: formAttrs, and: categories)
 	}
 
 	func setupInitialState() {
@@ -75,6 +75,7 @@ extension BigFormViewController: BigFormViewInput {
 		
 		// MARK: - Table Views for form
 		
+		add(asChildViewController: SmallFormViewController())
 		currentTitleIndex = 0
 	}
 
@@ -96,12 +97,8 @@ class BigFormViewController: UIViewController {
 	let formTitleLabel = UILabel()
 
 	//MARK: - Child view controllers
-	private var currentViewController: UIViewController!
-	private var childControllers = [
-		SmallFormViewController(),
-		MiddleFormViewController(),
-		FullFormViewController()
-	]
+	private var currentViewController: SmallFormViewController!
+	private var formTypes = [FormType.small, FormType.middle, FormType.full]
 	
 	//MARK: - Titles of tables
 	private var titles = [l10n(.formSmall), l10n(.formMedium), l10n(.formFull)]
@@ -118,7 +115,7 @@ class BigFormViewController: UIViewController {
 			}
 			update(formTitleLabel, with: titles[currentTitleIndex])
 			
-			add(asChildViewController: childControllers[currentTitleIndex])
+			currentViewController.formType = formTypes[currentTitleIndex]
 		}
 	}
 
@@ -142,7 +139,7 @@ class BigFormViewController: UIViewController {
 		currentTitleIndex += 1
 	}
 	
-	private func add(asChildViewController viewController: UIViewController) {
+	private func add(asChildViewController viewController: SmallFormViewController) {
 		guard viewController != currentViewController else { return }
 		
 		// If a VC's view was already added to the drawer, remove it.
@@ -180,4 +177,10 @@ class BigFormViewController: UIViewController {
 		viewController.removeFromParent()
 	}
 
+}
+
+enum FormType {
+	case small
+	case middle
+	case full
 }
