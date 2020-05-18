@@ -39,7 +39,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	
 	private var drawerPanner: DrawerPanner?
 	
-	public init(delegate: DrawerViewDelegate) {
+	public init(delegate: DrawerViewDelegate? = nil) {
 		self.delegate = delegate
 		currentPosition = peekingPosition
 		

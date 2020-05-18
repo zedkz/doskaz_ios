@@ -23,7 +23,7 @@ extension ProfileViewController: ProfileViewInput {
 
 }
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: ProfileDrawerViewController {
 
 	var output: ProfileViewOutput!
 
