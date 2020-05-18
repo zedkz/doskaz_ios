@@ -77,7 +77,7 @@ class ProfileView: UIView {
 		taskContainer.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -10)
-			.pinEdgeToSupers(.bottom, plus: -10)
+			.pinEdgeToSupers(.bottom, plus: -26)
 		
 		mainInfoContainer.addSubview(avatarImageView)
 		mainInfoContainer.addSubview(title)
@@ -156,6 +156,9 @@ class ProfileView: UIView {
 		progressView.trackTintColor = UIColor(named: "UnselectedTabbarTintColor")?.withAlphaComponent(0.3)
 		s.addArrangedSubview(progressView)
 		s.addArrangedSubview(label)
+		label.addConstraintsProgrammatically
+			.set(my: .width, .greaterThanOrEqual, to: 20)
+			.set(my: .width, .lessThanOrEqual, to: 50)
 		return s
 	}
 	
