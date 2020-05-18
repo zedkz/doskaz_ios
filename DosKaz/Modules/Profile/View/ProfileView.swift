@@ -21,6 +21,7 @@ class ProfileView: UIView {
 		//MARK: - Configure constant data
 		statusTitle.numberOfLines = 0
 		title.numberOfLines = 0
+		taskLabel.numberOfLines = 0
 		
 		//MARK: - Configure style
 		//fake begin
@@ -33,6 +34,12 @@ class ProfileView: UIView {
 		levelProgress.setProgress(0.3, animated: true)
 		levelsStats.text = "18 объектов     5 проверок"
 		levelsStats.backgroundColor = .systemRed
+		
+		taskLabel.text = "Добавьте 5 объектов в Северном промышленном районе"
+		taskTitleLabel.text = "Текущее задание"
+		taskProgress.setProgress(0.3, animated: true)
+		taskProgressLabel.text = "3/4"
+		taskLabel.backgroundColor = .systemRed
 		//fake end
 		
 		editButton.setTitle(l10n(.edit), for: .normal)
@@ -46,20 +53,36 @@ class ProfileView: UIView {
 		
 		//MARK: - Configure behavior
 		//MARK: - Layout
-		addSubview(mainStack)
-		mainStack.addConstraintsProgrammatically
-			.pinToSuper()
-		
-		mainStack.addArrangedSubview(mainInfoContainer)
-		mainStack.addArrangedSubview(editButton)
-		mainStack.addArrangedSubview(levelsContainer)
+		addSubview(mainInfoContainer)
+		addSubview(editButton)
+		addSubview(levelsContainer)
+		addSubview(taskContainer)
+
+		mainInfoContainer.addConstraintsProgrammatically
+			.pinEdgeToSupers(.top, plus: 10)
+			.pinEdgeToSupers(.leading, plus: 10)
+			.pinEdgeToSupers(.trailing, plus: -10)
+			.pin(my: .bottom, to: .top, of: editButton)
+
+		editButton.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading, plus: 10)
+			.pinEdgeToSupers(.trailing, plus: -10)
+			.pin(my: .bottom, to: .top, of: levelsContainer)
+
+		levelsContainer.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading, plus: 10)
+			.pinEdgeToSupers(.trailing, plus: -10)
+			.pin(my: .bottom, to: .top, of: taskContainer)
+
+		taskContainer.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading, plus: 10)
+			.pinEdgeToSupers(.trailing, plus: -10)
+			.pinEdgeToSupers(.bottom, plus: -10)
 		
 		mainInfoContainer.addSubview(avatarImageView)
 		mainInfoContainer.addSubview(title)
 		mainInfoContainer.addSubview(statusTitle)
 		
-		mainInfoContainer.addConstraintsProgrammatically
-			.set(my: .height, .greaterThanOrEqual, to: 80)
 		avatarImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.leading)
@@ -86,6 +109,13 @@ class ProfileView: UIView {
 			bottomLabel: levelsStats
 		)
 		
+		put(
+			in: taskContainer,
+			topLabel: taskTitleLabel,
+			progressView: taskProgress,
+			progressLabel: taskProgressLabel,
+			bottomLabel: taskLabel
+		)
 
 	}
 	
@@ -106,14 +136,12 @@ class ProfileView: UIView {
 	let levelProgress = UIProgressView(progressViewStyle: .default)
 	let levelsStats = UILabel()
 	
-	let mainStack: UIStackView = {
-		let s = UIStackView()
-		s.axis = .vertical
-		s.spacing = 16
-		s.isLayoutMarginsRelativeArrangement = true
-		s.layoutMargins = UIEdgeInsets(all: 10)
-		return s
-	}()
+	//4
+	let taskContainer = UIView()
+	let taskTitleLabel = UILabel()
+	let taskProgress = UIProgressView(progressViewStyle: .default)
+	let taskProgressLabel = UILabel()
+	let taskLabel = UILabel()
 	
 	func horStack(progressView: UIProgressView, label: UIView) -> UIStackView {
 		let s = UIStackView()
