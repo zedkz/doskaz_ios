@@ -24,6 +24,15 @@ class ProfileView: UIView {
 		title.backgroundColor = .yellow
 		title.text = "kudaibergenov almas"
 		
+		editButton.setTitle(l10n(.edit), for: .normal)
+		editButton.decorate(with:
+			Style.backgroundColor(color: UIColor(named: "VerifyInfoButton")),
+			{ button in
+				button.layer.cornerRadius = 2
+				button.clipsToBounds = true
+			}
+		)
+		
 		//MARK: - Configure behavior
 		//MARK: - Layout
 		addSubview(mainStack)
@@ -31,6 +40,7 @@ class ProfileView: UIView {
 			.pinToSuper()
 		
 		mainStack.addArrangedSubview(mainInfoContainer)
+		mainStack.addArrangedSubview(editButton)
 		
 		mainInfoContainer.addSubview(avatarImageView)
 		mainInfoContainer.addSubview(title)
@@ -46,16 +56,24 @@ class ProfileView: UIView {
 			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.trailing)
 			.pin(my: .leading, to: .trailing, of: avatarImageView, plus: 10)
+		
+		editButton.addConstraintsProgrammatically
+			.set(my: .height, to: 40)
 	}
 	
 	//MARK: - Public properties and methods
+	//1
 	let mainInfoContainer = UIView()
 	let avatarImageView = UIImageView()
 	let title = UILabel()
 
+	//2
+	let editButton = Button(type: .system)
+	
 	let mainStack: UIStackView = {
 		let s = UIStackView()
 		s.axis = .vertical
+		s.spacing = 16
 		s.isLayoutMarginsRelativeArrangement = true
 		s.layoutMargins = UIEdgeInsets(all: 10)
 		return s
