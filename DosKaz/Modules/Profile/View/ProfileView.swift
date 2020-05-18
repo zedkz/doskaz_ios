@@ -77,24 +77,16 @@ class ProfileView: UIView {
 		
 		editButton.addConstraintsProgrammatically
 			.set(my: .height, to: 40)
+	
+		put(
+			in: levelsContainer,
+			topLabel: levelLabel,
+			progressView: levelProgress,
+			progressLabel: levelProgressLabel,
+			bottomLabel: levelsStats
+		)
 		
-		levelsContainer.addSubview(levelLabel)
-		let levelProgressStack = horStack(progressView: levelProgress, label: levelProgressLabel)
-		levelsContainer.addSubview(levelProgressStack)
-		levelsContainer.addSubview(levelsStats)
-		
-		levelLabel.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top)
-			.pinEdgeToSupers(.leading)
-			.pin(my: .trailing, to: .leading, of: levelProgressStack)
-		levelProgressStack.addConstraintsProgrammatically
-			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.top)
-		levelsStats.addConstraintsProgrammatically
-			.pinEdgeToSupers(.bottom)
-			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.leading)
-			.pin(my: .top, to: .bottom, of: levelLabel, plus: 8)
+
 	}
 	
 	//MARK: - Public properties and methods
@@ -137,6 +129,26 @@ class ProfileView: UIView {
 		s.addArrangedSubview(progressView)
 		s.addArrangedSubview(label)
 		return s
+	}
+	
+	func put(in container: UIView, topLabel: UILabel, progressView: UIProgressView, progressLabel: UILabel, bottomLabel: UILabel) {
+		container.addSubview(topLabel)
+		let levelProgressStack = horStack(progressView: progressView, label: progressLabel)
+		container.addSubview(levelProgressStack)
+		container.addSubview(bottomLabel)
+		
+		topLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.top)
+			.pinEdgeToSupers(.leading)
+			.pin(my: .trailing, to: .leading, of: levelProgressStack)
+		levelProgressStack.addConstraintsProgrammatically
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.top)
+		bottomLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.leading)
+			.pin(my: .top, to: .bottom, of: topLabel, plus: 8)
 	}
 	
 	//MARK: - Sub types
