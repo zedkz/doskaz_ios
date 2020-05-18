@@ -45,7 +45,6 @@ class ProfileView: UIView {
 		title.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.trailing)
-//			.pinEdgeToSupers(.bottom)
 			.pin(my: .leading, to: .trailing, of: avatarImageView, plus: 10)
 	}
 	
