@@ -62,17 +62,17 @@ class ProfileView: UIView {
 			.pinEdgeToSupers(.top, plus: 10)
 			.pinEdgeToSupers(.leading, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -10)
-			.pin(my: .bottom, to: .top, of: editButton)
+			.pin(my: .bottom, to: .top, of: editButton, plus: -16)
 
 		editButton.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -10)
-			.pin(my: .bottom, to: .top, of: levelsContainer)
+			.pin(my: .bottom, to: .top, of: levelsContainer, plus: -16)
 
 		levelsContainer.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -10)
-			.pin(my: .bottom, to: .top, of: taskContainer)
+			.pin(my: .bottom, to: .top, of: taskContainer, plus: -16)
 
 		taskContainer.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 10)
