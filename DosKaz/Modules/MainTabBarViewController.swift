@@ -20,10 +20,10 @@ class MainTabBarViewController: UITabBarController {
 		let map = MapModuleConfigurator().assembleTab()
 		let blog = BlogsBuilder().assembleTab()
 		let instruction = InstructionViewController().tab(with: "instruction", title: l10n(.instruction))
-		let profile = UnderConstruction().tab(with: "user", title: l10n(.profile))
+		let profile = ProfileBuilder().assembleTab()
 		let more = MoreViewController().tab(with: "more", title: l10n(.more))
 
-		viewControllers = [map,blog,instruction,profile, more]
+		viewControllers = [profile,map,blog,instruction, more]
 		
 	}
 
