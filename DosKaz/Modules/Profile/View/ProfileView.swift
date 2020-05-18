@@ -19,10 +19,16 @@ class ProfileView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
 		//MARK: - Configure constant data
+		statusTitle.numberOfLines = 0
+		title.numberOfLines = 0
+		
 		//MARK: - Configure style
+		//fake begin
 		avatarImageView.backgroundColor = .purple
 		title.backgroundColor = .yellow
 		title.text = "kudaibergenov almas"
+		statusTitle.text = "almos gino enis kero fnec kops lojf aesc twnc dofe alsk adsf asdf zxcv esld esfs lopf ersd erds fdtr gfbv jknm vbfg dfsd"
+		//fake end
 		
 		editButton.setTitle(l10n(.edit), for: .normal)
 		editButton.decorate(with:
@@ -44,6 +50,7 @@ class ProfileView: UIView {
 		
 		mainInfoContainer.addSubview(avatarImageView)
 		mainInfoContainer.addSubview(title)
+		mainInfoContainer.addSubview(statusTitle)
 		
 		mainInfoContainer.addConstraintsProgrammatically
 			.set(my: .height, .greaterThanOrEqual, to: 80)
@@ -56,6 +63,11 @@ class ProfileView: UIView {
 			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.trailing)
 			.pin(my: .leading, to: .trailing, of: avatarImageView, plus: 10)
+		statusTitle.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: title, plus: 8)
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.bottom)
+			.pin(my: .leading, to: .trailing, of: avatarImageView, plus: 10)
 		
 		editButton.addConstraintsProgrammatically
 			.set(my: .height, to: 40)
@@ -66,6 +78,7 @@ class ProfileView: UIView {
 	let mainInfoContainer = UIView()
 	let avatarImageView = UIImageView()
 	let title = UILabel()
+	let statusTitle = UILabel()
 
 	//2
 	let editButton = Button(type: .system)
