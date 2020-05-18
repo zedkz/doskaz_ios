@@ -27,6 +27,7 @@
 		4420ABF324727BE8007F70D6 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */; };
 		4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
+		4446C24124727EC3006B49EE /* api_profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C24024727EC3006B49EE /* api_profile.swift */; };
 		444F35DF246EF548001C7A27 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F35DE246EF548001C7A27 /* MoreViewController.swift */; };
 		444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */; };
 		44565DA1246DC28000476016 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44565DA0246DC28000476016 /* BlogCell.swift */; };
@@ -166,6 +167,7 @@
 		4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		4446C24024727EC3006B49EE /* api_profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_profile.swift; sourceTree = "<group>"; };
 		444F35DE246EF548001C7A27 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		44565DA0246DC28000476016 /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 				446E78C524680C2300075A47 /* api_objects_attributes.swift */,
 				446E78C72468402000075A47 /* api_objects_requests.swift */,
 				44EE303F246DB88D00926817 /* api_blog_posts.swift */,
+				4446C24024727EC3006B49EE /* api_profile.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1018,6 +1021,7 @@
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
 				44EE303C246DB5B100926817 /* BlogsInteractor.swift in Sources */,
 				448EBACF24696985006C9961 /* FormControllers.swift in Sources */,
+				4446C24124727EC3006B49EE /* api_profile.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
 				448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,

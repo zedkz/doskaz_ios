@@ -23,6 +23,7 @@ protocol ProfileViewOutput {
 extension ProfilePresenter: ProfileViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		interactor.loadProfile()
 	}
 
 }

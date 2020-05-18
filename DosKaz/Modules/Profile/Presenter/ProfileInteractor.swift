@@ -7,7 +7,7 @@
 //
 
 protocol ProfileInteractorInput {
-
+	func loadProfile() -> Void
 }
 
 // MARK: Implementation
@@ -15,6 +15,19 @@ protocol ProfileInteractorInput {
 class ProfileInteractor: ProfileInteractorInput {
 
 	weak var output: ProfileInteractorOutput!
+	
+	func loadProfile() -> Void {
+		let onSuccess = { [weak self] (profile: Profile) -> Void in
+			debugPrint(profile)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			debugPrint(error)
+		}
+		
+		APIProfile(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+		
+	}
 
 }
 		
