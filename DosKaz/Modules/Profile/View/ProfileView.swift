@@ -23,12 +23,12 @@ class ProfileView: UIView {
 		title.numberOfLines = 0
 		taskLabel.numberOfLines = 0
 		
+		//mock data
+		title.text = "Kudaibergenov Almas"
+		statusTitle.text = "Помогая другим, помогаешь себе"
+		
 		//MARK: - Configure style
 		//fake begin
-		avatarImageView.backgroundColor = .purple
-		title.backgroundColor = .yellow
-		title.text = "kudaibergenov almas"
-		statusTitle.text = "almos gino enis kero fnec kops lojf aesc twnc dofe alsk adsf asdf zxcv esld esfs lopf ersd erds fdtr gfbv jknm vbfg dfsd"
 		levelProgressLabel.text = "34/56"
 		levelLabel.text = "7 level"
 		levelProgress.setProgress(0.3, animated: true)
@@ -41,6 +41,14 @@ class ProfileView: UIView {
 		taskProgressLabel.text = "3/4"
 		taskLabel.backgroundColor = .systemRed
 		//fake end
+		
+		title.decorate(with: Style.systemFont(size: 18, weight: .semibold))
+		statusTitle.decorate(with: Style.systemFont(size: 14))
+		avatarImageView.layer.cornerRadius = 80/2
+		avatarImageView.clipsToBounds = true
+		avatarImageView.layer.borderWidth = 2
+		avatarImageView.layer.borderColor = UIColor(named: "AvatarBorderColor")?.cgColor
+		avatarImageView.backgroundColor = UIColor.white
 		
 		editButton.setTitle(l10n(.edit), for: .normal)
 		editButton.decorate(with:
@@ -83,6 +91,9 @@ class ProfileView: UIView {
 		mainInfoContainer.addSubview(title)
 		mainInfoContainer.addSubview(statusTitle)
 		
+		mainInfoContainer.addConstraintsProgrammatically
+			.set(my: .height, .greaterThanOrEqual, to: 80)
+		
 		avatarImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.leading)
@@ -93,9 +104,8 @@ class ProfileView: UIView {
 			.pinEdgeToSupers(.trailing)
 			.pin(my: .leading, to: .trailing, of: avatarImageView, plus: 10)
 		statusTitle.addConstraintsProgrammatically
-			.pin(my: .top, to: .bottom, of: title, plus: 8)
+			.pin(my: .top, to: .bottom, of: title, plus: 4)
 			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom)
 			.pin(my: .leading, to: .trailing, of: avatarImageView, plus: 10)
 		
 		editButton.addConstraintsProgrammatically
