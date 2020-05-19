@@ -12,6 +12,7 @@ import UIKit
 
 protocol ProfileViewInput where Self: UIViewController {
 	func setupInitialState()
+	var profileView: ProfileView { get }
 }
 
 extension ProfileViewController: ProfileViewInput {

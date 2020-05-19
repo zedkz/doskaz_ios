@@ -171,7 +171,18 @@ class ProfileView: UIView {
 	let taskProgressLabel = UILabel()
 	let taskLabel = UILabel()
 	
+	var props: Props! {
+		didSet {
+			let profile = props.profile
+			title.text = "\(profile.firstName) \(profile.middleName) \(profile.lastName)"
+		}
+	}
+	
 	//MARK: - Sub types
+	
+	struct Props {
+		var profile: Profile
+	}
 	
 	//MARK: - Private methods
 	
