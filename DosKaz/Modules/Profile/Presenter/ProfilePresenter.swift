@@ -31,9 +31,17 @@ extension ProfilePresenter: ProfileViewOutput {
 // MARK: Interactor output protocol
 
 protocol ProfileInteractorOutput: class {
-
+	func didLoad(_ profile: Profile)
+	func didFailLoad(_ error: Error)
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {
+	func didFailLoad(_ error: Error) {
+		print("didFailLoad: ", error)
+	}
+	
+	func didLoad(_ profile: Profile) {
+		view.profileView.props = ProfileView.Props(profile: profile)
+	}
 
 }

@@ -18,11 +18,11 @@ class ProfileInteractor: ProfileInteractorInput {
 	
 	func loadProfile() -> Void {
 		let onSuccess = { [weak self] (profile: Profile) -> Void in
-			debugPrint(profile)
+			self?.output.didLoad(profile)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
-			debugPrint(error)
+			self?.output.didFailLoad(error)
 		}
 		
 		APIProfile(onSuccess: onSuccess, onFailure: onFailure).dispatch()
