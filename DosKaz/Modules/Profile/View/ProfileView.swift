@@ -65,6 +65,7 @@ class ProfileView: UIView {
 		
 		style(topLabel: levelLabel, leftLabel: levelProgressLabel, bottomLabel: levelsStats)
 		style(topLabel: taskTitleLabel, leftLabel: taskProgressLabel, bottomLabel: taskLabel)
+		line.backgroundColor = UIColor(named: "UnselectedTabbarTintColor")?.withAlphaComponent(0.2)
 		
 		//MARK: - Configure behavior
 		//MARK: - Layout
@@ -72,6 +73,7 @@ class ProfileView: UIView {
 		addSubview(editButton)
 		addSubview(levelsContainer)
 		addSubview(taskContainer)
+		addSubview(line)
 
 		mainInfoContainer.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top, plus: 10)
@@ -82,11 +84,17 @@ class ProfileView: UIView {
 		editButton.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -10)
-			.pin(my: .bottom, to: .top, of: levelsContainer, plus: -16)
+			.pin(my: .bottom, to: .top, of: levelsContainer, plus: -25)
 
 		levelsContainer.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -10)
+			.pin(my: .bottom, to: .top, of: line, plus: -16)
+		
+		line.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading, plus: 10)
+			.pinEdgeToSupers(.trailing, plus: -10)
+			.set(my: .height, to: 1)
 			.pin(my: .bottom, to: .top, of: taskContainer, plus: -16)
 
 		taskContainer.addConstraintsProgrammatically
@@ -152,6 +160,8 @@ class ProfileView: UIView {
 	let levelProgressLabel = UILabel()
 	let levelProgress = UIProgressView(progressViewStyle: .default)
 	let levelsStats = UILabel()
+	
+	let line = UIView()
 	
 	//4
 	let taskContainer = UIView()
