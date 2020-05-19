@@ -21,7 +21,7 @@ struct APIProfile: DoskazRequest {
 	var path: String { "profile" }
 	
 	var headers: [String : String]? {
-		let token = "MmsVoO2BSj1y50G0x0pStCcdWM14gBtSuWIrs26rvJOTgFgNK4CYMvUVvccEXYCR4b9dhr25cCAishgZOyFaNAEVgjrv9gjLUcmBTtzrLZmkGY0pDQhxaYml9S5WZUr61lNHbqergPFNXKBUIyr6OzP0pB3vUFqSfcibCpbos4Bb"
+		let token = "BVaWWzuih9X4MYfBb1bqYRYrL8rCfNII6ClYz2Jn5B7EBZiQ34TSO4XiaGraZi2k5UXBR5d8O0o2kLfE08gO7Plla7Tr9ypdWH7pCWpKMX9SXCDUi2O5tT7sz8Pct8dB7iUk89YyGgLsrlBbnPiiiD1dgt2ym4twFi50DbSQFU1t"
 		return  ["Authorization" : "Bearer \(token)"]
 	}
 	

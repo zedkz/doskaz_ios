@@ -41,6 +41,7 @@ extension ProfilePresenter: ProfileInteractorOutput {
 	}
 	
 	func didLoad(_ profile: Profile) {
+		print("Profile: ",profile)
 		view.profileView.props = ProfileView.Props(profile: profile)
 	}
 

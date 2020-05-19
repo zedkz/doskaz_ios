@@ -16,7 +16,7 @@ class ProfileDrawerViewController: UIViewController {
 	
 	override open func loadView() {
 		super.loadView()
-		view = DrawerView()
+		view = DrawerView(isInteractive: false)
 	}
 	
 	var drawerView: DrawerView {

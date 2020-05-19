@@ -39,18 +39,25 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	
 	private var drawerPanner: DrawerPanner?
 	
-	public init(delegate: DrawerViewDelegate? = nil) {
+	private var isInteractive = true
+	
+	public init(delegate: DrawerViewDelegate? = nil, isInteractive: Bool = true) {
+		
+		self.isInteractive = isInteractive
+		
 		self.delegate = delegate
 		currentPosition = peekingPosition
 		
 		super.init(frame: .zero)
 		
-		contentView.panGestureRecognizer.addTarget(
-			self,
-			action: #selector(handleContentViewScrollPanGesture(_:))
-		)
+		if isInteractive {
+			contentView.panGestureRecognizer.addTarget(
+				self,
+				action: #selector(handleContentViewScrollPanGesture(_:))
+			)
+		}
 		contentView.delegate = self
-		contentView.bounces = false
+		contentView.bounces = !isInteractive
 		
 		drawerPanner = DrawerPanner(
 			drawerView: self,
@@ -83,7 +90,9 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 		
 		let panGestureRecognizer = UIPanGestureRecognizer(target: self,
 																											action: #selector(handlePanGesture(_:)))
-		addGestureRecognizer(panGestureRecognizer)
+		if isInteractive {
+			addGestureRecognizer(panGestureRecognizer)
+		}
 		
 		configureView()
 	}
@@ -207,14 +216,18 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 		
 		addSubview(panningView)
 		
-		panningView.addConstraintsProgrammatically
-			.pinEdgeToSupers(.leading)
-			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom )
-		
-		topConstraint = panningView.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top)
-			.constraint
+		if isInteractive {
+			panningView.addConstraintsProgrammatically
+				.pinEdgeToSupers(.leading)
+				.pinEdgeToSupers(.trailing)
+				.pinEdgeToSupers(.bottom )
+			topConstraint = panningView.addConstraintsProgrammatically
+				.pinEdgeToSupers(.top)
+				.constraint
+		} else {
+			panningView.addConstraintsProgrammatically
+				.pinToSuperSafeArea()
+		}
 		
 		// Content view.
 		
@@ -299,7 +312,9 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	private var currentPanDistance: CGFloat = 0 {
 		didSet {
 			// Update the panning view's y origin for the pan distance.
-			topConstraint.constant = panningViewOriginY
+			if isInteractive {
+				topConstraint?.constant = panningViewOriginY
+			}
 		}
 	}
 
