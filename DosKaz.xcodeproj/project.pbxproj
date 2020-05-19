@@ -94,6 +94,7 @@
 		44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E222443B21100FAD014 /* GreetingViewController.swift */; };
 		44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E242443B21100FAD014 /* GreetingConfigurator.swift */; };
 		44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A059062473E13D00926814 /* ProfileCommonViewController.swift */; };
+		44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A059082473F70900926814 /* ProfileTasksViewController.swift */; };
 		44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */; };
 		44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC42433CE2700E7B29C /* MoyaRequest.swift */; };
 		44B26BC72433EADD00E7B29C /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC62433EADD00E7B29C /* URLService.swift */; };
@@ -238,6 +239,7 @@
 		44989E222443B21100FAD014 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		44989E242443B21100FAD014 /* GreetingConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingConfigurator.swift; sourceTree = "<group>"; };
 		44A059062473E13D00926814 /* ProfileCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommonViewController.swift; sourceTree = "<group>"; };
+		44A059082473F70900926814 /* ProfileTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTasksViewController.swift; sourceTree = "<group>"; };
 		44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryPickerViewController.swift; sourceTree = "<group>"; };
 		44B26BC42433CE2700E7B29C /* MoyaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRequest.swift; sourceTree = "<group>"; };
 		44B26BC62433EADD00E7B29C /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				4446C2422472814F006B49EE /* ProfileDrawerViewController.swift */,
 				4446C2442472887D006B49EE /* ProfileView.swift */,
 				44A059062473E13D00926814 /* ProfileCommonViewController.swift */,
+				44A059082473F70900926814 /* ProfileTasksViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				448EBAD324699374006C9961 /* CellConfigurator.swift in Sources */,
 				444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */,
+				44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
 				44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */,

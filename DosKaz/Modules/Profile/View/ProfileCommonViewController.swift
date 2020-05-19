@@ -74,6 +74,8 @@ class ProfileCommonViewController: UIViewController {
 	
 	private func layoutAndStyle() {
 		titleLabel.decorate(with: Style.systemFont(size: 18, weight: .semibold))
+		tableView.separatorInset = UIEdgeInsets(all: 0)
+		tableView.separatorStyle = .none
 		
 		let spacing: CGFloat = 16
 		

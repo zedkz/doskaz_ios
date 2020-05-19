@@ -91,7 +91,7 @@ extension ProfileDrawerViewController: UITabBarDelegate {
 	func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 		switch item.tag {
 		case 0:
-			let vc = ProfileCommonViewController()
+			let vc = ProfileTasksViewController()
 			show(viewController: vc)
 		case 1:
 			show(viewController: GreetingModuleConfigurator().assembleModule())
