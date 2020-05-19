@@ -83,7 +83,9 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case edit = "Редактировать"
 
 	case myProfile = "Мой профиль"
-	
+	case myTasks = "Мои задания"
+	case oldFirst = "Сначала старые"
+	case newFirst = "Сначала новые"
 	
 	var l10n: String {
 		return self.rawValue.localized
