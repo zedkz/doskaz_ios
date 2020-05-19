@@ -22,26 +22,22 @@ class ProfileView: UIView {
 		statusTitle.numberOfLines = 0
 		title.numberOfLines = 0
 		taskLabel.numberOfLines = 0
+		taskTitleLabel.text = "Текущее задание"
+
 		
 		//mock data
 		title.text = "Kudaibergenov Almas"
 		statusTitle.text = "Помогая другим, помогаешь себе"
-		
-		//MARK: - Configure style
-		//fake begin
 		levelProgressLabel.text = "34/56"
-		levelLabel.text = "7 level"
+		levelLabel.text = "7 уровень"
 		levelProgress.setProgress(0.3, animated: true)
 		levelsStats.text = "18 объектов     5 проверок"
-		levelsStats.backgroundColor = .systemRed
 		
 		taskLabel.text = "Добавьте 5 объектов в Северном промышленном районе"
-		taskTitleLabel.text = "Текущее задание"
 		taskProgress.setProgress(0.3, animated: true)
 		taskProgressLabel.text = "3/4"
-		taskLabel.backgroundColor = .systemRed
-		//fake end
 		
+		//MARK: - Configure style
 		title.decorate(with: Style.systemFont(size: 18, weight: .semibold))
 		statusTitle.decorate(with: Style.systemFont(size: 14))
 		avatarImageView.layer.cornerRadius = 80/2
@@ -58,6 +54,17 @@ class ProfileView: UIView {
 				button.clipsToBounds = true
 			}
 		)
+		
+		func style(topLabel: UILabel, leftLabel: UILabel, bottomLabel: UILabel) {
+			topLabel.decorate(with: Style.systemFont(size: 14, weight: .bold))
+			bottomLabel.decorate(with: Style.systemFont(size: 12))
+			leftLabel.decorate(with: Style.systemFont(size: 10), { label in
+				label.textColor = .gray
+			})
+		}
+		
+		style(topLabel: levelLabel, leftLabel: levelProgressLabel, bottomLabel: levelsStats)
+		style(topLabel: taskTitleLabel, leftLabel: taskProgressLabel, bottomLabel: taskLabel)
 		
 		//MARK: - Configure behavior
 		//MARK: - Layout
