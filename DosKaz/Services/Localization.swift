@@ -84,6 +84,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 
 	case myProfile = "Мой профиль"
 	case myTasks = "Мои задания"
+	case myObjects = "Мои объекты"
 	case oldFirst = "Сначала старые"
 	case newFirst = "Сначала новые"
 	

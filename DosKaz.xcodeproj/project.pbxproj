@@ -95,6 +95,7 @@
 		44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E242443B21100FAD014 /* GreetingConfigurator.swift */; };
 		44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A059062473E13D00926814 /* ProfileCommonViewController.swift */; };
 		44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A059082473F70900926814 /* ProfileTasksViewController.swift */; };
+		44A0590B2474072100926814 /* ProfileObjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A0590A2474072100926814 /* ProfileObjectsViewController.swift */; };
 		44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */; };
 		44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC42433CE2700E7B29C /* MoyaRequest.swift */; };
 		44B26BC72433EADD00E7B29C /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC62433EADD00E7B29C /* URLService.swift */; };
@@ -240,6 +241,7 @@
 		44989E242443B21100FAD014 /* GreetingConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingConfigurator.swift; sourceTree = "<group>"; };
 		44A059062473E13D00926814 /* ProfileCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommonViewController.swift; sourceTree = "<group>"; };
 		44A059082473F70900926814 /* ProfileTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTasksViewController.swift; sourceTree = "<group>"; };
+		44A0590A2474072100926814 /* ProfileObjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileObjectsViewController.swift; sourceTree = "<group>"; };
 		44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryPickerViewController.swift; sourceTree = "<group>"; };
 		44B26BC42433CE2700E7B29C /* MoyaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRequest.swift; sourceTree = "<group>"; };
 		44B26BC62433EADD00E7B29C /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				4446C2442472887D006B49EE /* ProfileView.swift */,
 				44A059062473E13D00926814 /* ProfileCommonViewController.swift */,
 				44A059082473F70900926814 /* ProfileTasksViewController.swift */,
+				44A0590A2474072100926814 /* ProfileObjectsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */,
 				44ED11E624573EC5009B92BF /* VenueDescriptionInteractor.swift in Sources */,
 				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
+				44A0590B2474072100926814 /* ProfileObjectsViewController.swift in Sources */,
 				445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */,
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,
 				4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */,

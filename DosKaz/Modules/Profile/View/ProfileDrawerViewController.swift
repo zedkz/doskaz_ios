@@ -94,7 +94,7 @@ extension ProfileDrawerViewController: UITabBarDelegate {
 			let vc = ProfileTasksViewController()
 			show(viewController: vc)
 		case 1:
-			show(viewController: GreetingModuleConfigurator().assembleModule())
+			show(viewController: ProfileObjectsViewController())
 		default:
 			break
 		}

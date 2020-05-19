@@ -25,18 +25,10 @@ class ProfileTasksViewController: ProfileCommonViewController {
 
 class TaskCell: UITableViewCell, Updatable {
 	
-	let cornerLabel = UILabel()
-	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 		textLabel?.numberOfLines = 0
 		detailTextLabel?.textColor = .gray
-		
-		cornerLabel.textAlignment = .right
-		cornerLabel.textColor = .gray
-		
-		contentView.addSubview(cornerLabel)
-		
 	}
 	
 	required init?(coder: NSCoder) {
@@ -48,14 +40,6 @@ class TaskCell: UITableViewCell, Updatable {
 		self.imageView?.frame.origin.x -= 20
 		self.detailTextLabel?.frame.origin.x -= 20
 		self.textLabel?.frame.origin.x -= 20
-		guard let dtx = detailTextLabel else { return }
-		let frame = CGRect(
-			x: dtx.frame.maxX,
-			y: dtx.frame.origin.y,
-			width: contentView.frame.width - dtx.frame.maxX,
-			height: dtx.frame.height
-		)
-		cornerLabel.frame = frame
 	}
 	
 	var props: Props! {
