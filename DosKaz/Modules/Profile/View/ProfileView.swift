@@ -75,31 +75,32 @@ class ProfileView: UIView {
 		addSubview(taskContainer)
 		addSubview(line)
 
+		let space: CGFloat = 16
 		mainInfoContainer.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top, plus: 10)
-			.pinEdgeToSupers(.leading, plus: 10)
-			.pinEdgeToSupers(.trailing, plus: -10)
+			.pinEdgeToSupers(.top, plus: space)
+			.pinEdgeToSupers(.leading, plus: space)
+			.pinEdgeToSupers(.trailing, plus: -space)
 			.pin(my: .bottom, to: .top, of: editButton, plus: -16)
 
 		editButton.addConstraintsProgrammatically
-			.pinEdgeToSupers(.leading, plus: 10)
-			.pinEdgeToSupers(.trailing, plus: -10)
+			.pinEdgeToSupers(.leading, plus: space)
+			.pinEdgeToSupers(.trailing, plus: -space)
 			.pin(my: .bottom, to: .top, of: levelsContainer, plus: -25)
 
 		levelsContainer.addConstraintsProgrammatically
-			.pinEdgeToSupers(.leading, plus: 10)
-			.pinEdgeToSupers(.trailing, plus: -10)
+			.pinEdgeToSupers(.leading, plus: space)
+			.pinEdgeToSupers(.trailing, plus: -space)
 			.pin(my: .bottom, to: .top, of: line, plus: -16)
 		
 		line.addConstraintsProgrammatically
-			.pinEdgeToSupers(.leading, plus: 10)
-			.pinEdgeToSupers(.trailing, plus: -10)
+			.pinEdgeToSupers(.leading, plus: space)
+			.pinEdgeToSupers(.trailing, plus: -space)
 			.set(my: .height, to: 1)
 			.pin(my: .bottom, to: .top, of: taskContainer, plus: -16)
 
 		taskContainer.addConstraintsProgrammatically
-			.pinEdgeToSupers(.leading, plus: 10)
-			.pinEdgeToSupers(.trailing, plus: -10)
+			.pinEdgeToSupers(.leading, plus: space)
+			.pinEdgeToSupers(.trailing, plus: -space)
 			.pinEdgeToSupers(.bottom, plus: -26)
 		
 		mainInfoContainer.addSubview(avatarImageView)
