@@ -153,7 +153,11 @@ class ProfileView: UIView {
 	let taskProgressLabel = UILabel()
 	let taskLabel = UILabel()
 	
-	func horStack(progressView: UIProgressView, label: UIView) -> UIStackView {
+	//MARK: - Sub types
+	
+	//MARK: - Private methods
+	
+	private func horStack(progressView: UIProgressView, label: UIView) -> UIStackView {
 		let s = UIStackView()
 		s.axis = .horizontal
 		s.alignment = .center
@@ -172,7 +176,7 @@ class ProfileView: UIView {
 		return s
 	}
 	
-	func put(in container: UIView, topLabel: UILabel, progressView: UIProgressView, progressLabel: UILabel, bottomLabel: UILabel) {
+	private func put(in container: UIView, topLabel: UILabel, progressView: UIProgressView, progressLabel: UILabel, bottomLabel: UILabel) {
 		container.addSubview(topLabel)
 		let levelProgressStack = horStack(progressView: progressView, label: progressLabel)
 		container.addSubview(levelProgressStack)
@@ -191,8 +195,6 @@ class ProfileView: UIView {
 			.pinEdgeToSupers(.leading)
 			.pin(my: .top, to: .bottom, of: topLabel, plus: 8)
 	}
-	
-	//MARK: - Sub types
 	
 }
 
