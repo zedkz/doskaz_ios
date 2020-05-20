@@ -102,6 +102,7 @@
 		44B8A4AA24750091002BFE6A /* ProfileCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */; };
 		44B8A4AC2475053F002BFE6A /* ProfileComplaintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4AB2475053F002BFE6A /* ProfileComplaintsViewController.swift */; };
 		44B8A4AE247512D6002BFE6A /* ProfileAwardsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */; };
+		44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */; };
 		44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C2E31C246FF8A900091C4B /* PickerViewController.swift */; };
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
@@ -251,6 +252,7 @@
 		44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommentsViewController.swift; sourceTree = "<group>"; };
 		44B8A4AB2475053F002BFE6A /* ProfileComplaintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComplaintsViewController.swift; sourceTree = "<group>"; };
 		44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAwardsEventsViewController.swift; sourceTree = "<group>"; };
+		44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		44C2E31C246FF8A900091C4B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */,
 				44B8A4AB2475053F002BFE6A /* ProfileComplaintsViewController.swift */,
 				44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */,
+				44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1048,6 +1051,7 @@
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
+				44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */,
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
 				44EE303C246DB5B100926817 /* BlogsInteractor.swift in Sources */,
 				448EBACF24696985006C9961 /* FormControllers.swift in Sources */,

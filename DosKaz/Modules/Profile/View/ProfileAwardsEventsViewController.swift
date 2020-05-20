@@ -8,6 +8,41 @@
 
 import UIKit
 
+class AwardsCollectionDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+	
+	var didScrollToPage: (Int) -> Void = { _ in }
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offSet = scrollView.contentOffset.x
+		let width = scrollView.frame.width
+		let horizontalCenter = width / 2
+		
+		let currentPage = Int(offSet + horizontalCenter) / Int(width)
+		didScrollToPage(currentPage)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView,
+											layout collectionViewLayout: UICollectionViewLayout,
+											sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView,
+											layout collectionViewLayout: UICollectionViewLayout,
+											minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return 0
+	}
+	
+	func collectionView(_ collectionView: UICollectionView,
+											layout collectionViewLayout: UICollectionViewLayout,
+											insetForSectionAt section: Int) -> UIEdgeInsets {
+		let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		return sectionInsets
+	}
+	
+}
+
+
 class ProfileAwardsEventsViewController: UIViewController {
 	
 	let awardsLabel = UILabel()
@@ -15,14 +50,42 @@ class ProfileAwardsEventsViewController: UIViewController {
 	let tableView = ContentSizedTableView()
 	let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 	
+	var collectionDelegate = AwardsCollectionDelegate()
+	
+	var collectionDataSource: CollectionViewDataSource<AwardsCollectionViewCell.Props, AwardsCollectionViewCell>!
 	var dataSource: UTableViewDataSource<EventCell>!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		awardsLabel.text = l10n(.awards)
 		eventsLabel.text = l10n(.eventsFeed)
+		configureCollectionView()
 		updateTableData()
 		layout()
+	}
+	
+	private func configureCollectionView() {
+		let flowLayout = UICollectionViewFlowLayout()
+		flowLayout.scrollDirection = .horizontal
+		collectionView.collectionViewLayout = flowLayout
+		collectionView.isPagingEnabled = false
+		collectionView.alwaysBounceHorizontal = true
+		collectionView.showsHorizontalScrollIndicator = false
+		
+		collectionView.delegate = collectionDelegate
+
+		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
+		
+		let cellsProps: [AwardsCollectionViewCell.Props] = [
+			.init(heading: l10n(.greetingHeading1),
+						imageName: "greetin_icon_page_one"),
+			.init(heading: l10n(.greetingHeading2),
+						imageName: "add_object"),
+			.init(heading: l10n(.greetingHeading3),
+						imageName: "greetin_icon_page_three")
+		]
+		collectionDataSource.cellsProps = cellsProps
+		collectionView.dataSource = collectionDataSource
 	}
 	
 	private func layout() {
