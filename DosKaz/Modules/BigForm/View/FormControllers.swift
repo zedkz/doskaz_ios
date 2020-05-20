@@ -143,6 +143,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: "HeaderCell")
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: SubSectionHeaderCell.self)
+		tableView.register(cellClass: PhotoPickerCell.self)
 		genInfoSectionSource = FormTableViewDataSource(l10n(.genInfo))
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
@@ -314,6 +315,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			CellConfigurator<TextFormCell>(props: subCategory)
 		]
 		configurators.append(contentsOf: videoLinks)
+		configurators.append(CellConfigurator<PhotoPickerCell>(props: PhotoPickerCell.Props()))
 		genInfoSectionSource.configurators = configurators
 		
 		updateValidatables(with: configurators)
