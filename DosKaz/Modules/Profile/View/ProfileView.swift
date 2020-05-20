@@ -174,7 +174,7 @@ class ProfileView: UIView {
 	var props: Props! {
 		didSet {
 			let profile = props.profile
-			title.text = "\(profile.firstName) \(profile.middleName) \(profile.lastName)"
+			title.text = "\(profile.firstName ?? "-") \(profile.middleName ?? "-") \(profile.lastName ?? "-")"
 		}
 	}
 	
