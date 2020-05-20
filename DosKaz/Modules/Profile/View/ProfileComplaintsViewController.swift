@@ -25,6 +25,7 @@ class ProfileComplaintsViewController: ProfileCommonViewController {
 		]
 		tableView.dataSource = dataSource
 		tableView.reloadData()
+		tableView.allowsSelection = false
 	}
 	
 }

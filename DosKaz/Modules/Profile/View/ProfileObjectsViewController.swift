@@ -26,6 +26,7 @@ class ProfileObjectsViewController: ProfileCommonViewController {
 		]
 		tableView.dataSource = dataSource
 		tableView.reloadData()
+		tableView.allowsSelection = false
 	}
 	
 }

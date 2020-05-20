@@ -37,9 +37,9 @@ class TaskCell: UITableViewCell, Updatable {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		self.imageView?.frame.origin.x -= 20
-		self.detailTextLabel?.frame.origin.x -= 20
-		self.textLabel?.frame.origin.x -= 20
+		self.imageView?.frame.origin.x = 0
+		self.detailTextLabel?.frame.origin.x = imageView!.frame.maxX + 12
+		self.textLabel?.frame.origin.x = imageView!.frame.maxX + 12
 	}
 	
 	var props: Props! {

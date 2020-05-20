@@ -173,8 +173,8 @@ class EventCell: UITableViewCell, Updatable {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		self.detailTextLabel?.frame.origin.x -= 20
-		self.textLabel?.frame.origin.x -= 20
+		self.detailTextLabel?.frame.origin.x = 0
+		self.textLabel?.frame.origin.x = 0
 	}
 	
 	var props: Props! {
