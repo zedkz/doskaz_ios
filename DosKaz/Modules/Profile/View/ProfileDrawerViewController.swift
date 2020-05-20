@@ -95,6 +95,8 @@ extension ProfileDrawerViewController: UITabBarDelegate {
 			show(viewController: vc)
 		case 1:
 			show(viewController: ProfileObjectsViewController())
+		case 2:
+			show(viewController: ProfileCommentsViewController())
 		default:
 			break
 		}

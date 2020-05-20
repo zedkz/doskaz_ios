@@ -99,6 +99,7 @@
 		44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */; };
 		44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC42433CE2700E7B29C /* MoyaRequest.swift */; };
 		44B26BC72433EADD00E7B29C /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC62433EADD00E7B29C /* URLService.swift */; };
+		44B8A4AA24750091002BFE6A /* ProfileCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */; };
 		44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C2E31C246FF8A900091C4B /* PickerViewController.swift */; };
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
@@ -245,6 +246,7 @@
 		44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryPickerViewController.swift; sourceTree = "<group>"; };
 		44B26BC42433CE2700E7B29C /* MoyaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRequest.swift; sourceTree = "<group>"; };
 		44B26BC62433EADD00E7B29C /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
+		44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommentsViewController.swift; sourceTree = "<group>"; };
 		44C2E31C246FF8A900091C4B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				44A059062473E13D00926814 /* ProfileCommonViewController.swift */,
 				44A059082473F70900926814 /* ProfileTasksViewController.swift */,
 				44A0590A2474072100926814 /* ProfileObjectsViewController.swift */,
+				44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B8A4AA24750091002BFE6A /* ProfileCommentsViewController.swift in Sources */,
 				440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */,
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
 				448EBAD124696CA1006C9961 /* FormCells.swift in Sources */,
