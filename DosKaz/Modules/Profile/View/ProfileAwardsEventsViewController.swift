@@ -8,14 +8,69 @@
 
 import UIKit
 
-class ProfileAwardsEventsViewController: ProfileCommonViewController {
+class ProfileAwardsEventsViewController: UIViewController {
+	
+	let awardsLabel = UILabel()
+	let eventsLabel = UILabel()
+	let tableView = ContentSizedTableView()
+	let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 	
 	var dataSource: UTableViewDataSource<EventCell>!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		props = Props(title: l10n(.eventsFeed), isRightButtonHidden: true)
+		awardsLabel.text = l10n(.awards)
+		eventsLabel.text = l10n(.eventsFeed)
 		updateTableData()
+		layout()
+	}
+	
+	private func layout() {
+		collectionView.backgroundColor = .cyan
+		tableView.backgroundColor = .darkText
+		awardsLabel.decorate(with: Style.systemFont(size: 18, weight: .semibold))
+		eventsLabel.decorate(with: Style.systemFont(size: 18, weight: .semibold))
+		tableView.separatorInset = UIEdgeInsets(all: 0)
+		tableView.separatorStyle = .none
+		
+		view.addSubview(awardsLabel)
+		view.addSubview(eventsLabel)
+		let line = UIView()
+		line.backgroundColor = UIColor(named: "UnselectedTabbarTintColor")?.withAlphaComponent(0.2)
+		view.addSubview(line)
+		view.addSubview(tableView)
+		view.addSubview(collectionView)
+		
+		let spacing: CGFloat = 16
+
+		awardsLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.top, plus: spacing)
+			.pinEdgeToSupers(.leading, plus: spacing)
+			.pinEdgeToSupers(.trailing, plus: -spacing)
+		
+		collectionView.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: awardsLabel, plus: spacing)
+			.pinEdgeToSupers(.leading, plus: spacing)
+			.pinEdgeToSupers(.trailing, plus: -spacing)
+			.set(my: .height, to: 200)
+		
+		line.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: collectionView, plus: spacing)
+			.pinEdgeToSupers(.leading, plus: 0)
+			.pinEdgeToSupers(.trailing, plus: -0)
+			.set(my: .height, to: 1)
+
+		eventsLabel.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: line, plus: spacing)
+			.pinEdgeToSupers(.leading, plus: spacing)
+			.pinEdgeToSupers(.trailing, plus: -spacing)
+		
+		tableView.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: eventsLabel, plus: spacing)
+			.pinEdgeToSupers(.leading, plus: spacing)
+			.pinEdgeToSupers(.trailing, plus: -spacing)
+			.pinEdgeToSupers(.bottom, plus: -spacing)
+	
 	}
 	
 	fileprivate func updateTableData() {
