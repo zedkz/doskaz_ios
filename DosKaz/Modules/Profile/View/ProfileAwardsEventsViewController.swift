@@ -15,6 +15,10 @@ class ProfileAwardsEventsViewController: ProfileCommonViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		props = Props(title: l10n(.eventsFeed), isRightButtonHidden: true)
+		updateTableData()
+	}
+	
+	fileprivate func updateTableData() {
 		dataSource = UTableViewDataSource(tableView)
 		dataSource.cellsProps = [
 			EventCell.Props(
