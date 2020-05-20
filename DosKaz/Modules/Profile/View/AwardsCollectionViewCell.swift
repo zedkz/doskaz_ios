@@ -37,7 +37,7 @@ class AwardsCollectionViewCell: UICollectionViewCell {
 	//MARK: - Private
 	
 	private func style() {
-		backgroundColor = .systemYellow
+		
 		textLabel.numberOfLines = 0
 		textLabel.font = .systemFont(ofSize: 14)
 		
@@ -71,10 +71,10 @@ extension AwardsCollectionViewCellLayout {
 	
 	func addConstraints() {
 		rv.imageView.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top, plus: 10)
-			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.top, plus: 0)
+			.pinEdgeToSupers(.bottom, plus: -0)
 			.pinEdgeToSupers(.leading)
-			.set(my: .height, to: 48)
+			.set(my: .width, .greaterThanOrEqual, to: 48)
 			.set(my: .width, to: 48)
 		
 		rv.textLabel.addConstraintsProgrammatically

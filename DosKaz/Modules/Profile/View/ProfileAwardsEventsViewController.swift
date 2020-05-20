@@ -24,13 +24,19 @@ class AwardsCollectionDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView,
 											layout collectionViewLayout: UICollectionViewLayout,
 											sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+		
+		let height = (collectionView.frame.height - 10*3)/4
+		return CGSize(width: collectionView.frame.width * 2/3, height: height)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return 10
 	}
 	
 	func collectionView(_ collectionView: UICollectionView,
 											layout collectionViewLayout: UICollectionViewLayout,
 											minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return 20
 	}
 	
 	func collectionView(_ collectionView: UICollectionView,
@@ -76,20 +82,16 @@ class ProfileAwardsEventsViewController: UIViewController {
 
 		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
 		
-		let cellsProps: [AwardsCollectionViewCell.Props] = [
-			.init(heading: l10n(.greetingHeading1),
-						imageName: "greetin_icon_page_one"),
-			.init(heading: l10n(.greetingHeading2),
-						imageName: "add_object"),
-			.init(heading: l10n(.greetingHeading3),
-						imageName: "greetin_icon_page_three")
-		]
+		let cellsProps = Array(
+			repeating: AwardsCollectionViewCell.Props(heading: l10n(.greetingHeading1), imageName: "aged_people"),
+			count: 9
+		)
 		collectionDataSource.cellsProps = cellsProps
 		collectionView.dataSource = collectionDataSource
 	}
 	
 	private func layout() {
-		collectionView.backgroundColor = .cyan
+		collectionView.backgroundColor = .white
 		tableView.backgroundColor = .darkText
 		awardsLabel.decorate(with: Style.systemFont(size: 18, weight: .semibold))
 		eventsLabel.decorate(with: Style.systemFont(size: 18, weight: .semibold))
@@ -114,8 +116,8 @@ class ProfileAwardsEventsViewController: UIViewController {
 		collectionView.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: awardsLabel, plus: spacing)
 			.pinEdgeToSupers(.leading, plus: spacing)
-			.pinEdgeToSupers(.trailing, plus: -spacing)
-			.set(my: .height, to: 200)
+			.pinEdgeToSupers(.trailing, plus: -0)
+			.set(my: .height, to: 222)
 		
 		line.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: collectionView, plus: spacing)
