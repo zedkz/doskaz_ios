@@ -99,6 +99,8 @@ extension ProfileDrawerViewController: UITabBarDelegate {
 			show(viewController: ProfileCommentsViewController())
 		case 3:
 			show(viewController: ProfileComplaintsViewController())
+		case 4:
+			show(viewController: ProfileAwardsEventsViewController())
 		default:
 			break
 		}
