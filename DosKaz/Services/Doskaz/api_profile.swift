@@ -31,9 +31,9 @@ struct APIProfile: DoskazRequest {
 // MARK: - Profile
 struct Profile: Codable {
 	let id: Int
-	let email, phone: String
+	let email, phone: String?
 	let avatar: String?
-	let firstName, lastName, middleName: String
+	let firstName, lastName, middleName: String?
 	let currentTask: CurrentTask
 	let level: Level
 	let stats: Stats
