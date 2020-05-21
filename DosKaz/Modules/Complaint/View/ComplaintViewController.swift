@@ -94,9 +94,29 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		case .all:
 			tableView.reloadData()
 		}
-//		if let firstUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
-//			tableView.scrollToRow(at: IndexPath(row: firstUnfilledRow, section: 0), at: .top, animated: true)
-//		}
+		
+		scrollToInvalidRow()
+	}
+	
+	//MARK: - Validation
+		
+	private func firstSectionInvalidRow() -> IndexPath?  {
+		let configurators = personalInfoDataSource.configurators
+		let validatables = configurators.map { $0.validatable }
+		guard let firstInvalidRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) else {
+			return nil
+		}
+		return IndexPath(row: firstInvalidRow, section: 0)
+	}
+	
+	private func scrollToInvalidRow() {
+		var invalidRows = [IndexPath]()
+		if let row = firstSectionInvalidRow() {
+			invalidRows.append(row)
+		}
+		if let first = invalidRows.first {
+			tableView.scrollToRow(at: first , at: .top, animated: true)
+		}
 	}
 	
 	//MARK: - Table view section header
