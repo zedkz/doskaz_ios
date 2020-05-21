@@ -14,12 +14,21 @@ protocol ComplaintViewInput where Self: UIViewController {
 	func setupInitialState()
 }
 
-class ComplaintViewController: UIViewController, ComplaintViewInput {
+class ComplaintViewController: TableViewController, ComplaintViewInput {
 	
 	var output: ComplaintViewOutput!
 	
+	//MARK: - ComplaintViewInput fields
 	func setupInitialState() {
-		
+		setupTable()
+	}
+
+	//MARK: - Private
+	
+	private func setupTable() {
+		tableView.tableFooterView = UIView()
+		tableView.keyboardDismissMode = .interactive
+		tableView.separatorStyle = .none
 	}
 	
 }
