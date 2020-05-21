@@ -108,6 +108,11 @@
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
+		44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311424765F040022375C /* ComplaintConfigurator.swift */; };
+		44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311524765F040022375C /* ComplaintInteractor.swift */; };
+		44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311624765F040022375C /* ComplaintPresenter.swift */; };
+		44E7311D24765F040022375C /* ComplaintRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311724765F040022375C /* ComplaintRouter.swift */; };
+		44E7311E24765F040022375C /* ComplaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311924765F040022375C /* ComplaintViewController.swift */; };
 		44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11C92451883D009B92BF /* api_objects_map.swift */; };
 		44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */; };
 		44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */; };
@@ -259,6 +264,11 @@
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		44E7311424765F040022375C /* ComplaintConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintConfigurator.swift; sourceTree = "<group>"; };
+		44E7311524765F040022375C /* ComplaintInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintInteractor.swift; sourceTree = "<group>"; };
+		44E7311624765F040022375C /* ComplaintPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintPresenter.swift; sourceTree = "<group>"; };
+		44E7311724765F040022375C /* ComplaintRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintRouter.swift; sourceTree = "<group>"; };
+		44E7311924765F040022375C /* ComplaintViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintViewController.swift; sourceTree = "<group>"; };
 		44ED11C92451883D009B92BF /* api_objects_map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_map.swift; sourceTree = "<group>"; };
 		44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInteractor.swift; sourceTree = "<group>"; };
 		44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueConfigurator.swift; sourceTree = "<group>"; };
@@ -477,6 +487,7 @@
 				44EE3032246DB5B000926817 /* Blogs */,
 				444F35DD246EF4C7001C7A27 /* More */,
 				4420ABE824727BE7007F70D6 /* Profile */,
+				44E7311224765F040022375C /* Complaint */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -686,6 +697,34 @@
 				445D51942466D92700C2E02A /* disabilityCategories.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		44E7311224765F040022375C /* Complaint */ = {
+			isa = PBXGroup;
+			children = (
+				44E7311824765F040022375C /* View */,
+				44E7311324765F040022375C /* Presenter */,
+			);
+			path = Complaint;
+			sourceTree = "<group>";
+		};
+		44E7311324765F040022375C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44E7311624765F040022375C /* ComplaintPresenter.swift */,
+				44E7311524765F040022375C /* ComplaintInteractor.swift */,
+				44E7311724765F040022375C /* ComplaintRouter.swift */,
+				44E7311424765F040022375C /* ComplaintConfigurator.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44E7311824765F040022375C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44E7311924765F040022375C /* ComplaintViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		44ED11C824518811009B92BF /* Doskaz */ = {
@@ -968,6 +1007,7 @@
 				44B8A4AA24750091002BFE6A /* ProfileCommentsViewController.swift in Sources */,
 				440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */,
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
+				44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */,
 				448EBAD124696CA1006C9961 /* FormCells.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				448EBAD324699374006C9961 /* CellConfigurator.swift in Sources */,
@@ -1020,6 +1060,7 @@
 				445CDC812402E5F90072F4BC /* MapInteractor.swift in Sources */,
 				44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */,
 				448EBACA24693C8F006C9961 /* BigFormConfigurator.swift in Sources */,
+				44E7311E24765F040022375C /* ComplaintViewController.swift in Sources */,
 				4420ABF124727BE8007F70D6 /* ProfileRouter.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
@@ -1032,6 +1073,7 @@
 				444F35DF246EF548001C7A27 /* MoreViewController.swift in Sources */,
 				44B8A4AE247512D6002BFE6A /* ProfileAwardsEventsViewController.swift in Sources */,
 				44ED11D92455BA97009B92BF /* VenueView.swift in Sources */,
+				44E7311D24765F040022375C /* ComplaintRouter.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
 				44ED11EA24573F0E009B92BF /* VenueDescriptionView.swift in Sources */,
@@ -1054,6 +1096,7 @@
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
+				44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */,
 				44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */,
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
 				44EE303C246DB5B100926817 /* BlogsInteractor.swift in Sources */,
@@ -1071,6 +1114,7 @@
 				44EE303B246DB5B100926817 /* BlogsConfigurator.swift in Sources */,
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				44EE303E246DB5B100926817 /* BlogsViewController.swift in Sources */,
+				44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */,
 				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,
