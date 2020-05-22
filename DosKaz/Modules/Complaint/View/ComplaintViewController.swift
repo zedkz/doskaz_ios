@@ -47,7 +47,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		tableView.register(cellClass: LeftCheckCell.self)
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
-		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource])
+		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
+		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource, complaintDataSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 	}
@@ -57,6 +58,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	private var dataSource: SectionedTableViewDataSource!
 	
 	private var personalInfoDataSource: FormTableViewDataSource!
+	
+	private var complaintDataSource: FormTableViewDataSource!
 	
 	//MARK: - Lists for particular fields
 	

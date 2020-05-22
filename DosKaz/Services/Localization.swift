@@ -103,6 +103,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case phone = "Телефон"
 	case city = "Город"
 	case authority = "Наименование органа обращения"
+	case complaint = "Жалоба"
 	
 	var l10n: String {
 		return self.rawValue.localized
