@@ -32,7 +32,12 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		self.complaintAtrs = complaintAtrs
 		updateSectionOneDataSource()
 		updateSectionTwoDataSource()
-		updateDynamicDataSources()
+		switch currentComplaintType {
+		case .complaint1:
+			break
+		case .complaint2:
+			updateDynamicDataSources()
+		}
 		updateLastSectionDataSource()
 		reload(with: .all)
 	}
