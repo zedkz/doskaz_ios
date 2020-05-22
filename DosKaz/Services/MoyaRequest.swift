@@ -111,6 +111,11 @@ extension MoyaRequest {
 
 			parseData(response.data)
 		case let .failure(moyaError):
+			let str = String(data: moyaError.response!.data, encoding: .utf8) ?? "no str"
+			let wI = NSMutableString( string: str)
+			CFStringTransform( wI, nil, "Any-Hex/Java" as NSString, true)
+			print("Data,", wI )
+
 			parseError(moyaError)
 		}
 	}

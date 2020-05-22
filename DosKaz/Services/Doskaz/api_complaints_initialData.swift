@@ -30,9 +30,9 @@ struct APIComplaintData: DoskazRequest {
 // MARK: - ComplaintData
 struct ComplaintData: Codable {
 	var complainant: Complainant
-	let authorityId: Int
+	var authorityId: Int
 	var rememberPersonalData: Bool
-	let objectId: Int
+	var objectId: Int?
 	var content: Content
 }
 
@@ -46,10 +46,10 @@ struct Complainant: Codable {
 
 // MARK: - Content
 struct Content: Codable {
-	let type: String
-	let visitedAt: String
+	var type: String
+	var visitedAt: String
 	var objectName: String
-	let cityId: Int
+	var cityId: Int?
 	var street, building, office, visitPurpose: String
 	var videos: [String]
 	var photos: [String]
@@ -82,7 +82,7 @@ struct Content: Codable {
 		try container.encode(visitPurpose, forKey: .visitPurpose)
 		try container.encode(videos, forKey: .videos)
 		try container.encode(photos, forKey: .photos)
-		try container.encode(threatToLife, forKey: .threatToLife)
+//		try container.encode(threatToLife, forKey: .threatToLife)
 	}
 	
 	private enum CodingKeys: String, CodingKey {

@@ -10,9 +10,10 @@ import SharedCodeFramework
 
 // MARK: View input protocol
 
-protocol ComplaintViewInput where Self: UIViewController {
+protocol ComplaintViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority], _ complaintAtrs: [ComplaintAtr])
+	var onTouchReady: CommandWith<ComplaintData> { get set }
 }
 
 class ComplaintViewController: TableViewController, ComplaintViewInput, UITableViewDelegate {
@@ -20,7 +21,28 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	var output: ComplaintViewOutput!
 	
 	//MARK: - ComplaintViewInput fields
+	
+	@objc func formDone() {
+		//fake
+		complaintData.complainant.cityId = currentCity?.id
+		complaintData.complainant.building = "23"
+		complaintData.complainant.apartment = "323"
+		complaintData.authorityId = 2
+		complaintData.objectId = nil
+		complaintData.content.type = "complaint1"
+		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
+		complaintData.content.cityId = currentCity?.id
+		complaintData.content.building = "45"
+		complaintData.content.office = "345"
+		complaintData.content.photos = ["Photos"]
+		//fake
+		onTouchReady.perform(with: complaintData)
+	}
+	
+	var onTouchReady: CommandWith<ComplaintData> = .nop
+	
 	func setupInitialState() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: l10n(.done), style: .done, target: self, action: #selector(formDone))
 		setupTable()
 
 	}
