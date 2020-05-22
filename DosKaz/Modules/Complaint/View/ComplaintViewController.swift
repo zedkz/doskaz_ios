@@ -85,6 +85,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	var complaintData: ComplaintData!
 	
+	var dynamicSections = [String: [String: Bool]]()
+	
 	//MARK: - Table view "update dataSources" methods
 	
 	private func updateSectionOneDataSource(isAfterValidation: Bool = false) {
@@ -321,12 +323,25 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		let localDynamicDataSources: [FormTableViewDataSource] = complaintAtrs.map { section in
 			
+			if !dynamicSections.keys.contains(section.key) {
+				dynamicSections[section.key] = [String: Bool]()
+			}
+			
 			let configs: [CellConfiguratorType] = section.options.map { option in
-				let props = RightCheckCell.Props(title: option.label, isChecked: true, onTap: Command {
-
-					self.updateDynamicDataSources()
-					self.reload(with: .all)
-				})
+				
+				if self.dynamicSections[section.key]?[option.key] == nil {
+					self.dynamicSections[section.key]?[option.key] = false
+				}
+				
+				let props = RightCheckCell.Props(
+					title: option.label,
+					isChecked: self.dynamicSections[section.key]?[option.key] ?? false,
+					onTap: Command {
+						self.self.dynamicSections[section.key]?[option.key]?.toggle()
+						self.updateDynamicDataSources()
+						self.reload(with: .all)
+					}
+				)
 				return CellConfigurator<RightCheckCell>(props: props)
 			}
 	
