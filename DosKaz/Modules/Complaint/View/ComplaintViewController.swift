@@ -36,6 +36,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		complaintData.complainant.cityId = currentCity?.id
 		complaintData.content.cityId = currentObjectCity?.id
 		complaintData.authorityId = currentAuth?.id
+		complaintData.content.type = currentComplaintType.rawValue
 		onTouchReady.perform(with: complaintData)
 	}
 	
