@@ -55,6 +55,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		currentCity = cities.first(where: { $0.id == complaintData.complainant.cityId })
 		currentObjectCity = cities.first(where: { $0.id == complaintData.content.cityId })
+		currentAuth = auths.first(where: { $0.id == complaintData.authorityId })
 		
 		updateSectionOneDataSource()
 		updateSectionTwoDataSource()
