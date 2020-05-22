@@ -17,8 +17,12 @@ class ComplaintInteractor: ComplaintInteractorInput {
 	weak var output: ComplaintInteractorOutput!
 	
 	func loadComplaintData() {
+		if let complaintData = ComplaintDataStorage.shared.retrieveData() {
+			output.didLoad(complaintData)
+		}
 		let onSuccess = { [weak self] (complaintData: ComplaintData) -> Void in
 			self?.output.didLoad(complaintData)
+			ComplaintDataStorage.shared.store(complaintData)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in

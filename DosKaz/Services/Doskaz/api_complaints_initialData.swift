@@ -54,3 +54,10 @@ struct Content: Codable {
 	let videos: [String]
 	let photos: [String]
 }
+
+class ComplaintDataStorage: Archive {
+	typealias Model = ComplaintData
+	var fileName: String = "ComplaintDataStorage"
+	static let shared = ComplaintDataStorage()
+}
+
