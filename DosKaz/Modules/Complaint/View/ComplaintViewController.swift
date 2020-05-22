@@ -29,7 +29,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		self.auths = auths
 		self.cities = cities
 		self.complaintData = complaintData
-		update()
+		updateSectionOneDataSource()
 		reload(with: .all)
 	}
 
@@ -74,7 +74,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - Table view "update dataSources" methods
 	
-	private func update(isAfterValidation: Bool = false) {
+	private func updateSectionOneDataSource(isAfterValidation: Bool = false) {
 		func shouldBeRed(_ condition: Bool) -> Bool {
 			return condition && isAfterValidation
 		}
@@ -92,7 +92,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onEditText: Text {
 				self.complaintData.complainant.lastName = $0
-				self.update()
+				self.updateSectionOneDataSource()
 			}
 		)
 		
@@ -103,7 +103,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onEditText: Text {
 				self.complaintData.complainant.firstName = $0
-				self.update()
+				self.updateSectionOneDataSource()
 			}
 		)
 
@@ -114,7 +114,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onEditText: Text {
 				self.complaintData.complainant.middleName = $0
-				self.update()
+				self.updateSectionOneDataSource()
 			}
 		)
 		
@@ -125,7 +125,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onEditText: Text {
 				self.complaintData.complainant.iin = $0
-				self.update()
+				self.updateSectionOneDataSource()
 			}
 		)
 		
@@ -139,7 +139,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				self.pick(
 					with: OnPick {
 						self.currentCity = $0
-						self.update()
+						self.updateSectionOneDataSource()
 						self.reload(with: .rows([4], 0))
 					},
 					currentValue: self.currentCity,
@@ -155,7 +155,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onEditText: Text {
 				self.complaintData.complainant.street = $0
-				self.update()
+				self.updateSectionOneDataSource()
 			}
 		)
 		
@@ -166,7 +166,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onEditText: Text {
 				self.complaintData.complainant.phone = $0
-				self.update()
+				self.updateSectionOneDataSource()
 			}
 		)
 		
@@ -180,7 +180,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				self.pick(
 					with: OnPick {
 						self.currentAuth = $0
-						self.update()
+						self.updateSectionOneDataSource()
 						self.reload(with: .rows([8], 0))
 					},
 					currentValue: self.currentAuth,
@@ -194,7 +194,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			isChecked: complaintData.rememberPersonalData,
 			onTap: Command {
 				self.complaintData.rememberPersonalData.toggle()
-				self.update()
+				self.updateSectionOneDataSource()
 				//TODO: -update rows
 				self.reload(with: .rows([9], 0))
 			}
