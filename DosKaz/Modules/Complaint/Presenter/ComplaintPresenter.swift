@@ -17,9 +17,8 @@ class ComplaintPresenter {
 	var authorities: [Authority]? { didSet { render() } }
 	
 	func render() {
-		if let _ = cities, let complaintData = complaintData, let authorities = authorities  {
-			view.showInitial(complaintData)
-			
+		if let cities = cities, let complaintData = complaintData, let authorities = authorities  {
+			view.showInitial(complaintData, cities, authorities)
 		}
 	}
 }

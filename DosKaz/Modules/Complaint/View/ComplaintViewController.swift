@@ -12,7 +12,7 @@ import SharedCodeFramework
 
 protocol ComplaintViewInput where Self: UIViewController {
 	func setupInitialState()
-	func showInitial(_ complaintData: ComplaintData)
+	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority])
 }
 
 class ComplaintViewController: TableViewController, ComplaintViewInput, UITableViewDelegate {
@@ -25,7 +25,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 
 	}
 	
-	func showInitial(_ complaintData: ComplaintData) {
+	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority]) {
 		self.complaintData = complaintData
 		update()
 		reload(with: .all)
