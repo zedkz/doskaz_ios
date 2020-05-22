@@ -9,6 +9,7 @@
 protocol ComplaintInteractorInput {
 	func loadComplaintData()
 	func loadCities()
+	func loadAuthorities()
 }
 
 // MARK: Implementation
@@ -48,6 +49,23 @@ class ComplaintInteractor: ComplaintInteractorInput {
 		
 		APICities(onSuccess: onSuccess, onFailure: onFailure).dispatch()
 	}
+	
+	func loadAuthorities() {
+		if let stored = AuthoritiesStorage.shared.retrieveData() {
+			output.didLoad(stored)
+		}
+		let onSuccess = { [weak self] (authorities: [Authority]) -> Void in
+			self?.output.didLoad(authorities)
+			AuthoritiesStorage.shared.store(authorities)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadAuthorities(with: error)
+		}
+		
+		APIAuthorities(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+	}
+
 
 }
 		
