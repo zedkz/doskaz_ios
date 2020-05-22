@@ -55,6 +55,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		tableView.register(cellClass: PhotoPickerCell.self)
 		tableView.register(cellClass: LeftCheckCell.self)
 		tableView.register(cellClass: RightCheckCell.self)
+		tableView.register(cellClass: PhotoPickerCell.self)
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
@@ -380,7 +381,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	private func updateLastSectionDataSource() {
-		lastSectionDataSource.configurators = videoLinks
+		let photoConfig = CellConfigurator<PhotoPickerCell>(props: PhotoPickerCell.Props())
+
+		lastSectionDataSource.configurators = videoLinks + [photoConfig]
 	}
 	
 	private var videoLinks: [CellConfigurator<TextFormCell>] {
