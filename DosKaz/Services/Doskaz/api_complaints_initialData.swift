@@ -31,7 +31,7 @@ struct APIComplaintData: DoskazRequest {
 struct ComplaintData: Codable {
 	var complainant: Complainant
 	let authorityId: Int
-	let rememberPersonalData: Bool
+	var rememberPersonalData: Bool
 	let objectId: Int
 	let content: Content
 }

@@ -42,6 +42,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: SubSectionHeaderCell.self)
 		tableView.register(cellClass: PhotoPickerCell.self)
+		tableView.register(cellClass: LeftCheckCell.self)
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource])
@@ -126,6 +127,17 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				self.update()
 			}
 		)
+		
+		let rememberDataProps = LeftCheckCell.Props(
+			title: l10n(.rememberMyData),
+			isChecked: complaintData.rememberPersonalData,
+			onTap: Command {
+				self.complaintData.rememberPersonalData.toggle()
+				self.update()
+				//TODO: -update rows
+				self.reload(with: .rows([9], 0))
+			}
+		)
 	
 		personalInfoDataSource.configurators = [
 			CellConfigurator<TextFormCell>(props: familyNameProps),
@@ -133,6 +145,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: middleNameProps),
 			CellConfigurator<TextFormCell>(props: iinProps),
 			CellConfigurator<TextFormCell>(props: streetProps),
+			CellConfigurator<LeftCheckCell>(props: rememberDataProps)
 		]
 	}
 	
@@ -142,7 +155,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		switch type {
 		case .rows(let rows, let section):
 			let indexPaths = rows.map { IndexPath(row: $0, section: section)}
-			tableView.reloadRows(at: indexPaths, with: .left)
+			tableView.reloadRows(at: indexPaths, with: .automatic)
 		case .sections(let sections):
 			if animated {
 				tableView.reloadSections(IndexSet(sections), with: .automatic)
