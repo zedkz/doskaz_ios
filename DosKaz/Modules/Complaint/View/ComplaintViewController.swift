@@ -52,6 +52,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
+		otherSectionDataSource = FormTableViewDataSource("Will Be Invisible")
 		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource, complaintDataSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
@@ -64,6 +65,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	private var personalInfoDataSource: FormTableViewDataSource!
 	
 	private var complaintDataSource: FormTableViewDataSource!
+	
+	private var otherSectionDataSource: FormTableViewDataSource!
 	
 	//MARK: - Lists for particular fields
 	
@@ -349,7 +352,22 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			return source
 		}
 		
-		dataSource.replaceDatasources(with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources)
+		let lifeThreatProps = LeftCheckCell.Props(
+			title: l10n(.lifeThreat),
+			isChecked: complaintData.content.threatToLife,
+			onTap: Command {
+				self.complaintData.content.threatToLife.toggle()
+				self.updateDynamicDataSources()
+				self.reload(with: .all)
+		})
+	
+		otherSectionDataSource.configurators = [
+			CellConfigurator<LeftCheckCell>(props: lifeThreatProps)
+		]
+
+		dataSource.replaceDatasources(
+			with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource]
+		)
 	}
 	
 	//MARK: - Table view RELOAD methods

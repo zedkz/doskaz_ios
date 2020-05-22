@@ -61,7 +61,7 @@ class SectionedTableViewDataSource: NSObject {
 	
 	init(dataSources: [TableViewSection]) {
 		self.dataSources = dataSources
-		for index in 0...7 {
+		for index in 0...20 {
 			openBook[index] = true
 		}
 	}

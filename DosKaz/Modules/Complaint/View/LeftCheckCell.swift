@@ -12,6 +12,7 @@ class LeftCheckCell: UITableViewCell, Updatable {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
+		textLabel?.numberOfLines = 0
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
 		addGestureRecognizer(tapGestureRecognizer)
 	}
