@@ -68,6 +68,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	var currentCity: City?
 	
+	var currentAuth: Authority?
+	
 	var complaintData: ComplaintData!
 	
 	//MARK: - Table view "update dataSources" methods
@@ -168,6 +170,25 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let authProps = TextFormCell.Props(
+			shouldEdit: false,
+			text: value(currentAuth?.name),
+			title: l10n(.authority),
+			overlay: "chevron_down",
+			mode: .withoutButton,
+			onOverlayTouch: Command {
+				self.pick(
+					with: OnPick {
+						self.currentAuth = $0
+						self.update()
+						self.reload(with: .rows([8], 0))
+					},
+					currentValue: self.currentAuth,
+					choices: self.auths
+				)
+			}
+		)
+		
 		let rememberDataProps = LeftCheckCell.Props(
 			title: l10n(.rememberMyData),
 			isChecked: complaintData.rememberPersonalData,
@@ -187,6 +208,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: cityProps),
 			CellConfigurator<TextFormCell>(props: streetProps),
 			CellConfigurator<TextFormCell>(props: phoneProps),
+			CellConfigurator<TextFormCell>(props: authProps),
 			CellConfigurator<LeftCheckCell>(props: rememberDataProps)
 		]
 	}

@@ -59,7 +59,7 @@ struct APIAuthorities: DoskazRequest {
 }
 
 // MARK: - Authority
-struct Authority: Codable, CustomStringConvertible {
+struct Authority: Codable, CustomStringConvertible, Equatable {
 	let id: Int
 	let name: String
 	
