@@ -24,18 +24,18 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	@objc func formDone() {
 		//fake
-		complaintData.complainant.cityId = currentCity?.id
 		complaintData.complainant.building = "23"
 		complaintData.complainant.apartment = "323"
 		complaintData.authorityId = 2
 		complaintData.objectId = nil
 		complaintData.content.type = "complaint1"
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
-		complaintData.content.cityId = currentCity?.id
 		complaintData.content.building = "45"
 		complaintData.content.office = "345"
 		complaintData.content.photos = ["Photos"]
 		//fake
+		complaintData.complainant.cityId = currentCity?.id
+		complaintData.content.cityId = currentObjectCity?.id
 		onTouchReady.perform(with: complaintData)
 	}
 	
