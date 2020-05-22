@@ -110,6 +110,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case complaintTypeTwo = "Жалоба на отсутствие доступа на объект или несоответствии функциональных зон объекта требованиям нормативного законодательства"
 	case visitPurpose = "Цель посещения объекта"
 	case lifeThreat = "Данными условиями создана угроза причинения вреда моей жизни и здоровью (отметить, если это так)"
+	case additional = "Приложения"
 	
 	var l10n: String {
 		return self.rawValue.localized

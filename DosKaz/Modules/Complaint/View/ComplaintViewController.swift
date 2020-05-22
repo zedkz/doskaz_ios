@@ -53,7 +53,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
 		otherSectionDataSource = FormTableViewDataSource("Will Be Invisible")
-		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource, complaintDataSource])
+		lastSectionDataSource = FormTableViewDataSource(l10n(.additional))
+		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource, complaintDataSource, lastSectionDataSource])
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 	}
@@ -67,6 +68,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	private var complaintDataSource: FormTableViewDataSource!
 	
 	private var otherSectionDataSource: FormTableViewDataSource!
+	
+	private var lastSectionDataSource: FormTableViewDataSource!
 	
 	//MARK: - Lists for particular fields
 	
@@ -366,7 +369,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		]
 
 		dataSource.replaceDatasources(
-			with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource]
+			with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource] + [lastSectionDataSource]
 		)
 	}
 	
