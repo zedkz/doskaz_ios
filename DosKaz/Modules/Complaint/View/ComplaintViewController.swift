@@ -292,11 +292,23 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let visitPurposeProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(content.visitPurpose).isEmpty),
+			text: value(content.visitPurpose),
+			title: l10n(.visitPurpose),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.content.visitPurpose = $0
+				self.updateSectionTwoDataSource()
+			}
+		)
+		
 		complaintDataSource.configurators = [
 			CellConfigurator<TextFormCell>(props: complaintTypeProps),
 			CellConfigurator<TextFormCell>(props: objectNameProps),
 			CellConfigurator<TextFormCell>(props: objectCityProps),
 			CellConfigurator<TextFormCell>(props: objectStreetProps),
+			CellConfigurator<TextFormCell>(props: visitPurposeProps),
 		]
 	}
 	
