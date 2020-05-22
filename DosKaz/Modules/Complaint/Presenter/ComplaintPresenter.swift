@@ -15,9 +15,13 @@ class ComplaintPresenter {
 	var cities: [City]? { didSet { render() } }
 	var complaintData: ComplaintData? { didSet { render() } }
 	var authorities: [Authority]? { didSet { render() } }
+	var complaintAtrs: [ComplaintAtr]? { didSet { render() } }
 	
 	func render() {
-		if let cities = cities, let complaintData = complaintData, let authorities = authorities  {
+		if let cities = cities,
+			let complaintData = complaintData,
+			let authorities = authorities,
+			let complaintAtrs = complaintAtrs {
 			view.showInitial(complaintData, cities, authorities)
 		}
 	}
@@ -35,6 +39,7 @@ extension ComplaintPresenter: ComplaintViewOutput {
 		interactor.loadComplaintData()
 		interactor.loadCities()
 		interactor.loadAuthorities()
+		interactor.loadComplaintAtrs()
 	}
 
 }
@@ -48,9 +53,19 @@ protocol ComplaintInteractorOutput: class {
 	func didFailLoadCities(with error: Error)
 	func didLoad(_ authorities: [Authority])
 	func didFailLoadAuthorities(with error: Error)
+	func didLoad(_ complaintAtrs: [ComplaintAtr])
+	func didFailLoadComplaintAtrs(with error: Error)
 }
 
 extension ComplaintPresenter: ComplaintInteractorOutput {
+	func didLoad(_ complaintAtrs: [ComplaintAtr]) {
+		self.complaintAtrs = complaintAtrs
+	}
+	
+	func didFailLoadComplaintAtrs(with error: Error) {
+		print(error)
+	}
+	
 	func didLoad(_ authorities: [Authority]) {
 		self.authorities = authorities
 	}

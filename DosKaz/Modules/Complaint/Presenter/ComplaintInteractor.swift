@@ -10,6 +10,7 @@ protocol ComplaintInteractorInput {
 	func loadComplaintData()
 	func loadCities()
 	func loadAuthorities()
+	func loadComplaintAtrs()
 }
 
 // MARK: Implementation
@@ -66,6 +67,17 @@ class ComplaintInteractor: ComplaintInteractorInput {
 		APIAuthorities(onSuccess: onSuccess, onFailure: onFailure).dispatch()
 	}
 
+	func loadComplaintAtrs() {
+		let onSuccess = { [weak self] (complaintAtrs: [ComplaintAtr]) -> Void in
+			self?.output.didLoad(complaintAtrs)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadComplaintAtrs(with: error)
+		}
+		
+		APIComplaintAtrs(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+	}
 
 }
 		
