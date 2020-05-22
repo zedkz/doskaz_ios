@@ -128,6 +128,17 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let phoneProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(person.phone).isEmpty),
+			text: value(person.phone),
+			title: l10n(.phone),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.complainant.phone = $0
+				self.update()
+			}
+		)
+		
 		let rememberDataProps = LeftCheckCell.Props(
 			title: l10n(.rememberMyData),
 			isChecked: complaintData.rememberPersonalData,
@@ -145,6 +156,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: middleNameProps),
 			CellConfigurator<TextFormCell>(props: iinProps),
 			CellConfigurator<TextFormCell>(props: streetProps),
+			CellConfigurator<TextFormCell>(props: phoneProps),
 			CellConfigurator<LeftCheckCell>(props: rememberDataProps)
 		]
 	}
