@@ -12,7 +12,7 @@ import SharedCodeFramework
 
 protocol ComplaintViewInput where Self: UIViewController {
 	func setupInitialState()
-	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority])
+	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority], _ complaintAtrs: [ComplaintAtr])
 }
 
 class ComplaintViewController: TableViewController, ComplaintViewInput, UITableViewDelegate {
@@ -25,10 +25,11 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 
 	}
 	
-	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority]) {
+	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority], _ complaintAtrs: [ComplaintAtr]) {
 		self.auths = auths
 		self.cities = cities
 		self.complaintData = complaintData
+		self.complaintAtrs = complaintAtrs
 		updateSectionOneDataSource()
 		updateSectionTwoDataSource()
 		reload(with: .all)
@@ -67,6 +68,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	var cities = [City]()
 	
 	var auths = [Authority]()
+	
+	var complaintAtrs = [ComplaintAtr]()
 	
 	//MARK: - Source of data for table view dataSource instances
 	

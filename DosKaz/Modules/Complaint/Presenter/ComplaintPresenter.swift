@@ -22,7 +22,7 @@ class ComplaintPresenter {
 			let complaintData = complaintData,
 			let authorities = authorities,
 			let complaintAtrs = complaintAtrs {
-			view.showInitial(complaintData, cities, authorities)
+			view.showInitial(complaintData, cities, authorities, complaintAtrs)
 		}
 	}
 }
