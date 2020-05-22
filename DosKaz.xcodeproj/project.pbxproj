@@ -118,6 +118,7 @@
 		44E731242477A6930022375C /* api_cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E731232477A6930022375C /* api_cities.swift */; };
 		44E731262477D4B10022375C /* api_ complaints_type2Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E731252477D4B10022375C /* api_ complaints_type2Attributes.swift */; };
 		44E731282477E0410022375C /* RightCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E731272477E0410022375C /* RightCheckCell.swift */; };
+		44E7312A247804FC0022375C /* api_complaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E73129247804FC0022375C /* api_complaints.swift */; };
 		44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11C92451883D009B92BF /* api_objects_map.swift */; };
 		44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */; };
 		44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */; };
@@ -279,6 +280,7 @@
 		44E731232477A6930022375C /* api_cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_cities.swift; sourceTree = "<group>"; };
 		44E731252477D4B10022375C /* api_ complaints_type2Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "api_ complaints_type2Attributes.swift"; sourceTree = "<group>"; };
 		44E731272477E0410022375C /* RightCheckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightCheckCell.swift; sourceTree = "<group>"; };
+		44E73129247804FC0022375C /* api_complaints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_complaints.swift; sourceTree = "<group>"; };
 		44ED11C92451883D009B92BF /* api_objects_map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_map.swift; sourceTree = "<group>"; };
 		44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInteractor.swift; sourceTree = "<group>"; };
 		44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueConfigurator.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 				44E7311F247797030022375C /* api_complaints_initialData.swift */,
 				44E731232477A6930022375C /* api_cities.swift */,
 				44E731252477D4B10022375C /* api_ complaints_type2Attributes.swift */,
+				44E73129247804FC0022375C /* api_complaints.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1027,6 +1030,7 @@
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				448EBAD324699374006C9961 /* CellConfigurator.swift in Sources */,
 				444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */,
+				44E7312A247804FC0022375C /* api_complaints.swift in Sources */,
 				44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,

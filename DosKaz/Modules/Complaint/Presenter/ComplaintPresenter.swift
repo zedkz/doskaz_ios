@@ -55,9 +55,19 @@ protocol ComplaintInteractorOutput: class {
 	func didFailLoadAuthorities(with error: Error)
 	func didLoad(_ complaintAtrs: [ComplaintAtr])
 	func didFailLoadComplaintAtrs(with error: Error)
+	func didSucceedSubmitForm()
+	func didFailSubmitForm(with error: Error)
 }
 
 extension ComplaintPresenter: ComplaintInteractorOutput {
+	func didSucceedSubmitForm() {
+		
+	}
+	
+	func didFailSubmitForm(with error: Error) {
+
+	}
+	
 	func didLoad(_ complaintAtrs: [ComplaintAtr]) {
 		self.complaintAtrs = complaintAtrs
 	}
