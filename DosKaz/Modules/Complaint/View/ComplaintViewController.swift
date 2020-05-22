@@ -26,7 +26,6 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		//fake
 		complaintData.complainant.building = "23"
 		complaintData.complainant.apartment = "323"
-		complaintData.authorityId = 2
 		complaintData.objectId = nil
 		complaintData.content.type = "complaint1"
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
@@ -36,6 +35,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		//fake
 		complaintData.complainant.cityId = currentCity?.id
 		complaintData.content.cityId = currentObjectCity?.id
+		complaintData.authorityId = currentAuth?.id
 		onTouchReady.perform(with: complaintData)
 	}
 	

@@ -30,7 +30,7 @@ struct APIComplaintData: DoskazRequest {
 // MARK: - ComplaintData
 struct ComplaintData: Codable {
 	var complainant: Complainant
-	var authorityId: Int
+	var authorityId: Int?
 	var rememberPersonalData: Bool
 	var objectId: Int?
 	var content: Content
