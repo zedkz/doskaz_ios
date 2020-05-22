@@ -95,6 +95,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case loadPhoto = "Загрузите фото"
 	case personalInfo = "Персональная информация"
 	case familyName = "Фамилия"
+	case firstName = "Имя"
 	
 	var l10n: String {
 		return self.rawValue.localized

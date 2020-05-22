@@ -82,9 +82,22 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				self.update()
 			}
 		)
+		
+		let firstNameProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(person.firstName).isEmpty),
+			text: value(person.firstName),
+			title: l10n(.firstName),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.complainant.firstName = $0
+				self.update()
+			}
+		)
+
 	
 		personalInfoDataSource.configurators = [
-			CellConfigurator<TextFormCell>(props: familyNameProps)
+			CellConfigurator<TextFormCell>(props: familyNameProps),
+			CellConfigurator<TextFormCell>(props: firstNameProps)
 		]
 	}
 	
