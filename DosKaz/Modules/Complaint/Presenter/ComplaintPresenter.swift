@@ -23,6 +23,7 @@ protocol ComplaintViewOutput {
 extension ComplaintPresenter: ComplaintViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		interactor.loadComplaintData()
 	}
 
 }
@@ -30,9 +31,16 @@ extension ComplaintPresenter: ComplaintViewOutput {
 // MARK: Interactor output protocol
 
 protocol ComplaintInteractorOutput: class {
-
+	func didLoad(_ complaintData: ComplaintData)
+	func didFailLoadComplaintData(with error: Error)
 }
 
 extension ComplaintPresenter: ComplaintInteractorOutput {
-
+	func didLoad(_ complaintData: ComplaintData) {
+		print("Complaint:", complaintData)
+	}
+	
+	func didFailLoadComplaintData(with error: Error) {
+		print("Fail load complaint with error: ", error.localizedDescription)
+	}
 }

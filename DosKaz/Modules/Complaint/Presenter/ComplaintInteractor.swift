@@ -7,7 +7,7 @@
 //
 
 protocol ComplaintInteractorInput {
-
+	func loadComplaintData()
 }
 
 // MARK: Implementation
@@ -15,6 +15,18 @@ protocol ComplaintInteractorInput {
 class ComplaintInteractor: ComplaintInteractorInput {
 
 	weak var output: ComplaintInteractorOutput!
+	
+	func loadComplaintData() {
+		let onSuccess = { [weak self] (complaintData: ComplaintData) -> Void in
+			self?.output.didLoad(complaintData)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadComplaintData(with: error)
+		}
+		
+		APIComplaintData(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+	}
 
 }
 		
