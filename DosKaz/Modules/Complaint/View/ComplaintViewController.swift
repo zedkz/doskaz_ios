@@ -70,6 +70,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - Source of data for table view dataSource instances
 	
+	var currentComplaintType = ComplaintType.complaint1
+	
 	var currentCity: City?
 	
 	var currentAuth: Authority?
@@ -228,6 +230,25 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		let content = complaintData.content
 		
+		let complaintTypeProps = TextFormCell.Props(
+			shouldEdit: false,
+			text: currentComplaintType.description,
+			title: l10n(.complaintType),
+			overlay: "chevron_down",
+			mode: .withoutButton,
+			onOverlayTouch: Command {
+				self.pick(
+					with: OnPick {
+						self.currentComplaintType = $0
+						self.updateSectionTwoDataSource()
+						self.reload(with: .rows([0], 1))
+					},
+					currentValue: self.currentComplaintType,
+					choices: ComplaintType.allCases
+				)
+			}
+		)
+		
 		let objectNameProps = TextFormCell.Props(
 			canShowRedAlert: shouldBeRed(value(content.objectName).isEmpty),
 			text: value(content.objectName),
@@ -240,6 +261,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		)
 		
 		complaintDataSource.configurators = [
+			CellConfigurator<TextFormCell>(props: complaintTypeProps),
 			CellConfigurator<TextFormCell>(props: objectNameProps),
 		]
 	}
@@ -318,4 +340,18 @@ enum Reload {
 	case rows([Int], Int)
 	case sections([Int])
 	case all
+}
+
+enum ComplaintType: String, CustomStringConvertible, CaseIterable {
+	case complaint1
+	case complaint2
+	
+	var description: String {
+		switch self {
+		case .complaint1:
+			return l10n(.complaintTypeOne)
+		case .complaint2:
+			return l10n(.complaintTypeTwo)
+		}
+	}
 }
