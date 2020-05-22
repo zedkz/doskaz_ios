@@ -29,7 +29,7 @@ struct APIComplaintData: DoskazRequest {
 
 // MARK: - ComplaintData
 struct ComplaintData: Codable {
-	let complainant: Complainant
+	var complainant: Complainant
 	let authorityId: Int
 	let rememberPersonalData: Bool
 	let objectId: Int
@@ -38,10 +38,10 @@ struct ComplaintData: Codable {
 
 // MARK: - Complainant
 struct Complainant: Codable {
-	let firstName, lastName, middleName, iin: String?
-	let phone, street, building: String?
-	let cityId: Int?
-	let apartment: String?
+	var firstName, lastName, middleName, iin: String?
+	var phone, street, building: String?
+	var cityId: Int?
+	var apartment: String?
 }
 
 // MARK: - Content

@@ -38,6 +38,7 @@ protocol ComplaintInteractorOutput: class {
 extension ComplaintPresenter: ComplaintInteractorOutput {
 	func didLoad(_ complaintData: ComplaintData) {
 		print("Complaint:", complaintData)
+		view.showInitial(complaintData)
 	}
 	
 	func didFailLoadComplaintData(with error: Error) {

@@ -12,6 +12,7 @@ import SharedCodeFramework
 
 protocol ComplaintViewInput where Self: UIViewController {
 	func setupInitialState()
+	func showInitial(_ complaintData: ComplaintData)
 }
 
 class ComplaintViewController: TableViewController, ComplaintViewInput, UITableViewDelegate {
@@ -21,6 +22,11 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	//MARK: - ComplaintViewInput fields
 	func setupInitialState() {
 		setupTable()
+
+	}
+	
+	func showInitial(_ complaintData: ComplaintData) {
+		self.complaintData = complaintData
 		update()
 		reload(with: .all)
 	}
@@ -51,7 +57,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - Source of data for table view dataSource instances
 	
-	var familyName = ""
+	var complaintData: ComplaintData!
 	
 	//MARK: - Table view "update dataSources" methods
 	
@@ -60,13 +66,19 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			return condition && isAfterValidation
 		}
 		
+		func value(_ value: String?) -> String {
+			return value ?? ""
+		}
+		
+		let person = complaintData.complainant
+		
 		let familyNameProps = TextFormCell.Props(
-			canShowRedAlert: shouldBeRed(familyName.isEmpty),
-			text: familyName,
+			canShowRedAlert: shouldBeRed(value(person.lastName).isEmpty),
+			text: value(person.lastName),
 			title: l10n(.familyName),
 			mode: .onlyTextField,
 			onEditText: Text {
-				self.familyName = $0
+				self.complaintData.complainant.lastName = $0
 				self.update()
 			}
 		)
