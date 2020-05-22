@@ -32,6 +32,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		self.complaintAtrs = complaintAtrs
 		updateSectionOneDataSource()
 		updateSectionTwoDataSource()
+		updateDynamicDataSources()
 		reload(with: .all)
 	}
 
@@ -313,6 +314,22 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: objectStreetProps),
 			CellConfigurator<TextFormCell>(props: visitPurposeProps),
 		]
+	}
+	
+	private func updateDynamicDataSources() {
+		
+		let localDynamicDataSources: [FormTableViewDataSource] = complaintAtrs.map { section in
+			
+			let configs: [CellConfiguratorType] = section.options.map { option in
+				let props = TextFormCell.Props(text: option.key, title: option.label)
+				return CellConfigurator<TextFormCell>(props: props)
+			}
+	
+			let source = FormTableViewDataSource(section.title, configs)
+			return source
+		}
+		
+		dataSource.replaceDatasources(with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources)
 	}
 	
 	//MARK: - Table view RELOAD methods
