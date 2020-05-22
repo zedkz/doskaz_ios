@@ -33,6 +33,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		updateSectionOneDataSource()
 		updateSectionTwoDataSource()
 		updateDynamicDataSources()
+		updateLastSectionDataSource()
 		reload(with: .all)
 	}
 
@@ -371,6 +372,46 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		dataSource.replaceDatasources(
 			with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource] + [lastSectionDataSource]
 		)
+	}
+	
+	private func updateLastSectionDataSource() {
+		lastSectionDataSource.configurators = videoLinks
+	}
+	
+	private var videoLinks: [CellConfigurator<TextFormCell>] {
+		
+		let videos = complaintData.content.videos
+		
+		var links: [TextFormCell.Props] = videos.enumerated().map { (index, link) in
+			return TextFormCell.Props(
+				text: link,
+				title: l10n(.videoLink),
+				mode: .full(icon: "x_in_form"),
+				onRightTouch: Text { _ in
+					self.complaintData.content.videos.remove(at: index)
+					self.updateLastSectionDataSource()
+					self.reload(with: .all)
+				},
+				onEditText: Text { self.complaintData.content.videos[index] = $0 }
+			)
+		}
+		
+		let emptyLinkCell = TextFormCell.Props(
+			text: "",
+			title: l10n(.videoLink),
+			mode: .full(icon: "plus_in_form"),
+			onRightTouch: Text { newText in
+				self.complaintData.content.videos.append(newText)
+				self.updateLastSectionDataSource()
+				self.reload(with: .all)
+			},
+			onEditText: Text { print($0) }
+		)
+		
+		links.append(emptyLinkCell)
+		
+		let cells = links.map { CellConfigurator<TextFormCell>(props: $0)}
+		return cells
 	}
 	
 	//MARK: - Table view RELOAD methods

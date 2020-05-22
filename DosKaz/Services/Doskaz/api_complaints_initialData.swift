@@ -51,8 +51,8 @@ struct Content: Codable {
 	var objectName: String
 	let cityId: Int
 	var street, building, office, visitPurpose: String
-	let videos: [String]
-	let photos: [String]
+	var videos: [String]
+	var photos: [String]
 	var threatToLife: Bool = false
 	
 	init(from decoder: Decoder) throws {
