@@ -74,6 +74,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	var currentCity: City?
 	
+	var currentObjectCity: City?
+	
 	var currentAuth: Authority?
 	
 	var complaintData: ComplaintData!
@@ -260,9 +262,29 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let objectCityProps = TextFormCell.Props(
+			shouldEdit: false,
+			text: value(currentObjectCity?.name),
+			title: l10n(.city),
+			overlay: "chevron_down",
+			mode: .withoutButton,
+			onOverlayTouch: Command {
+				self.pick(
+					with: OnPick {
+						self.currentObjectCity = $0
+						self.updateSectionTwoDataSource()
+						self.reload(with: .rows([3], 1))
+					},
+					currentValue: self.currentObjectCity,
+					choices: self.cities
+				)
+			}
+		)
+		
 		complaintDataSource.configurators = [
 			CellConfigurator<TextFormCell>(props: complaintTypeProps),
 			CellConfigurator<TextFormCell>(props: objectNameProps),
+			CellConfigurator<TextFormCell>(props: objectCityProps),
 		]
 	}
 	
