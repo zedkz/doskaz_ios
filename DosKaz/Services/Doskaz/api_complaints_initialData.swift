@@ -33,7 +33,7 @@ struct ComplaintData: Codable {
 	let authorityId: Int
 	var rememberPersonalData: Bool
 	let objectId: Int
-	let content: Content
+	var content: Content
 }
 
 // MARK: - Complainant
@@ -48,7 +48,7 @@ struct Complainant: Codable {
 struct Content: Codable {
 	let type: String
 	let visitedAt: String
-	let objectName: String
+	var objectName: String
 	let cityId: Int
 	let street, building, office, visitPurpose: String
 	let videos: [String]

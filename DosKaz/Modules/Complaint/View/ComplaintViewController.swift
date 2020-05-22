@@ -30,6 +30,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		self.cities = cities
 		self.complaintData = complaintData
 		updateSectionOneDataSource()
+		updateSectionTwoDataSource()
 		reload(with: .all)
 	}
 
@@ -213,6 +214,33 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: phoneProps),
 			CellConfigurator<TextFormCell>(props: authProps),
 			CellConfigurator<LeftCheckCell>(props: rememberDataProps)
+		]
+	}
+	
+	private func updateSectionTwoDataSource(isAfterValidation: Bool = false) {
+		func shouldBeRed(_ condition: Bool) -> Bool {
+			return condition && isAfterValidation
+		}
+		
+		func value(_ value: String?) -> String {
+			return value ?? ""
+		}
+		
+		let content = complaintData.content
+		
+		let objectNameProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(content.objectName).isEmpty),
+			text: value(content.objectName),
+			title: l10n(.objectName),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.content.objectName = $0
+				self.updateSectionTwoDataSource()
+			}
+		)
+		
+		complaintDataSource.configurators = [
+			CellConfigurator<TextFormCell>(props: objectNameProps),
 		]
 	}
 	
