@@ -48,6 +48,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		tableView.register(cellClass: SubSectionHeaderCell.self)
 		tableView.register(cellClass: PhotoPickerCell.self)
 		tableView.register(cellClass: LeftCheckCell.self)
+		tableView.register(cellClass: RightCheckCell.self)
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
@@ -321,8 +322,12 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		let localDynamicDataSources: [FormTableViewDataSource] = complaintAtrs.map { section in
 			
 			let configs: [CellConfiguratorType] = section.options.map { option in
-				let props = TextFormCell.Props(text: option.key, title: option.label)
-				return CellConfigurator<TextFormCell>(props: props)
+				let props = RightCheckCell.Props(title: option.label, isChecked: true, onTap: Command {
+
+					self.updateDynamicDataSources()
+					self.reload(with: .all)
+				})
+				return CellConfigurator<RightCheckCell>(props: props)
 			}
 	
 			let source = FormTableViewDataSource(section.title, configs)
