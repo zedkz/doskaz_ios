@@ -26,6 +26,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority]) {
+		self.auths = auths
+		self.cities = cities
 		self.complaintData = complaintData
 		update()
 		reload(with: .all)
@@ -56,7 +58,15 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	private var personalInfoDataSource: FormTableViewDataSource!
 	
+	//MARK: - Lists for particular fields
+	
+	var cities = [City]()
+	
+	var auths = [Authority]()
+	
 	//MARK: - Source of data for table view dataSource instances
+	
+	var currentCity: City?
 	
 	var complaintData: ComplaintData!
 	
@@ -117,6 +127,25 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let cityProps = TextFormCell.Props(
+			shouldEdit: false,
+			text: value(currentCity?.name),
+			title: l10n(.city),
+			overlay: "chevron_down",
+			mode: .withoutButton,
+			onOverlayTouch: Command {
+				self.pick(
+					with: OnPick {
+						self.currentCity = $0
+						self.update()
+						self.reload(with: .rows([4], 0))
+					},
+					currentValue: self.currentCity,
+					choices: self.cities
+				)
+			}
+		)
+		
 		let streetProps = TextFormCell.Props(
 			canShowRedAlert: shouldBeRed(value(person.street).isEmpty),
 			text: value(person.street),
@@ -155,6 +184,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: firstNameProps),
 			CellConfigurator<TextFormCell>(props: middleNameProps),
 			CellConfigurator<TextFormCell>(props: iinProps),
+			CellConfigurator<TextFormCell>(props: cityProps),
 			CellConfigurator<TextFormCell>(props: streetProps),
 			CellConfigurator<TextFormCell>(props: phoneProps),
 			CellConfigurator<LeftCheckCell>(props: rememberDataProps)

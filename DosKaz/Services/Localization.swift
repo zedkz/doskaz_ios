@@ -101,6 +101,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case street = "Улица"
 	case rememberMyData = "Запомнить мои данные"
 	case phone = "Телефон"
+	case city = "Город"
 	
 	var l10n: String {
 		return self.rawValue.localized

@@ -23,10 +23,12 @@ struct APICities: DoskazRequest {
 }
 
 // MARK: - City
-struct City: Codable {
+struct City: Codable, CustomStringConvertible, Equatable {
 	let id: Int
 	let name: String
 	let bounds: [[Double]]
+	
+	var description: String { name }
 }
 
 class CitiesStorage: Archive {
@@ -57,9 +59,11 @@ struct APIAuthorities: DoskazRequest {
 }
 
 // MARK: - Authority
-struct Authority: Codable {
+struct Authority: Codable, CustomStringConvertible {
 	let id: Int
 	let name: String
+	
+	var description: String { name }
 }
 
 class AuthoritiesStorage: Archive {
