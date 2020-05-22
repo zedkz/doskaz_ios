@@ -27,7 +27,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		complaintData.complainant.building = "23"
 		complaintData.complainant.apartment = "323"
 		complaintData.objectId = nil
-		complaintData.content.type = "complaint1"
+		
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
 		complaintData.content.building = "45"
 		complaintData.content.office = "345"
