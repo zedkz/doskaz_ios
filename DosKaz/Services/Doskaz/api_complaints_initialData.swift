@@ -50,7 +50,7 @@ struct Content: Codable {
 	let visitedAt: String
 	var objectName: String
 	let cityId: Int
-	let street, building, office, visitPurpose: String
+	var street, building, office, visitPurpose: String
 	let videos: [String]
 	let photos: [String]
 }

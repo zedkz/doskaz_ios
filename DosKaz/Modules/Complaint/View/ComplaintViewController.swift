@@ -281,10 +281,22 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let objectStreetProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(content.street).isEmpty),
+			text: value(content.street),
+			title: l10n(.street),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.content.street = $0
+				self.updateSectionTwoDataSource()
+			}
+		)
+		
 		complaintDataSource.configurators = [
 			CellConfigurator<TextFormCell>(props: complaintTypeProps),
 			CellConfigurator<TextFormCell>(props: objectNameProps),
 			CellConfigurator<TextFormCell>(props: objectCityProps),
+			CellConfigurator<TextFormCell>(props: objectStreetProps),
 		]
 	}
 	
