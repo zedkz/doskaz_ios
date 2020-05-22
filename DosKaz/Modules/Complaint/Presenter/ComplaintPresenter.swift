@@ -12,6 +12,15 @@ class ComplaintPresenter {
 	var interactor: ComplaintInteractorInput!
 	var router: ComplaintRouterInput!
 
+	var cities: [City]! { didSet { render() } }
+	var complaintData: ComplaintData!  { didSet { render() } }
+	
+	func render() {
+		if let cities = cities, let complaintData = complaintData {
+			view.showInitial(complaintData)
+			
+		}
+	}
 }
 
 // MARK: ViewController output protocol
@@ -24,6 +33,7 @@ extension ComplaintPresenter: ComplaintViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		interactor.loadComplaintData()
+		interactor.loadCities()
 	}
 
 }
@@ -33,12 +43,22 @@ extension ComplaintPresenter: ComplaintViewOutput {
 protocol ComplaintInteractorOutput: class {
 	func didLoad(_ complaintData: ComplaintData)
 	func didFailLoadComplaintData(with error: Error)
+	func didLoad(_ cities: [City])
+	func didFailLoadCities(with error: Error)
 }
 
 extension ComplaintPresenter: ComplaintInteractorOutput {
+	func didLoad(_ cities: [City]) {
+		self.cities = cities
+	}
+	
+	func didFailLoadCities(with error: Error) {
+		print(error)
+	}
+	
 	func didLoad(_ complaintData: ComplaintData) {
 		print("Complaint:", complaintData)
-		view.showInitial(complaintData)
+		self.complaintData = complaintData
 	}
 	
 	func didFailLoadComplaintData(with error: Error) {

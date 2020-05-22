@@ -115,6 +115,7 @@
 		44E7311E24765F040022375C /* ComplaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311924765F040022375C /* ComplaintViewController.swift */; };
 		44E73120247797030022375C /* api_complaints_initialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311F247797030022375C /* api_complaints_initialData.swift */; };
 		44E731222477A2AA0022375C /* LeftCheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E731212477A2AA0022375C /* LeftCheckCell.swift */; };
+		44E731242477A6930022375C /* api_cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E731232477A6930022375C /* api_cities.swift */; };
 		44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11C92451883D009B92BF /* api_objects_map.swift */; };
 		44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */; };
 		44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */; };
@@ -273,6 +274,7 @@
 		44E7311924765F040022375C /* ComplaintViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintViewController.swift; sourceTree = "<group>"; };
 		44E7311F247797030022375C /* api_complaints_initialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_complaints_initialData.swift; sourceTree = "<group>"; };
 		44E731212477A2AA0022375C /* LeftCheckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftCheckCell.swift; sourceTree = "<group>"; };
+		44E731232477A6930022375C /* api_cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_cities.swift; sourceTree = "<group>"; };
 		44ED11C92451883D009B92BF /* api_objects_map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_map.swift; sourceTree = "<group>"; };
 		44ED11CD2455B9EA009B92BF /* VenueInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueInteractor.swift; sourceTree = "<group>"; };
 		44ED11CE2455B9EA009B92BF /* VenueConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueConfigurator.swift; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 				44EE303F246DB88D00926817 /* api_blog_posts.swift */,
 				4446C24024727EC3006B49EE /* api_profile.swift */,
 				44E7311F247797030022375C /* api_complaints_initialData.swift */,
+				44E731232477A6930022375C /* api_cities.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1035,6 +1038,7 @@
 				4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */,
 				44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */,
 				4404F24C245F0CD900EB7184 /* FilterInteractor.swift in Sources */,
+				44E731242477A6930022375C /* api_cities.swift in Sources */,
 				4404F253245F216100EB7184 /* Eureka.swift in Sources */,
 				4420ABF024727BE8007F70D6 /* ProfilePresenter.swift in Sources */,
 				445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */,

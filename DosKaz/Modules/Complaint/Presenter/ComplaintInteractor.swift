@@ -8,6 +8,7 @@
 
 protocol ComplaintInteractorInput {
 	func loadComplaintData()
+	func loadCities()
 }
 
 // MARK: Implementation
@@ -30,6 +31,22 @@ class ComplaintInteractor: ComplaintInteractorInput {
 		}
 		
 		APIComplaintData(onSuccess: onSuccess, onFailure: onFailure).dispatch()
+	}
+	
+	func loadCities() {
+		if let stored = CitiesStorage.shared.retrieveData() {
+			output.didLoad(stored)
+		}
+		let onSuccess = { [weak self] (cities: [City]) -> Void in
+			self?.output.didLoad(cities)
+			CitiesStorage.shared.store(cities)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadCities(with: error)
+		}
+		
+		APICities(onSuccess: onSuccess, onFailure: onFailure).dispatch()
 	}
 
 }
