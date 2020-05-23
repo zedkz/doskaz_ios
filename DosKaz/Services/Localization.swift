@@ -120,6 +120,9 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case complaint2Header = "Выберите из списка что именно вас не устроило на объекте, либо оставьте комментарий"
 	case level = "уровень"
 	case helpSomebody = "Помогая другим, помогаешь себе"
+	case currentTask = "Текущее задание"
+	case ofObjects = "объектов"
+	case ofInvestigations = "проверок"
 	
 	var l10n: String {
 		return self.rawValue.localized

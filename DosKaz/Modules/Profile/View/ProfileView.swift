@@ -22,7 +22,7 @@ class ProfileView: UIView {
 		statusTitle.numberOfLines = 0
 		title.numberOfLines = 0
 		taskLabel.numberOfLines = 0
-		taskTitleLabel.text = "Текущее задание"
+		taskTitleLabel.text = l10n(.currentTask)
 
 		
 		//mock data
@@ -31,7 +31,7 @@ class ProfileView: UIView {
 		levelProgressLabel.text = "0/0"
 		levelLabel.text = "0 \(l10n(.level))"
 		levelProgress.setProgress(0.3, animated: true)
-		levelsStats.text = "0 объектов     0 проверок"
+		levelsStats.text = "0 \(l10n(.ofObjects))     0 \(l10n(.ofInvestigations))"
 		
 		taskLabel.text = "–"
 		taskProgress.setProgress(0.3, animated: true)
@@ -175,6 +175,24 @@ class ProfileView: UIView {
 		didSet {
 			let profile = props.profile
 			title.text = "\(profile.firstName ?? "–") \(profile.middleName ?? "–") \(profile.lastName ?? "–")"
+			statusTitle.text = profile.status ?? "–"
+			let level = profile.level
+			levelLabel.text = String(level.current) + " \(l10n(.level))"
+			levelProgressLabel.text = "\(level.currentPoints)/\(level.nextLevelThreshold)"
+			let progress = Float(level.currentPoints) / Float(level.nextLevelThreshold)
+			levelProgress.setProgress(progress, animated: true)
+
+			let task = profile.currentTask
+			levelsStats.text = "\(profile.stats.objects) \(l10n(.ofObjects))     \(profile.stats.complaints) \(l10n(.ofInvestigations))"
+			
+			taskLabel.text = task.title
+			taskProgressLabel.text = "\(task.progress)/\(task.pointsReward)"
+			
+			let tp = Float(task.progress) / Float(task.pointsReward)
+			taskProgress.setProgress(tp, animated: true)
+			
+			
+
 		}
 	}
 	
