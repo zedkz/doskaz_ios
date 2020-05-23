@@ -259,7 +259,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 					with: OnPick {
 						self.currentAuth = $0
 						self.updateSectionOneDataSource()
-						self.reload(with: .rows([8], 0))
+						self.reload(with: .rows([9], 0))
 					},
 					currentValue: self.currentAuth,
 					choices: self.auths
