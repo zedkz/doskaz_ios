@@ -575,6 +575,38 @@ extension ComplaintViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .white
 		output.viewIsReady()
+		addHeaderView()
+	}
+	
+	func addHeaderView() {
+		let label = UILabel()
+		label.text = "Внимание! В связи с тем, что Ваше письмо в дальнейшем будет направлено в государственный орган, оно должно выполнять определенные требования, такие как наличие Ф.И.О., ИИН, адреса (пункт 2 статьи 6 Закона Республики Казахстан от 12.01.2007 г. № 221-III «О порядке рассмотрения обращений физических и юридических лиц»). Пожалуйста, заполните данные поля без ошибок. Анонимные обращения не рассматриваются.\nПоля, обязательные для заполнения"
+		label.numberOfLines = 0
+		let headerView = UIView()
+		headerView.addSubview(label)
+		label.addConstraintsProgrammatically
+			.pinToSuper(inset: UIEdgeInsets(top: 8, left: 24, bottom: 8, right: 24))
+		tableView.tableHeaderView = headerView
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		sizeHeaderToFit(tableView: tableView)
+	}
+	
+	func sizeHeaderToFit(tableView: UITableView) {
+		if let headerView = tableView.tableHeaderView {
+			let height = headerView.systemLayoutSizeFitting(
+				CGSize(width: tableView.frame.width, height: 100),
+				withHorizontalFittingPriority: .defaultHigh,
+				verticalFittingPriority: .fittingSizeLevel
+			).height
+			
+			if headerView.frame.size.height != height {
+				headerView.frame.size.height = height
+				tableView.tableHeaderView = headerView
+			}
+		}
 	}
 }
 

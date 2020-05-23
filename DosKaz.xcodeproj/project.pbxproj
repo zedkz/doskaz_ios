@@ -20,6 +20,7 @@
 		4404F253245F216100EB7184 /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F252245F216100EB7184 /* Eureka.swift */; };
 		4404F255245F2D9800EB7184 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F254245F2D9800EB7184 /* Asset.swift */; };
 		4404F25824602B0300EB7184 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F25724602B0300EB7184 /* Filter.swift */; };
+		44073FA8247909120064A979 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44073FA7247909120064A979 /* TextCell.swift */; };
 		440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AC3BA246C152E00AAC348 /* InstructionViewController.swift */; };
 		4420ABF024727BE8007F70D6 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEA24727BE7007F70D6 /* ProfilePresenter.swift */; };
 		4420ABF124727BE8007F70D6 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEB24727BE7007F70D6 /* ProfileRouter.swift */; };
@@ -181,6 +182,7 @@
 		4404F252245F216100EB7184 /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
 		4404F254245F2D9800EB7184 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		4404F25724602B0300EB7184 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		44073FA7247909120064A979 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		440AC3BA246C152E00AAC348 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		4420ABEA24727BE7007F70D6 /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		4420ABEB24727BE7007F70D6 /* ProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 				44E7311924765F040022375C /* ComplaintViewController.swift */,
 				44E731212477A2AA0022375C /* LeftCheckCell.swift */,
 				44E731272477E0410022375C /* RightCheckCell.swift */,
+				44073FA7247909120064A979 /* TextCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1118,6 +1121,7 @@
 				4404F251245F1D3700EB7184 /* Templates.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
+				44073FA8247909120064A979 /* TextCell.swift in Sources */,
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
 				44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */,
 				44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */,
