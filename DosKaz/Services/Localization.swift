@@ -114,6 +114,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case building = "Дом"
 	case apartment = "Квартира"
 	case dateOfVisit = "Дата посещения объекта"
+	case objectBuildingNumber = "Номер дома"
+	case objectOfficeNumber = "Офис (если есть)"
 	
 	var l10n: String {
 		return self.rawValue.localized

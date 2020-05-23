@@ -29,8 +29,6 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		complaintData.objectId = nil
 		
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
-		complaintData.content.building = "45"
-		complaintData.content.office = "345"
 		complaintData.content.photos = ["Photos"]
 		//fake
 		complaintData.complainant.cityId = currentCity?.id
@@ -375,6 +373,28 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let objectBuildingProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(content.building).isEmpty),
+			text: value(content.building),
+			title: l10n(.objectBuildingNumber),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.content.building = $0
+				self.updateSectionTwoDataSource()
+			}
+		)
+		
+		let objectOfficeProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(content.office).isEmpty),
+			text: value(content.office),
+			title: l10n(.objectOfficeNumber),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.content.office = $0
+				self.updateSectionTwoDataSource()
+			}
+		)
+		
 		let visitPurposeProps = TextFormCell.Props(
 			canShowRedAlert: shouldBeRed(value(content.visitPurpose).isEmpty),
 			text: value(content.visitPurpose),
@@ -392,6 +412,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: objectNameProps),
 			CellConfigurator<TextFormCell>(props: objectCityProps),
 			CellConfigurator<TextFormCell>(props: objectStreetProps),
+			CellConfigurator<TextFormCell>(props: objectBuildingProps),
+			CellConfigurator<TextFormCell>(props: objectOfficeProps),
 			CellConfigurator<TextFormCell>(props: visitPurposeProps),
 		]
 	}
