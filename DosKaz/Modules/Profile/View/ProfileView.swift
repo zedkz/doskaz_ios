@@ -26,16 +26,16 @@ class ProfileView: UIView {
 
 		
 		//mock data
-		title.text = "Kudaibergenov Almas"
-		statusTitle.text = "Помогая другим, помогаешь себе"
-		levelProgressLabel.text = "34/56"
-		levelLabel.text = "7 уровень"
+		title.text = "–"
+		statusTitle.text = l10n(.helpSomebody)
+		levelProgressLabel.text = "0/0"
+		levelLabel.text = "0 \(l10n(.level))"
 		levelProgress.setProgress(0.3, animated: true)
-		levelsStats.text = "18 объектов     5 проверок"
+		levelsStats.text = "0 объектов     0 проверок"
 		
-		taskLabel.text = "Добавьте 5 объектов в Северном промышленном районе"
+		taskLabel.text = "–"
 		taskProgress.setProgress(0.3, animated: true)
-		taskProgressLabel.text = "3/4"
+		taskProgressLabel.text = "0/0"
 		
 		//MARK: - Configure style
 		title.decorate(with: Style.systemFont(size: 18, weight: .semibold))
@@ -174,7 +174,7 @@ class ProfileView: UIView {
 	var props: Props! {
 		didSet {
 			let profile = props.profile
-			title.text = "\(profile.firstName ?? "-") \(profile.middleName ?? "-") \(profile.lastName ?? "-")"
+			title.text = "\(profile.firstName ?? "–") \(profile.middleName ?? "–") \(profile.lastName ?? "–")"
 		}
 	}
 	
