@@ -82,6 +82,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		tableView.register(cellClass: LeftCheckCell.self)
 		tableView.register(cellClass: RightCheckCell.self)
 		tableView.register(cellClass: PhotoPickerCell.self)
+		tableView.register(cellClass: TextCell.self)
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
@@ -313,7 +314,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 					with: OnPick {
 						self.currentComplaintType = $0
 						self.updateSectionTwoDataSource()
-						self.reload(with: .rows([0], 1))
+						self.reload(with: .sections([1]))
 					},
 					currentValue: self.currentComplaintType,
 					choices: ComplaintType.allCases
@@ -416,6 +417,14 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: objectOfficeProps),
 			CellConfigurator<TextFormCell>(props: visitPurposeProps),
 		]
+		
+		let textProps = TextCell.Props(title: l10n(.complaint2Header), isBlue: true)
+
+		let config = CellConfigurator<TextCell>(props: textProps)
+		if case ComplaintType.complaint2 = currentComplaintType {
+			complaintDataSource.configurators.append(config)
+		}
+		
 	}
 	
 	private func updateDynamicDataSources() {
@@ -580,7 +589,7 @@ extension ComplaintViewController {
 	
 	func addHeaderView() {
 		let label = UILabel()
-		label.text = "Внимание! В связи с тем, что Ваше письмо в дальнейшем будет направлено в государственный орган, оно должно выполнять определенные требования, такие как наличие Ф.И.О., ИИН, адреса (пункт 2 статьи 6 Закона Республики Казахстан от 12.01.2007 г. № 221-III «О порядке рассмотрения обращений физических и юридических лиц»). Пожалуйста, заполните данные поля без ошибок. Анонимные обращения не рассматриваются.\nПоля, обязательные для заполнения"
+		label.text = l10n(.complaintHeader)
 		label.numberOfLines = 0
 		let headerView = UIView()
 		headerView.addSubview(label)
