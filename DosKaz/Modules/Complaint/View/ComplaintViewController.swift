@@ -314,7 +314,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 					with: OnPick {
 						self.currentComplaintType = $0
 						self.updateSectionTwoDataSource()
-						self.reload(with: .sections([1]))
+						self.updateDynamicDataSources()
+						self.reload(with: .all)
 					},
 					currentValue: self.currentComplaintType,
 					choices: ComplaintType.allCases
@@ -470,9 +471,15 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<LeftCheckCell>(props: lifeThreatProps)
 		]
 
-		dataSource.replaceDatasources(
-			with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource] + [lastSectionDataSource]
-		)
+		if case ComplaintType.complaint2 = currentComplaintType {
+			dataSource.replaceDatasources(
+				with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource] + [lastSectionDataSource]
+			)
+		} else {
+			dataSource.replaceDatasources(
+				with: [personalInfoDataSource, complaintDataSource, lastSectionDataSource]
+			)
+		}
 	}
 	
 	private func updateLastSectionDataSource() {
