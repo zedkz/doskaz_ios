@@ -27,7 +27,7 @@ class TextCell: UITableViewCell, Updatable {
 			.set(my: .height, to: 8)
 		
 		label.addConstraintsProgrammatically
-			.pin(my: .top, to: .bottom, of: blueLine)
+			.pin(my: .top, to: .bottom, of: blueLine, plus: 8)
 			.pinEdgeToSupers(.leading, plus: 24)
 			.pinEdgeToSupers(.trailing, plus: -24)
 			.pinEdgeToSupers(.bottom, plus: -8)
