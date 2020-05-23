@@ -323,6 +323,17 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let dateProps = TextFormCell.Props(
+			shouldEdit: false,
+			text: content.visitedAt,
+			title: l10n(.dateOfVisit),
+			overlay: "calendar",
+			mode: .withoutButton,
+			onOverlayTouch: Command { _ in
+				
+			}
+		)
+		
 		let objectNameProps = TextFormCell.Props(
 			canShowRedAlert: shouldBeRed(value(content.objectName).isEmpty),
 			text: value(content.objectName),
@@ -377,6 +388,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		complaintDataSource.configurators = [
 			CellConfigurator<TextFormCell>(props: complaintTypeProps),
+			CellConfigurator<TextFormCell>(props: dateProps),
 			CellConfigurator<TextFormCell>(props: objectNameProps),
 			CellConfigurator<TextFormCell>(props: objectCityProps),
 			CellConfigurator<TextFormCell>(props: objectStreetProps),
