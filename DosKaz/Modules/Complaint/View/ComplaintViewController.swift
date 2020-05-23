@@ -24,8 +24,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	@objc func formDone() {
 		//fake
-		complaintData.complainant.building = "23"
-		complaintData.complainant.apartment = "323"
+		
+		
 		complaintData.objectId = nil
 		
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
@@ -215,6 +215,28 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			}
 		)
 		
+		let buildingProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(person.building).isEmpty),
+			text: value(person.building),
+			title: l10n(.building),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.complainant.building = $0
+				self.updateSectionOneDataSource()
+			}
+		)
+		
+		let apartmentProps = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(value(person.apartment).isEmpty),
+			text: value(person.apartment),
+			title: l10n(.apartment),
+			mode: .onlyTextField,
+			onEditText: Text {
+				self.complaintData.complainant.apartment = $0
+				self.updateSectionOneDataSource()
+			}
+		)
+		
 		let phoneProps = TextFormCell.Props(
 			canShowRedAlert: shouldBeRed(value(person.phone).isEmpty),
 			text: value(person.phone),
@@ -263,6 +285,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: iinProps),
 			CellConfigurator<TextFormCell>(props: cityProps),
 			CellConfigurator<TextFormCell>(props: streetProps),
+			CellConfigurator<TextFormCell>(props: buildingProps),
+			CellConfigurator<TextFormCell>(props: apartmentProps),
 			CellConfigurator<TextFormCell>(props: phoneProps),
 			CellConfigurator<TextFormCell>(props: authProps),
 			CellConfigurator<LeftCheckCell>(props: rememberDataProps)
