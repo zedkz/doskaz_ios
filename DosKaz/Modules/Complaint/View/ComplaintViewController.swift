@@ -471,14 +471,22 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<LeftCheckCell>(props: lifeThreatProps)
 		]
 
+		var type1Sources: [FormTableViewDataSource] = [FormTableViewDataSource]()
+		type1Sources.append(personalInfoDataSource)
+		type1Sources.append(complaintDataSource)
+		type1Sources.append(contentsOf: localDynamicDataSources)
+		type1Sources.append(otherSectionDataSource)
+		type1Sources.append(lastSectionDataSource)
+		
+		let type2Sources: [FormTableViewDataSource] = [FormTableViewDataSource]()
+		type1Sources.append(personalInfoDataSource)
+		type1Sources.append(complaintDataSource)
+		type1Sources.append(lastSectionDataSource)
+		
 		if case ComplaintType.complaint2 = currentComplaintType {
-			dataSource.replaceDatasources(
-				with: [personalInfoDataSource, complaintDataSource] + localDynamicDataSources + [otherSectionDataSource] + [lastSectionDataSource]
-			)
+			dataSource.replaceDatasources(with: type1Sources)
 		} else {
-			dataSource.replaceDatasources(
-				with: [personalInfoDataSource, complaintDataSource, lastSectionDataSource]
-			)
+			dataSource.replaceDatasources(with: type2Sources)
 		}
 	}
 	
@@ -550,7 +558,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 	private func firstSectionInvalidRow() -> IndexPath?  {
 		let configurators = personalInfoDataSource.configurators
-		let validatables = configurators.map { $0.validatable }
+		let validatables: [Validatable?] = configurators.map { $0.validatable }
 		guard let firstInvalidRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) else {
 			return nil
 		}
