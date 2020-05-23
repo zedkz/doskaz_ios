@@ -208,7 +208,7 @@ class ProfileView: UIView {
 		let s = UIStackView()
 		s.axis = .horizontal
 		s.alignment = .center
-		s.spacing = 8
+		s.spacing = 0
 		progressView.addConstraintsProgrammatically
 			.set(my: .width, to: 80)
 			.set(my: .height, to: 3)
@@ -218,13 +218,14 @@ class ProfileView: UIView {
 		s.addArrangedSubview(progressView)
 		s.addArrangedSubview(label)
 		label.addConstraintsProgrammatically
-			.set(my: .width, .greaterThanOrEqual, to: 20)
-			.set(my: .width, .lessThanOrEqual, to: 50)
+			.set(my: .width, .greaterThanOrEqual, to: 10)
+			.set(my: .width, .lessThanOrEqual, to: 34)
 		return s
 	}
 	
 	private func put(in container: UIView, topLabel: UILabel, progressView: UIProgressView, progressLabel: UILabel, bottomLabel: UILabel) {
 		container.addSubview(topLabel)
+		progressLabel.textAlignment = .right
 		let levelProgressStack = horStack(progressView: progressView, label: progressLabel)
 		container.addSubview(levelProgressStack)
 		container.addSubview(bottomLabel)
