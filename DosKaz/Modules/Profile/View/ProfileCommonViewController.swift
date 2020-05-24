@@ -112,7 +112,7 @@ class ProfileCommonViewController: UIViewController {
 		let footer = UIView()
 		footer.frame.size.height = 44
 		
-		let image = UIImage(named: "chevron_down")
+		let image = UIImage(named: "chevron_up")
 		let imView = UIImageView(image: image)
 		footer.addSubview(imView)
 		imView.addConstraintsProgrammatically
