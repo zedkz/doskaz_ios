@@ -85,6 +85,18 @@ class ProfileDrawerViewController: UIViewController {
 		drawerView.displayViewInContentView(currentViewController!.view)
 	}
 	
+	//MARK: - List of childControllers
+	
+	let tabFirst = ProfileTasksViewController()
+	
+	let tabSecond = ProfileObjectsViewController()
+	
+	let tabThird = ProfileCommentsViewController()
+	
+	let tabFourth = ProfileComplaintsViewController()
+	
+	let tabFifth = ProfileAwardsEventsViewController()
+	
 }
 
 extension ProfileDrawerViewController: UITabBarDelegate, UIScrollViewDelegate {
@@ -110,16 +122,15 @@ extension ProfileDrawerViewController: UITabBarDelegate, UIScrollViewDelegate {
 	func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 		switch item.tag {
 		case 0:
-			let vc = ProfileTasksViewController()
-			show(viewController: vc)
+			show(viewController: tabFirst)
 		case 1:
-			show(viewController: ProfileObjectsViewController())
+			show(viewController: tabSecond)
 		case 2:
-			show(viewController: ProfileCommentsViewController())
+			show(viewController: tabThird)
 		case 3:
-			show(viewController: ProfileComplaintsViewController())
+			show(viewController: tabFourth)
 		case 4:
-			show(viewController: ProfileAwardsEventsViewController())
+			show(viewController: tabFifth)
 		default:
 			break
 		}
