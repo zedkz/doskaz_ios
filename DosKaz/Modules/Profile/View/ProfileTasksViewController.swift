@@ -35,6 +35,12 @@ class Paginator {
 	func load(page: Int) {
 		
 	}
+	
+	func reset() {
+		totalPages = 1
+		currentPage = 0
+		isFetchInProgress = false
+	}
 
 }
 
@@ -107,6 +113,8 @@ class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelega
 		}
 		
 		onPickLeft = OnPick<Sort> {
+			self.dataSource.cellsProps = []
+			self.paginator.reset()
 			self.paginator.sort = $0.tasksRequestValue
 			self.paginator.loadNext()
 		}
