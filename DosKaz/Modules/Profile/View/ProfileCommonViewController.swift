@@ -109,6 +109,18 @@ class ProfileCommonViewController: UIViewController {
 			.pinEdgeToSupers(.trailing, plus: -spacing)
 			.pinEdgeToSupers(.bottom, plus: -spacing)
 		
+		let footer = UIView()
+		footer.frame.size.height = 44
+		
+		let image = UIImage(named: "chevron_down")
+		let imView = UIImageView(image: image)
+		footer.addSubview(imView)
+		imView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.horizontalCenter)
+		
+		tableView.tableFooterView = footer
+		
 	}
 	
 }
