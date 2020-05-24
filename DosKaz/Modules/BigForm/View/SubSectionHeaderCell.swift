@@ -84,6 +84,7 @@ class HeaderCell: UITableViewHeaderFooterView {
 		contentView.backgroundColor = UIColor(named:"FilterHeaderColor")
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(arrowImage)
+		contentView.addSubview(countLabel)
 		
 		titleLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.verticalCenter)
@@ -91,6 +92,12 @@ class HeaderCell: UITableViewHeaderFooterView {
 		arrowImage.addConstraintsProgrammatically
 			.pinEdgeToSupers(.verticalCenter)
 			.pinEdgeToSupers(.trailing, plus: -22)
+		countLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.verticalCenter)
+			.pin(my: .trailing, to: .leading, of: arrowImage, plus: -8)
+			.pin(my: .leading, to: .trailing, of: titleLabel, plus: 8)
+		
+		countLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 	}
 	
 	@objc func handleTap() {
@@ -104,10 +111,12 @@ class HeaderCell: UITableViewHeaderFooterView {
 			titleLabel.decorate(with: Style.systemFont(size: props.fontSize))
 			let imageName = props.isOpen ? "chevron_up" : "chevron_down"
 			arrowImage.image = UIImage(named: imageName)
+			countLabel.text = ""
 		}
 	}
 	
 	let titleLabel = UILabel()
+	let countLabel = UILabel()
 	let arrowImage = UIImageView()
 	
 	//MARK: - Sub types
