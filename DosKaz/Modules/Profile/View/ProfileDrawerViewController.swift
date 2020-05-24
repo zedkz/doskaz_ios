@@ -98,6 +98,7 @@ extension ProfileDrawerViewController: UITabBarDelegate, UIScrollViewDelegate {
 		let y = offset.y + bounds.size.height - inset.bottom
 		
 		let reload_distance:CGFloat = 10.0
+		guard offset.y > 0 else { return }
 		if y > (contentSize.height + reload_distance) {
 			print("load more rows")
 			if let delegate = currentViewController as? UIScrollViewDelegate {
