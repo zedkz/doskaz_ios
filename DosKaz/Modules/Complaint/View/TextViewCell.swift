@@ -26,7 +26,9 @@ class TextViewCell: UITableViewCell, Updatable {
 		
 		textView.layer.borderWidth = 1
 		textView.layer.borderColor = UIColor.black.cgColor
-
+		
+		//MARK: - Configure behavior
+		textView.delegate = self
 		
 		//MARK: - Layout
 		contentView.addSubview(titleLabel)
@@ -66,6 +68,7 @@ class TextViewCell: UITableViewCell, Updatable {
 	var props: Props! {
 		didSet {
 			titleLabel.text = props.title
+			textView.text = props.text
 			handle(shouldShowRedAlert: props.canShowRedAlert)
 		}
 	}
@@ -85,8 +88,16 @@ class TextViewCell: UITableViewCell, Updatable {
 		var canShowRedAlert: Bool = false
 		var title: String
 		var placeHolder: String
+		var text: String
+		var onEditText: Text = .nop
 	}
 
+}
+
+extension TextViewCell: UITextViewDelegate {
+	func textViewDidChange(_ textView: UITextView) {
+		props?.onEditText.perform(with: textView.text)
+	}
 }
 
 extension TextViewCell.Props: Validatable { }
