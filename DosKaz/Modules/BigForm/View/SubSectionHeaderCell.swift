@@ -98,6 +98,7 @@ class HeaderCell: UITableViewHeaderFooterView {
 			.pin(my: .leading, to: .trailing, of: titleLabel, plus: 8)
 		
 		countLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+		arrowImage.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 	}
 	
 	@objc func handleTap() {
@@ -111,7 +112,11 @@ class HeaderCell: UITableViewHeaderFooterView {
 			titleLabel.decorate(with: Style.systemFont(size: props.fontSize))
 			let imageName = props.isOpen ? "chevron_up" : "chevron_down"
 			arrowImage.image = UIImage(named: imageName)
-			countLabel.text = ""
+			if let count = props.count {
+				countLabel.text = String(count)
+			} else {
+				countLabel.text = nil
+			}
 		}
 	}
 	
@@ -123,6 +128,7 @@ class HeaderCell: UITableViewHeaderFooterView {
 	
 	struct Props {
 		var isOpen: Bool = true
+		var count: Int? = nil
 		let title: String
 		var fontSize: CGFloat = 14
 		var section: Int

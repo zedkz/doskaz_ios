@@ -581,11 +581,34 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - Table view section header
 	
+	private func count(for tableSection: Int) -> Int? {
+		
+		let section = tableSection - 2
+		guard complaintAtrs.indices.contains(section) else {
+			return nil
+		}
+		
+		let atr = complaintAtrs[section]
+		let sectionKey = atr.key
+		guard let sectionRows = dynamicSections[sectionKey] else {
+			return nil
+		}
+		
+		let count = sectionRows.values.filter { $0 == true }.count
+		
+		guard count != 0 else {
+			return nil
+		}
+		
+		return count
+	}
+	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let title = dataSource.titles[section].uppercased()
 		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as? HeaderCell
 		header?.props = HeaderCell.Props(
 			isOpen: dataSource.openBook[section] ?? true,
+			count: count(for: section),
 			title: title,
 			fontSize: 13,
 			section: section,
