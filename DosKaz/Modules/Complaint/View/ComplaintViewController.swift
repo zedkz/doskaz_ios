@@ -41,7 +41,11 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	var onTouchReady: CommandWith<ComplaintData> = .nop
 	
 	func setupInitialState() {
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: l10n(.done), style: .done, target: self, action: #selector(formDone))
+		navigationItem.title = l10n(.complainSimply)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			title: l10n(.done), style: .done,
+			target: self, action: #selector(formDone)
+		)
 		setupTable()
 
 	}

@@ -36,6 +36,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case detailInfo = "Подробная информация"
 	case verifyInfo = "Подтвердить данные"
 	case complain = "Подать жалобу на объект"
+	case complainSimply = "Подать жалобу"
 	case accessibleFull = "Доступно"
 	case accessiblePartial = "Частично доступно"
 	case accessibleNone = "Не доступно"
