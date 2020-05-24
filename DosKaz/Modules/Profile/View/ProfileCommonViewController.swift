@@ -51,12 +51,18 @@ class ProfileCommonViewController: UIViewController {
 			reverseButtonRight.setTitle(score.description, for: .normal)
 		}
 	}
+	
+	var onPickLeft: OnPick<Sort> = .nop
 
+	var onPickRight: OnPick<OverallScore> = .nop
 	
 	@objc
 	func handleLeft() {
 		pick(
-			with: OnPick<Sort> { self.sort = $0 },
+			with: OnPick<Sort> {
+				self.sort = $0
+				self.onPickLeft.perform(with: $0)
+			},
 			currentValue: sort,
 			choices: Sort.allCases
 		)
@@ -66,7 +72,10 @@ class ProfileCommonViewController: UIViewController {
 	@objc
 	func handleRight() {
 		pick(
-			with: OnPick<OverallScore> { self.score = $0 },
+			with: OnPick<OverallScore> {
+				self.score = $0
+				self.onPickRight.perform(with: $0)
+			},
 			currentValue: score,
 			choices: OverallScore.allCases
 		)
@@ -114,6 +123,17 @@ enum Sort: Int, CustomStringConvertible, CaseIterable {
 			return l10n(.oldFirst)
 		case .descending:
 			return l10n(.newFirst)
+		}
+	}
+}
+
+extension Sort {
+	var tasksRequestValue: String {
+		switch self {
+		case .ascending:
+			return "createdAt asc"
+		case .descending:
+			return "createdAt desc"
 		}
 	}
 }

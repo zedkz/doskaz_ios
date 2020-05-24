@@ -43,9 +43,11 @@ class TasksPaginator: Paginator {
 	var onLoad: CommandWith<ProfileTasks> = .nop
 	var onFail: CommandWith<Error> = .nop
 	
+	var sort: String?
+	
 	override func load(page: Int) {
 		super.load(page: page)
-		let sort = "createdAt desc"
+		
 		let onSuccess = { [weak self] (profileTasks: ProfileTasks) -> Void in
 			self?.didSucced(totalPages: profileTasks.pages)
 			self?.onLoad.perform(with: profileTasks)
@@ -78,6 +80,8 @@ class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelega
 		dataSource = UTableViewDataSource(tableView)
 		tableView.dataSource = dataSource
 		
+		paginator.sort = sort.tasksRequestValue
+		
 		paginator.onLoad = CommandWith<ProfileTasks> { tasks in
 			let cellsProps:[TaskCell.Props] = tasks.items.map { (task: ProfileTask) in
 				
@@ -100,6 +104,11 @@ class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelega
 		
 		paginator.onFail = CommandWith<Error> { error in
 			print(error)
+		}
+		
+		onPickLeft = OnPick<Sort> {
+			self.paginator.sort = $0.tasksRequestValue
+			self.paginator.loadNext()
 		}
 		
 	}

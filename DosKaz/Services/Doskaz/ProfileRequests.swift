@@ -20,15 +20,17 @@ struct APIProfileTasks: DoskazRequest {
 	
 	var page: Int
 	
-	var sort: String
+	var sort: String?
 	
 	var path: String { "profile/tasks" }
 	
 	var task: Task {
-		Task.requestParameters(parameters: [
+		let parameters: [String: Any?] = [
 			"page": page,
-			"sort": sort,
-		], encoding: URLEncoding.default)
+			"sort": sort
+		]
+		let prs = parameters.compactMapValues{ $0 }
+		return .requestParameters(parameters: prs, encoding: URLEncoding.default)
 	}
 	
 	var headers: [String : String]? {
