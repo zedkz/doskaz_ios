@@ -584,10 +584,16 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let title = dataSource.titles[section].uppercased()
 		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as? HeaderCell
-		header?.props = HeaderCell.Props(title: title, fontSize: 13, section: section, onTap: CommandWith<Int> { section in
-			self.dataSource.openBook[section]?.toggle()
-			self.reload(with: .sections([section]))
-		})
+		header?.props = HeaderCell.Props(
+			isOpen: dataSource.openBook[section] ?? true,
+			title: title,
+			fontSize: 13,
+			section: section,
+			onTap: CommandWith<Int> { section in
+				self.dataSource.openBook[section]?.toggle()
+				self.reload(with: .sections([section]))
+			}
+		)
 		return header
 	}
 	

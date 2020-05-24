@@ -77,14 +77,20 @@ class HeaderCell: UITableViewHeaderFooterView {
 		})
 		
 		//MARK: - Configure behavior
+		let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+		addGestureRecognizer(tap)
+		
 		//MARK: - Layout
 		contentView.backgroundColor = UIColor(named:"FilterHeaderColor")
 		contentView.addSubview(titleLabel)
+		contentView.addSubview(arrowImage)
+		
 		titleLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.verticalCenter)
 			.pinEdgeToSupers(.leading, plus: 22)
-		let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-		addGestureRecognizer(tap)
+		arrowImage.addConstraintsProgrammatically
+			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.trailing, plus: -22)
 	}
 	
 	@objc func handleTap() {
@@ -96,14 +102,18 @@ class HeaderCell: UITableViewHeaderFooterView {
 		didSet {
 			titleLabel.text = props.title
 			titleLabel.decorate(with: Style.systemFont(size: props.fontSize))
+			let imageName = props.isOpen ? "chevron_up" : "chevron_down"
+			arrowImage.image = UIImage(named: imageName)
 		}
 	}
 	
 	let titleLabel = UILabel()
+	let arrowImage = UIImageView()
 	
 	//MARK: - Sub types
 	
 	struct Props {
+		var isOpen: Bool = true
 		let title: String
 		var fontSize: CGFloat = 14
 		var section: Int
