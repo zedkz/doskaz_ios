@@ -482,10 +482,10 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		type1Sources.append(otherSectionDataSource)
 		type1Sources.append(lastSectionDataSource)
 		
-		let type2Sources: [FormTableViewDataSource] = [FormTableViewDataSource]()
-		type1Sources.append(personalInfoDataSource)
-		type1Sources.append(complaintDataSource)
-		type1Sources.append(lastSectionDataSource)
+		var type2Sources: [FormTableViewDataSource] = [FormTableViewDataSource]()
+		type2Sources.append(personalInfoDataSource)
+		type2Sources.append(complaintDataSource)
+		type2Sources.append(lastSectionDataSource)
 		
 		if case ComplaintType.complaint2 = currentComplaintType {
 			dataSource.replaceDatasources(with: type1Sources)
