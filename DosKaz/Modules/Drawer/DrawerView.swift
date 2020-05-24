@@ -39,6 +39,12 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	
 	private var drawerPanner: DrawerPanner?
 	
+	func setDelegate(_ delegate: UIScrollViewDelegate) {
+		contentView.delegate = delegate
+		contentView.bounces = true
+		contentView.alwaysBounceVertical = true
+	}
+	
 	private var isInteractive = true
 	
 	public init(delegate: DrawerViewDelegate? = nil, isInteractive: Bool = true) {

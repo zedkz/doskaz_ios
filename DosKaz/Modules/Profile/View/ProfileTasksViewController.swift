@@ -7,18 +7,101 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
-class ProfileTasksViewController: ProfileCommonViewController {
+class Paginator {
+	var totalPages = 1
+	var currentPage = 0
+	var isFetchInProgress = false
+	
+	func loadNext() {
+		let nextPage = currentPage + 1
+		if nextPage <= totalPages, !isFetchInProgress {
+			isFetchInProgress = true
+			load(page: nextPage)
+		}
+	}
+	
+	func didSucced(totalPages: Int) {
+		self.totalPages = totalPages
+		currentPage += 1
+		isFetchInProgress = false
+	}
+	
+	func didFail() {
+		isFetchInProgress = false
+	}
+	
+	func load(page: Int) {
+		
+	}
+
+}
+
+class TasksPaginator: Paginator {
+	
+	var onLoad: CommandWith<ProfileTasks> = .nop
+	var onFail: CommandWith<Error> = .nop
+	
+	override func load(page: Int) {
+		super.load(page: page)
+		let sort = "createdAt desc"
+		let onSuccess = { [weak self] (profileTasks: ProfileTasks) -> Void in
+			self?.didSucced(totalPages: profileTasks.pages)
+			self?.onLoad.perform(with: profileTasks)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.didFail()
+			self?.onFail.perform(with: error)
+		}
+		
+		APIProfileTasks(onSuccess: onSuccess, onFailure: onFailure, page: page, sort: sort).dispatch()
+	}
+	
+}
+
+class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelegate {
 	
 	var dataSource: UTableViewDataSource<TaskCell>!
+	let paginator = TasksPaginator()
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		paginator.loadNext()
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		tableView.delegate = self
+		tableView.isUserInteractionEnabled = false
 		props = Props(title: l10n(.myTasks), isRightButtonHidden: true)
 		dataSource = UTableViewDataSource(tableView)
-		dataSource.cellsProps = [TaskCell.Props(title: "Добавьте 15 объектов в городе", subTitle: "6 june", image: UIImage(named: "aged_people"))]
 		tableView.dataSource = dataSource
-		tableView.reloadData()
+		
+		paginator.onLoad = CommandWith<ProfileTasks> { tasks in
+			let cellsProps:[TaskCell.Props] = tasks.items.map { (task: ProfileTask) in
+				
+				var date: String
+				if let completedAt = task.completedAt {
+					date = completedAt
+				} else {
+					date = task.createdAt ?? ""
+				}
+				
+				return TaskCell.Props(
+					title: task.title ?? "–",
+					subTitle: "\(date)     \(task.points) \(l10n(.points)) ",
+					image: UIImage(named: "aged_people"))
+			}
+			
+			self.dataSource.cellsProps.append(contentsOf: cellsProps)
+			self.tableView.reloadData()
+		}
+		
+		paginator.onFail = CommandWith<Error> { error in
+			print(error)
+		}
+		
 	}
 
 }

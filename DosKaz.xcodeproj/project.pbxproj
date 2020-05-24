@@ -33,6 +33,7 @@
 		4446C2452472887D006B49EE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C2442472887D006B49EE /* ProfileView.swift */; };
 		444F35DF246EF548001C7A27 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F35DE246EF548001C7A27 /* MoreViewController.swift */; };
 		444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */; };
+		44523A3F2479408B00A4C948 /* ProfileRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44523A3E2479408B00A4C948 /* ProfileRequests.swift */; };
 		44565DA1246DC28000476016 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44565DA0246DC28000476016 /* BlogCell.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
@@ -195,6 +196,7 @@
 		4446C2442472887D006B49EE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		444F35DE246EF548001C7A27 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
+		44523A3E2479408B00A4C948 /* ProfileRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequests.swift; sourceTree = "<group>"; };
 		44565DA0246DC28000476016 /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
@@ -760,6 +762,7 @@
 				44E731232477A6930022375C /* api_cities.swift */,
 				44E731252477D4B10022375C /* api_ complaints_type2Attributes.swift */,
 				44E73129247804FC0022375C /* api_complaints.swift */,
+				44523A3E2479408B00A4C948 /* ProfileRequests.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
 				44E73120247797030022375C /* api_complaints_initialData.swift in Sources */,
+				44523A3F2479408B00A4C948 /* ProfileRequests.swift in Sources */,
 				4444E24624647BEE0035CA8A /* Archive.swift in Sources */,
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,

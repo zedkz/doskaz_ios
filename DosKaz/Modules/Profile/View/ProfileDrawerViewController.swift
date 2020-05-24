@@ -27,6 +27,7 @@ class ProfileDrawerViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		drawerView.setDelegate(self)
 		drawerView.panToPosition(drawerView.openFullPosition, animated: true, completion: nil)
 	}
 	
@@ -86,7 +87,24 @@ class ProfileDrawerViewController: UIViewController {
 	
 }
 
-extension ProfileDrawerViewController: UITabBarDelegate {
+extension ProfileDrawerViewController: UITabBarDelegate, UIScrollViewDelegate {
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offset = scrollView.contentOffset
+		let bounds = scrollView.bounds
+		let contentSize = scrollView.contentSize
+		
+		let inset = scrollView.contentInset
+		let y = offset.y + bounds.size.height - inset.bottom
+		
+		let reload_distance:CGFloat = 10.0
+		if y > (contentSize.height + reload_distance) {
+			print("load more rows")
+			if let delegate = currentViewController as? UIScrollViewDelegate {
+				delegate.scrollViewDidScroll?(scrollView)
+			}
+		}
+	}
 	
 	func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 		switch item.tag {
