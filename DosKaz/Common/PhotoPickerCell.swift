@@ -42,8 +42,8 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 			.pin(my: .top, to: .bottom, of: titleLabel, plus: 8)
 			.pinEdgeToSupers(.leading, plus: 22)
 			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom)
-			.set(my: .height, to: 80)
+			.pinEdgeToSupers(.bottom, plus: -8)
+			.set(my: .height, to: 88)
 		
 	}
 	
@@ -70,7 +70,7 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.itemSize = CGSize(width: 80, height: 80)
-		flowLayout.minimumLineSpacing = 30
+		flowLayout.minimumLineSpacing = 20
 		collectionView.collectionViewLayout = flowLayout
 		collectionView.alwaysBounceHorizontal = true
 		collectionView.showsHorizontalScrollIndicator = false
@@ -167,7 +167,7 @@ extension PhotoPickerCollectionViewCellLayout {
 	func addConstraints() {
 		rv.imageView.addConstraintsProgrammatically
 			.pinToSuper()
-			.set(my: .width, to: 80)
+			.set(my: .height, to: 80)
 			.set(my: .width, to: 80)
 	}
 	
