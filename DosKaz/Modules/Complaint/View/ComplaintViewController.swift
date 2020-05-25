@@ -91,7 +91,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
-		otherSectionDataSource = FormTableViewDataSource("Will Be Invisible")
+		otherSectionDataSource = FormTableViewDataSource(l10n(.other))
 		lastSectionDataSource = FormTableViewDataSource(l10n(.additional))
 		dataSource = SectionedTableViewDataSource(dataSources: [personalInfoDataSource, complaintDataSource, lastSectionDataSource])
 		tableView.dataSource = dataSource
@@ -469,7 +469,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		let commentsProps = TextViewCell.Props(
 			canShowRedAlert: shouldBeRed(complaintData.content.comment.isEmpty),
-			title: l10n(.other),
+			title: l10n(.yourComments),
 			placeHolder: l10n(.textOftheMessage),
 			text: complaintData.content.comment,
 			onEditText: Text {
