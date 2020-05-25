@@ -16,6 +16,7 @@ class TextViewCell: UITableViewCell, Updatable {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
 		//MARK: - Configure constant data
+		titleLabel.numberOfLines = 0
 		validationLabel.text = l10n(.fillTheField)
 		validationLabel.numberOfLines = 0
 		
