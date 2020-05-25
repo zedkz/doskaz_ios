@@ -13,6 +13,8 @@ class ComplaintPresenter {
 	weak var view: ComplaintViewInput!
 	var interactor: ComplaintInteractorInput!
 	var router: ComplaintRouterInput!
+	
+	var uploadedImagesURLs = [String]()
 
 	var cities: [City]? { didSet { render() } }
 	var complaintData: ComplaintData? { didSet { render() } }
@@ -39,7 +41,9 @@ extension ComplaintPresenter: ComplaintViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onTouchReady = CommandWith<ComplaintData> { data in
-			self.interactor.submitComplaint(with: data)
+			var copy = data
+			copy.content.photos.append(contentsOf: self.uploadedImagesURLs)
+			self.interactor.submitComplaint(with: copy)
 		}
 		view.onPickImage = CommandWith<UIImage> { image in
 			if let data = image.jpegData(compressionQuality: 0.8) {
@@ -74,6 +78,9 @@ protocol ComplaintInteractorOutput: class {
 extension ComplaintPresenter: ComplaintInteractorOutput {
 	func didLoadImage(with response: UploadResponse) {
 		print("Image uploaded",response)
+		if let path = response.path {
+			uploadedImagesURLs.append(path)
+		}
 	}
 	
 	func didFailLoadImage(with error: Error) {
