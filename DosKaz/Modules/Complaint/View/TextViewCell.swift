@@ -27,8 +27,13 @@ class TextViewCell: UITableViewCell, Updatable {
 		textView.layer.borderWidth = 1
 		textView.layer.borderColor = UIColor.black.cgColor
 		
+		placeHolderLabel.decorate(with: Style.systemFont(size: 11), { (label) in
+			label.textColor = .gray
+		})
+		
 		//MARK: - Configure behavior
 		textView.delegate = self
+		placeHolderLabel.isHidden = !textView.text.isEmpty
 		
 		//MARK: - Layout
 		contentView.addSubview(titleLabel)
@@ -52,6 +57,10 @@ class TextViewCell: UITableViewCell, Updatable {
 			.pinEdgeToSupers(.trailing, plus: -22)
 			.pinEdgeToSupers(.bottom, plus: -8)
 		
+		textView.addSubview(placeHolderLabel)
+		
+		placeHolderLabel.addConstraintsProgrammatically
+			.pinToSuper(inset: UIEdgeInsets(all:8))
 
 	}
 	
@@ -64,10 +73,13 @@ class TextViewCell: UITableViewCell, Updatable {
 	let titleLabel = UILabel()
 	let textView = UITextView()
 	let validationLabel = UILabel()
+	let placeHolderLabel = UILabel()
 	
 	var props: Props! {
 		didSet {
 			titleLabel.text = props.title
+			placeHolderLabel.text = props.placeHolder
+			placeHolderLabel.isHidden = !textView.text.isEmpty
 			textView.text = props.text
 			handle(shouldShowRedAlert: props.canShowRedAlert)
 		}
@@ -96,6 +108,7 @@ class TextViewCell: UITableViewCell, Updatable {
 
 extension TextViewCell: UITextViewDelegate {
 	func textViewDidChange(_ textView: UITextView) {
+		placeHolderLabel.isHidden = !textView.text.isEmpty
 		props?.onEditText.perform(with: textView.text)
 	}
 }
