@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 class PhotoPickerCell: UITableViewCell, Updatable {
 	
@@ -50,10 +51,16 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 	let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 	let titleLabel = UILabel()
 	
-	var props: Props!
+	var props: Props! {
+		didSet {
+			updateImages()
+		}
+	}
 	
 	//MARK: - Sub types
-	struct Props { }
+	struct Props {
+		var onPick: Command = .nop
+	}
 	
 	//MARK: - Privates
 	private var collectionDataSource: CollectionViewDataSource<PhotoPickerCollectionViewCell.Props,PhotoPickerCollectionViewCell>!
@@ -62,18 +69,24 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.itemSize = CGSize(width: 80, height: 80)
-		flowLayout.minimumInteritemSpacing = 10
+		flowLayout.minimumLineSpacing = 30
 		collectionView.collectionViewLayout = flowLayout
 		collectionView.alwaysBounceHorizontal = true
 		collectionView.showsHorizontalScrollIndicator = false
 				
 		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
-		let cellsProps = Array(
-			repeating: PhotoPickerCollectionViewCell.Props(imageName: "mapobject_40_partially_available"),
-			count: 9
-		)
-		collectionDataSource.cellsProps = cellsProps
 		collectionView.dataSource = collectionDataSource
+	}
+	
+	private func updateImages() {
+		let pickerCell = PhotoPickerCollectionViewCell.Props(
+			image: UIImage(named: "add_object")!, onPickImage: Command {
+				self.props.onPick.perform()
+			}
+		)
+		
+		collectionDataSource.cellsProps = [pickerCell]
+		collectionView.reloadData()
 	}
 	
 }
@@ -87,6 +100,8 @@ class PhotoPickerCollectionViewCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: .zero)
 		style()
+		let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+		addGestureRecognizer(tapGR)
 		PhotoPickerCollectionViewCellLayout(rv: self).draw()
 	}
 	
@@ -98,7 +113,7 @@ class PhotoPickerCollectionViewCell: UICollectionViewCell {
 	
 	var props: Props! {
 		didSet {
-			imageView.image = UIImage(named: props.imageName)
+			imageView.image = props.image
 		}
 	}
 	
@@ -110,10 +125,15 @@ class PhotoPickerCollectionViewCell: UICollectionViewCell {
 		imageView.contentMode = .scaleAspectFit
 	}
 	
+	@objc func handleTap() {
+		props.onPickImage.perform()
+	}
+	
 	// MARK: - Subtypes
 	
 	struct Props {
-		let imageName: String
+		let image: UIImage
+		var onPickImage: Command = .nop
 	}
 	
 }

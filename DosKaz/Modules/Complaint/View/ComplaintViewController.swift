@@ -513,7 +513,14 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	private func updateLastSectionDataSource() {
-		let photoConfig = CellConfigurator<PhotoPickerCell>(props: PhotoPickerCell.Props())
+		let photoProps = PhotoPickerCell.Props(
+			onPick: Command {
+				let picker = UIImagePickerController()
+				picker.delegate = self
+				self.present(picker, animated: true)
+			}
+		)
+		let photoConfig = CellConfigurator<PhotoPickerCell>(props: photoProps )
 
 		lastSectionDataSource.configurators = videoLinks + [photoConfig]
 	}
@@ -642,6 +649,15 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		return 50
 	}
 	
+}
+
+extension ComplaintViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		guard let image = info[.originalImage] as? UIImage else { return }
+		
+		
+		dismiss(animated: true)
+	}
 }
 
 extension ComplaintViewController {
