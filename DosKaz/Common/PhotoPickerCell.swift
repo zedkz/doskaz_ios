@@ -53,12 +53,13 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 	
 	var props: Props! {
 		didSet {
-			updateImages()
+			update(props.images)
 		}
 	}
 	
 	//MARK: - Sub types
 	struct Props {
+		var images = [UIImage]()
 		var onPick: Command = .nop
 	}
 	
@@ -78,14 +79,24 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 		collectionView.dataSource = collectionDataSource
 	}
 	
-	private func updateImages() {
+	private func update(_ images: [UIImage]) {
 		let pickerCell = PhotoPickerCollectionViewCell.Props(
 			image: UIImage(named: "add_object")!, onPickImage: Command {
 				self.props.onPick.perform()
 			}
 		)
 		
-		collectionDataSource.cellsProps = [pickerCell]
+		let imageCollectionViewCells = images.map { image in
+			return PhotoPickerCollectionViewCell.Props(
+				image: image
+			)
+		}
+		
+		var allCells = [PhotoPickerCollectionViewCell.Props]()
+		allCells.append(pickerCell)
+		allCells.append(contentsOf: imageCollectionViewCells)
+		
+		collectionDataSource.cellsProps = allCells
 		collectionView.reloadData()
 	}
 	

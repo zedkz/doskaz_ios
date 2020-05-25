@@ -132,6 +132,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	var dynamicSections = [String: [String: Bool]]()
 	
+	var images = [UIImage]()
+	
 	//MARK: - Table view "update dataSources" methods
 	
 	private func updateSectionOneDataSource(isAfterValidation: Bool = false) {
@@ -514,6 +516,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	private func updateLastSectionDataSource() {
 		let photoProps = PhotoPickerCell.Props(
+			images: images,
 			onPick: Command {
 				let picker = UIImagePickerController()
 				picker.delegate = self
@@ -654,8 +657,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 extension ComplaintViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		guard let image = info[.originalImage] as? UIImage else { return }
-		
-		
+		images.append(image)
+		updateLastSectionDataSource()
+		reload(with: .all)
 		dismiss(animated: true)
 	}
 }
