@@ -8,12 +8,19 @@
 
 import UIKit
 import MapKit
+import SharedCodeFramework
+
+typealias DKLocation = (text: String, numeric: [Double])
 
 class LocationPickerController: UIViewController {
 	
 	let mapView = MKMapView()
 	
+	var onDismiss: CommandWith<DKLocation> = .nop
+	
 	private let regionRadius: CLLocationDistance = 5000
+	
+	private var pickedCoordinate: CLLocationCoordinate2D?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,7 +44,19 @@ class LocationPickerController: UIViewController {
 	}
 	
 	@objc func closePicker() {
-		dismiss(animated: true, completion: nil)
+		dismiss(animated: true, completion: {
+			
+			
+			if let pickedCoordinate = self.pickedCoordinate {
+				let str = "\(pickedCoordinate.latitude), \(pickedCoordinate.longitude)"
+				let arr = [
+					(Double(pickedCoordinate.latitude) * 1000000).rounded() / 1000000,
+					(Double(pickedCoordinate.longitude) * 1000000).rounded() / 1000000,
+				]
+				self.onDismiss.perform(with: (str,arr))
+			}
+			
+		})
 	}
 	
 	@objc func handleTap(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -49,6 +68,8 @@ class LocationPickerController: UIViewController {
 		
 		mapView.removeAnnotations(mapView.annotations)
 		mapView.addAnnotation(pin)
+		
+		pickedCoordinate = coordinate
 	}
 	
 	

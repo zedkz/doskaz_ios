@@ -267,6 +267,11 @@ class SmallFormViewController: FormViewController, HasForm {
 			mode: .withoutButton,
 			onOverlayTouch: Command {
 				let mapPicker = LocationPickerController()
+				mapPicker.onDismiss = CommandWith<DKLocation> { location in
+					self.first.point = location.numeric
+					self.update()
+					self.reloadAndScroll([3], 0)
+				}
 				let nav = UINavigationController(rootViewController: mapPicker)
 				self.present(nav, animated: true, completion: nil)
 			}
