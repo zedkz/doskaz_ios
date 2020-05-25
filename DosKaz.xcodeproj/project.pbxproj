@@ -30,6 +30,7 @@
 		4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		4446C180247BEB54002BF1B6 /* api_storage_upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */; };
+		4446C182247BF30D002BF1B6 /* LocationPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C181247BF30D002BF1B6 /* LocationPickerController.swift */; };
 		4446C24124727EC3006B49EE /* api_profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C24024727EC3006B49EE /* api_profile.swift */; };
 		4446C2432472814F006B49EE /* ProfileDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C2422472814F006B49EE /* ProfileDrawerViewController.swift */; };
 		4446C2452472887D006B49EE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C2442472887D006B49EE /* ProfileView.swift */; };
@@ -195,6 +196,7 @@
 		4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_storage_upload.swift; sourceTree = "<group>"; };
+		4446C181247BF30D002BF1B6 /* LocationPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerController.swift; sourceTree = "<group>"; };
 		4446C24024727EC3006B49EE /* api_profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_profile.swift; sourceTree = "<group>"; };
 		4446C2422472814F006B49EE /* ProfileDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDrawerViewController.swift; sourceTree = "<group>"; };
 		4446C2442472887D006B49EE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 				448EBAD024696CA1006C9961 /* FormCells.swift */,
 				448EBAD224699374006C9961 /* CellConfigurator.swift */,
 				44F4D882246EBFD3003A50BC /* SubSectionHeaderCell.swift */,
+				4446C181247BF30D002BF1B6 /* LocationPickerController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1060,6 +1063,7 @@
 				4446C2452472887D006B49EE /* ProfileView.swift in Sources */,
 				4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */,
 				44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */,
+				4446C182247BF30D002BF1B6 /* LocationPickerController.swift in Sources */,
 				4404F24C245F0CD900EB7184 /* FilterInteractor.swift in Sources */,
 				44E731242477A6930022375C /* api_cities.swift in Sources */,
 				4404F253245F216100EB7184 /* Eureka.swift in Sources */,

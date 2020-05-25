@@ -264,7 +264,12 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: points,
 			title: l10n(.objOnMap),
 			overlay: "map_1",
-			mode: .withoutButton
+			mode: .withoutButton,
+			onOverlayTouch: Command {
+				let mapPicker = LocationPickerController()
+				let nav = UINavigationController(rootViewController: mapPicker)
+				self.present(nav, animated: true, completion: nil)
+			}
 		)
 		
 		let category = TextFormCell.Props(
