@@ -87,6 +87,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		tableView.register(cellClass: RightCheckCell.self)
 		tableView.register(cellClass: PhotoPickerCell.self)
 		tableView.register(cellClass: TextCell.self)
+		tableView.register(cellClass: TextViewCell.self)
 		
 		personalInfoDataSource = FormTableViewDataSource(l10n(.personalInfo))
 		complaintDataSource = FormTableViewDataSource(l10n(.complaint))
@@ -432,7 +433,11 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 	}
 	
-	private func updateDynamicDataSources() {
+	private func updateDynamicDataSources(isAfterValidation: Bool = false) {
+		
+		func shouldBeRed(_ condition: Bool) -> Bool {
+			return condition && isAfterValidation
+		}
 		
 		let localDynamicDataSources: [FormTableViewDataSource] = complaintAtrs.map { section in
 			
@@ -462,6 +467,18 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			return source
 		}
 		
+		let commentsProps = TextViewCell.Props(
+			canShowRedAlert: shouldBeRed(complaintData.content.comment.isEmpty),
+			title: l10n(.other),
+			placeHolder: l10n(.textOftheMessage),
+			text: complaintData.content.comment,
+			onEditText: Text {
+				self.complaintData.content.comment = $0
+				self.updateSectionOneDataSource()
+			}
+		)
+		
+		
 		let lifeThreatProps = LeftCheckCell.Props(
 			title: l10n(.lifeThreat),
 			isChecked: complaintData.content.threatToLife,
@@ -472,6 +489,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		})
 	
 		otherSectionDataSource.configurators = [
+			CellConfigurator<TextViewCell>(props: commentsProps),
 			CellConfigurator<LeftCheckCell>(props: lifeThreatProps)
 		]
 
