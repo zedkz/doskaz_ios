@@ -6,12 +6,15 @@
 //  Copyright © 2020-05-21 07:01:46 +0000 lobster.kz. All rights reserved.
 //
 
+import Foundation
+
 protocol ComplaintInteractorInput {
 	func loadComplaintData()
 	func loadCities()
 	func loadAuthorities()
 	func loadComplaintAtrs()
 	func submitComplaint(with data: ComplaintData)
+	func uploadImage(_ data: Data)
 }
 
 // MARK: Implementation
@@ -91,6 +94,18 @@ class ComplaintInteractor: ComplaintInteractorInput {
 		
 		APIPostComplaint(onSuccess: onSuccess, onFailure: onFailure, complaintData: data).dispatch()
 		
+	}
+	
+	func uploadImage(_ data: Data) {
+		let onSuccess = { [weak self] (uploadResponse: UploadResponse) -> Void in
+			self?.output.didLoadImage(with: uploadResponse)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadImage(with: error)
+		}
+		
+		APIUpload(onSuccess: onSuccess, onFailure: onFailure, image: data).dispatch()
 	}
 
 }

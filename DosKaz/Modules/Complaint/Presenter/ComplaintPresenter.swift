@@ -41,6 +41,11 @@ extension ComplaintPresenter: ComplaintViewOutput {
 		view.onTouchReady = CommandWith<ComplaintData> { data in
 			self.interactor.submitComplaint(with: data)
 		}
+		view.onPickImage = CommandWith<UIImage> { image in
+			if let data = image.jpegData(compressionQuality: 0.8) {
+				self.interactor.uploadImage(data)
+			}
+		}
 		interactor.loadComplaintData()
 		interactor.loadCities()
 		interactor.loadAuthorities()
@@ -62,9 +67,19 @@ protocol ComplaintInteractorOutput: class {
 	func didFailLoadComplaintAtrs(with error: Error)
 	func didSucceedSubmitForm()
 	func didFailSubmitForm(with error: Error)
+	func didLoadImage(with response: UploadResponse)
+	func didFailLoadImage(with error: Error)
 }
 
 extension ComplaintPresenter: ComplaintInteractorOutput {
+	func didLoadImage(with response: UploadResponse) {
+		print("Image uploaded",response)
+	}
+	
+	func didFailLoadImage(with error: Error) {
+		print("didFailLoadImage",error)
+	}
+	
 	func didSucceedSubmitForm() {
 		view.displayAlert(with: "Success")
 	}

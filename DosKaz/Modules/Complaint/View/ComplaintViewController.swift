@@ -14,6 +14,7 @@ protocol ComplaintViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority], _ complaintAtrs: [ComplaintAtr])
 	var onTouchReady: CommandWith<ComplaintData> { get set }
+	var onPickImage: CommandWith<UIImage> { get set }
 }
 
 class ComplaintViewController: TableViewController, ComplaintViewInput, UITableViewDelegate {
@@ -39,6 +40,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	var onTouchReady: CommandWith<ComplaintData> = .nop
+	
+	var onPickImage: CommandWith<UIImage> = .nop
 	
 	func setupInitialState() {
 		navigationItem.title = l10n(.complainSimply)
@@ -660,6 +663,7 @@ extension ComplaintViewController: UIImagePickerControllerDelegate, UINavigation
 		images.append(image)
 		updateLastSectionDataSource()
 		reload(with: .all)
+		onPickImage.perform(with: image)
 		dismiss(animated: true)
 	}
 }
