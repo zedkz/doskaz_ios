@@ -24,17 +24,15 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	//MARK: - ComplaintViewInput fields
 	
 	func isValid() -> Bool {
-		
 		updateSectionOneDataSource(isAfterValidation: true)
 		updateSectionTwoDataSource(isAfterValidation: true)
+		updateValsForSectionOne()
 		updateValsForSectionTwo()
 		reload(with: .all)
-//		if let _ = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
-//			return false
-//		} else {
-//			return true
-//		}
-		return false
+		
+		let fv = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
+		let sv = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
+		return (fv == nil) && (sv == nil)
 	}
 	
 	@objc func formDone() {
@@ -608,15 +606,12 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	//MARK: - Validation
+	var firstSectionValidatables = [Validatable?]()
 	var secondSectionValidatables = [Validatable?]()
 		
-	private func firstSectionInvalidRow() -> IndexPath?  {
-		let configurators = personalInfoDataSource.configurators
-		let validatables: [Validatable?] = configurators.map { $0.validatable }
-		guard let firstInvalidRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) else {
-			return nil
-		}
-		return IndexPath(row: firstInvalidRow, section: 0)
+	private func updateValsForSectionOne()  {
+		let validatables: [Validatable?] = personalInfoDataSource.configurators.map { $0.validatable }
+		firstSectionValidatables  = validatables
 	}
 	
 	private func updateValsForSectionTwo() {
@@ -625,7 +620,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	private func scrollToInvalidRow() {
-		if let firstInvalidRow = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+		if let firstInvalidRow = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+			tableView.scrollToRow(at: IndexPath(row: firstInvalidRow, section: 0) , at: .top, animated: true)
+		} else if let firstInvalidRow = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
 			tableView.scrollToRow(at: IndexPath(row: firstInvalidRow, section: 1) , at: .top, animated: true)
 		}
 	}
