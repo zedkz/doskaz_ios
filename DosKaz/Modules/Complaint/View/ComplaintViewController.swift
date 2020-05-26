@@ -23,6 +23,20 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - ComplaintViewInput fields
 	
+	func isValid() -> Bool {
+		
+		updateSectionOneDataSource(isAfterValidation: true)
+		updateSectionTwoDataSource(isAfterValidation: true)
+		updateValsForSectionTwo()
+		reload(with: .all)
+//		if let _ = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+//			return false
+//		} else {
+//			return true
+//		}
+		return false
+	}
+	
 	@objc func formDone() {
 		//fake
 		
@@ -32,6 +46,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
 		
 		//fake
+		
+		guard isValid() else { return }
+		
 		complaintData.complainant.cityId = currentCity?.id
 		complaintData.content.cityId = currentObjectCity?.id
 		complaintData.authorityId = currentAuth?.id
@@ -591,6 +608,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	//MARK: - Validation
+	var secondSectionValidatables = [Validatable?]()
 		
 	private func firstSectionInvalidRow() -> IndexPath?  {
 		let configurators = personalInfoDataSource.configurators
@@ -601,13 +619,14 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		return IndexPath(row: firstInvalidRow, section: 0)
 	}
 	
+	private func updateValsForSectionTwo() {
+		let validatables: [Validatable?] = complaintDataSource.configurators.map { $0.validatable }
+		secondSectionValidatables = validatables
+	}
+	
 	private func scrollToInvalidRow() {
-		var invalidRows = [IndexPath]()
-		if let row = firstSectionInvalidRow() {
-			invalidRows.append(row)
-		}
-		if let first = invalidRows.first {
-			tableView.scrollToRow(at: first , at: .top, animated: true)
+		if let firstInvalidRow = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+			tableView.scrollToRow(at: IndexPath(row: firstInvalidRow, section: 1) , at: .top, animated: true)
 		}
 	}
 	

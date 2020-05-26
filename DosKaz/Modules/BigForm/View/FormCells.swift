@@ -188,7 +188,7 @@ extension TextFormCell: UITextFieldDelegate {
 	}
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
-		props.onEditText.perform(with: textField.text ?? "")
+
 	}
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

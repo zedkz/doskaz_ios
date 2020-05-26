@@ -42,6 +42,9 @@ extension ComplaintPresenter: ComplaintViewOutput {
 		view.setupInitialState()
 		view.onTouchReady = CommandWith<ComplaintData> { data in
 			var copy = data
+			if self.uploadedImagesURLs.isEmpty {
+				self.uploadedImagesURLs.append("photo")
+			}
 			copy.content.photos.append(contentsOf: self.uploadedImagesURLs)
 			self.interactor.submitComplaint(with: copy)
 		}
