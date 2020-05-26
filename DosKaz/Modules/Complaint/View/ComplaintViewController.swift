@@ -28,6 +28,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		updateSectionTwoDataSource(isAfterValidation: true)
 		updateValsForSectionOne()
 		updateValsForSectionTwo()
+		dataSource.openAll()
 		reload(with: .all)
 		scrollToInvalidRow()
 		let fv = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })

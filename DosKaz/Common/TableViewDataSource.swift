@@ -71,6 +71,13 @@ class SectionedTableViewDataSource: NSObject {
 	}
 	
 	var openBook = [Int: Bool]()
+	
+	func openAll() {
+		for section in openBook {
+			openBook[section.key] = true
+		}
+	}
+	
 }
 
 extension SectionedTableViewDataSource: UITableViewDataSource {
