@@ -110,6 +110,7 @@
 		44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */; };
 		44B8A4B22475436F002BFE6A /* PhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */; };
 		44B8E90B247D15C200AC90E3 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8E90A247D15C200AC90E3 /* Geocoder.swift */; };
+		44B8E90D247D202C00AC90E3 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8E90C247D202C00AC90E3 /* PhoneFormatter.swift */; };
 		44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C2E31C246FF8A900091C4B /* PickerViewController.swift */; };
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
@@ -278,6 +279,7 @@
 		44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerCell.swift; sourceTree = "<group>"; };
 		44B8E90A247D15C200AC90E3 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
+		44B8E90C247D202C00AC90E3 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		44C2E31C246FF8A900091C4B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				445D51922465A2A800C2E02A /* MKMapView+Zoom.swift */,
 				44C2E31C246FF8A900091C4B /* PickerViewController.swift */,
 				44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */,
+				44B8E90C247D202C00AC90E3 /* PhoneFormatter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1129,6 +1132,7 @@
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
 				448EBAC924693C8F006C9961 /* BigFormInteractor.swift in Sources */,
+				44B8E90D247D202C00AC90E3 /* PhoneFormatter.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
 				44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,

@@ -254,7 +254,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			onEditText: Text {
 				self.complaintData.complainant.phone = $0
 				self.updateSectionOneDataSource()
-			}
+			},
+			formatter: { PhoneFormatter.format(phoneNumber: $0) }
 		)
 		
 		let authProps = TextFormCell.Props(

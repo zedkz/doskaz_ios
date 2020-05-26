@@ -28,7 +28,9 @@ class TextFormCell: UITableViewCell, Updatable {
 	}
 	
 	@objc func handleTextfiled(_ textField: UITextField) {
-		props.onEditText.perform(with: textField.text ?? "")
+		let result = props.formatter(textField.text ?? "")
+		textField.text = result
+		props.onEditText.perform(with: result)
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -145,6 +147,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		var onRightTouch: Text = .nop
 		var onOverlayTouch: Command = .nop
 		var onEditText: Text = .nop
+		var formatter: (String) -> String = { input in return input }
 	}
 	
 	//MARK: - Private
@@ -179,7 +182,9 @@ class TextFormCell: UITableViewCell, Updatable {
 
 extension TextFormCell: UITextFieldDelegate {
 	func textFieldDidBeginEditing(_ textField: UITextField) {
-		props.onEditText.perform(with: textField.text ?? "")
+		let result = props.formatter(textField.text ?? "")
+		textField.text = result
+		props.onEditText.perform(with: result)
 	}
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
