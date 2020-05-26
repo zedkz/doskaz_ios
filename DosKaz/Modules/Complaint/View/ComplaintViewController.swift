@@ -29,7 +29,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		updateValsForSectionOne()
 		updateValsForSectionTwo()
 		reload(with: .all)
-		
+		scrollToInvalidRow()
 		let fv = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
 		let sv = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
 		return (fv == nil) && (sv == nil)
@@ -601,8 +601,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		case .all:
 			tableView.reloadData()
 		}
-		
-		scrollToInvalidRow()
+	
 	}
 	
 	//MARK: - Validation
@@ -621,9 +620,15 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	private func scrollToInvalidRow() {
 		if let firstInvalidRow = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
-			tableView.scrollToRow(at: IndexPath(row: firstInvalidRow, section: 0) , at: .top, animated: true)
+			let fr = IndexPath(row: firstInvalidRow, section: 0)
+			if firstInvalidRow <= tableView.numberOfRows(inSection: 0) {
+				tableView.scrollToRow(at: fr , at: .top, animated: true)
+			}
 		} else if let firstInvalidRow = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
-			tableView.scrollToRow(at: IndexPath(row: firstInvalidRow, section: 1) , at: .top, animated: true)
+			let fr = IndexPath(row: firstInvalidRow, section: 1)
+			if firstInvalidRow <= tableView.numberOfRows(inSection: 1) {
+				tableView.scrollToRow(at:  fr, at: .top, animated: true)
+			}
 		}
 	}
 	
