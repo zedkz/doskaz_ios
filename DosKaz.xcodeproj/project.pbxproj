@@ -109,6 +109,7 @@
 		44B8A4AE247512D6002BFE6A /* ProfileAwardsEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */; };
 		44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */; };
 		44B8A4B22475436F002BFE6A /* PhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */; };
+		44B8E90B247D15C200AC90E3 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8E90A247D15C200AC90E3 /* Geocoder.swift */; };
 		44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C2E31C246FF8A900091C4B /* PickerViewController.swift */; };
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
@@ -276,6 +277,7 @@
 		44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAwardsEventsViewController.swift; sourceTree = "<group>"; };
 		44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerCell.swift; sourceTree = "<group>"; };
+		44B8E90A247D15C200AC90E3 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
 		44C2E31C246FF8A900091C4B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 				44E73129247804FC0022375C /* api_complaints.swift */,
 				44523A3E2479408B00A4C948 /* ProfileRequests.swift */,
 				4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */,
+				44B8E90A247D15C200AC90E3 /* Geocoder.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				4404F251245F1D3700EB7184 /* Templates.swift in Sources */,
 				44989E272443B21100FAD014 /* GreetingPresenter.swift in Sources */,
 				448A4478240BF5D0007305D4 /* SearchResultsViewControllerRouter.swift in Sources */,
+				44B8E90B247D15C200AC90E3 /* Geocoder.swift in Sources */,
 				44073FA8247909120064A979 /* TextCell.swift in Sources */,
 				4404F24E245F0CD900EB7184 /* FilterRouter.swift in Sources */,
 				44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */,

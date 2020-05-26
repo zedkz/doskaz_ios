@@ -22,6 +22,8 @@ class LocationPickerController: UIViewController {
 	
 	private var pickedCoordinate: CLLocationCoordinate2D?
 	
+	private var pickedAddress: String?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationItem.title = l10n(.chooseObject)
@@ -48,7 +50,7 @@ class LocationPickerController: UIViewController {
 			
 			
 			if let pickedCoordinate = self.pickedCoordinate {
-				let str = "\(pickedCoordinate.latitude), \(pickedCoordinate.longitude)"
+				let str = self.pickedAddress ?? ""
 				let arr = [
 					(Double(pickedCoordinate.latitude) * 1000000).rounded() / 1000000,
 					(Double(pickedCoordinate.longitude) * 1000000).rounded() / 1000000,
@@ -70,6 +72,7 @@ class LocationPickerController: UIViewController {
 		mapView.addAnnotation(pin)
 		
 		pickedCoordinate = coordinate
+		loadAddress(for: "\(coordinate.longitude), \(coordinate.latitude)")
 	}
 	
 	
@@ -80,6 +83,19 @@ class LocationPickerController: UIViewController {
 			longitudinalMeters: regionRadius
 		)
 		mapView.setRegion(coordinateRegion, animated: true)
+	}
+	
+	
+	func loadAddress(for geocode: String) {
+		let onSuccess = { [weak self] (json: GeoDataResponse) -> Void in
+			self?.pickedAddress = json.response.geoObjectCollection.featureMember.first?.geoObject.name
+		}
+		
+		let onFailure = { (error: Error) -> Void in
+			debugPrint(error)
+		}
+		
+		Geocoder(onSuccess: onSuccess, onFailure: onFailure, geocode: geocode).dispatch()
 	}
 
 }
