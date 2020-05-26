@@ -299,7 +299,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				self.complaintData.rememberPersonalData.toggle()
 				self.updateSectionOneDataSource()
 				//TODO: -update rows
-				self.reload(with: .rows([9], 0))
+				self.reload(with: .rows([10], 0))
 			}
 		)
 	
