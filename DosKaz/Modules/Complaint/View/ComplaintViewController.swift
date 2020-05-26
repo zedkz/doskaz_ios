@@ -30,7 +30,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		complaintData.objectId = nil
 		
 		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
-		complaintData.content.photos = ["Photos"]
+		
 		//fake
 		complaintData.complainant.cityId = currentCity?.id
 		complaintData.content.cityId = currentObjectCity?.id
