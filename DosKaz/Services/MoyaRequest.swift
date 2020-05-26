@@ -111,10 +111,22 @@ extension MoyaRequest {
 
 			parseData(response.data)
 		case let .failure(moyaError):
-			let str = String(data: moyaError.response!.data, encoding: .utf8) ?? "no str"
-			let wI = NSMutableString( string: str)
-			CFStringTransform( wI, nil, "Any-Hex/Java" as NSString, true)
-			print("Data,", wI )
+
+			if let response = moyaError.response {
+
+				let responseData = String(data: response.data, encoding: .utf8) ?? "No Response data"
+				let wI = NSMutableString(string: responseData)
+				CFStringTransform( wI, nil, "Any-Hex/Java" as NSString, true)
+			
+				let message = """
+				||| [ Status Code: \(response.statusCode) ]
+				||| [ Method: \(response.request?.httpMethod ?? "Method is unknown")]
+				||| [ URL: \(response.request?.url?.description ?? "Path is unknown")]
+				"""
+				print(entry("Response", message))
+				print("Response data: ", wI )
+				
+			}
 
 			parseError(moyaError)
 		}
