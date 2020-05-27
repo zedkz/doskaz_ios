@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
@@ -17,11 +18,50 @@ protocol VenuePhotosViewInput where Self: UIViewController {
 class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 	
 	var output: VenuePhotosViewOutput!
-
+	
+	private let collectionView = ContentSizedCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+	private var collectionDataSource: CollectionViewDataSource<VenuePhotoCell.Props,VenuePhotoCell>!
+	private var delegate = VenueCollectionDelegate()
+	
 	func setupInitialState() {
 		view.backgroundColor = .white
+		view.addSubview(collectionView)
+		collectionView.addConstraintsProgrammatically
+			.pinToSuperSafeArea(inset: UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16))
+		configureCollectionView()
+		update([UIImage(named: "mapobject_40_available")!,
+						UIImage(named: "mapobject_40_available")!,
+						UIImage(named: "mapobject_40_available")!,
+						UIImage(named: "mapobject_40_available")!,
+						UIImage(named: "mapobject_40_available")!])
 	}
+	
+	private func configureCollectionView() {
+		let flowLayout = UICollectionViewFlowLayout()
+		flowLayout.scrollDirection = .vertical
+		collectionView.collectionViewLayout = flowLayout
+		collectionView.alwaysBounceVertical = true
+		collectionView.showsVerticalScrollIndicator = true
+		collectionView.delegate = delegate
+		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
+		collectionView.dataSource = collectionDataSource
+	}
+	
+	private func update(_ images: [UIImage]) {
 
+		let imageCollectionViewCells = images.map { image in
+			return VenuePhotoCell.Props(
+				image: image
+			)
+		}
+		
+		var allCells = [VenuePhotoCell.Props]()
+		
+		allCells.append(contentsOf: imageCollectionViewCells)
+		
+		collectionDataSource.cellsProps = allCells
+		collectionView.reloadData()
+	}
 }
 
 // MARK: Life cycle
