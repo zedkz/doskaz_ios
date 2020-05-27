@@ -64,6 +64,11 @@
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
 		446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C524680C2300075A47 /* api_objects_attributes.swift */; };
 		446E78C82468402000075A47 /* api_objects_requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C72468402000075A47 /* api_objects_requests.swift */; };
+		447768AD247E7997007BB003 /* VenuePhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A7247E7996007BB003 /* VenuePhotosRouter.swift */; };
+		447768AE247E7997007BB003 /* VenuePhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */; };
+		447768AF247E7997007BB003 /* VenuePhotosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A9247E7996007BB003 /* VenuePhotosInteractor.swift */; };
+		447768B0247E7997007BB003 /* VenuePhotosConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768AA247E7996007BB003 /* VenuePhotosConfigurator.swift */; };
+		447768B1247E7997007BB003 /* VenuePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768AC247E7996007BB003 /* VenuePhotosViewController.swift */; };
 		447DEC06246170A300AB5478 /* api_objects_categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447DEC05246170A300AB5478 /* api_objects_categories.swift */; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
 		4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89B23F6EBEF00E8AAB2 /* ViewController.swift */; };
@@ -231,6 +236,11 @@
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
 		446E78C524680C2300075A47 /* api_objects_attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_attributes.swift; sourceTree = "<group>"; };
 		446E78C72468402000075A47 /* api_objects_requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_requests.swift; sourceTree = "<group>"; };
+		447768A7247E7996007BB003 /* VenuePhotosRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosRouter.swift; sourceTree = "<group>"; };
+		447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosPresenter.swift; sourceTree = "<group>"; };
+		447768A9247E7996007BB003 /* VenuePhotosInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosInteractor.swift; sourceTree = "<group>"; };
+		447768AA247E7996007BB003 /* VenuePhotosConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosConfigurator.swift; sourceTree = "<group>"; };
+		447768AC247E7996007BB003 /* VenuePhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosViewController.swift; sourceTree = "<group>"; };
 		447DEC05246170A300AB5478 /* api_objects_categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_categories.swift; sourceTree = "<group>"; };
 		4486E89423F6EBEF00E8AAB2 /* DosKaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DosKaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -500,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
+				447768A5247E7996007BB003 /* VenuePhotos */,
 				44F0EE15243CC340000B3022 /* LanguageChoice */,
 				44989E1C2443B21100FAD014 /* Greeting */,
 				44653D87241385CE006EB35D /* Drawer */,
@@ -567,6 +578,34 @@
 				4404F213245AF9C500EB7184 /* DrawerPanner.swift */,
 			);
 			path = Drawer;
+			sourceTree = "<group>";
+		};
+		447768A5247E7996007BB003 /* VenuePhotos */ = {
+			isa = PBXGroup;
+			children = (
+				447768AB247E7996007BB003 /* View */,
+				447768A6247E7996007BB003 /* Presenter */,
+			);
+			path = VenuePhotos;
+			sourceTree = "<group>";
+		};
+		447768A6247E7996007BB003 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */,
+				447768A9247E7996007BB003 /* VenuePhotosInteractor.swift */,
+				447768A7247E7996007BB003 /* VenuePhotosRouter.swift */,
+				447768AA247E7996007BB003 /* VenuePhotosConfigurator.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		447768AB247E7996007BB003 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				447768AC247E7996007BB003 /* VenuePhotosViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4486E88B23F6EBEF00E8AAB2 = {
@@ -1070,6 +1109,7 @@
 				4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */,
 				44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */,
 				4446C182247BF30D002BF1B6 /* LocationPickerController.swift in Sources */,
+				447768B0247E7997007BB003 /* VenuePhotosConfigurator.swift in Sources */,
 				4404F24C245F0CD900EB7184 /* FilterInteractor.swift in Sources */,
 				44E731242477A6930022375C /* api_cities.swift in Sources */,
 				4404F253245F216100EB7184 /* Eureka.swift in Sources */,
@@ -1084,6 +1124,7 @@
 				44E73120247797030022375C /* api_complaints_initialData.swift in Sources */,
 				44523A3F2479408B00A4C948 /* ProfileRequests.swift in Sources */,
 				4444E24624647BEE0035CA8A /* Archive.swift in Sources */,
+				447768AF247E7997007BB003 /* VenuePhotosInteractor.swift in Sources */,
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
@@ -1121,6 +1162,7 @@
 				44B8A4AE247512D6002BFE6A /* ProfileAwardsEventsViewController.swift in Sources */,
 				44ED11D92455BA97009B92BF /* VenueView.swift in Sources */,
 				44E7311D24765F040022375C /* ComplaintRouter.swift in Sources */,
+				447768AD247E7997007BB003 /* VenuePhotosRouter.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
 				44ED11EA24573F0E009B92BF /* VenueDescriptionView.swift in Sources */,
@@ -1166,6 +1208,7 @@
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				4414DCA2247AD5D000A9717E /* TextViewCell.swift in Sources */,
 				44EE303E246DB5B100926817 /* BlogsViewController.swift in Sources */,
+				447768B1247E7997007BB003 /* VenuePhotosViewController.swift in Sources */,
 				44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */,
 				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
@@ -1183,6 +1226,7 @@
 				4404F24B245F0CD900EB7184 /* FilterPresenter.swift in Sources */,
 				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 				4446C2432472814F006B49EE /* ProfileDrawerViewController.swift in Sources */,
+				447768AE247E7997007BB003 /* VenuePhotosPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

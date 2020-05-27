@@ -23,7 +23,7 @@ class MainTabBarViewController: UITabBarController {
 		let profile = ProfileBuilder().assembleTab()
 		let more = MoreViewController().tab(with: "more", title: l10n(.more))
 
-		viewControllers = [map,profile,blog,instruction, more]
+		viewControllers = [map,blog,instruction,profile, more]
 		
 	}
 

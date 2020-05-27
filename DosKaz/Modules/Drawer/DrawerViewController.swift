@@ -149,6 +149,10 @@ class DrawerViewController: UIViewController {
 		drawerView.panToPosition(position, animated: animated, completion: completion)
 	}
 	
+	//MARK: - Tabs
+	
+	let photos = VenuePhotosBuilder().assembleModule()
+	
 }
 
 extension DrawerViewController: UITabBarDelegate {
@@ -162,7 +166,7 @@ extension DrawerViewController: UITabBarDelegate {
 			}
 			show(viewController: vc)
 		case 1:
-			show(viewController: GreetingModuleConfigurator().assembleModule())
+			show(viewController: photos)
 		default:
 			break
 		}
