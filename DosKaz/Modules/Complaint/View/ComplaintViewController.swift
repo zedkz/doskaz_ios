@@ -215,7 +215,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			text: value(currentCity?.name),
 			title: l10n(.city),
 			overlay: "chevron_down",
-			mode: .withoutButton,
+			mode: .onlyTextField,
 			onOverlayTouch: Command {
 				self.pick(
 					with: OnPick {
@@ -279,7 +279,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			text: value(currentAuth?.name),
 			title: l10n(.authority),
 			overlay: "chevron_down",
-			mode: .withoutButton,
+			mode: .onlyTextField,
 			onOverlayTouch: Command {
 				self.pick(
 					with: OnPick {
@@ -335,7 +335,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			text: currentComplaintType.description,
 			title: l10n(.complaintType),
 			overlay: "chevron_down",
-			mode: .withoutButton,
+			mode: .onlyTextField,
 			onOverlayTouch: Command {
 				self.pick(
 					with: OnPick {
@@ -355,7 +355,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			text: content.visitedAt,
 			title: l10n(.dateOfVisit),
 			overlay: "calendar",
-			mode: .withoutButton,
+			mode: .onlyTextField,
 			onOverlayTouch: Command { _ in
 				
 			}
@@ -377,7 +377,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			text: value(currentObjectCity?.name),
 			title: l10n(.city),
 			overlay: "chevron_down",
-			mode: .withoutButton,
+			mode: .onlyTextField,
 			onOverlayTouch: Command {
 				self.pick(
 					with: OnPick {
