@@ -54,13 +54,17 @@ protocol SearchResultsViewControllerInteractorOutput: class {
 
 extension SearchResultsViewControllerPresenter: SearchResultsViewControllerInteractorOutput {
 	func didFind(_ results: SearchResults) {
-		let searchResultsToShow = results.map {
+		let searchResultsToShow = results.map { result in
 			BasicCell.Props(
-				text: $0.title,
+				text: result.title,
 				icon: Asset.fontAwesome(
-					$0.icon?.filter { !" ".contains($0) }
+					result.icon?.filter { !" ".contains($0) }
 				),
-				rightIcon: "chevron_right_passive"
+				rightIcon: "chevron_right_passive",
+				onRightButtonTouch: Command { [weak self] in
+					guard let self = self else { return }
+					self.didPressShowOnMap.perform(with: [result] )
+				}
 			)
 		}
 		view.showResults(with: searchResultsToShow)
