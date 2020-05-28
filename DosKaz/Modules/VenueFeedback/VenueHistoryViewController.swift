@@ -27,6 +27,7 @@ class VenueHistoryViewController: UIViewController {
 		
 		let cellsProps = testHistorys.map { VenueHistoryCell.Props(history: $0) }
 		dataSource.cellsProps = cellsProps
+		tableView.reloadData()
 	}
 	
 	override func viewDidLoad() {

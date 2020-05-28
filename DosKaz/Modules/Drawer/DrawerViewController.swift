@@ -16,6 +16,7 @@ class DrawerViewController: UIViewController {
 		currentDoskazVenue = venue
 		if let items = tabBar.items, let first = items.first {
 			tabBar(tabBar, didSelect: first)
+			tabBar.selectedItem = first
 		}
 		currentVenueViewController?.output.show(venue)
  		setPositionToHalf()
@@ -157,6 +158,7 @@ class DrawerViewController: UIViewController {
 	
 	let history = VenueHistoryViewController()
 
+	let videos = VenueVideoViewContoller()
 }
 
 extension DrawerViewController: UITabBarDelegate {
@@ -184,6 +186,11 @@ extension DrawerViewController: UITabBarDelegate {
 				history.initWith(with: venueHistorys)
 			}
 			show(viewController: history)
+		case 4:
+			if let venueVideos = currentDoskazVenue?.videos {
+				videos.initWith(with: venueVideos)
+			}
+			show(viewController: videos)
 		default:
 			break
 		}

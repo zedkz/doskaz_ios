@@ -27,6 +27,7 @@ class VenueFeedbackViewController: UIViewController {
 		
 		let cellsProps = testReviews.map { VenueFeedbackCell.Props(review: $0) }
 		dataSource.cellsProps = cellsProps
+		tableView.reloadData()
 	}
 
 	override func viewDidLoad() {
