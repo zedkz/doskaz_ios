@@ -13,6 +13,7 @@ import SharedCodeFramework
 
 protocol VenuePhotosViewInput where Self: UIViewController {
 	func setupInitialState()
+	func update(_ photos: [Photo])
 }
 
 class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
@@ -44,11 +45,11 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 		collectionView.dataSource = collectionDataSource
 	}
 	
-	private func update(_ images: [UIImage]) {
+	func update(_ photos: [Photo]) {
 
-		let imageCollectionViewCells = images.map { image in
+		let imageCollectionViewCells: [VenuePhotoCell.Props] = photos.map { (photo: Photo) in
 			return VenuePhotoCell.Props(
-				image: image
+				image: photo.previewUrl
 			)
 		}
 		

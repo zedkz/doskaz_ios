@@ -28,7 +28,15 @@ class VenuePhotoCell: UICollectionViewCell {
 	
 	var props: Props! {
 		didSet {
-			imageView.image = props.image
+			let url = URL(string: Constants.mainURL + props.image)
+			imageView.kf.indicatorType = .activity
+			imageView.kf.setImage(
+				with: url,
+				options: [
+					.scaleFactor(UIScreen.main.scale),
+					.transition(.fade(1)),
+					.cacheOriginalImage
+			])
 		}
 	}
 	
@@ -47,7 +55,7 @@ class VenuePhotoCell: UICollectionViewCell {
 	// MARK: - Subtypes
 	
 	struct Props {
-		let image: UIImage
+		let image: String
 		var onPickImage: Command = .nop
 	}
 	

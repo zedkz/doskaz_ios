@@ -12,17 +12,25 @@ class VenuePhotosPresenter {
 	var interactor: VenuePhotosInteractorInput!
 	var router: VenuePhotosRouterInput!
 
+	var photos = [Photo]()
 }
 
 // MARK: ViewController output protocol
 
 protocol VenuePhotosViewOutput {
 	func viewIsReady()
+	func initView(with photos: [Photo])
 }
 
 extension VenuePhotosPresenter: VenuePhotosViewOutput {
+	
+	func initView(with photos: [Photo]) {
+		self.photos = photos
+	}
+	
 	func viewIsReady() {
 		view.setupInitialState()
+		view.update(photos)
 	}
 
 }

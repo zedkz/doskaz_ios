@@ -166,6 +166,9 @@ extension DrawerViewController: UITabBarDelegate {
 			}
 			show(viewController: vc)
 		case 1:
+			if let venuePhotos = currentDoskazVenue?.photos {
+				photos.output.initView(with: venuePhotos)
+			}
 			show(viewController: photos)
 		default:
 			break
