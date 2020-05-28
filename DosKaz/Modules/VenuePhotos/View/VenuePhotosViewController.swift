@@ -28,12 +28,8 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 		view.addSubview(collectionView)
 		collectionView.addConstraintsProgrammatically
 			.pinToSuperSafeArea(inset: UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16))
+			.set(my: .height, .greaterThanOrEqual, to: 90)
 		configureCollectionView()
-		update([UIImage(named: "mapobject_40_available")!,
-						UIImage(named: "mapobject_40_available")!,
-						UIImage(named: "mapobject_40_available")!,
-						UIImage(named: "mapobject_40_available")!,
-						UIImage(named: "mapobject_40_available")!])
 	}
 	
 	private func configureCollectionView() {
@@ -42,6 +38,7 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 		collectionView.collectionViewLayout = flowLayout
 		collectionView.alwaysBounceVertical = true
 		collectionView.showsVerticalScrollIndicator = true
+		collectionView.backgroundColor = .white
 		collectionView.delegate = delegate
 		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
 		collectionView.dataSource = collectionDataSource
