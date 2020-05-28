@@ -155,6 +155,8 @@ class DrawerViewController: UIViewController {
 	
 	let reviews = VenueFeedbackViewController()
 	
+	let history = VenueHistoryViewController()
+
 }
 
 extension DrawerViewController: UITabBarDelegate {
@@ -177,6 +179,11 @@ extension DrawerViewController: UITabBarDelegate {
 				reviews.initWith(with: venueReviews)
 			}
 			show(viewController: reviews)
+		case 3:
+			if let venueHistorys = currentDoskazVenue?.history {
+				history.initWith(with: venueHistorys)
+			}
+			show(viewController: history)
 		default:
 			break
 		}
