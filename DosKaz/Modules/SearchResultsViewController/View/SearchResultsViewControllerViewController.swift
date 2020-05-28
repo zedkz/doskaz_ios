@@ -80,7 +80,7 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 	
 	private func configureTableViewLayout() {
 		view.addSubview(tableView)
-		view.addSubview(showOnMapButton)
+		
 		
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		showOnMapButton.translatesAutoresizingMaskIntoConstraints = false
@@ -89,17 +89,10 @@ class SearchResultsViewControllerViewController: UIViewController, UISearchResul
 			tableView.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor),
 			tableView.topAnchor.constraint(equalTo: view.safeLayoutGuide.topAnchor),
 			tableView.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor)
 		]
-		
-		let bc = [
-			showOnMapButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 4),
-			showOnMapButton.leadingAnchor.constraint(equalTo: view.safeLayoutGuide.leadingAnchor),
-			showOnMapButton.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor),
-			showOnMapButton.bottomAnchor.constraint(equalTo: view.safeLayoutGuide.bottomAnchor),
-			showOnMapButton.heightAnchor.constraint(equalToConstant: 56)
-		]
-		
-		NSLayoutConstraint.activate(tc + bc)
+	
+		NSLayoutConstraint.activate(tc)
 	}
 	
 	private func configureTableViewDataSource() {
