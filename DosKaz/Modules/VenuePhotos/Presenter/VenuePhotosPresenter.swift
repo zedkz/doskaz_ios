@@ -25,7 +25,12 @@ protocol VenuePhotosViewOutput {
 extension VenuePhotosPresenter: VenuePhotosViewOutput {
 	
 	func initView(with photos: [Photo]) {
-		self.photos = photos
+		var testPhotos = photos
+		testPhotos.append(Photo(previewUrl: "/storage/63f586967633f1a0de0462d8a7e58cfb.jpeg", viewUrl: "", date: ""))
+		testPhotos.append(Photo(previewUrl: "/storage/63f586967633f1a0de0462d8a7e58cfb.jpeg", viewUrl: "", date: ""))
+		testPhotos.append(Photo(previewUrl: "/storage/63f586967633f1a0de0462d8a7e58cfb.jpeg", viewUrl: "", date: ""))
+		testPhotos.append(Photo(previewUrl: "/storage/63f586967633f1a0de0462d8a7e58cfb.jpeg", viewUrl: "", date: ""))
+		self.photos = testPhotos
 	}
 	
 	func viewIsReady() {
