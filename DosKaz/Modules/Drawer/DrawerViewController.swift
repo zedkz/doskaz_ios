@@ -153,6 +153,8 @@ class DrawerViewController: UIViewController {
 	
 	let photos = VenuePhotosBuilder().assembleModule()
 	
+	let reviews = VenueFeedbackViewController()
+	
 }
 
 extension DrawerViewController: UITabBarDelegate {
@@ -170,6 +172,11 @@ extension DrawerViewController: UITabBarDelegate {
 				photos.output.initView(with: venuePhotos)
 			}
 			show(viewController: photos)
+		case 2:
+			if let venueReviews = currentDoskazVenue?.reviews {
+				reviews.initWith(with: venueReviews)
+			}
+			show(viewController: reviews)
 		default:
 			break
 		}
