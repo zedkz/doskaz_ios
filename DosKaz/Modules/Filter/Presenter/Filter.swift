@@ -29,7 +29,6 @@ class Filter: Codable {
 				levels.append(element.key.rawValue)
 			}
 		}
-		print("accessibilityLevels", levels)
 		return levels
 	}
 	

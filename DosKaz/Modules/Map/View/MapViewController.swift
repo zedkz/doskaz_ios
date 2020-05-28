@@ -15,8 +15,10 @@ import SharedCodeFramework
 protocol MapViewInput where Self: UIViewController {
 	func setupInitialState()
 	func buildSearch(with command: CommandWith<SearchResults>)
+	func closeSearch()
 	func show(_ annotations: [MKAnnotation])
 	func showSheet(for doskazVenue: DoskazVenue)
+	func zoom(for doskazVenue: DoskazVenue)
 	
 	var onSelectVenue: CommandWith<Int> { get set }
 	var onPressFilter: Command { get set }
@@ -25,6 +27,10 @@ protocol MapViewInput where Self: UIViewController {
 }
 
 extension MapViewController: MapViewInput {
+	
+	func closeSearch() {
+		searchController.isActive = false
+	}
 
 	func setupInitialState() {
 		configureMapViewLayout()
@@ -41,6 +47,21 @@ extension MapViewController: MapViewInput {
 	
 	func showSheet(for doskazVenue: DoskazVenue) {
 		drawerVC.render(venue: doskazVenue)
+	}
+	
+	func zoom(for doskazVenue: DoskazVenue) {
+		let coordinate =  CLLocationCoordinate2D(
+			latitude: doskazVenue.coordinates[0],
+			longitude: doskazVenue.coordinates[1]
+		)
+		let coordinateRegion = MKCoordinateRegion(
+			center: coordinate,
+			span: MKCoordinateSpan(
+				latitudeDelta: 0.0033840424988866857,
+				longitudeDelta: 0.003996139719617986
+			)
+		)
+		mapView.setRegion(coordinateRegion, animated: true)
 	}
 }
 

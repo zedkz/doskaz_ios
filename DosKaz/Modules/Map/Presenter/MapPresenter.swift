@@ -14,6 +14,7 @@ class MapPresenter: MapModuleInput {
 	var interactor: MapInteractorInput!
 	var router: MapRouterInput!
 
+	var shouldZoomAfterSearch = false
 }
 
 
@@ -26,8 +27,13 @@ protocol MapViewOutput {
 extension MapPresenter: MapViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
-		view.buildSearch(with: CommandWith<SearchResults> { results in
-			print("search started", results)
+		view.buildSearch(with: CommandWith<SearchResults> { [weak self] results in
+			guard let self = self else { return }
+			if let first = results.first {
+				self.view.closeSearch()
+				self.interactor.loadObject(with: first.id)
+				self.shouldZoomAfterSearch = true
+			}
 		})
 
 		view.onSelectVenue = CommandWith<Int> {
@@ -95,10 +101,14 @@ extension MapPresenter: MapInteractorOutput {
 	
 	func didLoad(_ venue: DoskazVenue) {
 		view.showSheet(for: venue)
+		if shouldZoomAfterSearch {
+			view.zoom(for: venue)
+			shouldZoomAfterSearch = false
+		}
 	}
 	
 	func didFailLoadVenue(with error: Error) {
-		
+		shouldZoomAfterSearch = false
 	}
 	
 }
