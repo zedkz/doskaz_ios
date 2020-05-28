@@ -44,7 +44,9 @@ struct APIObjectsMap: DoskazRequest {
 		
 		let p: [String: Any] = [
 			"zoom": zoom,
-			"bbox": stringBox
+			"bbox": stringBox,
+			"categories": Filter.shared.subCategoriesIds,
+			"accessibilityLevels": Filter.shared.accessibilityLevels
 		]
 		return Task.requestParameters(parameters: p, encoding: URLEncoding.default)
 	}

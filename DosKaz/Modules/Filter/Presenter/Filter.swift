@@ -21,6 +21,31 @@ class Filter: Codable {
 			return filter
 		}
 	}()
+	
+	var accessibilityLevels: [String] {
+		var levels = [String]()
+		for element in acc {
+			if element.value == true {
+				levels.append(element.key.rawValue)
+			}
+		}
+		print("accessibilityLevels", levels)
+		return levels
+	}
+	
+	var subCategoriesIds: [Int] {
+		var ids = [Int]()
+		
+		for (_, subStatuses) in catStatus {
+			for (subCategory, value) in subStatuses {
+				if value == true {
+					ids.append(subCategory.id)
+				}
+			}
+		}
+		
+		return ids
+	}
 
 	var acc: [OverallScore: Bool]
 	var cat: [Category] {
