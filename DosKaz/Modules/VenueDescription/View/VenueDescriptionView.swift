@@ -37,7 +37,7 @@ class VenueDescriptionView: UIView {
 			guard let props = props else { return }
 			
 			mainText.text = String(props.venue.description.filter { !"\n\t\r".contains($0) })
-			venueStatus.text = props.venue.verificationStatus
+			venueStatus.text = props.venue.verificationStatusText
 		}
 	}
 	

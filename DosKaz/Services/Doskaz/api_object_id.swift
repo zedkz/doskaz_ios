@@ -93,3 +93,15 @@ struct ScoreByZones: Codable {
 	let parking, entrance, movement, service: OverallScore
 	let toilet, navigation, serviceAccessibility: OverallScore
 }
+
+
+extension DoskazVenue {
+	var verificationStatusText: String {
+		switch verificationStatus {
+		case "not_verified":
+			return l10n(.notVerified)
+		default:
+			return ""
+		}
+	}
+}
