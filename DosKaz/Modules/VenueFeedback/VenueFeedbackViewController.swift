@@ -10,6 +10,7 @@ import UIKit
 
 class VenueFeedbackViewController: UIViewController {
 	
+	let postReviewButton = UIButton(type: .system)
 	let titleLb = UILabel()
 	let tableView = ContentSizedTableView()
 	var dataSource: UTableViewDataSource<VenueFeedbackCell>!
@@ -32,6 +33,9 @@ class VenueFeedbackViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		view.backgroundColor = .white
+		postReviewButton.setTitle(l10n(.writeReview), for: .normal)
+		
 		titleLb.text = l10n(.reviews).uppercased()
 		titleLb.decorate(with: Style.systemFont(size: 14, weight: .bold))
 		
@@ -44,9 +48,9 @@ class VenueFeedbackViewController: UIViewController {
 		
 		view.addSubview(titleLb)
 		view.addSubview(tableView)
+		view.addSubview(postReviewButton)
 		
 		titleLb.addConstraintsProgrammatically
-			.pinEdgeToSupersSafe(.trailing, plus: -16)
 			.pinEdgeToSupersSafe(.leading, plus: 16)
 			.pinEdgeToSupersSafe(.top, plus: 16)
 		
@@ -57,6 +61,9 @@ class VenueFeedbackViewController: UIViewController {
 			.pinEdgeToSupersSafe(.bottom, plus: -16)
 			.set(my: .height, .greaterThanOrEqual, to: 90)
 		
+		postReviewButton.addConstraintsProgrammatically
+			.pinEdgeToSupersSafe(.trailing, plus: -8)
+			.pin(my: .firstBaseline, andOf: titleLb)
 		
 		update(with: reviews)
 	}
