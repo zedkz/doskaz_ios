@@ -14,7 +14,7 @@ struct APIPostFeedback: DoskazRequest {
 		debugPrint(empty)
 	}
 	
-	var onFailure = { (error: DKError) -> Void in
+	var onFailure = { (error: Error) -> Void in
 		debugPrint(error)
 	}
 	

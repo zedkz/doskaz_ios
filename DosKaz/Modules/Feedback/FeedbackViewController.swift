@@ -6,9 +6,9 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
-import UIKit
+import SharedCodeFramework
 
-class FeedbackViewController: UIViewController, UITextViewDelegate {
+class FeedbackViewController: UIViewController, UITextViewDelegate, DisplaysAlert {
 	
 	func textViewDidChange(_ textView: UITextView) {
 		let count = textView.text?.count ?? 0
@@ -40,6 +40,20 @@ class FeedbackViewController: UIViewController, UITextViewDelegate {
 	}
 	
 	@objc func done() {
+		let onSuccess = { [weak self] (empty: Empty) -> Void in
+			guard let safe = self else { return }
+			safe.disPlayAlert(with: l10n(.yourReviewWasReceived), action: {
+				safe.close()
+			})
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.displayAlert(with: error.localizedDescription)
+		}
+		
+		let feedback = Feedback(name: "-", email: "profilehasno@email.com", text: textView.text)
+		
+		APIPostFeedback(onSuccess: onSuccess, onFailure: onFailure, feedback: feedback).dispatch()
 		
 	}
 	
