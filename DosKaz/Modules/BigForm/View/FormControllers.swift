@@ -84,7 +84,9 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	var form: FullForm? {
-
+		
+		first.categoryId = currentSub?.id ?? 0
+		
 		let parking = FormSection(
 			attributes: allSections[l10n(.parking)] ?? [:],
 			comment: "dsf"
