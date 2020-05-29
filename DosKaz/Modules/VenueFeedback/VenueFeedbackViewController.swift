@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 class VenueFeedbackViewController: UIViewController {
 	
@@ -23,8 +24,8 @@ class VenueFeedbackViewController: UIViewController {
 	private func update(with reviews: [Review]) {
 		var testReviews = reviews
 		
-		testReviews.append(Review(author: "Елена Малышева", text: "Была там на днях, очень понравилось. Без туалета, конечно, не очень удобно, но руки помыть можно без проблем. Персонал очень вежливый, помогали мне. Суши просто огонь и пицца прям что надо, рекомендую!", date: "10 июля, 15:32"))
-		testReviews.append(Review(author: "Аружан Толеухан", text: "Что могу сказать — в нашем городе не так уж много заведений, где нам можно комфортно покушать и отдохнуть. Так что Сая суши даже с имеющимися недостатками можно смело записывать в избранное.", date: "24 июня, 22:01"))
+		testReviews.append(Review(author: "Елена Малышева", text: "Была там на днях, очень понравилось. Без туалета, конечно, не очень удобно, но руки помыть можно без проблем. Персонал очень вежливый, помогали мне. Суши просто огонь и пицца прям что надо, рекомендую!", createdAt: "10 июля, 15:32"))
+		testReviews.append(Review(author: "Аружан Толеухан", text: "Что могу сказать — в нашем городе не так уж много заведений, где нам можно комфортно покушать и отдохнуть. Так что Сая суши даже с имеющимися недостатками можно смело записывать в избранное.", createdAt: "24 июня, 22:01"))
 		
 		let cellsProps = testReviews.map { VenueFeedbackCell.Props(review: $0) }
 		dataSource.cellsProps = cellsProps
@@ -69,8 +70,18 @@ class VenueFeedbackViewController: UIViewController {
 		update(with: reviews)
 	}
 	
+	func initWith(objectId: Int, onClose: Command) {
+		self.objectId = objectId
+		self.onClose = onClose
+	}
+	
+	var objectId: Int!
+	
+	var onClose: Command = .nop
+	
 	@objc func addReview() {
 		let postReviewViewController = FeedbackViewController()
+		postReviewViewController.initWith(objectId: objectId, onClose: onClose)
 		let nav = UINavigationController(rootViewController: postReviewViewController)
 		present(nav, animated: true, completion: nil)
 	}
@@ -117,7 +128,7 @@ class VenueFeedbackCell: UITableViewCell, Updatable {
 		didSet {
 			let review = props.review
 			authorLb.text = review.author
-			dateLb.text = review.date
+			dateLb.text = review.createdAt
 			textLb.text = review.text
 		}
 	}

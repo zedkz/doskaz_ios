@@ -7,10 +7,36 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 class DrawerViewController: UIViewController {
 	
 	// MARK: - Venue sheet methods
+	
+	func reload() {
+		guard let id = currentDoskazVenue?.id else { return }
+		
+		let onSuccess = { [weak self] (doskazVenue: DoskazVenue) -> Void in
+			guard let self = self else { return }
+			
+			var venue = doskazVenue
+			venue.id = id
+			
+			if let selected = self.tabBar.selectedItem {
+				self.currentDoskazVenue = venue
+				self.tabBar(self.tabBar, didSelect: selected)
+			}
+			
+		}
+		
+		let onFailure = { (error: Error) in
+			print("Object reload failed")
+		}
+		
+		let r = APIGetObject(onSuccess: onSuccess, onFailure: onFailure, id: id)
+		r.dispatch()
+		
+	}
 	
 	func render(venue: DoskazVenue) {
 		currentDoskazVenue = venue
@@ -154,8 +180,6 @@ class DrawerViewController: UIViewController {
 	
 	let photos = VenuePhotosBuilder().assembleModule()
 	
-	let reviews = VenueFeedbackViewController()
-	
 	let history = VenueHistoryViewController()
 
 	let videos = VenueVideoViewContoller()
@@ -177,8 +201,13 @@ extension DrawerViewController: UITabBarDelegate {
 			}
 			show(viewController: photos)
 		case 2:
+			let reviews = VenueFeedbackViewController()
 			if let venueReviews = currentDoskazVenue?.reviews {
 				reviews.initWith(with: venueReviews)
+				guard let id = currentDoskazVenue?.id else { return }
+				reviews.initWith(objectId: id, onClose: Command { [weak self] in
+					self?.reload()
+				})
 			}
 			show(viewController: reviews)
 		case 3:

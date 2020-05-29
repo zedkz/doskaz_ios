@@ -40,7 +40,9 @@ class MapInteractor: MapInteractorInput {
 	
 	func loadObject(with id: Int) {
 		let onSuccess = { [weak self] (doskazVenue: DoskazVenue) -> Void in
-			self?.output.didLoad(doskazVenue)
+			var venue = doskazVenue
+			venue.id = id
+			self?.output.didLoad(venue)
 		}
 		
 		let onFailure = { (error: Error) in

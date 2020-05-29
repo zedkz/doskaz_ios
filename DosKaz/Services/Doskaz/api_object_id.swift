@@ -25,6 +25,7 @@ struct APIGetObject: DoskazRequest {
 
 // MARK: - DoskazVenue
 struct DoskazVenue: Codable {
+	var id: Int?
 	let title: String
 	let address: String
 	let description: String
@@ -42,6 +43,7 @@ struct DoskazVenue: Codable {
 	let verificationStatus: String
 //
 	enum CodingKeys: String, CodingKey {
+		case id
 		case title, address
 		case description
 		case category,subCategory, coordinates, overallScore, scoreByZones, icon, photos, videos, reviews, history, verificationStatus
@@ -85,7 +87,7 @@ struct Photo: Codable {
 
 // MARK: - Review
 struct Review: Codable {
-	let author, text, date: String
+	let author, text, createdAt: String
 }
 
 // MARK: - ScoreByZones

@@ -64,6 +64,7 @@
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
 		446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C524680C2300075A47 /* api_objects_attributes.swift */; };
 		446E78C82468402000075A47 /* api_objects_requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C72468402000075A47 /* api_objects_requests.swift */; };
+		447582E8248117CA00FBC421 /* api_objects_id_review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447582E7248117CA00FBC421 /* api_objects_id_review.swift */; };
 		447768AD247E7997007BB003 /* VenuePhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A7247E7996007BB003 /* VenuePhotosRouter.swift */; };
 		447768AE247E7997007BB003 /* VenuePhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */; };
 		447768AF247E7997007BB003 /* VenuePhotosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A9247E7996007BB003 /* VenuePhotosInteractor.swift */; };
@@ -243,6 +244,7 @@
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
 		446E78C524680C2300075A47 /* api_objects_attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_attributes.swift; sourceTree = "<group>"; };
 		446E78C72468402000075A47 /* api_objects_requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_requests.swift; sourceTree = "<group>"; };
+		447582E7248117CA00FBC421 /* api_objects_id_review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_id_review.swift; sourceTree = "<group>"; };
 		447768A7247E7996007BB003 /* VenuePhotosRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosRouter.swift; sourceTree = "<group>"; };
 		447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosPresenter.swift; sourceTree = "<group>"; };
 		447768A9247E7996007BB003 /* VenuePhotosInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosInteractor.swift; sourceTree = "<group>"; };
@@ -854,6 +856,7 @@
 				4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */,
 				44B8E90A247D15C200AC90E3 /* Geocoder.swift */,
 				44A5D9582480DFB000372A90 /* api_feedback.swift */,
+				447582E7248117CA00FBC421 /* api_objects_id_review.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */,
 				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
+				447582E8248117CA00FBC421 /* api_objects_id_review.swift in Sources */,
 				4446C2452472887D006B49EE /* ProfileView.swift in Sources */,
 				4404F24F245F0CD900EB7184 /* FilterViewController.swift in Sources */,
 				44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */,

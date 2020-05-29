@@ -10,6 +10,15 @@ import SharedCodeFramework
 
 class FeedbackViewController: UIViewController, UITextViewDelegate, DisplaysAlert {
 	
+	func initWith(objectId: Int, onClose: Command) {
+		self.objectId = objectId
+		self.onClose = onClose
+	}
+	
+	var objectId: Int!
+	
+	var onClose: Command = .nop
+	
 	func textViewDidChange(_ textView: UITextView) {
 		let count = textView.text?.count ?? 0
 		charactersLeftLabel.text = String(count)
@@ -37,7 +46,9 @@ class FeedbackViewController: UIViewController, UITextViewDelegate, DisplaysAler
 	
 	@objc func close() {
 		textView.resignFirstResponder()
-		dismiss(animated: true, completion: nil)
+		dismiss(animated: true, completion: { [weak self] in
+			self?.onClose.perform()
+		})
 	}
 	
 	@objc func done() {
@@ -54,10 +65,10 @@ class FeedbackViewController: UIViewController, UITextViewDelegate, DisplaysAler
 			self?.navigationItem.rightBarButtonItem?.isEnabled = true
 		}
 		
-		let feedback = Feedback(name: "-", email: "profilehasno@email.com", text: textView.text)
+		let review = PostReview(text: textView.text)
 		
 		navigationItem.rightBarButtonItem?.isEnabled = false
-		APIPostFeedback(onSuccess: onSuccess, onFailure: onFailure, feedback: feedback).dispatch()
+		APIPostReview(onSuccess: onSuccess, onFailure: onFailure, objectId: objectId, review: review).dispatch()
 		
 	}
 	
