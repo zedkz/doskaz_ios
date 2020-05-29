@@ -68,8 +68,8 @@ class DrawerViewController: UIViewController {
 			UITabBarItem(title: nil, image: UIImage(named: "object_description"), selectedImage: UIImage(named: "object_description_active")),
 			UITabBarItem(title: nil, image: UIImage(named: "object_photo"), selectedImage: UIImage(named: "object_photo_active")),
 			UITabBarItem(title: nil, image: UIImage(named: "object_reviews"), selectedImage: UIImage(named: "object_reviews_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "object_history"), selectedImage: UIImage(named: "object_history_active")),
 			UITabBarItem(title: nil, image: UIImage(named: "object_video"), selectedImage: UIImage(named: "object_video_active")),
-			UITabBarItem(title: nil, image: UIImage(named: "object_history"), selectedImage: UIImage(named: "object_history_active"))
 		]
 		
 		items.enumerated().forEach { args in
