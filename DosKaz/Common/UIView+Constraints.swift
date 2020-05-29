@@ -99,42 +99,6 @@ public enum XEdge {
 	
 }
 
-public enum SafeYEdge {
-	case top
-	case bottom
-	case verticalCenter
-	
-	var keyPath: KeyPath<UIView, NSLayoutYAxisAnchor> {
-		switch self {
-		case .top:
-			return \UIView.safeLayoutGuide.topAnchor
-		case .bottom:
-			return \UIView.safeLayoutGuide.bottomAnchor
-		case .verticalCenter:
-			return \UIView.safeLayoutGuide.centerYAnchor
-		}
-	}
-	
-}
-
-public enum SafeXEdge {
-	case leading
-	case trailing
-	case horizontalCenter
-	
-	var keyPath: KeyPath<UIView, NSLayoutXAxisAnchor> {
-		switch self {
-		case .leading:
-			return \UIView.safeLayoutGuide.leadingAnchor
-		case .trailing:
-			return \UIView.safeLayoutGuide.trailingAnchor
-		case .horizontalCenter:
-			return \UIView.safeLayoutGuide.centerXAnchor
-		}
-	}
-	
-}
-
 extension UIView {
 	var addConstraintsProgrammatically: Anchor {
 		translatesAutoresizingMaskIntoConstraints = false
