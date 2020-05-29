@@ -35,6 +35,7 @@ class VenueFeedbackViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .white
 		postReviewButton.setTitle(l10n(.writeReview), for: .normal)
+		postReviewButton.addTarget(self, action: #selector(addReview), for: .touchUpInside)
 		
 		titleLb.text = l10n(.reviews).uppercased()
 		titleLb.decorate(with: Style.systemFont(size: 14, weight: .bold))
@@ -62,12 +63,17 @@ class VenueFeedbackViewController: UIViewController {
 			.set(my: .height, .greaterThanOrEqual, to: 90)
 		
 		postReviewButton.addConstraintsProgrammatically
-			.pinEdgeToSupersSafe(.trailing, plus: -8)
+			.pinEdgeToSupersSafe(.trailing, plus: -16)
 			.pin(my: .firstBaseline, andOf: titleLb)
 		
 		update(with: reviews)
 	}
 	
+	@objc func addReview() {
+		let postReviewViewController = FeedbackViewController()
+		let nav = UINavigationController(rootViewController: postReviewViewController)
+		present(nav, animated: true, completion: nil)
+	}
 	
 }
 

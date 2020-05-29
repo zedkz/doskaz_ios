@@ -36,6 +36,7 @@ class FeedbackViewController: UIViewController, UITextViewDelegate, DisplaysAler
 	}
 	
 	@objc func close() {
+		textView.resignFirstResponder()
 		dismiss(animated: true, completion: nil)
 	}
 	
