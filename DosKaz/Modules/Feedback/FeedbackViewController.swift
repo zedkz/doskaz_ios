@@ -44,15 +44,18 @@ class FeedbackViewController: UIViewController, UITextViewDelegate, DisplaysAler
 			guard let safe = self else { return }
 			safe.disPlayAlert(with: l10n(.yourReviewWasReceived), action: {
 				safe.close()
+				safe.navigationItem.rightBarButtonItem?.isEnabled = true
 			})
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
 			self?.displayAlert(with: error.localizedDescription)
+			self?.navigationItem.rightBarButtonItem?.isEnabled = true
 		}
 		
 		let feedback = Feedback(name: "-", email: "profilehasno@email.com", text: textView.text)
 		
+		navigationItem.rightBarButtonItem?.isEnabled = false
 		APIPostFeedback(onSuccess: onSuccess, onFailure: onFailure, feedback: feedback).dispatch()
 		
 	}
