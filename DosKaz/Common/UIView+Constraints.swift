@@ -53,6 +53,21 @@ public enum YEdge {
 		}
 	}
 	
+	var safeKeyPath: KeyPath<UIView, NSLayoutYAxisAnchor> {
+		switch self {
+		case .top:
+			return \UIView.safeLayoutGuide.topAnchor
+		case .bottom:
+			return \UIView.safeLayoutGuide.bottomAnchor
+		case .verticalCenter:
+			return \UIView.safeLayoutGuide.centerYAnchor
+		case .firstBaseline:
+			return \UIView.firstBaselineAnchor
+		case .lastBaseline:
+			return \UIView.lastBaselineAnchor
+		}
+	}
+	
 }
 
 public enum XEdge {
@@ -68,6 +83,17 @@ public enum XEdge {
 			return \UIView.trailingAnchor
 		case .horizontalCenter:
 			return \UIView.centerXAnchor
+		}
+	}
+	
+	var safeKeyPath: KeyPath<UIView, NSLayoutXAxisAnchor> {
+		switch self {
+		case .leading:
+			return \UIView.safeLayoutGuide.leadingAnchor
+		case .trailing:
+			return \UIView.safeLayoutGuide.trailingAnchor
+		case .horizontalCenter:
+			return \UIView.safeLayoutGuide.centerXAnchor
 		}
 	}
 	
@@ -255,10 +281,10 @@ extension Anchor {
 	/// Example: '.pinEdgeToSupersSafe(: .leading)'
 	@discardableResult
 	public func pinEdgeToSupersSafe(
-		_ xEdge: SafeXEdge,
+		_ xEdge: XEdge,
 		plus c: CGFloat = 0
 	) -> Self {
-		return constrain(anchor: xEdge.keyPath, with: .equal, to: xEdge.keyPath, of: callingView.superview!, plus: c)
+		return constrain(anchor: xEdge.keyPath, with: .equal, to: xEdge.safeKeyPath, of: callingView.superview!, plus: c)
 	}
 	
 }
@@ -316,10 +342,10 @@ extension Anchor {
 	/// Example: '.pinEdgeToSupersSafe(: .leading)'
 	@discardableResult
 	public func pinEdgeToSupersSafe(
-		_ yEdge: SafeYEdge,
+		_ yEdge: YEdge,
 		plus c: CGFloat = 0
 	) -> Self {
-		return constrain(anchor: yEdge.keyPath, with: .equal, to: yEdge.keyPath, of: callingView.superview!, plus: c)
+		return constrain(anchor: yEdge.keyPath, with: .equal, to: yEdge.safeKeyPath, of: callingView.superview!, plus: c)
 	}
 	
 }
