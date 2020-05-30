@@ -87,7 +87,8 @@ struct Photo: Codable {
 
 // MARK: - Review
 struct Review: Codable {
-	let author, text, createdAt: String
+	let author, text: String
+	let createdAt: Date
 }
 
 // MARK: - ScoreByZones

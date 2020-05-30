@@ -56,7 +56,9 @@ extension MoyaRequest {
 		guard thereIs(data) else { return }
 		
 		do {
-			let rootObject = try JSONDecoder().decode(CodableRoot.self , from: data)
+			let decoder = JSONDecoder()
+			decoder.dateDecodingStrategy = .iso8601
+			let rootObject = try decoder.decode(CodableRoot.self , from: data)
 			onSuccess(rootObject)
 		} catch DecodingError.keyNotFound(let key, let context) {
 			print("Failed to decode due to missing key '\(key.stringValue)' not found – \(context.debugDescription)")
