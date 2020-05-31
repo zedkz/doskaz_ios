@@ -192,6 +192,7 @@ class AboutProjectViewController: UIViewController {
 		contentView.addArrangedSubview(headingFinancing)
 		let financingImages = UIStackView()
 		financingImages.axis = .horizontal
+		financingImages.spacing = 8
 		financingImages.distribution = .equalCentering
 		financingImages.addArrangedSubview(financeImage1)
 		financingImages.addArrangedSubview(financeImage2)
