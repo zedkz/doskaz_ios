@@ -20,7 +20,7 @@ class AboutProjectViewController: UIViewController {
 		stack.axis = .vertical
 		stack.spacing = 10
 		stack.isLayoutMarginsRelativeArrangement = true
-		stack.layoutMargins = UIEdgeInsets(top: 117, left: 20, bottom: 0, right: 20)
+		stack.layoutMargins = UIEdgeInsets(top: 117, left: 20, bottom: 20, right: 20)
 		return stack
 	}()
 	
