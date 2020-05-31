@@ -235,7 +235,6 @@ extension MapViewController: MKMapViewDelegate {
 		onRegionChanged.perform(with: MapRect(zoomLevel: mapView.zoomLevel, edges: mapView.edges))
 	}
 	
-
 	func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
 		views.forEach { view in
 			view.alpha = 0
