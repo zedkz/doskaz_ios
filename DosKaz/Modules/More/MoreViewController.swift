@@ -24,17 +24,17 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 		navigationItem.title = l10n(.more)
 		
 		commands = [
-			Command {
-				
+			Command { [weak self] in
+				self?.present(AboutProjectViewController())
 			},
 			Command {
 				
 			},
-			Command {
-				self.present(CategoryPickerModuleConfigurator().assembleModule())
+			Command { [weak self] in
+				self?.present(CategoryPickerModuleConfigurator().assembleModule())
 			},
-			Command {
-				self.present(LanguageViewController())
+			Command { [weak self] in
+				self?.present(LanguageViewController())
 			},
 			
 		]
