@@ -151,6 +151,10 @@ class AboutProjectViewController: UIViewController {
 			.pinToSuper()
 			.set(my: .width, .equal, to: .width, of: scrollView)
 		
+		let blueView = UIView()
+		blueView.backgroundColor = UIColor(red: 0.946, green: 0.973, blue: 0.988, alpha: 1)
+		contentView.addSubview(blueView)
+
 		let spacing: CGFloat = 30.0
 				
 		contentView.addSubview(topImage)
@@ -202,7 +206,7 @@ class AboutProjectViewController: UIViewController {
 		roundedView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom)
+			.pin(my: .bottom, andOf: headingWhatIsThisProject)
 			.pin(my: .top, andOf: headingWhatIsThisProject, plus: -21)
 		topImage.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
@@ -210,14 +214,10 @@ class AboutProjectViewController: UIViewController {
 			.pinEdgeToSupers(.top)
 			.pin(my: .bottom, to: .top, of: headingWhatIsThisProject)
 		
-		let blueView = UIView()
-		contentView.addSubview(blueView)
-		blueView.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
-		blueView.alpha = 0.0
 		blueView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
-			.pin(my: .top, andOf: headingParticipate, plus: -21)
+			.pin(my: .top, andOf: headingParticipate, plus: -15)
 			.pin(my: .bottom, andOf: textParticipate, plus: 21)
 	}
 	
