@@ -68,7 +68,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			address: "",
 			categoryId: 0,
 			point: [52.25,76.94],
-			videos: ["you1"],
+			videos: [],
 			photos: ["dsfds"])
 		return first
 	}()
@@ -368,6 +368,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			title: l10n(.videoLink),
 			mode: .full(icon: "plus_in_form"),
 			onRightTouch: Text { newText in
+				guard !newText.isEmpty else { return }
 				self.first.videos.append(newText)
 				self.update()
 				self.reloadAndScroll(nil, 0)

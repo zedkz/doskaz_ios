@@ -571,6 +571,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			title: l10n(.videoLink),
 			mode: .full(icon: "plus_in_form"),
 			onRightTouch: Text { newText in
+				guard !newText.isEmpty else { return }
 				self.complaintData.content.videos.append(newText)
 				self.updateLastSectionDataSource()
 				self.reload(with: .all)
