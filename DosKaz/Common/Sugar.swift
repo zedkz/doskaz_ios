@@ -164,3 +164,16 @@ extension UIColor {
 	
 }
 
+extension Array {
+	mutating func remove(atValid index: Int) {
+		if indices.contains(index) {
+			remove(at: index)
+		}
+	}
+	
+	mutating func update(with element: Element, at index: Int) {
+		if indices.contains(index) {
+			self[index] = element
+		}
+	}
+}

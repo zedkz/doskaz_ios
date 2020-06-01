@@ -355,11 +355,13 @@ class SmallFormViewController: FormViewController, HasForm {
 				title: l10n(.videoLink),
 				mode: .full(icon: "x_in_form"),
 				onRightTouch: Text { _ in
-					self.first.videos.remove(at: index)
+					self.first.videos.remove(atValid: index)
 					self.update()
 					self.reloadAndScroll(nil, 0)
 				},
-				onEditText: Text { self.first.videos[index] = $0 }
+				onEditText: Text {
+					self.first.videos.update(with: $0, at: index)
+				}
 			)
 		}
 		

@@ -558,11 +558,13 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				title: l10n(.videoLink),
 				mode: .full(icon: "x_in_form"),
 				onRightTouch: Text { _ in
-					self.complaintData.content.videos.remove(at: index)
+					self.complaintData.content.videos.remove(atValid: index)
 					self.updateLastSectionDataSource()
 					self.reload(with: .all)
 				},
-				onEditText: Text { self.complaintData.content.videos[index] = $0 }
+				onEditText: Text {
+					self.complaintData.content.videos.update(with: $0, at: index)
+				}
 			)
 		}
 		
