@@ -51,7 +51,7 @@ class VenueDescriptionView: UIView {
 	//MARK: - Private
 	
 	private func configureConstantData() {
-		title.text = l10n(.description)
+		title.text = l10n(.description).uppercased()
 		mainText.text = "-"
 		detailInfo.setTitle(l10n(.detailInfo), for: .normal)
 		venueStatus.text = "-"

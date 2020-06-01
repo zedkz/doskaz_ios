@@ -63,9 +63,9 @@ class SmallFormViewController: FormViewController, HasForm {
 	var first: First = {
 		var first = First(
 			name: "",
-			description: "description",
+			description: "",
 			otherNames: "",
-			address: "addresss",
+			address: "",
 			categoryId: 0,
 			point: [52.25,76.94],
 			videos: ["you1"],
@@ -146,6 +146,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		tableView.register(cellClass: TextFormCell.self)
 		tableView.register(cellClass: SubSectionHeaderCell.self)
 		tableView.register(cellClass: PhotoPickerCell.self)
+		tableView.register(cellClass: TextViewCell.self)
 		genInfoSectionSource = FormTableViewDataSource(l10n(.genInfo))
 		dataSource = SectionedTableViewDataSource(dataSources: [genInfoSectionSource])
 		tableView.dataSource = dataSource
@@ -319,13 +320,25 @@ class SmallFormViewController: FormViewController, HasForm {
 			}
 		)
 		
+		let descriptionProps = TextViewCell.Props(
+			canShowRedAlert: shouldBeRed(first.description.isEmpty),
+			title: l10n(.description),
+			placeHolder: "",
+			text: first.description,
+			onEditText: Text {
+				self.first.description = $0
+				self.update()
+			}
+		)
+		
 		var configurators: [CellConfiguratorType] = [
 			CellConfigurator<TextFormCell>(props: objectName),
 			CellConfigurator<TextFormCell>(props: otherNames),
 			CellConfigurator<TextFormCell>(props: address),
 			CellConfigurator<TextFormCell>(props: objOnmap),
 			CellConfigurator<TextFormCell>(props: category),
-			CellConfigurator<TextFormCell>(props: subCategory)
+			CellConfigurator<TextFormCell>(props: subCategory),
+			CellConfigurator<TextViewCell>(props: descriptionProps)
 		]
 		configurators.append(contentsOf: videoLinks)
 		configurators.append(CellConfigurator<PhotoPickerCell>(props: PhotoPickerCell.Props()))
