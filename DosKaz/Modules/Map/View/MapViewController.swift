@@ -41,7 +41,11 @@ extension MapViewController: MapViewInput {
 	}
 
 	func show(_ annotations: [MKAnnotation]) {
-		oldAnnotations.append(contentsOf: mapView.annotations)
+		let forRemoval = mapView.annotations.filter { (annotation) -> Bool in
+			return annotation.coordinate.latitude != selectedAnnotation?.coordinate.latitude &&
+				annotation.coordinate.longitude != selectedAnnotation?.coordinate.longitude
+		}
+		oldAnnotations.append(contentsOf: forRemoval)
 		mapView.addAnnotations(annotations)
 	}
 	
@@ -67,6 +71,8 @@ extension MapViewController: MapViewInput {
 
 
 class MapViewController: UIViewController {
+	
+	var selectedAnnotation: Venue?
 	
 	var oldAnnotations = [MKAnnotation]() {
 		didSet {
@@ -132,6 +138,11 @@ class MapViewController: UIViewController {
 			forAnnotationViewWithReuseIdentifier: NSStringFromClass(ClusterAnnotation.self)
 		)
 		
+		mapView.register(
+			LargeVenueView.self,
+			forAnnotationViewWithReuseIdentifier: NSStringFromClass(LargeVenueView.self)
+		)
+		
 	}
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -142,8 +153,13 @@ class MapViewController: UIViewController {
 		var annotationView: MKAnnotationView?
 		
 		if let annotation = annotation as? Venue {
-			let reuseIdentifier = NSStringFromClass(Venue.self)
-			annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+			if annotation.isLarge {
+				let ri = NSStringFromClass(LargeVenueView.self)
+				annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: ri, for: annotation)
+			} else {
+				let reuseIdentifier = NSStringFromClass(Venue.self)
+				annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
+			}
 		} else if let annotation = annotation as? ClusterAnnotation {
 			let reuseIdentifier = NSStringFromClass(ClusterAnnotation.self)
 			annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier, for: annotation)
@@ -227,6 +243,21 @@ extension MapViewController: MKMapViewDelegate {
 			mapView.deselectAnnotation(view.annotation, animated: false)
 			center(on: location)
 			onSelectVenue.perform(with: location.id)
+
+			if let selectedAnnotation = selectedAnnotation {
+				mapView.removeAnnotation(selectedAnnotation)
+			}
+
+			let venue = Venue(
+				id: location.id,
+				icon: location.icon ?? "",
+				color: location.color,
+				locationName: location.locationName,
+				coordinate: location.coordinate
+			)
+			venue.isLarge = true
+			mapView.addAnnotation(venue)
+			selectedAnnotation = venue
 		}
 	}
 	

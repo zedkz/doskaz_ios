@@ -22,7 +22,7 @@ class VenueView: MKAnnotationView {
 				code: imageName,
 				style: .solid,
 				textColor: .white,
-				size: CGSize(width: 12, height: 12)
+				size: CGSize(width: 15, height: 15)
 				) else { image = nil; return }
 			
 			let baseImage = UIImage(named: "mapobject_26_available")?.withRenderingMode(.alwaysTemplate)
@@ -42,6 +42,7 @@ class Venue: NSObject, MKAnnotation {
 	let color: UIColor
 	let locationName: String
 	let coordinate: CLLocationCoordinate2D
+	var isLarge = false
 	
 	init(id: Int, icon: String, color: UIColor, locationName: String, coordinate: CLLocationCoordinate2D) {
 		self.id = id

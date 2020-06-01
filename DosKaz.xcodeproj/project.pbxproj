@@ -170,6 +170,7 @@
 		44F0EE28243CF874000B3022 /* Decorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F0EE27243CF874000B3022 /* Decorator.swift */; };
 		44F4D883246EBFD3003A50BC /* SubSectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F4D882246EBFD3003A50BC /* SubSectionHeaderCell.swift */; };
 		44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F527EC24092A7800AEBAC3 /* Annotation.swift */; };
+		44F93EB22485104200489994 /* LargeVenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F93EB12485104200489994 /* LargeVenueView.swift */; };
 		8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */; };
 /* End PBXBuildFile section */
 
@@ -354,6 +355,7 @@
 		44F0EE27243CF874000B3022 /* Decorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decorator.swift; sourceTree = "<group>"; };
 		44F4D882246EBFD3003A50BC /* SubSectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionHeaderCell.swift; sourceTree = "<group>"; };
 		44F527EC24092A7800AEBAC3 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		44F93EB12485104200489994 /* LargeVenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeVenueView.swift; sourceTree = "<group>"; };
 		44FC63F52406D9F400CFCB58 /* UIViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreviews.swift; sourceTree = "<group>"; };
 		87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.debug.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -580,6 +582,7 @@
 				445CDC7B2402E5F90072F4BC /* MapViewController.swift */,
 				44F527EC24092A7800AEBAC3 /* Annotation.swift */,
 				448A447E240C2E60007305D4 /* UISearchAppearanceCustomizer.swift */,
+				44F93EB12485104200489994 /* LargeVenueView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1264,6 +1267,7 @@
 				44EE303E246DB5B100926817 /* BlogsViewController.swift in Sources */,
 				447768B1247E7997007BB003 /* VenuePhotosViewController.swift in Sources */,
 				44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */,
+				44F93EB22485104200489994 /* LargeVenueView.swift in Sources */,
 				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,
