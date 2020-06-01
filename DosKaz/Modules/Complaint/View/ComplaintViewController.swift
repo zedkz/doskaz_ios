@@ -564,6 +564,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				},
 				onEditText: Text {
 					self.complaintData.content.videos.update(with: $0, at: index)
+					self.updateLastSectionDataSource()
 				}
 			)
 		}

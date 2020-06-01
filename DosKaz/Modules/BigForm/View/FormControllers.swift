@@ -361,6 +361,7 @@ class SmallFormViewController: FormViewController, HasForm {
 				},
 				onEditText: Text {
 					self.first.videos.update(with: $0, at: index)
+					self.update()
 				}
 			)
 		}
