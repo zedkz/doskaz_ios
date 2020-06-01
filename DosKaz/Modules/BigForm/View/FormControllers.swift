@@ -60,6 +60,8 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	var allSections = [String: [String: FormValue]]()
 	
+	private var images = [UIImage]()
+	
 	var first: First = {
 		var first = First(
 			name: "",
@@ -341,7 +343,17 @@ class SmallFormViewController: FormViewController, HasForm {
 			CellConfigurator<TextViewCell>(props: descriptionProps)
 		]
 		configurators.append(contentsOf: videoLinks)
-		configurators.append(CellConfigurator<PhotoPickerCell>(props: PhotoPickerCell.Props()))
+		
+		let photoProps = PhotoPickerCell.Props(
+			images: images,
+			onPick: Command {
+				let picker = UIImagePickerController()
+				picker.delegate = self
+				self.present(picker, animated: true)
+			}
+		)
+		
+		configurators.append(CellConfigurator<PhotoPickerCell>(props: photoProps))
 		genInfoSectionSource.configurators = configurators
 		
 		updateValidatables(with: configurators)
@@ -475,6 +487,19 @@ extension SmallFormViewController {
 		return configurators
 	}
 }
+
+
+extension SmallFormViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		guard let image = info[.originalImage] as? UIImage else { return }
+		images.insert(image, at: 0)
+		update()
+		reloadAndScroll(nil, 0)
+//		onPickImage.perform(with: image)
+		dismiss(animated: true)
+	}
+}
+
 
 //MARK: - MiddleFormViewController
 

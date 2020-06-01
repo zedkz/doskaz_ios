@@ -151,7 +151,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	var dynamicSections = [String: [String: Bool]]()
 	
-	var images = [UIImage]()
+	private var images = [UIImage]()
 	
 	//MARK: - Table view "update dataSources" methods
 	

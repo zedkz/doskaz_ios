@@ -70,7 +70,7 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 		let flowLayout = UICollectionViewFlowLayout()
 		flowLayout.scrollDirection = .horizontal
 		flowLayout.itemSize = CGSize(width: 80, height: 80)
-		flowLayout.minimumLineSpacing = 20
+		flowLayout.minimumLineSpacing = 8
 		collectionView.collectionViewLayout = flowLayout
 		collectionView.alwaysBounceHorizontal = true
 		collectionView.showsHorizontalScrollIndicator = false
@@ -81,7 +81,7 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 	
 	private func update(_ images: [UIImage]) {
 		let pickerCell = PhotoPickerCollectionViewCell.Props(
-			image: UIImage(named: "add_object")!, onPickImage: Command {
+			image: UIImage(named: "camera")!, onPickImage: Command {
 				self.props.onPick.perform()
 			}
 		)
