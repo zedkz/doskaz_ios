@@ -280,6 +280,11 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: DrawerViewDelegate {
 	func drawerView(_ drawerView: DrawerView, didChangePosition position: DrawerPosition) {
 		print("Position:", position.contentHeight)
+		
+		if let selectedAnnotation = selectedAnnotation, position.contentHeight < 5.0 {
+			mapView.removeAnnotation(selectedAnnotation)
+		}
+		
 		let time = evaluate(addButton.alpha == 1.0, ifTrue: 0.2, ifFalse: 0.5)
 		UIView.animate(withDuration: time) {
 			let alpha: CGFloat = evaluate(position.contentHeight > self.view.bounds.height/2, ifTrue: 0.0, ifFalse: 1.0)
