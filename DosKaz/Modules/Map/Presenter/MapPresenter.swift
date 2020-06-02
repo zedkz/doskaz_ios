@@ -52,6 +52,11 @@ extension MapPresenter: MapViewOutput {
 		view.onTouchPlus = Command {
 			self.router.presentBigForm(with: self.view)
 		}
+		
+		view.onTouchComplain = Command { [weak self] in
+			guard let self = self else { return }
+			
+		}
  	}
 
 }

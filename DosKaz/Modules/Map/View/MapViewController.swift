@@ -24,6 +24,7 @@ protocol MapViewInput where Self: UIViewController {
 	var onPressFilter: Command { get set }
 	var onRegionChanged: CommandWith<MapRect> { get set }
 	var onTouchPlus: Command { get set }
+	var onTouchComplain: Command { get set }
 }
 
 extension MapViewController: MapViewInput {
@@ -115,6 +116,7 @@ class MapViewController: UIViewController {
 	var onPressFilter: Command = .nop
 	var onRegionChanged: CommandWith<MapRect> = .nop
 	var onTouchPlus: Command = .nop
+	var onTouchComplain: Command = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -223,8 +225,8 @@ class MapViewController: UIViewController {
 		addButton.translatesAutoresizingMaskIntoConstraints = false
 		addButton.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor, constant: -10).isActive = true
 		addButton.bottomAnchor.constraint(equalTo: drawerVC.drawerView.panningView.topAnchor, constant: -10).isActive = true
-		addButton.didTouchUpInside = {
-			self.onTouchPlus.perform()
+		addButton.didTouchUpInside = { [weak self] in
+			self?.onTouchPlus.perform()
 		}
 		
 		addComplaint.setImage(UIImage(named: "add_complaint"), for: .normal)
@@ -233,6 +235,9 @@ class MapViewController: UIViewController {
 		addComplaint.translatesAutoresizingMaskIntoConstraints = false
 		addComplaint.trailingAnchor.constraint(equalTo: view.safeLayoutGuide.trailingAnchor, constant: -10).isActive = true
 		addComplaint.bottomAnchor.constraint(equalTo: addButton.safeLayoutGuide.topAnchor, constant: -16).isActive = true
+		addComplaint.didTouchUpInside = { [weak self] in
+			self?.onTouchComplain.perform()
+		}
 	}
 	
 	// MARK: - Helper methods
