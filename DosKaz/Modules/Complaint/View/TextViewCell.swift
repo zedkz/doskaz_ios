@@ -78,7 +78,11 @@ class TextViewCell: UITableViewCell, Updatable {
 	
 	var props: Props! {
 		didSet {
-			titleLabel.text = props.title
+			if let atrText = props.atrTitle {
+				titleLabel.attributedText = atrText
+			} else {
+				titleLabel.text = props.title
+			}
 			placeHolderLabel.text = props.placeHolder
 			placeHolderLabel.isHidden = !textView.text.isEmpty
 			textView.text = props.text
@@ -100,6 +104,7 @@ class TextViewCell: UITableViewCell, Updatable {
 	struct Props {
 		var canShowRedAlert: Bool = false
 		var title: String
+		var atrTitle: NSAttributedString?
 		var placeHolder: String
 		var text: String
 		var onEditText: Text = .nop

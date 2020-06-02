@@ -478,11 +478,34 @@ extension SmallFormViewController {
 		}
 		//end loop
 		
+		let text = l10n(.zoneScoreInfoText)
+		let color = UIColor(named: "SelectedTabbarTintColor")
+		let atrs: [NSAttributedString.Key : Any] = [
+			NSAttributedString.Key.underlineStyle: 1,
+			NSAttributedString.Key.underlineColor: color ?? UIColor.blue,
+			NSAttributedString.Key.foregroundColor: color ?? UIColor.blue
+		]
+		let attributedString = NSAttributedString(string: text, attributes: atrs)
+		
+		let commentProps = TextViewCell.Props(
+			title: l10n(.zoneScoreInfoText),
+			atrTitle: attributedString,
+			placeHolder: l10n(.commentaryText),
+			text: "",
+			onEditText: Text { _ in
+				self.update()
+			}
+		)
+		
+		cellsProps.append(commentProps)
+		
 		let configurators: [CellConfiguratorType] = cellsProps.map {
 			if let textCellProps = $0 as? TextFormCell.Props {
 				return CellConfigurator<TextFormCell>(props: textCellProps)
+			} else if let headerProps = $0 as? Header{
+				return CellConfigurator<SubSectionHeaderCell>(props: headerProps)
 			} else {
-				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
+				return CellConfigurator<TextViewCell>(props: $0 as! TextViewCell.Props)
 			}
 		}
 		

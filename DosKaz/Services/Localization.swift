@@ -165,6 +165,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case date = "Дата"
 	case save = "Сохранить"
 	case choose = "Выберите"
+	case commentaryText = "Текст комментария"
+	case zoneScoreInfoText = "Система оценила доступность. Если вы не согласны с оценкой, вы можете оставить комментарий с пояснением"
 
 	
 	var l10n: String {
