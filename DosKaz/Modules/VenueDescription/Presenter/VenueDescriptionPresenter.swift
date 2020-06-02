@@ -32,7 +32,12 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 		guard let venue = venue else { return }
 		let onTouchComplaint = Command { [weak self] in
 			guard let self = self else { return }
-			self.router.presentComplaint(with: self.view)
+		
+			self.router.presentComplaint(
+				with: self.view,
+				id: self.venue?.id,
+				title: self.venue.title
+			)
 		}
 		view.rootView.props = VenueDescriptionView.Props(venue: venue, onTouchComplaint: onTouchComplaint)
 	}

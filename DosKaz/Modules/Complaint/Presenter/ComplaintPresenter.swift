@@ -14,6 +14,9 @@ class ComplaintPresenter {
 	var interactor: ComplaintInteractorInput!
 	var router: ComplaintRouterInput!
 	
+	var objectId: Int!
+	var objectName: String!
+	
 	var uploadedImagesURLs = [String]()
 
 	var cities: [City]? { didSet { render() } }
@@ -26,6 +29,10 @@ class ComplaintPresenter {
 			let complaintData = complaintData,
 			let authorities = authorities,
 			let complaintAtrs = complaintAtrs {
+			
+			var complaintData = complaintData
+			complaintData.objectId = objectId
+			complaintData.content.objectName = objectName ?? ""
 			view.showInitial(complaintData, cities, authorities, complaintAtrs)
 		}
 	}
@@ -34,10 +41,17 @@ class ComplaintPresenter {
 // MARK: ViewController output protocol
 
 protocol ComplaintViewOutput {
+	func initWith(objectId: Int?, name: String?)
 	func viewIsReady()
 }
 
 extension ComplaintPresenter: ComplaintViewOutput {
+	
+	func initWith(objectId: Int?, name: String?) {
+		self.objectId = objectId
+		self.objectName = name
+	}
+	
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onTouchReady = CommandWith<ComplaintData> { data in
