@@ -33,6 +33,7 @@ struct DoskazVenue: Codable {
 	let subCategory: String
 	let coordinates: [Double]
 	let overallScore: OverallScore
+	let color: Color
 	let scoreByZones: ScoreByZones
 	let icon: String
 	let photos: [Photo]
@@ -46,7 +47,7 @@ struct DoskazVenue: Codable {
 		case id
 		case title, address
 		case description
-		case category,subCategory, coordinates, overallScore, scoreByZones, icon, photos, videos, reviews, history, verificationStatus
+		case category,subCategory, coordinates, overallScore, color, scoreByZones, icon, photos, videos, reviews, history, verificationStatus
 //		case attributes
 	}
 }

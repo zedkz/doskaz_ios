@@ -47,8 +47,7 @@ extension MapViewController: MapViewInput {
 		}
 		oldAnnotations.append(contentsOf: forRemoval)
 		mapView.addAnnotations(annotations)
-		
-		enlargeSearchedVenue()
+
 	}
 	
 	func showSheet(for doskazVenue: DoskazVenue) {
@@ -69,15 +68,30 @@ extension MapViewController: MapViewInput {
 		)
 		mapView.setRegion(coordinateRegion, animated: true)
 		
-		self.searchedVenue = doskazVenue
+		guard let id = doskazVenue.id else {
+			return
+		}
+		
+		if let selectedAnnotation = selectedAnnotation {
+			mapView.removeAnnotation(selectedAnnotation)
+		}
+		
+		let venue = Venue(
+			id: id,
+			icon: doskazVenue.icon,
+			color: doskazVenue.color.uiColor,
+			locationName: doskazVenue.title,
+			coordinate: coordinate
+		)
+		venue.isLarge = true
+		mapView.addAnnotation(venue)
+		selectedAnnotation = venue
 		
 	}
 }
 
 
 class MapViewController: UIViewController {
-	
-	var searchedVenue: DoskazVenue?
 	
 	var selectedAnnotation: Venue?
 	
@@ -308,45 +322,5 @@ extension MapViewController: DrawerViewDelegate {
 			self.addButton.alpha = alpha
 			self.addComplaint.alpha = alpha
 		}
-	}
-}
-
-
-extension MapViewController {
-	private func enlargeSearchedVenue() {
-		guard let doskazVenue = searchedVenue else {
-			return
-		}
-		
-		let coordinate =  CLLocationCoordinate2D(
-			latitude: doskazVenue.coordinates[0],
-			longitude: doskazVenue.coordinates[1]
-		)
-		
-		let annotations = mapView.annotations.filter { (annotation) -> Bool in
-			return annotation.coordinate.latitude == coordinate.latitude
-				&& annotation.coordinate.longitude == coordinate.longitude
-		}
-		
-		if let selectedAnnotation = selectedAnnotation {
-			mapView.removeAnnotation(selectedAnnotation)
-		}
-		
-		guard let location = annotations.first as? Venue else {
-			return
-		}
-		
-		let venue = Venue(
-			id: location.id,
-			icon: location.icon ?? "",
-			color: location.color,
-			locationName: location.locationName,
-			coordinate: location.coordinate
-		)
-		venue.isLarge = true
-		mapView.addAnnotation(venue)
-		selectedAnnotation = venue
-		
-		self.searchedVenue = nil
 	}
 }
