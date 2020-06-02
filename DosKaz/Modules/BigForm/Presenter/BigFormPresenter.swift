@@ -36,7 +36,8 @@ protocol BigFormViewOutput {
 extension BigFormPresenter: BigFormViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
-		view.onPressReady = CommandWith<FullForm> { fullForm in
+		view.onPressReady = CommandWith<FullForm> { [weak self] fullForm in
+			guard let self = self else { return }
 			if self.uploadedImagesURLs.isEmpty {
 				self.uploadedImagesURLs.append("photo")
 			}
@@ -48,7 +49,8 @@ extension BigFormPresenter: BigFormViewOutput {
 			self.submit(fullForm)
 		}
 		
-		view.onPickImage = CommandWith<UIImage> { image in
+		view.onPickImage = CommandWith<UIImage> { [weak self] image in
+			guard let self = self else { return }
 			if let data = image.jpegData(compressionQuality: 0.8) {
 				self.interactor.uploadImage(data)
 			}
@@ -107,8 +109,8 @@ extension BigFormPresenter: BigFormInteractorOutput {
 	
 	func didSucceedSubmitForm() {
 		print("didSucceedSubmitForm")
-		view.disPlayAlert(with: l10n(.succeedFormMessage)) {
-			self.view.dismiss(animated: true, completion: nil)
+		view.disPlayAlert(with: l10n(.succeedFormMessage)) { [weak self] in
+			self?.view.dismiss(animated: true, completion: nil)
 		}
 	}
 	

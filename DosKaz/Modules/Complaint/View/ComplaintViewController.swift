@@ -361,8 +361,10 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			title: l10n(.dateOfVisit),
 			overlay: "calendar",
 			mode: .onlyTextField,
-			onOverlayTouch: Command { _ in
-				
+			onOverlayTouch: Command { [weak self] in
+				self?.pick(with: OnPick<Date> { [weak self] in
+					print("date picked",$0)
+				})
 			}
 		)
 		

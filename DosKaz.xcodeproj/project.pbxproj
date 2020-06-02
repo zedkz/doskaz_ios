@@ -28,6 +28,7 @@
 		4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */; };
 		4420ABF324727BE8007F70D6 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */; };
 		4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */; };
+		443FFE4024865D0D00E4AE87 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		4446C180247BEB54002BF1B6 /* api_storage_upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */; };
 		4446C182247BF30D002BF1B6 /* LocationPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C181247BF30D002BF1B6 /* LocationPickerController.swift */; };
@@ -212,6 +213,7 @@
 		4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
 		4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_storage_upload.swift; sourceTree = "<group>"; };
 		4446C181247BF30D002BF1B6 /* LocationPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerController.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */,
 				44B8E90C247D202C00AC90E3 /* PhoneFormatter.swift */,
 				44AA987B248287B100BB7D3A /* Date+Formats.swift */,
+				443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1176,6 +1179,7 @@
 				44523A3F2479408B00A4C948 /* ProfileRequests.swift in Sources */,
 				4444E24624647BEE0035CA8A /* Archive.swift in Sources */,
 				44AA987C248287B100BB7D3A /* Date+Formats.swift in Sources */,
+				443FFE4024865D0D00E4AE87 /* DatePickerViewController.swift in Sources */,
 				447768AF247E7997007BB003 /* VenuePhotosInteractor.swift in Sources */,
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,

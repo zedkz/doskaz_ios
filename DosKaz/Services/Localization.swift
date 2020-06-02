@@ -162,6 +162,9 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case aboutTextPartners = "Проект реализуется консорциумом общественных организаций. Смотрите страницу Контакты."
 	case aboutHeadingFinancing = "Финансирование"
 	case aboutTextFinancing = "Проект финансируется Европейским Союзом и Дипломатической миссией США в Казахстане."
+	case date = "Дата"
+	case save = "Сохранить"
+	case choose = "Выберите"
 
 	
 	var l10n: String {
