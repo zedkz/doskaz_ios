@@ -55,12 +55,17 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		onTouchReady.perform(with: complaintData)
 	}
 	
+	@objc func close() {
+		dismiss(animated: true, completion: nil)
+	}
+	
 	var onTouchReady: CommandWith<ComplaintData> = .nop
 	
 	var onPickImage: CommandWith<UIImage> = .nop
 	
 	func setupInitialState() {
 		navigationItem.title = l10n(.complainSimply)
+		navigationItem.leftBarButtonItem = UIBarButtonItem(title: l10n(.close), style: .plain, target: self, action: #selector(close))
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: l10n(.done), style: .done,
 			target: self, action: #selector(formDone)

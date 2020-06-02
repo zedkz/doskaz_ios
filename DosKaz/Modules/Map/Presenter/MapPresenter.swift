@@ -55,7 +55,7 @@ extension MapPresenter: MapViewOutput {
 		
 		view.onTouchComplain = Command { [weak self] in
 			guard let self = self else { return }
-			
+			self.router.presentComplaint(with: self.view)
 		}
  	}
 

@@ -11,6 +11,7 @@ import UIKit
 protocol MapRouterInput {
 	func presentFilter(with vc: UIViewController)
 	func presentBigForm(with vc: UIViewController)
+	func presentComplaint(with vc: UIViewController)
 }
 
 // MARK: Implementation
@@ -25,6 +26,11 @@ class MapRouter: MapRouterInput {
 	func presentBigForm(with vc: UIViewController) {
 		let form = BigFormBuilder().assembleModule()
 		vc.presentEmbedded(form)
+	}
+	
+	func presentComplaint(with vc: UIViewController) {
+		let complaintViewController = ComplaintBuilder().assembleModule()
+		vc.presentEmbedded(complaintViewController)
 	}
 
 }
