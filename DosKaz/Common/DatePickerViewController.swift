@@ -50,8 +50,7 @@ class DatePickerViewController: UIViewController {
 	
 	@objc func done() {
 		dismiss(animated: true, completion: {
-			self.selected = self.picker.date
-			guard let selected = self.selected else { return }
+			let selected = self.selected ?? self.picker.date
 			self.onPick.perform(with: selected)
 		})
 	}
