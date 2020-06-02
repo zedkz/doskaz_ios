@@ -17,7 +17,7 @@ where Model: CustomStringConvertible, Model: Equatable {
 	init(choices: [Model], currentValue: Model?, onPick: OnPick<Model>) {
 		super.init(nibName: nil, bundle: nil)
 		self.choices = choices
-		self.selected = currentValue
+		self.selected = currentValue ?? choices.first
 		self.onPick = onPick
 	}
 	
