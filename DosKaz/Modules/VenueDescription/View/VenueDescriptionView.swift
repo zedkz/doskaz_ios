@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 class VenueDescriptionView: UIView {
 	
@@ -28,6 +29,7 @@ class VenueDescriptionView: UIView {
 	
 	struct Props {
 		let venue: DoskazVenue
+		let onTouchComplaint: Command
 	}
 	
 	//MARK: - Public properties and methods
@@ -38,6 +40,9 @@ class VenueDescriptionView: UIView {
 			
 			mainText.text = String(props.venue.description.filter { !"\n\t\r".contains($0) })
 			venueStatus.text = props.venue.verificationStatusText
+			complain.didTouchUpInside = {
+				props.onTouchComplaint.perform()
+			}
 		}
 	}
 	

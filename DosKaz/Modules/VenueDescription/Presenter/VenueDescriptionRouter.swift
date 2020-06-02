@@ -9,11 +9,14 @@
 import UIKit
 
 protocol VenueDescriptionRouterInput {
-
+	func presentComplaint(with vc: UIViewController)
 }
 
 // MARK: Implementation
 
 class VenueDescriptionRouter: VenueDescriptionRouterInput {
-
+	func presentComplaint(with vc: UIViewController) {
+		let complaintViewController = ComplaintBuilder().assembleModule()
+		vc.presentEmbedded(complaintViewController)
+	}
 }
