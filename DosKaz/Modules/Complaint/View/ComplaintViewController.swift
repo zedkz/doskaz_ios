@@ -363,7 +363,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			mode: .onlyTextField,
 			onOverlayTouch: Command { [weak self] in
 				self?.pick(with: OnPick<Date> { [weak self] in
-					print("date picked",$0)
+					self?.complaintData.content.visitedAt = $0.full
+					self?.updateSectionTwoDataSource()
+					self?.reload(with: .rows([1], 1))
 				})
 			}
 		)
