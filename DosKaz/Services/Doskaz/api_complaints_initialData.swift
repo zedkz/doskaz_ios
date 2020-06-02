@@ -47,7 +47,7 @@ struct Complainant: Codable {
 // MARK: - Content
 struct Content: Codable {
 	var type: String
-	var visitedAt: String
+	var visitedAt: Date
 	var objectName: String
 	var cityId: Int?
 	var street, building, office, visitPurpose: String
@@ -59,7 +59,7 @@ struct Content: Codable {
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		type 			 	 = try container.decode(String.self, forKey: .type)
-		visitedAt  	 = try container.decode(String.self, forKey: .visitedAt)
+		visitedAt  	 = try container.decode(Date.self, forKey: .visitedAt)
 		objectName 	 = try container.decode(String.self, forKey: .objectName)
 		cityId 		 	 = try container.decode(Int.self, forKey: .cityId)
 		street 		 	 = try container.decode(String.self, forKey: .street)

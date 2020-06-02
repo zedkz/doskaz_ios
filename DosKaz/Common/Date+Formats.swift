@@ -19,7 +19,7 @@ extension Date {
 	var full: String {
 		let formatter = DateFormatter()
 		formatter.locale = Locale(identifier: "ru_RU")
-		formatter.setLocalizedDateFormatFromTemplate("d MMM, HH:mm")
+		formatter.setLocalizedDateFormatFromTemplate("d MMM yyyy HH:mm")
 		return formatter.string(from: self)
 	}
 }

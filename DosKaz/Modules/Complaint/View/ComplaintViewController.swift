@@ -42,8 +42,6 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		complaintData.objectId = nil
 		
-		complaintData.content.visitedAt = "2020-05-21T15:31:07+06:00"
-		
 		//fake
 		
 		guard isValid() else { return }
@@ -357,13 +355,14 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 		let dateProps = TextFormCell.Props(
 			shouldEdit: false,
-			text: content.visitedAt,
+			canShowRedAlert: shouldBeRed(value(content.visitedAt.full).isEmpty),
+			text: content.visitedAt.full,
 			title: l10n(.dateOfVisit),
 			overlay: "calendar",
 			mode: .onlyTextField,
 			onOverlayTouch: Command { [weak self] in
 				self?.pick(with: OnPick<Date> { [weak self] in
-					self?.complaintData.content.visitedAt = $0.full
+					self?.complaintData.content.visitedAt = $0
 					self?.updateSectionTwoDataSource()
 					self?.reload(with: .rows([1], 1))
 				})
