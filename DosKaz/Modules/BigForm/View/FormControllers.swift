@@ -71,7 +71,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			categoryId: 0,
 			point: [52.25,76.94],
 			videos: [],
-			photos: ["dsfds"])
+			photos: ["photo"])
 		return first
 	}()
 	
