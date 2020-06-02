@@ -38,7 +38,7 @@ struct Empty: Codable { }
 // MARK: - FullForm
 struct FullForm: Codable {
 	let form: String
-	let first: First
+	var first: First
 	let parking: FormSection
 	let entrance1: FormSection
 	let movement: FormSection

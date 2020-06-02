@@ -14,6 +14,7 @@ protocol BigFormViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	var onPressReady: CommandWith<FullForm> { get set }
 	func buildForm(with formAttrs: FormAttributes, and categories: [Category])
+	var onPickImage: CommandWith<UIImage> { get set }
 }
 
 extension BigFormViewController: BigFormViewInput {
@@ -91,6 +92,11 @@ class BigFormViewController: UIViewController {
 
 	var output: BigFormViewOutput!
 	var onPressReady: CommandWith<FullForm> = .nop
+	var onPickImage: CommandWith<UIImage> = .nop {
+		didSet {
+			currentViewController?.onPickImage = onPickImage
+		}
+	}
 
 	let toLeftButton = Button()
 	let toRightButton = Button()

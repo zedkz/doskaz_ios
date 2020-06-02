@@ -22,6 +22,8 @@ class BigFormPresenter {
 			view.buildForm(with: atrs, and: cats)
 		}
 	}
+	
+	var uploadedImagesURLs = [String]()
 
 }
 
@@ -35,8 +37,23 @@ extension BigFormPresenter: BigFormViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onPressReady = CommandWith<FullForm> { fullForm in
+			if self.uploadedImagesURLs.isEmpty {
+				self.uploadedImagesURLs.append("photo")
+			}
+			
+			var fullForm = fullForm
+			
+			fullForm.first.photos.append(contentsOf: self.uploadedImagesURLs)
+			
 			self.submit(fullForm)
 		}
+		
+		view.onPickImage = CommandWith<UIImage> { image in
+			if let data = image.jpegData(compressionQuality: 0.8) {
+				self.interactor.uploadImage(data)
+			}
+		}
+		
 		interactor.loadAttributes()
 		interactor.loadCategories()
 	}
@@ -56,10 +73,22 @@ protocol BigFormInteractorOutput: class {
 	func didFailLoadAttributes(with error: Error)
 	func didLoad(_ categories: [Category])
 	func didFailLoadCategories(with error: Error)
-	
+	func didLoadImage(with response: UploadResponse)
+	func didFailLoadImage(with error: Error)
 }
 
 extension BigFormPresenter: BigFormInteractorOutput {
+	func didLoadImage(with response: UploadResponse) {
+		print("Image uploaded",response)
+		if let path = response.path {
+			uploadedImagesURLs.append(path)
+		}
+	}
+	
+	func didFailLoadImage(with error: Error) {
+		print("didFailLoadImage",error)
+	}
+
 	func didLoad(_ categories: [Category]) {
 		_cats = categories
 	}

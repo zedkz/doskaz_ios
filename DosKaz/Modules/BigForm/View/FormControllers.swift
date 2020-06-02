@@ -62,6 +62,8 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	private var images = [UIImage]()
 	
+	var onPickImage: CommandWith<UIImage> = .nop
+	
 	var first: First = {
 		var first = First(
 			name: "",
@@ -71,7 +73,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			categoryId: 0,
 			point: [52.25,76.94],
 			videos: [],
-			photos: ["photo"])
+			photos: [])
 		return first
 	}()
 	
@@ -495,7 +497,7 @@ extension SmallFormViewController: UIImagePickerControllerDelegate, UINavigation
 		images.insert(image, at: 0)
 		update()
 		reloadAndScroll(nil, 0)
-//		onPickImage.perform(with: image)
+		onPickImage.perform(with: image)
 		dismiss(animated: true)
 	}
 }
