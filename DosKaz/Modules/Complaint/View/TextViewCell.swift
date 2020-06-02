@@ -15,6 +15,8 @@ class TextViewCell: UITableViewCell, Updatable {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
+		selectionStyle = .none
+		
 		//MARK: - Configure constant data
 		titleLabel.numberOfLines = 0
 		validationLabel.text = l10n(.fillTheField)
