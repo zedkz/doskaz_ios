@@ -10,6 +10,12 @@ import UIKit
 
 class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 	
+	var parameters: ZoneParameters!
+	
+	func initWith(parameters: ZoneParameters) {
+		self.parameters = parameters
+	}
+	
 	let tableView = ContentSizedTableView()
 	var dataSource: UTableViewDataSource<ZoneScoreCell>!
 	
@@ -80,9 +86,7 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 			debugPrint(error)
 		}
 		
-		let parameters = ZoneParameters(type: "parking_small", attributes: [
-			"attribute1": FormValue.no
-		])
+		guard let parameters = self.parameters else { return }
 		
 		APICalculateZoneScore(
 			onSuccess: onSuccess,
@@ -103,8 +107,9 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 }
 
 extension UIViewController {
-	func showZoneScore() {
+	func showZoneScore(with parameters: ZoneParameters) {
 		let vc = ZoneScoreViewController()
+		vc.initWith(parameters: parameters)
 		vc.modalTransitionStyle = .crossDissolve
 		vc.modalPresentationStyle = .overCurrentContext
 		self.present(vc, animated: true, completion: nil)

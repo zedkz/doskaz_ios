@@ -496,7 +496,12 @@ extension SmallFormViewController {
 				self.update()
 			},
 			onTitleTap: Command { [weak self] in
-				self?.showZoneScore()
+				guard let self = self else { return }
+				let parameters = ZoneParameters(
+					type: "parking_small",
+					attributes: ["attribute1": FormValue.yes]//self.allSections[title]!
+				)
+				self.showZoneScore(with: parameters)
 			}
 		)
 		
