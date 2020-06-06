@@ -168,6 +168,11 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case commentaryText = "Текст комментария"
 	case zoneScoreInfoText = "Система оценила доступность. Если вы не согласны с оценкой, вы можете оставить комментарий с пояснением"
 	case zoneScore = "Оценка доступности зоны"
+	case movementZoneScoreText = "Люди, передвигающиеся на кресло-коляске"
+	case limb = "Люди с нарушением опорно-двигательного аппарата"
+	case vision = "Люди с нарушениями зрения"
+	case hearing = "Люди с нарушениями слуха"
+	case intellectual = "Люди с интеллектуальной инвалидностью"
 	
 	var l10n: String {
 		return self.rawValue.localized

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ZoneScoreViewController: UIViewController {
+class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 	
 	let tableView = UITableView()
+	var dataSource: UTableViewDataSource<ZoneScoreCell>!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -26,11 +27,30 @@ class ZoneScoreViewController: UIViewController {
 		headerLabel.addConstraintsProgrammatically
 			.pinToSuper()
 		tableView.tableHeaderView = headerView
+		
+		dataSource = UTableViewDataSource(tableView)
+		tableView.dataSource = dataSource
+		tableView.delegate = self
+		
+		calculateZoneScore()
+	}
+	
+	func update(with z: ZoneScore) {
+		let cellsProps = [
+			ZoneProps(title: l10n(.movementZoneScoreText), score: z.movement),
+			ZoneProps(title: l10n(.limb), score: z.limb),
+			ZoneProps(title: l10n(.vision), score: z.vision),
+			ZoneProps(title: l10n(.hearing), score: z.hearing),
+			ZoneProps(title: l10n(.intellectual), score: z.intellectual),
+		]
+		dataSource.cellsProps = cellsProps
+		tableView.reloadData()
 	}
 	
 	fileprivate func calculateZoneScore() {
-		let onSuccess = { (zoneScore: ZoneScore) -> Void in
+		let onSuccess = { [weak self] (zoneScore: ZoneScore) -> Void in
 			debugPrint(zoneScore)
+			self?.update(with: zoneScore)
 		}
 		
 		let onFailure = { (error: Error) -> Void in
@@ -47,5 +67,51 @@ class ZoneScoreViewController: UIViewController {
 			zoneParameters: parameters
 		).dispatch()
 	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 72
+	}
 		
 }
+
+class ZoneScoreCell: UITableViewCell, Updatable {
+	
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+		textLabel?.numberOfLines = 0
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+
+	var props: Props! {
+		didSet {
+			textLabel?.text = props.title
+			let image = UIImage(named: props.icon)
+			accessoryView = UIImageView(image: image)
+		}
+	}
+	
+	struct Props {
+		let title: String
+		var score: OverallScore
+		
+		var icon: String {
+			switch score {
+			case .fullAccessible:
+				return "available_32"
+			case .partialAccessible:
+				return "partially_available_32"
+			case .notAccessible:
+				return "not_available_32"
+			case .notProvided:
+				return "partially_available_32"
+			}
+		}
+	}
+
+}
+
+typealias ZoneProps = ZoneScoreCell.Props
