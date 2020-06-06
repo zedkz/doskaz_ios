@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44010018248B825600CBACE2 /* api_objects_calculateZoneScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44010017248B825600CBACE2 /* api_objects_calculateZoneScore.swift */; };
+		4401001B248B86F800CBACE2 /* ZoneScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401001A248B86F800CBACE2 /* ZoneScoreViewController.swift */; };
 		4404F21024597A0600EB7184 /* api_object_id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F20F24597A0600EB7184 /* api_object_id.swift */; };
 		4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F213245AF9C500EB7184 /* DrawerPanner.swift */; };
 		4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F215245C39AE00EB7184 /* BasicCell.swift */; };
@@ -192,6 +194,8 @@
 /* Begin PBXFileReference section */
 		21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DosKaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
+		44010017248B825600CBACE2 /* api_objects_calculateZoneScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_calculateZoneScore.swift; sourceTree = "<group>"; };
+		4401001A248B86F800CBACE2 /* ZoneScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneScoreViewController.swift; sourceTree = "<group>"; };
 		4404F20F24597A0600EB7184 /* api_object_id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_object_id.swift; sourceTree = "<group>"; };
 		4404F213245AF9C500EB7184 /* DrawerPanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanner.swift; sourceTree = "<group>"; };
 		4404F215245C39AE00EB7184 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -375,6 +379,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44010019248B86C200CBACE2 /* CalculatedZoneScore */ = {
+			isa = PBXGroup;
+			children = (
+				4401001A248B86F800CBACE2 /* ZoneScoreViewController.swift */,
+			);
+			path = CalculatedZoneScore;
+			sourceTree = "<group>";
+		};
 		4404F243245F0CD900EB7184 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +548,7 @@
 		445CDC522402D5D60072F4BC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				44010019248B86C200CBACE2 /* CalculatedZoneScore */,
 				44A5D95A2480E23F00372A90 /* Feedback */,
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
 				44E81086247FE25E0007A8C3 /* VenueFeedback */,
@@ -869,6 +882,7 @@
 				44B8E90A247D15C200AC90E3 /* Geocoder.swift */,
 				44A5D9582480DFB000372A90 /* api_feedback.swift */,
 				447582E7248117CA00FBC421 /* api_objects_id_review.swift */,
+				44010017248B825600CBACE2 /* api_objects_calculateZoneScore.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1173,6 +1187,7 @@
 				447DEC06246170A300AB5478 /* api_objects_categories.swift in Sources */,
 				446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */,
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,
+				44010018248B825600CBACE2 /* api_objects_calculateZoneScore.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
 				44E73120247797030022375C /* api_complaints_initialData.swift in Sources */,
@@ -1197,6 +1212,7 @@
 				4404F21024597A0600EB7184 /* api_object_id.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				4446C180247BEB54002BF1B6 /* api_storage_upload.swift in Sources */,
+				4401001B248B86F800CBACE2 /* ZoneScoreViewController.swift in Sources */,
 				448EBACC24693C8F006C9961 /* BigFormPresenter.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,
