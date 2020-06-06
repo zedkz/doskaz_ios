@@ -161,7 +161,7 @@ struct PhotoPickerCollectionViewCellLayout {
 extension PhotoPickerCollectionViewCellLayout {
 	
 	func addSubviews() {
-		rv.addSubview(rv.imageView)
+		rv.contentView.addSubview(rv.imageView)
 	}
 	
 	func addConstraints() {
