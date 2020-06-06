@@ -10,14 +10,21 @@ import UIKit
 
 class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 	
-	let tableView = UITableView()
+	let tableView = ContentSizedTableView()
 	var dataSource: UTableViewDataSource<ZoneScoreCell>!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		view.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+		let gestRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
+		view.addGestureRecognizer(gestRecognizer)
+		
 		view.addSubview(tableView)
 		tableView.addConstraintsProgrammatically
-			.pinToSuper()
+			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.leading, plus: 30)
+			.pinEdgeToSupers(.trailing, plus: -30)
 		
 		let headerView = UIView()
 		headerView.backgroundColor = UIColor(named:"FilterHeaderColor")
@@ -76,7 +83,21 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 72
 	}
+	
+	@objc
+	func tap() {
+		dismiss(animated: true, completion: nil)
+	}
 		
+}
+
+extension UIViewController {
+	func showZoneScore() {
+		let vc = ZoneScoreViewController()
+		vc.modalTransitionStyle = .crossDissolve
+		vc.modalPresentationStyle = .overCurrentContext
+		self.present(vc, animated: true, completion: nil)
+	}
 }
 
 class ZoneScoreCell: UITableViewCell, Updatable {
