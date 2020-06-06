@@ -26,6 +26,8 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 			.pinEdgeToSupers(.leading, plus: 30)
 			.pinEdgeToSupers(.trailing, plus: -30)
 		
+		tableView.layer.cornerRadius = 2
+		
 		let headerView = UIView()
 		headerView.backgroundColor = UIColor(named:"FilterHeaderColor")
 		headerView.frame.size.height = 50
@@ -43,6 +45,15 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 		dataSource = UTableViewDataSource(tableView)
 		tableView.dataSource = dataSource
 		tableView.delegate = self
+		
+		let fake = ZoneScore(
+			movement: .notProvided,
+			limb: .notProvided,
+			vision: .notProvided,
+			hearing: .notProvided,
+			intellectual: .notProvided
+		)
+		update(with: fake)
 		
 		calculateZoneScore()
 	}
@@ -70,7 +81,7 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 		}
 		
 		let parameters = ZoneParameters(type: "parking_small", attributes: [
-			"attribute1": FormValue.yes
+			"attribute1": FormValue.no
 		])
 		
 		APICalculateZoneScore(
@@ -81,7 +92,7 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 72
+		return 60
 	}
 	
 	@objc
@@ -134,7 +145,7 @@ class ZoneScoreCell: UITableViewCell, Updatable {
 			case .notAccessible:
 				return "not_available_32"
 			case .notProvided:
-				return "partially_available_32"
+				return "not_provided"
 			}
 		}
 	}
