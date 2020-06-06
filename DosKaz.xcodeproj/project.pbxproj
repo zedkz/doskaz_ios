@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		44010018248B825600CBACE2 /* api_objects_calculateZoneScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44010017248B825600CBACE2 /* api_objects_calculateZoneScore.swift */; };
 		4401001B248B86F800CBACE2 /* ZoneScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401001A248B86F800CBACE2 /* ZoneScoreViewController.swift */; };
+		4401001D248BAE4200CBACE2 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4401001C248BAE4200CBACE2 /* ContactsViewController.swift */; };
 		4404F21024597A0600EB7184 /* api_object_id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F20F24597A0600EB7184 /* api_object_id.swift */; };
 		4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F213245AF9C500EB7184 /* DrawerPanner.swift */; };
 		4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404F215245C39AE00EB7184 /* BasicCell.swift */; };
@@ -196,6 +197,7 @@
 		3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DosKaz.release.xcconfig"; path = "Target Support Files/Pods-DosKaz/Pods-DosKaz.release.xcconfig"; sourceTree = "<group>"; };
 		44010017248B825600CBACE2 /* api_objects_calculateZoneScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_calculateZoneScore.swift; sourceTree = "<group>"; };
 		4401001A248B86F800CBACE2 /* ZoneScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneScoreViewController.swift; sourceTree = "<group>"; };
+		4401001C248BAE4200CBACE2 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		4404F20F24597A0600EB7184 /* api_object_id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_object_id.swift; sourceTree = "<group>"; };
 		4404F213245AF9C500EB7184 /* DrawerPanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPanner.swift; sourceTree = "<group>"; };
 		4404F215245C39AE00EB7184 /* BasicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCell.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				444F35DE246EF548001C7A27 /* MoreViewController.swift */,
 				444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */,
 				44AA987D24828BF800BB7D3A /* AboutProjectViewController.swift */,
+				4401001C248BAE4200CBACE2 /* ContactsViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1297,6 +1300,7 @@
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
 				445D51972466D96800C2E02A /* local_disability_categories.swift in Sources */,
+				4401001D248BAE4200CBACE2 /* ContactsViewController.swift in Sources */,
 				44951D262447777E0029275F /* GreetingCell.swift in Sources */,
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
 				44E81088247FE2860007A8C3 /* VenueFeedbackViewController.swift in Sources */,
