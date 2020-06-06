@@ -7,26 +7,83 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
-class ProfileObjectsViewController: ProfileCommonViewController {
+class ObjectsPaginator: Paginator {
+	
+	var onLoad: CommandWith<ProfileObjects> = .nop
+	var onFail: CommandWith<Error> = .nop
+	
+	var sort: String?
+	
+	var overallScore: OverallScore?
+
+	override func load(page: Int) {
+		super.load(page: page)
+		
+		let onSuccess = { [weak self] (profileObjects: ProfileObjects) -> Void in
+			self?.didSucced(totalPages: profileObjects.pages)
+			self?.onLoad.perform(with: profileObjects)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.didFail()
+			self?.onFail.perform(with: error)
+		}
+		
+		APIProfileObjects(
+			onSuccess: onSuccess,
+			onFailure: onFailure,
+			page: page,
+			sort: sort,
+			overallScore: overallScore
+		)
+			.dispatch()
+	}
+	
+}
+
+class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDelegate {
 	
 	var dataSource: UTableViewDataSource<ObjectCell>!
+	
+	let paginator = ObjectsPaginator()
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		paginator.loadNext()
+	}
+	
+	private func configurePaginator() {
+		paginator.overallScore = score
+		paginator.sort = sort.objectsRequestValue
+		
+		paginator.onLoad = CommandWith<ProfileObjects> { [weak self] profileObjects in
+			let cellsProps: [ObjectCell.Props] = profileObjects.items.map { object in
+				return ObjectCell.Props(
+					title: object.title,
+					subTitle: object.overallScore.description,
+					cornerText: object.image,
+					image: nil
+				)
+			}
+			
+			self?.dataSource.cellsProps = cellsProps
+			self?.tableView.reloadData()
+		}
+		
+		paginator.onFail = CommandWith<Error> { error in
+			print(error)
+		}
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		props = Props(title: l10n(.myObjects), isRightButtonHidden: false)
 		dataSource = UTableViewDataSource(tableView)
-		dataSource.cellsProps = [
-			ObjectCell.Props(
-				title: "Добавьте 15 объектов в городе",
-				subTitle: "6 june",
-				cornerText: "corener",
-				image: UIImage(named: "ins_pic_1")
-			)
-		]
 		tableView.dataSource = dataSource
-		tableView.reloadData()
 		tableView.allowsSelection = false
+		
+		configurePaginator()
 	}
 	
 }

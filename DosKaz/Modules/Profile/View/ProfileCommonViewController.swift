@@ -148,4 +148,14 @@ extension Sort {
 			return "createdAt desc"
 		}
 	}
+	
+	var objectsRequestValue: String {
+		switch self {
+		case .ascending:
+			return "date asc"
+		case .descending:
+			return "date desc"
+		}
+	}
+
 }
