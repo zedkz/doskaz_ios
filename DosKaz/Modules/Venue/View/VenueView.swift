@@ -48,7 +48,8 @@ class UIVenueView: UIView {
 				case .fullAccessible: return UIColor(named: "AccessFull")
 				case .partialAccessible: return UIColor(named: "AccessPartial")
 				case .notAccessible: return UIColor(named: "AccessNone")
-				case .notProvided, .unknown: return .white
+				case .notProvided: return .white
+				case .unKnown: return .white
 				}
 			}
 			
@@ -139,8 +140,10 @@ class UIVenueView: UIView {
 				return evaluate(isMain, ifTrue: "partially_available_32", ifFalse: "partially_available_16")
 			case .notAccessible:
 				return evaluate(isMain, ifTrue: "not_available_32", ifFalse: "not_available_16")
-			case .notProvided, .unknown:
-				return evaluate(isMain, ifTrue: "partially_available_16", ifFalse: "partially_available_16")
+			case .notProvided:
+				return evaluate(isMain, ifTrue: "partially_available_32", ifFalse: "partially_available_16")
+			case .unKnown:
+				return evaluate(isMain, ifTrue: "partially_available_32", ifFalse: "partially_available_16")
 			}
 		}
 		
@@ -150,7 +153,8 @@ class UIVenueView: UIView {
 			case .fullAccessible: return l10n(.accessibleFull)
 			case .partialAccessible: return l10n(.accessiblePartial)
 			case .notAccessible: return l10n(.accessibleNone)
-			case .notProvided, .unknown: return l10n(.accessbleNotProvided)
+			case .notProvided: return l10n(.accessbleNotProvided)
+			case .unKnown: return l10n(.accessibleUnknown)
 			}
 		}
 		
