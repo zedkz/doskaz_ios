@@ -44,11 +44,11 @@ class ProfileDrawerViewController: UIViewController {
 		let tabBar = UITabBar()
 		
 		let items = [
-			UITabBarItem(title: nil, image: UIImage(named: "object_description"), selectedImage: UIImage(named: "object_description_active")),
-			UITabBarItem(title: nil, image: UIImage(named: "object_photo"), selectedImage: UIImage(named: "object_photo_active")),
-			UITabBarItem(title: nil, image: UIImage(named: "object_reviews"), selectedImage: UIImage(named: "object_reviews_active")),
-			UITabBarItem(title: nil, image: UIImage(named: "object_video"), selectedImage: UIImage(named: "object_video_active")),
-			UITabBarItem(title: nil, image: UIImage(named: "object_history"), selectedImage: UIImage(named: "object_history_active"))
+			UITabBarItem(title: nil, image: UIImage(named: "profile_tasks"), selectedImage: UIImage(named: "profile_tasks_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "profile_objects"), selectedImage: UIImage(named: "profile_objects_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "profile_comments"), selectedImage: UIImage(named: "profile_comments_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "profile_tickets"), selectedImage: UIImage(named: "profile_tickets_active")),
+			UITabBarItem(title: nil, image: UIImage(named: "profile_achivement"), selectedImage: UIImage(named: "profile_achivement_active"))
 		]
 		
 		items.enumerated().forEach { args in
