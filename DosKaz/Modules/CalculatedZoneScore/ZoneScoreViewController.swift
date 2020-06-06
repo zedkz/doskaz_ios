@@ -20,13 +20,18 @@ class ZoneScoreViewController: UIViewController, UITableViewDelegate {
 			.pinToSuper()
 		
 		let headerView = UIView()
+		headerView.backgroundColor = UIColor(named:"FilterHeaderColor")
 		headerView.frame.size.height = 50
 		let headerLabel = UILabel()
-		headerLabel.text = l10n(.zoneScore)
+		headerLabel.backgroundColor = .clear
+		headerLabel.text = l10n(.zoneScore).uppercased()
+		headerLabel.decorate(with: Style.systemFont(size: 13))
+
 		headerView.addSubview(headerLabel)
 		headerLabel.addConstraintsProgrammatically
-			.pinToSuper()
+			.pinToSuper(inset: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0))
 		tableView.tableHeaderView = headerView
+		tableView.tableFooterView = UIView()
 		
 		dataSource = UTableViewDataSource(tableView)
 		tableView.dataSource = dataSource
@@ -79,6 +84,7 @@ class ZoneScoreCell: UITableViewCell, Updatable {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 		textLabel?.numberOfLines = 0
+		textLabel?.decorate(with: Style.systemFont(size: 14))
 	}
 	
 	required init?(coder: NSCoder) {
