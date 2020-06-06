@@ -494,6 +494,9 @@ extension SmallFormViewController {
 			text: "",
 			onEditText: Text { _ in
 				self.update()
+			},
+			onTitleTap: Command { [weak self] in
+				self?.showZoneScore()
 			}
 		)
 		

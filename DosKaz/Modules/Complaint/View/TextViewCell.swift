@@ -6,6 +6,7 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
+import SharedCodeFramework
 import UIKit
 
 class TextViewCell: UITableViewCell, Updatable {
@@ -38,6 +39,10 @@ class TextViewCell: UITableViewCell, Updatable {
 		textView.delegate = self
 		placeHolderLabel.isHidden = !textView.text.isEmpty
 		
+		let tap = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap))
+		titleLabel.addGestureRecognizer(tap)
+		titleLabel.isUserInteractionEnabled = true
+		
 		//MARK: - Layout
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(textView)
@@ -65,6 +70,10 @@ class TextViewCell: UITableViewCell, Updatable {
 		placeHolderLabel.addConstraintsProgrammatically
 			.pinToSuper(inset: UIEdgeInsets(all:8))
 
+	}
+	
+	@objc func handleLabelTap() {
+		props?.onTitleTap.perform()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -110,6 +119,7 @@ class TextViewCell: UITableViewCell, Updatable {
 		var placeHolder: String
 		var text: String
 		var onEditText: Text = .nop
+		var onTitleTap: Command = .nop
 	}
 
 }
