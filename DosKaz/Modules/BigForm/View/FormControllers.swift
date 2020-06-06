@@ -499,7 +499,7 @@ extension SmallFormViewController {
 				guard let self = self else { return }
 				let parameters = ZoneParameters(
 					type: "parking_small",
-					attributes: ["attribute1": FormValue.yes]//self.allSections[title]!
+					attributes: self.allSections[title] ?? ["": FormValue.not_provided]
 				)
 				self.showZoneScore(with: parameters)
 			}
