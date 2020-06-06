@@ -149,7 +149,7 @@ class ZoneScoreCell: UITableViewCell, Updatable {
 				return "partially_available_32"
 			case .notAccessible:
 				return "not_available_32"
-			case .notProvided:
+			case .notProvided, .unknown:
 				return "not_provided"
 			}
 		}

@@ -93,6 +93,7 @@ enum OverallScore: String, Codable {
 	case notAccessible = "not_accessible"
 	case partialAccessible = "partial_accessible"
 	case notProvided = "not_provided"
+	case unknown = "unknown"
 }
 
 extension OverallScore: CustomStringConvertible, CaseIterable {
@@ -101,7 +102,7 @@ extension OverallScore: CustomStringConvertible, CaseIterable {
 		case .fullAccessible: return l10n(.accessibleFull)
 		case .partialAccessible: return l10n(.accessiblePartial)
 		case .notAccessible: return l10n(.accessibleNone)
-		case .notProvided: return l10n(.accessbleNotProvided)
+		case .notProvided, .unknown: return l10n(.accessbleNotProvided)
 		}
 	}
 }
