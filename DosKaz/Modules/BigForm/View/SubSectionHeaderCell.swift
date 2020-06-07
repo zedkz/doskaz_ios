@@ -83,18 +83,16 @@ class HeaderCell: UITableViewHeaderFooterView {
 		//MARK: - Layout
 		contentView.backgroundColor = UIColor(named:"FilterHeaderColor")
 		contentView.addSubview(titleLabel)
-		contentView.addSubview(arrowImage)
+		
 		contentView.addSubview(countLabel)
 		
 		titleLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.verticalCenter)
 			.pinEdgeToSupers(.leading, plus: 22)
-		arrowImage.addConstraintsProgrammatically
-			.pinEdgeToSupers(.verticalCenter)
-			.pinEdgeToSupers(.trailing, plus: -22)
+
 		countLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.verticalCenter)
-			.pin(my: .trailing, to: .leading, of: arrowImage, plus: -8)
+			.pinEdgeToSupers(.trailing, plus: -22)
 			.pin(my: .leading, to: .trailing, of: titleLabel, plus: 8)
 		
 		countLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
