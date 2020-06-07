@@ -77,8 +77,8 @@ class HeaderCell: UITableViewHeaderFooterView {
 		})
 		
 		//MARK: - Configure behavior
-		let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-		addGestureRecognizer(tap)
+//		let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+//		addGestureRecognizer(tap)
 		
 		//MARK: - Layout
 		contentView.backgroundColor = UIColor(named:"FilterHeaderColor")
@@ -102,7 +102,7 @@ class HeaderCell: UITableViewHeaderFooterView {
 	}
 	
 	@objc func handleTap() {
-		props.onTap.perform(with: props.section)
+		
 	}
 	
 	//MARK: - Public properties and methods
