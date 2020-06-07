@@ -23,9 +23,12 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - ComplaintViewInput fields
 	
+	var isValidating = false
+	
 	func isValid() -> Bool {
-		updateSectionOneDataSource(isAfterValidation: true)
-		updateSectionTwoDataSource(isAfterValidation: true)
+		isValidating = true
+		updateSectionOneDataSource()
+		updateSectionTwoDataSource()
 		updateValsForSectionOne()
 		updateValsForSectionTwo()
 		dataSource.openAll()
@@ -38,6 +41,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	@objc func formDone() {
 		guard isValid() else { return }
+		isValidating = false
 		
 		var options = [String]()
 		for (key, _) in dynamicSections {
@@ -160,9 +164,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	//MARK: - Table view "update dataSources" methods
 	
-	private func updateSectionOneDataSource(isAfterValidation: Bool = false) {
+	private func updateSectionOneDataSource() {
 		func shouldBeRed(_ condition: Bool) -> Bool {
-			return condition && isAfterValidation
+			return condition && self.isValidating
 		}
 		
 		func value(_ value: String?) -> String {
@@ -324,9 +328,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		]
 	}
 	
-	private func updateSectionTwoDataSource(isAfterValidation: Bool = false) {
+	private func updateSectionTwoDataSource() {
 		func shouldBeRed(_ condition: Bool) -> Bool {
-			return condition && isAfterValidation
+			return condition && self.isValidating
 		}
 		
 		func value(_ value: String?) -> String {
@@ -465,10 +469,10 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		
 	}
 	
-	private func updateDynamicDataSources(isAfterValidation: Bool = false) {
+	private func updateDynamicDataSources() {
 		
 		func shouldBeRed(_ condition: Bool) -> Bool {
-			return condition && isAfterValidation
+			return condition && self.isValidating
 		}
 		
 		let localDynamicDataSources: [FormTableViewDataSource] = complaintAtrs.map { section in
