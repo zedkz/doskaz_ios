@@ -687,47 +687,9 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			onTap: CommandWith<Int> { section in
 				self.dataSource.openBook[section]?.toggle()
 				self.reload(with: .sections([section]))
-//
-//				var nextSection = section
-//				repeat {
-//					nextSection = nextSection + 1
-//				} while self.dataSource.openBook[nextSection]! == false
-//
-//				if nextSection >= tableView.numberOfSections {
-//					nextSection = (section - 1) < 0 ? section : (section - 1)
-//				}
-//
-//				self.scrollTo(section: section, nextOpenSection: nextSection)
-//
 			}
 		)
 		return header
-	}
-	
-	func scrollTo(section: Int, nextOpenSection: Int) {
-		
-		guard section < tableView.numberOfSections else {
-			return
-		}
-
-		if tableView.numberOfRows(inSection: section) > 0  {
-			print("Opening")
-			let indexPath = IndexPath(row: 0, section: section)
-			tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-			
-			let rect = self.tableView.rectForHeader(inSection: section)
-			tableView.scrollRectToVisible(rect, animated: false)
-			
-		} else {
-			print("Closing")
-			print("Nexopen:", nextOpenSection)
-			let indexPath = IndexPath(row: 0, section: nextOpenSection)
-			tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-			
-			let rect = self.tableView.rectForHeader(inSection: section)
-			tableView.scrollRectToVisible(rect, animated: false)
-		}
-
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
