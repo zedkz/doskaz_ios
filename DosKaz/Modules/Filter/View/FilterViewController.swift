@@ -95,7 +95,10 @@ class FilterViewController: UIViewController {
 		/// Data sources
 		sectionOneDataSource = TableViewDataSource(tableView, l10n(.objectAccessibility).uppercased()) { $1.props = $0 }
 		sectionTwoDataSource = TableViewDataSource(tableView, l10n(.objectCategories).uppercased()) { $1.props = $0 }
-		tableViewDataSource  = SectionedTableViewDataSource(dataSources: [sectionOneDataSource, sectionTwoDataSource])
+		tableViewDataSource  = SectionedTableViewDataSource(
+			dataSources: [sectionOneDataSource, sectionTwoDataSource],
+			isIndexed: false
+		)
 		tableView.dataSource = tableViewDataSource
 		
 		/// Header views for sections

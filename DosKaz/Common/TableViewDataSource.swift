@@ -54,12 +54,14 @@ typealias TableViewSection = UITableViewDataSource & HasTitle
 /// table view. It's made my combining TableViewDataSource
 class SectionedTableViewDataSource: NSObject {
 	private var dataSources: [TableViewSection]
+	private var isIndexed: Bool
 	
 	var titles: [String] {
 		return dataSources.map{ $0.sectionTitle }
 	}
 	
-	init(dataSources: [TableViewSection]) {
+	init(dataSources: [TableViewSection], isIndexed: Bool = true) {
+		self.isIndexed = isIndexed
 		self.dataSources = dataSources
 		for index in 0...20 {
 			openBook[index] = true
@@ -96,6 +98,10 @@ extension SectionedTableViewDataSource: UITableViewDataSource {
 		let dataSource = dataSources[indexPath.section]
 		let indexPath = IndexPath(row: indexPath.row, section: 0)
 		return dataSource.tableView(tableView, cellForRowAt: indexPath)
+	}
+	
+	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+		return isIndexed ? titles.map { String($0.first ?? Swift.Character(""))} : nil
 	}
 }
 
