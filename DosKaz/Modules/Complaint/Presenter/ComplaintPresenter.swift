@@ -60,6 +60,9 @@ extension ComplaintPresenter: ComplaintViewOutput {
 				self.uploadedImagesURLs.append("photo")
 			}
 			copy.content.photos.append(contentsOf: self.uploadedImagesURLs)
+			if data.content.comment.isEmpty {
+				copy.content.comment = "No comments"
+			}
 			self.interactor.submitComplaint(with: copy)
 		}
 		view.onPickImage = CommandWith<UIImage> { image in
