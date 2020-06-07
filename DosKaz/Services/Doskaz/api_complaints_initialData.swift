@@ -54,7 +54,7 @@ struct Content: Codable {
 	var videos: [String]
 	var photos: [String]
 	var threatToLife: Bool = false
-	var comment: String = ""
+	var comment: String = "No comments"
 	var options = [String]()
 	
 	init(from decoder: Decoder) throws {
