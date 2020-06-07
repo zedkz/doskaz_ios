@@ -36,14 +36,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		return (fv == nil) && (sv == nil)
 	}
 	
-	@objc func formDone() {
-		//fake
-		
-		
-		complaintData.objectId = nil
-		
-		//fake
-		
+	@objc func formDone() {		
 		guard isValid() else { return }
 		
 		complaintData.complainant.cityId = currentCity?.id
