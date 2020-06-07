@@ -55,6 +55,7 @@ struct Content: Codable {
 	var photos: [String]
 	var threatToLife: Bool = false
 	var comment: String = ""
+	var options = [String]()
 	
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -83,7 +84,11 @@ struct Content: Codable {
 		try container.encode(visitPurpose, forKey: .visitPurpose)
 		try container.encode(videos, forKey: .videos)
 		try container.encode(photos, forKey: .photos)
-//		try container.encode(threatToLife, forKey: .threatToLife)
+		if type == "complaint2" {
+			try container.encode(threatToLife, forKey: .threatToLife)
+			try container.encode(comment, forKey: .comment)
+			try container.encode(options, forKey: .options)
+		}
 	}
 	
 	private enum CodingKeys: String, CodingKey {
@@ -92,6 +97,8 @@ struct Content: Codable {
 		case videos, photos
 		
 		case threatToLife
+		case comment
+		case options
 	}
 }
 

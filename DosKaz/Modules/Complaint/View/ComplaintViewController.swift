@@ -36,9 +36,18 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		return (fv == nil) && (sv == nil)
 	}
 	
-	@objc func formDone() {		
+	@objc func formDone() {
 		guard isValid() else { return }
 		
+		var options = [String]()
+		for (key, _) in dynamicSections {
+			if let sectionRows = dynamicSections[key] {
+				let ids = sectionRows.filter { $0.value == true }.keys
+				options.append(contentsOf: ids)
+			}
+		}
+		
+		complaintData.content.options = options
 		complaintData.complainant.cityId = currentCity?.id
 		complaintData.content.cityId = currentObjectCity?.id
 		complaintData.authorityId = currentAuth?.id
