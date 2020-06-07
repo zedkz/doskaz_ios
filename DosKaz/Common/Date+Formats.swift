@@ -22,4 +22,9 @@ extension Date {
 		formatter.setLocalizedDateFormatFromTemplate("d MMM yyyy HH:mm")
 		return formatter.string(from: self)
 	}
+	
+	var iso8601: String {
+		let formatter = ISO8601DateFormatter()
+		return formatter.string(from: self)
+	}
 }

@@ -74,7 +74,7 @@ struct Content: Codable {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		
 		try container.encode(type, forKey: .type)
-		try container.encode(visitedAt, forKey: .visitedAt)
+		try container.encode(visitedAt.iso8601, forKey: .visitedAt)
 		try container.encode(objectName, forKey: .objectName)
 		try container.encode(cityId, forKey: .cityId)
 		try container.encode(street, forKey: .street)
