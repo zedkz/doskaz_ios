@@ -77,10 +77,11 @@ class SmallFormViewController: FormViewController, HasForm {
 		return first
 	}()
 	
+	var isValidating = false
 	
 	func validated(_ fullForm: FullForm) -> FullForm? {
-		update(isAfterValidation: true)
-		//update(with: formAttrs)
+		isValidating = true
+		update()
 		reloadAndScroll()
 		
 		let hasUnfilledRow = validatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
@@ -137,7 +138,12 @@ class SmallFormViewController: FormViewController, HasForm {
 			serviceAccessibility: serviceAccessibility
 		)
 		
-		return validated(form)
+		if let validated = validated(form) {
+			isValidating = false
+			return validated
+		}
+		
+		return nil
 	}	
 	
 	override func viewDidLoad() {
@@ -182,7 +188,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		}
 	}
 	
-	private func update(with formAttrs: FormAttributes ,isAfterValidation: Bool = false) {
+	private func update(with formAttrs: FormAttributes) {
 
 		var localDynamicDataSources = [FormTableViewDataSource]()
 		func addSection(for groups: [Group], title: String, section: Int) {
@@ -228,10 +234,10 @@ class SmallFormViewController: FormViewController, HasForm {
 		
 	}
 	
-	private func update(isAfterValidation: Bool = false) {
+	private func update() {
 		
 		func shouldBeRed(_ condition: Bool) -> Bool {
-			return condition && isAfterValidation
+			return condition && self.isValidating
 		}
 		
 		let objectName = TextFormCell.Props(
