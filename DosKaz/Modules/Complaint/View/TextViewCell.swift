@@ -95,8 +95,8 @@ class TextViewCell: UITableViewCell, Updatable {
 				titleLabel.text = props.title
 			}
 			placeHolderLabel.text = props.placeHolder
-			placeHolderLabel.isHidden = !textView.text.isEmpty
 			textView.text = props.text
+			placeHolderLabel.isHidden = !textView.text.isEmpty
 			handle(shouldShowRedAlert: props.canShowRedAlert)
 		}
 	}
