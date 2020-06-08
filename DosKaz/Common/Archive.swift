@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct Box<Model: Codable>: Codable {
+	var model: Model
+	var expireDate: Date
+}
+
 protocol Archive {
 	associatedtype Model: Codable
 	
@@ -21,11 +26,12 @@ extension Archive {
 	func store(_ model: Model) {
 		guard let filePath = filePath else { return }
 		do {
-			let data = try PropertyListEncoder().encode(model)
+			let box = Box<Model>(model: model, expireDate: Date().addingTimeInterval(60*60))
+			let data = try PropertyListEncoder().encode(box)
 			let success = NSKeyedArchiver.archiveRootObject(data, toFile: filePath)
-			print(success ? "Successful save" : "Save Failed")
+			print(success ? "Successful save: \(String(describing: Model.self))" : "Save failed, \(String(describing: Model.self))")
 		} catch {
-			print("Save Failed")
+			print("Save failed: ", String(describing: Model.self))
 		}
 	}
 	
@@ -33,10 +39,14 @@ extension Archive {
 		guard let filePath = filePath else { return nil }
 		guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Data else { return nil }
 		do {
-			let model = try PropertyListDecoder().decode(Model.self, from: data)
-			return model
+			let box = try PropertyListDecoder().decode(Box<Model>.self, from: data)
+			if box.expireDate > Date() {
+				return box.model
+			} else {
+				return nil
+			}
 		} catch {
-			print("Retrieve Failed")
+			print("Retrieve failed: ", String(describing: Model.self))
 			return nil
 		}
 	}
@@ -59,4 +69,12 @@ class CategoriesStorage: Archive {
 	static let shared = CategoriesStorage()
 	
 	var fileName: String = "Categories"
+}
+
+class ComplaintsAtrsStorage: Archive {
+	typealias Model = [ComplaintAtr]
+	
+	static let shared = ComplaintsAtrsStorage()
+	
+	var fileName: String = "ComplaintsAtrsStorage"
 }

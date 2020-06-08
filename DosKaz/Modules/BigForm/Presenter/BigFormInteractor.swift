@@ -23,6 +23,7 @@ class BigFormInteractor: BigFormInteractorInput {
 	func loadCategories() {
 		if let storedCats = CategoriesStorage.shared.retrieveData() {
 			output.didLoad(storedCats)
+			return
 		}
 		
 		let onSuccess = { [weak self] (categories: [Category]) -> Void in
@@ -55,7 +56,9 @@ class BigFormInteractor: BigFormInteractorInput {
 	func loadAttributes() {
 		if let attrs = FormAttributesStorage.shared.retrieveData() {
 			output.didLoad(attrs)
+			return
 		}
+		
 		let onSuccess = { [weak self] (formAttributes: FormAttributes) -> Void in
 			self?.output.didLoad(formAttributes)
 			FormAttributesStorage.shared.store(formAttributes)

@@ -26,7 +26,9 @@ class ComplaintInteractor: ComplaintInteractorInput {
 	func loadComplaintData() {
 		if let complaintData = ComplaintDataStorage.shared.retrieveData() {
 			output.didLoad(complaintData)
+			return
 		}
+		
 		let onSuccess = { [weak self] (complaintData: ComplaintData) -> Void in
 			self?.output.didLoad(complaintData)
 			ComplaintDataStorage.shared.store(complaintData)
@@ -42,7 +44,9 @@ class ComplaintInteractor: ComplaintInteractorInput {
 	func loadCities() {
 		if let stored = CitiesStorage.shared.retrieveData() {
 			output.didLoad(stored)
+			return
 		}
+		
 		let onSuccess = { [weak self] (cities: [City]) -> Void in
 			self?.output.didLoad(cities)
 			CitiesStorage.shared.store(cities)
@@ -58,7 +62,9 @@ class ComplaintInteractor: ComplaintInteractorInput {
 	func loadAuthorities() {
 		if let stored = AuthoritiesStorage.shared.retrieveData() {
 			output.didLoad(stored)
+			return
 		}
+		
 		let onSuccess = { [weak self] (authorities: [Authority]) -> Void in
 			self?.output.didLoad(authorities)
 			AuthoritiesStorage.shared.store(authorities)
@@ -72,8 +78,14 @@ class ComplaintInteractor: ComplaintInteractorInput {
 	}
 
 	func loadComplaintAtrs() {
+		if let stored = ComplaintsAtrsStorage.shared.retrieveData() {
+			self.output.didLoad(stored)
+			return
+		}
+		
 		let onSuccess = { [weak self] (complaintAtrs: [ComplaintAtr]) -> Void in
 			self?.output.didLoad(complaintAtrs)
+			ComplaintsAtrsStorage.shared.store(complaintAtrs)
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
