@@ -19,6 +19,7 @@ class FilterInteractor: FilterInteractorInput {
 	func loadCategories() {
 		if let storedCats = CategoriesStorage.shared.retrieveData() {
 			output.didLoad(storedCats)
+			return
 		}
 		
 		let onSuccess = { [weak self] (categories: [Category]) -> Void in
@@ -35,4 +36,3 @@ class FilterInteractor: FilterInteractorInput {
 	}
 
 }
-		
