@@ -7,10 +7,66 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
-class ProfileCommentsViewController: ProfileCommonViewController {
+class CommentsPaginator: Paginator {
+	
+	var onLoad: CommandWith<ProfileComments> = .nop
+	var onFail: CommandWith<Error> = .nop
+	
+	var sort: String?
+	
+	override func load(page: Int) {
+		super.load(page: page)
+		
+		let onSuccess = { [weak self] (profileComments: ProfileComments) -> Void in
+			self?.didSucced(totalPages: profileComments.pages)
+			self?.onLoad.perform(with: profileComments)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.didFail()
+			self?.onFail.perform(with: error)
+		}
+		
+		APIProfileComments(
+			onSuccess: onSuccess,
+			onFailure: onFailure,
+			page: page,
+			sort: sort
+		)
+			.dispatch()
+	}
+	
+}
+
+class ProfileCommentsViewController: ProfileCommonViewController, UITableViewDelegate {
 	
 	var dataSource: UTableViewDataSource<CommentCell>!
+	
+	let paginator = CommentsPaginator()
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		paginator.loadNext()
+	}
+	
+	private func configurePaginator() {
+		
+		paginator.sort = sort.objectsRequestValue
+		
+		paginator.onLoad = CommandWith<ProfileComments> { [weak self] profileComments in
+			let cellsProps: [CommentCell.Props] = profileComments.items.map { comment in
+				CommentCell.Props(title: comment.text, subTitle: comment.title)
+			}
+
+			self?.dataSource.cellsProps.append(contentsOf: cellsProps)
+			self?.tableView.reloadData()
+		}
+		
+		paginator.onFail = CommandWith<Error> { error in
+			print(error)
+		}
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,6 +80,8 @@ class ProfileCommentsViewController: ProfileCommonViewController {
 		]
 		tableView.dataSource = dataSource
 		tableView.reloadData()
+		tableView.delegate = self
+		configurePaginator()
 	}
 	
 }

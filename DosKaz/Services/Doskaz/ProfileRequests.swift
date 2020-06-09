@@ -106,3 +106,52 @@ struct ProfileObject: Codable {
 	let reviewsCount, complaintsCount: Int
 	let image: String
 }
+
+
+//MARK: - Profile comments
+
+struct APIProfileComments: DoskazRequest {
+	
+	var onSuccess = { (profileComments: ProfileComments) -> Void in
+		debugPrint(profileComments)
+	}
+	
+	var onFailure = { (error: Error) -> Void in
+		debugPrint(error)
+	}
+	
+	var page: Int
+	
+	var sort: String?
+	
+	var path: String { "profile/comments" }
+	
+	var task: Task {
+		let parameters: [String: Any?] = [
+			"page": page,
+			"sort": sort
+		]
+		let prs = parameters.compactMapValues{ $0 }
+		return .requestParameters(parameters: prs, encoding: URLEncoding.default)
+	}
+	
+	var headers: [String : String]? {
+		let token = "BVaWWzuih9X4MYfBb1bqYRYrL8rCfNII6ClYz2Jn5B7EBZiQ34TSO4XiaGraZi2k5UXBR5d8O0o2kLfE08gO7Plla7Tr9ypdWH7pCWpKMX9SXCDUi2O5tT7sz8Pct8dB7iUk89YyGgLsrlBbnPiiiD1dgt2ym4twFi50DbSQFU1t"
+		return  ["Authorization" : "Bearer \(token)"]
+	}
+	
+}
+
+// MARK: - ProfileComments
+struct ProfileComments: Codable {
+	let pages: Int
+	let items: [CommentItem]
+}
+
+// MARK: - Item
+struct CommentItem: Codable {
+	let date: Date
+	let type: String
+	let objectId: Int
+	let title, text: String
+}
