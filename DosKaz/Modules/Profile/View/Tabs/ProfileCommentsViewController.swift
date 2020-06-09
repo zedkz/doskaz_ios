@@ -82,6 +82,14 @@ class ProfileCommentsViewController: ProfileCommonViewController, UITableViewDel
 		tableView.reloadData()
 		tableView.delegate = self
 		configurePaginator()
+		
+		onPickLeft = OnPick<Sort> {
+			self.dataSource.cellsProps = []
+			self.paginator.reset()
+			self.paginator.sort = $0.objectsRequestValue
+			self.paginator.loadNext()
+		}
+		
 	}
 	
 }
