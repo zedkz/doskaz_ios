@@ -756,7 +756,7 @@ enum Reload {
 	case all
 }
 
-enum ComplaintType: String, CustomStringConvertible, CaseIterable {
+enum ComplaintType: String, CustomStringConvertible, CaseIterable, Codable {
 	case complaint1
 	case complaint2
 	
