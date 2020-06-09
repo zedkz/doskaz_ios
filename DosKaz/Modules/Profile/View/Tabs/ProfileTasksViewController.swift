@@ -119,6 +119,8 @@ class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelega
 			self.paginator.loadNext()
 		}
 		
+		paginator.loadNext()
+		
 	}
 
 }

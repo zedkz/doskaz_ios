@@ -88,6 +88,8 @@ class ProfileCommentsViewController: ProfileCommonViewController, UITableViewDel
 			self.paginator.loadNext()
 		}
 		
+		paginator.loadNext()
+		
 	}
 	
 }

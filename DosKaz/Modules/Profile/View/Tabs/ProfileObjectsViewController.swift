@@ -99,6 +99,8 @@ class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDele
 			self.paginator.loadNext()
 		}
 		
+		paginator.loadNext()
+		
 	}
 	
 }

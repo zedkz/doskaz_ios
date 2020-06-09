@@ -88,6 +88,9 @@ class ProfileComplaintsViewController: ProfileCommonViewController, UITableViewD
 			self.paginator.sort = $0.objectsRequestValue
 			self.paginator.loadNext()
 		}
+		
+		paginator.loadNext()
+
 	}
 	
 }
