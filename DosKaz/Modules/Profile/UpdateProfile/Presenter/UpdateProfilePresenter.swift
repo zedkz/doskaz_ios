@@ -23,6 +23,15 @@ protocol UpdateProfileViewOutput {
 extension UpdateProfilePresenter: UpdateProfileViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		let _headline = TextCell.Props(title: l10n(.complaint2Header), isBlue: false)
+		let headline = CellConfigurator<TextCell>(props: _headline)
+
+		let configurators = [
+			headline
+		]
+
+		view.updateTable(with: configurators)
+		
 	}
 
 }

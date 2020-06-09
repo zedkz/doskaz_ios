@@ -12,11 +12,14 @@ import UIKit
 
 protocol UpdateProfileViewInput where Self: UIViewController {
 	func setupInitialState()
+	func updateTable(with configurators: [CellConfiguratorType])
 }
 
 class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 
 	var output: UpdateProfileViewOutput!
+	
+	private var dataSource: FormTableViewDataSource!
 
 	func setupInitialState() {
 		navigationItem.title = l10n(.editing)
@@ -29,7 +32,14 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 	}
 	
 	private func configureTableview() {
-		
+		tableView.register(cellClass: TextCell.self)
+		dataSource = FormTableViewDataSource("")
+		tableView.dataSource = dataSource
+	}
+	
+	func updateTable(with configurators: [CellConfiguratorType]) {
+		dataSource.configurators = configurators
+		tableView.reloadData()
 	}
 	
 	@objc func close() {
