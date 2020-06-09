@@ -67,7 +67,7 @@ class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDele
 				)
 			}
 			
-			self?.dataSource.cellsProps = cellsProps
+			self?.dataSource.cellsProps.append(contentsOf: cellsProps)
 			self?.tableView.reloadData()
 		}
 		
@@ -84,6 +84,21 @@ class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDele
 		tableView.allowsSelection = false
 		
 		configurePaginator()
+		
+		onPickLeft = OnPick<Sort> {
+			self.dataSource.cellsProps = []
+			self.paginator.reset()
+			self.paginator.sort = $0.tasksRequestValue
+			self.paginator.loadNext()
+		}
+		
+		onPickRight = OnPick<OverallScore> {
+			self.dataSource.cellsProps = []
+			self.paginator.reset()
+			self.paginator.overallScore = $0
+			self.paginator.loadNext()
+		}
+		
 	}
 	
 }
