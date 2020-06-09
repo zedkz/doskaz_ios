@@ -292,3 +292,49 @@ enum ProfileEventType: String, Codable {
 	case award_issued, level_reached
 	case object_reviewed, blog_comment_replied, object_added
 }
+
+
+//MARK: - Profile update
+
+struct APIUpdateProfile: DoskazRequest {
+	
+	let onSuccess: (Empty) -> Void
+	
+	let onFailure: (Error) -> Void
+			
+	let profile: PutProfile
+	
+	var path: String { "profile" }
+	
+	var method: Method { .put }
+	
+	var task: Task { .requestJSONEncodable(profile) }
+	
+	var headers: [String : String]? {
+		let token = "BVaWWzuih9X4MYfBb1bqYRYrL8rCfNII6ClYz2Jn5B7EBZiQ34TSO4XiaGraZi2k5UXBR5d8O0o2kLfE08gO7Plla7Tr9ypdWH7pCWpKMX9SXCDUi2O5tT7sz8Pct8dB7iUk89YyGgLsrlBbnPiiiD1dgt2ym4twFi50DbSQFU1t"
+		return  ["Authorization" : "Bearer \(token)"]
+	}
+	
+}
+
+// MARK: - PutProfile
+struct PutProfile: Codable {
+	let firstName, lastName, middleName, email: String
+	let status: String
+}
+
+
+let onSuccess = { (empty: Empty) in
+	debugPrint(empty)
+}
+
+let onFailure = { (error: Error) in
+	debugPrint(error)
+}
+
+let profile = PutProfile(
+	firstName: "Peter", lastName: "Johnson", middleName: "L.",
+	email: "nobis@nomail.com",
+	status: "When you stare into the abyss the abyss stares back at you."
+)
+	
