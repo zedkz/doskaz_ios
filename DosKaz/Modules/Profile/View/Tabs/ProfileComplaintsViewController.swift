@@ -109,8 +109,8 @@ class ComplaintCell: UITableViewCell, Updatable {
 			label.numberOfLines = 0
 		})
 		
-		button.setTitle(l10n(.downLoadComplaints), for: .normal)
-		button.setImage(UIImage(named: "plus_in_form"), for: .normal)
+		button.setTitle(" " + l10n(.downLoadComplaints), for: .normal)
+		button.setImage(UIImage(named: "load_complaint"), for: .normal)
 		button.titleLabel?.font = detailTextLabel?.font
 		button.setTitleColor(detailTextLabel?.textColor, for: .normal)
 		
