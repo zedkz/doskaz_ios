@@ -31,6 +31,10 @@
 		4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */; };
 		4420ABF324727BE8007F70D6 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */; };
 		4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */; };
+		443C6F82248FB3A500DEB65C /* UpdateProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */; };
+		443C6F83248FB3A500DEB65C /* UpdateProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */; };
+		443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */; };
+		443C6F85248FB3A500DEB65C /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */; };
 		443FFE4024865D0D00E4AE87 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		4446C180247BEB54002BF1B6 /* api_storage_upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */; };
@@ -235,6 +239,10 @@
 		4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
 		4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileInteractor.swift; sourceTree = "<group>"; };
+		443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilePresenter.swift; sourceTree = "<group>"; };
+		443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileRouter.swift; sourceTree = "<group>"; };
+		443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_storage_upload.swift; sourceTree = "<group>"; };
@@ -463,6 +471,7 @@
 		4420ABE824727BE7007F70D6 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				443C6F79248FB3A500DEB65C /* UpdateProfile */,
 				4420ABEE24727BE7007F70D6 /* View */,
 				4420ABE924727BE7007F70D6 /* Presenter */,
 			);
@@ -487,6 +496,33 @@
 				4446C2422472814F006B49EE /* ProfileDrawerViewController.swift */,
 				4446C2442472887D006B49EE /* ProfileView.swift */,
 				446A3558248F644400C76F85 /* Tabs */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		443C6F79248FB3A500DEB65C /* UpdateProfile */ = {
+			isa = PBXGroup;
+			children = (
+				443C6F7F248FB3A500DEB65C /* View */,
+				443C6F7A248FB3A500DEB65C /* Presenter */,
+			);
+			path = UpdateProfile;
+			sourceTree = "<group>";
+		};
+		443C6F7A248FB3A500DEB65C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */,
+				443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */,
+				443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		443C6F7F248FB3A500DEB65C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1332,6 +1368,7 @@
 				44E7311E24765F040022375C /* ComplaintViewController.swift in Sources */,
 				4420ABF124727BE8007F70D6 /* ProfileRouter.swift in Sources */,
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
+				443C6F83248FB3A500DEB65C /* UpdateProfilePresenter.swift in Sources */,
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
 				4404F255245F2D9800EB7184 /* Asset.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
@@ -1344,6 +1381,7 @@
 				447768B3247E7D83007BB003 /* VenuePhotoCell.swift in Sources */,
 				444F35DF246EF548001C7A27 /* MoreViewController.swift in Sources */,
 				44ABE68D248E3DC100E34F95 /* IQPreviousNextView.swift in Sources */,
+				443C6F85248FB3A500DEB65C /* UpdateProfileViewController.swift in Sources */,
 				44B8A4AE247512D6002BFE6A /* ProfileAwardsEventsViewController.swift in Sources */,
 				44ED11D92455BA97009B92BF /* VenueView.swift in Sources */,
 				44AA987E24828BF800BB7D3A /* AboutProjectViewController.swift in Sources */,
@@ -1417,8 +1455,10 @@
 				445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */,
 				44E81088247FE2860007A8C3 /* VenueFeedbackViewController.swift in Sources */,
 				44A5D9592480DFB000372A90 /* api_feedback.swift in Sources */,
+				443C6F82248FB3A500DEB65C /* UpdateProfileInteractor.swift in Sources */,
 				44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */,
 				4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */,
+				443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */,
 				4404F24B245F0CD900EB7184 /* FilterPresenter.swift in Sources */,
 				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 				44ABE699248E3DC100E34F95 /* IQUITextFieldView+Additions.swift in Sources */,
