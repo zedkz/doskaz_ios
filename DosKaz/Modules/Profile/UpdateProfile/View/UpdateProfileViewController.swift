@@ -14,13 +14,19 @@ protocol UpdateProfileViewInput where Self: UIViewController {
 	func setupInitialState()
 }
 
-class UpdateProfileViewController: UIViewController, UpdateProfileViewInput {
+class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 
 	var output: UpdateProfileViewOutput!
 
 	func setupInitialState() {
-	
+		navigationItem.title = l10n(.editing)
+		configureTableview()
 	}
+	
+	private func configureTableview() {
+		
+	}
+	
 
 }
 

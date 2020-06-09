@@ -175,6 +175,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case hearing = "Люди с нарушениями слуха"
 	case intellectual = "Люди с интеллектуальной инвалидностью"
 	case toObject = "к объекту"
+	case editing = "Редактирование"
 	
 	var l10n: String {
 		return self.rawValue.localized
