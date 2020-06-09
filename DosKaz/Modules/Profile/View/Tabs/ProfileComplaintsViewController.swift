@@ -58,7 +58,7 @@ class ProfileComplaintsViewController: ProfileCommonViewController, UITableViewD
 			let cellsProps: [ComplaintCell.Props] = profileComplaints.items.map { complaint in
 				ComplaintCell.Props(
 					title: complaint.title, text: complaint.type.description,
-					subTitle: complaint.date.dayMonth
+					subTitle: complaint.date.full
 				)
 			}
 
@@ -75,13 +75,6 @@ class ProfileComplaintsViewController: ProfileCommonViewController, UITableViewD
 		super.viewDidLoad()
 		props = Props(title: l10n(.myComplaints), isRightButtonHidden: true)
 		dataSource = UTableViewDataSource(tableView)
-		dataSource.cellsProps = [
-			ComplaintCell.Props(
-				title: "Суши-бар Saya Sushi",
-				text: "Жалоба на отсутствие доступа на объект или несоответствие функциональных зон объекта требованиям нормативного законодательства",
-				subTitle: "Вчера в 18:01 объекту объекту клик клик"
-			)
-		]
 		tableView.dataSource = dataSource
 		tableView.reloadData()
 		tableView.allowsSelection = false
@@ -111,6 +104,7 @@ class ComplaintCell: UITableViewCell, Updatable {
 		textL.numberOfLines = 0
 		detailLab.textColor = .gray
 		detailLab.numberOfLines = 0
+		detailLab.font = detailTextLabel?.font
 		titleLabel.decorate(with: Style.systemFont(size: 14, weight: .semibold), { label in
 			label.numberOfLines = 0
 		})
