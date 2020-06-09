@@ -176,6 +176,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case intellectual = "Люди с интеллектуальной инвалидностью"
 	case toObject = "к объекту"
 	case editing = "Редактирование"
+	case editProfile = "Редактирование профиля"
+	case fillProfile = "За заполнение анкеты вы получите 70 баллов. Ваша личная информация не будет видна другим пользователям"
 	
 	var l10n: String {
 		return self.rawValue.localized

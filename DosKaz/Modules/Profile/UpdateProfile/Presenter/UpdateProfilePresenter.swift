@@ -6,7 +6,7 @@
 //  Copyright © 2020-06-09 12:10:04 +0000 lobster.kz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 		
 class UpdateProfilePresenter {
 	
@@ -25,7 +25,16 @@ protocol UpdateProfileViewOutput {
 extension UpdateProfilePresenter: UpdateProfileViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
-		let text = NSAttributedString(string: "Nasra")
+		let editProfile = l10n(.editProfile)
+		let atrs1 = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold) ]
+		let part1 = NSAttributedString(string: editProfile, attributes: atrs1)
+		
+		let fillProfile = "\n" + l10n(.fillProfile) + "\n"
+		let part2 = NSAttributedString(string: fillProfile)
+
+		let text = NSMutableAttributedString()
+		text.append(part1)
+		text.append(part2)
 		let _headline = TextCell.Props(title: text, isBlue: false)
 		let headline = CellConfigurator<TextCell>(props: _headline)
 
