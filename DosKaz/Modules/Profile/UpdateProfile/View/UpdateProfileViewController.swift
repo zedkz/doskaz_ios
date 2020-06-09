@@ -20,6 +20,11 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 
 	func setupInitialState() {
 		navigationItem.title = l10n(.editing)
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			title: l10n(.close), style: .done,
+			target: self,
+			action: #selector(close)
+		)
 		configureTableview()
 	}
 	
@@ -27,6 +32,9 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 		
 	}
 	
+	@objc func close() {
+		dismiss(animated: true, completion: nil)
+	}
 
 }
 

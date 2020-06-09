@@ -6,6 +6,7 @@
 //  Copyright © 2020 zed. All rights reserved.
 //
 
+import SharedCodeFramework
 import UIKit
 
 class ProfileView: UIView {
@@ -55,6 +56,10 @@ class ProfileView: UIView {
 				button.clipsToBounds = true
 			}
 		)
+		
+		editButton.didTouchUpInside = { [weak self] in
+			self?.props?.onEdit.perform()
+		}
 		
 		func style(topLabel: UILabel, leftLabel: UILabel, bottomLabel: UILabel) {
 			topLabel.decorate(with: Style.systemFont(size: 14, weight: .bold))
@@ -201,6 +206,7 @@ class ProfileView: UIView {
 	
 	struct Props {
 		var profile: Profile
+		var onEdit: Command = .nop
 	}
 	
 	//MARK: - Private methods

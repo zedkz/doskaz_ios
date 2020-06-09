@@ -9,11 +9,14 @@
 import UIKit
 
 protocol ProfileRouterInput {
-
+	func openEdit(_ profile: Profile, with vc: UIViewController)
 }
 
 // MARK: Implementation
 
 class ProfileRouter: ProfileRouterInput {
-
+	func openEdit(_ profile: Profile, with vc: UIViewController) {
+		let editVC = UpdateProfileViewController.module
+		vc.presentEmbedded(editVC)
+	}
 }
