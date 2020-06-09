@@ -460,7 +460,8 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 			CellConfigurator<TextFormCell>(props: visitPurposeProps),
 		]
 		
-		let textProps = TextCell.Props(title: l10n(.complaint2Header), isBlue: true)
+		let text = NSAttributedString(string: l10n(.complaint2Header))
+		let textProps = TextCell.Props(title: text, isBlue: true)
 
 		let config = CellConfigurator<TextCell>(props: textProps)
 		if case ComplaintType.complaint2 = currentComplaintType {

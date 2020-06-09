@@ -40,14 +40,14 @@ class TextCell: UITableViewCell, Updatable {
 	
 	var props: Props! {
 		didSet {
-			label.text = props.title
+			label.attributedText = props.title
 			let blue = UIColor(named:"FilterHeaderColor")
 			blueLine.backgroundColor = evaluate(props.isBlue, ifTrue: blue, ifFalse: .white)
 		}
 	}
 	
 	struct Props {
-		let title: String
+		let title: NSAttributedString
 		let isBlue: Bool
 	}
 	
