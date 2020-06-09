@@ -237,3 +237,58 @@ struct ProfileAward: Codable {
 enum AwardType: String, Codable {
 	case bronze, silver, gold
 }
+
+
+//MARK: - Profile events
+
+struct APIProfileEvents: DoskazRequest {
+	
+	var onSuccess = { (profileEvents: ProfileEvents) -> Void in
+		debugPrint(profileEvents)
+	}
+	
+	var onFailure = { (error: Error) -> Void in
+		debugPrint(error)
+	}
+	
+	var path: String { "profile/events" }
+	
+	var headers: [String : String]? {
+		let token = "BVaWWzuih9X4MYfBb1bqYRYrL8rCfNII6ClYz2Jn5B7EBZiQ34TSO4XiaGraZi2k5UXBR5d8O0o2kLfE08gO7Plla7Tr9ypdWH7pCWpKMX9SXCDUi2O5tT7sz8Pct8dB7iUk89YyGgLsrlBbnPiiiD1dgt2ym4twFi50DbSQFU1t"
+		return  ["Authorization" : "Bearer \(token)"]
+	}
+	
+}
+
+// MARK: - ProfileEvents
+struct ProfileEvents: Codable {
+	let items: [EventItem]
+}
+
+// MARK: - Item
+struct EventItem: Codable {
+	let userId: Int
+	let date: Date
+	let type: ProfileEventType
+	let data: EventData
+	
+	var description: String {
+		switch type {
+		case .award_issued:
+			return "Award issued"
+		default:
+			return type.rawValue
+		}
+	}
+}
+
+// MARK: - DataClass
+struct EventData: Codable {
+	let title: String?
+	let type: String?
+}
+
+enum ProfileEventType: String, Codable {
+	case award_issued, level_reached
+	case object_reviewed, blog_comment_replied, object_added
+}

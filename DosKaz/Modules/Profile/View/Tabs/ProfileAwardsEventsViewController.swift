@@ -29,7 +29,29 @@ class ProfileAwardsEventsViewController: UIViewController {
 		configureCollectionView()
 		updateTableData()
 		layout()
+		loadEvents()
 		loadAwards()
+	}
+	
+	private func loadEvents() {
+		let onSuccess = { [weak self] (profileEvents: ProfileEvents) -> Void in
+			let cellsProps = profileEvents.items.map { event in
+				EventCell.Props(
+					date: event.date.full,
+					text: event.description
+				)
+			}
+			
+			self?.dataSource.cellsProps = cellsProps
+			self?.tableView.reloadData()
+		}
+		
+		let onFailure = { (error: Error) -> Void in
+			debugPrint(error)
+		}
+		
+		APIProfileEvents(onSuccess: onSuccess, onFailure: onFailure)
+			.dispatch()
 	}
 	
 	private func loadAwards() {
@@ -115,14 +137,7 @@ class ProfileAwardsEventsViewController: UIViewController {
 	
 	fileprivate func updateTableData() {
 		dataSource = UTableViewDataSource(tableView)
-		dataSource.cellsProps = [
-			EventCell.Props(
-				date: "12 августа",
-				text: "Арай Молдахметова прокомментировала ваш объект Суши-бар Saya Sushi"
-			)
-		]
 		tableView.dataSource = dataSource
-		tableView.reloadData()
 	}
 	
 }
