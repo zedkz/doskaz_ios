@@ -85,3 +85,44 @@ extension AwardsCollectionViewCellLayout {
 	}
 	
 }
+
+
+class AwardsCollectionDelegate: NSObject, UICollectionViewDelegateFlowLayout {
+	
+	var didScrollToPage: (Int) -> Void = { _ in }
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offSet = scrollView.contentOffset.x
+		let width = scrollView.frame.width
+		let horizontalCenter = width / 2
+		
+		let currentPage = Int(offSet + horizontalCenter) / Int(width)
+		didScrollToPage(currentPage)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView,
+											layout collectionViewLayout: UICollectionViewLayout,
+											sizeForItemAt indexPath: IndexPath) -> CGSize {
+		
+		let height = (collectionView.frame.height - 10*3)/4
+		return CGSize(width: collectionView.frame.width * 2/3, height: height)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+		return 10
+	}
+	
+	func collectionView(_ collectionView: UICollectionView,
+											layout collectionViewLayout: UICollectionViewLayout,
+											minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+		return 20
+	}
+	
+	func collectionView(_ collectionView: UICollectionView,
+											layout collectionViewLayout: UICollectionViewLayout,
+											insetForSectionAt section: Int) -> UIEdgeInsets {
+		let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		return sectionInsets
+	}
+	
+}
