@@ -36,6 +36,7 @@ class ProfileView: UIView {
 		taskLabel.text = "–"
 		taskProgress.setProgress(0.3, animated: true)
 		taskProgressLabel.text = "0/0"
+		avatarImageView.image = UIImage(named: "avatar_placeholder")
 		
 		//MARK: - Configure style
 		title.decorate(with: Style.systemFont(size: 18, weight: .semibold))
