@@ -56,7 +56,11 @@ class ProfileCommentsViewController: ProfileCommonViewController, UITableViewDel
 		
 		paginator.onLoad = CommandWith<ProfileComments> { [weak self] profileComments in
 			let cellsProps: [CommentCell.Props] = profileComments.items.map { comment in
-				CommentCell.Props(title: comment.text, subTitle: comment.title)
+				let text = String(comment.text.filter { !"\n".contains($0) })
+				let subTitle = comment.date.dayMonthTime
+					+ " \(l10n(.toObject)) "
+					+ comment.title
+				return CommentCell.Props(title: text, subTitle: subTitle)
 			}
 
 			self?.dataSource.cellsProps.append(contentsOf: cellsProps)
@@ -72,12 +76,6 @@ class ProfileCommentsViewController: ProfileCommonViewController, UITableViewDel
 		super.viewDidLoad()
 		props = Props(title: l10n(.myComments), isRightButtonHidden: true)
 		dataSource = UTableViewDataSource(tableView)
-		dataSource.cellsProps = [
-			CommentCell.Props(
-				title: "Хотелось бы добавить, что входная группа сделана не очень удобно для людей, передвигающихся на колясках. Угол наклона пандуса очень большой, подниматься без посторонней помощи сложно. А зимой там ещё хуже будет.",
-				subTitle: "Вчера в 18:01 к объекту Стоматологическая клиника Vitadent"
-			)
-		]
 		tableView.dataSource = dataSource
 		tableView.reloadData()
 		tableView.delegate = self
