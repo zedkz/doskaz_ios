@@ -486,13 +486,7 @@
 				4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */,
 				4446C2422472814F006B49EE /* ProfileDrawerViewController.swift */,
 				4446C2442472887D006B49EE /* ProfileView.swift */,
-				44A059062473E13D00926814 /* ProfileCommonViewController.swift */,
-				44A059082473F70900926814 /* ProfileTasksViewController.swift */,
-				44A0590A2474072100926814 /* ProfileObjectsViewController.swift */,
-				44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */,
-				44B8A4AB2475053F002BFE6A /* ProfileComplaintsViewController.swift */,
-				44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */,
-				44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */,
+				446A3558248F644400C76F85 /* Tabs */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -658,6 +652,20 @@
 				4404F213245AF9C500EB7184 /* DrawerPanner.swift */,
 			);
 			path = Drawer;
+			sourceTree = "<group>";
+		};
+		446A3558248F644400C76F85 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				44A059062473E13D00926814 /* ProfileCommonViewController.swift */,
+				44A059082473F70900926814 /* ProfileTasksViewController.swift */,
+				44A0590A2474072100926814 /* ProfileObjectsViewController.swift */,
+				44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */,
+				44B8A4AB2475053F002BFE6A /* ProfileComplaintsViewController.swift */,
+				44B8A4AD247512D6002BFE6A /* ProfileAwardsEventsViewController.swift */,
+				44B8A4AF24751C51002BFE6A /* AwardsCollectionViewCell.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		447768A5247E7996007BB003 /* VenuePhotos */ = {
