@@ -29,6 +29,25 @@ class ProfileAwardsEventsViewController: UIViewController {
 		configureCollectionView()
 		updateTableData()
 		layout()
+		loadAwards()
+	}
+	
+	private func loadAwards() {
+		let onSuccess = { [weak self] (profileAwards: [ProfileAward]) -> Void in
+			let cellsProps = profileAwards.map { award in
+				AwardsCollectionViewCell.Props(heading: award.title, imageName: award.type.rawValue)
+			}
+			self?.collectionDataSource.cellsProps = cellsProps
+			self?.collectionView.reloadData()
+		}
+		
+		let onFailure = { (error: Error) -> Void in
+			debugPrint(error)
+		}
+		
+		APIProfileAwards(onSuccess: onSuccess, onFailure: onFailure)
+			.dispatch()
+		
 	}
 	
 	private func configureCollectionView() {
@@ -42,12 +61,7 @@ class ProfileAwardsEventsViewController: UIViewController {
 		collectionView.delegate = collectionDelegate
 
 		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
-		
-		let cellsProps = Array(
-			repeating: AwardsCollectionViewCell.Props(heading: l10n(.greetingHeading1), imageName: "aged_people"),
-			count: 9
-		)
-		collectionDataSource.cellsProps = cellsProps
+
 		collectionView.dataSource = collectionDataSource
 	}
 	
