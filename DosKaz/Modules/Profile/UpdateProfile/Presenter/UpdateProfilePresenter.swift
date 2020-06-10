@@ -73,10 +73,24 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 		)
 		let name = CellConfigurator<TextFormCell>(props: _name)
 		
+		// Middle name
+		let _middleName = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(profile?.middleName),
+			text: nonNil(profile?.middleName),
+			title: l10n(.middleName),
+			mode: .onlyTextField,
+			onEditText: Text { [weak self] text in
+				self?.profile?.middleName = text
+				self?.configureFields()
+			}
+		)
+		let middleName = CellConfigurator<TextFormCell>(props: _middleName)
+		
 		let configurators: [CellConfiguratorType] = [
 			headline,
 			familyName,
-			name
+			name,
+			middleName
 		]
 		
 		view.updateTable(with: configurators)
