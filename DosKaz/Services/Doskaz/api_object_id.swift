@@ -40,7 +40,7 @@ struct DoskazVenue: Codable {
 	let videos: [String]
 	let reviews: [Review]
 	let history: [History]
-//	let attributes: Attributes
+	let attributes: Attributes
 	let verificationStatus: String
 //
 	enum CodingKeys: String, CodingKey {
@@ -48,7 +48,7 @@ struct DoskazVenue: Codable {
 		case title, address
 		case description
 		case category,subCategory, coordinates, overallScore, color, scoreByZones, icon, photos, videos, reviews, history, verificationStatus
-//		case attributes
+		case attributes
 	}
 }
 
@@ -60,9 +60,9 @@ struct Attributes: Codable {
 
 // MARK: - Zones
 struct Zones: Codable {
-	let parking, entrance1, entrance2, entrance3: Entrance1
-	let movement, service, toilet, navigation: Entrance1
-	let serviceAccessibility: Entrance1
+	let parking, entrance1: [String: FormValue]
+	let movement, service, toilet, navigation: [String: FormValue]
+	let serviceAccessibility: [String: FormValue]
 }
 
 // MARK: - Entrance1
