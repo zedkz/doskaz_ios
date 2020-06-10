@@ -17,6 +17,7 @@ protocol ProfileRouterInput {
 class ProfileRouter: ProfileRouterInput {
 	func openEdit(_ profile: Profile, with vc: UIViewController) {
 		let editVC = UpdateProfileViewController.module
+		editVC.output.initView(with: profile)
 		vc.presentEmbedded(editVC)
 	}
 }

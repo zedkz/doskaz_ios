@@ -11,6 +11,7 @@ import SharedCodeFramework
 
 protocol UpdateProfileViewOutput {
 	func viewIsReady()
+	func initView(with profile: Profile)
 }
 		
 class UpdateProfilePresenter: UpdateProfileViewOutput {
@@ -18,6 +19,16 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 	weak var view: UpdateProfileViewInput!
 	var interactor: UpdateProfileInteractorInput!
 	var router: UpdateProfileRouterInput!
+	
+	func initView(with profile: Profile) {
+		self.profile = PutProfile(
+			firstName: nonNil(profile.firstName),
+			lastName: nonNil(profile.lastName),
+			middleName: nonNil(profile.middleName),
+			email: nonNil(profile.email),
+			status: nonNil(profile.status)
+		)
+	}
 	
 	func viewIsReady() {
 		view.setupInitialState()
