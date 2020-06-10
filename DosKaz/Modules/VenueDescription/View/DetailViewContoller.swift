@@ -119,31 +119,6 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 		return configurators
 	}
 	
-	private func configureTableview() {
-		tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: "HeaderCell")
-		tableView.register(cellClass: CommentCell.self)
-		
-		func items(for zone: [String: FormValue]) -> [CellConfiguratorType] {
-			zone.map {
-				CellConfigurator<CommentCell>(props: CommentCell.Props(title: $0, subTitle: $1.description))
-			}
-		}
-		
-		dataSource = SectionedTableViewDataSource(dataSources: [
-			FormTableViewDataSource(l10n(.parking), items(for: zones.parking)),
-			FormTableViewDataSource(l10n(.entrance), items(for: zones.entrance1)),
-			FormTableViewDataSource(l10n(.movement), items(for: zones.movement)),
-			FormTableViewDataSource(l10n(.service), items(for: zones.service)),
-			FormTableViewDataSource(l10n(.toilet), items(for: zones.toilet)),
-			FormTableViewDataSource(l10n(.navigation), items(for: zones.navigation)),
-			FormTableViewDataSource(l10n(.serviceAccessibility), items(for: zones.serviceAccessibility))
-		])
-		
-		tableView.dataSource = dataSource
-		tableView.delegate = self
-		tableView.reloadData()
-	}
-	
 	@objc func close() {
 		dismiss(animated: true, completion: nil)
 	}
