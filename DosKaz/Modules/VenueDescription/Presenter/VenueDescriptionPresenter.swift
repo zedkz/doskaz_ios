@@ -39,7 +39,18 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 				title: self.venue.title
 			)
 		}
-		view.rootView.props = VenueDescriptionView.Props(venue: venue, onTouchComplaint: onTouchComplaint)
+		
+		let onTouchDetailInfo = Command { [weak self] in
+			guard let self = self else { return }
+			guard let venue = self.venue else { return }
+			self.router.presentDetailInfo(with: self.view, venue: venue)
+		}
+		
+		view.rootView.props = VenueDescriptionView.Props(
+			venue: venue,
+			onTouchComplaint: onTouchComplaint,
+			onTouchDetailInfo: onTouchDetailInfo
+		)
 	}
 	
 	func render(doskazVenue: DoskazVenue) {

@@ -10,6 +10,7 @@ import UIKit
 
 protocol VenueDescriptionRouterInput {
 	func presentComplaint(with vc: UIViewController, id: Int?, title: String?)
+	func presentDetailInfo(with vc: UIViewController, venue: DoskazVenue)
 }
 
 // MARK: Implementation
@@ -19,5 +20,11 @@ class VenueDescriptionRouter: VenueDescriptionRouterInput {
 		let complaintViewController = ComplaintBuilder().assembleModule()
 		complaintViewController.output.initWith(objectId: id, name: title)
 		vc.presentEmbedded(complaintViewController)
+	}
+	
+	func presentDetailInfo(with vc: UIViewController, venue: DoskazVenue) {
+		let detailVC = DetailViewContoller()
+		detailVC.venue = venue
+		vc.presentEmbedded(detailVC)
 	}
 }

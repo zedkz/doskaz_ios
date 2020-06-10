@@ -30,6 +30,7 @@ class VenueDescriptionView: UIView {
 	struct Props {
 		let venue: DoskazVenue
 		let onTouchComplaint: Command
+		let onTouchDetailInfo: Command
 	}
 	
 	//MARK: - Public properties and methods
@@ -42,6 +43,9 @@ class VenueDescriptionView: UIView {
 			venueStatus.text = props.venue.verificationStatusText
 			complain.didTouchUpInside = {
 				props.onTouchComplaint.perform()
+			}
+			detailInfo.didTouchUpInside = {
+				props.onTouchDetailInfo.perform()
 			}
 		}
 	}
