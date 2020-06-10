@@ -33,6 +33,7 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 	
 	private func configureTableview() {
 		tableView.register(cellClass: TextCell.self)
+		tableView.register(cellClass: TextFormCell.self)
 		dataSource = FormTableViewDataSource("")
 		tableView.dataSource = dataSource
 	}

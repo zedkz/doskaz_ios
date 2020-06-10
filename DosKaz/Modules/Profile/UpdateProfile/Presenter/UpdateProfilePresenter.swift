@@ -24,6 +24,7 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 	}
 	
 	private func configureFields () {
+		// Heading
 		let editProfile = l10n(.editProfile)
 		let atrs1 = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold) ]
 		let part1 = NSAttributedString(string: editProfile, attributes: atrs1)
@@ -37,8 +38,24 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 		let _headline = TextCell.Props(title: text, isBlue: false)
 		let headline = CellConfigurator<TextCell>(props: _headline)
 		
-		let configurators = [
-			headline
+		// Family name
+		
+		let _familyName = TextFormCell.Props(
+			canShowRedAlert: true,//shouldBeRed(value(person.lastName).isEmpty),
+			text: "value(person.lastName)",
+			title: l10n(.familyName),
+			mode: .onlyTextField,
+			onEditText: Text {
+//				self.complaintData.complainant.lastName = $0
+//				self.updateSectionOneDataSource()
+				print("Family name: ", $0)
+			}
+		)
+		let familyName = CellConfigurator<TextFormCell>(props: _familyName)
+		
+		let configurators: [CellConfiguratorType] = [
+			headline,
+			familyName
 		]
 		
 		view.updateTable(with: configurators)
