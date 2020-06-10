@@ -11,7 +11,7 @@ import SharedCodeFramework
 
 // MARK: View input protocol
 
-protocol UpdateProfileViewInput where Self: UIViewController {
+protocol UpdateProfileViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	func updateTable(with configurators: [CellConfiguratorType])
 	func reloadData()

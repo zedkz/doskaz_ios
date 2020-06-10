@@ -35,7 +35,8 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 		configureFields()
 		view.reloadData()
 		view.onSave = Command { [weak self] in
-			print("save")
+			guard let profile = self?.profile else { return }
+			self?.interactor.edit(profile)
 		}
 	}
 	
@@ -145,9 +146,17 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 // MARK: Interactor output protocol
 
 protocol UpdateProfileInteractorOutput: class {
-
+	func didSucceedUpdate()
+	func didFailUpdate(with error: Error)
 }
 
 extension UpdateProfilePresenter: UpdateProfileInteractorOutput {
+	func didSucceedUpdate() {
+		view.displayAlert(with: l10n(.succeedFormMessage))
+	}
+	
+	func didFailUpdate(with error: Error) {
+		view.displayAlert(with: l10n(.errorMessage))
+	}	
 
 }

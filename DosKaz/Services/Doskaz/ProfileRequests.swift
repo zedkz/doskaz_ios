@@ -323,18 +323,4 @@ struct PutProfile: Codable {
 	var status: String
 }
 
-
-let onSuccess = { (empty: Empty) in
-	debugPrint(empty)
-}
-
-let onFailure = { (error: Error) in
-	debugPrint(error)
-}
-
-let profile = PutProfile(
-	firstName: "Peter", lastName: "Johnson", middleName: "L.",
-	email: "nobis@nomail.com",
-	status: "When you stare into the abyss the abyss stares back at you."
-)
 	

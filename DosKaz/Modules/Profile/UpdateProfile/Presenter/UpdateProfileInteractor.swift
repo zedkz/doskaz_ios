@@ -7,7 +7,7 @@
 //
 
 protocol UpdateProfileInteractorInput {
-
+	func edit(_ profile: PutProfile)
 }
 
 // MARK: Implementation
@@ -15,6 +15,19 @@ protocol UpdateProfileInteractorInput {
 class UpdateProfileInteractor: UpdateProfileInteractorInput {
 
 	weak var output: UpdateProfileInteractorOutput!
+	
+	func edit(_ profile: PutProfile) {
+		let onSuccess = { [weak self] (empty: Empty) -> Void in
+			self?.output.didSucceedUpdate()
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailUpdate(with: error)
+		}
+		
+		APIUpdateProfile(onSuccess: onSuccess, onFailure: onFailure, profile: profile)
+			.dispatch()
+	}
 
 }
 		
