@@ -60,6 +60,7 @@ class ProfileView: UIView {
 		editButton.didTouchUpInside = { [weak self] in
 			self?.props?.onEdit.perform()
 		}
+		editButton.isEnabled = false
 		
 		func style(topLabel: UILabel, leftLabel: UILabel, bottomLabel: UILabel) {
 			topLabel.decorate(with: Style.systemFont(size: 14, weight: .bold))
@@ -203,7 +204,7 @@ class ProfileView: UIView {
 			let tp = Float(task.progress) / Float(task.pointsReward)
 			taskProgress.setProgress(tp, animated: true)
 			
-			
+			editButton.isEnabled = true
 
 		}
 	}
