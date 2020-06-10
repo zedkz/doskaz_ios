@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewContoller: TableViewController {
+class DetailViewContoller: TableViewController, UITableViewDelegate {
 	
 	var venue: DoskazVenue!
 	
@@ -28,6 +28,7 @@ class DetailViewContoller: TableViewController {
 	}
 	
 	private func configureTableview() {
+		tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: "HeaderCell")
 		tableView.register(cellClass: CommentCell.self)
 		
 		func items(for zone: [String: FormValue]) -> [CellConfiguratorType] {
@@ -47,11 +48,23 @@ class DetailViewContoller: TableViewController {
 		])
 		
 		tableView.dataSource = dataSource
+		tableView.delegate = self
 		tableView.reloadData()
 	}
 	
 	@objc func close() {
 		dismiss(animated: true, completion: nil)
+	}
+	
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let title = dataSource.titles[section].uppercased()
+		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderCell") as? HeaderCell
+		header?.props = HeaderCell.Props(title: title, fontSize: 13, section: section)
+		return header
+	}
+	
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 50
 	}
 	
 }
