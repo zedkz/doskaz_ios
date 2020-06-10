@@ -25,7 +25,7 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 			action: #selector(close)
 		)
 		tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: "HeaderCell")
-		tableView.register(cellClass: CommentCell.self)
+		tableView.register(cellClass: DetailViewCell.self)
 		tableView.register(cellClass: SubSectionHeaderCell.self)
 		
 		loadFormAtrs()
@@ -97,9 +97,9 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 				subGroup.attributes?.forEach { attribute in
 					let atrName = "attribute\(attribute.key)"
 										
-					let cellProps = CommentCell.Props(
+					let cellProps = DetailViewCell.Props(
 						title: attribute.finalTitle,
-						subTitle: values[atrName]?.description
+						subTitle: NSAttributedString(string: values[atrName]?.description ?? "")
 					)
 					
 					cellsProps.append(cellProps)
@@ -109,8 +109,8 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 		//end loop
 		
 		let configurators: [CellConfiguratorType] = cellsProps.map {
-			if let textCellProps = $0 as? CommentCell.Props {
-				return CellConfigurator<CommentCell>(props: textCellProps)
+			if let textCellProps = $0 as? DetailViewCell.Props {
+				return CellConfigurator<DetailViewCell>(props: textCellProps)
 			} else {
 				return CellConfigurator<SubSectionHeaderCell>(props: $0 as! Header)
 			}
