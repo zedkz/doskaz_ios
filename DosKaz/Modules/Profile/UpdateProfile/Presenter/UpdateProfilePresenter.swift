@@ -86,11 +86,25 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 		)
 		let middleName = CellConfigurator<TextFormCell>(props: _middleName)
 		
+		// Email
+		let _email = TextFormCell.Props(
+			canShowRedAlert: shouldBeRed(profile?.email),
+			text: nonNil(profile?.email),
+			title: l10n(.email),
+			mode: .onlyTextField,
+			onEditText: Text { [weak self] text in
+				self?.profile?.email = text
+				self?.configureFields()
+			}
+		)
+		let email = CellConfigurator<TextFormCell>(props: _email)
+		
 		let configurators: [CellConfiguratorType] = [
 			headline,
 			familyName,
 			name,
-			middleName
+			middleName,
+			email
 		]
 		
 		view.updateTable(with: configurators)
