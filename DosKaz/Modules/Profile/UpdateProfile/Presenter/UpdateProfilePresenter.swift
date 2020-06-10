@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 protocol UpdateProfileViewOutput {
 	func viewIsReady()
@@ -22,6 +23,9 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 		view.setupInitialState()
 		configureFields()
 		view.reloadData()
+		view.onSave = Command { [weak self] in
+			print("save")
+		}
 	}
 	
 	var profile: PutProfile?

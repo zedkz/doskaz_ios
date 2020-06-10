@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
@@ -14,11 +15,14 @@ protocol UpdateProfileViewInput where Self: UIViewController {
 	func setupInitialState()
 	func updateTable(with configurators: [CellConfiguratorType])
 	func reloadData()
+	var onSave: Command { get set }
 }
 
 class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 
 	var output: UpdateProfileViewOutput!
+	
+	var onSave: Command = .nop
 	
 	private var dataSource: FormTableViewDataSource!
 
@@ -30,6 +34,7 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 			action: #selector(close)
 		)
 		configureTableview()
+		configureSaveButton()
 	}
 	
 	private func configureTableview() {
@@ -49,6 +54,28 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 	
 	@objc func close() {
 		dismiss(animated: true, completion: nil)
+	}
+	
+	private func configureSaveButton() {
+		let saveButton = Button(type: .system)
+		saveButton.decorate(with:
+			Style.systemFont(size: 14),
+			Style.titleColor(color: .white),
+			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
+		)
+		
+		saveButton.setTitle(l10n(.save), for: .normal)
+		saveButton.didTouchUpInside = { [weak self] in
+			self?.onSave.perform()
+		}
+		
+		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
+		view.addSubview(saveButton)
+		saveButton.addConstraintsProgrammatically
+			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
+			.set(my: .height, to: 56)
 	}
 
 }
