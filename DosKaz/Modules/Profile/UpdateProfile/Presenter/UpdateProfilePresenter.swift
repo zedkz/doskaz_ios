@@ -7,41 +7,40 @@
 //
 
 import UIKit
-		
-class UpdateProfilePresenter {
-	
-	weak var view: UpdateProfileViewInput!
-	var interactor: UpdateProfileInteractorInput!
-	var router: UpdateProfileRouterInput!
-
-}
-
-// MARK: ViewController output protocol
 
 protocol UpdateProfileViewOutput {
 	func viewIsReady()
 }
-
-extension UpdateProfilePresenter: UpdateProfileViewOutput {
+		
+class UpdateProfilePresenter: UpdateProfileViewOutput {
+	
+	weak var view: UpdateProfileViewInput!
+	var interactor: UpdateProfileInteractorInput!
+	var router: UpdateProfileRouterInput!
+	
 	func viewIsReady() {
 		view.setupInitialState()
+		configureFields()
+	}
+	
+	private func configureFields () {
 		let editProfile = l10n(.editProfile)
 		let atrs1 = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .semibold) ]
 		let part1 = NSAttributedString(string: editProfile, attributes: atrs1)
 		
 		let fillProfile = "\n" + l10n(.fillProfile) + "\n"
 		let part2 = NSAttributedString(string: fillProfile)
-
+		
 		let text = NSMutableAttributedString()
 		text.append(part1)
 		text.append(part2)
 		let _headline = TextCell.Props(title: text, isBlue: false)
 		let headline = CellConfigurator<TextCell>(props: _headline)
-
+		
 		let configurators = [
 			headline
 		]
-
+		
 		view.updateTable(with: configurators)
 		
 	}
