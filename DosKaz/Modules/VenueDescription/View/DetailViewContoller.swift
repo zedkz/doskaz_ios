@@ -61,7 +61,7 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 			}
 		}
 		
-		dataSource = Section¸edTableViewDataSource(dataSources: [
+		dataSource = SectionedTableViewDataSource(dataSources: [
 			FormTableViewDataSource(l10n(.parking), items(formType.parking, l10n(.parking), zones.parking)),
 			FormTableViewDataSource(l10n(.entrance), items(formType.entrance, l10n(.entrance), zones.entrance1)),
 			FormTableViewDataSource(l10n(.movement), items(formType.movement, l10n(.movement), zones.movement)),
