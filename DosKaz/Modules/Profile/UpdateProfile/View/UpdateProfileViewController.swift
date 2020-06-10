@@ -13,6 +13,7 @@ import UIKit
 protocol UpdateProfileViewInput where Self: UIViewController {
 	func setupInitialState()
 	func updateTable(with configurators: [CellConfiguratorType])
+	func reloadData()
 }
 
 class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
@@ -40,6 +41,9 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 	
 	func updateTable(with configurators: [CellConfiguratorType]) {
 		dataSource.configurators = configurators
+	}
+	
+	func reloadData() {
 		tableView.reloadData()
 	}
 	

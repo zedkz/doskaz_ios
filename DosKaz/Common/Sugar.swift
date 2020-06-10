@@ -177,3 +177,6 @@ extension Array {
 		}
 	}
 }
+func nonNil(_ value: String?) -> String {
+	return value ?? ""
+}

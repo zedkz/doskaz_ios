@@ -21,6 +21,15 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		configureFields()
+		view.reloadData()
+	}
+	
+	var profile: PutProfile?
+	
+	var isValidating = false
+	
+	private func shouldBeRed(_ value: String?) -> Bool {
+		(value ?? "").isEmpty && self.isValidating
 	}
 	
 	private func configureFields () {
@@ -41,14 +50,13 @@ class UpdateProfilePresenter: UpdateProfileViewOutput {
 		// Family name
 		
 		let _familyName = TextFormCell.Props(
-			canShowRedAlert: true,//shouldBeRed(value(person.lastName).isEmpty),
-			text: "value(person.lastName)",
+			canShowRedAlert: shouldBeRed(profile?.lastName),
+			text: nonNil(profile?.lastName),
 			title: l10n(.familyName),
 			mode: .onlyTextField,
-			onEditText: Text {
-//				self.complaintData.complainant.lastName = $0
-//				self.updateSectionOneDataSource()
-				print("Family name: ", $0)
+			onEditText: Text { [weak self] text in
+				self?.profile?.lastName = text
+				self?.configureFields()
 			}
 		)
 		let familyName = CellConfigurator<TextFormCell>(props: _familyName)

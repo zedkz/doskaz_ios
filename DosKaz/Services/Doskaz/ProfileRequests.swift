@@ -319,8 +319,8 @@ struct APIUpdateProfile: DoskazRequest {
 
 // MARK: - PutProfile
 struct PutProfile: Codable {
-	let firstName, lastName, middleName, email: String
-	let status: String
+	var firstName, lastName, middleName, email: String
+	var status: String
 }
 
 
