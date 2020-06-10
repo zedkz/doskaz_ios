@@ -35,5 +35,10 @@ class ProfileViewController: ProfileDrawerViewController {
 		super.viewDidLoad()
 		output.viewIsReady()
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		output.viewWillAppear()
+	}
 
 }

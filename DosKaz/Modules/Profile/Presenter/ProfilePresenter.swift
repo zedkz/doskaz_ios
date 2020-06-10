@@ -20,11 +20,16 @@ class ProfilePresenter {
 
 protocol ProfileViewOutput {
 	func viewIsReady()
+	func viewWillAppear()
 }
 
 extension ProfilePresenter: ProfileViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
+		interactor.loadProfile()
+	}
+	
+	func viewWillAppear() {
 		interactor.loadProfile()
 	}
 
