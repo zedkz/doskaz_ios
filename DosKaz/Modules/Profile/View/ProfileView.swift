@@ -180,8 +180,14 @@ class ProfileView: UIView {
 	var props: Props! {
 		didSet {
 			let profile = props.profile
-			title.text = "\(profile.firstName ?? "–") \(profile.middleName ?? "–") \(profile.lastName ?? "–")"
-			statusTitle.text = profile.status ?? "–"
+			
+			let names = [profile.firstName, profile.middleName, profile.lastName].compactMap { $0 }
+			let fullName = names.reduce("") { $1.isEmpty ? $0 : ($0 + $1 + " ") }
+			title.text = fullName.isEmpty ? l10n(.yourName) : fullName
+			
+			let status = nonNil(profile.status)
+			statusTitle.text = status.isEmpty ? l10n(.yourStatus) : status
+
 			let level = profile.level
 			levelLabel.text = String(level.current) + " \(l10n(.level))"
 			levelProgressLabel.text = "\(level.currentPoints)/\(level.nextLevelThreshold)"
