@@ -81,6 +81,28 @@ enum FormValue: String, CustomStringConvertible, CaseIterable, Codable{
 			return "Не предусмотрено"
 		}
 	}
+	
+	var visual: NSAttributedString {
+		switch self {
+		case .yes:
+			return text(" Да", imageName: "green_check")
+		case .no:
+			return text(" Нет", imageName: "red_check")
+		case .unknown:
+			return text(" Неизвестно", imageName: "question_check")
+		case .not_provided:
+			return text(" Не предусмотрено", imageName: "nan_check")
+		}
+	}
+	
+	func text(_ string: String, imageName: String) -> NSMutableAttributedString {
+		let image1Attachment = NSTextAttachment()
+		image1Attachment.image = UIImage(named: imageName)
+		let fullString = NSMutableAttributedString(attachment: image1Attachment)
+		let text = NSAttributedString(string: string)
+		fullString.append(text)
+		return fullString
+	}
 }
 
 // MARK: - Parking

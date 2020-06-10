@@ -99,7 +99,7 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 										
 					let cellProps = DetailViewCell.Props(
 						title: attribute.finalTitle,
-						subTitle: NSAttributedString(string: values[atrName]?.description ?? "")
+						subTitle: values[atrName]?.visual
 					)
 					
 					cellsProps.append(cellProps)

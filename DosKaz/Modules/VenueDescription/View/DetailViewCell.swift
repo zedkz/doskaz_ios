@@ -26,7 +26,7 @@ class DetailViewCell: UITableViewCell, Updatable {
 		contentView.addSubview(subTitleL)
 
 		titleL.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top, plus: 8)
+			.pinEdgeToSupers(.top, plus: 12)
 			.pinEdgeToSupers(.leading, plus: 24)
 			.pinEdgeToSupers(.trailing, plus: -16)
 		
@@ -34,7 +34,7 @@ class DetailViewCell: UITableViewCell, Updatable {
 			.pin(my: .top, to: .bottom, of: titleL, plus: 16)
 			.pinEdgeToSupers(.leading, plus: 24)
 			.pinEdgeToSupers(.trailing, plus: -16)
-			.pinEdgeToSupers(.bottom, plus: -8)
+			.pinEdgeToSupers(.bottom, plus: -12)
 	}
 	
 	required init?(coder: NSCoder) {
