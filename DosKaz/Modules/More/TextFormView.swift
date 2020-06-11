@@ -70,7 +70,7 @@ class TextFormView: UIView {
 	
 	//MARK: - Public properties and methods
 	let titleLabel = UILabel()
-	let textField = UITextView()
+	let textField = UITextViewPadding()
 	let validationLabel = UILabel()
 	
 	var props: Props! {
@@ -120,3 +120,14 @@ extension TextFormView.Props: Validatable {
 	
 }
 
+
+class UITextViewPadding : UITextView {
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+	
+	override init(frame: CGRect, textContainer: NSTextContainer?) {
+		super.init(frame: frame, textContainer: textContainer)
+		textContainerInset = UIEdgeInsets(top: 12, left: 4, bottom: 0, right: 4)
+	}
+}
