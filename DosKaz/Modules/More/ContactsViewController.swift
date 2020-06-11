@@ -28,6 +28,9 @@ class ContactsViewController: UIViewController {
 	}()
 	let label1 = UILabel()
 	let mail = ContactInfoView()
+	let phone = ContactInfoView()
+	let facebook = ContactInfoView()
+	let instagram = ContactInfoView()
 	
 	let scrollView = UIScrollView()
 	
@@ -54,6 +57,9 @@ class ContactsViewController: UIViewController {
 		contentView.addArrangedSubview(label1)
 		contentView.setCustomSpacing(56, after: label1)
 		contentView.addArrangedSubview(mail)
+		contentView.addArrangedSubview(phone)
+		contentView.addArrangedSubview(facebook)
+		contentView.addArrangedSubview(instagram)
 		
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
@@ -70,6 +76,9 @@ class ContactsViewController: UIViewController {
 		topImageView.image = UIImage(named: "green_map_background")
 		label1.text = l10n(.contactsInfo)
 		mail.props = ContactInfoView.Props(imageName: "mail", text: "info@doskaz.kz")
+		phone.props = ContactInfoView.Props(imageName: "phone_call", text: "8 (701) 346-21-77")
+		facebook.props = ContactInfoView.Props(imageName: "facebook", text: "facebook.com/doskazkz")
+		instagram.props = ContactInfoView.Props(imageName: "instagram", text: "instagram.com/doskaz.kz")
 	}
 	
 	private func configureStyle() {
