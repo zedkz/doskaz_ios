@@ -13,6 +13,7 @@ class ContactsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = UIColor.white
+		navigationItem.title = l10n(.contacts)
 		configureLayout()
 		configureData()
 		configureStyle()
@@ -50,6 +51,7 @@ class ContactsViewController: UIViewController {
 		
 		contentView.addSubview(topImageView)
 		contentView.addSubview(roundedView)
+		contentView.addArrangedSubview(label1)
 		
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
@@ -58,11 +60,8 @@ class ContactsViewController: UIViewController {
 		roundedView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom)
-			.pinEdgeToSupers(.top, plus: 176)
-			.set(my: .height, to: 90)
-		
-		contentView.addArrangedSubview(label1)
+			.pin(my: .top, to: .bottom, of: label1, plus: 32)
+			.set(my: .height, to: 24)
 	}
 	
 	private func configureData() {
