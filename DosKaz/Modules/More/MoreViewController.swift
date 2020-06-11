@@ -27,8 +27,8 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 			Command { [weak self] in
 				self?.present(AboutProjectViewController())
 			},
-			Command {
-				
+			Command { [weak self] in
+				self?.present(ContactsViewController())
 			},
 			Command { [weak self] in
 				self?.present(CategoryPickerModuleConfigurator().assembleModule())
