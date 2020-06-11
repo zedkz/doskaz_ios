@@ -26,8 +26,8 @@ class ContactsViewController: UIViewController {
 		view.decorate(with: Style.topCornersRounded)
 		return view
 	}()
-	
 	let label1 = UILabel()
+	let mail = ContactInfoView()
 	
 	let scrollView = UIScrollView()
 	
@@ -52,6 +52,8 @@ class ContactsViewController: UIViewController {
 		contentView.addSubview(topImageView)
 		contentView.addSubview(roundedView)
 		contentView.addArrangedSubview(label1)
+		contentView.setCustomSpacing(56, after: label1)
+		contentView.addArrangedSubview(mail)
 		
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
@@ -61,12 +63,13 @@ class ContactsViewController: UIViewController {
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
 			.pin(my: .top, to: .bottom, of: label1, plus: 32)
-			.set(my: .height, to: 24)
+			.pinEdgeToSupers(.bottom)
 	}
 	
 	private func configureData() {
 		topImageView.image = UIImage(named: "green_map_background")
 		label1.text = l10n(.contactsInfo)
+		mail.props = ContactInfoView.Props(imageName: "mail", text: "info@doskaz.kz")
 	}
 	
 	private func configureStyle() {

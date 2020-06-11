@@ -140,6 +140,7 @@
 		44ABE69A248E3DC100E34F95 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABE68A248E3DC000E34F95 /* IQUIView+Hierarchy.swift */; };
 		44ABE69B248E3DC100E34F95 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ABE68B248E3DC000E34F95 /* IQNSArray+Sort.swift */; };
 		44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */; };
+		44ADD39024922364006908A8 /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ADD38F24922364006908A8 /* ContactInfoView.swift */; };
 		44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC42433CE2700E7B29C /* MoyaRequest.swift */; };
 		44B26BC72433EADD00E7B29C /* URLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B26BC62433EADD00E7B29C /* URLService.swift */; };
 		44B8A4AA24750091002BFE6A /* ProfileCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */; };
@@ -352,6 +353,7 @@
 		44ABE68A248E3DC000E34F95 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		44ABE68B248E3DC000E34F95 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
 		44AD6FC124632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryPickerViewController.swift; sourceTree = "<group>"; };
+		44ADD38F24922364006908A8 /* ContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoView.swift; sourceTree = "<group>"; };
 		44B26BC42433CE2700E7B29C /* MoyaRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaRequest.swift; sourceTree = "<group>"; };
 		44B26BC62433EADD00E7B29C /* URLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLService.swift; sourceTree = "<group>"; };
 		44B8A4A924750091002BFE6A /* ProfileCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommentsViewController.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				444F35E0246EFF2B001C7A27 /* LanguageViewController.swift */,
 				44AA987D24828BF800BB7D3A /* AboutProjectViewController.swift */,
 				4401001C248BAE4200CBACE2 /* ContactsViewController.swift */,
+				44ADD38F24922364006908A8 /* ContactInfoView.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1429,6 +1432,7 @@
 				448EBACF24696985006C9961 /* FormControllers.swift in Sources */,
 				4446C24124727EC3006B49EE /* api_profile.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
+				44ADD39024922364006908A8 /* ContactInfoView.swift in Sources */,
 				448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
 				44E731262477D4B10022375C /* api_ complaints_type2Attributes.swift in Sources */,
