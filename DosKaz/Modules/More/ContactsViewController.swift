@@ -26,6 +26,7 @@ class ContactsViewController: UIViewController {
 		return view
 	}()
 	
+	let label1 = UILabel()
 	
 	let scrollView = UIScrollView()
 	
@@ -60,15 +61,21 @@ class ContactsViewController: UIViewController {
 			.pinEdgeToSupers(.bottom)
 			.pinEdgeToSupers(.top, plus: 176)
 			.set(my: .height, to: 90)
-			
+		
+		contentView.addArrangedSubview(label1)
 	}
 	
 	private func configureData() {
 		topImageView.image = UIImage(named: "green_map_background")
+		label1.text = l10n(.contactsInfo)
 	}
 	
 	private func configureStyle() {
 		topImageView.contentMode = .scaleToFill
+		label1.decorate(with: Style.systemFont(size: 14), { label in
+			label.numberOfLines = 0
+			label.textColor = .white
+		})
 	}
 	
 }
