@@ -14,7 +14,18 @@ class ContactsViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = UIColor.white
 		configureLayout()
+		configureData()
+		configureStyle()
 	}
+
+	let topImageView = UIImageView()
+	let roundedView: UIView = {
+		let view = UIView()
+		view.backgroundColor = .green
+		view.decorate(with: Style.topCornersRounded)
+		return view
+	}()
+	
 	
 	let scrollView = UIScrollView()
 	
@@ -35,7 +46,29 @@ class ContactsViewController: UIViewController {
 		contentView.addConstraintsProgrammatically
 			.pinToSuper()
 			.set(my: .width, .equal, to: .width, of: scrollView)
+		
+		contentView.addSubview(topImageView)
+		contentView.addSubview(roundedView)
+		
+		topImageView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.top)
+		roundedView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupers(.bottom)
+			.pinEdgeToSupers(.top, plus: 176)
+			.set(my: .height, to: 90)
+			
 	}
 	
+	private func configureData() {
+		topImageView.image = UIImage(named: "green_map_background")
+	}
+	
+	private func configureStyle() {
+		topImageView.contentMode = .scaleToFill
+	}
 	
 }
