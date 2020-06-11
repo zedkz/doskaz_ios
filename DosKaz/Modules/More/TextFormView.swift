@@ -21,20 +21,14 @@ class TextFormView: UIView {
 		super.init(frame: frame)
 		
 		//MARK: - Configure text field left padding
-		
-		let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
-		textField.leftView = spaceView
-		textField.leftViewMode = .always
-		
+				
 		//MARK: - Configure constant data
-		textField.placeholder = "-"
 		titleLabel.text = "-"
 		titleLabel.numberOfLines = 0
 		validationLabel.text = l10n(.fillTheField)
 		validationLabel.numberOfLines = 0
 		
 		//MARK: - Configure style
-		textField.borderStyle = .none
 		textField.layer.borderColor = UIColor(named: "TextFieldBorderColor")?.cgColor
 		textField.layer.borderWidth = 1
 		textField.layer.cornerRadius = 3
@@ -47,12 +41,10 @@ class TextFormView: UIView {
 		
 		//MARK: - Configure behavior
 		textField.delegate = self
-		textField.addTarget(self, action: #selector(handleTextfield), for: .editingChanged)
 		
 		//MARK: - Layout
 		addSubview(titleLabel)
 		addSubview(textField)
-		addSubview(validationLabel)
 		
 		titleLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top, plus: 12)
@@ -64,17 +56,12 @@ class TextFormView: UIView {
 			.pin(my: .leading, andOf: titleLabel)
 			.set(my: .height, to: 40)
 			.pin(my: .trailing, andOf: titleLabel)
-
-		validationLabel.addConstraintsProgrammatically
-			.pin(my: .top, to: .bottom, of: textField, plus: 2)
-			.pin(my: .leading, andOf: titleLabel)
-			.pin(my: .trailing, andOf: titleLabel)
 			.pinEdgeToSupers(.bottom, plus: -8)
 	}
 	
 	//MARK: - Public properties and methods
 	let titleLabel = UILabel()
-	let textField = UITextField()
+	let textField = UITextView()
 	let validationLabel = UILabel()
 	
 	var props: Props! {
@@ -111,17 +98,13 @@ class TextFormView: UIView {
 	
 }
 
-extension TextFormView: UITextFieldDelegate {
-	func textFieldDidBeginEditing(_ textField: UITextField) {
-		let result = props.formatter(textField.text ?? "")
+extension TextFormView: UITextViewDelegate {
+	func textViewDidChange(_ textView: UITextView) {
+		let result = props.formatter(textView.text)
 		textField.text = result
 		props.onEditText.perform(with: result)
 	}
-		
-	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		textField.resignFirstResponder()
-		return true
-	}
+
 }
 
 extension TextFormView.Props: Validatable {

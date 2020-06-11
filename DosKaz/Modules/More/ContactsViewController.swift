@@ -33,6 +33,7 @@ class ContactsViewController: UIViewController {
 	let instagram = ContactInfoView()
 	let writeUsLabel = UILabel()
 	let nameForm = TextFormView()
+	let email = TextFormView()
 	
 	let scrollView = UIScrollView()
 	
@@ -66,6 +67,7 @@ class ContactsViewController: UIViewController {
 		contentView.addArrangedSubview(writeUsLabel)
 		
 		contentView.addArrangedSubview(nameForm)
+		contentView.addArrangedSubview(email)
 		
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
@@ -86,6 +88,7 @@ class ContactsViewController: UIViewController {
 		facebook.props = ContactInfoView.Props(imageName: "facebook", text: "facebook.com/doskazkz")
 		instagram.props = ContactInfoView.Props(imageName: "instagram", text: "instagram.com/doskaz.kz")
 		writeUsLabel.text = l10n(.writeToUs)
+		
 		let _name = TextFormView.Props(
 			text: "",
 			title: l10n(.yourName),
@@ -94,6 +97,15 @@ class ContactsViewController: UIViewController {
 			}
 		)
 		nameForm.props = _name
+		
+		let _email = TextFormView.Props(
+			text: "",
+			title: l10n(.email),
+			onEditText: Text { [weak self] name in
+				self?.feedback.email = name
+			}
+		)
+		email.props = _email
 	}
 	
 	private func configureStyle() {
