@@ -38,6 +38,8 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 	}
 	
 	private func configureTableview() {
+		tableView.tableFooterView = UIView()
+		tableView.separatorStyle = .none
 		tableView.register(cellClass: TextCell.self)
 		tableView.register(cellClass: TextFormCell.self)
 		dataSource = FormTableViewDataSource("")
