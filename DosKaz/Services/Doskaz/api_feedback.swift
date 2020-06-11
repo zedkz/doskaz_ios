@@ -36,9 +36,9 @@ struct APIPostFeedback: DoskazRequest {
 }
 
 struct Feedback: Codable {
-	let name: String
-	let email: String
-	let text: String
+	var name: String
+	var email: String
+	var text: String
 }
 
 // MARK: - DKError

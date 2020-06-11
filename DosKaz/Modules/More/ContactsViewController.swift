@@ -89,8 +89,8 @@ class ContactsViewController: UIViewController {
 		let _name = TextFormView.Props(
 			text: "",
 			title: l10n(.yourName),
-			onEditText: Text { [weak self] text in
-				print(text)
+			onEditText: Text { [weak self] name in
+				self?.feedback.name = name
 			}
 		)
 		nameForm.props = _name
@@ -105,4 +105,7 @@ class ContactsViewController: UIViewController {
 		writeUsLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold))
 	}
 	
+	//MARK: - Form
+	
+	var feedback = Feedback(name: "", email: "", text: "")
 }
