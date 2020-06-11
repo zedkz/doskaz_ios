@@ -32,6 +32,7 @@ class ContactsViewController: UIViewController {
 	let facebook = ContactInfoView()
 	let instagram = ContactInfoView()
 	let writeUsLabel = UILabel()
+	let nameForm = TextFormView()
 	
 	let scrollView = UIScrollView()
 	
@@ -64,6 +65,8 @@ class ContactsViewController: UIViewController {
 		contentView.setCustomSpacing(30, after: instagram)
 		contentView.addArrangedSubview(writeUsLabel)
 		
+		contentView.addArrangedSubview(nameForm)
+		
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
@@ -83,6 +86,14 @@ class ContactsViewController: UIViewController {
 		facebook.props = ContactInfoView.Props(imageName: "facebook", text: "facebook.com/doskazkz")
 		instagram.props = ContactInfoView.Props(imageName: "instagram", text: "instagram.com/doskaz.kz")
 		writeUsLabel.text = l10n(.writeToUs)
+		let _name = TextFormView.Props(
+			text: "",
+			title: l10n(.yourName),
+			onEditText: Text { [weak self] text in
+				print(text)
+			}
+		)
+		nameForm.props = _name
 	}
 	
 	private func configureStyle() {
