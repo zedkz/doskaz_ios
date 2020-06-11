@@ -20,6 +20,8 @@ class ContactInfoView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		backgroundColor = .white
+		imageView.contentMode = .center
+		textLabel.setBottomBorder()
 		textLabel.decorate(with: Style.systemFont(size: 14, weight: .semibold))
 		layout()
 	}
@@ -30,13 +32,14 @@ class ContactInfoView: UIView {
 		
 		imageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 8)
-			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.top, plus: 20)
+			.pinEdgeToSupers(.bottom, plus: -20)
 		
 		textLabel.addConstraintsProgrammatically
 			.pin(my: .leading, to: .trailing, of: imageView, plus: 24)
-			.pinEdgeToSupers(.top, plus: 16)
+			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.trailing)
-			.pinEdgeToSupers(.bottom, plus: -16)
+			.pinEdgeToSupers(.bottom)
 		
 		imageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 	}
@@ -53,4 +56,16 @@ class ContactInfoView: UIView {
 		let text: String
 	}
 	
+}
+
+fileprivate extension UIView {
+	func setBottomBorder() {
+		layer.backgroundColor = UIColor.white.cgColor
+		layer.masksToBounds = false
+		
+		layer.shadowColor = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 0.2).cgColor
+		layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+		layer.shadowOpacity = 1.0
+		layer.shadowRadius = 0.0
+	}
 }
