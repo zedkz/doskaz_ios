@@ -19,7 +19,16 @@ class TextFormView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		
+		set(height: 40)
+	}
+	
+	init(height: CGFloat) {
+		super.init(frame: .zero)
+		set(height: height)
+	}
+	
+	func set(height: CGFloat) {
+
 		//MARK: - Configure text field left padding
 				
 		//MARK: - Configure constant data
@@ -54,7 +63,7 @@ class TextFormView: UIView {
 		textField.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: titleLabel, plus: 8)
 			.pin(my: .leading, andOf: titleLabel)
-			.set(my: .height, to: 40)
+			.set(my: .height, to: height)
 			.pin(my: .trailing, andOf: titleLabel)
 			.pinEdgeToSupers(.bottom, plus: -8)
 	}

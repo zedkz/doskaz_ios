@@ -34,6 +34,7 @@ class ContactsViewController: UIViewController {
 	let writeUsLabel = UILabel()
 	let nameForm = TextFormView()
 	let email = TextFormView()
+	let message = TextFormView(height: 80)
 	
 	let scrollView = UIScrollView()
 	
@@ -68,6 +69,7 @@ class ContactsViewController: UIViewController {
 		
 		contentView.addArrangedSubview(nameForm)
 		contentView.addArrangedSubview(email)
+		contentView.addArrangedSubview(message)
 		
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
@@ -106,6 +108,15 @@ class ContactsViewController: UIViewController {
 			}
 		)
 		email.props = _email
+		
+		let _message = TextFormView.Props(
+			text: "",
+			title: l10n(.textOftheMessage),
+			onEditText: Text { [weak self] name in
+				self?.feedback.text = name
+			}
+		)
+		message.props = _message
 	}
 	
 	private func configureStyle() {
