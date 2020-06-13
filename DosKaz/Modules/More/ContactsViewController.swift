@@ -38,6 +38,8 @@ class ContactsViewController: UIViewController {
 	let message = TextFormView(height: 80)
 	let sendButton = Button(type: .system)
 	let regionalReps = UILabel()
+	let tableView = ContentSizedTableView()
+	var dataSource: UTableViewDataSource<CommentCell>!
 	
 	let scrollView = UIScrollView()
 	
@@ -77,6 +79,7 @@ class ContactsViewController: UIViewController {
 		
 		contentView.setCustomSpacing(30, after: sendButton)
 		contentView.addArrangedSubview(regionalReps)
+		contentView.addArrangedSubview(tableView)
 		
 		sendButton.addConstraintsProgrammatically
 			.set(my: .height, to: 56)
@@ -133,6 +136,24 @@ class ContactsViewController: UIViewController {
 		}
 		
 		regionalReps.text = l10n(.regionalReps)
+		
+		dataSource = UTableViewDataSource(tableView)
+		tableView.dataSource = dataSource
+		loadRegionalReps()
+	}
+	
+	private func loadRegionalReps() {
+		APIRegionalReps(
+			onSuccess: { [weak self] (reps) in
+				self?.dataSource.cellsProps = reps.map { rep in
+					CommentCell.Props(title: rep.name, subTitle: rep.phone)
+				}
+				self?.tableView.reloadData()
+			},
+			onFailure: { error in
+				print(error)
+		})
+			.dispatch()
 	}
 	
 	private func configureStyle() {
