@@ -37,6 +37,7 @@ class ContactsViewController: UIViewController {
 	let email = TextFormView()
 	let message = TextFormView(height: 80)
 	let sendButton = Button(type: .system)
+	let regionalReps = UILabel()
 	
 	let scrollView = UIScrollView()
 	
@@ -73,6 +74,9 @@ class ContactsViewController: UIViewController {
 		contentView.addArrangedSubview(email)
 		contentView.addArrangedSubview(message)
 		contentView.addArrangedSubview(sendButton)
+		
+		contentView.setCustomSpacing(30, after: sendButton)
+		contentView.addArrangedSubview(regionalReps)
 		
 		sendButton.addConstraintsProgrammatically
 			.set(my: .height, to: 56)
@@ -127,6 +131,8 @@ class ContactsViewController: UIViewController {
 		sendButton.didTouchUpInside = { [weak self] in
 			
 		}
+		
+		regionalReps.text = l10n(.regionalReps)
 	}
 	
 	private func configureStyle() {
@@ -141,6 +147,7 @@ class ContactsViewController: UIViewController {
 			Style.titleColor(color: .white),
 			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
 		)
+		regionalReps.decorate(with: Style.systemFont(size: 20, weight: .semibold))
 	}
 	
 	//MARK: - Form

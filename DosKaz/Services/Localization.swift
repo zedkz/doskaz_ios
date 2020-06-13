@@ -186,6 +186,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case contacts = "Контакты"
 	case writeToUs = "Напишите нам"
 	case send = "Отправить"
+	case regionalReps = "Региональные представители"
 	
 	var l10n: String {
 		return self.rawValue.localized
