@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 class ContactsViewController: UIViewController {
 	
@@ -35,6 +36,7 @@ class ContactsViewController: UIViewController {
 	let nameForm = TextFormView()
 	let email = TextFormView()
 	let message = TextFormView(height: 80)
+	let sendButton = Button(type: .system)
 	
 	let scrollView = UIScrollView()
 	
@@ -70,7 +72,10 @@ class ContactsViewController: UIViewController {
 		contentView.addArrangedSubview(nameForm)
 		contentView.addArrangedSubview(email)
 		contentView.addArrangedSubview(message)
+		contentView.addArrangedSubview(sendButton)
 		
+		sendButton.addConstraintsProgrammatically
+			.set(my: .height, to: 56)
 		topImageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
@@ -117,6 +122,11 @@ class ContactsViewController: UIViewController {
 			}
 		)
 		message.props = _message
+		
+		sendButton.setTitle(l10n(.send), for: .normal)
+		sendButton.didTouchUpInside = { [weak self] in
+			
+		}
 	}
 	
 	private func configureStyle() {
@@ -126,6 +136,11 @@ class ContactsViewController: UIViewController {
 			label.textColor = .white
 		})
 		writeUsLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold))
+		sendButton.decorate(with:
+			Style.systemFont(size: 14),
+			Style.titleColor(color: .white),
+			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
+		)
 	}
 	
 	//MARK: - Form
