@@ -54,10 +54,18 @@ struct Item: Codable {
 	let categorySlug: String
 	let categoryId: Int
 	let categoryTitle: String?
-	let publishedAt: String?
+	let publishedAt: Date?
 	let previewImage: String?
 	let image: String
 	let meta: Meta?
+	
+	var datePublished: String {
+		publishedAt?.dayMonthYear ?? ""
+	}
+	
+	var categoryName: String {
+		categoryTitle ?? ""
+	}
 	
 	var imagURL: URL? {
 		return URL(string: Constants.mainURL + image)

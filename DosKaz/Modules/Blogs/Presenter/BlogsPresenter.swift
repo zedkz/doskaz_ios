@@ -53,7 +53,7 @@ extension BlogsPresenter: BlogsInteractorOutput {
 				title: $0.title,
 				imageURL: $0.image,
 				content: $0.annotation ?? "",
-				lastLine: ($0.publishedAt ?? "") + "  " + ($0.categoryTitle ?? "")
+				lastLine: $0.datePublished + "  " + $0.categoryName
 			)
 		}
 		view.updateTable(with: cellsProps)

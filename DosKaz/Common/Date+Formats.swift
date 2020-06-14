@@ -16,6 +16,13 @@ extension Date {
 		return formatter.string(from: self)
 	}
 	
+	var dayMonthYear: String {
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "ru_RU")
+		formatter.setLocalizedDateFormatFromTemplate("d MMM yyyy")
+		return formatter.string(from: self)
+	}
+	
 	var dayMonthTime: String {
 		let formatter = DateFormatter()
 		formatter.locale = Locale(identifier: "ru_RU")

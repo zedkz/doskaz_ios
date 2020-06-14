@@ -26,6 +26,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	
 	let scrollView = UIScrollView()
 	let titleLabel = UILabel()
+	let subTitleLabel = UILabel()
 	
 	var contentView: UIStackView = {
 		let stack = UIStackView()
@@ -56,6 +57,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 			webView.loadHTMLString(content, baseURL: nil)
 		}
 		titleLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold), { label in
+			label.adjustsFontSizeToFitWidth = true
 			label.textColor = .white
 			label.textAlignment = .center
 			label.numberOfLines = 0
@@ -65,6 +67,14 @@ class BlogViewController: UIViewController, BlogViewInput {
 			label.layer.shadowOpacity = 1.0
 		})
 		titleLabel.text = blog.post.title
+		
+		subTitleLabel.decorate(with: Style.systemFont(size: 10), { label in
+			label.adjustsFontSizeToFitWidth = true
+			label.textColor = .white
+			label.textAlignment = .center
+			label.numberOfLines = 0
+		})
+		subTitleLabel.text = blog.post.datePublished + "  " + blog.post.categoryName
 	}
 	
 	func setupInitialState() {
@@ -86,10 +96,15 @@ class BlogViewController: UIViewController, BlogViewInput {
 		contentView.addArrangedSubview(webView)
 		
 		imageView.addSubview(titleLabel)
+		imageView.addSubview(subTitleLabel)
 		titleLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.leading, plus: 8)
 			.pinEdgeToSupers(.trailing, plus: -8)
 			.pinEdgeToSupers(.verticalCenter, plus: 20)
+		subTitleLabel.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: titleLabel, plus: 12)
+			.pinEdgeToSupers(.leading, plus: 8)
+			.pinEdgeToSupers(.trailing, plus: -8)
 
 		imageView.addConstraintsProgrammatically
 			.set(my: .height, .equal, to: .width, of: imageView, times: 210/375)
