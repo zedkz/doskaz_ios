@@ -14,23 +14,22 @@ protocol BlogViewInput where Self: UIViewController {
 	func setupInitialState()
 }
 
-extension BlogViewController: BlogViewInput {
-
-	func setupInitialState() {
-	
-	}
-
-}
-
-class BlogViewController: UIViewController {
+class BlogViewController: UIViewController, BlogViewInput {
 
 	var output: BlogViewOutput!
+	
+	func setupInitialState() {
+		
+	}
+}
 
+extension BlogViewController  {
+	
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .white
 		output.viewIsReady()
 	}
-
+	
 }
