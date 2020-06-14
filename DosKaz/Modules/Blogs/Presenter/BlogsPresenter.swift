@@ -51,7 +51,7 @@ extension BlogsPresenter: BlogsInteractorOutput {
 			BlogCell.Props(
 				item: $0,
 				title: $0.title,
-				imageURL: $0.previewImage ?? "",
+				imageURL: $0.image,
 				content: $0.annotation ?? "",
 				lastLine: ($0.publishedAt ?? "") + "  " + ($0.categoryTitle ?? "")
 			)

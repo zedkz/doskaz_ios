@@ -58,6 +58,10 @@ struct Item: Codable {
 	let previewImage: String?
 	let image: String
 	let meta: Meta?
+	
+	var imagURL: URL? {
+		return URL(string: Constants.mainURL + image)
+	}
 }
 
 // MARK: - Meta

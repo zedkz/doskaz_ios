@@ -43,7 +43,7 @@ protocol BlogInteractorOutput: class {
 
 extension BlogPresenter: BlogInteractorOutput {
 	func didLoad(_ blog: SingleBlog) {
-		
+		view.setContent(for: blog)
 	}
 	
 	func didFailLoadBlog(with error: Error) {

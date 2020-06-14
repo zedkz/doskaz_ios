@@ -12,11 +12,14 @@ import UIKit
 
 protocol BlogViewInput where Self: UIViewController {
 	func setupInitialState()
+	func setContent(for blog: SingleBlog)
 }
 
 class BlogViewController: UIViewController, BlogViewInput {
 
 	var output: BlogViewOutput!
+	
+	let imageView = UIImageView()
 	
 	let scrollView = UIScrollView()
 	
@@ -28,6 +31,19 @@ class BlogViewController: UIViewController, BlogViewInput {
 		stack.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 		return stack
 	}()
+	
+	func setContent(for blog: SingleBlog) {
+		let url = blog.post.imagURL
+		imageView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+		imageView.kf.indicatorType = .activity
+		imageView.kf.setImage(
+			with: url,
+			options: [
+				.scaleFactor(UIScreen.main.scale),
+				.transition(.fade(1)),
+				.cacheOriginalImage
+		])
+	}
 	
 	func setupInitialState() {
 		configureLayout()
@@ -42,6 +58,9 @@ class BlogViewController: UIViewController, BlogViewInput {
 			.pinToSuper()
 			.set(my: .width, .equal, to: .width, of: scrollView)
 		
+		contentView.addArrangedSubview(imageView)
+		imageView.addConstraintsProgrammatically
+			.set(my: .height, .equal, to: .width, of: imageView, times: 210/375)
 	}
 }
 
