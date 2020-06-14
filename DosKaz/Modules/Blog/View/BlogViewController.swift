@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import WebKit
+import SharedCodeFramework
 
 // MARK: View input protocol
 
@@ -29,11 +30,14 @@ class BlogViewController: UIViewController, BlogViewInput {
 	let subTitleLabel = UILabel()
 	let line1 = UIView()
 	let similarLabel = UILabel()
+	let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+	var cvSource: CollectionViewDataSource<PostCollectionViewCell.Props,PostCollectionViewCell>!
+	let cvDelegate = PostCollectionDelegate()
 	
 	var contentView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
-		stack.spacing = 0
+		stack.spacing = 8
 		stack.isLayoutMarginsRelativeArrangement = true
 		stack.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
 		return stack
@@ -85,6 +89,33 @@ class BlogViewController: UIViewController, BlogViewInput {
 			label.textColor = greyText
 		})
 		similarLabel.text = l10n(.similarContent)
+		configureCollectionView()
+		update(with: blog.similar)
+	}
+	
+	private func configureCollectionView() {
+		let flowLayout = UICollectionViewFlowLayout()
+		flowLayout.scrollDirection = .horizontal
+		collectionView.collectionViewLayout = flowLayout
+		collectionView.alwaysBounceHorizontal = true
+		collectionView.showsHorizontalScrollIndicator = false
+		collectionView.backgroundColor = .white
+		cvSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
+		collectionView.dataSource = cvSource
+		collectionView.delegate = cvDelegate
+	}
+	
+	private func update(with items: [Item]) {
+		let cellsProps = items.map {
+			PostCollectionViewCell.Props(
+				blog: $0,
+				onPickImage: Command {
+					print("PostCollectionViewCell picked")
+			})
+		}
+		
+		cvSource.cellsProps = cellsProps
+		collectionView.reloadData()
 	}
 	
 	func setupInitialState() {
@@ -113,6 +144,10 @@ class BlogViewController: UIViewController, BlogViewInput {
 		contentView.addArrangedSubview(line1)
 		contentView.setCustomSpacing(16, after: line1)
 		contentView.addArrangedSubview(insetView)
+		contentView.addArrangedSubview(collectionView)
+		
+		collectionView.addConstraintsProgrammatically
+			.set(my: .height, to: 200)
 		
 		line1.addConstraintsProgrammatically
 			.set(my: .height, to: 1.0)
