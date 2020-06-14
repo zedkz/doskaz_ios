@@ -28,13 +28,14 @@ class BlogViewController: UIViewController, BlogViewInput {
 	let titleLabel = UILabel()
 	let subTitleLabel = UILabel()
 	let line1 = UIView()
+	let similarLabel = UILabel()
 	
 	var contentView: UIStackView = {
 		let stack = UIStackView()
 		stack.axis = .vertical
 		stack.spacing = 0
 		stack.isLayoutMarginsRelativeArrangement = true
-		stack.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		stack.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0)
 		return stack
 	}()
 	
@@ -78,6 +79,12 @@ class BlogViewController: UIViewController, BlogViewInput {
 		subTitleLabel.text = blog.post.datePublished + "  " + blog.post.categoryName
 		let lineColor = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 0.2)
 		line1.backgroundColor = lineColor
+		
+		let greyText = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 1)
+		similarLabel.decorate(with: Style.systemFont(size: 12), { label in
+			label.textColor = greyText
+		})
+		similarLabel.text = l10n(.similarContent)
 	}
 	
 	func setupInitialState() {
@@ -95,10 +102,17 @@ class BlogViewController: UIViewController, BlogViewInput {
 			.pinToSuper()
 			.set(my: .width, .equal, to: .width, of: scrollView)
 		
+		let insetView = UIView()
+		insetView.addSubview(similarLabel)
+		similarLabel.addConstraintsProgrammatically
+			.pinToSuper(inset: UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0))
+		
 		contentView.addArrangedSubview(imageView)
 		contentView.addArrangedSubview(webView)
-		contentView.setCustomSpacing(10, after: webView)
+		contentView.setCustomSpacing(16, after: webView)
 		contentView.addArrangedSubview(line1)
+		contentView.setCustomSpacing(16, after: line1)
+		contentView.addArrangedSubview(insetView)
 		
 		line1.addConstraintsProgrammatically
 			.set(my: .height, to: 1.0)
