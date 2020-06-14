@@ -31,4 +31,8 @@ struct RegionalRep: Codable {
 	let department: String
 	let cityId: Int
 	let image: String
+	
+	var imageURL: URL? {
+		return URL(string: Constants.mainURL + image)
+	}
 }

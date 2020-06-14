@@ -39,7 +39,7 @@ class ContactsViewController: UIViewController {
 	let sendButton = Button(type: .system)
 	let regionalReps = UILabel()
 	let tableView = ContentSizedTableView()
-	var dataSource: UTableViewDataSource<CommentCell>!
+	var dataSource: UTableViewDataSource<RegionalRepCell>!
 	
 	let scrollView = UIScrollView()
 	
@@ -139,6 +139,7 @@ class ContactsViewController: UIViewController {
 		
 		dataSource = UTableViewDataSource(tableView)
 		tableView.dataSource = dataSource
+		tableView.separatorStyle = .none
 		loadRegionalReps()
 	}
 	
@@ -146,7 +147,7 @@ class ContactsViewController: UIViewController {
 		APIRegionalReps(
 			onSuccess: { [weak self] (reps) in
 				self?.dataSource.cellsProps = reps.map { rep in
-					CommentCell.Props(title: rep.name, subTitle: rep.phone)
+					RegionalRepCell.Props(regionalRep: rep)
 				}
 				self?.tableView.reloadData()
 			},

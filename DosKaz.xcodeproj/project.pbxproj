@@ -156,6 +156,7 @@
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
+		44E3829D2494F46D007C97DB /* RegionalRepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3829C2494F46D007C97DB /* RegionalRepCell.swift */; };
 		44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311424765F040022375C /* ComplaintConfigurator.swift */; };
 		44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311524765F040022375C /* ComplaintInteractor.swift */; };
 		44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311624765F040022375C /* ComplaintPresenter.swift */; };
@@ -371,6 +372,7 @@
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		44E3829C2494F46D007C97DB /* RegionalRepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalRepCell.swift; sourceTree = "<group>"; };
 		44E7311424765F040022375C /* ComplaintConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintConfigurator.swift; sourceTree = "<group>"; };
 		44E7311524765F040022375C /* ComplaintInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintInteractor.swift; sourceTree = "<group>"; };
 		44E7311624765F040022375C /* ComplaintPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintPresenter.swift; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				4401001C248BAE4200CBACE2 /* ContactsViewController.swift */,
 				44ADD38F24922364006908A8 /* ContactInfoView.swift */,
 				44571709249238600071F8F2 /* TextFormView.swift */,
+				44E3829C2494F46D007C97DB /* RegionalRepCell.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1464,6 +1467,7 @@
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,
 				44B26BC72433EADD00E7B29C /* URLService.swift in Sources */,
 				44F0EE21243CC340000B3022 /* LanguageChoiceInteractor.swift in Sources */,
+				44E3829D2494F46D007C97DB /* RegionalRepCell.swift in Sources */,
 				44ED11D72455B9EA009B92BF /* VenueViewController.swift in Sources */,
 				445CDC802402E5F90072F4BC /* MapPresenter.swift in Sources */,
 				445CDC842402E5F90072F4BC /* MapConfigurator.swift in Sources */,
