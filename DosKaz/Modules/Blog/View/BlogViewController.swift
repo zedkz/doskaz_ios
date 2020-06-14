@@ -25,6 +25,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	let webView = WKWebView()
 	
 	let scrollView = UIScrollView()
+	let titleLabel = UILabel()
 	
 	var contentView: UIStackView = {
 		let stack = UIStackView()
@@ -39,7 +40,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 		let url = blog.post.imagURL
 		imageView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
 		imageView.kf.indicatorType = .activity
-		let blur = BlurImageProcessor(blurRadius: 3)
+		let blur = BlurImageProcessor(blurRadius: 3.5)
 		imageView.kf.setImage(
 			with: url,
 			options: [
@@ -54,6 +55,16 @@ class BlogViewController: UIViewController, BlogViewInput {
 		if let content = blog.post.content {
 			webView.loadHTMLString(content, baseURL: nil)
 		}
+		titleLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold), { label in
+			label.textColor = .white
+			label.textAlignment = .center
+			label.numberOfLines = 0
+			label.layer.shadowColor = UIColor.black.cgColor
+			label.layer.shadowOffset = CGSize.zero
+			label.layer.shadowRadius = 2.0
+			label.layer.shadowOpacity = 1.0
+		})
+		titleLabel.text = blog.post.title
 	}
 	
 	func setupInitialState() {
@@ -74,6 +85,12 @@ class BlogViewController: UIViewController, BlogViewInput {
 		contentView.addArrangedSubview(imageView)
 		contentView.addArrangedSubview(webView)
 		
+		imageView.addSubview(titleLabel)
+		titleLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading, plus: 8)
+			.pinEdgeToSupers(.trailing, plus: -8)
+			.pinEdgeToSupers(.verticalCenter, plus: 20)
+
 		imageView.addConstraintsProgrammatically
 			.set(my: .height, .equal, to: .width, of: imageView, times: 210/375)
 		height = webView.addConstraintsProgrammatically
