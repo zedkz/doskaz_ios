@@ -14,6 +14,7 @@ protocol BlogsViewInput where Self: UIViewController {
 	func setupInitialState()
 	func updateTable(with cellsProps: [BlogCell.Props])
 	var onSearchFieldEdit: CommandWith<String> { get set }
+	var onSelect: CommandWith<Item> { get set }
 }
 
 extension BlogsViewController: BlogsViewInput {
@@ -32,11 +33,12 @@ extension BlogsViewController: BlogsViewInput {
 
 }
 
-class BlogsViewController: TableViewController {
+class BlogsViewController: TableViewController, UITableViewDelegate {
 
 	var output: BlogsViewOutput!
 	var dataSource: UTableViewDataSource<BlogCell>!
 	var onSearchFieldEdit: CommandWith<String> = .nop
+	var onSelect: CommandWith<Item> = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -47,6 +49,7 @@ class BlogsViewController: TableViewController {
 	private func configureTable() {
 		dataSource = UTableViewDataSource<BlogCell>(tableView)
 		tableView.dataSource = dataSource
+		tableView.delegate = self
 		tableView.tableFooterView = UIView()
 		tableView.separatorInset = UIEdgeInsets(all: 0)
 	}
@@ -59,6 +62,9 @@ class BlogsViewController: TableViewController {
 			target: self,
 			action: #selector(didPressFilter)
 		)
+		let backItem = UIBarButtonItem()
+		backItem.title = ""
+		navigationItem.backBarButtonItem = backItem
 	}
 	
 	@objc
@@ -73,6 +79,13 @@ class BlogsViewController: TableViewController {
 		definesPresentationContext = true
 		navigationItem.searchController = searchController
 		navigationItem.hidesSearchBarWhenScrolling = false
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		if let item = dataSource.cellsProps[indexPath.row].item {
+			onSelect.perform(with: item)
+		}
 	}
 
 }

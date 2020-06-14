@@ -47,6 +47,11 @@
 		44523A3F2479408B00A4C948 /* ProfileRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44523A3E2479408B00A4C948 /* ProfileRequests.swift */; };
 		44565DA1246DC28000476016 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44565DA0246DC28000476016 /* BlogCell.swift */; };
 		4457170A249238600071F8F2 /* TextFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44571709249238600071F8F2 /* TextFormView.swift */; };
+		44593DFC2496331600B087ED /* BlogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44593DF62496331500B087ED /* BlogPresenter.swift */; };
+		44593DFD2496331600B087ED /* BlogInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44593DF72496331500B087ED /* BlogInteractor.swift */; };
+		44593DFE2496331600B087ED /* BlogConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44593DF82496331500B087ED /* BlogConfigurator.swift */; };
+		44593DFF2496331600B087ED /* BlogRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44593DF92496331500B087ED /* BlogRouter.swift */; };
+		44593E002496331600B087ED /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44593DFB2496331500B087ED /* BlogViewController.swift */; };
 		4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4459CCF4244727B8002DA95F /* GreetingView.swift */; };
 		445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */; };
 		445C3F332403F62800131990 /* CategoryPickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */; };
@@ -261,6 +266,11 @@
 		44523A3E2479408B00A4C948 /* ProfileRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequests.swift; sourceTree = "<group>"; };
 		44565DA0246DC28000476016 /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		44571709249238600071F8F2 /* TextFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFormView.swift; sourceTree = "<group>"; };
+		44593DF62496331500B087ED /* BlogPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogPresenter.swift; sourceTree = "<group>"; };
+		44593DF72496331500B087ED /* BlogInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogInteractor.swift; sourceTree = "<group>"; };
+		44593DF82496331500B087ED /* BlogConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogConfigurator.swift; sourceTree = "<group>"; };
+		44593DF92496331500B087ED /* BlogRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogRouter.swift; sourceTree = "<group>"; };
+		44593DFB2496331500B087ED /* BlogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
 		4459CCF4244727B8002DA95F /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		445C3F2A2403F62800131990 /* CategoryPickerRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerRouter.swift; sourceTree = "<group>"; };
 		445C3F2B2403F62800131990 /* CategoryPickerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerInteractor.swift; sourceTree = "<group>"; };
@@ -553,6 +563,34 @@
 			path = More;
 			sourceTree = "<group>";
 		};
+		44593DF42496331500B087ED /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				44593DFA2496331500B087ED /* View */,
+				44593DF52496331500B087ED /* Presenter */,
+			);
+			path = Blog;
+			sourceTree = "<group>";
+		};
+		44593DF52496331500B087ED /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44593DF62496331500B087ED /* BlogPresenter.swift */,
+				44593DF72496331500B087ED /* BlogInteractor.swift */,
+				44593DF82496331500B087ED /* BlogConfigurator.swift */,
+				44593DF92496331500B087ED /* BlogRouter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44593DFA2496331500B087ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44593DFB2496331500B087ED /* BlogViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		445C3F282403F62800131990 /* CategoryPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +685,7 @@
 				448EBAC124693C8E006C9961 /* BigForm */,
 				440AC3B9246C150A00AAC348 /* Instruction */,
 				44EE3032246DB5B000926817 /* Blogs */,
+				44593DF42496331500B087ED /* Blog */,
 				444F35DD246EF4C7001C7A27 /* More */,
 				4420ABE824727BE7007F70D6 /* Profile */,
 				44E7311224765F040022375C /* Complaint */,
@@ -1329,6 +1368,7 @@
 				4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */,
 				44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */,
 				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
+				44593DFD2496331600B087ED /* BlogInteractor.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
 				447582E8248117CA00FBC421 /* api_objects_id_review.swift in Sources */,
 				44ABE691248E3DC100E34F95 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
@@ -1350,6 +1390,7 @@
 				448A447A240BF5D0007305D4 /* SearchResultsViewControllerViewController.swift in Sources */,
 				44010018248B825600CBACE2 /* api_objects_calculateZoneScore.swift in Sources */,
 				4490E2EF2402711300F70B40 /* Localization.swift in Sources */,
+				44593DFF2496331600B087ED /* BlogRouter.swift in Sources */,
 				4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */,
 				44E73120247797030022375C /* api_complaints_initialData.swift in Sources */,
 				44523A3F2479408B00A4C948 /* ProfileRequests.swift in Sources */,
@@ -1377,6 +1418,7 @@
 				44ABE694248E3DC100E34F95 /* IQKeyboardManagerConstants.swift in Sources */,
 				4446C180247BEB54002BF1B6 /* api_storage_upload.swift in Sources */,
 				4401001B248B86F800CBACE2 /* ZoneScoreViewController.swift in Sources */,
+				44593E002496331600B087ED /* BlogViewController.swift in Sources */,
 				448EBACC24693C8F006C9961 /* BigFormPresenter.swift in Sources */,
 				4490E2ED24026CE900F70B40 /* AppSettings.swift in Sources */,
 				44F0EE20243CC340000B3022 /* LanguageChoiceRouter.swift in Sources */,
@@ -1413,6 +1455,7 @@
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
 				44565DA1246DC28000476016 /* BlogCell.swift in Sources */,
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
+				44593DFE2496331600B087ED /* BlogConfigurator.swift in Sources */,
 				44F4D883246EBFD3003A50BC /* SubSectionHeaderCell.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
@@ -1462,6 +1505,7 @@
 				447768B1247E7997007BB003 /* VenuePhotosViewController.swift in Sources */,
 				44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */,
 				44F93EB22485104200489994 /* LargeVenueView.swift in Sources */,
+				44593DFC2496331600B087ED /* BlogPresenter.swift in Sources */,
 				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,

@@ -9,11 +9,16 @@
 import UIKit
 
 protocol BlogsRouterInput {
-
+	func showBlog(with vc: UIViewController, blog: Item)
 }
 
 // MARK: Implementation
 
 class BlogsRouter: BlogsRouterInput {
-
+	func showBlog(with vc: UIViewController, blog: Item) {
+		let blogVC = BlogBuilder().assembleModule()
+		blogVC.output.initView(with: blog)
+		vc.navigationController?.pushViewController(blogVC, animated: true)
+	}
+	
 }

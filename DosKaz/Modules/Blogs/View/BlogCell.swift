@@ -107,6 +107,7 @@ class BlogCell: UITableViewCell, Updatable {
 	
 	//MARK: - Sub types
 	struct Props {
+		var item: Item? = nil
 		var title: String
 		var imageURL: String
 		var content: String

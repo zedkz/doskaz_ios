@@ -29,6 +29,10 @@ extension BlogsPresenter: BlogsViewOutput {
 			self.interactor.loadPosts(with: query)
 		}
 		interactor.loadPosts(with: nil)
+		view.onSelect = CommandWith<Item> { [weak self] blog in
+			guard let self = self else { return }
+			self.router.showBlog(with: self.view, blog: blog)
+		}
 	}
 
 }
@@ -45,6 +49,7 @@ extension BlogsPresenter: BlogsInteractorOutput {
 		print("Blog post count:", blogResponse.items.count)
 		let cellsProps = blogResponse.items.map {
 			BlogCell.Props(
+				item: $0,
 				title: $0.title,
 				imageURL: $0.previewImage,
 				content: $0.annotation,
