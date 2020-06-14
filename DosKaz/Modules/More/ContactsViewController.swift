@@ -130,6 +130,7 @@ class ContactsViewController: UIViewController {
 		)
 		message.props = _message
 		
+		sendButton.isEnabled = false
 		sendButton.setTitle(l10n(.send), for: .normal)
 		sendButton.didTouchUpInside = { [weak self] in
 			
@@ -166,13 +167,21 @@ class ContactsViewController: UIViewController {
 		writeUsLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold))
 		sendButton.decorate(with:
 			Style.systemFont(size: 14),
-			Style.titleColor(color: .white),
-			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
+			Style.titleColor(color: .white)
 		)
+		let color = UIColor(named: "SelectedTabbarTintColor") ?? .blue
+		sendButton.setBackgroundColor(color, for: .normal)
+		sendButton.setBackgroundColor(color.withAlphaComponent(0.3), for: .disabled)
+		sendButton.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
 		regionalReps.decorate(with: Style.systemFont(size: 20, weight: .semibold))
 	}
 	
 	//MARK: - Form
 	
-	var feedback = Feedback(name: "", email: "", text: "")
+	var feedback = Feedback(name: "", email: "", text: "") {
+		didSet {
+			let fields = [feedback.name, feedback.email, feedback.text]
+			sendButton.isEnabled = fields.reduce(true) { $0 && !$1.isEmpty }
+		}
+	}
 }
