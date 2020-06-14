@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+import WebKit
 
 // MARK: View input protocol
 
@@ -20,6 +22,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	var output: BlogViewOutput!
 	
 	let imageView = UIImageView()
+	let webView = WKWebView()
 	
 	let scrollView = UIScrollView()
 	
@@ -36,18 +39,28 @@ class BlogViewController: UIViewController, BlogViewInput {
 		let url = blog.post.imagURL
 		imageView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
 		imageView.kf.indicatorType = .activity
+		let blur = BlurImageProcessor(blurRadius: 3)
 		imageView.kf.setImage(
 			with: url,
 			options: [
+				.processor(blur),
 				.scaleFactor(UIScreen.main.scale),
 				.transition(.fade(1)),
 				.cacheOriginalImage
 		])
+		
+		webView.scrollView.isScrollEnabled = false
+		webView.navigationDelegate = self
+		if let content = blog.post.content {
+			webView.loadHTMLString(content, baseURL: nil)
+		}
 	}
 	
 	func setupInitialState() {
 		configureLayout()
 	}
+	
+	var height: NSLayoutConstraint?
 	
 	private func configureLayout() {
 		view.addSubview(scrollView)
@@ -59,8 +72,21 @@ class BlogViewController: UIViewController, BlogViewInput {
 			.set(my: .width, .equal, to: .width, of: scrollView)
 		
 		contentView.addArrangedSubview(imageView)
+		contentView.addArrangedSubview(webView)
+		
 		imageView.addConstraintsProgrammatically
 			.set(my: .height, .equal, to: .width, of: imageView, times: 210/375)
+		height = webView.addConstraintsProgrammatically
+			.set(my: .height, to: 0)
+			.constraint
+	}
+}
+
+extension BlogViewController: WKNavigationDelegate {
+	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+			self.height?.constant = webView.scrollView.contentSize.height
+		}
 	}
 }
 
