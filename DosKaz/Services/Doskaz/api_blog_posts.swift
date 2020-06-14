@@ -48,13 +48,16 @@ struct BlogResponse: Codable {
 // MARK: - Item
 struct Item: Codable {
 	let id: Int
-	let title, annotation, content, slug: String
+	let title: String
+	let annotation, content: String?
+	let slug: String
 	let categorySlug: String
 	let categoryId: Int
-	let categoryTitle: String
-	let publishedAt: String
-	let image, previewImage: String
-	let meta: Meta
+	let categoryTitle: String?
+	let publishedAt: String?
+	let previewImage: String?
+	let image: String
+	let meta: Meta?
 }
 
 // MARK: - Meta

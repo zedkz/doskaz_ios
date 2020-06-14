@@ -23,6 +23,7 @@ class BlogPresenter: BlogViewOutput {
 
 	func viewIsReady() {
 		view.setupInitialState()
+		interactor.loadBlog(with: blog.id)
 	}
 	
 	func initView(with blog: Item) {

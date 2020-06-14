@@ -7,7 +7,7 @@
 //
 
 protocol BlogInteractorInput {
-
+	func loadBlog(with id: Int)
 }
 
 // MARK: Implementation
@@ -15,6 +15,18 @@ protocol BlogInteractorInput {
 class BlogInteractor: BlogInteractorInput {
 
 	weak var output: BlogInteractorOutput!
+	
+	func loadBlog(with id: Int) {
+		APIBlogPost(onSuccess: { (blog) in
+			print(blog)
+		}, onFailure: { error in
+			print(error)
+		},
+			 id: id
+		)
+		.dispatch()
+		
+	}
 
 }
 		
