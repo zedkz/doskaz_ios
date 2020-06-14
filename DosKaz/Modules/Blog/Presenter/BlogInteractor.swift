@@ -17,10 +17,10 @@ class BlogInteractor: BlogInteractorInput {
 	weak var output: BlogInteractorOutput!
 	
 	func loadBlog(with id: Int) {
-		APIBlogPost(onSuccess: { (blog) in
-			print(blog)
-		}, onFailure: { error in
-			print(error)
+		APIBlogPost(onSuccess: { [weak self] (blog) in
+			self?.output?.didLoad(blog)
+		}, onFailure: { [weak self] error in
+			self?.output?.didFailLoadBlog(with: error)
 		},
 			 id: id
 		)

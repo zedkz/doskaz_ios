@@ -37,9 +37,18 @@ class BlogPresenter: BlogViewOutput {
 // MARK: Interactor output protocol
 
 protocol BlogInteractorOutput: class {
-
+	func didLoad(_ blog: SingleBlog)
+	func didFailLoadBlog(with error: Error)
 }
 
 extension BlogPresenter: BlogInteractorOutput {
+	func didLoad(_ blog: SingleBlog) {
+		
+	}
+	
+	func didFailLoadBlog(with error: Error) {
+		
+	}
+	
 
 }
