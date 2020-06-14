@@ -9,7 +9,7 @@
 import UIKit
 import SharedCodeFramework
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: UIViewController, DisplaysAlert {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -133,7 +133,12 @@ class ContactsViewController: UIViewController {
 		sendButton.isEnabled = false
 		sendButton.setTitle(l10n(.send), for: .normal)
 		sendButton.didTouchUpInside = { [weak self] in
-			
+			guard let self = self else { return }
+			if self.isValidEmail(self.feedback.email) {
+				self.sendFeedback()
+			} else {
+				self.displayAlert(with: l10n(.emailIsWrong))
+			}
 		}
 		
 		regionalReps.text = l10n(.regionalReps)
@@ -183,5 +188,24 @@ class ContactsViewController: UIViewController {
 			let fields = [feedback.name, feedback.email, feedback.text]
 			sendButton.isEnabled = fields.reduce(true) { $0 && !$1.isEmpty }
 		}
+	}
+	
+	private func sendFeedback() {
+		APIPostFeedback(onSuccess: { [weak self] _ in
+			self?.displayAlert(with: l10n(.succeedFormMessage))
+		}, onFailure: { [weak self] error in
+			print(error)
+			self?.displayAlert(with: l10n(.errorMessage))
+		},
+			 feedback: feedback
+		)
+			.dispatch()
+	}
+	
+	func isValidEmail(_ email: String) -> Bool {
+		let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+		
+		let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+		return emailPred.evaluate(with: email)
 	}
 }
