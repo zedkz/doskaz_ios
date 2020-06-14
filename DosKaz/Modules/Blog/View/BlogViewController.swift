@@ -27,6 +27,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	let scrollView = UIScrollView()
 	let titleLabel = UILabel()
 	let subTitleLabel = UILabel()
+	let line1 = UIView()
 	
 	var contentView: UIStackView = {
 		let stack = UIStackView()
@@ -75,6 +76,8 @@ class BlogViewController: UIViewController, BlogViewInput {
 			label.numberOfLines = 0
 		})
 		subTitleLabel.text = blog.post.datePublished + "  " + blog.post.categoryName
+		let lineColor = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 0.2)
+		line1.backgroundColor = lineColor
 	}
 	
 	func setupInitialState() {
@@ -94,6 +97,11 @@ class BlogViewController: UIViewController, BlogViewInput {
 		
 		contentView.addArrangedSubview(imageView)
 		contentView.addArrangedSubview(webView)
+		contentView.setCustomSpacing(10, after: webView)
+		contentView.addArrangedSubview(line1)
+		
+		line1.addConstraintsProgrammatically
+			.set(my: .height, to: 1.0)
 		
 		imageView.addSubview(titleLabel)
 		imageView.addSubview(subTitleLabel)
