@@ -91,6 +91,11 @@ class BlogViewController: UIViewController, BlogViewInput {
 		similarLabel.text = l10n(.similarContent)
 		configureCollectionView()
 		update(with: blog.similar)
+		
+		let commentsvc = BlogCommentsViewController(blogId: blog.post.id)
+		addChild(commentsvc)
+		contentView.addArrangedSubview(commentsvc.view)
+		commentsvc.didMove(toParent: self)
 	}
 	
 	private func configureCollectionView() {

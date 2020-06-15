@@ -157,5 +157,14 @@ extension Sort {
 			return "date desc"
 		}
 	}
+	
+	var value: String {
+		switch self {
+		case .ascending:
+			return "asc"
+		case .descending:
+			return "desc"
+		}
+	}
 
 }
