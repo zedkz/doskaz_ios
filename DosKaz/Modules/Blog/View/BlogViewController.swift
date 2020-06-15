@@ -29,6 +29,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	let titleLabel = UILabel()
 	let subTitleLabel = UILabel()
 	let line1 = UIView()
+	let line2 = UIView()
 	let similarLabel = UILabel()
 	let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 	var cvSource: CollectionViewDataSource<PostCollectionViewCell.Props,PostCollectionViewCell>!
@@ -83,6 +84,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 		subTitleLabel.text = blog.post.datePublished + "  " + blog.post.categoryName
 		let lineColor = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 0.2)
 		line1.backgroundColor = lineColor
+		line2.backgroundColor = lineColor
 		
 		let greyText = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 1)
 		similarLabel.decorate(with: Style.systemFont(size: 12), { label in
@@ -150,6 +152,11 @@ class BlogViewController: UIViewController, BlogViewInput {
 		contentView.setCustomSpacing(16, after: line1)
 		contentView.addArrangedSubview(insetView)
 		contentView.addArrangedSubview(collectionView)
+		contentView.setCustomSpacing(16, after: collectionView)
+		contentView.addArrangedSubview(line2)
+		
+		line2.addConstraintsProgrammatically
+			.set(my: .height, to: 1)
 		
 		collectionView.addConstraintsProgrammatically
 			.set(my: .height, to: 200)
