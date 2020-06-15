@@ -95,7 +95,12 @@ class BlogViewController: UIViewController, BlogViewInput {
 		configureCollectionView()
 		update(with: blog.similar)
 		
-		let commentsvc = BlogCommentsViewController(blogId: blog.post.id)
+		let commentsvc = BlogCommentsViewController(
+			blogId: blog.post.id,
+			onPickComment: CommandWith<Comment> { [weak self] comment in
+				print(comment)
+			}
+		)
 		addChild(commentsvc)
 		contentView.addArrangedSubview(commentsvc.view)
 		commentsvc.didMove(toParent: self)

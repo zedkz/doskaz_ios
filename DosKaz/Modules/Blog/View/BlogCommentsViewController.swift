@@ -15,13 +15,15 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	init(blogId: Int) {
+	init(blogId: Int, onPickComment: CommandWith<Comment>) {
 		self.blogId = blogId
+		self.onPickComment = onPickComment
 		super.init(nibName: nil, bundle: nil)
 	}
 	
 	var blogId: Int
 	var dataSource: UTableViewDataSource<BlogCommentCell>!
+	var onPickComment: CommandWith<Comment>
 		
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,7 +43,8 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		print(indexPath.row)
+		let comment = dataSource.cellsProps[indexPath.row].comment
+		onPickComment.perform(with: comment)
 	}
 	
 	private func loadComments() {
