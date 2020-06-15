@@ -33,8 +33,8 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		tableView.tableFooterView = UIView()
 		tableView.separatorStyle = .singleLine
 		tableView.separatorInset = UIEdgeInsets(all: 0)
-		onPickLeft = OnPick<Sort> { _ in
-			self.dataSource.cellsProps = []
+		onPickLeft = OnPick<Sort> { [weak self] _ in
+			self?.loadComments()
 		}
 		
 		loadComments()
