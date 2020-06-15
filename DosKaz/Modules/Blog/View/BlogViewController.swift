@@ -45,6 +45,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	}()
 	
 	func setContent(for blog: SingleBlog) {
+		navigationItem.title = blog.post.title
 		let url = blog.post.imagURL
 		imageView.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
 		imageView.kf.indicatorType = .activity
