@@ -166,7 +166,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 		imageView.addConstraintsProgrammatically
 			.set(my: .height, .equal, to: .width, of: imageView, times: 210/375)
 		height = webView.addConstraintsProgrammatically
-			.set(my: .height, to: 0)
+			.set(my: .height, to: 400)
 			.constraint
 	}
 }
