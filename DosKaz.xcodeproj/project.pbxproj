@@ -166,6 +166,7 @@
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
+		44CD736F2498D1CC00BABC4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */; };
 		44E3829D2494F46D007C97DB /* RegionalRepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3829C2494F46D007C97DB /* RegionalRepCell.swift */; };
 		44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311424765F040022375C /* ComplaintConfigurator.swift */; };
 		44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311524765F040022375C /* ComplaintInteractor.swift */; };
@@ -392,6 +393,7 @@
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44E3829C2494F46D007C97DB /* RegionalRepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalRepCell.swift; sourceTree = "<group>"; };
 		44E7311424765F040022375C /* ComplaintConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintConfigurator.swift; sourceTree = "<group>"; };
 		44E7311524765F040022375C /* ComplaintInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintInteractor.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 		4486E89623F6EBEF00E8AAB2 /* DosKaz */ = {
 			isa = PBXGroup;
 			children = (
+				44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */,
 				4486E8A523F6EBF100E8AAB2 /* Info.plist */,
 				4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */,
 				44C376702407EA910050961F /* Resources */,
@@ -1305,6 +1308,7 @@
 				44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */,
 				4486E8A123F6EBF100E8AAB2 /* Assets.xcassets in Resources */,
 				4486E89F23F6EBEF00E8AAB2 /* Main.storyboard in Resources */,
+				44CD736F2498D1CC00BABC4E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
