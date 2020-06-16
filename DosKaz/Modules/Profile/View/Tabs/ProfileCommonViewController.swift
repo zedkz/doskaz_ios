@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ProfileCommonViewController: UIViewController {
 	
@@ -93,8 +94,11 @@ class ProfileCommonViewController: UIViewController {
 		view.addSubview(reverseButtonRight)
 		view.addSubview(tableView)
 		
+		titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+		reverseButtonLeft.setContentHuggingPriority(.defaultHigh, for: .vertical)
+		
 		titleLabel.addConstraintsProgrammatically
-			.pinEdgeToSupers(.top, plus: spacing)
+			.pinEdgeToSupersSafe(.top, plus: spacing)
 			.pinEdgeToSupers(.leading, plus: spacing)
 			.pinEdgeToSupers(.trailing, plus: -spacing)
 		reverseButtonLeft.addConstraintsProgrammatically
@@ -104,7 +108,7 @@ class ProfileCommonViewController: UIViewController {
 			.pin(my: .top, to: .bottom, of: titleLabel, plus: spacing)
 			.pin(my: .leading, to: .trailing, of: reverseButtonLeft, plus: spacing)
 		tableView.addConstraintsProgrammatically
-			.pin(my: .top, to: .bottom, of: reverseButtonRight, plus: spacing)
+			.pin(my: .top, to: .bottom, of: reverseButtonLeft, plus: spacing)
 			.pinEdgeToSupers(.leading, plus: spacing)
 			.pinEdgeToSupers(.trailing, plus: -spacing)
 			.pinEdgeToSupers(.bottom, plus: -spacing)
@@ -164,6 +168,15 @@ extension Sort {
 			return "asc"
 		case .descending:
 			return "desc"
+		}
+	}
+	
+	var sortingClosure: (Comment, Comment) -> Bool {
+		switch self {
+		case .ascending:
+			return { $0.createdAt < $1.createdAt }
+		case .descending:
+			return { $0.createdAt > $1.createdAt }
 		}
 	}
 

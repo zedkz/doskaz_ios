@@ -16,11 +16,13 @@ import SharedCodeFramework
 protocol BlogViewInput where Self: UIViewController {
 	func setupInitialState()
 	func setContent(for blog: SingleBlog)
+	var onPickComment: CommandWith<Comment> { get set }
 }
 
 class BlogViewController: UIViewController, BlogViewInput {
 
 	var output: BlogViewOutput!
+	var onPickComment: CommandWith<Comment> = .nop
 	
 	let imageView = UIImageView()
 	let webView = WKWebView()
@@ -96,10 +98,8 @@ class BlogViewController: UIViewController, BlogViewInput {
 		update(with: blog.similar)
 		
 		let commentsvc = BlogCommentsViewController(
-			blogId: blog.post.id,
-			onPickComment: CommandWith<Comment> { [weak self] comment in
-				print(comment)
-			}
+			blogComment: BlogComment.new(blog.post.id),
+			onPickComment: onPickComment
 		)
 		addChild(commentsvc)
 		contentView.addArrangedSubview(commentsvc.view)

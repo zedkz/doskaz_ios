@@ -9,24 +9,31 @@
 import UIKit
 import SharedCodeFramework
 
+enum BlogComment {
+	case new(Int)
+	case replies([Comment])
+}
+
 class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelegate {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	init(blogId: Int, onPickComment: CommandWith<Comment>) {
-		self.blogId = blogId
+	init(blogComment: BlogComment, onPickComment: CommandWith<Comment>) {
+		self.blogComment = blogComment
 		self.onPickComment = onPickComment
 		super.init(nibName: nil, bundle: nil)
 	}
 	
-	var blogId: Int
+	var blogComment: BlogComment
 	var dataSource: UTableViewDataSource<BlogCommentCell>!
 	var onPickComment: CommandWith<Comment>
 		
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		view.backgroundColor = .white
+		tableView.showsVerticalScrollIndicator = false
 		props = Props(title: l10n(.comments), isRightButtonHidden: true)
 		dataSource = UTableViewDataSource(tableView)
 		tableView.dataSource = dataSource
@@ -36,18 +43,32 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		tableView.separatorStyle = .singleLine
 		tableView.separatorInset = UIEdgeInsets(all: 0)
 		onPickLeft = OnPick<Sort> { [weak self] _ in
-			self?.loadComments()
+			self?.renderComments()
 		}
 		
-		loadComments()
+		renderComments()
 	}
 	
+	private func renderComments() {
+		switch blogComment {
+		case .new(let id):
+			loadComments(id: id)
+		case .replies(let replies):
+			dataSource.cellsProps = replies
+				.sorted(by: sort.sortingClosure)
+				.map { comment in
+					BlogCommentCell.Props(comment: comment, onReply: Command { })
+				}
+			tableView.reloadData()
+		}
+	}
+
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let comment = dataSource.cellsProps[indexPath.row].comment
 		onPickComment.perform(with: comment)
 	}
 	
-	private func loadComments() {
+	private func loadComments(id: Int) {
 		APIBlogComments(onSuccess: { [weak self] (response) in
 			self?.props = Props(title: "\(l10n(.comments)): \(response.count)", isRightButtonHidden: true)
 			self?.dataSource.cellsProps = response.items.map { comment in
@@ -60,7 +81,7 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 			print(error)
 		},
 			 sortOrder: sort.value,
-			 id: blogId
+			 id: id
 		)
 			.dispatch()
 	}

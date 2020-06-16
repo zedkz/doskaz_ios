@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 protocol BlogRouterInput {
-
+	func showComments(with vc: UIViewController, comment: Comment)
 }
 
 // MARK: Implementation
 
 class BlogRouter: BlogRouterInput {
-
+	func showComments(with vc: UIViewController, comment: Comment) {
+		let commentsvc = BlogCommentsViewController(
+			blogComment: BlogComment.replies(comment.replies),
+			onPickComment: CommandWith<Comment> { [weak self] comment in
+				guard !comment.replies.isEmpty else { return }
+				self?.showComments(with: vc, comment: comment)
+		})
+		vc.navigationController?.pushViewController(commentsvc, animated: true)
+	}
 }
