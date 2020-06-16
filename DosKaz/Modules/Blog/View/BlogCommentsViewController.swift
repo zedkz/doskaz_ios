@@ -33,6 +33,9 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .white
+		let backItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+		navigationItem.backBarButtonItem = backItem
+		
 		tableView.showsVerticalScrollIndicator = false
 		props = Props(title: l10n(.comments), isRightButtonHidden: true)
 		dataSource = UTableViewDataSource(tableView)
@@ -54,6 +57,7 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		case .new(let id):
 			loadComments(id: id)
 		case .replies(let replies):
+			props = Props(title: l10n(.replies), isRightButtonHidden: true)
 			dataSource.cellsProps = replies
 				.sorted(by: sort.sortingClosure)
 				.map { comment in
