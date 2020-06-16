@@ -394,6 +394,7 @@
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44CD73702498DEEC00BABC4E /* DosKaz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DosKaz.entitlements; sourceTree = "<group>"; };
 		44E3829C2494F46D007C97DB /* RegionalRepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalRepCell.swift; sourceTree = "<group>"; };
 		44E7311424765F040022375C /* ComplaintConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintConfigurator.swift; sourceTree = "<group>"; };
 		44E7311524765F040022375C /* ComplaintInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintInteractor.swift; sourceTree = "<group>"; };
@@ -824,6 +825,7 @@
 		4486E89623F6EBEF00E8AAB2 /* DosKaz */ = {
 			isa = PBXGroup;
 			children = (
+				44CD73702498DEEC00BABC4E /* DosKaz.entitlements */,
 				44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */,
 				4486E8A523F6EBF100E8AAB2 /* Info.plist */,
 				4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */,
@@ -1701,6 +1703,7 @@
 			baseConfigurationReference = 87642A9555C737F3F0D1E1A6 /* Pods-DosKaz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DosKaz/DosKaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = DosKaz/Resources/DeveloperAssets.xcassets;
 				DEVELOPMENT_TEAM = 69HEK9F837;
@@ -1722,6 +1725,7 @@
 			baseConfigurationReference = 3F110DFB9DBB23F3BF5631DD /* Pods-DosKaz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = DosKaz/DosKaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = DosKaz/Resources/DeveloperAssets.xcassets;
 				DEVELOPMENT_TEAM = 69HEK9F837;
