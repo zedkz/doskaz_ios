@@ -74,10 +74,6 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			label.numberOfLines = 0
 			label.textAlignment = .center
 		})
-		enterPhoneLabel.text = l10n(.enterPhone)
-	}
-	
-	private func configurePageData() {
 		topLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold), { label in
 			label.numberOfLines = 0
 			label.textAlignment = .center
@@ -101,22 +97,28 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			}
 		}
 		
+	}
+	
+	private func configurePageData() {
 		switch viewPage {
 		case .first:
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.next), for: .normal)
 			bottomButton.setImage(nil, for: .normal)
 			bottomButton.setTitle(nil, for: .normal)
+			enterPhoneLabel.text = l10n(.enterPhone)
 		case .second:
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.send), for: .normal)
 			bottomButton.setImage(UIImage(named: "sms_phone"), for: .normal)
 			bottomButton.setTitle(" " + l10n(.getMoreSms), for: .normal)
+			enterPhoneLabel.text = l10n(.enterSmsCode)
 		case .third:
 			topLabel.text = l10n(.welcome)
 			blueButton.setTitle(l10n(.toProfile), for: .normal)
 			bottomButton.setImage(nil, for: .normal)
 			bottomButton.setTitle(l10n(.nextTime), for: .normal)
+			enterPhoneLabel.text = nil
 		}
 	}
 
