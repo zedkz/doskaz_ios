@@ -33,6 +33,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	private let bottomButton = Button(type: .system)
 	
 	private let phoneTextF = UITextField()
+	private let enterPhoneLabel = UILabel()
 
 	func setupInitialState() {
 		configureData()
@@ -57,6 +58,11 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		phoneTextF.keyboardType = .numberPad
 		phoneTextF.delegate = self
 		phoneTextF.addTarget(self, action: #selector(handleTextF(_:)), for: .editingChanged)
+		enterPhoneLabel.decorate(with: Style.systemFont(size: 14), { label in
+			label.numberOfLines = 0
+			label.textAlignment = .center
+		})
+		enterPhoneLabel.text = l10n(.enterPhone)
 	}
 	
 	private func configurePageData() {
@@ -154,11 +160,15 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		switch viewPage {
 		case .first:
 			middleView.addSubview(phoneTextF)
+			middleView.addSubview(enterPhoneLabel)
 			phoneTextF.addConstraintsProgrammatically
 				.pinEdgeToSupers(.leading, plus: 24)
 				.pinEdgeToSupers(.trailing, plus: -24)
 				.set(my: .height, to: 56)
 				.pinEdgeToSupers(.bottom)
+			enterPhoneLabel.addConstraintsProgrammatically
+				.pinEdgeToSupers(.horizontalCenter)
+				.pin(my: .bottom, to: .top, of: phoneTextF, plus: -20)
 		case .second:
 			break
 		case .third:
