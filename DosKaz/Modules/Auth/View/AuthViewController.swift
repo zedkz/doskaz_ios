@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 enum AuthViewPage {
 	case first, second, third
@@ -16,13 +17,23 @@ enum AuthViewPage {
 
 protocol AuthViewInput where Self: UIViewController {
 	func setupInitialState()
+	var viewPage: AuthViewPage { get set }
+	var onTouchNext: Command { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 
 	var output: AuthViewOutput!
 	
-	private var viewPage = AuthViewPage.first
+	var onTouchNext: Command = .nop
+	
+	var viewPage = AuthViewPage.first {
+		didSet {
+			configurePageData()
+			
+		}
+	}
+	
 	private let backgroundView = UIImageView()
 	private let foregroundView = UIView()
 	private let logoImageView = UIImageView()
@@ -37,8 +48,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 
 	func setupInitialState() {
 		configureData()
-		configurePageData()
 		configureLayout()
+		configurePageData()
+		configureMiddleViewLayout()
 	}
 	
 	private func configureData() {
@@ -55,7 +67,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		phoneTextF.layer.borderWidth = 1
 		phoneTextF.layer.cornerRadius = 3
 		phoneTextF.font = .systemFont(ofSize: 14)
-		phoneTextF.keyboardType = .numberPad
+		phoneTextF.keyboardType = .phonePad
 		phoneTextF.delegate = self
 		phoneTextF.addTarget(self, action: #selector(handleTextF(_:)), for: .editingChanged)
 		enterPhoneLabel.decorate(with: Style.systemFont(size: 14), { label in
@@ -77,8 +89,16 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
 		)
 		
-		blueButton.didTouchUpInside = {
-			
+		blueButton.didTouchUpInside = { [weak self] in
+			guard let self = self else { return }
+			switch self.viewPage {
+			case .first:
+				self.onTouchNext.perform()
+			case .second:
+				break
+			case .third:
+				break
+			}
 		}
 		
 		switch viewPage {
@@ -153,7 +173,6 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			.pin(my: .top, to: .bottom, of: blueButton, plus: 12)
 			.pinEdgeToSupers(.horizontalCenter)
 
-		configureMiddleViewLayout()
 	}
 	
 	private func configureMiddleViewLayout() {
