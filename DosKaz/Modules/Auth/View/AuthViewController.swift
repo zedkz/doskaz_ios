@@ -67,12 +67,18 @@ class AuthViewController: UIViewController, AuthViewInput {
 		case .first:
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.next), for: .normal)
+			bottomButton.setImage(nil, for: .normal)
+			bottomButton.setTitle(nil, for: .normal)
 		case .second:
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.send), for: .normal)
+			bottomButton.setImage(UIImage(named: "sms_phone"), for: .normal)
+			bottomButton.setTitle(" " + l10n(.getMoreSms), for: .normal)
 		case .third:
 			topLabel.text = l10n(.welcome)
 			blueButton.setTitle(l10n(.toProfile), for: .normal)
+			bottomButton.setImage(nil, for: .normal)
+			bottomButton.setTitle(l10n(.nextTime), for: .normal)
 		}
 	}
 
@@ -124,6 +130,11 @@ class AuthViewController: UIViewController, AuthViewInput {
 			.pinEdgeToSupers(.leading, plus: 24)
 			.pinEdgeToSupers(.trailing, plus: -24)
 			.set(my: .height, to: 56)
+		
+		foregroundView.addSubview(bottomButton)
+		bottomButton.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: blueButton, plus: 12)
+			.pinEdgeToSupers(.horizontalCenter)
 
 	}
 	

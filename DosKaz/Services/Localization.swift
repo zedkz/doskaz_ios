@@ -196,6 +196,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case welcome = "Добро пожаловать на портал!"
 	case next = "Далее"
 	case toProfile = "Перейти в мой профиль"
+	case getMoreSms = "Получить СМС ещё раз"
+	case nextTime = "В другой раз"
 	
 	var l10n: String {
 		return self.rawValue.localized
