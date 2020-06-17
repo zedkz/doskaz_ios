@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum AuthViewPage {
+	case first, second, third
+}
+
 // MARK: View input protocol
 
 protocol AuthViewInput where Self: UIViewController {
@@ -18,6 +22,7 @@ class AuthViewController: UIViewController, AuthViewInput {
 
 	var output: AuthViewOutput!
 	
+	private var viewPage = AuthViewPage.first
 	private let backgroundView = UIImageView()
 	private let foregroundView = UIView()
 	private let logoImageView = UIImageView()
@@ -29,6 +34,7 @@ class AuthViewController: UIViewController, AuthViewInput {
 
 	func setupInitialState() {
 		configureData()
+		configurePageData()
 		configureLayout()
 	}
 	
@@ -39,6 +45,18 @@ class AuthViewController: UIViewController, AuthViewInput {
 		foregroundView.backgroundColor = .white
 		foregroundView.decorate(with: Style.topCornersRounded)
 		logoImageView.image = UIImage(named: "logo")
+	}
+	
+	private func configurePageData() {
+		topLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold))
+		switch viewPage {
+		case .first:
+			topLabel.text = l10n(.auth)
+		case .second:
+			topLabel.text = l10n(.auth)
+		case .third:
+			topLabel.text = l10n(.welcome)
+		}
 	}
 
 	private func configureLayout() {
