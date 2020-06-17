@@ -21,6 +21,11 @@ class AuthViewController: UIViewController, AuthViewInput {
 	private let backgroundView = UIImageView()
 	private let foregroundView = UIView()
 	private let logoImageView = UIImageView()
+	
+	private let topLabel = UILabel()
+	private let middleView = UIView()
+	private let blueButton = Button(type: .system)
+	private let bottomButton = Button(type: .system)
 
 	func setupInitialState() {
 		configureData()
@@ -59,6 +64,12 @@ class AuthViewController: UIViewController, AuthViewInput {
 		logoImageView.addConstraintsProgrammatically
 			.pinEdgeToSupersSafe(.verticalCenter)
 			.pinEdgeToSupersSafe(.horizontalCenter)
+		
+		configureForegroundLayout()
+	}
+	
+	private func configureForegroundLayout() {
+		
 	}
 	
 }
