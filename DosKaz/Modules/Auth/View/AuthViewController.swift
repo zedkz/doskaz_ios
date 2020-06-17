@@ -53,13 +53,26 @@ class AuthViewController: UIViewController, AuthViewInput {
 			label.textAlignment = .center
 		})
 		
+		blueButton.decorate(with:
+			Style.systemFont(size: 14),
+			Style.titleColor(color: .white),
+			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
+		)
+		
+		blueButton.didTouchUpInside = {
+			
+		}
+		
 		switch viewPage {
 		case .first:
 			topLabel.text = l10n(.auth)
+			blueButton.setTitle(l10n(.next), for: .normal)
 		case .second:
 			topLabel.text = l10n(.auth)
+			blueButton.setTitle(l10n(.send), for: .normal)
 		case .third:
 			topLabel.text = l10n(.welcome)
+			blueButton.setTitle(l10n(.toProfile), for: .normal)
 		}
 	}
 
@@ -96,6 +109,7 @@ class AuthViewController: UIViewController, AuthViewInput {
 			.pinEdgeToSupers(.trailing, plus: -8)
 			.pinEdgeToSupers(.leading, plus: 8)
 			.pinEdgeToSupers(.top, plus: 35)
+		
 		middleView.backgroundColor = .systemGray
 		foregroundView.addSubview(middleView)
 		middleView.addConstraintsProgrammatically
@@ -103,6 +117,14 @@ class AuthViewController: UIViewController, AuthViewInput {
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
 			.set(my: .height, to: 176 + 48)
+		
+		foregroundView.addSubview(blueButton)
+		blueButton.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: middleView, plus: 20)
+			.pinEdgeToSupers(.leading, plus: 24)
+			.pinEdgeToSupers(.trailing, plus: -24)
+			.set(my: .height, to: 56)
+
 	}
 	
 }
