@@ -19,6 +19,7 @@ protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	var viewPage: AuthViewPage { get set }
 	var onTouchNext: CommandWith<String> { get set }
+	var onTouchSend: CommandWith<String> { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
@@ -26,6 +27,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	var output: AuthViewOutput!
 	
 	var onTouchNext: CommandWith<String> = .nop
+	var onTouchSend: CommandWith<String> = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -94,7 +96,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 					self.onTouchNext.perform(with: text)
 				}
 			case .second:
-				break
+				if let text = self.phoneTextF.text {
+					self.onTouchSend.perform(with: text)
+				}
 			case .third:
 				break
 			}

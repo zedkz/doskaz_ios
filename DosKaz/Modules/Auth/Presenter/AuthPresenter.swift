@@ -16,11 +16,18 @@ class AuthPresenter: AuthViewOutput {
 	weak var view: AuthViewInput!
 	var interactor: AuthInteractorInput!
 	var router: AuthRouterInput!
+	
+	var verificationID: String?
 
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onTouchNext = CommandWith<String> { [weak self] text in
 			self?.interactor.verify(phoneNumber: text)
+		}
+		view.onTouchSend = CommandWith<String> { [weak self] text in
+			if let id = self?.verificationID {
+				self?.interactor.signIn(with: text, id: id)
+			}
 		}
 	}
 	
@@ -30,13 +37,24 @@ class AuthPresenter: AuthViewOutput {
 // MARK: Interactor output protocol
 
 protocol AuthInteractorOutput: class {
-	func didSucceed(with verificationCode: String)
+	func didSucceed(with verificationID: String)
 	func didFailVerify(with error: Error)
+	func didSucceedSignIn()
+	func didFailSignIn(with error: Error)
 }
 
 extension AuthPresenter: AuthInteractorOutput {
-	func didSucceed(with verificationCode: String) {
-		print("V code:", verificationCode)
+	func didSucceedSignIn() {
+		view.displayAlert(with: "Signed in")
+	}
+	
+	func didFailSignIn(with error: Error) {
+		view.displayAlert(with: error.localizedDescription)
+	}
+	
+	func didSucceed(with verificationID: String) {
+		print("V code:", verificationID)
+		self.verificationID = verificationID
 		view.viewPage = .second
 	}
 	

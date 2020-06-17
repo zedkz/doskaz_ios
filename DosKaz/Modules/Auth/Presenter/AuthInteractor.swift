@@ -10,6 +10,7 @@ import FirebaseAuth
 
 protocol AuthInteractorInput {
 	func verify(phoneNumber: String)
+	func signIn(with verificationCode: String, id verificationID: String)
 }
 
 // MARK: Implementation
@@ -29,6 +30,24 @@ class AuthInteractor: AuthInteractorInput {
 			if let id = verificationID {
 				self.output?.didSucceed(with: id)
 			}
+		}
+	}
+	
+	func signIn(with verificationCode: String, id verificationID: String) {
+		
+		let credential = PhoneAuthProvider.provider().credential(
+			withVerificationID: verificationID,
+			verificationCode: verificationCode
+		)
+		
+		Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
+			guard let self = self else { return }
+			if let error = error {
+				self.output?.didFailSignIn(with: error)
+				return
+			}
+		
+			self.output.didSucceedSignIn()
 		}
 	}
 
