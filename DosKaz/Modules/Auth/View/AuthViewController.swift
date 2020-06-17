@@ -72,7 +72,7 @@ class AuthViewController: UIViewController, AuthViewInput {
 			.pinEdgeToSupersSafe(.bottom)
 			.pinEdgeToSupersSafe(.leading)
 			.pinEdgeToSupersSafe(.trailing)
-			.set(my: .height, .equal, to: .height, of: view, times: 490/647)
+			.set(my: .height, .equal, to: .height, of: view, times: 507/647)
 		
 		let logoContainer = UIView()
 		view.addSubview(logoContainer)
@@ -95,7 +95,14 @@ class AuthViewController: UIViewController, AuthViewInput {
 		topLabel.addConstraintsProgrammatically
 			.pinEdgeToSupers(.trailing, plus: -8)
 			.pinEdgeToSupers(.leading, plus: 8)
-			.pinEdgeToSupers(.top, plus: 45)
+			.pinEdgeToSupers(.top, plus: 35)
+		middleView.backgroundColor = .systemGray
+		foregroundView.addSubview(middleView)
+		middleView.addConstraintsProgrammatically
+			.pin(my: .top, to: .bottom, of: topLabel, plus: 20)
+			.pinEdgeToSupers(.leading)
+			.pinEdgeToSupers(.trailing)
+			.set(my: .height, to: 176 + 48)
 	}
 	
 }
