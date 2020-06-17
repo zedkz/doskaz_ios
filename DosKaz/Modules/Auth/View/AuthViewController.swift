@@ -48,7 +48,11 @@ class AuthViewController: UIViewController, AuthViewInput {
 	}
 	
 	private func configurePageData() {
-		topLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold))
+		topLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold), { label in
+			label.numberOfLines = 0
+			label.textAlignment = .center
+		})
+		
 		switch viewPage {
 		case .first:
 			topLabel.text = l10n(.auth)
@@ -87,7 +91,11 @@ class AuthViewController: UIViewController, AuthViewInput {
 	}
 	
 	private func configureForegroundLayout() {
-		
+		foregroundView.addSubview(topLabel)
+		topLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.trailing, plus: -8)
+			.pinEdgeToSupers(.leading, plus: 8)
+			.pinEdgeToSupers(.top, plus: 45)
 	}
 	
 }
