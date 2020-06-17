@@ -15,17 +15,17 @@ enum AuthViewPage {
 
 // MARK: View input protocol
 
-protocol AuthViewInput where Self: UIViewController {
+protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	func setupInitialState()
 	var viewPage: AuthViewPage { get set }
-	var onTouchNext: Command { get set }
+	var onTouchNext: CommandWith<String> { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 
 	var output: AuthViewOutput!
 	
-	var onTouchNext: Command = .nop
+	var onTouchNext: CommandWith<String> = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -87,9 +87,12 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		
 		blueButton.didTouchUpInside = { [weak self] in
 			guard let self = self else { return }
+			self.phoneTextF.resignFirstResponder()
 			switch self.viewPage {
 			case .first:
-				self.onTouchNext.perform()
+				if let text = self.phoneTextF.text {
+					self.onTouchNext.perform(with: text)
+				}
 			case .second:
 				break
 			case .third:

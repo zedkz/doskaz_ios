@@ -6,8 +6,10 @@
 //  Copyright © 2020-06-17 07:43:27 +0000 lobster.kz. All rights reserved.
 //
 
-protocol AuthInteractorInput {
+import FirebaseAuth
 
+protocol AuthInteractorInput {
+	func verify(phoneNumber: String)
 }
 
 // MARK: Implementation
@@ -15,6 +17,19 @@ protocol AuthInteractorInput {
 class AuthInteractor: AuthInteractorInput {
 
 	weak var output: AuthInteractorOutput!
+	
+	func verify(phoneNumber: String) {
+		PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in
+			guard let self = self else { return }
+			if let error = error {
+				self.output?.didFailVerify(with: error)
+				return
+			}
+			
+			if let id = verificationID {
+				self.output?.didSucceed(with: id)
+			}
+		}
+	}
 
 }
-		

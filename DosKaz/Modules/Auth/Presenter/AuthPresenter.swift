@@ -19,8 +19,8 @@ class AuthPresenter: AuthViewOutput {
 
 	func viewIsReady() {
 		view.setupInitialState()
-		view.onTouchNext = Command { [weak self] in
-			self?.view.viewPage = .second
+		view.onTouchNext = CommandWith<String> { [weak self] text in
+			self?.interactor.verify(phoneNumber: text)
 		}
 	}
 	
@@ -30,9 +30,18 @@ class AuthPresenter: AuthViewOutput {
 // MARK: Interactor output protocol
 
 protocol AuthInteractorOutput: class {
-
+	func didSucceed(with verificationCode: String)
+	func didFailVerify(with error: Error)
 }
 
 extension AuthPresenter: AuthInteractorOutput {
+	func didSucceed(with verificationCode: String) {
+		print("V code:", verificationCode)
+		view.viewPage = .second
+	}
+	
+	func didFailVerify(with error: Error) {
+		view.displayAlert(with: error.localizedDescription)
+	}
 
 }
