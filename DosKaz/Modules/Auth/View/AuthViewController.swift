@@ -18,7 +18,7 @@ protocol AuthViewInput where Self: UIViewController {
 	func setupInitialState()
 }
 
-class AuthViewController: UIViewController, AuthViewInput {
+class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 
 	var output: AuthViewOutput!
 	
@@ -31,6 +31,8 @@ class AuthViewController: UIViewController, AuthViewInput {
 	private let middleView = UIView()
 	private let blueButton = Button(type: .system)
 	private let bottomButton = Button(type: .system)
+	
+	private let phoneTextF = UITextField()
 
 	func setupInitialState() {
 		configureData()
@@ -45,6 +47,16 @@ class AuthViewController: UIViewController, AuthViewInput {
 		foregroundView.backgroundColor = .white
 		foregroundView.decorate(with: Style.topCornersRounded)
 		logoImageView.image = UIImage(named: "logo")
+		let spaceView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
+		phoneTextF.leftView = spaceView
+		phoneTextF.leftViewMode = .always
+		phoneTextF.layer.borderColor = UIColor(named: "TextFieldBorderColor")?.cgColor
+		phoneTextF.layer.borderWidth = 1
+		phoneTextF.layer.cornerRadius = 3
+		phoneTextF.font = .systemFont(ofSize: 14)
+		phoneTextF.keyboardType = .numberPad
+		phoneTextF.delegate = self
+		phoneTextF.addTarget(self, action: #selector(handleTextF(_:)), for: .editingChanged)
 	}
 	
 	private func configurePageData() {
@@ -116,7 +128,6 @@ class AuthViewController: UIViewController, AuthViewInput {
 			.pinEdgeToSupers(.leading, plus: 8)
 			.pinEdgeToSupers(.top, plus: 35)
 		
-		middleView.backgroundColor = .systemGray
 		foregroundView.addSubview(middleView)
 		middleView.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: topLabel, plus: 20)
@@ -136,6 +147,31 @@ class AuthViewController: UIViewController, AuthViewInput {
 			.pin(my: .top, to: .bottom, of: blueButton, plus: 12)
 			.pinEdgeToSupers(.horizontalCenter)
 
+		configureMiddleViewLayout()
+	}
+	
+	private func configureMiddleViewLayout() {
+		switch viewPage {
+		case .first:
+			middleView.addSubview(phoneTextF)
+			phoneTextF.addConstraintsProgrammatically
+				.pinEdgeToSupers(.leading, plus: 24)
+				.pinEdgeToSupers(.trailing, plus: -24)
+				.set(my: .height, to: 56)
+				.pinEdgeToSupers(.bottom)
+		case .second:
+			break
+		case .third:
+			break
+		}
+	}
+	
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+
+	}
+	
+	@objc func handleTextF(_ textField: UITextField) {
+		
 	}
 	
 }
