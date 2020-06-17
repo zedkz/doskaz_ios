@@ -127,6 +127,11 @@
 		44989E282443B21100FAD014 /* GreetingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E202443B21100FAD014 /* GreetingInteractor.swift */; };
 		44989E292443B21100FAD014 /* GreetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E222443B21100FAD014 /* GreetingViewController.swift */; };
 		44989E2A2443B21100FAD014 /* GreetingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44989E242443B21100FAD014 /* GreetingConfigurator.swift */; };
+		4499D769249A012E00263A67 /* AuthConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499D763249A012E00263A67 /* AuthConfigurator.swift */; };
+		4499D76A249A012E00263A67 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499D764249A012E00263A67 /* AuthPresenter.swift */; };
+		4499D76B249A012E00263A67 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499D765249A012E00263A67 /* AuthRouter.swift */; };
+		4499D76C249A012E00263A67 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499D766249A012E00263A67 /* AuthInteractor.swift */; };
+		4499D76D249A012E00263A67 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4499D768249A012E00263A67 /* AuthViewController.swift */; };
 		44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A059062473E13D00926814 /* ProfileCommonViewController.swift */; };
 		44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A059082473F70900926814 /* ProfileTasksViewController.swift */; };
 		44A0590B2474072100926814 /* ProfileObjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A0590A2474072100926814 /* ProfileObjectsViewController.swift */; };
@@ -353,6 +358,11 @@
 		44989E202443B21100FAD014 /* GreetingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingInteractor.swift; sourceTree = "<group>"; };
 		44989E222443B21100FAD014 /* GreetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingViewController.swift; sourceTree = "<group>"; };
 		44989E242443B21100FAD014 /* GreetingConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreetingConfigurator.swift; sourceTree = "<group>"; };
+		4499D763249A012E00263A67 /* AuthConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthConfigurator.swift; sourceTree = "<group>"; };
+		4499D764249A012E00263A67 /* AuthPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		4499D765249A012E00263A67 /* AuthRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		4499D766249A012E00263A67 /* AuthInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		4499D768249A012E00263A67 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44A059062473E13D00926814 /* ProfileCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCommonViewController.swift; sourceTree = "<group>"; };
 		44A059082473F70900926814 /* ProfileTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTasksViewController.swift; sourceTree = "<group>"; };
 		44A0590A2474072100926814 /* ProfileObjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileObjectsViewController.swift; sourceTree = "<group>"; };
@@ -684,6 +694,7 @@
 		445CDC522402D5D60072F4BC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4499D761249A012E00263A67 /* Auth */,
 				44010019248B86C200CBACE2 /* CalculatedZoneScore */,
 				44A5D95A2480E23F00372A90 /* Feedback */,
 				445CDC532402D6530072F4BC /* MainTabBarViewController.swift */,
@@ -948,6 +959,34 @@
 				4459CCF4244727B8002DA95F /* GreetingView.swift */,
 				44951D23244740AE0029275F /* GreetingCollectionDelegate.swift */,
 				44951D252447777E0029275F /* GreetingCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4499D761249A012E00263A67 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4499D767249A012E00263A67 /* View */,
+				4499D762249A012E00263A67 /* Presenter */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4499D762249A012E00263A67 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4499D763249A012E00263A67 /* AuthConfigurator.swift */,
+				4499D764249A012E00263A67 /* AuthPresenter.swift */,
+				4499D765249A012E00263A67 /* AuthRouter.swift */,
+				4499D766249A012E00263A67 /* AuthInteractor.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4499D767249A012E00263A67 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4499D768249A012E00263A67 /* AuthViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1481,6 +1520,7 @@
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
 				44593DFE2496331600B087ED /* BlogConfigurator.swift in Sources */,
 				44F4D883246EBFD3003A50BC /* SubSectionHeaderCell.swift in Sources */,
+				4499D769249A012E00263A67 /* AuthConfigurator.swift in Sources */,
 				44593E022496426100B087ED /* api_blog_posts_id.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
@@ -1491,6 +1531,7 @@
 				44ED11D32455B9EA009B92BF /* VenueInteractor.swift in Sources */,
 				4490E2F12402776500F70B40 /* StringResourceGenerator.swift in Sources */,
 				4404F218245C966600EB7184 /* api_objects_search.swift in Sources */,
+				4499D76B249A012E00263A67 /* AuthRouter.swift in Sources */,
 				44ABE698248E3DC100E34F95 /* IQUIViewController+Additions.swift in Sources */,
 				44ED11E724573EC5009B92BF /* VenueDescriptionPresenter.swift in Sources */,
 				44F527ED24092A7800AEBAC3 /* Annotation.swift in Sources */,
@@ -1510,7 +1551,9 @@
 				448EBACF24696985006C9961 /* FormControllers.swift in Sources */,
 				4446C24124727EC3006B49EE /* api_profile.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
+				4499D76A249A012E00263A67 /* AuthPresenter.swift in Sources */,
 				44ADD39024922364006908A8 /* ContactInfoView.swift in Sources */,
+				4499D76D249A012E00263A67 /* AuthViewController.swift in Sources */,
 				448EBACB24693C8F006C9961 /* BigFormRouter.swift in Sources */,
 				445CDC832402E5F90072F4BC /* MapModuleIO.swift in Sources */,
 				44E731262477D4B10022375C /* api_ complaints_type2Attributes.swift in Sources */,
@@ -1556,6 +1599,7 @@
 				4404F24B245F0CD900EB7184 /* FilterPresenter.swift in Sources */,
 				44951D2224473E2E0029275F /* CollectionViewDataSource.swift in Sources */,
 				44ABE699248E3DC100E34F95 /* IQUITextFieldView+Additions.swift in Sources */,
+				4499D76C249A012E00263A67 /* AuthInteractor.swift in Sources */,
 				44ABE692248E3DC100E34F95 /* IQInvocation.swift in Sources */,
 				4446C2432472814F006B49EE /* ProfileDrawerViewController.swift in Sources */,
 				447768AE247E7997007BB003 /* VenuePhotosPresenter.swift in Sources */,
