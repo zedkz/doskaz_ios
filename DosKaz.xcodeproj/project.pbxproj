@@ -171,6 +171,7 @@
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
+		44C8CE50249B985C00DF195D /* AuthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C8CE4F249B985C00DF195D /* AuthInfoView.swift */; };
 		44CD736F2498D1CC00BABC4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */; };
 		44E3829D2494F46D007C97DB /* RegionalRepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3829C2494F46D007C97DB /* RegionalRepCell.swift */; };
 		44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311424765F040022375C /* ComplaintConfigurator.swift */; };
@@ -403,6 +404,7 @@
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		44C8CE4F249B985C00DF195D /* AuthInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfoView.swift; sourceTree = "<group>"; };
 		44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44CD73702498DEEC00BABC4E /* DosKaz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DosKaz.entitlements; sourceTree = "<group>"; };
 		44E3829C2494F46D007C97DB /* RegionalRepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalRepCell.swift; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 			isa = PBXGroup;
 			children = (
 				4499D768249A012E00263A67 /* AuthViewController.swift */,
+				44C8CE4F249B985C00DF195D /* AuthInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
 				4404F255245F2D9800EB7184 /* Asset.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
+				44C8CE50249B985C00DF195D /* AuthInfoView.swift in Sources */,
 				445CDC822402E5F90072F4BC /* MapViewController.swift in Sources */,
 				44E731222477A2AA0022375C /* LeftCheckCell.swift in Sources */,
 				44ABE690248E3DC100E34F95 /* IQToolbar.swift in Sources */,

@@ -32,7 +32,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	var viewPage = AuthViewPage.first {
 		didSet {
 			configurePageData()
-			
+			configureMiddleViewLayout()
 		}
 	}
 	
@@ -52,6 +52,10 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		ai.hidesWhenStopped = true
 		return ai
 	}()
+	
+	let contRegLabel = UILabel()
+	let twentyP = AuthInfoView()
+	let fiftyP = AuthInfoView()
 
 	func setupInitialState() {
 		configureData()
@@ -61,6 +65,15 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	}
 	
 	private func configureData() {
+		contRegLabel.text = l10n(.continueReg)
+		contRegLabel.decorate(with: Style.systemFont(size: 14, weight: .semibold), { label in
+			label.numberOfLines = 0
+			label.textAlignment = .center
+		})
+		
+		twentyP.props = AuthInfoView.Props(imageName: "20_points", text: l10n(.getTwentyPoints))
+		fiftyP.props = AuthInfoView.Props(imageName: "50_points", text: l10n(.getFiftyPoints))
+		
 		backgroundView.image = UIImage(named: "green_map_background")
 		backgroundView.contentMode = .scaleAspectFill
 		backgroundView.clipsToBounds = true
@@ -221,7 +234,20 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		case .second:
 			break
 		case .third:
-			break
+			let stack = UIStackView()
+			stack.axis = .vertical
+			stack.alignment = .leading
+			stack.isLayoutMarginsRelativeArrangement = true
+			stack.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+			middleView.addSubview(stack)
+			stack.addConstraintsProgrammatically
+				.pinEdgeToSupers(.top)
+				.pinEdgeToSupers(.leading)
+				.pinEdgeToSupers(.trailing)
+			stack.addArrangedSubview(contRegLabel)
+			stack.setCustomSpacing(41, after: contRegLabel)
+			stack.addArrangedSubview(twentyP)
+			stack.addArrangedSubview(fiftyP)
 		case .loading:
 			break
 		}
