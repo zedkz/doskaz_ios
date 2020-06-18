@@ -21,10 +21,21 @@ extension AppSettings {
 		}
 	}
 	
+	static var token: String? {
+		get {
+			return AppSettings.value(for: Keys.token)
+		}
+		set(newToken) {
+			AppSettings.updateDefaults(for: Keys.token, value: newToken!)
+		}
+		
+	}
+	
 }
 
 extension Keys {
 	static let language = "language"
+	static let token = "token"
 }
 
 

@@ -46,8 +46,25 @@ class AuthInteractor: AuthInteractorInput {
 				self.output?.didFailSignIn(with: error)
 				return
 			}
-		
-			self.output.didSucceedSignIn()
+			
+			authResult?.user.getIDToken(completion: { (idToken, error) in
+				guard let fireToken = idToken else {
+					self.output?.didFailSignIn(with: error!)
+					return
+				}
+				
+				let request = APIGetPhoneToken(onSuccess: { (dkToken) in
+					AppSettings.token = dkToken.token
+					self.output?.didSucceedSignIn()
+				}, onFailure: { error in
+					self.output?.didFailSignIn(with: error)
+				},
+					 fireBaseToken: FireToken(idToken: fireToken)
+				)
+				request.dispatch()
+				
+			})
+
 		}
 	}
 

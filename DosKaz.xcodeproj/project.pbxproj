@@ -172,6 +172,7 @@
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
 		44C8CE50249B985C00DF195D /* AuthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C8CE4F249B985C00DF195D /* AuthInfoView.swift */; };
+		44C8CE52249BA5B400DF195D /* api_accessToken_phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */; };
 		44CD736F2498D1CC00BABC4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */; };
 		44E3829D2494F46D007C97DB /* RegionalRepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3829C2494F46D007C97DB /* RegionalRepCell.swift */; };
 		44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311424765F040022375C /* ComplaintConfigurator.swift */; };
@@ -405,6 +406,7 @@
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		44C8CE4F249B985C00DF195D /* AuthInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfoView.swift; sourceTree = "<group>"; };
+		44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_accessToken_phone.swift; sourceTree = "<group>"; };
 		44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44CD73702498DEEC00BABC4E /* DosKaz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DosKaz.entitlements; sourceTree = "<group>"; };
 		44E3829C2494F46D007C97DB /* RegionalRepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalRepCell.swift; sourceTree = "<group>"; };
@@ -1137,6 +1139,7 @@
 				44A75C7B2494EF050035CADA /* api_regionalRepresentatives.swift */,
 				44593E012496426100B087ED /* api_blog_posts_id.swift */,
 				4492E33B24977CAF00ED6C24 /* api_blog_posts_id_comments.swift */,
+				44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1414,6 +1417,7 @@
 				44ABE695248E3DC100E34F95 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
 				448EBAD324699374006C9961 /* CellConfigurator.swift in Sources */,
+				44C8CE52249BA5B400DF195D /* api_accessToken_phone.swift in Sources */,
 				444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */,
 				44E7312A247804FC0022375C /* api_complaints.swift in Sources */,
 				44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */,
