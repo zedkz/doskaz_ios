@@ -31,6 +31,10 @@ class AuthPresenter: AuthViewOutput {
 				self?.interactor.signIn(with: text, id: id)
 			}
 		}
+		view.onTouchResend = Command { [weak self] in
+			self?.verificationID = nil
+			self?.view.viewPage = .first
+		}
 	}
 	
 }

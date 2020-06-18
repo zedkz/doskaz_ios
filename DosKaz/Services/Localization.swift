@@ -196,7 +196,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case welcome = "Добро пожаловать на портал!"
 	case next = "Далее"
 	case toProfile = "Перейти в мой профиль"
-	case getMoreSms = "Получить СМС ещё раз"
+	case enterNumberAgain = "Ввести номер заново"
 	case nextTime = "В другой раз"
 	case enterPhone = "Введите номер мобильного телефона"
 	case enterSmsCode = "Введите код из СМС"

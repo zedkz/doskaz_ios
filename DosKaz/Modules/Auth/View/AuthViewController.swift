@@ -20,6 +20,7 @@ protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	var viewPage: AuthViewPage { get set }
 	var onTouchNext: CommandWith<String> { get set }
 	var onTouchSend: CommandWith<String> { get set }
+	var onTouchResend: Command { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
@@ -28,6 +29,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	
 	var onTouchNext: CommandWith<String> = .nop
 	var onTouchSend: CommandWith<String> = .nop
+	var onTouchResend: Command = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -110,6 +112,14 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
 		)
 		
+		bottomButton.didTouchUpInside = { [weak self] in
+			guard let self = self else { return }
+
+			if case .second = self.viewPage {
+				self.onTouchResend.perform()
+			}
+		}
+		
 		blueButton.didTouchUpInside = { [weak self] in
 			guard let self = self else { return }
 			self.phoneTextF.resignFirstResponder()
@@ -145,7 +155,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.send), for: .normal)
 			bottomButton.setImage(UIImage(named: "sms_phone"), for: .normal)
-			bottomButton.setTitle(" " + l10n(.getMoreSms), for: .normal)
+			bottomButton.setTitle(" " + l10n(.enterNumberAgain), for: .normal)
 			enterPhoneLabel.text = l10n(.enterSmsCode)
 			ai.stopAnimating()
 		case .third:
@@ -235,7 +245,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	private func configureMiddleViewLayout() {
 		switch viewPage {
 		case .first:
-			break
+			smsInfo.removeFromSuperview()
 		case .second:
 			middleView.addSubview(smsInfo)
 			smsInfo.addConstraintsProgrammatically
