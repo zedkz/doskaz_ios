@@ -69,6 +69,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	}
 	
 	private func configureData() {
+		
+		phoneTextF.keyboardDistanceFromTextField = 82
+		
 		let tc = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 1)
 		smsInfo.props = AuthInfoView.Props(imageName: "auth_i", text: l10n(.smsInfo), textColor: tc)
 		
@@ -150,6 +153,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			bottomButton.setTitle(nil, for: .normal)
 			enterPhoneLabel.text = l10n(.enterPhone)
 			ai.stopAnimating()
+			blueButton.isEnabled = true
 		case .second:
 			phoneTextF.text = nil
 			topLabel.text = l10n(.auth)
@@ -158,6 +162,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			bottomButton.setTitle(" " + l10n(.enterNumberAgain), for: .normal)
 			enterPhoneLabel.text = l10n(.enterSmsCode)
 			ai.stopAnimating()
+			blueButton.isEnabled = true
 		case .third:
 			phoneTextF.isHidden = true
 			topLabel.text = l10n(.welcome)
@@ -166,8 +171,10 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			bottomButton.setTitle(l10n(.nextTime), for: .normal)
 			enterPhoneLabel.text = nil
 			ai.stopAnimating()
+			blueButton.isEnabled = true
 		case .loading:
 			ai.startAnimating()
+			blueButton.isEnabled = false
 			blueButton.setTitle(nil, for: .normal)
 		}
 	}
