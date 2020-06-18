@@ -203,6 +203,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case continueReg = "Продолжите регистрацию и заполните свой профиль"
 	case getTwentyPoints = "За регистрацию вам начислено 20 баллов"
 	case getFiftyPoints = "Заполните информацию о себе и получите ещё 50 баллов"
+	case smsInfo = "Если вы не получили смс-код, убедитесь что ваше устройство прошло регистрацию у сотового оператора"
 	
 	var l10n: String {
 		return self.rawValue.localized

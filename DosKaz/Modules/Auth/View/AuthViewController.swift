@@ -56,6 +56,8 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	let contRegLabel = UILabel()
 	let twentyP = AuthInfoView()
 	let fiftyP = AuthInfoView()
+	
+	let smsInfo = AuthInfoView()
 
 	func setupInitialState() {
 		configureData()
@@ -65,6 +67,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	}
 	
 	private func configureData() {
+		let tc = UIColor(red: 0.482, green: 0.584, blue: 0.655, alpha: 1)
+		smsInfo.props = AuthInfoView.Props(imageName: "auth_i", text: l10n(.smsInfo), textColor: tc)
+		
 		contRegLabel.text = l10n(.continueReg)
 		contRegLabel.decorate(with: Style.systemFont(size: 14, weight: .semibold), { label in
 			label.numberOfLines = 0
@@ -232,8 +237,13 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		case .first:
 			break
 		case .second:
-			break
+			middleView.addSubview(smsInfo)
+			smsInfo.addConstraintsProgrammatically
+				.pinEdgeToSupers(.top)
+				.pinEdgeToSupers(.leading, plus: 8)
+				.pinEdgeToSupers(.trailing, plus: -8)
 		case .third:
+			smsInfo.removeFromSuperview()
 			let stack = UIStackView()
 			stack.axis = .vertical
 			stack.alignment = .leading
