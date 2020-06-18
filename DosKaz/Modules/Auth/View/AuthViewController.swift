@@ -123,6 +123,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			enterPhoneLabel.text = l10n(.enterPhone)
 			ai.stopAnimating()
 		case .second:
+			phoneTextF.text = nil
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.send), for: .normal)
 			bottomButton.setImage(UIImage(named: "sms_phone"), for: .normal)
@@ -130,6 +131,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			enterPhoneLabel.text = l10n(.enterSmsCode)
 			ai.stopAnimating()
 		case .third:
+			phoneTextF.isHidden = true
 			topLabel.text = l10n(.welcome)
 			blueButton.setTitle(l10n(.toProfile), for: .normal)
 			bottomButton.setImage(nil, for: .normal)
