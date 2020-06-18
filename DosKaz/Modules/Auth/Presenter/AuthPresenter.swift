@@ -22,11 +22,12 @@ class AuthPresenter: AuthViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onTouchNext = CommandWith<String> { [weak self] text in
-			self?.view.viewPage = .loading
+			self?.view?.viewPage = .loading
 			self?.interactor.verify(phoneNumber: text)
 		}
 		view.onTouchSend = CommandWith<String> { [weak self] text in
 			if let id = self?.verificationID {
+				self?.view?.viewPage = .loading
 				self?.interactor.signIn(with: text, id: id)
 			}
 		}
@@ -46,10 +47,11 @@ protocol AuthInteractorOutput: class {
 
 extension AuthPresenter: AuthInteractorOutput {
 	func didSucceedSignIn() {
-		view.displayAlert(with: "Signed in")
+		view.viewPage = .third
 	}
 	
 	func didFailSignIn(with error: Error) {
+		view.viewPage = .second
 		view.displayAlert(with: error.localizedDescription)
 	}
 	
