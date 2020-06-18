@@ -22,6 +22,7 @@ class AuthPresenter: AuthViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onTouchNext = CommandWith<String> { [weak self] text in
+			self?.view.viewPage = .loading
 			self?.interactor.verify(phoneNumber: text)
 		}
 		view.onTouchSend = CommandWith<String> { [weak self] text in
@@ -59,6 +60,7 @@ extension AuthPresenter: AuthInteractorOutput {
 	}
 	
 	func didFailVerify(with error: Error) {
+		view.viewPage = .first
 		view.displayAlert(with: error.localizedDescription)
 	}
 

@@ -10,7 +10,7 @@ import UIKit
 import SharedCodeFramework
 
 enum AuthViewPage {
-	case first, second, third
+	case first, second, third, loading
 }
 
 // MARK: View input protocol
@@ -47,6 +47,11 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	
 	private let phoneTextF = UITextField()
 	private let enterPhoneLabel = UILabel()
+	var ai: UIActivityIndicatorView = {
+		let ai = UIActivityIndicatorView(style: .white)
+		ai.hidesWhenStopped = true
+		return ai
+	}()
 
 	func setupInitialState() {
 		configureData()
@@ -92,14 +97,16 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			self.phoneTextF.resignFirstResponder()
 			switch self.viewPage {
 			case .first:
-				if let text = self.phoneTextF.text {
+				if let text = self.phoneTextF.text, !text.isEmpty {
 					self.onTouchNext.perform(with: text)
 				}
 			case .second:
-				if let text = self.phoneTextF.text {
+				if let text = self.phoneTextF.text, !text.isEmpty {
 					self.onTouchSend.perform(with: text)
 				}
 			case .third:
+				break
+			case .loading:
 				break
 			}
 		}
@@ -114,18 +121,24 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			bottomButton.setImage(nil, for: .normal)
 			bottomButton.setTitle(nil, for: .normal)
 			enterPhoneLabel.text = l10n(.enterPhone)
+			ai.stopAnimating()
 		case .second:
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.send), for: .normal)
 			bottomButton.setImage(UIImage(named: "sms_phone"), for: .normal)
 			bottomButton.setTitle(" " + l10n(.getMoreSms), for: .normal)
 			enterPhoneLabel.text = l10n(.enterSmsCode)
+			ai.stopAnimating()
 		case .third:
 			topLabel.text = l10n(.welcome)
 			blueButton.setTitle(l10n(.toProfile), for: .normal)
 			bottomButton.setImage(nil, for: .normal)
 			bottomButton.setTitle(l10n(.nextTime), for: .normal)
 			enterPhoneLabel.text = nil
+			ai.stopAnimating()
+		case .loading:
+			ai.startAnimating()
+			blueButton.setTitle(nil, for: .normal)
 		}
 	}
 
@@ -181,25 +194,33 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		bottomButton.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: blueButton, plus: 12)
 			.pinEdgeToSupers(.horizontalCenter)
-
+		
+		middleView.addSubview(phoneTextF)
+		middleView.addSubview(enterPhoneLabel)
+		phoneTextF.addConstraintsProgrammatically
+			.pinEdgeToSupers(.leading, plus: 24)
+			.pinEdgeToSupers(.trailing, plus: -24)
+			.set(my: .height, to: 56)
+			.pinEdgeToSupers(.bottom)
+		enterPhoneLabel.addConstraintsProgrammatically
+			.pinEdgeToSupers(.horizontalCenter)
+			.pin(my: .bottom, to: .top, of: phoneTextF, plus: -20)
+		
+		blueButton.addSubview(ai)
+		ai.addConstraintsProgrammatically
+			.pinEdgeToSupers(.verticalCenter)
+			.pinEdgeToSupers(.horizontalCenter)
 	}
 	
 	private func configureMiddleViewLayout() {
 		switch viewPage {
 		case .first:
-			middleView.addSubview(phoneTextF)
-			middleView.addSubview(enterPhoneLabel)
-			phoneTextF.addConstraintsProgrammatically
-				.pinEdgeToSupers(.leading, plus: 24)
-				.pinEdgeToSupers(.trailing, plus: -24)
-				.set(my: .height, to: 56)
-				.pinEdgeToSupers(.bottom)
-			enterPhoneLabel.addConstraintsProgrammatically
-				.pinEdgeToSupers(.horizontalCenter)
-				.pin(my: .bottom, to: .top, of: phoneTextF, plus: -20)
+			break
 		case .second:
 			break
 		case .third:
+			break
+		case .loading:
 			break
 		}
 	}
