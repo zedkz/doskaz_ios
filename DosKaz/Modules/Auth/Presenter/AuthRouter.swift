@@ -37,7 +37,9 @@ class AuthRouter: AuthRouterInput {
 			vc.navigationController?.navigationBar.isHidden = false
 			vc.navigationController?.pushViewController(form, animated: true)
 		case .complaint:
-			break
+			let complaintVC = ComplaintBuilder().assembleModule()
+			vc.navigationController?.navigationBar.isHidden = false
+			vc.navigationController?.pushViewController(complaintVC, animated: true)
 		}
 	}
 

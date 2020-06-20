@@ -37,8 +37,14 @@ class MapRouter: MapRouterInput {
 	}
 	
 	func presentComplaint(with vc: UIViewController) {
-		let complaintViewController = ComplaintBuilder().assembleModule()
-		vc.presentEmbedded(complaintViewController)
+		if AppSettings.token == nil {
+			let auth = AuthBuilder().assembleModule()
+			auth.output.initView(with: .anywhere(.complaint))
+			vc.presentEmbedded(auth)
+		} else {
+			let complaintViewController = ComplaintBuilder().assembleModule()
+			vc.presentEmbedded(complaintViewController)
+		}
 	}
 
 }
