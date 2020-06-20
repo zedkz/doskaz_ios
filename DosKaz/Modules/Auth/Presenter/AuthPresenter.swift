@@ -7,6 +7,10 @@
 //
 import SharedCodeFramework
 
+enum AuthOrigin {
+	case tab, anywhere
+}
+
 protocol AuthViewOutput {
 	func viewIsReady()
 }
@@ -16,7 +20,8 @@ class AuthPresenter: AuthViewOutput {
 	weak var view: AuthViewInput!
 	var interactor: AuthInteractorInput!
 	var router: AuthRouterInput!
-	
+
+	var origin = AuthOrigin.tab
 	var verificationID: String?
 
 	func viewIsReady() {
@@ -55,7 +60,7 @@ protocol AuthInteractorOutput: class {
 
 extension AuthPresenter: AuthInteractorOutput {
 	func didSucceedSignIn() {
-		view.viewPage = .third
+		view.viewPage = .third(origin)
 	}
 	
 	func didFailSignIn(with error: Error) {

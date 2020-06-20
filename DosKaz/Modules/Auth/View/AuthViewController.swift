@@ -10,7 +10,7 @@ import UIKit
 import SharedCodeFramework
 
 enum AuthViewPage {
-	case first, second, third, loading
+	case first, second, third(AuthOrigin), loading
 }
 
 // MARK: View input protocol
@@ -165,7 +165,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			enterPhoneLabel.text = l10n(.enterSmsCode)
 			ai.stopAnimating()
 			blueButton.isEnabled = true
-		case .third:
+		case .third(let origin):
 			phoneTextF.isHidden = true
 			topLabel.text = l10n(.welcome)
 			blueButton.setTitle(l10n(.toProfile), for: .normal)
@@ -174,6 +174,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			enterPhoneLabel.text = nil
 			ai.stopAnimating()
 			blueButton.isEnabled = true
+			if case .tab = origin {
+				bottomButton.isHidden = true
+			}
 		case .loading:
 			ai.startAnimating()
 			blueButton.isEnabled = false
