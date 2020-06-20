@@ -9,16 +9,25 @@
 import UIKit
 
 protocol AuthRouterInput {
-	func showProfile(for vc: UIViewController)
+	func showProfile(for vc: UIViewController, origin: AuthOrigin)
 	func showDestination(for vc: UIViewController, destination: AuthDestination)
 }
 
 // MARK: Implementation
 
 class AuthRouter: AuthRouterInput {
-	func showProfile(for vc: UIViewController) {
-		let profile = ProfileBuilder().assembleTab()
-		vc.tabBarController?.viewControllers![3] = profile
+	func showProfile(for vc: UIViewController, origin: AuthOrigin) {
+		switch origin {
+		case .tab:
+			let profile = ProfileBuilder().assembleTab()
+			vc.tabBarController?.viewControllers![3] = profile
+		case .anywhere:
+			vc.dismiss(animated: true, completion: {
+				let kw = UIApplication.shared.keyWindow
+				let t = (kw?.rootViewController) as? MainTabBarViewController
+				t?.selectedIndex = 3
+			})
+		}
 	}
 	
 	func showDestination(for vc: UIViewController, destination: AuthDestination) {

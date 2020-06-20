@@ -47,7 +47,7 @@ class AuthPresenter: AuthViewOutput {
 		}
 		view.onTouchToProfile = Command { [weak self] in
 			guard let self = self else { return }
-			self.router.showProfile(for: self.view)
+			self.router.showProfile(for: self.view, origin: self.origin)
 		}
 		view.onTouchNotNow = Command { [weak self] in
 			guard let self = self else { return }
