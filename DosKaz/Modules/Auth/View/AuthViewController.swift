@@ -245,7 +245,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			.pin(my: .top, to: .bottom, of: topLabel, plus: 20)
 			.pinEdgeToSupers(.leading)
 			.pinEdgeToSupers(.trailing)
-			.set(my: .height, to: 176 + 48)
+			.set(my: .height, to: 176)
 		
 		foregroundView.addSubview(blueButton)
 		blueButton.addConstraintsProgrammatically
