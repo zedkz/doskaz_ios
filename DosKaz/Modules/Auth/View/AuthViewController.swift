@@ -22,6 +22,7 @@ protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	var onTouchSend: CommandWith<String> { get set }
 	var onTouchToProfile: Command { get set }
 	var onTouchResend: Command { get set }
+	var onTouchNotNow: Command { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
@@ -32,6 +33,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	var onTouchSend: CommandWith<String> = .nop
 	var onTouchResend: Command = .nop
 	var onTouchToProfile: Command = .nop
+	var onTouchNotNow: Command = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -121,8 +123,12 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		bottomButton.didTouchUpInside = { [weak self] in
 			guard let self = self else { return }
 
-			if case .second = self.viewPage {
+			switch self.viewPage {
+			case .second:
 				self.onTouchResend.perform()
+			case .third:
+				self.onTouchNotNow.perform()
+			default: break
 			}
 		}
 		

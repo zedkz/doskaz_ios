@@ -49,6 +49,12 @@ class AuthPresenter: AuthViewOutput {
 			guard let self = self else { return }
 			self.router.showProfile(for: self.view)
 		}
+		view.onTouchNotNow = Command { [weak self] in
+			guard let self = self else { return }
+			if case let .anywhere(destination) = self.origin {
+				self.router.showDestination(for: self.view, destination: destination)
+			}
+		}
 	}
 	
 }
