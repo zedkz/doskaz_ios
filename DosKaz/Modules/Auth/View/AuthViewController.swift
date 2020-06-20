@@ -68,6 +68,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		configureLayout()
 		configurePageData()
 		configureMiddleViewLayout()
+		navigationController?.navigationBar.isHidden = true
 	}
 	
 	private func configureData() {

@@ -8,10 +8,11 @@
 import SharedCodeFramework
 
 enum AuthOrigin {
-	case tab, anywhere
+	case tab, anywhere(AuthDestination)
 }
 
 protocol AuthViewOutput {
+	func initView(with origin: AuthOrigin)
 	func viewIsReady()
 }
 		
@@ -23,6 +24,10 @@ class AuthPresenter: AuthViewOutput {
 
 	var origin = AuthOrigin.tab
 	var verificationID: String?
+	
+	func initView(with origin: AuthOrigin) {
+		self.origin = origin
+	}
 
 	func viewIsReady() {
 		view.setupInitialState()

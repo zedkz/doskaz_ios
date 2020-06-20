@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthRouterInput {
 	func showProfile(for vc: UIViewController)
+	func showDestination(for vc: UIViewController, destination: AuthDestination)
 }
 
 // MARK: Implementation
@@ -19,4 +20,21 @@ class AuthRouter: AuthRouterInput {
 		let profile = ProfileBuilder().assembleTab()
 		vc.tabBarController?.viewControllers![3] = profile
 	}
+	
+	func showDestination(for vc: UIViewController, destination: AuthDestination) {
+		switch destination {
+		case .bigForm:
+			let form = BigFormBuilder().assembleModule()
+			vc.navigationController?.navigationBar.isHidden = false
+			vc.navigationController?.pushViewController(form, animated: true)
+		case .complaint:
+			break
+		}
+	}
+
+}
+
+enum AuthDestination {
+	case bigForm
+	case complaint
 }

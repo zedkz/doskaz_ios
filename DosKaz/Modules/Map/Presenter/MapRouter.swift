@@ -24,8 +24,16 @@ class MapRouter: MapRouterInput {
 	}
 	
 	func presentBigForm(with vc: UIViewController) {
-		let form = BigFormBuilder().assembleModule()
-		vc.presentEmbedded(form)
+		
+		if AppSettings.token == nil {
+			let auth = AuthBuilder().assembleModule()
+			auth.output.initView(with: .anywhere(.bigForm))
+			vc.presentEmbedded(auth)
+		} else {
+			let form = BigFormBuilder().assembleModule()
+			vc.presentEmbedded(form)
+		}
+		
 	}
 	
 	func presentComplaint(with vc: UIViewController) {
