@@ -50,6 +50,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	private let middleView = UIView()
 	private let blueButton = Button(type: .system)
 	private let bottomButton = Button(type: .system)
+	private let xButton = Button(type: .system)
 	
 	private let phoneTextF = UITextField()
 	private let enterPhoneLabel = UILabel()
@@ -119,6 +120,14 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			Style.titleColor(color: .white),
 			Style.backgroundColor(color: UIColor.init(named: "SelectedTabbarTintColor"))
 		)
+		
+		let x = UIImage(named: "x_in_form")?.withRenderingMode(.alwaysTemplate)
+		xButton.tintColor = .white
+		xButton.setImage(x, for: .normal)
+		xButton.didTouchUpInside = { [unowned self] in
+			self.dismiss(animated: true, completion: nil)
+		}
+		
 		
 		bottomButton.didTouchUpInside = { [weak self] in
 			guard let self = self else { return }
@@ -215,6 +224,12 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			.pinEdgeToSupersSafe(.verticalCenter)
 			.pinEdgeToSupersSafe(.horizontalCenter)
 		
+		view.addSubview(xButton)
+		xButton.addConstraintsProgrammatically
+			.pinEdgeToSupersSafe(.trailing, plus: -8)
+			.pinEdgeToSupersSafe(.top, plus: 8)
+			.set(my: .height, to: 22)
+			.set(my: .width, to: 22)
 		configureForegroundLayout()
 	}
 	
