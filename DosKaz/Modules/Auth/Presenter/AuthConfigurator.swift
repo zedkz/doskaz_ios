@@ -9,6 +9,14 @@
 import UIKit
 
 struct AuthBuilder {
+	
+	func assembleTab() -> UIViewController {
+		let authVC = assembleModule()
+		let image = UIImage(named: "user")
+		let tabBarItem = UITabBarItem(title: l10n(.profile), image: image, selectedImage: image)
+		authVC.tabBarItem = tabBarItem
+		return authVC
+	}
 
 	func assembleModule() -> AuthViewController {
 		let viewController = AuthViewController()

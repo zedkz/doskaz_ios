@@ -9,11 +9,14 @@
 import UIKit
 
 protocol AuthRouterInput {
-
+	func showProfile(for vc: UIViewController)
 }
 
 // MARK: Implementation
 
 class AuthRouter: AuthRouterInput {
-
+	func showProfile(for vc: UIViewController) {
+		let profile = ProfileBuilder().assembleTab()
+		vc.tabBarController?.viewControllers![3] = profile
+	}
 }

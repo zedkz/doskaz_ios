@@ -35,6 +35,10 @@ class AuthPresenter: AuthViewOutput {
 			self?.verificationID = nil
 			self?.view.viewPage = .first
 		}
+		view.onTouchToProfile = Command { [weak self] in
+			guard let self = self else { return }
+			self.router.showProfile(for: self.view)
+		}
 	}
 	
 }

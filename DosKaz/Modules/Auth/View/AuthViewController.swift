@@ -20,6 +20,7 @@ protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	var viewPage: AuthViewPage { get set }
 	var onTouchNext: CommandWith<String> { get set }
 	var onTouchSend: CommandWith<String> { get set }
+	var onTouchToProfile: Command { get set }
 	var onTouchResend: Command { get set }
 }
 
@@ -30,6 +31,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	var onTouchNext: CommandWith<String> = .nop
 	var onTouchSend: CommandWith<String> = .nop
 	var onTouchResend: Command = .nop
+	var onTouchToProfile: Command = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -136,7 +138,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 					self.onTouchSend.perform(with: text)
 				}
 			case .third:
-				break
+				self.onTouchToProfile.perform()
 			case .loading:
 				break
 			}
@@ -188,7 +190,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			.pinEdgeToSupersSafe(.bottom)
 			.pinEdgeToSupersSafe(.leading)
 			.pinEdgeToSupersSafe(.trailing)
-			.set(my: .height, .equal, to: .height, of: view, times: 507/647)
+			.set(my: .height, .equal, to: .height, of: backgroundView, times: 507/647)
 		
 		let logoContainer = UIView()
 		view.addSubview(logoContainer)
