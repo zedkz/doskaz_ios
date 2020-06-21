@@ -284,6 +284,17 @@ extension MapViewController: MKMapViewDelegate {
 			venue.isLarge = true
 			mapView.addAnnotation(venue)
 			selectedAnnotation = venue
+		} else if let clusterAnnoation = view.annotation as? ClusterAnnotation {
+		
+			let latitudeDelta = mapView.region.span.latitudeDelta*0.4
+			let longitudeDelta = mapView.region.span.longitudeDelta*0.4
+			
+			let coordinateRegion = MKCoordinateRegion(
+				center: clusterAnnoation.coordinate,
+				span: MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+			)
+			
+			mapView.setRegion(coordinateRegion, animated: true)
 		}
 	}
 	

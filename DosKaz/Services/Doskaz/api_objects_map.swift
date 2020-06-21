@@ -73,18 +73,14 @@ struct Cluster: Codable {
 struct Point: Codable {
 	let id: Int
 	let coordinates: [Double]
-	let color: Color
+	let color: String
 	let icon: String?
 	let overallScore: OverallScore
 }
 
-enum Color: String, Codable {
-	case de1220 = "#DE1220"
-	case f8Ac1A = "#F8AC1A"
-	case the3Dba3B = "#3DBA3B"
-	
+extension String {
 	var uiColor: UIColor {
-		return UIColor(hex: rawValue) ?? .gray
+		return UIColor(hex: self) ?? .gray
 	}
 }
 

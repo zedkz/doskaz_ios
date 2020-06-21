@@ -33,7 +33,7 @@ struct DoskazVenue: Codable {
 	let subCategory: String
 	let coordinates: [Double]
 	let overallScore: OverallScore
-	let color: Color
+	let color: String
 	let scoreByZones: ScoreByZones
 	let icon: String
 	let photos: [Photo]
