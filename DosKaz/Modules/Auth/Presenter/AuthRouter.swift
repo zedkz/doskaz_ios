@@ -9,6 +9,7 @@
 import UIKit
 
 protocol AuthRouterInput {
+	func updateProfileTab()
 	func showProfile(for vc: UIViewController, origin: AuthOrigin)
 	func showDestination(for vc: UIViewController, destination: AuthDestination)
 }
@@ -16,6 +17,14 @@ protocol AuthRouterInput {
 // MARK: Implementation
 
 class AuthRouter: AuthRouterInput {
+	
+	func updateProfileTab() {
+		let kw = UIApplication.shared.keyWindow
+		let t = (kw?.rootViewController) as? MainTabBarViewController
+		let profile = ProfileBuilder().assembleTab()
+		t?.viewControllers![3] = profile
+	}
+	
 	func showProfile(for vc: UIViewController, origin: AuthOrigin) {
 		switch origin {
 		case .tab:

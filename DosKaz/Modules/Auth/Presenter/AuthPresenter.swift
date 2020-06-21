@@ -72,6 +72,10 @@ protocol AuthInteractorOutput: class {
 extension AuthPresenter: AuthInteractorOutput {
 	func didSucceedSignIn() {
 		view.viewPage = .third(origin)
+		// Update the tab so it's ready when you switch to Profile tab
+		if case .anywhere = origin {
+			router.updateProfileTab()
+		}
 	}
 	
 	func didFailSignIn(with error: Error) {
