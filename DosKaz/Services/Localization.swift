@@ -207,6 +207,14 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case objectNameExists = "Объект с таким наименованием существует"
 	case objectNameOtherNameExists = "Объект с таким наименованием и другим названием существует"
 	case objectOtherNameExists = "Объект с таким другим названием существует"
+	case verifyObjectData = "Подтвердите данные об объекте: "
+	case verifyObjectDataMessage = "Считаете ли вы, что все данные об объекте заполнены верно?"
+	case yes = "Да"
+	case no = "Нет"
+	case foundErrors = "Нашли ошибку?"
+	case foundErrorsMessage = "Пожалуйста, оставьте свой отзыв. Это не займёт много времени, но поможет сделать наш сайт лучше."
+	case yesHelp = "Да, я хочу помочь"
+	case cancel = "Отменить"
 	
 	var l10n: String {
 		return self.rawValue.localized

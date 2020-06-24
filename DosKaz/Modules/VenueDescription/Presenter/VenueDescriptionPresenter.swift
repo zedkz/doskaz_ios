@@ -46,8 +46,31 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 			self.router.presentDetailInfo(with: self.view, venue: venue)
 		}
 		
+		func showSecondAlert() {
+			let actions = [
+				Action(title: l10n(.yesHelp), handler: { }),
+				Action(
+					title: l10n(.cancel),
+					style: .cancel
+				)
+			]
+			view.showAlert(title: l10n(.foundErrors), message: l10n(.foundErrorsMessage), actions: actions)
+		}
+		
 		let onTouchVerify = Command { [weak self] in
-			print("verify")
+			let actions = [
+				Action(
+					title: l10n(.no),
+					handler: { showSecondAlert() },
+					style: .destructive
+				),
+				Action(title: l10n(.yes), handler: { })
+			]
+			self?.view.showAlert(
+				title: l10n(.verifyObjectData) + " \(venue.title)" ,
+				message: l10n(.verifyObjectDataMessage),
+				actions: actions
+			)
 		}
 		
 		view.rootView.props = VenueDescriptionView.Props(

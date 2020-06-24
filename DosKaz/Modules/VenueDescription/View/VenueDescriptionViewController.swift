@@ -13,6 +13,7 @@ import UIKit
 protocol VenueDescriptionViewInput where Self: UIViewController {
 	func setupInitialState()
 	var rootView: VenueDescriptionView { get set }
+	func showAlert(title: String, message: String, actions: [Action])
 }
 
 extension VenueDescriptionViewController: VenueDescriptionViewInput {
@@ -21,6 +22,11 @@ extension VenueDescriptionViewController: VenueDescriptionViewInput {
 		view.backgroundColor = .white
 		view.addSubview(rootView)
 		rootView.addConstraintsProgrammatically.pinToSuper()
+	}
+	
+	func showAlert(title: String, message: String, actions: [Action]) {
+		let alertController = GenericAlertPresenter(title: title, message: message, actions: actions)
+		alertController.present(in: self)
 	}
 
 }
@@ -36,4 +42,35 @@ class VenueDescriptionViewController: UIViewController {
 		output.viewIsReady()
 	}
 
+}
+
+struct GenericAlertPresenter {
+	let title: String
+	let message: String
+	var style: UIAlertController.Style = .alert
+	
+	let actions: [Action]
+	
+	func present(in viewController: UIViewController) {
+		let alert = UIAlertController(
+			title: title,
+			message: message,
+			preferredStyle: style
+		)
+		
+		actions.forEach { action in
+			let uiAction = UIAlertAction(title: action.title, style: action.style) { _ in
+				action.handler()
+			}
+			alert.addAction(uiAction)
+		}
+		
+		viewController.present(alert, animated: true)
+	}
+}
+
+struct Action {
+	let title: String
+	var handler: () -> Void = {  }
+	var style: UIAlertAction.Style = .default
 }
