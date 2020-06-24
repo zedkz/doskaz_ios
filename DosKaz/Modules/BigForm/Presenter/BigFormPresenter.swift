@@ -93,7 +93,20 @@ protocol BigFormInteractorOutput: class {
 
 extension BigFormPresenter: BigFormInteractorOutput {
 	func didSucceedCheck(presence: VenuePresence) {
-		view.displayAlert(with: "\(presence.name), \(presence.otherNames)")
+		var finalText: String
+		
+		switch (presence.name, presence.otherNames) {
+		case (true, true):
+			finalText = l10n(.objectNameOtherNameExists)
+		case (true, false):
+			finalText = l10n(.objectNameExists)
+		case (false, true):
+			finalText = l10n(.objectOtherNameExists)
+		case (false, false):
+			return
+		}
+		
+		view.displayAlert(with: finalText)
 	}
 	
 	func didFailCheckPresence(with error: Error) {

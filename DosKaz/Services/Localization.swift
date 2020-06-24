@@ -204,6 +204,9 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case getTwentyPoints = "За регистрацию вам начислено 20 баллов"
 	case getFiftyPoints = "Заполните информацию о себе и получите ещё 50 баллов"
 	case smsInfo = "Если вы не получили смс-код, убедитесь что ваше устройство прошло регистрацию у сотового оператора"
+	case objectNameExists = "Объект с таким наименованием существует"
+	case objectNameOtherNameExists = "Объект с таким наименованием и другим названием существует"
+	case objectOtherNameExists = "Объект с таким другим названием существует"
 	
 	var l10n: String {
 		return self.rawValue.localized
