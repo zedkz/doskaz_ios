@@ -10,18 +10,17 @@ import UIKit
 import SharedCodeFramework
 
 protocol BlogRouterInput {
-	func showComments(with vc: UIViewController, comment: Comment)
+	func showComments(with vc: UIViewController, comment: Comment, blogId: Int)
 }
 
 // MARK: Implementation
 
 class BlogRouter: BlogRouterInput {
-	func showComments(with vc: UIViewController, comment: Comment) {
+	func showComments(with vc: UIViewController, comment: Comment, blogId: Int) {
 		let commentsvc = BlogCommentsViewController(
-			blogComment: BlogComment.replies(comment.replies),
+			blogComment: BlogComment.replies(blogId, comment),
 			onPickComment: CommandWith<Comment> { [weak self] comment in
-				guard !comment.replies.isEmpty else { return }
-				self?.showComments(with: vc, comment: comment)
+				self?.showComments(with: vc, comment: comment, blogId: blogId)
 		})
 		vc.navigationController?.pushViewController(commentsvc, animated: true)
 	}

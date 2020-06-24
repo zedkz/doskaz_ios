@@ -28,7 +28,7 @@ class BlogPresenter: BlogViewOutput {
 		interactor.loadBlog(with: blog.id)
 		view.onPickComment = CommandWith<Comment> { [weak self] comment in
 			guard let self = self else { return }
-			self.router.showComments(with: self.view, comment: comment)
+			self.router.showComments(with: self.view, comment: comment, blogId: self.blog.id)
 		}
 	}
 	

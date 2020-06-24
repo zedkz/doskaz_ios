@@ -11,7 +11,7 @@ import SharedCodeFramework
 
 enum BlogComment {
 	case new(Int)
-	case replies([Comment])
+	case replies(Int, Comment)
 }
 
 class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelegate {
@@ -29,6 +29,8 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 	var blogComment: BlogComment
 	var dataSource: UTableViewDataSource<BlogCommentCell>!
 	var onPickComment: CommandWith<Comment>
+
+	let commentView = UITextView(frame: CGRect(x: 0, y: 0, width: 0, height: 78))
 		
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -42,7 +44,12 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		tableView.dataSource = dataSource
 		tableView.reloadData()
 		tableView.delegate = self
-		tableView.tableFooterView = UIView()
+		 
+		commentView.addRightButtonOnKeyboardWithText(l10n(.send), target: self, action: #selector(handleSend))
+		commentView.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+		commentView.keyboardDistanceFromTextField = 2
+		tableView.tableFooterView = commentView
+		
 		tableView.separatorStyle = .singleLine
 		tableView.separatorInset = UIEdgeInsets(all: 0)
 		onPickLeft = OnPick<Sort> { [weak self] _ in
@@ -52,16 +59,104 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		renderComments()
 	}
 	
+	var id: Int {
+		switch blogComment {
+		case .new(let id): return id
+		case .replies(let id, _ ): return id
+		}
+	}
+	
+	var parentId: String? {
+		switch blogComment {
+		case .new: return nil
+		case .replies(_, let comment): return comment.id
+		}
+	}
+	
+	@objc
+	func handleSend() {
+		commentView.resignFirstResponder()
+
+		let comment = BlogCommentPost(
+			text: commentView.text,
+			parentId: parentId
+		)
+		
+		APIPostBlogComments(onSuccess: { [weak self] (empty) in
+			self?.renderAfterCommenting()
+			self?.commentView.text = nil
+		}, onFailure: { error in
+			print(error)
+		}, id: id,
+			 comment: comment
+		)
+		.dispatch()
+	}
+	
+	private func renderAfterCommenting() {
+		
+		APIBlogComments(onSuccess: { [weak self] (response) in
+			guard let self = self else { return }
+			
+			switch self.blogComment {
+			case .new:
+				
+				self.dataSource.cellsProps = response.items.map { comment in
+					BlogCommentCell.Props(comment: comment, onReply: Command { [weak self] in
+						self?.onPickComment.perform(with: comment)
+					})
+				}
+				self.tableView.reloadData()
+				
+			case .replies(_, let parent):
+				
+				func search(comments: [Comment]) {
+					for comment in comments {
+						if parent.id == comment.id {
+							
+							//show replies
+							self.dataSource.cellsProps = comment.replies
+								.sorted(by: self.sort.sortingClosure)
+								.map { comment in
+									BlogCommentCell.Props(comment: comment, onReply: Command { [weak self] in
+										self?.onPickComment.perform(with: comment)
+									})
+							}
+							self.tableView.reloadData()
+							
+						} else {
+							// search again
+							search(comments: comment.replies)
+						}
+					}
+				}
+				
+				search(comments: response.items)
+				
+			}
+			
+		}, onFailure: { error in
+			print(error)
+		},
+			sortOrder: sort.value,
+			id: id
+		)
+		.dispatch()
+		
+	}
+	
 	private func renderComments() {
 		switch blogComment {
 		case .new(let id):
 			loadComments(id: id)
-		case .replies(let replies):
+		case .replies(_, let parent):
 			props = Props(title: l10n(.replies), isRightButtonHidden: true)
-			dataSource.cellsProps = replies
+			dataSource.cellsProps = parent.replies
 				.sorted(by: sort.sortingClosure)
 				.map { comment in
-					BlogCommentCell.Props(comment: comment, onReply: Command { })
+					BlogCommentCell.Props(comment: comment, onReply: Command { [weak self] in
+						self?.onPickComment.perform(with: comment)
+					})
 				}
 			tableView.reloadData()
 		}
@@ -76,8 +171,8 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		APIBlogComments(onSuccess: { [weak self] (response) in
 			self?.props = Props(title: "\(l10n(.comments)): \(response.count)", isRightButtonHidden: true)
 			self?.dataSource.cellsProps = response.items.map { comment in
-				BlogCommentCell.Props(comment: comment, onReply: Command {
-					
+				BlogCommentCell.Props(comment: comment, onReply: Command { [weak self] in
+					self?.onPickComment.perform(with: comment)
 				})
 			}
 			self?.tableView.reloadData()
