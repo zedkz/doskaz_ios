@@ -31,6 +31,7 @@ class VenueDescriptionView: UIView {
 		let venue: DoskazVenue
 		let onTouchComplaint: Command
 		let onTouchDetailInfo: Command
+		let onTouchVerify: Command
 	}
 	
 	//MARK: - Public properties and methods
@@ -46,6 +47,9 @@ class VenueDescriptionView: UIView {
 			}
 			detailInfo.didTouchUpInside = {
 				props.onTouchDetailInfo.perform()
+			}
+			verifyInfo.didTouchUpInside = { [weak self] in
+				self?.props.onTouchVerify.perform()
 			}
 		}
 	}

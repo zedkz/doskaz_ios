@@ -46,10 +46,15 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 			self.router.presentDetailInfo(with: self.view, venue: venue)
 		}
 		
+		let onTouchVerify = Command { [weak self] in
+			print("verify")
+		}
+		
 		view.rootView.props = VenueDescriptionView.Props(
 			venue: venue,
 			onTouchComplaint: onTouchComplaint,
-			onTouchDetailInfo: onTouchDetailInfo
+			onTouchDetailInfo: onTouchDetailInfo,
+			onTouchVerify: onTouchVerify
 		)
 	}
 	
