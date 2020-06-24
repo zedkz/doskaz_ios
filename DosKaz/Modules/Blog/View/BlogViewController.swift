@@ -138,6 +138,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 	var height: NSLayoutConstraint?
 	
 	private func configureLayout() {
+		scrollView.keyboardDismissMode = .interactive
 		view.addSubview(scrollView)
 		scrollView.addConstraintsProgrammatically
 			.pinToSuperSafeArea()

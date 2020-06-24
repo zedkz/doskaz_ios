@@ -14,7 +14,7 @@ enum BlogComment {
 	case replies(Int, Comment)
 }
 
-class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelegate {
+class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelegate, UITextViewDelegate {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -31,7 +31,17 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 	var onPickComment: CommandWith<Comment>
 
 	let commentView = UITextView(frame: CGRect(x: 0, y: 0, width: 0, height: 78))
-		
+	let placeHolderLabel = UILabel()
+
+	func textViewDidChange(_ textView: UITextView) {
+		placeHolderLabel.isHidden = !textView.text.isEmpty
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		renderAfterCommenting()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .white
@@ -46,9 +56,25 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		tableView.delegate = self
 		 
 		commentView.addRightButtonOnKeyboardWithText(l10n(.send), target: self, action: #selector(handleSend))
-		commentView.backgroundColor = UIColor.red.withAlphaComponent(0.3)
-		commentView.keyboardDistanceFromTextField = 2
+		commentView.layer.borderColor = UIColor(named: "TextFieldBorderColor")?.cgColor
+		commentView.layer.borderWidth = 1
+		commentView.layer.cornerRadius = 3
+		commentView.font = .systemFont(ofSize: 14)
+		commentView.keyboardDistanceFromTextField = 4
+		commentView.delegate = self
+
+		placeHolderLabel.decorate(with: Style.systemFont(size: 11), { (label) in
+			label.textColor = .gray
+		})
+		commentView.addSubview(placeHolderLabel)
+		placeHolderLabel.addConstraintsProgrammatically
+			.pinToSuper(inset: UIEdgeInsets(all:8))
+
+		placeHolderLabel.text = l10n(.yourComments)
+		placeHolderLabel.isHidden = !commentView.text.isEmpty
+		
 		tableView.tableFooterView = commentView
+		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
 		
 		tableView.separatorStyle = .singleLine
 		tableView.separatorInset = UIEdgeInsets(all: 0)
