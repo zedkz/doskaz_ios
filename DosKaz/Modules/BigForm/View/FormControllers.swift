@@ -64,6 +64,13 @@ class SmallFormViewController: FormViewController, HasForm {
 	
 	var onPickImage: CommandWith<UIImage> = .nop
 	
+	var onTypeVenue: CommandWith<PotentialVenue> = .nop
+	
+	func typeVenue() {
+		let venue = PotentialVenue(name: first.name, otherNames: first.otherNames)
+		onTypeVenue.perform(with: venue)
+	}
+	
 	var first: First = {
 		var first = First(
 			name: "",
@@ -245,7 +252,8 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: first.name,
 			title: l10n(.objName),
 			mode: .full(icon: "help_in_form"),
-			onEditText: Text { self.first.name = $0; self.update() }
+			onEditText: Text { self.first.name = $0; self.update() },
+			onEndEditing: Text { [weak self] _ in self?.typeVenue() }
 		)
 		
 		let otherNames = TextFormCell.Props(
@@ -253,7 +261,8 @@ class SmallFormViewController: FormViewController, HasForm {
 			text: first.otherNames,
 			title: l10n(.otherNames),
 			mode: .full(icon: "help_in_form"),
-			onEditText: Text { self.first.otherNames = $0; self.update() }
+			onEditText: Text { self.first.otherNames = $0; self.update() },
+			onEndEditing: Text { [weak self] _ in self?.typeVenue() }
 		)
 		
 		let address = TextFormCell.Props(

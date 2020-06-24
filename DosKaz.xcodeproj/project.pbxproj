@@ -36,6 +36,7 @@
 		443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */; };
 		443C6F85248FB3A500DEB65C /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */; };
 		443FFE4024865D0D00E4AE87 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */; };
+		4441E64B24A347060083EF17 /* api_objects_checkPresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441E64A24A347060083EF17 /* api_objects_checkPresence.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
 		4446C180247BEB54002BF1B6 /* api_storage_upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */; };
 		4446C182247BF30D002BF1B6 /* LocationPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4446C181247BF30D002BF1B6 /* LocationPickerController.swift */; };
@@ -268,6 +269,7 @@
 		443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileRouter.swift; sourceTree = "<group>"; };
 		443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		4441E64A24A347060083EF17 /* api_objects_checkPresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_checkPresence.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		4446C17F247BEB54002BF1B6 /* api_storage_upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_storage_upload.swift; sourceTree = "<group>"; };
 		4446C181247BF30D002BF1B6 /* LocationPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerController.swift; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 				44593E012496426100B087ED /* api_blog_posts_id.swift */,
 				4492E33B24977CAF00ED6C24 /* api_blog_posts_id_comments.swift */,
 				44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */,
+				4441E64A24A347060083EF17 /* api_objects_checkPresence.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1475,6 +1478,7 @@
 				44ED11E524573EC5009B92BF /* VenueDescriptionConfigurator.swift in Sources */,
 				4404F24D245F0CD900EB7184 /* FilterConfigurator.swift in Sources */,
 				44ABE69B248E3DC100E34F95 /* IQNSArray+Sort.swift in Sources */,
+				4441E64B24A347060083EF17 /* api_objects_checkPresence.swift in Sources */,
 				4459CCF5244727B8002DA95F /* GreetingView.swift in Sources */,
 				445D51932465A2A800C2E02A /* MKMapView+Zoom.swift in Sources */,
 				4404F214245AF9C500EB7184 /* DrawerPanner.swift in Sources */,

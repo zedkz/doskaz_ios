@@ -12,6 +12,7 @@ protocol BigFormInteractorInput {
 	func loadAttributes()
 	func loadCategories()
 	func uploadImage(_ data: Data)
+	func checkPresence(for venue: PotentialVenue)
 }
 
 // MARK: Implementation
@@ -82,6 +83,17 @@ class BigFormInteractor: BigFormInteractorInput {
 		}
 		
 		APIUpload(onSuccess: onSuccess, onFailure: onFailure, image: data).dispatch()
+	}
+	
+	func checkPresence(for venue: PotentialVenue) {
+		APICheckPresence(onSuccess: { [weak self] (presence) in
+			self?.output?.didSucceedCheck(presence: presence)
+		},onFailure: { [weak self] error in
+			self?.output.didFailCheckPresence(with: error)
+		},
+			venue: venue
+		)
+		.dispatch()
 	}
 
 }

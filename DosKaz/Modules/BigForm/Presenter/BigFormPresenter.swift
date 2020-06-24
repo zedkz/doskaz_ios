@@ -24,6 +24,7 @@ class BigFormPresenter {
 	}
 	
 	var uploadedImagesURLs = [String]()
+	var venueForCheck: PotentialVenue?
 
 }
 
@@ -56,6 +57,15 @@ extension BigFormPresenter: BigFormViewOutput {
 			}
 		}
 		
+		view.onTypeVenue = CommandWith<PotentialVenue> { [weak self] venue in
+			guard self?.venueForCheck != venue else { return }
+			guard !venue.name.isEmpty, !venue.otherNames.isEmpty else {
+				return
+			}
+			self?.venueForCheck = venue
+			self?.interactor.checkPresence(for: venue)
+		}
+		
 		interactor.loadAttributes()
 		interactor.loadCategories()
 	}
@@ -77,9 +87,19 @@ protocol BigFormInteractorOutput: class {
 	func didFailLoadCategories(with error: Error)
 	func didLoadImage(with response: UploadResponse)
 	func didFailLoadImage(with error: Error)
+	func didSucceedCheck(presence: VenuePresence)
+	func didFailCheckPresence(with error: Error)
 }
 
 extension BigFormPresenter: BigFormInteractorOutput {
+	func didSucceedCheck(presence: VenuePresence) {
+		view.displayAlert(with: "\(presence.name), \(presence.otherNames)")
+	}
+	
+	func didFailCheckPresence(with error: Error) {
+		print(error)
+	}
+	
 	func didLoadImage(with response: UploadResponse) {
 		print("Image uploaded",response)
 		if let path = response.path {

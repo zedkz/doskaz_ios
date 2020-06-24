@@ -15,6 +15,7 @@ protocol BigFormViewInput: DisplaysAlert where Self: UIViewController {
 	var onPressReady: CommandWith<FullForm> { get set }
 	func buildForm(with formAttrs: FormAttributes, and categories: [Category])
 	var onPickImage: CommandWith<UIImage> { get set }
+	var onTypeVenue: CommandWith<PotentialVenue> { get set }
 }
 
 extension BigFormViewController: BigFormViewInput {
@@ -95,6 +96,12 @@ class BigFormViewController: UIViewController {
 	var onPickImage: CommandWith<UIImage> = .nop {
 		didSet {
 			currentViewController?.onPickImage = onPickImage
+		}
+	}
+	
+	var onTypeVenue: CommandWith<PotentialVenue> = .nop {
+		didSet {
+			currentViewController?.onTypeVenue = onTypeVenue
 		}
 	}
 

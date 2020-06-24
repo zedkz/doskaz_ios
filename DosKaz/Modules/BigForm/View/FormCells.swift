@@ -148,6 +148,7 @@ class TextFormCell: UITableViewCell, Updatable {
 		var onOverlayTouch: Command = .nop
 		var onEditText: Text = .nop
 		var formatter: (String) -> String = { input in return input }
+		var onEndEditing: Text = .nop
 	}
 	
 	//MARK: - Private
@@ -188,7 +189,7 @@ extension TextFormCell: UITextFieldDelegate {
 	}
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
-
+		props.onEndEditing.perform(with: textField.text ?? "")
 	}
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
