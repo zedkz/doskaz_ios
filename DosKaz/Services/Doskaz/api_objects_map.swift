@@ -12,10 +12,11 @@ struct Constants {
 	static let mainURL = "https://doskaz.vps3.zed.kz"
 }
 
-protocol DoskazRequest: MoyaRequest, TargetType { }
+protocol DoskazRequest: MoyaRequest, TargetType, AccessTokenAuthorizable { }
 
 extension DoskazRequest {
 	var baseURL: URL { return URL(string:"https://doskaz.vps3.zed.kz/api/")! }
+	var authorizationType: AuthorizationType? { nil }
 }
 
 

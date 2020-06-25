@@ -136,7 +136,16 @@ extension MoyaRequest {
 		
 }
 
-let multiProvider = MoyaProvider<MultiTarget>(plugins: [])
+func plugins() -> [Moya.PluginType] {
+	if let token = AppSettings.token {
+		let authPlugin = AccessTokenPlugin { _ in token }
+		return [authPlugin]
+	} else {
+		return []
+	}
+}
+
+let multiProvider = MoyaProvider<MultiTarget>(plugins: plugins())
 
 extension MoyaRequest where Self: TargetType {
 	func dispatch() {
