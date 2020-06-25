@@ -14,12 +14,13 @@ class VenueDescriptionPresenter {
 	var router: VenueDescriptionRouterInput!
 
 	var venue: DoskazVenue!
+	var onReview: Command = .nop
 }
 
 // MARK: ViewController output protocol
 
 protocol VenueDescriptionModuleInput {
-	func render(doskazVenue: DoskazVenue)
+	func render(doskazVenue: DoskazVenue, onReview: Command)
 }
 
 protocol VenueDescriptionViewOutput: VenueDescriptionModuleInput {
@@ -49,7 +50,8 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 		func showSecondAlert() {
 			let actions = [
 				Action(title: l10n(.yesHelp), handler: { [weak self] in
-
+					guard let self = self, let id = self.venue.id else { return }
+					self.router.addReview(with: self.view, venueId: id, onReview: self.onReview)
 				}),
 				Action(
 					title: l10n(.cancel),
@@ -90,7 +92,8 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 		)
 	}
 	
-	func render(doskazVenue: DoskazVenue) {
+	func render(doskazVenue: DoskazVenue, onReview: Command) {
+		self.onReview = onReview
 		venue = doskazVenue
 	}
 

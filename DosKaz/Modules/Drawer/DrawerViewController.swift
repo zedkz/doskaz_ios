@@ -192,7 +192,9 @@ extension DrawerViewController: UITabBarDelegate {
 		case 0:
 			let vc = VenueDescriptionBuilder().assembleModule()
 			if let venue = currentDoskazVenue {
-				vc.output.render(doskazVenue: venue)
+				vc.output.render(doskazVenue: venue, onReview: Command { [weak self] in
+					self?.reload()
+				})
 			}
 			show(viewController: vc)
 		case 1:

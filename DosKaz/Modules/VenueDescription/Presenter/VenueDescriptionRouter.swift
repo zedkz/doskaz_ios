@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 protocol VenueDescriptionRouterInput {
 	func presentComplaint(with vc: UIViewController, id: Int?, title: String?)
 	func presentDetailInfo(with vc: UIViewController, venue: DoskazVenue)
+	func addReview(with vc: UIViewController, venueId: Int, onReview: Command)
 }
 
 // MARK: Implementation
@@ -26,5 +28,11 @@ class VenueDescriptionRouter: VenueDescriptionRouterInput {
 		let detailVC = DetailViewContoller()
 		detailVC.venue = venue
 		vc.presentEmbedded(detailVC)
+	}
+	
+	func addReview(with vc: UIViewController, venueId: Int, onReview: Command) {
+		let postReviewViewController = FeedbackViewController()
+		postReviewViewController.initWith(objectId: venueId, onClose: onReview)
+		vc.presentEmbedded(postReviewViewController)
 	}
 }
