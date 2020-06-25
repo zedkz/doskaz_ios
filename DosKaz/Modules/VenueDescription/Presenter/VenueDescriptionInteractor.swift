@@ -7,7 +7,7 @@
 //
 
 protocol VenueDescriptionInteractorInput {
-
+	func verifyVenue(with id: Int, status: Status)
 }
 
 // MARK: Implementation
@@ -15,6 +15,17 @@ protocol VenueDescriptionInteractorInput {
 class VenueDescriptionInteractor: VenueDescriptionInteractorInput {
 
 	weak var output: VenueDescriptionInteractorOutput!
+	
+	func verifyVenue(with id: Int, status: Status) {
+		APIVerifyObject(onSuccess: { (_) in
+			
+		}, onFailure: { error in
+			print(error)
+		}, id: id,
+			 status: status
+		)
+		.dispatch()
+	}
 
 }
 		

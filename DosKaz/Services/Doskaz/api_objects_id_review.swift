@@ -40,3 +40,23 @@ struct APIPostReview: DoskazRequest {
 struct PostReview: Codable {
 	let text: String
 }
+
+
+//MARK: - Verification
+struct APIVerifyObject: DoskazRequest {
+	let onSuccess: (Empty) -> Void
+	let onFailure: (Error) -> Void
+	let id: Int
+	let status: Status
+	var method: Method { .post }
+	var path: String { "objects/\(id)/verification/\(status)" }
+	
+	var headers: [String : String]? {
+		let token = "BVaWWzuih9X4MYfBb1bqYRYrL8rCfNII6ClYz2Jn5B7EBZiQ34TSO4XiaGraZi2k5UXBR5d8O0o2kLfE08gO7Plla7Tr9ypdWH7pCWpKMX9SXCDUi2O5tT7sz8Pct8dB7iUk89YyGgLsrlBbnPiiiD1dgt2ym4twFi50DbSQFU1t"
+		return  ["Authorization" : "Bearer \(token)"]
+	}
+}
+
+enum Status: String {
+	case confirm, reject
+}

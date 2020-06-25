@@ -48,7 +48,9 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 		
 		func showSecondAlert() {
 			let actions = [
-				Action(title: l10n(.yesHelp), handler: { }),
+				Action(title: l10n(.yesHelp), handler: { [weak self] in
+
+				}),
 				Action(
 					title: l10n(.cancel),
 					style: .cancel
@@ -61,10 +63,17 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 			let actions = [
 				Action(
 					title: l10n(.no),
-					handler: { showSecondAlert() },
+					handler: { [weak self] in
+						guard let id = self?.venue.id else { return }
+						self?.interactor.verifyVenue(with: id, status: Status.reject)
+						showSecondAlert()
+					},
 					style: .destructive
 				),
-				Action(title: l10n(.yes), handler: { })
+				Action(title: l10n(.yes), handler: { [weak self] in
+					guard let id = self?.venue.id else { return }
+					self?.interactor.verifyVenue(with: id, status: Status.confirm)
+				})
 			]
 			self?.view.showAlert(
 				title: l10n(.verifyObjectData) + " \(venue.title)" ,
