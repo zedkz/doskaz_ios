@@ -165,6 +165,11 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	private func configurePageData() {
 		switch viewPage {
 		case .first:
+			#if DEBUG
+				phoneTextF.text = "+77071012233"
+			#else
+				phoneTextF.text = nil
+			#endif
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.next), for: .normal)
 			bottomButton.setImage(nil, for: .normal)
@@ -173,7 +178,11 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			ai.stopAnimating()
 			blueButton.isEnabled = true
 		case .second:
-			phoneTextF.text = nil
+			#if DEBUG
+				phoneTextF.text = "123456"
+			#else
+				phoneTextF.text = nil
+			#endif
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.send), for: .normal)
 			bottomButton.setImage(UIImage(named: "sms_phone"), for: .normal)
