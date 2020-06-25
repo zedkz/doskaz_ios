@@ -75,7 +75,6 @@ class LocationPickerController: UIViewController, CLLocationManagerDelegate {
 	@objc func closePicker() {
 		dismiss(animated: true, completion: {
 			
-			
 			if let pickedCoordinate = self.pickedCoordinate {
 				let str = self.pickedAddress ?? ""
 				let arr = [
@@ -102,7 +101,6 @@ class LocationPickerController: UIViewController, CLLocationManagerDelegate {
 		loadAddress(for: "\(coordinate.longitude), \(coordinate.latitude)")
 	}
 	
-	
 	private func centerMapOnLocation(location: CLLocation) {
 		let coordinateRegion = MKCoordinateRegion(
 			center: location.coordinate,
@@ -111,7 +109,6 @@ class LocationPickerController: UIViewController, CLLocationManagerDelegate {
 		)
 		mapView.setRegion(coordinateRegion, animated: true)
 	}
-	
 	
 	func loadAddress(for geocode: String) {
 		let onSuccess = { [weak self] (json: GeoDataResponse) -> Void in
