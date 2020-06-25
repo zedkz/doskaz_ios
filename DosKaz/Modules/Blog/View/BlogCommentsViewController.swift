@@ -20,10 +20,11 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	init(blogComment: BlogComment, onPickComment: CommandWith<Comment>) {
+	init(blogComment: BlogComment, onPickComment: CommandWith<Comment>, isScrollEnabled: Bool = true) {
 		self.blogComment = blogComment
 		self.onPickComment = onPickComment
 		super.init(nibName: nil, bundle: nil)
+		self.tableView.isScrollEnabled = isScrollEnabled
 	}
 	
 	var blogComment: BlogComment

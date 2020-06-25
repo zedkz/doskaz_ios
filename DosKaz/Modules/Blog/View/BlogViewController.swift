@@ -99,7 +99,8 @@ class BlogViewController: UIViewController, BlogViewInput {
 		
 		let commentsvc = BlogCommentsViewController(
 			blogComment: BlogComment.new(blog.post.id),
-			onPickComment: onPickComment
+			onPickComment: onPickComment,
+			isScrollEnabled: false
 		)
 		addChild(commentsvc)
 		contentView.addArrangedSubview(commentsvc.view)
