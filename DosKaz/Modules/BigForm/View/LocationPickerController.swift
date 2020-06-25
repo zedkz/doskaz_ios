@@ -12,9 +12,34 @@ import SharedCodeFramework
 
 typealias DKLocation = (text: String, numeric: [Double])
 
-class LocationPickerController: UIViewController {
+class LocationPickerController: UIViewController, CLLocationManagerDelegate {
 	
 	let mapView = MKMapView()
+	
+	let locationManager = CLLocationManager()
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		guard let location = locations.last else { return }
+		print("Location:", location)
+		
+		let pin: MKPointAnnotation = MKPointAnnotation()
+		pin.coordinate = location.coordinate
+		
+		mapView.removeAnnotations(mapView.annotations)
+		mapView.addAnnotation(pin)
+		
+		pickedCoordinate = location.coordinate
+		loadAddress(for: "\(location.coordinate.longitude), \(location.coordinate.latitude)")
+		manager.stopUpdatingLocation()
+		centerMapOnLocation(location: location)
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		print("One time location request failed", error.localizedDescription)
+		let astana = (lat: 51.128286, lon: 71.430514)
+		let initialLocation = CLLocation(latitude: astana.lat, longitude: astana.lon)
+		centerMapOnLocation(location: initialLocation)
+	}
 	
 	var onDismiss: CommandWith<DKLocation> = .nop
 	
@@ -26,6 +51,12 @@ class LocationPickerController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		locationManager.delegate = self
+		locationManager.requestWhenInUseAuthorization()
+		locationManager.startUpdatingLocation()
+		
+		view.backgroundColor = .white
 		navigationItem.title = l10n(.chooseObject)
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			title: l10n(.close), style: .done,
@@ -35,10 +66,6 @@ class LocationPickerController: UIViewController {
 		
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
 		mapView.addGestureRecognizer(tapGestureRecognizer)
-		
-		let pavlodar = (lat: 52.288218, lon: 76.969872)
-		let initialLocation = CLLocation(latitude: pavlodar.lat, longitude: pavlodar.lon)
-		centerMapOnLocation(location: initialLocation)
 		
 		view.addSubview(mapView)
 		mapView.addConstraintsProgrammatically
