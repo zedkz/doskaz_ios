@@ -1,7 +1,7 @@
 [
 	{"key": "movement", "title": "Люди, передвигающиеся на кресло-коляске", "categoryForAPI": "movement", "icon": "wheelchair"},
 	{"key": "vision", "title": "Люди с инвалидностью по зрению", "categoryForAPI": "vision", "icon": "visual_impairment" },
-	{"key": "limb", "title": "Люди с нарушением опорно-двигательного аппарата", "categoryForAPI": "limb", "icon": "musculoskeletal_system" },
+	{"key": "limb", "title": "Люди с нарушениями опорно-двигательного аппарата", "categoryForAPI": "limb", "icon": "musculoskeletal_system" },
 	{"key": "hearing", "title": "Люди с инвалидностью по слуху", "categoryForAPI": "hearing", "icon": "hearing_impairment" },
 	{"key": "temporal", "title": "Временно травмированные люди", "categoryForAPI": "limb", "icon": "temporarily_injured" },
 	{"key": "babyCarriage", "title": "Люди с детскими колясками", "categoryForAPI": "movement", "icon": "baby_carriage" },
