@@ -91,17 +91,18 @@ class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelega
 		paginator.onLoad = CommandWith<ProfileTasks> { tasks in
 			let cellsProps:[TaskCell.Props] = tasks.items.map { (task: ProfileTask) in
 				
-				var date: String
-				if let completedAt = task.completedAt {
-					date = completedAt
-				} else {
-					date = task.createdAt ?? ""
-				}
+				let completedAt = task.completedDate?.dayMonth ?? ""
+				let withDash = completedAt.isEmpty ? "" : "- \(completedAt)"
+				let createdAt = task.createdAt?.dayMonth ?? ""
+				let date = createdAt + withDash
+				
+				let isCompleted = task.completedDate == nil
+				let imageName = isCompleted ? "profile_completed_task" : "profile_current_task"
 				
 				return TaskCell.Props(
 					title: task.title ?? "–",
 					subTitle: "\(date)     \(task.points) \(l10n(.points)) ",
-					image: UIImage(named: "aged_people"))
+					image: UIImage(named: imageName))
 			}
 			
 			self.dataSource.cellsProps.append(contentsOf: cellsProps)
@@ -142,6 +143,7 @@ class TaskCell: UITableViewCell, Updatable {
 		self.imageView?.frame.origin.x = 0
 		self.detailTextLabel?.frame.origin.x = imageView!.frame.maxX + 12
 		self.textLabel?.frame.origin.x = imageView!.frame.maxX + 12
+		self.imageView?.frame.origin.y = textLabel!.frame.origin.y + 4
 	}
 	
 	var props: Props! {

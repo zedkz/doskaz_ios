@@ -46,8 +46,18 @@ struct ProfileTasks: Codable {
 // MARK: - Item
 struct ProfileTask: Codable {
 	let completedAt: String?
-	let createdAt, title: String?
+	let createdAt: Date?
+	let title: String?
 	let points: Int
+	
+	var completedDate: Date? {
+		guard let completedAt = completedAt  else {
+			return nil
+		}
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+		return formatter.date(from: completedAt)
+	}
 }
 
 
