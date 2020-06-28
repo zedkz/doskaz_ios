@@ -63,7 +63,8 @@ class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDele
 					title: object.title,
 					subTitle: object.date.dayMonthYear,
 					cornerText: object.description,
-					image: object.image
+					image: object.image,
+					score: object.overallScore
 				)
 			}
 			
@@ -109,12 +110,22 @@ class ObjectCell: UITableViewCell, Updatable {
 	
 	let cornerLabel = UILabel()
 	let kimageView = UIImageView()
+	let scoreImageView = UIImageView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 		kimageView.contentMode = .scaleAspectFill
 		kimageView.clipsToBounds = true
 		contentView.addSubview(kimageView)
+		
+		contentView.addSubview(scoreImageView)
+		kimageView.addSubview(scoreImageView)
+		scoreImageView.addConstraintsProgrammatically
+			.pinEdgeToSupers(.top)
+			.pinEdgeToSupers(.leading)
+			.set(my: .height, to: 20)
+			.set(my: .width, to: 20)
+		
 		textLabel?.numberOfLines = 0
 		detailTextLabel?.textColor = .gray
 		
@@ -171,7 +182,7 @@ class ObjectCell: UITableViewCell, Updatable {
 				])
 			}
 			cornerLabel.attributedText = props.cornerText
-			
+			scoreImageView.image = UIImage(named: props.icon)
 		}
 	}
 	
@@ -180,6 +191,22 @@ class ObjectCell: UITableViewCell, Updatable {
 		var subTitle: String?
 		var cornerText: NSAttributedString?
 		var image: String?
+		var score: OverallScore
+		
+		var icon: String {
+			switch score {
+			case .fullAccessible:
+				return "available_32"
+			case .partialAccessible:
+				return "partially_available_32"
+			case .notAccessible:
+				return "not_available_32"
+			case .notProvided:
+				return "partially_available_32"
+			case .unKnown:
+				return "partially_available_32"
+			}
+		}
 	}
 	
 }
