@@ -7,7 +7,8 @@
 //
 
 protocol BlogsInteractorInput {
-	func loadPosts(with searchText: String?)
+	func loadPosts(with searchText: String?, categoryId: Int?)
+	func loadBlogCategories()
 }
 
 // MARK: Implementation
@@ -16,7 +17,7 @@ class BlogsInteractor: BlogsInteractorInput {
 
 	weak var output: BlogsInteractorOutput!
 	
-	func loadPosts(with searchText: String?) {
+	func loadPosts(with searchText: String?, categoryId: Int?) {
 		let onSuccess = { [weak self] (blogResponse: BlogResponse) -> Void in
 			self?.output.didload(blogResponse)
 		}
@@ -29,10 +30,20 @@ class BlogsInteractor: BlogsInteractorInput {
 			onSuccess: onSuccess,
 			onFailure: onFailure,
 			page: 1,
-			search: searchText
+			search: searchText,
+			categoryId: categoryId
 		)
 		
 		r.dispatch()
+	}
+	
+	func loadBlogCategories() {
+		APIBlogCategories(onSuccess: { [weak self] (blogCategories) in
+			self?.output?.didLoad(blogCategories)
+		}, onFailure: { error in
+			print(error)
+		})
+		.dispatch()
 	}
 
 }

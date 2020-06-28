@@ -215,6 +215,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case foundErrorsMessage = "Пожалуйста, оставьте свой отзыв. Это не займёт много времени, но поможет сделать наш сайт лучше."
 	case yesHelp = "Да, я хочу помочь"
 	case cancel = "Отменить"
+	case categories = "Категории"
 	
 	var l10n: String {
 		return self.rawValue.localized

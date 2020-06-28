@@ -22,12 +22,13 @@ struct APIBlogPosts: DoskazRequest {
 	
 	var search: String?
 		
-	var method: Method { .get }
+	var categoryId: Int?
 	
 	var path: String { "blog/posts" }
 	
 	var task: Task {
 		let parameters: [String: Any?] = [
+			"categoryId": categoryId,
 			"page": page,
 			"search": search
 		]

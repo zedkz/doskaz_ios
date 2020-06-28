@@ -15,6 +15,9 @@ protocol BlogsViewInput where Self: UIViewController {
 	func updateTable(with cellsProps: [BlogCell.Props])
 	var onSearchFieldEdit: CommandWith<String> { get set }
 	var onSelect: CommandWith<Item> { get set }
+	var onTouchFilter: Command { get set }
+	var onSelectCategory: CommandWith<BlogCategory> { get set }
+	func showActionSheet(with blogCategories: [BlogCategory])
 }
 
 extension BlogsViewController: BlogsViewInput {
@@ -30,6 +33,24 @@ extension BlogsViewController: BlogsViewInput {
 		dataSource.cellsProps = cellsProps
 		tableView.reloadData()
 	}
+	
+	func showActionSheet(with blogCategories: [BlogCategory]) {
+		var actions = blogCategories.map { category in
+			Action(title: category.title, handler: { [weak self] in
+				self?.onSelectCategory.perform(with: category)
+			})
+		}
+		
+		let cancelAction = Action(title: l10n(.cancel), style: .cancel)
+		actions.append(cancelAction)
+		
+		let sheet = GenericAlertPresenter(
+			title: l10n(.categories),
+			style: .actionSheet,
+			actions: actions
+		)
+		sheet.present(in: self)
+	}
 
 }
 
@@ -39,6 +60,8 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 	var dataSource: UTableViewDataSource<BlogCell>!
 	var onSearchFieldEdit: CommandWith<String> = .nop
 	var onSelect: CommandWith<Item> = .nop
+	var onTouchFilter: Command = .nop
+	var onSelectCategory: CommandWith<BlogCategory> = .nop
 
 	// MARK: Life cycle
 	override func viewDidLoad() {
@@ -69,7 +92,7 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 	
 	@objc
 	func didPressFilter() {
-		print("didpre sep filter")
+		onTouchFilter.perform()
 	}
 	
 	private func buildSearch() {

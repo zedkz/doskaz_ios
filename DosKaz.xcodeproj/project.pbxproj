@@ -82,6 +82,7 @@
 		44653D8E2413864F006EB35D /* DrawerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44653D8D2413864F006EB35D /* DrawerPosition.swift */; };
 		446E78C624680C2300075A47 /* api_objects_attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C524680C2300075A47 /* api_objects_attributes.swift */; };
 		446E78C82468402000075A47 /* api_objects_requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446E78C72468402000075A47 /* api_objects_requests.swift */; };
+		446F4D3C24A8D0DF0002CEB7 /* api_blog_categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F4D3B24A8D0DF0002CEB7 /* api_blog_categories.swift */; };
 		447582E8248117CA00FBC421 /* api_objects_id_review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447582E7248117CA00FBC421 /* api_objects_id_review.swift */; };
 		447768AD247E7997007BB003 /* VenuePhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A7247E7996007BB003 /* VenuePhotosRouter.swift */; };
 		447768AE247E7997007BB003 /* VenuePhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */; };
@@ -314,6 +315,7 @@
 		44653D8D2413864F006EB35D /* DrawerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPosition.swift; sourceTree = "<group>"; };
 		446E78C524680C2300075A47 /* api_objects_attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_attributes.swift; sourceTree = "<group>"; };
 		446E78C72468402000075A47 /* api_objects_requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_requests.swift; sourceTree = "<group>"; };
+		446F4D3B24A8D0DF0002CEB7 /* api_blog_categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_blog_categories.swift; sourceTree = "<group>"; };
 		447582E7248117CA00FBC421 /* api_objects_id_review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_id_review.swift; sourceTree = "<group>"; };
 		447768A7247E7996007BB003 /* VenuePhotosRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosRouter.swift; sourceTree = "<group>"; };
 		447768A8247E7996007BB003 /* VenuePhotosPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosPresenter.swift; sourceTree = "<group>"; };
@@ -1143,6 +1145,7 @@
 				4492E33B24977CAF00ED6C24 /* api_blog_posts_id_comments.swift */,
 				44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */,
 				4441E64A24A347060083EF17 /* api_objects_checkPresence.swift */,
+				446F4D3B24A8D0DF0002CEB7 /* api_blog_categories.swift */,
 			);
 			path = Doskaz;
 			sourceTree = "<group>";
@@ -1579,6 +1582,7 @@
 				44ABE696248E3DC100E34F95 /* IQKeyboardManager.swift in Sources */,
 				44EE303B246DB5B100926817 /* BlogsConfigurator.swift in Sources */,
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
+				446F4D3C24A8D0DF0002CEB7 /* api_blog_categories.swift in Sources */,
 				4492C00924911459007F872F /* DetailViewContoller.swift in Sources */,
 				4492E33C24977CAF00ED6C24 /* api_blog_posts_id_comments.swift in Sources */,
 				4414DCA2247AD5D000A9717E /* TextViewCell.swift in Sources */,

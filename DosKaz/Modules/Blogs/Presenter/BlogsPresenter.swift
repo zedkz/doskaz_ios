@@ -26,12 +26,18 @@ extension BlogsPresenter: BlogsViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onSearchFieldEdit = CommandWith<String> { query in
-			self.interactor.loadPosts(with: query)
+			self.interactor.loadPosts(with: query, categoryId: nil)
 		}
-		interactor.loadPosts(with: nil)
+		interactor.loadPosts(with: nil, categoryId: nil)
 		view.onSelect = CommandWith<Item> { [weak self] blog in
 			guard let self = self else { return }
 			self.router.showBlog(with: self.view, blog: blog)
+		}
+		view.onTouchFilter = Command { [weak self] in
+			self?.interactor.loadBlogCategories()
+		}
+		view.onSelectCategory = CommandWith { [weak self] category in
+			self?.interactor.loadPosts(with: nil, categoryId: category.id)
 		}
 	}
 
@@ -42,6 +48,7 @@ extension BlogsPresenter: BlogsViewOutput {
 protocol BlogsInteractorOutput: class {
 	func didload(_ blogResponse: BlogResponse)
 	func didFailLoadBlogResponse(with error: Error)
+	func didLoad(_ blogCategories: [BlogCategory])
 }
 
 extension BlogsPresenter: BlogsInteractorOutput {
@@ -61,5 +68,9 @@ extension BlogsPresenter: BlogsInteractorOutput {
 	
 	func didFailLoadBlogResponse(with error: Error) {
 		view.updateTable(with: [])
+	}
+	
+	func didLoad(_ blogCategories: [BlogCategory]) {
+		view.showActionSheet(with: blogCategories)
 	}
 }

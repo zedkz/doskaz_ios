@@ -46,7 +46,7 @@ class VenueDescriptionViewController: UIViewController {
 
 struct GenericAlertPresenter {
 	let title: String
-	let message: String
+	var message: String?
 	var style: UIAlertController.Style = .alert
 	
 	let actions: [Action]
