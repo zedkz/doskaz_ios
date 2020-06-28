@@ -14,6 +14,7 @@ class BlogsPresenter {
 	var interactor: BlogsInteractorInput!
 	var router: BlogsRouterInput!
 
+	var items = [Item]()
 }
 
 // MARK: ViewController output protocol
@@ -39,6 +40,9 @@ extension BlogsPresenter: BlogsViewOutput {
 		view.onSelectCategory = CommandWith { [weak self] category in
 			self?.interactor.loadPosts(with: nil, categoryId: category.id)
 		}
+		view.onScrollToBottom = Command { [weak self] in
+			self?.interactor.loadPosts(with: nil, categoryId: nil)
+		}
 	}
 
 }
@@ -53,8 +57,8 @@ protocol BlogsInteractorOutput: class {
 
 extension BlogsPresenter: BlogsInteractorOutput {
 	func didload(_ blogResponse: BlogResponse) {
-		print("Blog post count:", blogResponse.items.count)
-		let cellsProps = blogResponse.items.map {
+		self.items.append(contentsOf: blogResponse.items)
+		let cellsProps = self.items.map {
 			BlogCell.Props(
 				item: $0,
 				title: $0.title,

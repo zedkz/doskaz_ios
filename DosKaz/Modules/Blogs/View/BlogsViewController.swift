@@ -17,6 +17,7 @@ protocol BlogsViewInput where Self: UIViewController {
 	var onSelect: CommandWith<Item> { get set }
 	var onTouchFilter: Command { get set }
 	var onSelectCategory: CommandWith<BlogCategory> { get set }
+	var onScrollToBottom: Command { get set }
 	func showActionSheet(with blogCategories: [BlogCategory])
 }
 
@@ -30,8 +31,17 @@ extension BlogsViewController: BlogsViewInput {
 	}
 	
 	func updateTable(with cellsProps: [BlogCell.Props]) {
+		let newItemsCount = cellsProps.count - dataSource.cellsProps.count
 		dataSource.cellsProps = cellsProps
+		let latestItemCount = cellsProps.count
+		
+		let indexPaths = (latestItemCount - newItemsCount ..< latestItemCount)
+			.map { IndexPath(row: $0, section: 0) }
+		
 		tableView.reloadData()
+		if let first = indexPaths.first {
+			tableView.scrollToRow(at: first, at: .bottom, animated: true)
+		}
 	}
 	
 	func showActionSheet(with blogCategories: [BlogCategory]) {
@@ -62,7 +72,8 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 	var onSelect: CommandWith<Item> = .nop
 	var onTouchFilter: Command = .nop
 	var onSelectCategory: CommandWith<BlogCategory> = .nop
-
+	var onScrollToBottom: Command = .nop
+	
 	// MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -108,6 +119,21 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 		tableView.deselectRow(at: indexPath, animated: true)
 		if let item = dataSource.cellsProps[indexPath.row].item {
 			onSelect.perform(with: item)
+		}
+	}
+	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offset = scrollView.contentOffset
+		let bounds = scrollView.bounds
+		let contentSize = scrollView.contentSize
+		
+		let inset = scrollView.contentInset
+		let y = offset.y + bounds.size.height - inset.bottom
+		
+		let reload_distance:CGFloat = 10.0
+		guard offset.y > 0 else { return }
+		if y > (contentSize.height + reload_distance) {
+			onScrollToBottom.perform()
 		}
 	}
 
