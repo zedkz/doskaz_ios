@@ -7,6 +7,41 @@
 //
 
 import Moya
+import SharedCodeFramework
+
+class BlogPaginator: Paginator {
+	var onLoad: CommandWith<BlogResponse> = .nop
+	var onFail: CommandWith<Error> = .nop
+	
+	var search: String?
+	
+	var categoryId: Int?
+	
+	override func load(page: Int) {
+		super.load(page: page)
+		
+		let onSuccess = { [weak self] (blogResponse: BlogResponse) -> Void in
+			self?.didSucced(totalPages: blogResponse.pages)
+			self?.onLoad.perform(with: blogResponse)
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.didFail()
+			self?.onFail.perform(with: error)
+		}
+		
+		let r = APIBlogPosts(
+			onSuccess: onSuccess,
+			onFailure: onFailure,
+			page: page,
+			search: search,
+			categoryId: categoryId
+		)
+		
+		r.dispatch()
+		
+	}
+}
 
 struct APIBlogPosts: DoskazRequest {
 	
