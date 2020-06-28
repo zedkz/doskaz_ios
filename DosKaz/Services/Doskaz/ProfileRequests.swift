@@ -85,7 +85,7 @@ struct APIProfileObjects: DoskazRequest {
 		let parameters: [String: Any?] = [
 			"page": page,
 			"sort": sort,
-			"overallScore": overallScore
+			"overallScore": overallScore?.rawValue
 		]
 		let prs = parameters.compactMapValues{ $0 }
 		return .requestParameters(parameters: prs, encoding: URLEncoding.default)
@@ -153,7 +153,7 @@ struct ProfileComments: Codable {
 struct CommentItem: Codable {
 	let date: Date
 	let type: String
-	let objectId: Int
+	let objectId: Int?
 	let title, text: String
 }
 
