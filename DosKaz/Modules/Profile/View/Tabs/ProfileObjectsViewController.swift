@@ -61,9 +61,9 @@ class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDele
 			let cellsProps: [ObjectCell.Props] = profileObjects.items.map { object in
 				return ObjectCell.Props(
 					title: object.title,
-					subTitle: object.overallScore.description,
-					cornerText: object.image,
-					image: nil
+					subTitle: object.date.dayMonthYear,
+					cornerText: object.description,
+					image: object.image
 				)
 			}
 			
@@ -108,9 +108,13 @@ class ProfileObjectsViewController: ProfileCommonViewController, UITableViewDele
 class ObjectCell: UITableViewCell, Updatable {
 	
 	let cornerLabel = UILabel()
+	let kimageView = UIImageView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+		kimageView.contentMode = .scaleAspectFill
+		kimageView.clipsToBounds = true
+		contentView.addSubview(kimageView)
 		textLabel?.numberOfLines = 0
 		detailTextLabel?.textColor = .gray
 		
@@ -118,12 +122,8 @@ class ObjectCell: UITableViewCell, Updatable {
 		cornerLabel.textColor = .gray
 		cornerLabel.font = detailTextLabel?.font
 		contentView.addSubview(cornerLabel)
-		
-		imageView?.backgroundColor = .red
-		detailTextLabel?.backgroundColor = .blue
-		textLabel?.backgroundColor = .yellow
-		
-		imageView?.addConstraintsProgrammatically
+				
+		kimageView.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top)
 			.pinEdgeToSupers(.leading)
 			.set(my: .height, to: 60)
@@ -131,15 +131,15 @@ class ObjectCell: UITableViewCell, Updatable {
 		
 		textLabel?.addConstraintsProgrammatically
 			.pinEdgeToSupers(.top)
-			.pin(my: .leading, to: .trailing, of: imageView!, plus: 10)
+			.pin(my: .leading, to: .trailing, of: kimageView, plus: 10)
 			.pinEdgeToSupers(.trailing, plus: -8)
 		
 		detailTextLabel?.addConstraintsProgrammatically
-			.pin(my: .leading, to: .trailing, of: imageView!, plus: 10)
+			.pin(my: .leading, to: .trailing, of: kimageView, plus: 10)
 			.set(my: .top, .greaterThanOrEqual, to: .bottom, of: textLabel!, plus: 4)
 			.set(my: .bottom, .lessThanOrEqual, to: .bottom, of: contentView, plus: -4)
 
-		let constraint = detailTextLabel?.bottomAnchor.constraint(equalTo: imageView!.bottomAnchor)
+		let constraint = detailTextLabel?.bottomAnchor.constraint(equalTo: kimageView.bottomAnchor)
 		constraint?.priority = .defaultLow
 		constraint?.isActive = true
 		
@@ -159,8 +159,18 @@ class ObjectCell: UITableViewCell, Updatable {
 		didSet {
 			textLabel?.text = props.title
 			detailTextLabel?.text = props.subTitle
-			imageView?.image = props.image
-			cornerLabel.text = props.cornerText
+			if let imageURL = props.image {
+				let url = URL(string: Constants.mainURL + imageURL)
+				kimageView.kf.indicatorType = .activity
+				kimageView.kf.setImage(
+					with: url,
+					options: [
+						.scaleFactor(UIScreen.main.scale),
+						.transition(.fade(1)),
+						.cacheOriginalImage
+				])
+			}
+			cornerLabel.attributedText = props.cornerText
 			
 		}
 	}
@@ -168,8 +178,8 @@ class ObjectCell: UITableViewCell, Updatable {
 	struct Props {
 		let title: String
 		var subTitle: String?
-		var cornerText: String?
-		var image: UIImage?
+		var cornerText: NSAttributedString?
+		var image: String?
 	}
 	
 }

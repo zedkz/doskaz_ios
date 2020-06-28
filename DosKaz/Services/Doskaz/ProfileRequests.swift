@@ -109,6 +109,25 @@ struct ProfileObject: Codable {
 	let overallScore: OverallScore
 	let reviewsCount, complaintsCount: Int
 	let image: String
+	
+	var description: NSAttributedString {
+		let image1 = NSTextAttachment()
+		image1.image = UIImage(named: "reviewCount")
+		
+		let fullString = NSMutableAttributedString(attachment: image1)
+		
+		let reviewCount = NSAttributedString(string: " \(reviewsCount)  ")
+		fullString.append(reviewCount)
+		
+		let image2 = NSTextAttachment()
+		image2.image = UIImage(named: "complaintCount")
+		fullString.append(NSAttributedString(attachment: image2))
+		
+		let complaintsCount = NSAttributedString(string: " \(self.complaintsCount)")
+		fullString.append(complaintsCount)
+		
+		return fullString
+	}
 }
 
 
