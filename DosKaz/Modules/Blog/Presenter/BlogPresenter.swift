@@ -30,6 +30,10 @@ class BlogPresenter: BlogViewOutput {
 			guard let self = self else { return }
 			self.router.showComments(with: self.view, comment: comment, blogId: self.blog.id)
 		}
+		view.onPickBlog = CommandWith<Item> { [weak self] blogItem in
+			guard let self = self else { return }
+			self.router.showBlog(with: self.view, blog: blogItem)
+		}
 	}
 	
 	func initView(with blog: Item) {

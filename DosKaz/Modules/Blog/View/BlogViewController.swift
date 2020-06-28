@@ -17,12 +17,14 @@ protocol BlogViewInput where Self: UIViewController {
 	func setupInitialState()
 	func setContent(for blog: SingleBlog)
 	var onPickComment: CommandWith<Comment> { get set }
+	var onPickBlog: CommandWith<Item> { get set }
 }
 
 class BlogViewController: UIViewController, BlogViewInput {
 
 	var output: BlogViewOutput!
 	var onPickComment: CommandWith<Comment> = .nop
+	var onPickBlog: CommandWith<Item> = .nop
 	
 	let imageView = UIImageView()
 	let webView = WKWebView()
@@ -120,11 +122,11 @@ class BlogViewController: UIViewController, BlogViewInput {
 	}
 	
 	private func update(with items: [Item]) {
-		let cellsProps = items.map {
+		let cellsProps = items.map { item in
 			PostCollectionViewCell.Props(
-				blog: $0,
-				onPickImage: Command {
-					print("PostCollectionViewCell picked")
+				blog: item,
+				onPickImage: Command { [weak self] in
+					self?.onPickBlog.perform(with: item)
 			})
 		}
 		

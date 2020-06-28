@@ -11,6 +11,7 @@ import SharedCodeFramework
 
 protocol BlogRouterInput {
 	func showComments(with vc: UIViewController, comment: Comment, blogId: Int)
+	func showBlog(with vc: UIViewController, blog: Item)
 }
 
 // MARK: Implementation
@@ -23,5 +24,11 @@ class BlogRouter: BlogRouterInput {
 				self?.showComments(with: vc, comment: comment, blogId: blogId)
 		})
 		vc.navigationController?.pushViewController(commentsvc, animated: true)
+	}
+	
+	func showBlog(with vc: UIViewController, blog: Item) {
+		let blogVC = BlogBuilder().assembleModule()
+		blogVC.output.initView(with: blog)
+		vc.navigationController?.pushViewController(blogVC, animated: true)
 	}
 }
