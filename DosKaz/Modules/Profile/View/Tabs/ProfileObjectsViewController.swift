@@ -116,6 +116,7 @@ class ObjectCell: UITableViewCell, Updatable {
 		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 		kimageView.contentMode = .scaleAspectFill
 		kimageView.clipsToBounds = true
+		kimageView.backgroundColor = .gray
 		contentView.addSubview(kimageView)
 		
 		contentView.addSubview(scoreImageView)
