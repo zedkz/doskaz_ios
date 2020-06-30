@@ -19,6 +19,7 @@ class VenuePhotosPresenter {
 
 protocol VenuePhotosViewOutput {
 	func viewIsReady()
+	func viewWillAppear()
 	func initView(with photos: [Photo])
 }
 
@@ -30,6 +31,10 @@ extension VenuePhotosPresenter: VenuePhotosViewOutput {
 	
 	func viewIsReady() {
 		view.setupInitialState()
+		view.update(photos)
+	}
+	
+	func viewWillAppear() {
 		view.update(photos)
 	}
 

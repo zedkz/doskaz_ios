@@ -86,5 +86,10 @@ extension VenuePhotosViewController {
 		super.viewDidLoad()
 		output.viewIsReady()
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		output.viewWillAppear()
+	}
 
 }
