@@ -41,7 +41,8 @@ class VenuePhotoCell: UICollectionViewCell {
 				urls: props.urls,
 				initialIndex: props.index,
 				options: [
-					.theme(.dark)
+					.theme(.dark),
+					.closeIcon(UIImage(named: "x_in_form")!)
 				]
 			)
 		}
