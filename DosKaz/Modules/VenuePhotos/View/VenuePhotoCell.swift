@@ -37,6 +37,13 @@ class VenuePhotoCell: UICollectionViewCell {
 					.transition(.fade(1)),
 					.cacheOriginalImage
 			])
+			imageView.setupImageViewer(
+				urls: props.urls,
+				initialIndex: props.index,
+				options: [
+					.theme(.dark)
+				]
+			)
 		}
 	}
 	
@@ -56,6 +63,8 @@ class VenuePhotoCell: UICollectionViewCell {
 	
 	struct Props {
 		let image: String
+		let index: Int
+		var urls: [URL]
 		var onPickImage: Command = .nop
 	}
 	

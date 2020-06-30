@@ -60,10 +60,12 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 	}
 	
 	func update(_ photos: [Photo]) {
-
-		let imageCollectionViewCells: [VenuePhotoCell.Props] = photos.map { (photo: Photo) in
+		let urls = photos.compactMap { URL(string: Constants.mainURL + $0.previewUrl) }
+		let imageCollectionViewCells: [VenuePhotoCell.Props] = photos.enumerated().map { (index: Int, photo: Photo) in
 			return VenuePhotoCell.Props(
-				image: photo.previewUrl
+				image: photo.previewUrl,
+				index: index,
+				urls: urls
 			)
 		}
 		

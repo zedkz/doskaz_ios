@@ -169,6 +169,16 @@
 		44B8A4B22475436F002BFE6A /* PhotoPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */; };
 		44B8E90B247D15C200AC90E3 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8E90A247D15C200AC90E3 /* Geocoder.swift */; };
 		44B8E90D247D202C00AC90E3 /* PhoneFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8E90C247D202C00AC90E3 /* PhoneFormatter.swift */; };
+		44BA428824AB381D008B5674 /* UIImageView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA427E24AB381C008B5674 /* UIImageView_Extensions.swift */; };
+		44BA428924AB381D008B5674 /* UIView_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA427F24AB381C008B5674 /* UIView_Extensions.swift */; };
+		44BA428A24AB381D008B5674 /* UINavigationBar_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428024AB381C008B5674 /* UINavigationBar_Extensions.swift */; };
+		44BA428B24AB381D008B5674 /* ImageCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428124AB381C008B5674 /* ImageCarouselViewController.swift */; };
+		44BA428C24AB381D008B5674 /* ImageViewerOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428224AB381C008B5674 /* ImageViewerOption.swift */; };
+		44BA428D24AB381D008B5674 /* RightNavItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428324AB381C008B5674 /* RightNavItemDelegate.swift */; };
+		44BA428E24AB381D008B5674 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428424AB381C008B5674 /* ImageItem.swift */; };
+		44BA428F24AB381D008B5674 /* ImageViewerTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428524AB381C008B5674 /* ImageViewerTheme.swift */; };
+		44BA429024AB381D008B5674 /* ImageViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428624AB381C008B5674 /* ImageViewerController.swift */; };
+		44BA429124AB381D008B5674 /* SimpleImageDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BA428724AB381C008B5674 /* SimpleImageDatasource.swift */; };
 		44C2E31D246FF8A900091C4B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C2E31C246FF8A900091C4B /* PickerViewController.swift */; };
 		44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C376712407EAF60050961F /* DeveloperAssets.xcassets */; };
 		44C37674240804680050961F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44C37673240804680050961F /* Colors.xcassets */; };
@@ -405,6 +415,16 @@
 		44B8A4B12475436F002BFE6A /* PhotoPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerCell.swift; sourceTree = "<group>"; };
 		44B8E90A247D15C200AC90E3 /* Geocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geocoder.swift; sourceTree = "<group>"; };
 		44B8E90C247D202C00AC90E3 /* PhoneFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
+		44BA427E24AB381C008B5674 /* UIImageView_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView_Extensions.swift; sourceTree = "<group>"; };
+		44BA427F24AB381C008B5674 /* UIView_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extensions.swift; sourceTree = "<group>"; };
+		44BA428024AB381C008B5674 /* UINavigationBar_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extensions.swift; sourceTree = "<group>"; };
+		44BA428124AB381C008B5674 /* ImageCarouselViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCarouselViewController.swift; sourceTree = "<group>"; };
+		44BA428224AB381C008B5674 /* ImageViewerOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerOption.swift; sourceTree = "<group>"; };
+		44BA428324AB381C008B5674 /* RightNavItemDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightNavItemDelegate.swift; sourceTree = "<group>"; };
+		44BA428424AB381C008B5674 /* ImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
+		44BA428524AB381C008B5674 /* ImageViewerTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerTheme.swift; sourceTree = "<group>"; };
+		44BA428624AB381C008B5674 /* ImageViewerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerController.swift; sourceTree = "<group>"; };
+		44BA428724AB381C008B5674 /* SimpleImageDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageDatasource.swift; sourceTree = "<group>"; };
 		44C2E31C246FF8A900091C4B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		44C376712407EAF60050961F /* DeveloperAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DeveloperAssets.xcassets; sourceTree = "<group>"; };
 		44C37673240804680050961F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -665,6 +685,7 @@
 		445CDC4E2402A6AA0072F4BC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				44BA427D24AB381C008B5674 /* ImageViewer */,
 				44ABE676248E3DC000E34F95 /* IQKeyboardManagerSwift */,
 				445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */,
 				445C3F382404432100131990 /* TableViewDataSource.swift */,
@@ -1064,6 +1085,23 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		44BA427D24AB381C008B5674 /* ImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				44BA427E24AB381C008B5674 /* UIImageView_Extensions.swift */,
+				44BA427F24AB381C008B5674 /* UIView_Extensions.swift */,
+				44BA428024AB381C008B5674 /* UINavigationBar_Extensions.swift */,
+				44BA428124AB381C008B5674 /* ImageCarouselViewController.swift */,
+				44BA428224AB381C008B5674 /* ImageViewerOption.swift */,
+				44BA428324AB381C008B5674 /* RightNavItemDelegate.swift */,
+				44BA428424AB381C008B5674 /* ImageItem.swift */,
+				44BA428524AB381C008B5674 /* ImageViewerTheme.swift */,
+				44BA428624AB381C008B5674 /* ImageViewerController.swift */,
+				44BA428724AB381C008B5674 /* SimpleImageDatasource.swift */,
+			);
+			path = ImageViewer;
+			sourceTree = "<group>";
+		};
 		44C376702407EA910050961F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1426,12 +1464,14 @@
 				44C8CE52249BA5B400DF195D /* api_accessToken_phone.swift in Sources */,
 				444F35E1246EFF2B001C7A27 /* LanguageViewController.swift in Sources */,
 				44E7312A247804FC0022375C /* api_complaints.swift in Sources */,
+				44BA428D24AB381D008B5674 /* RightNavItemDelegate.swift in Sources */,
 				44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
 				4492E33A24977C2500ED6C24 /* BlogCommentsViewController.swift in Sources */,
 				44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */,
 				4492C00C24914348007F872F /* DetailViewCell.swift in Sources */,
+				44BA428924AB381D008B5674 /* UIView_Extensions.swift in Sources */,
 				44ED11E624573EC5009B92BF /* VenueDescriptionInteractor.swift in Sources */,
 				44951D24244740AE0029275F /* GreetingCollectionDelegate.swift in Sources */,
 				44A0590B2474072100926814 /* ProfileObjectsViewController.swift in Sources */,
@@ -1441,6 +1481,7 @@
 				448A447C240BF5D0007305D4 /* SearchResultsViewControllerConfigurator.swift in Sources */,
 				4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */,
 				44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */,
+				44BA428C24AB381D008B5674 /* ImageViewerOption.swift in Sources */,
 				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
 				44593DFD2496331600B087ED /* BlogInteractor.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
@@ -1475,6 +1516,7 @@
 				44ABE69A248E3DC100E34F95 /* IQUIView+Hierarchy.swift in Sources */,
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
+				44BA429124AB381D008B5674 /* SimpleImageDatasource.swift in Sources */,
 				44593E0624967D7700B087ED /* PostCollectionDelegate.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
 				4420ABF324727BE8007F70D6 /* ProfileInteractor.swift in Sources */,
@@ -1508,6 +1550,7 @@
 				445C3F322403F62800131990 /* CategoryPickerRouter.swift in Sources */,
 				443C6F83248FB3A500DEB65C /* UpdateProfilePresenter.swift in Sources */,
 				44F0EE26243CC65D000B3022 /* LanguageChoiceView.swift in Sources */,
+				44BA428B24AB381D008B5674 /* ImageCarouselViewController.swift in Sources */,
 				4404F255245F2D9800EB7184 /* Asset.swift in Sources */,
 				448A4479240BF5D0007305D4 /* SearchResultsViewControllerPresenter.swift in Sources */,
 				44C8CE50249B985C00DF195D /* AuthInfoView.swift in Sources */,
@@ -1535,11 +1578,13 @@
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
 				44593DFE2496331600B087ED /* BlogConfigurator.swift in Sources */,
 				44F4D883246EBFD3003A50BC /* SubSectionHeaderCell.swift in Sources */,
+				44BA428A24AB381D008B5674 /* UINavigationBar_Extensions.swift in Sources */,
 				4499D769249A012E00263A67 /* AuthConfigurator.swift in Sources */,
 				44593E022496426100B087ED /* api_blog_posts_id.swift in Sources */,
 				44F0EE22243CC340000B3022 /* LanguageChoiceViewController.swift in Sources */,
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
 				448EBAC924693C8F006C9961 /* BigFormInteractor.swift in Sources */,
+				44BA429024AB381D008B5674 /* ImageViewerController.swift in Sources */,
 				44B8E90D247D202C00AC90E3 /* PhoneFormatter.swift in Sources */,
 				44E8108A247FEA7C0007A8C3 /* VenueHistoryViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
@@ -1581,6 +1626,7 @@
 				44ABE697248E3DC100E34F95 /* IQUIScrollView+Additions.swift in Sources */,
 				44ABE696248E3DC100E34F95 /* IQKeyboardManager.swift in Sources */,
 				44EE303B246DB5B100926817 /* BlogsConfigurator.swift in Sources */,
+				44BA428E24AB381D008B5674 /* ImageItem.swift in Sources */,
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				446F4D3C24A8D0DF0002CEB7 /* api_blog_categories.swift in Sources */,
 				4492C00924911459007F872F /* DetailViewContoller.swift in Sources */,
@@ -1590,6 +1636,7 @@
 				447768B1247E7997007BB003 /* VenuePhotosViewController.swift in Sources */,
 				44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */,
 				44F93EB22485104200489994 /* LargeVenueView.swift in Sources */,
+				44BA428824AB381D008B5674 /* UIImageView_Extensions.swift in Sources */,
 				44593DFC2496331600B087ED /* BlogPresenter.swift in Sources */,
 				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
@@ -1609,6 +1656,7 @@
 				44E81088247FE2860007A8C3 /* VenueFeedbackViewController.swift in Sources */,
 				44A5D9592480DFB000372A90 /* api_feedback.swift in Sources */,
 				443C6F82248FB3A500DEB65C /* UpdateProfileInteractor.swift in Sources */,
+				44BA428F24AB381D008B5674 /* ImageViewerTheme.swift in Sources */,
 				44ED11DB2456E5C6009B92BF /* ContentSizedTableView.swift in Sources */,
 				4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */,
 				443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */,
