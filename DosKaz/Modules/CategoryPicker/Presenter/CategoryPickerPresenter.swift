@@ -39,8 +39,15 @@ extension CategoryPickerPresenter: CategoryPickerViewOutput {
 		view.setupInitialState()
 		let handicaps = DisabilityCategories().load()
 		
+		func isChosen(_ disability: Disability) -> Bool {
+			let chosenCategory = AppSettings.disabilitiesCategory
+			guard let chosenCategoryKey = chosenCategory?.keys.first else { return false }
+			return disability.key == chosenCategoryKey
+		}
+		
 		let categories = handicaps.map { handicap in
 			return CategoryPickerViewController.Category(
+				isChosen: isChosen(handicap),
 				name: handicap.title,
 				imageName: handicap.icon,
 				onPickCategory: CommandWith<CategoryPickerViewController.Category> { [weak self] category in

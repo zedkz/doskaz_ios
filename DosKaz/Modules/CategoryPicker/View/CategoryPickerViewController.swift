@@ -74,7 +74,7 @@ class CategoryPickerViewController: UIViewController {
 	private func configureTableViewDataSource() {
 		dataSource = TableViewDataSource(tableView){ (p: Category,c: UITableViewCell) in
 			c.textLabel?.numberOfLines = 0
-			c.accessoryType = .disclosureIndicator
+			c.accessoryType = p.isChosen ? .checkmark : .disclosureIndicator
 			c.textLabel?.text = "\(p.name)"
 			c.textLabel?.font = .systemFont(ofSize: 14)
 			c.imageView?.image = UIImage(named: p.imageName)
@@ -98,6 +98,7 @@ extension CategoryPickerViewController: UITableViewDelegate {
 
 extension CategoryPickerViewController {
 	struct Category {
+		let isChosen: Bool
 		let name: String
 		let imageName: String
 		let onPickCategory: CommandWith<Category>
