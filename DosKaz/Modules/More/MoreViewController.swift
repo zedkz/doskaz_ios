@@ -74,7 +74,11 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 56
+		if indexPath.row == 2 {
+			return UITableView.automaticDimension
+		} else {
+			return 56
+		}
 	}
 
 }
@@ -88,6 +92,7 @@ class SubtitleCell: UITableViewCell, Updatable {
 		backgroundView.backgroundColor = UIColor(named: "CategoryPickerSelectedCell")
 		selectedBackgroundView = backgroundView
 		detailTextLabel?.textColor =  UIColor(named: "SelectedTabbarTintColor")
+		detailTextLabel?.numberOfLines = 0
 	}
 	
 	required init?(coder: NSCoder) {
