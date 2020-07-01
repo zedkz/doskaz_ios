@@ -212,6 +212,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case yesHelp = "Да, я хочу помочь"
 	case cancel = "Отменить"
 	case categories = "Категории"
+	case fullVerified = "Объект полностью верифицирован"
+	case partiallyVerified = "Объект частично верифицирован"
 	
 	var l10n: String {
 		return self.rawValue.localized

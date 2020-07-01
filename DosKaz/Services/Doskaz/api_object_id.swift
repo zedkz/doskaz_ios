@@ -104,6 +104,10 @@ extension DoskazVenue {
 		switch verificationStatus {
 		case "not_verified":
 			return l10n(.notVerified)
+		case "full_verified":
+			return l10n(.fullVerified)
+		case "partial_verified":
+			return l10n(.partiallyVerified)
 		default:
 			return ""
 		}
