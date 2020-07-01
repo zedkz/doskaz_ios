@@ -44,7 +44,7 @@ extension CategoryPickerPresenter: CategoryPickerViewOutput {
 				name: handicap.title,
 				imageName: handicap.icon,
 				onPickCategory: CommandWith<CategoryPickerViewController.Category> { [weak self] category in
-					AppSettings.disabilitiesCategory = handicap.categoryForAPI
+					AppSettings.disabilitiesCategory = [handicap.key: handicap.categoryForAPI]
 					guard let self = self else { return }
 					switch self.mode {
 					case .settings:

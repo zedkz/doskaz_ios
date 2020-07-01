@@ -39,7 +39,7 @@ extension AppSettings {
 		}
 	}
 	
-	static var disabilitiesCategory: String? {
+	static var disabilitiesCategory: [String: String]? {
 		get {
 			AppSettings.value(for: Keys.disabilitiesCategory)
 		}

@@ -48,7 +48,7 @@ struct APIObjectsMap: DoskazRequest {
 			"bbox": stringBox,
 			"categories": Filter.shared.subCategoriesIds,
 			"accessibilityLevels": Filter.shared.accessibilityLevels,
-			"disabilitiesCategory": AppSettings.disabilitiesCategory
+			"disabilitiesCategory": AppSettings.disabilitiesCategory?.values.first
 		]
 		return Task.requestParameters(parameters: p.compactMapValues{$0}, encoding: URLEncoding.default)
 	}
