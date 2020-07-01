@@ -10,7 +10,7 @@ import SharedCodeFramework
 
 // MARK: View input protocol
 
-protocol CategoryPickerViewInput: class {
+protocol CategoryPickerViewInput where Self: UIViewController {
 	func setupInitialState()
 	func update(with categories: [CategoryPickerViewController.Category])
 }

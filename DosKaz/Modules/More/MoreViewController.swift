@@ -31,7 +31,9 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 				self?.present(ContactsViewController())
 			},
 			Command { [weak self] in
-				self?.present(CategoryPickerModuleConfigurator().assembleModule())
+				let categoryPicker = CategoryPickerModuleConfigurator().assembleModule()
+				categoryPicker.output.initView(with: .settings)
+				self?.present(categoryPicker)
 			},
 			Command { [weak self] in
 				self?.present(LanguageViewController())

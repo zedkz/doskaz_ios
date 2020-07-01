@@ -10,6 +10,7 @@ import UIKit
 
 protocol CategoryPickerRouterInput {
 	func presentMainTabbar()
+	func pop(vc: UIViewController)
 }
 
 // MARK: Implementation
@@ -30,5 +31,9 @@ class CategoryPickerRouter: CategoryPickerRouterInput {
 			}
 		)
 		
+	}
+	
+	func pop(vc: UIViewController) {
+		vc.navigationController?.popViewController(animated: true)
 	}
 }

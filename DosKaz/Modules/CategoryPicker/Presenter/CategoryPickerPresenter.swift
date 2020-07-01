@@ -7,6 +7,11 @@
 //
 
 import SharedCodeFramework
+
+enum CategoryPickerMode {
+	case intro
+	case settings
+}
 		
 class CategoryPickerPresenter: CategoryPickerModuleInput {
 	
@@ -14,16 +19,22 @@ class CategoryPickerPresenter: CategoryPickerModuleInput {
 	var interactor: CategoryPickerInteractorInput!
 	var router: CategoryPickerRouterInput!
 
+	var mode: CategoryPickerMode = .intro
 }
-
 
 // MARK: ViewController output protocol
 
 protocol CategoryPickerViewOutput {
+	func initView(with mode: CategoryPickerMode)
 	func viewIsReady()
 }
 
 extension CategoryPickerPresenter: CategoryPickerViewOutput {
+	
+	func initView(with mode: CategoryPickerMode) {
+		self.mode = mode
+	}
+	
 	func viewIsReady() {
 		view.setupInitialState()
 		let handicaps = DisabilityCategories().load()
@@ -32,9 +43,15 @@ extension CategoryPickerPresenter: CategoryPickerViewOutput {
 			return CategoryPickerViewController.Category(
 				name: handicap.title,
 				imageName: handicap.icon,
-				onPickCategory: CommandWith<CategoryPickerViewController.Category> { category in
+				onPickCategory: CommandWith<CategoryPickerViewController.Category> { [weak self] category in
 					AppSettings.disabilitiesCategory = handicap.categoryForAPI
-					self.router.presentMainTabbar()
+					guard let self = self else { return }
+					switch self.mode {
+					case .settings:
+						self.router.pop(vc: self.view)
+					case .intro:
+						self.router.presentMainTabbar()						
+					}
 			})
 		}
 		
