@@ -17,10 +17,10 @@ class VenueDescriptionInteractor: VenueDescriptionInteractorInput {
 	weak var output: VenueDescriptionInteractorOutput!
 	
 	func verifyVenue(with id: Int, status: Status) {
-		APIVerifyObject(onSuccess: { (_) in
-			
-		}, onFailure: { error in
-			print(error)
+		APIVerifyObject(onSuccess: { [weak self] _ in
+			self?.output?.didSucceedVerify()
+		}, onFailure: { [weak self] error in
+			self?.output?.didFailVerify(with: error)
 		}, id: id,
 			 status: status
 		)

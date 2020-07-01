@@ -15,6 +15,8 @@ class VenueDescriptionPresenter {
 
 	var venue: DoskazVenue!
 	var onReview: Command = .nop
+	
+	var lastSentStatus: Status!
 }
 
 // MARK: ViewController output protocol
@@ -47,20 +49,6 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 			self.router.presentDetailInfo(with: self.view, venue: venue)
 		}
 		
-		func showSecondAlert() {
-			let actions = [
-				Action(title: l10n(.yesHelp), handler: { [weak self] in
-					guard let self = self, let id = self.venue.id else { return }
-					self.router.addReview(with: self.view, venueId: id, onReview: self.onReview)
-				}),
-				Action(
-					title: l10n(.cancel),
-					style: .cancel
-				)
-			]
-			view.showAlert(title: l10n(.foundErrors), message: l10n(.foundErrorsMessage), actions: actions)
-		}
-		
 		let onTouchVerify = Command { [weak self] in
 			let actions = [
 				Action(
@@ -68,13 +56,14 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 					handler: { [weak self] in
 						guard let id = self?.venue.id else { return }
 						self?.interactor.verifyVenue(with: id, status: Status.reject)
-						showSecondAlert()
+						self?.lastSentStatus = .reject
 					},
 					style: .destructive
 				),
 				Action(title: l10n(.yes), handler: { [weak self] in
 					guard let id = self?.venue.id else { return }
 					self?.interactor.verifyVenue(with: id, status: Status.confirm)
+					self?.lastSentStatus = .confirm
 				})
 			]
 			self?.view.showAlert(
@@ -96,15 +85,47 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 		self.onReview = onReview
 		venue = doskazVenue
 	}
+	
+	func showSecondAlert() {
+		let actions = [
+			Action(title: l10n(.yesHelp), handler: { [weak self] in
+				guard let self = self, let id = self.venue.id else { return }
+				self.router.addReview(with: self.view, venueId: id, onReview: self.onReview)
+			}),
+			Action(
+				title: l10n(.cancel),
+				handler: { [weak self] in
+					self?.onReview.perform()
+				},
+				style: .cancel
+			)
+		]
+		view.showAlert(title: l10n(.foundErrors), message: l10n(.foundErrorsMessage), actions: actions)
+	}
 
 }
 
 // MARK: Interactor output protocol
 
 protocol VenueDescriptionInteractorOutput: class {
-
+	func didSucceedVerify() -> Void
+	func didFailVerify(with error: Error) -> Void
 }
 
 extension VenueDescriptionPresenter: VenueDescriptionInteractorOutput {
-
+	func didSucceedVerify() {
+		switch lastSentStatus {
+		case .reject:
+			showSecondAlert()
+		case .confirm:
+			onReview.perform()
+		case nil:
+			break
+		}
+	}
+	
+	func didFailVerify(with error: Error) {
+		print(error)
+	}
+	
 }
