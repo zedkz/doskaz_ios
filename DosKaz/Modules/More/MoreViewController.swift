@@ -17,6 +17,11 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 	func present(_ viewController: UIViewController) {
 		navigationController?.pushViewController(viewController, animated: true)
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		updateTable()
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -46,7 +51,9 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 		dataSource = UTableViewDataSource(tableView)
 		tableView.dataSource = dataSource
 		tableView.delegate = self
-		
+	}
+	
+	private func updateTable() {
 		let handicaps = DisabilityCategories().load()
 		let chosenCategory = AppSettings.disabilitiesCategory
 		let disabilityTitle = handicaps.first { $0.key == chosenCategory?.keys.first }?.title
@@ -59,7 +66,6 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 		]
 		dataSource.cellsProps = models
 		tableView.reloadData()
-	
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,6 +87,7 @@ class SubtitleCell: UITableViewCell, Updatable {
 		let backgroundView = UIView()
 		backgroundView.backgroundColor = UIColor(named: "CategoryPickerSelectedCell")
 		selectedBackgroundView = backgroundView
+		detailTextLabel?.textColor =  UIColor(named: "SelectedTabbarTintColor")
 	}
 	
 	required init?(coder: NSCoder) {
