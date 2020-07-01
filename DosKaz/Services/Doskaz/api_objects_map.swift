@@ -43,13 +43,14 @@ struct APIObjectsMap: DoskazRequest {
 			return evaluate(isLastIndex, ifTrue: returned, ifFalse: returned + ",")
 		}
 		
-		let p: [String: Any] = [
+		let p: [String: Any?] = [
 			"zoom": zoom,
 			"bbox": stringBox,
 			"categories": Filter.shared.subCategoriesIds,
-			"accessibilityLevels": Filter.shared.accessibilityLevels
+			"accessibilityLevels": Filter.shared.accessibilityLevels,
+			"disabilitiesCategory": AppSettings.disabilitiesCategory
 		]
-		return Task.requestParameters(parameters: p, encoding: URLEncoding.default)
+		return Task.requestParameters(parameters: p.compactMapValues{$0}, encoding: URLEncoding.default)
 	}
 	
 }

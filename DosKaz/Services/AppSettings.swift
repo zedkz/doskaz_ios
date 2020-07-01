@@ -39,12 +39,22 @@ extension AppSettings {
 		}
 	}
 	
+	static var disabilitiesCategory: String? {
+		get {
+			AppSettings.value(for: Keys.disabilitiesCategory)
+		}
+		set {
+			AppSettings.updateDefaults(for: Keys.disabilitiesCategory, value: newValue!)
+		}
+	}
+	
 }
 
 extension Keys {
 	static let language = "language"
 	static let token = "token"
 	static let isUserIntroducedToApp = "isUserIntroducedToApp"
+	static let disabilitiesCategory = "disabilitiesCategory"
 }
 
 

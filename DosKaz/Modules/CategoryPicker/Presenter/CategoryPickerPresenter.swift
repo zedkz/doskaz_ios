@@ -33,7 +33,7 @@ extension CategoryPickerPresenter: CategoryPickerViewOutput {
 				name: handicap.title,
 				imageName: handicap.icon,
 				onPickCategory: CommandWith<CategoryPickerViewController.Category> { category in
-					print(category)
+					AppSettings.disabilitiesCategory = handicap.categoryForAPI
 					self.router.presentMainTabbar()
 			})
 		}
