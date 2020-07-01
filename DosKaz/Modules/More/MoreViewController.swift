@@ -47,10 +47,14 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 		
+		let handicaps = DisabilityCategories().load()
+		let chosenCategory = AppSettings.disabilitiesCategory
+		let disabilityTitle = handicaps.first { $0.key == chosenCategory?.keys.first }?.title
+		
 		let models = [
 			SubtitleCell.Props(title: "О проекте"),
 			SubtitleCell.Props(title: "Контакты"),
-			SubtitleCell.Props(title: "Категория пользователя"),
+			SubtitleCell.Props(title: "Категория пользователя", subTitle: disabilityTitle),
 			SubtitleCell.Props(title: "Язык", subTitle: "Русский"),
 		]
 		dataSource.cellsProps = models
@@ -72,7 +76,7 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 class SubtitleCell: UITableViewCell, Updatable {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-		super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 		accessoryView = UIImageView(image: UIImage(named: "chevron_right_passive"))
 		let backgroundView = UIView()
 		backgroundView.backgroundColor = UIColor(named: "CategoryPickerSelectedCell")
