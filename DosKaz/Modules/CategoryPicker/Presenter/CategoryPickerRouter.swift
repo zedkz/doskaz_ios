@@ -25,7 +25,9 @@ class CategoryPickerRouter: CategoryPickerRouterInput {
 			animations: {
 				keyWindow.rootViewController = MainTabBarViewController()
 			},
-			completion: nil
+			completion: { _ in
+				AppSettings.isUserIntroducedToApp = true
+			}
 		)
 		
 	}

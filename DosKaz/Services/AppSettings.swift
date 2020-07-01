@@ -28,7 +28,15 @@ extension AppSettings {
 		set(newToken) {
 			AppSettings.updateDefaults(for: Keys.token, value: newToken!)
 		}
-		
+	}
+	
+	static var isUserIntroducedToApp: Bool {
+		get {
+			AppSettings.value(for: Keys.isUserIntroducedToApp) ?? false
+		}
+		set {
+			AppSettings.updateDefaults(for: Keys.isUserIntroducedToApp, value: newValue)
+		}
 	}
 	
 }
@@ -36,6 +44,7 @@ extension AppSettings {
 extension Keys {
 	static let language = "language"
 	static let token = "token"
+	static let isUserIntroducedToApp = "isUserIntroducedToApp"
 }
 
 

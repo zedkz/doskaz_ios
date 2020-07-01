@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		IQKeyboardManager.shared.enable = true
 		FirebaseApp.configure()
-		setMockViewController(MainTabBarViewController())
+		setRootViewController()
 		return true
 	}
 	
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			window?.overrideUserInterfaceStyle = .light
 		}
 		
-		let isUserIntroducedToApp = Bool.random()
+		let isUserIntroducedToApp = AppSettings.isUserIntroducedToApp
 		if isUserIntroducedToApp {
 			window?.rootViewController = MainTabBarViewController()
 		} else {
