@@ -199,3 +199,5 @@
 "categories" = "Категории";
 "fullVerified" = "Объект полностью верифицирован";
 "partiallyVerified" = "Объект частично верифицирован";
+"categoryOfUser" = "Категория пользователя";
+"language" = "Язык";
