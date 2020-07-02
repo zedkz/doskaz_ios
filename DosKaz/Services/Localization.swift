@@ -216,7 +216,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case partiallyVerified = "Объект частично верифицирован"
 	
 	var l10n: String {
-		return self.rawValue.localized
+		let enumCaseName = String(describing: self)
+		return enumCaseName.localized
 	}
 }
 
