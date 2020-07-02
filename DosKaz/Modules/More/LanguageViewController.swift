@@ -29,10 +29,7 @@ class LanguageViewController: TableViewController, UITableViewDelegate {
 	
 	var dataSource: UTableViewDataSource<UpdatableCell>!
 
-	var models: [UpdatableCell.Props] = [
-		.init(title: "Kazakh", isChecked: false),
-		.init(title: "Russian", isChecked: true)
-	]
+	var models: [UpdatableCell.Props] = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,6 +42,26 @@ class LanguageViewController: TableViewController, UITableViewDelegate {
 		tableView.dataSource = dataSource
 		tableView.delegate = self
 		
+		var isKazakh = false
+		var isRussian = false
+		
+		switch AppSettings.language {
+		case .kazakh:
+			isKazakh = true
+			isRussian = false
+		case .russian:
+			isKazakh = false
+			isRussian = true
+		case nil:
+			isKazakh = false
+			isRussian = false
+		}
+		
+		models = [
+			.init(title: "Қазақша", isChecked: isKazakh),
+			.init(title: "Русский", isChecked: isRussian)
+		]
+		
 		dataSource.cellsProps = models
 		tableView.reloadData()
 	}
@@ -55,7 +72,24 @@ class LanguageViewController: TableViewController, UITableViewDelegate {
 		dataSource.cellsProps = models
 		tableView.reloadData()
 		tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
-		navigationController?.popViewController(animated: true)
+		
+		if indexPath.row == 0 {
+			AppSettings.language = .kazakh
+		} else {
+			AppSettings.language = .russian
+		}
+		
+		guard let keyWindow = UIApplication.shared.keyWindow else { return }
+		keyWindow.rootViewController = MainTabBarViewController()
+		
+		if let tabViewController = keyWindow.rootViewController as? MainTabBarViewController {
+			UIView.transition(
+				with: keyWindow, duration: 0.2,
+				options: .transitionFlipFromLeft,
+				animations: { tabViewController.selectedIndex = 4 },
+				completion: nil
+			)
+		}
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

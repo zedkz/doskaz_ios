@@ -58,11 +58,13 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 		let chosenCategory = AppSettings.disabilitiesCategory
 		let disabilityTitle = handicaps.first { $0.key == chosenCategory?.keys.first }?.title
 		
+		let language = AppSettings.language?.description ?? ""
+		
 		let models = [
 			SubtitleCell.Props(title: l10n(.aboutProject)),
 			SubtitleCell.Props(title: l10n(.contacts)),
 			SubtitleCell.Props(title: l10n(.categoryOfUser), subTitle: disabilityTitle),
-			SubtitleCell.Props(title: l10n(.language), subTitle: "Русский"),
+			SubtitleCell.Props(title: l10n(.language), subTitle: language),
 		]
 		dataSource.cellsProps = models
 		tableView.reloadData()
