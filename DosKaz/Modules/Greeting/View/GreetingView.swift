@@ -50,8 +50,8 @@ class GreetingView: UIView {
 	private func renderConstantData() {
 		backgroundImage.image = UIImage(named:"green_map_background")
 		logoImage.image = UIImage(named: "logo")
-		backButton.setTitle("Назад", for: .normal)
-		nextButton.setTitle("Далее", for: .normal)
+		backButton.setTitle(l10n(.back), for: .normal)
+		nextButton.setTitle(l10n(.next), for: .normal)
 		pageControl.numberOfPages = 3
 	}
 	
