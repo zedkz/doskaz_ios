@@ -29,9 +29,11 @@ extension LanguageChoicePresenter: LanguageChoiceViewOutput {
 		view.setupView(with:
 			LanguageChoiceView.Props(
 				chooseKazakh: Command {
+					AppSettings.language = .kazakh
 					self.router.presentGreeting(with: self.view)
 				},
 				chooseRus: Command {
+					AppSettings.language = .russian
 					self.router.presentGreeting(with: self.view)
 			})
 		)
