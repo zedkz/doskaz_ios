@@ -59,10 +59,10 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 		let disabilityTitle = handicaps.first { $0.key == chosenCategory?.keys.first }?.title
 		
 		let models = [
-			SubtitleCell.Props(title: "О проекте"),
-			SubtitleCell.Props(title: "Контакты"),
-			SubtitleCell.Props(title: "Категория пользователя", subTitle: disabilityTitle),
-			SubtitleCell.Props(title: "Язык", subTitle: "Русский"),
+			SubtitleCell.Props(title: l10n(.aboutProject)),
+			SubtitleCell.Props(title: l10n(.contacts)),
+			SubtitleCell.Props(title: l10n(.categoryOfUser), subTitle: disabilityTitle),
+			SubtitleCell.Props(title: l10n(.language), subTitle: "Русский"),
 		]
 		dataSource.cellsProps = models
 		tableView.reloadData()

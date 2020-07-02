@@ -55,7 +55,7 @@ class CategoryPickerViewController: UIViewController {
 		tableView.tableHeaderView = headerView
 		let titleLabel = UILabel()
 		titleLabel.font = .systemFont(ofSize: 13, weight: .semibold)
-		titleLabel.text = "КАТЕГОРИЯ ПОЛЬЗОВАТЕЛЯ"
+		titleLabel.text = l10n(.categoryOfUser)
 		headerView.addSubview(titleLabel)
 		titleLabel.addConstraintsProgrammatically
 			.pin(my: .leading, andOf: headerView, plus: 24)
