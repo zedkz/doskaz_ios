@@ -33,12 +33,12 @@ extension BlogsViewController: BlogsViewInput {
 	func updateTable(with cellsProps: [BlogCell.Props]) {
 		let newItemsCount = cellsProps.count - dataSource.cellsProps.count
 		dataSource.cellsProps = cellsProps
+		tableView.reloadData()
 		let latestItemCount = cellsProps.count
 		
-		let indexPaths = (latestItemCount - newItemsCount ..< latestItemCount)
+		let indexPaths = stride(from: latestItemCount - newItemsCount, to: latestItemCount, by: 1)
 			.map { IndexPath(row: $0, section: 0) }
 		
-		tableView.reloadData()
 		if let first = indexPaths.first {
 			tableView.scrollToRow(at: first, at: .bottom, animated: true)
 		}
@@ -86,6 +86,7 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 		tableView.delegate = self
 		tableView.tableFooterView = UIView()
 		tableView.separatorInset = UIEdgeInsets(all: 0)
+		tableView.keyboardDismissMode = .interactive
 	}
 	
 	private func configureNavigationView() {
@@ -109,7 +110,8 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 	private func buildSearch() {
 		let searchController = UISearchController(searchResultsController: nil)
 		searchController.searchResultsUpdater = self
-		searchController.hidesNavigationBarDuringPresentation = false
+		searchController.hidesNavigationBarDuringPresentation = true
+		searchController.obscuresBackgroundDuringPresentation = false
 		definesPresentationContext = true
 		navigationItem.searchController = searchController
 		navigationItem.hidesSearchBarWhenScrolling = false

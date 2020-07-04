@@ -9,6 +9,7 @@ import  SharedCodeFramework
 
 protocol BlogsInteractorInput {
 	func loadPosts(with searchText: String?, categoryId: Int?)
+	func resetPaginator() -> Void
 	func loadBlogCategories()
 }
 
@@ -19,6 +20,10 @@ class BlogsInteractor: BlogsInteractorInput {
 	weak var output: BlogsInteractorOutput!
 	
 	let paginator = BlogPaginator()
+	
+	func resetPaginator() -> Void {
+		paginator.reset()
+	}
 	
 	func loadPosts(with searchText: String?, categoryId: Int?) {
 		paginator.search = searchText

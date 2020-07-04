@@ -15,6 +15,8 @@ class BlogsPresenter {
 	var router: BlogsRouterInput!
 
 	var items = [Item]()
+	var currentQuery: String!
+	var currentCategory: BlogCategory!
 }
 
 // MARK: ViewController output protocol
@@ -27,9 +29,14 @@ extension BlogsPresenter: BlogsViewOutput {
 	func viewIsReady() {
 		view.setupInitialState()
 		view.onSearchFieldEdit = CommandWith<String> { query in
-			self.interactor.loadPosts(with: query, categoryId: nil)
+			self.items.removeAll()
+			self.view.updateTable(with: [])
+			self.interactor.resetPaginator()
+			self.currentQuery = query.isEmpty ? nil : query
+			self.currentCategory = nil
+			self.interactor.loadPosts(with: self.currentQuery, categoryId: nil)
 		}
-		interactor.loadPosts(with: nil, categoryId: nil)
+		interactor.loadPosts(with: self.currentQuery, categoryId: nil)
 		view.onSelect = CommandWith<Item> { [weak self] blog in
 			guard let self = self else { return }
 			self.router.showBlog(with: self.view, blog: blog)
@@ -38,10 +45,15 @@ extension BlogsPresenter: BlogsViewOutput {
 			self?.interactor.loadBlogCategories()
 		}
 		view.onSelectCategory = CommandWith { [weak self] category in
+			self?.items.removeAll()
+			self?.view.updateTable(with: [])
+			self?.interactor.resetPaginator()
+			self?.currentQuery = nil
+			self?.currentCategory = category
 			self?.interactor.loadPosts(with: nil, categoryId: category.id)
 		}
 		view.onScrollToBottom = Command { [weak self] in
-			self?.interactor.loadPosts(with: nil, categoryId: nil)
+			self?.interactor.loadPosts(with: self?.currentQuery, categoryId: self?.currentCategory?.id)
 		}
 	}
 
