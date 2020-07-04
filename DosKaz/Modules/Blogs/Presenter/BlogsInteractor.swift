@@ -39,7 +39,10 @@ class BlogsInteractor: BlogsInteractorInput {
 	
 	func loadBlogCategories() {
 		APIBlogCategories(onSuccess: { [weak self] (blogCategories) in
-			self?.output?.didLoad(blogCategories)
+			let all = BlogCategory(id: nil, title: l10n(.all))
+			var copy = blogCategories
+			copy.insert(all, at: 0)
+			self?.output?.didLoad(copy)
 		}, onFailure: { error in
 			print(error)
 		})

@@ -15,6 +15,6 @@ struct APIBlogCategories: DoskazRequest {
 }
 
 struct BlogCategory: Codable {
-	let id: Int
+	let id: Int?
 	let title: String
 }

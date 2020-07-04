@@ -217,6 +217,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case categoryOfUser = "Категория пользователя"
 	case language = "Язык"
 	case back = "Назад"
+	case all = "Все"
 	
 	var l10n: String {
 		let enumCaseName = String(describing: self)
