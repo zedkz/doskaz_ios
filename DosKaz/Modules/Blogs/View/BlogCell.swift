@@ -65,9 +65,8 @@ class BlogCell: UITableViewCell, Updatable {
 	var props: Props! {
 		didSet {
 			titleLabel.text = props.title
-			content.text = props.content
 			
-			let attributedString = NSMutableAttributedString(string: props.content)
+			let attributedString = NSMutableAttributedString(string: props.content.removingHTMLEntities)
 			let paragraphStyle = NSMutableParagraphStyle()
 			paragraphStyle.lineHeightMultiple = 1.68
 			attributedString.addAttribute(
