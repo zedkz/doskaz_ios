@@ -15,7 +15,7 @@ struct Constants {
 protocol DoskazRequest: MoyaRequest, TargetType, AccessTokenAuthorizable { }
 
 extension DoskazRequest {
-	var baseURL: URL { return URL(string:"https://doskaz.vps3.zed.kz/api/")! }
+	var baseURL: URL { return URL(string:"\(Constants.mainURL)/api/")! }
 	var authorizationType: AuthorizationType? { nil }
 }
 

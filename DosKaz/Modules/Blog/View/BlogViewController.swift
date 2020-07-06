@@ -66,7 +66,7 @@ class BlogViewController: UIViewController, BlogViewInput {
 		webView.scrollView.isScrollEnabled = false
 		webView.navigationDelegate = self
 		if let content = blog.post.content {
-			webView.loadHTMLString(content, baseURL: nil)
+			webView.loadHTMLString(content, baseURL: URL(string:Constants.mainURL))
 		}
 		titleLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold), { label in
 			label.adjustsFontSizeToFitWidth = true
@@ -197,6 +197,26 @@ extension BlogViewController: WKNavigationDelegate {
 	func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 			self.height?.constant = webView.scrollView.contentSize.height
+		}
+	}
+	
+	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+		if navigationAction.navigationType == .linkActivated {
+			guard let url = navigationAction.request.url else {
+				decisionHandler(.allow)
+				return
+			}
+			
+			let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+			if components?.scheme == "http" || components?.scheme == "https"
+			{
+				UIApplication.shared.open(url)
+				decisionHandler(.cancel)
+			} else {
+				decisionHandler(.allow)
+			}
+		} else {
+			decisionHandler(.allow)
 		}
 	}
 }
