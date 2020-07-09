@@ -27,7 +27,39 @@ class BlogViewController: UIViewController, BlogViewInput {
 	var onPickBlog: CommandWith<Item> = .nop
 	
 	let imageView = UIImageView()
-	let webView = WKWebView()
+	
+	lazy var webView: WKWebView = {
+		guard
+			let path = Bundle.main.path(forResource: "style", ofType: "css"),
+			let cssString = try? String(contentsOfFile: path).components(separatedBy: .newlines).joined()
+		else {
+			return WKWebView()
+		}
+		
+		let source = """
+		var style = document.createElement('style');
+		style.innerHTML = '\(cssString)';
+		document.head.appendChild(style);
+		"""
+		
+		let userScript = WKUserScript(
+			source: source,
+			injectionTime: .atDocumentEnd,
+			forMainFrameOnly: true
+		)
+		
+		let userContentController = WKUserContentController()
+		userContentController.addUserScript(userScript)
+		
+		let configuration = WKWebViewConfiguration()
+		configuration.userContentController = userContentController
+		
+		let webView = WKWebView(
+			frame: .zero,
+			configuration: configuration
+		)
+		return webView
+	}()
 	
 	let scrollView = UIScrollView()
 	let titleLabel = UILabel()
@@ -66,7 +98,11 @@ class BlogViewController: UIViewController, BlogViewInput {
 		webView.scrollView.isScrollEnabled = false
 		webView.navigationDelegate = self
 		if let content = blog.post.content {
-			webView.loadHTMLString(content, baseURL: URL(string:Constants.mainURL))
+			let htmlStart = "<HTML><HEAD><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></HEAD><BODY>"
+			let htmlEnd = "</BODY></HTML>"
+			let htmlString = "\(htmlStart)\(content)\(htmlEnd)"
+			print(content)
+			webView.loadHTMLString(htmlString, baseURL: URL(string:Constants.mainURL))
 		}
 		titleLabel.decorate(with: Style.systemFont(size: 20, weight: .semibold), { label in
 			label.adjustsFontSizeToFitWidth = true

@@ -1,0 +1,16 @@
+body {
+	color: black;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95% !important;
+	height: auto !important;
+}
+
+iframe {
+	width: 100% !important;
+	height: auto !important;
+}

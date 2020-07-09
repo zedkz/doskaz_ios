@@ -94,6 +94,7 @@
 		447768B1247E7997007BB003 /* VenuePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768AC247E7996007BB003 /* VenuePhotosViewController.swift */; };
 		447768B3247E7D83007BB003 /* VenuePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768B2247E7D83007BB003 /* VenuePhotoCell.swift */; };
 		447768B5247E7F14007BB003 /* VenueCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447768B4247E7F14007BB003 /* VenueCollectionDelegate.swift */; };
+		447B77C424B3AEA500B1F883 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 447B77C324B3AEA500B1F883 /* style.css */; };
 		447BA20724ADE3A8007AE326 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 447BA20924ADE3A8007AE326 /* Localizable.strings */; };
 		447DEC06246170A300AB5478 /* api_objects_categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447DEC05246170A300AB5478 /* api_objects_categories.swift */; };
 		4486E89823F6EBEF00E8AAB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */; };
@@ -341,6 +342,7 @@
 		447768AC247E7996007BB003 /* VenuePhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuePhotosViewController.swift; sourceTree = "<group>"; };
 		447768B2247E7D83007BB003 /* VenuePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotoCell.swift; sourceTree = "<group>"; };
 		447768B4247E7F14007BB003 /* VenueCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCollectionDelegate.swift; sourceTree = "<group>"; };
+		447B77C324B3AEA500B1F883 /* style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		447BA20A24ADE3BD007AE326 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		447BA20B24ADE3D7007AE326 /* kk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kk; path = kk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		447DEC05246170A300AB5478 /* api_objects_categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_categories.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				44C3767524083F050050961F /* Font.swift */,
 				445D51942466D92700C2E02A /* disabilityCategories.json */,
 				447BA20924ADE3A8007AE326 /* Localizable.strings */,
+				447B77C324B3AEA500B1F883 /* style.css */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1417,6 +1420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44C37674240804680050961F /* Colors.xcassets in Resources */,
+				447B77C424B3AEA500B1F883 /* style.css in Resources */,
 				445D51952466D92700C2E02A /* disabilityCategories.json in Resources */,
 				4486E8A423F6EBF100E8AAB2 /* LaunchScreen.storyboard in Resources */,
 				44C376722407EAF60050961F /* DeveloperAssets.xcassets in Resources */,
