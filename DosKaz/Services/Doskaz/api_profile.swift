@@ -34,7 +34,7 @@ struct Profile: Codable {
 	let currentTask: CurrentTask
 	let level: Level
 	let stats: Stats
-	let abilities: [String]?
+	let abilities: [Ability]?
 	let status: String?
 }
 
@@ -53,4 +53,10 @@ struct Level: Codable {
 // MARK: - Stats
 struct Stats: Codable {
 	let objects, complaints: Int
+}
+
+// MARK: - User abilities
+
+enum Ability: String, Codable {
+	case status_change, avatar_upload
 }
