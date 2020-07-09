@@ -8,6 +8,7 @@
 
 import SharedCodeFramework
 import UIKit
+import WebKit
 
 class ProfileView: UIView {
 	
@@ -150,6 +151,10 @@ class ProfileView: UIView {
 			bottomLabel: taskLabel
 		)
 
+		webView.isHidden = true
+		avatarImageView.addSubview(webView)
+		webView.addConstraintsProgrammatically
+			.pinToSuper()
 	}
 	
 	//MARK: - Public properties and methods
@@ -177,6 +182,8 @@ class ProfileView: UIView {
 	let taskProgress = UIProgressView(progressViewStyle: .default)
 	let taskProgressLabel = UILabel()
 	let taskLabel = UILabel()
+	
+	let webView = WKWebView()
 	
 	var props: Props! {
 		didSet {
@@ -206,6 +213,38 @@ class ProfileView: UIView {
 			
 			editButton.isEnabled = true
 
+			if let avaratarURLString = props.profile.avatar {
+				let link = Constants.mainURL + avaratarURLString
+				let html = """
+				<!DOCTYPE html>
+				<html lang="en">
+					<head>
+						<meta charset="UTF-8"/>
+						<meta name='viewport' content='initial-scale=1.0, maximum-scale=3.0, minimum-scale=0.5'/>
+						<title>SVG Displayer</title>
+						<style>
+							html, body, .content {
+								height: 100%;
+								width: 100%;
+								margin:0;
+								padding:0;
+							}
+						</style>
+					</head>
+
+					<body>
+						<div id="content" align="center">
+							<img height="80" height="80" src="\(link)"/></img>
+						</div>
+						<div id="END"></div>
+					</body>
+				</html>
+				"""
+				webView.isHidden = false
+				webView.loadHTMLString(html, baseURL: nil)
+			} else {
+				webView.isHidden = true
+			}
 		}
 	}
 	
