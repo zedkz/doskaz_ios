@@ -67,7 +67,7 @@ extension ProfilePresenter: ProfileInteractorOutput {
 					}),
 					Action(title: l10n(.deleteAvatar), handler: { [weak self] in
 						
-					})
+					}, style: .destructive)
 				]
 				
 				let cancelAction = Action(title: l10n(.cancel), style: .cancel)
