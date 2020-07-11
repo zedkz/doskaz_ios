@@ -58,11 +58,6 @@ class ProfileView: UIView {
 			}
 		)
 		
-		editButton.didTouchUpInside = { [weak self] in
-			self?.props?.onEdit.perform()
-		}
-		editButton.isEnabled = false
-		
 		func style(topLabel: UILabel, leftLabel: UILabel, bottomLabel: UILabel) {
 			topLabel.decorate(with: Style.systemFont(size: 14, weight: .bold))
 			bottomLabel.decorate(with: Style.systemFont(size: 12))
@@ -76,6 +71,11 @@ class ProfileView: UIView {
 		line.backgroundColor = UIColor(named: "UnselectedTabbarTintColor")?.withAlphaComponent(0.2)
 		
 		//MARK: - Configure behavior
+		editButton.didTouchUpInside = { [weak self] in
+			self?.props?.onEdit.perform()
+		}
+		editButton.isEnabled = false
+		
 		//MARK: - Layout
 		addSubview(mainInfoContainer)
 		addSubview(editButton)
