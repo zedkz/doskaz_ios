@@ -163,7 +163,7 @@ class ProfileView: UIView {
 	}
 	
 	@objc func tapAvatar() {
-		props.onTapAvatar.perform()
+		props?.onTapAvatar.perform()
 	}
 	
 	//MARK: - Public properties and methods

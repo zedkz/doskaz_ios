@@ -203,3 +203,7 @@
 "language" = "Язык";
 "back" = "Назад";
 "all" = "Все";
+"avatarChoice" = "Выбор аватара";
+"deleteAvatar" = "Удалить аватар";
+"choosePresetAvatar" = "Выбрать из готовых";
+"chooseFromPhotoGallery" = "Загрузить из фотогалереи";

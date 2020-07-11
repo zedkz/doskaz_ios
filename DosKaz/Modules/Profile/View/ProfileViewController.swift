@@ -13,6 +13,7 @@ import UIKit
 protocol ProfileViewInput where Self: UIViewController {
 	func setupInitialState()
 	var profileView: ProfileView { get }
+	func showActionSheet(with actions: [Action])
 }
 
 extension ProfileViewController: ProfileViewInput {
@@ -22,7 +23,16 @@ extension ProfileViewController: ProfileViewInput {
 		navigationItem.title = l10n(.myProfile)
 		configureViews(with: profileView)
 	}
-
+	
+	func showActionSheet(with actions: [Action]) {
+		let sheet = GenericAlertPresenter(
+			title: l10n(.avatarChoice),
+			style: .actionSheet,
+			actions: actions
+		)
+		sheet.present(in: self)
+	}
+	
 }
 
 class ProfileViewController: ProfileDrawerViewController {

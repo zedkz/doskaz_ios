@@ -57,7 +57,22 @@ extension ProfilePresenter: ProfileInteractorOutput {
 			},
 			onTapAvatar: Command { [weak self] in
 				guard let self = self else { return }
-				print("Did tap in presenter")
+				
+				var actions = [
+					Action(title: l10n(.chooseFromPhotoGallery), handler: { [weak self] in
+						
+					}),
+					Action(title: l10n(.choosePresetAvatar), handler: { [weak self] in
+						
+					}),
+					Action(title: l10n(.deleteAvatar), handler: { [weak self] in
+						
+					})
+				]
+				
+				let cancelAction = Action(title: l10n(.cancel), style: .cancel)
+				actions.append(cancelAction)
+				self.view.showActionSheet(with: actions)
 			}
 		)
 	}
