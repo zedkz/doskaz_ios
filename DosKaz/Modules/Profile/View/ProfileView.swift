@@ -76,6 +76,11 @@ class ProfileView: UIView {
 		}
 		editButton.isEnabled = false
 		
+		webView.isUserInteractionEnabled = false
+		avatarImageView.isUserInteractionEnabled = true
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAvatar))
+		avatarImageView.addGestureRecognizer(tapRecognizer)
+		
 		//MARK: - Layout
 		addSubview(mainInfoContainer)
 		addSubview(editButton)
@@ -155,6 +160,10 @@ class ProfileView: UIView {
 		avatarImageView.addSubview(webView)
 		webView.addConstraintsProgrammatically
 			.pinToSuper()
+	}
+	
+	@objc func tapAvatar() {
+		props.onTapAvatar.perform()
 	}
 	
 	//MARK: - Public properties and methods
@@ -253,6 +262,7 @@ class ProfileView: UIView {
 	struct Props {
 		var profile: Profile
 		var onEdit: Command = .nop
+		var onTapAvatar: Command = .nop
 	}
 	
 	//MARK: - Private methods

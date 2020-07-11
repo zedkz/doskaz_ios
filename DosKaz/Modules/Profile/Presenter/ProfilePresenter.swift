@@ -54,6 +54,10 @@ extension ProfilePresenter: ProfileInteractorOutput {
 			onEdit: Command { [weak self] in
 				guard let self = self else { return }
 				self.router.openEdit(profile, with: self.view)
+			},
+			onTapAvatar: Command { [weak self] in
+				guard let self = self else { return }
+				print("Did tap in presenter")
 			}
 		)
 	}
