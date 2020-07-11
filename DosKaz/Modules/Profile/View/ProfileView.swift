@@ -213,8 +213,8 @@ class ProfileView: UIView {
 			
 			editButton.isEnabled = true
 
-			if let avaratarURLString = props.profile.avatar {
-				let link = Constants.mainURL + avaratarURLString
+			if let avatarURLString = props.profile.avatar {
+				let link = Constants.mainURL + avatarURLString
 				let html = """
 				<!DOCTYPE html>
 				<html lang="en">
