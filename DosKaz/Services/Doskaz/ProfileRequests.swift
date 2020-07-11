@@ -332,3 +332,22 @@ struct PutProfile: Codable {
 }
 
 	
+//MARK: - Profile update preset avatar
+
+struct APIUpdateAvatarPreset: DoskazRequest {
+	let onSuccess: (SVGAvatar) -> Void
+	let onFailure: (Error) -> Void
+	let avatarNumber: PresetAvatar
+	
+	var path: String { "profile/chooseAvatarPreset/\(avatarNumber.rawValue)" }
+	var method = Method.put
+	var authorizationType: AuthorizationType? = .bearer
+}
+
+struct SVGAvatar: Codable {
+	var avatar: String
+}
+
+enum PresetAvatar: Int, Codable {
+	case one = 1, two, three, four, five, six
+}
