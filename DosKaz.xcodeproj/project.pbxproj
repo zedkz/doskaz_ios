@@ -35,6 +35,7 @@
 		443C6F83248FB3A500DEB65C /* UpdateProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */; };
 		443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */; };
 		443C6F85248FB3A500DEB65C /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */; };
+		443F9A2424BC698C00D776A2 /* AvatarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F9A2324BC698C00D776A2 /* AvatarPickerViewController.swift */; };
 		443FFE4024865D0D00E4AE87 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */; };
 		4441E64B24A347060083EF17 /* api_objects_checkPresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4441E64A24A347060083EF17 /* api_objects_checkPresence.swift */; };
 		4444E24624647BEE0035CA8A /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4444E24524647BEE0035CA8A /* Archive.swift */; };
@@ -284,6 +285,7 @@
 		443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilePresenter.swift; sourceTree = "<group>"; };
 		443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileRouter.swift; sourceTree = "<group>"; };
 		443C6F80248FB3A500DEB65C /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
+		443F9A2324BC698C00D776A2 /* AvatarPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerViewController.swift; sourceTree = "<group>"; };
 		443FFE3F24865D0D00E4AE87 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		4441E64A24A347060083EF17 /* api_objects_checkPresence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_objects_checkPresence.swift; sourceTree = "<group>"; };
 		4444E24524647BEE0035CA8A /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 		4420ABEE24727BE7007F70D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				443F9A2324BC698C00D776A2 /* AvatarPickerViewController.swift */,
 				4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */,
 				4446C2422472814F006B49EE /* ProfileDrawerViewController.swift */,
 				4446C2442472887D006B49EE /* ProfileView.swift */,
@@ -1513,6 +1516,7 @@
 				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
 				44593DFD2496331600B087ED /* BlogInteractor.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
+				443F9A2424BC698C00D776A2 /* AvatarPickerViewController.swift in Sources */,
 				447582E8248117CA00FBC421 /* api_objects_id_review.swift in Sources */,
 				44ABE691248E3DC100E34F95 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				4446C2452472887D006B49EE /* ProfileView.swift in Sources */,

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 protocol ProfileRouterInput {
 	func openEdit(_ profile: Profile, with vc: UIViewController)
+	func openAvatarPicker(with vc: UIViewController, onPick: Command)
 }
 
 // MARK: Implementation
@@ -20,4 +22,9 @@ class ProfileRouter: ProfileRouterInput {
 		editVC.output.initView(with: profile)
 		vc.presentEmbedded(editVC)
 	}
+	
+	func openAvatarPicker(with vc: UIViewController, onPick: Command) {
+		vc.tabBarController?.showAvatarPicker(onPick: onPick)
+	}
+	
 }

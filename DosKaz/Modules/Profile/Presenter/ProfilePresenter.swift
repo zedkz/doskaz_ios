@@ -63,7 +63,10 @@ extension ProfilePresenter: ProfileInteractorOutput {
 						
 					}),
 					Action(title: l10n(.choosePresetAvatar), handler: { [weak self] in
-						
+						guard let self = self else { return }
+						self.router.openAvatarPicker(with: self.view, onPick: Command { [weak self] in
+							self?.interactor.loadProfile()
+						})
 					}),
 					Action(title: l10n(.deleteAvatar), handler: { [weak self] in
 						
