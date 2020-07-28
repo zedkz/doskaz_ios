@@ -1,14 +1,79 @@
 [
-	{"key": "movement", "title": "Люди, передвигающиеся на кресло-коляске", "categoryForAPI": "movement", "icon": "wheelchair"},
-	{"key": "vision", "title": "Люди с инвалидностью по зрению", "categoryForAPI": "vision", "icon": "visual_impairment" },
-	{"key": "limb", "title": "Люди с нарушениями опорно-двигательного аппарата", "categoryForAPI": "limb", "icon": "musculoskeletal_system" },
-	{"key": "hearing", "title": "Люди с инвалидностью по слуху", "categoryForAPI": "hearing", "icon": "hearing_impairment" },
-	{"key": "temporal", "title": "Временно травмированные люди", "categoryForAPI": "limb", "icon": "temporarily_injured" },
-	{"key": "babyCarriage", "title": "Люди с детскими колясками", "categoryForAPI": "movement", "icon": "baby_carriage" },
-	{"key": "missingLimbs", "title": "Люди с отсутствующими конечностями", "categoryForAPI": "limb", "icon": "missing_limb" },
-	{"key": "pregnant", "title": "Беременные женщины", "categoryForAPI": "limb", "icon": "pregnant_women" },
-	{"key": "intellectual", "title": "Люди с интелектуальной инвалидностью", "categoryForAPI": "intellectual", "icon": "intellectual_disability" },
-	{"key": "agedPeople", "title": "Пожилые люди", "categoryForAPI": "limb", "icon": "aged_people" },
-	{"key": "justView", "title": "Просто посмотреть", "categoryForAPI": "movement", "icon": "without_category" }
+	{
+		"key":"movement",
+		"title":"Люди, передвигающиеся на кресло-коляске",
+		"kazTitle":"Мүгедектер арбасымен қозғалатын адамдар",
+		"categoryForAPI":"movement",
+		"icon":"wheelchair"
+	},
+	{
+		"key":"vision",
+		"title":"Люди с инвалидностью по зрению",
+		"kazTitle":"Көру қабілеті бойынша мүгедектігі бар адамдар",
+		"categoryForAPI":"vision",
+		"icon":"visual_impairment"
+	},
+	{
+		"key":"limb",
+		"title":"Люди с нарушениями опорно-двигательного аппарата",
+		"kazTitle":"Тірек-қимыл аппаратында зақымы бар адамдар",
+		"categoryForAPI":"limb",
+		"icon":"musculoskeletal_system"
+	},
+	{
+		"key":"hearing",
+		"title":"Люди с инвалидностью по слуху",
+		"kazTitle":"Есту қабілеті бойынша мүгедектігі бар адамдар",
+		"categoryForAPI":"hearing",
+		"icon":"hearing_impairment"
+	},
+	{
+		"key":"temporal",
+		"title":"Временно травмированные люди",
+		"kazTitle":"Уакытша жарақаттанған адамдар",
+		"categoryForAPI":"limb",
+		"icon":"temporarily_injured"
+	},
+	{
+		"key":"babyCarriage",
+		"title":"Люди с детскими колясками",
+		"kazTitle":"Бесік арбасы бар адамдар",
+		"categoryForAPI":"movement",
+		"icon":"baby_carriage"
+	},
+	{
+		"key":"missingLimbs",
+		"title":"Люди с отсутствующими конечностями",
+		"kazTitle":"Аяқ-қолы жоқ адамдар",
+		"categoryForAPI":"limb",
+		"icon":"missing_limb"
+	},
+	{
+		"key":"pregnant",
+		"title":"Беременные женщины",
+		"kazTitle":"Екіқабат әйелдер",
+		"categoryForAPI":"limb",
+		"icon":"pregnant_women"
+	},
+	{
+		"key":"intellectual",
+		"title":"Люди с интеллектуальной инвалидностью",
+		"kazTitle":"Интеллектуалды қабілеті бойынша мүгедектігі бар адамдар",
+		"categoryForAPI":"intellectual",
+		"icon":"intellectual_disability"
+	},
+	{
+		"key":"agedPeople",
+		"title":"Пожилые люди",
+		"kazTitle":"Кәрі адамдар",
+		"categoryForAPI":"limb",
+		"icon":"aged_people"
+	},
+	{
+		"key":"justView",
+		"title":"Просто посмотреть",
+		"kazTitle":"Жай қарағым келеді",
+		"categoryForAPI":"movement",
+		"icon":"without_category"
+	}
 ]
-

@@ -56,7 +56,7 @@ class MoreViewController: TableViewController, UITableViewDelegate {
 	private func updateTable() {
 		let handicaps = DisabilityCategories().load()
 		let chosenCategory = AppSettings.disabilitiesCategory
-		let disabilityTitle = handicaps.first { $0.key == chosenCategory?.keys.first }?.title
+		let disabilityTitle = handicaps.first { $0.key == chosenCategory?.keys.first }?.localizedTitle
 		
 		let language = AppSettings.language?.description ?? ""
 		

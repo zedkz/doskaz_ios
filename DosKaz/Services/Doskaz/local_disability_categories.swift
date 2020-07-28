@@ -24,7 +24,8 @@ struct DisabilityCategories {
 			let disabilities = try decoder.decode([Disability].self, from: data)
 			return disabilities
 		} catch {
-			fatalError("DisabilityCategories decoding failed:\(error.localizedDescription)")
+			print("DisabilityCategories decoding failed:\(error.localizedDescription)")
+			return []
 		}
 	}
 	
@@ -32,6 +33,12 @@ struct DisabilityCategories {
 
 // MARK: - DisabilityElement
 struct Disability: Codable {
-	let key, title, categoryForAPI, icon: String
+	let key, title, kazTitle, categoryForAPI, icon: String
+	var localizedTitle: String {
+		switch AppSettings.language {
+			case .kazakh: return kazTitle
+			case .russian: return title
+			case .none: return title
+		}
+	}
 }
-

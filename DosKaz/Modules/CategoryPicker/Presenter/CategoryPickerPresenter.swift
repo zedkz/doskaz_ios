@@ -48,7 +48,7 @@ extension CategoryPickerPresenter: CategoryPickerViewOutput {
 		let categories = handicaps.map { handicap in
 			return CategoryPickerViewController.Category(
 				isChosen: isChosen(handicap),
-				name: handicap.title,
+				name: handicap.localizedTitle,
 				imageName: handicap.icon,
 				onPickCategory: CommandWith<CategoryPickerViewController.Category> { [weak self] category in
 					AppSettings.disabilitiesCategory = [handicap.key: handicap.categoryForAPI]
