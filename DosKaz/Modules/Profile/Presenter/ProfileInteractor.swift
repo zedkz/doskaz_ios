@@ -8,6 +8,7 @@
 
 protocol ProfileInteractorInput {
 	func loadProfile() -> Void
+	func deleteAvatar() -> Void
 }
 
 // MARK: Implementation
@@ -26,7 +27,15 @@ class ProfileInteractor: ProfileInteractorInput {
 		}
 		
 		APIProfile(onSuccess: onSuccess, onFailure: onFailure).dispatch()
-		
+	}
+	
+	func deleteAvatar() {
+		APIDeleteAvatar(onSuccess: { [weak self] (response) in
+			self?.output?.didDeleteAvatar()
+		}, onFailure: { error in
+			print(error)
+		})
+		.dispatch()
 	}
 
 }

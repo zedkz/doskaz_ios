@@ -351,3 +351,12 @@ struct SVGAvatar: Codable {
 enum PresetAvatar: Int, Codable {
 	case one = 1, two, three, four, five, six
 }
+
+
+struct APIDeleteAvatar: DoskazRequest {
+	let onSuccess: (Empty) -> Void
+	let onFailure: (Error) -> Void
+	var path: String { "profile/avatar" }
+	var method: Method { .delete }
+	var authorizationType: AuthorizationType? = .bearer
+}

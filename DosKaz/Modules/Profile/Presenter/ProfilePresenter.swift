@@ -40,9 +40,14 @@ extension ProfilePresenter: ProfileViewOutput {
 protocol ProfileInteractorOutput: class {
 	func didLoad(_ profile: Profile)
 	func didFailLoad(_ error: Error)
+	func didDeleteAvatar() -> Void
 }
 
 extension ProfilePresenter: ProfileInteractorOutput {
+	func didDeleteAvatar() {
+		interactor.loadProfile()
+	}
+	
 	func didFailLoad(_ error: Error) {
 		print("didFailLoad: ", error)
 	}
@@ -69,7 +74,7 @@ extension ProfilePresenter: ProfileInteractorOutput {
 						})
 					}),
 					Action(title: l10n(.deleteAvatar), handler: { [weak self] in
-						
+						self?.interactor?.deleteAvatar()
 					}, style: .destructive)
 				]
 				
