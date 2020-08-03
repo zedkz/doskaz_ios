@@ -92,7 +92,7 @@ extension MapViewController: MapViewInput {
 }
 
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 	
 	var selectedAnnotation: Venue?
 	
@@ -136,6 +136,8 @@ class MapViewController: UIViewController {
 		drawerVC.drawerView.addConstraintsProgrammatically
 			.pinToSuper()
 	}
+	
+	let locationManager = CLLocationManager()
 
 	private func configureMapViewLayout() {
 		let mapView = MKMapView()
@@ -144,13 +146,37 @@ class MapViewController: UIViewController {
 			.pinToSuperSafeArea()
 		self.mapView = mapView
 	}
+
+	var isNotCenteredOnce: Bool = true
+	
+	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+		func center(on location: CLLocation) {
+			if isNotCenteredOnce {
+				centerMapOnLocation(location: location)
+				isNotCenteredOnce = false
+			}
+		}
+		
+		if let userLocation = userLocation.location {
+			#if DEBUG
+				let baiterek = (lat: 52.288218, lon: 76.969872)
+				let initialLocation = CLLocation(latitude: baiterek.lat, longitude: baiterek.lon)
+				center(on: initialLocation)
+			#else
+				center(on: userLocation)
+			#endif
+		}
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == .notDetermined {
+			locationManager.requestWhenInUseAuthorization()
+		}
+	}
 	
 	private func configureMapView() {
-		// set initial location
-		let baiterek = (lat: 52.288218, lon: 76.969872)
-		let initialLocation = CLLocation(latitude: baiterek.lat, longitude: baiterek.lon)
-		centerMapOnLocation(location: initialLocation)
-		
+		locationManager.delegate = self
+		mapView.showsUserLocation = true
 		mapView.delegate = self
 		mapView.register(
 			VenueView.self,
@@ -160,12 +186,10 @@ class MapViewController: UIViewController {
 			ClusterAnnotationView.self,
 			forAnnotationViewWithReuseIdentifier: NSStringFromClass(ClusterAnnotation.self)
 		)
-		
 		mapView.register(
 			LargeVenueView.self,
 			forAnnotationViewWithReuseIdentifier: NSStringFromClass(LargeVenueView.self)
 		)
-		
 	}
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -242,13 +266,13 @@ class MapViewController: UIViewController {
 	
 	// MARK: - Helper methods
 	
-	private func centerMapOnLocation(location: CLLocation) {
+	private func centerMapOnLocation(location: CLLocation, animated: Bool = false) {
 		let coordinateRegion = MKCoordinateRegion(
 			center: location.coordinate,
 			latitudinalMeters: regionRadius,
 			longitudinalMeters: regionRadius
 		)
-		mapView.setRegion(coordinateRegion, animated: true)
+		mapView.setRegion(coordinateRegion, animated: animated)
 	}
 	
 	private func center(on annotation: MKAnnotation) {		

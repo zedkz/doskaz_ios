@@ -49,11 +49,16 @@ class LocationPickerController: UIViewController, CLLocationManagerDelegate {
 	
 	private var pickedAddress: String?
 	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == .notDetermined {
+			locationManager.requestWhenInUseAuthorization()
+		}
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		locationManager.delegate = self
-		locationManager.requestWhenInUseAuthorization()
 		locationManager.startUpdatingLocation()
 		
 		view.backgroundColor = .white
