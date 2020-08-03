@@ -177,6 +177,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 	private func configureMapView() {
 		locationManager.delegate = self
 		mapView.showsUserLocation = true
+		mapView.showsCompass = false
+		mapView.showsBuildings = true
 		mapView.delegate = self
 		mapView.register(
 			VenueView.self,
@@ -262,6 +264,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		addComplaint.didTouchUpInside = { [weak self] in
 			self?.onTouchComplain.perform()
 		}
+		
+		let zoomToUser = MKUserTrackingBarButtonItem(mapView: mapView)
+		let toolbar = UIToolbar()
+		toolbar.items = [zoomToUser]
+
+		mapView.addSubview(toolbar)
+		toolbar.addConstraintsProgrammatically
+			.pinEdgeToSupersSafe(.top)
+			.pinEdgeToSupersSafe(.trailing, plus: 6)
+		
+		toolbar.setBackgroundImage(
+			UIImage(),
+			forToolbarPosition: .any,
+			barMetrics: .default
+		)
+		toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
 	}
 	
 	// MARK: - Helper methods
