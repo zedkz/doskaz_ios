@@ -61,22 +61,39 @@ extension ProfilePresenter: ProfileInteractorOutput {
 				self.router.openEdit(profile, with: self.view)
 			},
 			onTapAvatar: Command { [weak self] in
-				guard let self = self else { return }
+				guard let self = self else {
+					return
+				}
 				
-				var actions = [
-					Action(title: l10n(.chooseFromPhotoGallery), handler: { [weak self] in
-						
-					}),
-					Action(title: l10n(.choosePresetAvatar), handler: { [weak self] in
-						guard let self = self else { return }
-						self.router.openAvatarPicker(with: self.view, onPick: Command { [weak self] in
-							self?.interactor.loadProfile()
+				guard let abilities = profile.abilities else {
+					return
+				}
+				
+				var actions: [Action] = abilities.map { ability in
+					switch ability {
+					case .status_change:
+						return Action(title: l10n(.choosePresetAvatar), handler: { [weak self] in
+							guard let self = self else { return }
+							self.router.openAvatarPicker(with: self.view, onPick: Command { [weak self] in
+								self?.interactor.loadProfile()
+							})
 						})
-					}),
+					case .avatar_upload:
+						return Action(title: l10n(.chooseFromPhotoGallery), handler: { [weak self] in
+							
+						})
+					}
+				}
+				
+				guard !actions.isEmpty else {
+					return
+				}
+				
+				actions.append(
 					Action(title: l10n(.deleteAvatar), handler: { [weak self] in
 						self?.interactor?.deleteAvatar()
 					}, style: .destructive)
-				]
+				)
 				
 				let cancelAction = Action(title: l10n(.cancel), style: .cancel)
 				actions.append(cancelAction)
