@@ -35,8 +35,7 @@ class UIVenueView: UIView {
 					with: label,
 					duration: 0.25,
 					options: .transitionCrossDissolve,
-					animations: { [label] in label.text = text },
-					completion: nil
+					animations: { [label] in label.text = text }
 				)
 			}
 			update(title, with: venue.title)
