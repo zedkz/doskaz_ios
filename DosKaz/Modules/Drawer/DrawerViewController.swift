@@ -57,7 +57,6 @@ class DrawerViewController: UIViewController {
 	var currentViewController: UIViewController?
 	
 	override open func loadView() {
-		super.loadView()
 		view = DrawerView(delegate: self)
 	}
 	

@@ -184,11 +184,6 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 	
 	// MARK: - Methods called by the system, i.e. messages from the system
 	
-	open override func layoutSubviews() {
-		super.layoutSubviews()
-	
-	}
-	
 	override open func safeAreaInsetsDidChange() {
 		setNeedsLayout()
 		updateContentViewHeight()
@@ -232,7 +227,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 				.constraint
 		} else {
 			panningView.addConstraintsProgrammatically
-				.pinToSuperSafeArea()
+				.pinToSuper()
 		}
 		
 		// Content view.

@@ -34,6 +34,7 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewO
 	func viewIsReady() {
 		view.setupInitialState()
 		view.updateSearchResults = CommandWith<String> { searchText in
+			// TODO: id should not be fixed
 			self.interactor.search(for: searchText, with: 9103)
 		}
 		view.didTouchUpInside = { [weak self] in

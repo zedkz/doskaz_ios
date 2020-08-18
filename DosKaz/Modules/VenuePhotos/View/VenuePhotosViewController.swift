@@ -57,6 +57,7 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 		collectionView.delegate = delegate
 		collectionDataSource = CollectionViewDataSource(collectionView) { $1.props = $0 }
 		collectionView.dataSource = collectionDataSource
+		collectionView.isScrollEnabled = false
 	}
 	
 	func update(_ photos: [Photo]) {

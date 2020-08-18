@@ -134,7 +134,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		drawerVC.didMove(toParent: self)
 		
 		drawerVC.drawerView.addConstraintsProgrammatically
-			.pinToSuper()
+			.pinToSuperSafeArea()
 	}
 	
 	let locationManager = CLLocationManager()
