@@ -266,20 +266,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		}
 		
 		let zoomToUser = MKUserTrackingBarButtonItem(mapView: mapView)
-		let toolbar = UIToolbar()
-		toolbar.items = [zoomToUser]
-
-		mapView.addSubview(toolbar)
-		toolbar.addConstraintsProgrammatically
-			.pinEdgeToSupersSafe(.top)
-			.pinEdgeToSupersSafe(.trailing, plus: 6)
-		
-		toolbar.setBackgroundImage(
-			UIImage(),
-			forToolbarPosition: .any,
-			barMetrics: .default
-		)
-		toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+		if let barView = zoomToUser.customView {
+			let box = UIView()
+			view.addSubview(box)
+			box.addConstraintsProgrammatically
+				.pinEdgeToSupersSafe(.top, plus: 8)
+				.pinEdgeToSupersSafe(.trailing, plus: -8)
+				.set(my: .width, to: 34)
+				.set(my: .height, to: 38)
+			box.addSubview(barView)
+			barView.addConstraintsProgrammatically
+				.pinToSuper()
+		}
 	}
 	
 	// MARK: - Helper methods
