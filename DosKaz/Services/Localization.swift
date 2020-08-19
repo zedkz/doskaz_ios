@@ -222,6 +222,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case deleteAvatar = "Удалить аватар"
 	case choosePresetAvatar = "Выбрать из готовых"
 	case chooseFromPhotoGallery = "Загрузить из фотогалереи"
+	case signOut = "Выйти из профиля?"
 	
 	var l10n: String {
 		let enumCaseName = String(describing: self)

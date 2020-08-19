@@ -22,6 +22,12 @@ extension ProfileViewController: ProfileViewInput {
 		view.backgroundColor = .white
 		navigationItem.title = l10n(.myProfile)
 		configureViews(with: profileView)
+		
+		let exitButton = UIBarButtonItem(
+			image: UIImage(named: "x_in_form"), style: .plain,
+			target: self, action: #selector(signOut)
+		)
+		navigationItem.rightBarButtonItem = exitButton
 	}
 	
 	func showActionSheet(with actions: [Action]) {
@@ -49,6 +55,35 @@ class ProfileViewController: ProfileDrawerViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		output.viewWillAppear()
+	}
+	
+	@objc func signOut() {
+		let actions = [
+			Action(title: l10n(.no), style: .cancel),
+			Action(title: l10n(.yes), handler: {
+				
+				AppSettings.token = nil
+				
+				guard let kiwi = UIApplication.shared.keyWindow else { return }
+				let tabbarController = kiwi.rootViewController as? MainTabBarViewController
+				let profile = AuthBuilder().assembleTab()
+				
+				UIView.transition(
+					with: kiwi, duration: 0.2,
+					options: .transitionFlipFromLeft,
+					animations: {
+						if tabbarController?.viewControllers != nil {
+							tabbarController?.viewControllers![3] = profile
+						}
+					}
+				)
+				
+			}, style: .destructive)
+		]
+		let alert = GenericAlertPresenter(
+			title: l10n(.signOut), actions: actions
+		)
+		alert.present(in: self)
 	}
 
 }

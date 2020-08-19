@@ -207,3 +207,4 @@
 "deleteAvatar" = "Удалить аватар";
 "choosePresetAvatar" = "Выбрать из готовых";
 "chooseFromPhotoGallery" = "Загрузить из фотогалереи";
+"signOut" = "Выйти из профиля?";
