@@ -26,7 +26,7 @@ extension AppSettings {
 			return AppSettings.value(for: Keys.token)
 		}
 		set(newToken) {
-			AppSettings.updateDefaults(for: Keys.token, value: newToken!)
+			AppSettings.updateDefaults(for: Keys.token, value: newToken)
 		}
 	}
 	
@@ -70,7 +70,7 @@ class AppSettings {
 		
 	//MARK: - Defaults read/write methods
 	
-	private static func updateDefaults(for key: String, value: Any) {
+	private static func updateDefaults(for key: String, value: Any?) {
 		// Save value into UserDefaults
 		UserDefaults.standard.set(value, forKey: key)
 	}
