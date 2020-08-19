@@ -24,7 +24,7 @@ extension ProfileViewController: ProfileViewInput {
 		configureViews(with: profileView)
 		
 		let exitButton = UIBarButtonItem(
-			image: UIImage(named: "x_in_form"), style: .plain,
+			image: UIImage(named: "chevron_right_active"), style: .plain,
 			target: self, action: #selector(signOut)
 		)
 		navigationItem.rightBarButtonItem = exitButton
