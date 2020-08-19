@@ -268,7 +268,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		let zoomToUser = MKUserTrackingBarButtonItem(mapView: mapView)
 		if let barView = zoomToUser.customView {
 			let box = UIView()
-			view.addSubview(box)
+			mapView.addSubview(box)
 			box.addConstraintsProgrammatically
 				.pinEdgeToSupersSafe(.top, plus: 8)
 				.pinEdgeToSupersSafe(.trailing, plus: -8)

@@ -221,7 +221,7 @@ open class DrawerView: UIView, UIScrollViewDelegate {
 			panningView.addConstraintsProgrammatically
 				.pinEdgeToSupers(.leading)
 				.pinEdgeToSupers(.trailing)
-				.pinEdgeToSupers(.bottom )
+				.set(my: .height, .equal, to: .height, of: self)
 			topConstraint = panningView.addConstraintsProgrammatically
 				.pinEdgeToSupers(.top)
 				.constraint
