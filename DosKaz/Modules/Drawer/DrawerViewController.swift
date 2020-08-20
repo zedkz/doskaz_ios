@@ -201,13 +201,12 @@ extension DrawerViewController: UITabBarDelegate {
 			show(viewController: photos)
 		case 2:
 			let reviews = VenueFeedbackViewController()
-			if let venueReviews = currentDoskazVenue?.reviews {
-				guard let id = currentDoskazVenue?.id else { return }
-				reviews.initWith(with: venueReviews)
-				reviews.initWith(objectId: id, onClose: Command { [weak self] in
-					self?.reload()
-				})
-			}
+			guard let venueReviews = currentDoskazVenue?.reviews else { return }
+			guard let id = currentDoskazVenue?.id else { return }
+			reviews.initWith(with: venueReviews)
+			reviews.initWith(objectId: id, onClose: Command { [weak self] in
+				self?.reload()
+			})
 			show(viewController: reviews)
 		case 3:
 			let historyViewContoller = VenueHistoryViewController()
