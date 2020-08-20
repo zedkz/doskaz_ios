@@ -179,8 +179,6 @@ class DrawerViewController: UIViewController {
 	
 	let photos = VenuePhotosBuilder().assembleModule()
 	
-	let history = VenueHistoryViewController()
-
 	let videos = VenueVideoViewContoller()
 }
 
@@ -204,18 +202,18 @@ extension DrawerViewController: UITabBarDelegate {
 		case 2:
 			let reviews = VenueFeedbackViewController()
 			if let venueReviews = currentDoskazVenue?.reviews {
-				reviews.initWith(with: venueReviews)
 				guard let id = currentDoskazVenue?.id else { return }
+				reviews.initWith(with: venueReviews)
 				reviews.initWith(objectId: id, onClose: Command { [weak self] in
 					self?.reload()
 				})
 			}
 			show(viewController: reviews)
 		case 3:
-			if let venueHistorys = currentDoskazVenue?.history {
-				history.initWith(with: venueHistorys)
-			}
-			show(viewController: history)
+			let historyViewContoller = VenueHistoryViewController()
+			let venueHistorys = currentDoskazVenue?.history ?? []
+			historyViewContoller.initWith(venueHistorys)
+			show(viewController: historyViewContoller)
 		case 4:
 			if let venueVideos = currentDoskazVenue?.videos {
 				videos.initWith(with: venueVideos)

@@ -15,7 +15,7 @@ class VenueHistoryViewController: UIViewController {
 	var dataSource: UTableViewDataSource<VenueHistoryCell>!
 	var historys = [History]()
 	
-	func initWith(with historys: [History]) {
+	func initWith(_ historys: [History]) {
 		self.historys = historys
 	}
 	
@@ -52,11 +52,8 @@ class VenueHistoryViewController: UIViewController {
 			.pinEdgeToSupersSafe(.bottom, plus: -16)
 			.set(my: .height, .greaterThanOrEqual, to: 90)
 		
-		
 		update(with: historys)
-		
 	}
-	
 }
 
 
