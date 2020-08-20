@@ -20,12 +20,7 @@ class VenueHistoryViewController: UIViewController {
 	}
 	
 	private func update(with historys: [History]) {
-		var testHistorys = historys
-		testHistorys.append(History(name: "Алдияр Тулебаев", date: "12 августа", data: DataClass(type: "добавил 2 фотографии")))
-		testHistorys.append(History(name: "Алдияр Тулебаев", date: "24 августа", data: DataClass(type: "верифицировал описание объекта")))
-		testHistorys.append(History(name: "Алия Серикпаева", date: "13 августа", data: DataClass(type: "прокомментировала объект")))
-		
-		let cellsProps = testHistorys.map { VenueHistoryCell.Props(history: $0) }
+		let cellsProps = historys.map { VenueHistoryCell.Props(history: $0) }
 		dataSource.cellsProps = cellsProps
 		tableView.reloadData()
 	}
