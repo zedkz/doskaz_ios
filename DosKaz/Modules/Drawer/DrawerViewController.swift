@@ -203,7 +203,7 @@ extension DrawerViewController: UITabBarDelegate {
 			let reviews = VenueFeedbackViewController()
 			guard let venueReviews = currentDoskazVenue?.reviews else { return }
 			guard let id = currentDoskazVenue?.id else { return }
-			reviews.initWith(with: venueReviews)
+			reviews.initWith(venueReviews)
 			reviews.initWith(objectId: id, onClose: Command { [weak self] in
 				self?.reload()
 			})

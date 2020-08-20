@@ -17,17 +17,12 @@ class VenueFeedbackViewController: UIViewController {
 	var dataSource: UTableViewDataSource<VenueFeedbackCell>!
 	var reviews = [Review]()
 	
-	func initWith(with reviews: [Review]) {
+	func initWith(_ reviews: [Review]) {
 		self.reviews = reviews
 	}
 	
 	private func update(with reviews: [Review]) {
-		var testReviews = reviews
-		
-		testReviews.append(Review(author: "Елена Малышева", text: "Была там на днях, очень понравилось. Без туалета, конечно, не очень удобно, но руки помыть можно без проблем. Персонал очень вежливый, помогали мне. Суши просто огонь и пицца прям что надо, рекомендую!", createdAt: Date()))
-		testReviews.append(Review(author: "Аружан Толеухан", text: "Что могу сказать — в нашем городе не так уж  много заведений, где нам можно комфортно покушать и отдохнуть. Так что Сая суши даже с имеющимися недостатками можно смело записывать в избранное.", createdAt: Date()))
-		
-		let cellsProps = testReviews.map { VenueFeedbackCell.Props(review: $0) }
+		let cellsProps = reviews.map { VenueFeedbackCell.Props(review: $0) }
 		dataSource.cellsProps = cellsProps
 		tableView.reloadData()
 	}
