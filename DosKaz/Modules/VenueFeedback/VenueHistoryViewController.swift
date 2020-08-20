@@ -97,7 +97,7 @@ class VenueHistoryCell: UITableViewCell, Updatable {
 		didSet {
 			let history = props.history
 			
-			dateLb.text = history.date
+			dateLb.text = history.date.dayMonth
 			
 			let name = history.name
 			let atrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)]

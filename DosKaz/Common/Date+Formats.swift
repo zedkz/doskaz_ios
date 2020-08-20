@@ -12,7 +12,7 @@ extension Date {
 	var dayMonth: String {
 		let formatter = DateFormatter()
 		formatter.locale = Locale(identifier: "ru_RU")
-		formatter.setLocalizedDateFormatFromTemplate("d MMM")
+		formatter.setLocalizedDateFormatFromTemplate("d MMMM")
 		return formatter.string(from: self)
 	}
 	

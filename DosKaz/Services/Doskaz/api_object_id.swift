@@ -72,7 +72,8 @@ struct Entrance1: Codable {
 
 // MARK: - History
 struct History: Codable {
-	let name, date: String
+	let name: String
+	let date: Date
 	let data: DataClass
 }
 
