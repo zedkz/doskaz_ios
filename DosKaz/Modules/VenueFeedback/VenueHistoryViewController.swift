@@ -104,7 +104,7 @@ class VenueHistoryCell: UITableViewCell, Updatable {
 			let atrName = NSMutableAttributedString(string: name, attributes: atrs)
 			
 			let atrsForType = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]
-			let atrType = NSAttributedString(string: " " + history.data.type, attributes: atrsForType)
+			let atrType = NSAttributedString(string: " " + history.data.displayText, attributes: atrsForType)
 			
 			atrName.append(atrType)
 			textLb.attributedText = atrName

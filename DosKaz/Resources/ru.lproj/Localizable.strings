@@ -208,3 +208,6 @@
 "choosePresetAvatar" = "Выбрать из готовых";
 "chooseFromPhotoGallery" = "Загрузить из фотогалереи";
 "signOut" = "Выйти из профиля?";
+"reviewCreated" = "написал(а) отзыв";
+"verificationConfirmed" = "верифицировал(а) объект";
+"verificationRejected" = "отменил(а) верифицирование";

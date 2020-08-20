@@ -80,6 +80,19 @@ struct History: Codable {
 // MARK: - DataClass
 struct DataClass: Codable {
 	let type: String
+	
+	var displayText: String {
+		switch type {
+		case "review_created":
+			return l10n(.reviewCreated)
+		case "verification_rejected":
+			return l10n(.verificationRejected)
+		case "verification_confirmed":
+			return l10n(.verificationConfirmed)
+		default:
+			return type
+		}
+	}
 }
 
 // MARK: - Photo
