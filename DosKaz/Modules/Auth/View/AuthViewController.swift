@@ -147,7 +147,8 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			switch self.viewPage {
 			case .first:
 				if let text = self.phoneTextF.text, !text.isEmpty {
-					self.onTouchNext.perform(with: text)
+					let clear = PhoneFormatter().getClearNumber(number: text)
+					self.onTouchNext.perform(with: "+\(clear)")
 				}
 			case .second:
 				if let text = self.phoneTextF.text, !text.isEmpty {
@@ -168,7 +169,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			#if DEBUG
 				phoneTextF.text = "+77071012233"
 			#else
-				phoneTextF.text = nil
+				phoneTextF.text = "+7"
 			#endif
 			topLabel.text = l10n(.auth)
 			blueButton.setTitle(l10n(.next), for: .normal)
@@ -321,7 +322,8 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	}
 	
 	@objc func handleTextF(_ textField: UITextField) {
-		
+		guard let text = textField.text else { return }
+		textField.text = PhoneFormatter.format(phoneNumber: text)
 	}
 	
 }
