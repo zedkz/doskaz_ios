@@ -64,7 +64,8 @@ extension VenueDescriptionPresenter: VenueDescriptionViewOutput {
 					guard let id = self?.venue.id else { return }
 					self?.interactor.verifyVenue(with: id, status: Status.confirm)
 					self?.lastSentStatus = .confirm
-				})
+				}),
+				Action(title: l10n(.cancel), style: .cancel)
 			]
 			self?.view.showAlert(
 				title: l10n(.verifyObjectData) + " \(venue.title)" ,
