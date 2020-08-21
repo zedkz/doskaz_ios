@@ -224,8 +224,8 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case chooseFromPhotoGallery = "Загрузить из фотогалереи"
 	case signOut = "Выйти из профиля?"
 	case reviewCreated = "написал(а) отзыв"
-	case verificationConfirmed = "верифицировал(а) объект"
-	case verificationRejected = "отменил(а) верифицирование"
+	case verificationConfirmed = "подтвердил(а) объект"
+	case verificationRejected = "не подтвердил(а)"
 	case objectAddSucceeded = "Ваш запрос принят. Объект появиться на карте в течение суток после проверки модератором."
 	
 	var l10n: String {

@@ -209,6 +209,6 @@
 "chooseFromPhotoGallery" = "Загрузить из фотогалереи";
 "signOut" = "Выйти из профиля?";
 "reviewCreated" = "написал(а) отзыв";
-"verificationConfirmed" = "верифицировал(а) объект";
-"verificationRejected" = "отменил(а) верифицирование";
+"verificationConfirmed" = "подтвердил(а) объект";
+"verificationRejected" = "не подтвердил(а)";
 "objectAddSucceeded" = "Ваш запрос принят. Объект появиться на карте в течение суток после проверки модератором.";
