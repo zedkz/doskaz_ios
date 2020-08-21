@@ -142,7 +142,7 @@ extension BigFormPresenter: BigFormInteractorOutput {
 	
 	func didSucceedSubmitForm() {
 		print("didSucceedSubmitForm")
-		view.disPlayAlert(with: l10n(.succeedFormMessage)) { [weak self] in
+		view.disPlayAlert(with: l10n(.objectAddSucceeded)) { [weak self] in
 			self?.view.dismiss(animated: true, completion: nil)
 		}
 	}
