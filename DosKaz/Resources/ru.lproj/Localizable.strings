@@ -197,7 +197,7 @@
 "yesHelp" = "Да, я хочу помочь";
 "cancel" = "Отменить";
 "categories" = "Категории";
-"fullVerified" = "Объект полностью верифицирован";
+"fullVerified" = "Объект верифицирован";
 "partiallyVerified" = "Объект частично верифицирован";
 "categoryOfUser" = "Категория пользователя";
 "language" = "Язык";
