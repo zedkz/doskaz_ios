@@ -40,16 +40,8 @@ class AuthRouter: AuthRouterInput {
 	}
 	
 	func showDestination(for vc: UIViewController, destination: AuthDestination) {
-		switch destination {
-		case .bigForm:
-			let form = BigFormBuilder().assembleModule()
-			vc.navigationController?.navigationBar.isHidden = false
-			vc.navigationController?.pushViewController(form, animated: true)
-		case .complaint:
-			let complaintVC = ComplaintBuilder().assembleModule()
-			vc.navigationController?.navigationBar.isHidden = false
-			vc.navigationController?.pushViewController(complaintVC, animated: true)
-		}
+		vc.navigationController?.navigationBar.isHidden = false
+		vc.navigationController?.pushViewController(destination.dvc, animated: true)
 	}
 
 }
@@ -57,4 +49,13 @@ class AuthRouter: AuthRouterInput {
 enum AuthDestination {
 	case bigForm
 	case complaint
+	
+	var dvc: UIViewController {
+		switch self {
+		case .bigForm:
+			return BigFormBuilder().assembleModule()
+		case .complaint:
+			return ComplaintBuilder().assembleModule()
+		}
+	}
 }

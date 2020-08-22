@@ -19,9 +19,15 @@ protocol VenueDescriptionRouterInput {
 
 class VenueDescriptionRouter: VenueDescriptionRouterInput {
 	func presentComplaint(with vc: UIViewController, id: Int?, title: String?) {
-		let complaintViewController = ComplaintBuilder().assembleModule()
-		complaintViewController.output.initWith(objectId: id, name: title)
-		vc.presentEmbedded(complaintViewController)
+		if AppSettings.token == nil {
+			let auth = AuthBuilder().assembleModule()
+			auth.output.initView(with: .anywhere(.complaint))
+			vc.presentEmbedded(auth)
+		} else {
+			let complaintViewController = ComplaintBuilder().assembleModule()
+			complaintViewController.output.initWith(objectId: id, name: title)
+			vc.presentEmbedded(complaintViewController)
+		}
 	}
 	
 	func presentDetailInfo(with vc: UIViewController, venue: DoskazVenue) {
