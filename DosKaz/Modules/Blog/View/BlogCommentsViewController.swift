@@ -74,7 +74,9 @@ class BlogCommentsViewController: ProfileCommonViewController, UITableViewDelega
 		placeHolderLabel.text = l10n(.yourComments)
 		placeHolderLabel.isHidden = !commentView.text.isEmpty
 		
-		tableView.tableFooterView = commentView
+		if AppSettings.token != nil {
+			tableView.tableFooterView = commentView
+		}
 		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
 		
 		tableView.separatorStyle = .singleLine
@@ -284,8 +286,9 @@ class BlogCommentCell: UITableViewCell, Updatable {
 		
 		vStack.addArrangedSubview(topStack)
 		vStack.addArrangedSubview(textLab)
-		vStack.addArrangedSubview(replyButton)
-		
+		if AppSettings.token != nil {
+			vStack.addArrangedSubview(replyButton)
+		}
 	}
 	
 	@objc func reply() {
