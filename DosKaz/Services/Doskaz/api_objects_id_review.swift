@@ -54,3 +54,13 @@ struct APIVerifyObject: DoskazRequest {
 enum Status: String {
 	case confirm, reject
 }
+
+//MARK: - Delete token
+
+struct APIDeleteToken: DoskazRequest {
+	let onSuccess: (Empty) -> Void
+	let onFailure: (Error) -> Void
+	var method: Method { .delete }
+	var path: String { "accessToken" }
+	var authorizationType: AuthorizationType? = .bearer
+}
