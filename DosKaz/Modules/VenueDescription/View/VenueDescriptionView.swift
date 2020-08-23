@@ -70,6 +70,9 @@ class VenueDescriptionView: UIView {
 		venueStatus.text = "-"
 		verifyInfo.setTitle(l10n(.verifyInfo), for: .normal)
 		verifyInfo.setImage(UIImage(named: "confirm_button"), for: .normal)
+		let isAuthed = AppSettings.token != nil
+		verifyInfo.isEnabled = isAuthed
+		verifyInfo.alpha = isAuthed ? 1.0 : 0.3
 		complain.setTitle(l10n(.complain), for: .normal)
 		complain.setImage(UIImage(named: "complaint_button"), for: .normal)
 	}
