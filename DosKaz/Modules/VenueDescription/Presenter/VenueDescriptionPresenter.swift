@@ -127,6 +127,9 @@ extension VenueDescriptionPresenter: VenueDescriptionInteractorOutput {
 	
 	func didFailVerify(with error: Error) {
 		print(error)
+		view.showAlert(title: l10n(.errorMessage), message: "", actions: [
+			Action(title: "OK", style: .cancel)
+		])
 	}
 	
 }
