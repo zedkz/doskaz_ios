@@ -302,8 +302,8 @@ struct EventItem: Codable {
 			return "\(data.username ?? "X") \(l10n(.hasCommented)) \(data.title ?? "")"
 		case .blog_comment_replied:
 			return "\(data.username ?? "X") \(l10n(.hasCommentedBlog)) \(data.title ?? "")"
-		default:
-			return type.rawValue
+		case .object_added:
+			return "\(l10n(.youAddedObject)) \(data.title ?? ""), \(data.categoryTitle ?? "")"
 		}
 	}
 }
@@ -316,6 +316,7 @@ struct EventData: Codable {
 	let pointsUntilNextLevel: Int?
 	let unlockedAbility: Ability?
 	let username: String?
+	let categoryTitle: String?
 
 	var levelString: String {
 		level.forDisplay
