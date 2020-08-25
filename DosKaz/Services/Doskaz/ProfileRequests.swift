@@ -286,7 +286,13 @@ struct EventItem: Codable {
 	var description: String {
 		switch type {
 		case .award_issued:
-			return "Award issued"
+			var title: String {
+				guard let title = data.title else {
+					return ""
+				}
+				return ": \"\(title)\""
+			}
+			return l10n(.award_issued) + title
 		default:
 			return type.rawValue
 		}

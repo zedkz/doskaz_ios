@@ -227,6 +227,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case verificationConfirmed = "подтвердил(а) объект"
 	case verificationRejected = "не подтвердил(а)"
 	case objectAddSucceeded = "Ваш запрос принят. Объект появиться на карте в течение суток после проверки модератором."
+	case award_issued = "Вам выдана награда"
 	
 	var l10n: String {
 		let enumCaseName = String(describing: self)
