@@ -293,6 +293,11 @@ struct EventItem: Codable {
 				return ": \"\(title)\""
 			}
 			return l10n(.award_issued) + title
+		case .level_reached:
+			let currentLevel = "\(l10n(.currentLevel)) \(data.levelString)"
+			let nextLevel = "\(l10n(.nextLevel)) \(data.nextLevelString)"
+			let newAbility = "\(data.unlockedAbility?.newAbility ?? "")"
+			return "\(currentLevel). \(nextLevel). \(newAbility)"
 		default:
 			return type.rawValue
 		}
@@ -303,6 +308,19 @@ struct EventItem: Codable {
 struct EventData: Codable {
 	let title: String?
 	let type: String?
+	let level: Int?
+	let pointsUntilNextLevel: Int?
+	let unlockedAbility: Ability?
+
+
+	var levelString: String {
+		level.forDisplay
+	}
+	
+	var nextLevelString: String {
+		pointsUntilNextLevel.forDisplay
+	}
+
 }
 
 enum ProfileEventType: String, Codable {

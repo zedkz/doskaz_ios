@@ -180,3 +180,12 @@ extension Array {
 func nonNil(_ value: String?) -> String {
 	return value ?? ""
 }
+
+extension Optional where Wrapped == Int {
+	var forDisplay: String {
+		guard let integer = self else {
+			return ""
+		}
+		return "\(integer)"
+	}
+}

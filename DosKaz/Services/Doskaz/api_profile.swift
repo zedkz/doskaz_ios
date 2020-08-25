@@ -59,4 +59,13 @@ struct Stats: Codable {
 
 enum Ability: String, Codable {
 	case status_change, avatar_upload
+	
+	var newAbility: String {
+		switch self {
+		case .status_change:
+			return l10n(.abilityStatusChange)
+		case .avatar_upload:
+			return l10n(.abilityAvatarUpload)
+		}
+	}
 }
