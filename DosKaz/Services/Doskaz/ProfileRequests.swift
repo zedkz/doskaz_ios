@@ -300,6 +300,8 @@ struct EventItem: Codable {
 			return "\(currentLevel). \(nextLevel). \(newAbility)"
 		case .object_reviewed:
 			return "\(data.username ?? "X") \(l10n(.hasCommented)) \(data.title ?? "")"
+		case .blog_comment_replied:
+			return "\(data.username ?? "X") \(l10n(.hasCommentedBlog)) \(data.title ?? "")"
 		default:
 			return type.rawValue
 		}

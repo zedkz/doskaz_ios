@@ -233,6 +233,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case abilityStatusChange = "Теперь вы можете сменить статус.";
 	case abilityAvatarUpload = "Теперь вы можете сменить аватар.";
 	case hasCommented = "прокомментировал(а) ваш объект";
+	case hasCommentedBlog = "ответил(а) на ваш комментарий к посту"
 	
 	var l10n: String {
 		let enumCaseName = String(describing: self)
