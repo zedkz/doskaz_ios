@@ -21,6 +21,7 @@ class ProfileAwardsEventsViewController: UIViewController {
 	
 	var collectionDataSource: CollectionViewDataSource<AwardsCollectionViewCell.Props, AwardsCollectionViewCell>!
 	var dataSource: UTableViewDataSource<EventCell>!
+	var heightConstraint: NSLayoutConstraint?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,6 +57,29 @@ class ProfileAwardsEventsViewController: UIViewController {
 	
 	private func loadAwards() {
 		let onSuccess = { [weak self] (profileAwards: [ProfileAward]) -> Void in
+			
+			var height: CGFloat {
+				let count = profileAwards.count
+			
+				if count <= 0 {
+					return 48
+				} else if count >= 4 {
+					return 222
+				} else {
+					return CGFloat((count * 48) + (count - 1) * 10)
+				}
+			}
+			
+			self?.awardsLabel.alpha = 0.0
+			self?.collectionView.alpha = 0.0
+
+			UIView.animate(withDuration: 0.3) {
+				self?.heightConstraint?.constant = height
+				self?.awardsLabel.alpha = 1.0
+				self?.collectionView.alpha = 1.0
+				self?.view.layoutIfNeeded()
+			}
+			
 			let cellsProps = profileAwards.map { award in
 				AwardsCollectionViewCell.Props(heading: award.title, imageName: award.type.rawValue)
 			}
@@ -110,11 +134,12 @@ class ProfileAwardsEventsViewController: UIViewController {
 			.pinEdgeToSupers(.leading, plus: spacing)
 			.pinEdgeToSupers(.trailing, plus: -spacing)
 		
-		collectionView.addConstraintsProgrammatically
+		heightConstraint = collectionView.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: awardsLabel, plus: spacing)
 			.pinEdgeToSupers(.leading, plus: spacing)
 			.pinEdgeToSupers(.trailing, plus: -0)
-			.set(my: .height, to: 222)
+			.set(my: .height, to: 0)
+			.constraint
 		
 		line.addConstraintsProgrammatically
 			.pin(my: .top, to: .bottom, of: collectionView, plus: spacing)

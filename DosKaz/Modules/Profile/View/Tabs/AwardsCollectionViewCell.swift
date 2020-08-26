@@ -104,7 +104,7 @@ class AwardsCollectionDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 											layout collectionViewLayout: UICollectionViewLayout,
 											sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
-		let height = (collectionView.frame.height - 10*3)/4
+		let height = CGFloat(48)
 		return CGSize(width: collectionView.frame.width * 2/3, height: height)
 	}
 	
