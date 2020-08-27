@@ -57,7 +57,6 @@ class ProfileAwardsEventsViewController: UIViewController {
 	
 	private func loadAwards() {
 		let onSuccess = { [weak self] (profileAwards: [ProfileAward]) -> Void in
-			
 			var height: CGFloat {
 				let count = profileAwards.count
 			

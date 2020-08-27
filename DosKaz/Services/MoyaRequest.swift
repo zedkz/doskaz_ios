@@ -74,13 +74,13 @@ extension MoyaRequest {
 	}
 	
 	func parseError(_ moyaError: MoyaError) {
-		switch (moyaError is CustomError) {
+		switch MoyaError.self == CustomError.self {
 		case true:
 			let moyaError = moyaError as! CustomError
 			onFailure(moyaError)
 		case false:
 			guard let errorData = moyaError.response?.data else { return }
-			guard thereIs(errorData) else { return }
+			print("Unserialized error data",errorData)
 			// Serialize the errorData
 		}
 	}

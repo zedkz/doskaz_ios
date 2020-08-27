@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SharedCodeFramework
 
 /// E.g. let result = evaluate(x > 2, ifTrue: 30, ifFalse: 20)
 func evaluate<Result>(_ condition: @autoclosure () -> Bool, ifTrue: Result, ifFalse: Result) -> Result {
@@ -187,5 +188,14 @@ extension Optional where Wrapped == Int {
 			return ""
 		}
 		return "\(integer)"
+	}
+}
+
+extension DisplaysAlert where Self : UIViewController {
+	func displayAlert(title: String, message: String) {
+		let alert = GenericAlertPresenter(title: title, message: message, actions: [
+			Action(title: "OK")
+		])
+		alert.present(in: self)
 	}
 }

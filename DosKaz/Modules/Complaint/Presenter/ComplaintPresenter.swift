@@ -113,7 +113,7 @@ extension ComplaintPresenter: ComplaintInteractorOutput {
 	
 	func didFailSubmitForm(with error: Error) {
 		print("Failed complaint: ", error.localizedDescription)
-		view.displayAlert(with: l10n(.errorMessage))
+		view.displayAlert(title: l10n(.errorMessage), message: error.localizedDescription)
 	}
 	
 	func didLoad(_ complaintAtrs: [ComplaintAtr]) {

@@ -39,7 +39,7 @@ struct Feedback: Codable {
 }
 
 // MARK: - DKError
-struct DKError: Codable, Error {
+struct DKError: Codable, LocalizedError {
 	let message: String
 	let code: Int
 	let errors: [MError]
@@ -53,6 +53,10 @@ struct DKError: Codable, Error {
 		}
 		
 		return text
+	}
+	
+	var errorDescription: String? {
+		overallMessage
 	}
 }
 
