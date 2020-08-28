@@ -55,6 +55,10 @@ class AuthPresenter: AuthViewOutput {
 				self.router.showDestination(for: self.view, destination: destination)
 			}
 		}
+		
+		view.onSignIn = CommandWith<(String, Provider)> { [weak self] (oauthCode, provider) in
+			self?.interactor?.signInWithOauth(code: oauthCode, provider: provider)
+		}
 	}
 	
 }

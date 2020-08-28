@@ -11,6 +11,7 @@ import FirebaseAuth
 protocol AuthInteractorInput {
 	func verify(phoneNumber: String)
 	func signIn(with verificationCode: String, id verificationID: String)
+	func signInWithOauth(code: String, provider: Provider)
 }
 
 // MARK: Implementation
@@ -18,6 +19,20 @@ protocol AuthInteractorInput {
 class AuthInteractor: AuthInteractorInput {
 
 	weak var output: AuthInteractorOutput!
+	
+	func signInWithOauth(code: String, provider: Provider) {
+		let request = APIGetOauthToken(onSuccess: { (dkToken) in
+			AppSettings.token = dkToken.token
+			print("Anton token: ", dkToken.token)
+			self.output?.didSucceedSignIn()
+		}, onFailure: { (error) in
+			self.output?.didFailSignIn(with: error)
+			print(error.localizedDescription)
+		},
+			 oauthToken: OauthToken(provider: provider.rawValue, code: code)
+		)
+		request.dispatch()
+	}
 	
 	func verify(phoneNumber: String) {
 		PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in

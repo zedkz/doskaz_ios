@@ -24,6 +24,8 @@ protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	var onTouchToProfile: Command { get set }
 	var onTouchResend: Command { get set }
 	var onTouchNotNow: Command { get set }
+	
+	var onSignIn: CommandWith<(String, Provider)> { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
@@ -35,6 +37,8 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	var onTouchResend: Command = .nop
 	var onTouchToProfile: Command = .nop
 	var onTouchNotNow: Command = .nop
+	
+	var onSignIn: CommandWith<(String, Provider)> = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -364,12 +368,12 @@ extension AuthViewController {
 extension AuthViewController: GIDSignInDelegate {
 	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
 		if let error = error {
+			print("Error in google sign in", error.localizedDescription)
 			return
 		}
-		print("Error in google sign in", error?.localizedDescription)
 		
-		guard let authentication = user.authentication else { return }
-		print("Auth token:", authentication.accessToken)
+		guard let serverAuthCode = user.serverAuthCode else { return }
+		onSignIn.perform(with: (serverAuthCode, .google))
 	}
 	
 	func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

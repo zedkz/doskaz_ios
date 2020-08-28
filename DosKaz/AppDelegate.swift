@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		IQKeyboardManager.shared.enable = true
 		FirebaseApp.configure()
 		GIDSignIn.sharedInstance().clientID = "***REMOVED***.apps.googleusercontent.com"
+		GIDSignIn.sharedInstance()?.serverClientID = "***REMOVED***.apps.googleusercontent.com"
 		setRootViewController()
 		return true
 	}

@@ -33,3 +33,23 @@ struct DKToken: Codable {
 struct FireToken: Codable {
 	var idToken: String
 }
+
+struct APIGetOauthToken: DoskazRequest {
+	let onSuccess: (DKToken) -> Void
+	let onFailure: (MoyaError) -> Void
+	let oauthToken: OauthToken
+	var path: String { "accessToken/oauth" }
+	var method: Method { .post }
+	var task: Task {
+		.requestJSONEncodable(oauthToken)
+	}
+}
+
+struct OauthToken: Codable {
+	let provider: String
+	let code: String
+}
+
+enum Provider: String {
+	case google, facebook, vkontakte, mailru
+}
