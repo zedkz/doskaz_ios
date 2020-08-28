@@ -8,6 +8,7 @@
 
 import UIKit
 import SharedCodeFramework
+import GoogleSignIn
 
 enum AuthViewPage {
 	case first, second, third(AuthOrigin), loading
@@ -65,6 +66,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	let fiftyP = AuthInfoView()
 	
 	let smsInfo = AuthInfoView()
+	let socialButtonsStack = UIStackView()
 
 	func setupInitialState() {
 		configureData()
@@ -72,6 +74,8 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		configurePageData()
 		configureMiddleViewLayout()
 		navigationController?.navigationBar.isHidden = true
+		GIDSignIn.sharedInstance()?.presentingViewController = self
+		GIDSignIn.sharedInstance().delegate = self
 	}
 	
 	private func configureData() {
@@ -290,17 +294,35 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		switch viewPage {
 		case .first:
 			smsInfo.removeFromSuperview()
+			let signInButton = GIDSignInButton()
+			signInButton.style = .iconOnly
+			signInButton.colorScheme = .dark
+			
+			socialButtonsStack.axis = .horizontal
+			socialButtonsStack.distribution = .fillProportionally
+			
+			middleView.addSubview(socialButtonsStack)
+			socialButtonsStack.addConstraintsProgrammatically
+				.pinEdgeToSupers(.top)
+				.set(my: .leading, .greaterThanOrEqual, to: .leading, of: middleView)
+				.set(my: .trailing, .lessThanOrEqual, to: .trailing, of: middleView)
+				.pinEdgeToSupers(.horizontalCenter)
+				.pin(my: .bottom, to: .top, of: enterPhoneLabel,plus: -8)
+			
+			socialButtonsStack.addArrangedSubview(signInButton)
 		case .second:
+			socialButtonsStack.removeFromSuperview()
 			middleView.addSubview(smsInfo)
 			smsInfo.addConstraintsProgrammatically
 				.pinEdgeToSupers(.top)
 				.pinEdgeToSupers(.leading, plus: 8)
 				.pinEdgeToSupers(.trailing, plus: -8)
 		case .third:
+			socialButtonsStack.removeFromSuperview()
 			smsInfo.removeFromSuperview()
 			let stack = UIStackView()
 			stack.axis = .vertical
-			stack.alignment = .leading
+			stack.alignment = .fill
 			stack.isLayoutMarginsRelativeArrangement = true
 			stack.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
 			middleView.addSubview(stack)
@@ -337,4 +359,21 @@ extension AuthViewController {
 		output.viewIsReady()
 	}
 
+}
+
+extension AuthViewController: GIDSignInDelegate {
+	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+		if let error = error {
+			return
+		}
+		print("Error in google sign in", error?.localizedDescription)
+		
+		guard let authentication = user.authentication else { return }
+		print("Auth token:", authentication.accessToken)
+	}
+	
+	func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+		print("User disconnected from google")
+	}
+	
 }
