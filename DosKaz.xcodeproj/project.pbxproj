@@ -1372,6 +1372,7 @@
 				4486E89223F6EBEF00E8AAB2 /* Resources */,
 				3A2C94A83D14995FEE1D5EB4 /* [CP] Embed Pods Frameworks */,
 				445CDC4D24028D1D0072F4BC /* Embed Frameworks */,
+				A3EF256F1876F24CE5A4E3A3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1452,6 +1453,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3EF256F1876F24CE5A4E3A3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DosKaz/Pods-DosKaz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B7B65AFE2F77E642C54B87DB /* [CP] Check Pods Manifest.lock */ = {

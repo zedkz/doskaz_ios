@@ -14,5 +14,6 @@ target 'DosKaz' do
 	pod 'FontAwesome.swift', :binary => true
 	pod 'Kingfisher', '~> 5.0', :binary => true
 	pod 'Firebase/Auth', :binary => true
+	pod 'GoogleSignIn', :binary => true
 	
 end

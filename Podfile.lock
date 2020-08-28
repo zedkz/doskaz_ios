@@ -1,5 +1,10 @@
 PODS:
   - Alamofire (5.2.0)
+  - AppAuth (1.4.0):
+    - AppAuth/Core (= 1.4.0)
+    - AppAuth/ExternalUserAgent (= 1.4.0)
+  - AppAuth/Core (1.4.0)
+  - AppAuth/ExternalUserAgent (1.4.0)
   - Firebase/Auth (6.24.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.5.3)
@@ -29,6 +34,10 @@ PODS:
   - GoogleDataTransportCCTSupport (3.1.0):
     - GoogleDataTransport (~> 6.1)
     - nanopb (~> 1.30905.0)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (6.6.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -44,7 +53,14 @@ PODS:
   - "GoogleUtilities/NSData+zlib (6.6.0)"
   - GoogleUtilities/Reachability (6.6.0):
     - GoogleUtilities/Logger
+  - GTMAppAuth (1.0.0):
+    - AppAuth/Core (~> 1.0)
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.4.0):
+    - GTMSessionFetcher/Full (= 1.4.0)
   - GTMSessionFetcher/Core (1.4.0)
+  - GTMSessionFetcher/Full (1.4.0):
+    - GTMSessionFetcher/Core (= 1.4.0)
   - Kingfisher (5.14.0):
     - Kingfisher/Core (= 5.14.0)
   - Kingfisher/Core (5.14.0)
@@ -62,12 +78,14 @@ PODS:
 DEPENDENCIES:
   - Firebase/Auth
   - FontAwesome.swift
+  - GoogleSignIn
   - Kingfisher (~> 5.0)
   - Moya (~> 14.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AppAuth
     - Firebase
     - FirebaseAuth
     - FirebaseAuthInterop
@@ -77,7 +95,9 @@ SPEC REPOS:
     - FontAwesome.swift
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
+    - GoogleSignIn
     - GoogleUtilities
+    - GTMAppAuth
     - GTMSessionFetcher
     - Kingfisher
     - Moya
@@ -86,6 +106,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c1ca147559e730bfb2182c8c7aafbdd90a867987
+  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   Firebase: b28e55c60efd98963cd9011fe2fac5a10c2ba124
   FirebaseAuth: 7047aec89c0b17ecd924a550c853f0c27ac6015e
   FirebaseAuthInterop: a0f37ae05833af156e72028f648d313f7e7592e9
@@ -95,13 +116,15 @@ SPEC CHECKSUMS:
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
   GoogleDataTransport: 9a8a16f79feffc7f42096743de2a7c4815e84020
   GoogleDataTransportCCTSupport: d70a561f7d236af529fee598835caad5e25f6d3d
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   Kingfisher: 7b64389a43139c903ec434788344c288217c792d
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
 
-PODFILE CHECKSUM: 495f62a4681fcc351e23bb32e70363355f06cd39
+PODFILE CHECKSUM: 066ac6563b79762e720cac86b05862f056b4da27
 
 COCOAPODS: 1.8.4
