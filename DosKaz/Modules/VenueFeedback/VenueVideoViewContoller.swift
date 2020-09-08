@@ -19,14 +19,7 @@ class VenueVideoViewContoller: UIViewController, UITableViewDelegate{
 	var videos = [YoutubeVideo]()
 	
 	func initWith(with videos: [YoutubeVideo]) {
-		var testVideos = [YoutubeVideo]()
-		
-		testVideos.append("https://www.youtube.com/watch?v=JkXaj_XzeV0")
-		testVideos.append("https://www.youtube.com/watch?v=QFAofKwX2KM")
-		testVideos.append("https://www.youtube.com/watch?v=BaCaFpAtm48")
-		testVideos.append("https://www.youtube.com/watch?v=NNnIGh9g6fA")
-		
-		self.videos = testVideos
+		self.videos = videos
 	}
 	
 	private func update(with videos: [YoutubeVideo]) {
