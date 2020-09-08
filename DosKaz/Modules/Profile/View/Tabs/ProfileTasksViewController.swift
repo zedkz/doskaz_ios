@@ -96,7 +96,7 @@ class ProfileTasksViewController: ProfileCommonViewController, UITableViewDelega
 				let createdAt = task.createdAt?.dayMonth ?? ""
 				let date = createdAt + withDash
 				
-				let isCompleted = task.completedDate == nil
+				let isCompleted = task.completedDate != nil
 				let imageName = isCompleted ? "profile_completed_task" : "profile_current_task"
 				
 				return TaskCell.Props(
