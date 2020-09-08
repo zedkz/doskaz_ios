@@ -9,7 +9,13 @@
 import Moya
 
 struct Constants {
-	static let mainURL = "https://doskaz.vps3.zed.kz"
+	static var mainURL: String {
+		#if DEBUG
+			return "https://doskaz.vps3.zed.kz"
+		#else
+			return "https://doskaz.kz"
+		#endif
+	}
 }
 
 protocol DoskazRequest: MoyaRequest, TargetType, AccessTokenAuthorizable { }
