@@ -349,7 +349,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	
 	@objc func handleTextF(_ textField: UITextField) {
 		guard let text = textField.text else { return }
-		textField.text = PhoneFormatter.format(phoneNumber: text)
+		if case AuthViewPage.first = viewPage {
+			textField.text = PhoneFormatter.format(phoneNumber: text)
+		}
 	}
 	
 }
