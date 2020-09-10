@@ -26,7 +26,7 @@ class AuthInteractor: AuthInteractorInput {
 			print("Anton token: ", dkToken.token)
 			self.output?.didSucceedSignIn()
 		}, onFailure: { (error) in
-			self.output?.didFailSignIn(with: error)
+			self.output?.didFailSignIn(with: error, isPhone: false)
 			print(error.localizedDescription)
 		},
 			 oauthToken: OauthToken(provider: provider.rawValue, code: code)
@@ -58,13 +58,13 @@ class AuthInteractor: AuthInteractorInput {
 		Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
 			guard let self = self else { return }
 			if let error = error {
-				self.output?.didFailSignIn(with: error)
+				self.output?.didFailSignIn(with: error, isPhone: true)
 				return
 			}
 			
 			authResult?.user.getIDToken(completion: { (idToken, error) in
 				guard let fireToken = idToken else {
-					self.output?.didFailSignIn(with: error!)
+					self.output?.didFailSignIn(with: error!, isPhone: true)
 					return
 				}
 				
@@ -72,7 +72,7 @@ class AuthInteractor: AuthInteractorInput {
 					AppSettings.token = dkToken.token
 					self.output?.didSucceedSignIn()
 				}, onFailure: { error in
-					self.output?.didFailSignIn(with: error)
+					self.output?.didFailSignIn(with: error, isPhone: true)
 				},
 					 fireBaseToken: FireToken(idToken: fireToken)
 				)

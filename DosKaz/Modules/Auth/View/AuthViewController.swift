@@ -305,6 +305,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			socialButtonsStack.axis = .horizontal
 			socialButtonsStack.distribution = .fillProportionally
 			
+			socialButtonsStack.removeFromSuperview()
 			middleView.addSubview(socialButtonsStack)
 			socialButtonsStack.addConstraintsProgrammatically
 				.pinEdgeToSupers(.top)
@@ -313,6 +314,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 				.pinEdgeToSupers(.horizontalCenter)
 				.pin(my: .bottom, to: .top, of: enterPhoneLabel,plus: -8)
 			
+			socialButtonsStack.arrangedSubviews.forEach {
+				$0.removeFromSuperview()
+			}
 			socialButtonsStack.addArrangedSubview(signInButton)
 		case .second:
 			socialButtonsStack.removeFromSuperview()

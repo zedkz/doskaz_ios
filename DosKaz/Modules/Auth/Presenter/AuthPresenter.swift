@@ -73,7 +73,7 @@ protocol AuthInteractorOutput: class {
 	func didSucceed(with verificationID: String)
 	func didFailVerify(with error: Error)
 	func didSucceedSignIn()
-	func didFailSignIn(with error: Error)
+	func didFailSignIn(with error: Error, isPhone: Bool)
 }
 
 extension AuthPresenter: AuthInteractorOutput {
@@ -85,8 +85,8 @@ extension AuthPresenter: AuthInteractorOutput {
 		}
 	}
 	
-	func didFailSignIn(with error: Error) {
-		view.viewPage = .second
+	func didFailSignIn(with error: Error, isPhone: Bool) {
+		view.viewPage = isPhone ? .second : .first
 		view.displayAlert(with: error.localizedDescription)
 	}
 	
