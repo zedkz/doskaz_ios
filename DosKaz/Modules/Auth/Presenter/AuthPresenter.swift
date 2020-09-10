@@ -35,20 +35,24 @@ class AuthPresenter: AuthViewOutput {
 			self?.view?.viewPage = .loading
 			self?.interactor.verify(phoneNumber: text)
 		}
+		
 		view.onTouchSend = CommandWith<String> { [weak self] text in
 			if let id = self?.verificationID {
 				self?.view?.viewPage = .loading
 				self?.interactor.signIn(with: text, id: id)
 			}
 		}
+		
 		view.onTouchResend = Command { [weak self] in
 			self?.verificationID = nil
 			self?.view.viewPage = .first
 		}
+		
 		view.onTouchToProfile = Command { [weak self] in
 			guard let self = self else { return }
 			self.router.showProfile(for: self.view, origin: self.origin)
 		}
+		
 		view.onTouchNotNow = Command { [weak self] in
 			guard let self = self else { return }
 			if case let .anywhere(destination) = self.origin {
@@ -60,7 +64,6 @@ class AuthPresenter: AuthViewOutput {
 			self?.interactor?.signInWithOauth(code: oauthCode, provider: provider)
 		}
 	}
-	
 }
 
 
@@ -97,5 +100,4 @@ extension AuthPresenter: AuthInteractorOutput {
 		view.viewPage = .first
 		view.displayAlert(with: error.localizedDescription)
 	}
-
 }
