@@ -37,14 +37,9 @@ extension BigFormPresenter: BigFormViewOutput {
 		view.setupInitialState()
 		view.onPressReady = CommandWith<FullForm> { [weak self] fullForm in
 			guard let self = self else { return }
-			if self.uploadedImagesURLs.isEmpty {
-				self.uploadedImagesURLs.append("photo")
-			}
 			
 			var fullForm = fullForm
-			
 			fullForm.first.photos.append(contentsOf: self.uploadedImagesURLs)
-			
 			self.submit(fullForm)
 		}
 		

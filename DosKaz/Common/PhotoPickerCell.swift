@@ -54,11 +54,14 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 	var props: Props! {
 		didSet {
 			update(props.images)
+			let color = props.canShowRedAlert ? UIColor.red : .black
+			titleLabel.textColor = color
 		}
 	}
 	
 	//MARK: - Sub types
 	struct Props {
+		var canShowRedAlert: Bool = false
 		var images = [UIImage]()
 		var onPick: Command = .nop
 	}
@@ -101,6 +104,8 @@ class PhotoPickerCell: UITableViewCell, Updatable {
 	}
 	
 }
+
+extension PhotoPickerCell.Props: Validatable { }
 
 //MARK: - PhotoPickerCollectionViewCell
 

@@ -362,6 +362,7 @@ class SmallFormViewController: FormViewController, HasForm {
 		configurators.append(contentsOf: videoLinks)
 		
 		let photoProps = PhotoPickerCell.Props(
+			canShowRedAlert: shouldBeRed(images.isEmpty),
 			images: images,
 			onPick: Command {
 				let picker = UIImagePickerController()
