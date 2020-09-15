@@ -9,7 +9,6 @@
 import SharedCodeFramework
 		
 class BigFormPresenter {
-	
 	weak var view: BigFormViewInput!
 	var interactor: BigFormInteractorInput!
 	var router: BigFormRouterInput!
@@ -25,7 +24,6 @@ class BigFormPresenter {
 	
 	var uploadedImagesURLs = [String]()
 	var venueForCheck: PotentialVenue?
-
 }
 
 // MARK: ViewController output protocol
@@ -73,7 +71,6 @@ extension BigFormPresenter: BigFormViewOutput {
 	private func submit(_ form: FullForm) {		
 		interactor.submit(form)
 	}
-
 }
 
 // MARK: Interactor output protocol
@@ -151,5 +148,4 @@ extension BigFormPresenter: BigFormInteractorOutput {
 		print("didFailSubmitForm with error: ",error.localizedDescription)
 		view.displayAlert(with: l10n(.errorMessage))
 	}
-
 }
