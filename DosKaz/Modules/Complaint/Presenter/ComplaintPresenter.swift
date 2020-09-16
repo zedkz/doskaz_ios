@@ -64,6 +64,7 @@ extension ComplaintPresenter: ComplaintViewOutput {
 		}
 		view.onPickImage = CommandWith<UIImage> { image in
 			if let data = image.jpegData(compressionQuality: 0.8) {
+				self.view.createSpinnerView()
 				self.interactor.uploadImage(data)
 			}
 		}
@@ -94,6 +95,7 @@ protocol ComplaintInteractorOutput: class {
 
 extension ComplaintPresenter: ComplaintInteractorOutput {
 	func didLoadImage(with response: UploadResponse) {
+		view.removeSpinner()
 		print("Image uploaded",response)
 		if let path = response.path {
 			uploadedImagesURLs.append(path)
@@ -101,6 +103,7 @@ extension ComplaintPresenter: ComplaintInteractorOutput {
 	}
 	
 	func didFailLoadImage(with error: Error) {
+		view.removeSpinner()
 		print("didFailLoadImage",error)
 	}
 	

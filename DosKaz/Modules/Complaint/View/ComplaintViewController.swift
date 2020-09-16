@@ -10,7 +10,7 @@ import SharedCodeFramework
 
 // MARK: View input protocol
 
-protocol ComplaintViewInput: DisplaysAlert where Self: UIViewController {
+protocol ComplaintViewInput: DisplaysAlert, HasSpinner where Self: UIViewController {
 	func setupInitialState()
 	func showInitial(_ complaintData: ComplaintData, _ cities: [City], _ auths:[Authority], _ complaintAtrs: [ComplaintAtr])
 	var onTouchReady: CommandWith<ComplaintData> { get set }
@@ -20,6 +20,8 @@ protocol ComplaintViewInput: DisplaysAlert where Self: UIViewController {
 class ComplaintViewController: TableViewController, ComplaintViewInput, UITableViewDelegate {
 	
 	var output: ComplaintViewOutput!
+	
+	var spinner = SpinnerViewController()
 	
 	//MARK: - ComplaintViewInput fields
 	

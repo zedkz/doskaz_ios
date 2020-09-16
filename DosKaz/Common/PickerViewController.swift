@@ -159,3 +159,44 @@ extension UIColor {
 		return UIColor(red: 0.0, green: 136.0 / 255.0, blue: 122.0 / 255.0, alpha: 1.0)
 	}
 }
+
+// MARK: Spinner view controller
+
+class SpinnerViewController: UIViewController {
+	var spinner = UIActivityIndicatorView(style: .whiteLarge)
+	
+	override func loadView() {
+		view = UIView()
+		view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+		
+		spinner.translatesAutoresizingMaskIntoConstraints = false
+		spinner.startAnimating()
+		view.addSubview(spinner)
+		
+		spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+	}
+}
+
+protocol HasSpinner  {
+	
+	var spinner: SpinnerViewController { get set }
+	
+	func createSpinnerView() -> Void
+}
+
+
+extension HasSpinner where Self: UIViewController {
+	func createSpinnerView() -> Void {
+		addChild(spinner)
+		spinner.view.frame = view.frame
+		view.addSubview(spinner.view)
+		spinner.didMove(toParent: self)
+	}
+	
+	func removeSpinner() -> Void {
+		spinner.willMove(toParent: nil)
+		spinner.view.removeFromSuperview()
+		spinner.removeFromParent()
+	}
+}
