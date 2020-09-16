@@ -29,14 +29,17 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		isValidating = true
 		updateSectionOneDataSource()
 		updateSectionTwoDataSource()
+		updateLastSectionDataSource()
 		updateValsForSectionOne()
 		updateValsForSectionTwo()
+		updateValsForLastSection()
 		dataSource.openAll()
 		reload(with: .all)
 		scrollToInvalidRow()
 		let fv = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
 		let sv = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
-		return (fv == nil) && (sv == nil)
+		let lv = lastSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false })
+		return (fv == nil) && (sv == nil) && (lv == nil)
 	}
 	
 	@objc func formDone() {
@@ -471,13 +474,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	}
 	
 	private func updateDynamicDataSources() {
-		
-		func shouldBeRed(_ condition: Bool) -> Bool {
-			return condition && self.isValidating
-		}
-		
 		let localDynamicDataSources: [FormTableViewDataSource] = complaintAtrs.map { section in
-			
 			if !dynamicSections.keys.contains(section.key) {
 				dynamicSections[section.key] = [String: Bool]()
 			}
@@ -505,7 +502,6 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		}
 		
 		let commentsProps = TextViewCell.Props(
-			canShowRedAlert: shouldBeRed(complaintData.content.comment.isEmpty),
 			title: l10n(.yourComments),
 			placeHolder: l10n(.textOftheMessage),
 			text: complaintData.content.comment,
@@ -514,7 +510,6 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 				self.updateSectionOneDataSource()
 			}
 		)
-		
 		
 		let lifeThreatProps = LeftCheckCell.Props(
 			title: l10n(.lifeThreat),
@@ -551,6 +546,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	
 	private func updateLastSectionDataSource() {
 		let photoProps = PhotoPickerCell.Props(
+			canShowRedAlert: images.isEmpty && isValidating,
 			images: images,
 			onPick: Command {
 				let picker = UIImagePickerController()
@@ -627,6 +623,7 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 	//MARK: - Validation
 	var firstSectionValidatables = [Validatable?]()
 	var secondSectionValidatables = [Validatable?]()
+	var lastSectionValidatables = [Validatable?]()
 		
 	private func updateValsForSectionOne()  {
 		let validatables: [Validatable?] = personalInfoDataSource.configurators.map { $0.validatable }
@@ -638,6 +635,11 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		secondSectionValidatables = validatables
 	}
 	
+	private func updateValsForLastSection() {
+		let validatables: [Validatable?] = lastSectionDataSource.configurators.map { $0.validatable }
+		lastSectionValidatables = validatables
+	}
+	
 	private func scrollToInvalidRow() {
 		if let firstInvalidRow = firstSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
 			let fr = IndexPath(row: firstInvalidRow, section: 0)
@@ -647,6 +649,11 @@ class ComplaintViewController: TableViewController, ComplaintViewInput, UITableV
 		} else if let firstInvalidRow = secondSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
 			let fr = IndexPath(row: firstInvalidRow, section: 1)
 			if firstInvalidRow <= tableView.numberOfRows(inSection: 1) {
+				tableView.scrollToRow(at:  fr, at: .top, animated: true)
+			}
+		} else if let firstInvalidRow = lastSectionValidatables.firstIndex(where: { $0?.canShowRedAlert ?? false }) {
+			let fr = IndexPath(row: firstInvalidRow, section: tableView.numberOfSections - 1)
+			if firstInvalidRow <= tableView.numberOfRows(inSection: tableView.numberOfSections - 1) {
 				tableView.scrollToRow(at:  fr, at: .top, animated: true)
 			}
 		}
