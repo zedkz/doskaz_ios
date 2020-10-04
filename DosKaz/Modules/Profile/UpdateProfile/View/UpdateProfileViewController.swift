@@ -74,9 +74,9 @@ class UpdateProfileViewController: TableViewController, UpdateProfileViewInput {
 		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
 		view.addSubview(saveButton)
 		saveButton.addConstraintsProgrammatically
-			.pinEdgeToSupers(.bottom)
-			.pinEdgeToSupers(.leading)
-			.pinEdgeToSupers(.trailing)
+			.pinEdgeToSupersSafe(.bottom)
+			.pinEdgeToSupersSafe(.leading)
+			.pinEdgeToSupersSafe(.trailing)
 			.set(my: .height, to: 56)
 	}
 
