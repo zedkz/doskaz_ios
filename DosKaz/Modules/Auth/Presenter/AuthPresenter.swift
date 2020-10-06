@@ -63,6 +63,10 @@ class AuthPresenter: AuthViewOutput {
 		view.onSignIn = CommandWith<(String, Provider)> { [weak self] (oauthCode, provider) in
 			self?.interactor?.signInWithOauth(code: oauthCode, provider: provider)
 		}
+		
+		view.onSignInWithApple = CommandWith<String> { [weak self] jwtToken in
+			self?.interactor.signInWithApple(jwtToken: jwtToken)
+		}
 	}
 }
 

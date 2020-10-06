@@ -53,3 +53,20 @@ struct OauthToken: Codable {
 enum Provider: String {
 	case google, facebook, vkontakte, mailru
 }
+
+// MARK: Sign in with Apple
+
+struct APITokenWithAppleSignIn: DoskazRequest {
+	let appleToken: AppleToken
+	let onSuccess: (DKToken) -> Void
+	let onFailure: (MoyaError) -> Void
+	var path: String { "accessToken/apple" }
+	var method: Method { .post }
+	var task: Task {
+		.requestJSONEncodable(appleToken)
+	}
+}
+
+struct AppleToken: Codable {
+	let token: String
+}

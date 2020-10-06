@@ -12,6 +12,7 @@ protocol AuthInteractorInput {
 	func verify(phoneNumber: String)
 	func signIn(with verificationCode: String, id verificationID: String)
 	func signInWithOauth(code: String, provider: Provider)
+	func signInWithApple(jwtToken: String)
 }
 
 // MARK: Implementation
@@ -19,6 +20,22 @@ protocol AuthInteractorInput {
 class AuthInteractor: AuthInteractorInput {
 
 	weak var output: AuthInteractorOutput!
+	
+	func signInWithApple(jwtToken: String) {
+		let request = APITokenWithAppleSignIn(
+			appleToken: AppleToken(token: jwtToken),
+			onSuccess: { (dkToken) in
+				AppSettings.token = dkToken.token
+				print("Anton token: ", dkToken.token)
+				self.output?.didSucceedSignIn()
+			}, onFailure: { (error) in
+				self.output?.didFailSignIn(with: error, isPhone: false)
+				print(error.localizedDescription)
+			}
+		)
+		
+		request.dispatch()
+	}
 	
 	func signInWithOauth(code: String, provider: Provider) {
 		let request = APIGetOauthToken(onSuccess: { (dkToken) in

@@ -9,6 +9,7 @@
 import UIKit
 import SharedCodeFramework
 import GoogleSignIn
+import AuthenticationServices
 
 enum AuthViewPage {
 	case first, second, third(AuthOrigin), loading
@@ -26,6 +27,7 @@ protocol AuthViewInput: DisplaysAlert where Self: UIViewController {
 	var onTouchNotNow: Command { get set }
 	
 	var onSignIn: CommandWith<(String, Provider)> { get set }
+	var onSignInWithApple: CommandWith<String> { get set }
 }
 
 class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
@@ -39,6 +41,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 	var onTouchNotNow: Command = .nop
 	
 	var onSignIn: CommandWith<(String, Provider)> = .nop
+	var onSignInWithApple: CommandWith<String> = .nop
 	
 	var viewPage = AuthViewPage.first {
 		didSet {
@@ -304,6 +307,8 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			
 			socialButtonsStack.axis = .horizontal
 			socialButtonsStack.distribution = .fillProportionally
+			socialButtonsStack.alignment = .center
+			socialButtonsStack.spacing = 4
 			
 			socialButtonsStack.removeFromSuperview()
 			middleView.addSubview(socialButtonsStack)
@@ -313,10 +318,25 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 				.set(my: .trailing, .lessThanOrEqual, to: .trailing, of: middleView)
 				.pinEdgeToSupers(.horizontalCenter)
 				.pin(my: .bottom, to: .top, of: enterPhoneLabel,plus: -8)
-			
+				.set(my: .height, to: 48)
 			socialButtonsStack.arrangedSubviews.forEach {
 				$0.removeFromSuperview()
 			}
+			
+			// Sign in with Apple
+			if #available(iOS 13.0, *) {
+				let button = UIButton(type: .system)
+				button.layer.cornerRadius = 5
+				button.clipsToBounds = true
+				button.backgroundColor = .black
+				button.setImage(UIImage(named: "White Logo Square"), for: .normal)
+				button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
+				button.addConstraintsProgrammatically
+					.set(my: .width, to: 42)
+					.set(my: .height, to: 42)
+				socialButtonsStack.addArrangedSubview(button)
+			}
+			
 			socialButtonsStack.addArrangedSubview(signInButton)
 		case .second:
 			socialButtonsStack.removeFromSuperview()
@@ -385,5 +405,72 @@ extension AuthViewController: GIDSignInDelegate {
 	func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
 		print("User disconnected from google")
 	}
+}
+
+// MARK: Sign in with Apple handler
+
+@available(iOS 13.0, *)
+extension AuthViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
 	
+	@objc func handleAuthorizationAppleIDButtonPress() {
+		let appleIDProvider = ASAuthorizationAppleIDProvider()
+		let request = appleIDProvider.createRequest()
+		request.requestedScopes = [.fullName, .email]
+		
+		let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+		authorizationController.delegate = self
+		authorizationController.presentationContextProvider = self
+		authorizationController.performRequests()
+	}
+	
+	func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+		return self.view.window!
+	}
+	
+	// MARK: - ASAuthorizationControllerDelegate
+	func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+		if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+			guard let appleIDToken = appleIDCredential.identityToken else {
+				print("Unable to fetch identity token")
+				return
+			}
+			
+			guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+				print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+				return
+			}
+			
+			let userIdentifier = appleIDCredential.user
+			let fullName = appleIDCredential.fullName
+			let email = appleIDCredential.email
+			
+			print(idTokenString)
+			print(userIdentifier)
+			print(fullName ?? "name is nil")
+			print(email ?? "email is nil")
+			
+			onSignInWithApple.perform(with: idTokenString)
+		}
+	}
+	
+	func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+		guard let error = error as? ASAuthorizationError else {
+			return
+		}
+		
+		switch error.code {
+		case .canceled:
+			print("Canceled")
+		case .unknown:
+			print("Unknown")
+		case .invalidResponse:
+			print("Invalid Respone")
+		case .notHandled:
+			print("Not handled")
+		case .failed:
+			print("Failed")
+		@unknown default:
+			print("Default")
+		}
+	}
 }
