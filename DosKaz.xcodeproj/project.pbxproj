@@ -1877,6 +1877,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DosKaz/DosKaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = DosKaz/Resources/DeveloperAssets.xcassets;
 				DEVELOPMENT_TEAM = 69HEK9F837;
 				INFOPLIST_FILE = DosKaz/Info.plist;
@@ -1899,6 +1900,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DosKaz/DosKaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = DosKaz/Resources/DeveloperAssets.xcassets;
 				DEVELOPMENT_TEAM = 69HEK9F837;
 				INFOPLIST_FILE = DosKaz/Info.plist;
