@@ -192,7 +192,9 @@ class ContactsViewController: UIViewController, DisplaysAlert {
 	
 	private func sendFeedback() {
 		APIPostFeedback(onSuccess: { [weak self] _ in
-			self?.displayAlert(with: l10n(.succeedFormMessage))
+			self?.disPlayAlert(with: l10n(.succeedFormMessage), action: {
+				self?.navigationController?.popViewController(animated: true)
+			})
 		}, onFailure: { [weak self] error in
 			print(error)
 			self?.displayAlert(with: l10n(.errorMessage))
