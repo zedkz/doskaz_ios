@@ -54,8 +54,6 @@ class TextFormCell: UITableViewCell, Updatable {
 		textField.leftViewMode = .always
 		
 		//MARK: - Configure constant data
-		textField.placeholder = "-"
-		titleLabel.text = "-"
 		titleLabel.numberOfLines = 0
 		validationLabel.text = l10n(.fillTheField)
 		validationLabel.numberOfLines = 0
