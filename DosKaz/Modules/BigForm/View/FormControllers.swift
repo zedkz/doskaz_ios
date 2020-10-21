@@ -495,13 +495,21 @@ extension SmallFormViewController {
 		//end loop
 		
 		let text = l10n(.zoneScoreInfoText)
-		let color = UIColor(named: "SelectedTabbarTintColor")
-		let atrs: [NSAttributedString.Key : Any] = [
-			NSAttributedString.Key.underlineStyle: 1,
-			NSAttributedString.Key.underlineColor: color ?? UIColor.blue,
-			NSAttributedString.Key.foregroundColor: color ?? UIColor.blue
-		]
-		let attributedString = NSAttributedString(string: text, attributes: atrs)
+		var attributedString: NSAttributedString? {
+			let strings = text.components(separatedBy: ".")
+			guard strings.count >= 2 else {
+				return nil
+			}
+			let color = UIColor(named: "SelectedTabbarTintColor")
+			let atrs: [NSAttributedString.Key : Any] = [
+				NSAttributedString.Key.underlineStyle: 1,
+				NSAttributedString.Key.underlineColor: color ?? UIColor.blue,
+				NSAttributedString.Key.foregroundColor: color ?? UIColor.blue
+			]
+			let mstr = NSMutableAttributedString(string: strings[0], attributes: atrs)
+			mstr.append(NSAttributedString(string: strings[1]))
+			return mstr
+		}
 		
 		let commentProps = TextViewCell.Props(
 			title: l10n(.zoneScoreInfoText),
