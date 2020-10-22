@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutProjectViewController: UIViewController {
 
@@ -53,15 +54,28 @@ class AboutProjectViewController: UIViewController {
 	let textProjectUsefull = UILabel()
 	let headingPartners = UILabel()
 	let textPartners = UILabel()
-	let partnerImage1 = UIImageView()
-	let partnerImage2 = UIImageView()
-	let partnerImage3 = UIImageView()
+	let partnerImage1 = PartnerButton(image: "about_efca", url: "https://www.ef-ca.kz")
+	let partnerImage2 = PartnerButton(image: "about_tandau", url: "https://www.oft.kz")
+	let partnerImage3 = PartnerButton(image: "about_erekshe", url: "https://web.facebook.com/etshkz/?_rdc=1&_rdr")
 	
 	let headingFinancing = UILabel()
 	let textFinancing = UILabel()
 	
-	let financeImage1 = UIImageView()
-	let financeImage2 = UIImageView()
+	let financeImage1 = PartnerButton(image: "about_eu", url: "https://eeas.europa.eu/delegations/kazakhstan_ru")
+	let financeImage2 = PartnerButton(image: "about_dip", url: "https://kz.usembassy.gov/ru/")
+	
+	@objc
+	func didTouchUpInside(_ sender: UIButton) {
+		if let url = (sender as? PartnerButton)?.url {
+			if let url = URL(string: url) {
+				let config = SFSafariViewController.Configuration()
+				config.entersReaderIfAvailable = true
+				
+				let vc = SFSafariViewController(url: url, configuration: config)
+				present(vc, animated: true)
+			}
+		}
+	}
 
 	private func configureData() {
 		topImage.image = UIImage(named: "background2")
@@ -87,15 +101,8 @@ class AboutProjectViewController: UIViewController {
 		headingPartners.text = l10n(.aboutHeadingPartners)
 		textPartners.text = l10n(.aboutTextPartners)
 		
-		partnerImage1.image = UIImage(named: "about_efca")
-		partnerImage2.image = UIImage(named: "about_tandau")
-		partnerImage3.image = UIImage(named: "about_erekshe")
-		
 		headingFinancing.text = l10n(.aboutHeadingFinancing)
 		textFinancing.text = l10n(.aboutTextFinancing)
-		
-		financeImage1.image = UIImage(named: "about_eu")
-		financeImage2.image = UIImage(named: "about_dip")
 	}
 	
 	private func configureStyle() {
@@ -349,4 +356,21 @@ class AboutCardView: UIView {
 		let text: String
 	}
 	
+}
+
+// MARK: Button for displaying image that opens a link
+
+class PartnerButton: UIButton {
+	var url: String
+	
+	init(image: String, url: String, selector: Selector = #selector(AboutProjectViewController.didTouchUpInside(_:))) {
+		self.url = url
+		super.init(frame: .zero)
+		setBackgroundImage(UIImage(named: image), for: .normal)
+		addTarget(nil, action: selector, for: .touchUpInside)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 }
