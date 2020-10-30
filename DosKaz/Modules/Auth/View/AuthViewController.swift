@@ -398,8 +398,8 @@ extension AuthViewController: GIDSignInDelegate {
 			return
 		}
 		
-		guard let serverAuthCode = user.serverAuthCode else { return }
-		onSignIn.perform(with: (serverAuthCode, .google))
+		guard let token = user.authentication.idToken else { return }
+		onSignIn.perform(with: (token, .google))
 	}
 	
 	func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

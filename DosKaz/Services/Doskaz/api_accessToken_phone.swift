@@ -38,20 +38,32 @@ struct APIGetOauthToken: DoskazRequest {
 	let onSuccess: (DKToken) -> Void
 	let onFailure: (MoyaError) -> Void
 	let oauthToken: OauthToken
-	var path: String { "accessToken/oauth" }
+	var path: String { "accessToken/\(oauthToken.provider)" }
 	var method: Method { .post }
 	var task: Task {
-		.requestJSONEncodable(oauthToken)
+		.requestJSONEncodable(oauthToken.accessToken)
+	}
+	var headers: [String : String]? {
+		return ["Content-Type": "application/json"]
 	}
 }
 
 struct OauthToken: Codable {
 	let provider: String
-	let code: String
+	let accessToken: Token
+	
+	init(provider: String, accessToken: String) {
+		self.provider = provider
+		self.accessToken = Token(token: accessToken)
+	}
+	
+	struct Token: Codable {
+		let token: String
+	}
 }
 
 enum Provider: String {
-	case google, facebook, vkontakte, mailru
+	case google, facebook, vk, mailru
 }
 
 // MARK: Sign in with Apple

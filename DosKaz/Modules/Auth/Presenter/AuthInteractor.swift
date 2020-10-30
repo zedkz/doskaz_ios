@@ -46,7 +46,7 @@ class AuthInteractor: AuthInteractorInput {
 			self.output?.didFailSignIn(with: error, isPhone: false)
 			print(error.localizedDescription)
 		},
-			 oauthToken: OauthToken(provider: provider.rawValue, code: code)
+			 oauthToken: OauthToken(provider: provider.rawValue, accessToken: code)
 		)
 		request.dispatch()
 	}
