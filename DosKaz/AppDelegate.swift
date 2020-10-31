@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import VK_ios_sdk
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
 		-> Bool {
-			return GIDSignIn.sharedInstance().handle(url)
+			VKSdk.processOpen(url, fromApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+			GIDSignIn.sharedInstance().handle(url)
+			return true
 	}
 	
 	private func form() {

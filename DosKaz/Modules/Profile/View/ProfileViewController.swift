@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VK_ios_sdk
 
 // MARK: View input protocol
 
@@ -61,8 +62,10 @@ class ProfileViewController: ProfileDrawerViewController {
 		let actions = [
 			Action(title: l10n(.no), style: .cancel),
 			Action(title: l10n(.yes), handler: {
-				
 				AppSettings.token = nil
+				if VKSdk.isLoggedIn() {
+					VKSdk.forceLogout()
+				}
 				
 				guard let kiwi = UIApplication.shared.keyWindow else { return }
 				let tabbarController = kiwi.rootViewController as? MainTabBarViewController

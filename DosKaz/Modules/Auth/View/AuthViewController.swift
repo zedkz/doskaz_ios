@@ -10,6 +10,7 @@ import UIKit
 import SharedCodeFramework
 import GoogleSignIn
 import AuthenticationServices
+import VK_ios_sdk
 
 enum AuthViewPage {
 	case first, second, third(AuthOrigin), loading
@@ -83,6 +84,25 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		navigationController?.navigationBar.isHidden = true
 		GIDSignIn.sharedInstance()?.presentingViewController = self
 		GIDSignIn.sharedInstance().delegate = self
+		
+		let vk = VKSdk.initialize(withAppId: "***REMOVED***")
+		vk?.register(self)
+		vk?.uiDelegate = self
+	}
+	
+	@objc func vksignin() {
+		VKSdk.wakeUpSession(["email", "offline"]) { [weak self] (state, error) in
+			guard let self = self else { return }
+			
+			switch state {
+			case .authorized:
+				print("VK authorized")
+				self.onSignIn.perform(with: (VKSdk.accessToken().accessToken, .vk))
+			default:
+				print("VK unauthorized")
+				VKSdk.authorize(["email", "offline"])
+			}
+		}
 	}
 	
 	private func configureData() {
@@ -297,6 +317,18 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			.pinEdgeToSupers(.horizontalCenter)
 	}
 	
+	private func socialButton(_ imageName: String) -> UIButton {
+		let button = UIButton(type: .system)
+		button.layer.borderWidth = 1
+		button.layer.borderColor = UIColor.systemBlue.cgColor
+		button.layer.cornerRadius = 4
+		button.addConstraintsProgrammatically
+			.set(my: .width, to: 41)
+			.set(my: .height, to: 41)
+		button.setBackgroundImage(UIImage(named: imageName), for: .normal)
+		return button
+	}
+	
 	private func configureMiddleViewLayout() {
 		switch viewPage {
 		case .first:
@@ -338,6 +370,11 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			}
 			
 			socialButtonsStack.addArrangedSubview(signInButton)
+			
+			let vkb = socialButton("vk")
+			vkb.addTarget(self, action: #selector(vksignin), for: .touchUpInside)
+			
+			socialButtonsStack.addArrangedSubview(vkb)
 		case .second:
 			socialButtonsStack.removeFromSuperview()
 			middleView.addSubview(smsInfo)
@@ -472,5 +509,29 @@ extension AuthViewController: ASAuthorizationControllerDelegate, ASAuthorization
 		@unknown default:
 			print("Default")
 		}
+	}
+}
+
+extension AuthViewController: VKSdkDelegate, VKSdkUIDelegate {
+	func vkSdkShouldPresent(_ controller: UIViewController!) {
+		present(controller, animated: true)
+	}
+	
+	func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
+		let vc = VKCaptchaViewController.captchaControllerWithError(captchaError)
+		vc?.present(in: self)
+	}
+	
+	func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
+		if let error = result.error {
+			print("Vkontante Sign In error:", error)
+			return
+		}
+		
+		onSignIn.perform(with: (result.token.accessToken, .vk))
+	}
+	
+	func vkSdkUserAuthorizationFailed() {
+		print("vkSdkUserAuthorizationFailed")
 	}
 }
