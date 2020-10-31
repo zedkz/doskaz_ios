@@ -15,5 +15,5 @@ target 'DosKaz' do
 	pod 'Kingfisher', '~> 5.0', :binary => true
 	pod 'Firebase/Auth', :binary => true
 	pod 'GoogleSignIn', :binary => true
-	
+	pod 'VK-ios-sdk', :binary => true
 end
