@@ -9,6 +9,7 @@
 import UIKit
 import VK_ios_sdk
 import FBSDKLoginKit
+import MRMailSDK
 
 // MARK: View input protocol
 
@@ -68,6 +69,7 @@ class ProfileViewController: ProfileDrawerViewController {
 					VKSdk.forceLogout()
 				}
 				LoginManager().logOut()
+				MRMailSDK.sharedInstance().forceLogout()
 				
 				guard let kiwi = UIApplication.shared.keyWindow else { return }
 				let tabbarController = kiwi.rootViewController as? MainTabBarViewController

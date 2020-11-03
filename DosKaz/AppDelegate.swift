@@ -11,6 +11,7 @@ import Firebase
 import GoogleSignIn
 import VK_ios_sdk
 import FBSDKCoreKit
+import MRMailSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		let mailRu = MRMailSDK.sharedInstance()
+		mailRu.initialize(
+			withClientID: "***REMOVED***",
+			redirectURI: "***REMOVED***://"
+		)
+		mailRu.clientSecret = "***REMOVED***"
+		mailRu.returnScheme = "***REMOVED***"
+		mailRu.resultType = .token
+		
 		ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 		IQKeyboardManager.shared.enable = true
 		FirebaseApp.configure()
@@ -34,8 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			ApplicationDelegate.shared.application(
 				application,
 				open: url,
-				sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-				annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+				sourceApplication: options[.sourceApplication] as? String,
+				annotation: options[.annotation]
+			)
+			MRMailSDK.sharedInstance().handle(
+				url,
+				sourceApplication: options[.sourceApplication] as? String,
+				annotation: options[.annotation]
 			)
 			return true
 	}

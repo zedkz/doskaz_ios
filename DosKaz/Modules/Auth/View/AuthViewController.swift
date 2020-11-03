@@ -12,6 +12,7 @@ import GoogleSignIn
 import AuthenticationServices
 import VK_ios_sdk
 import FBSDKLoginKit
+import MRMailSDK
 
 enum AuthViewPage {
 	case first, second, third(AuthOrigin), loading
@@ -89,6 +90,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		let vk = VKSdk.initialize(withAppId: "***REMOVED***")
 		vk?.register(self)
 		vk?.uiDelegate = self
+		MRMailSDK.sharedInstance().delegate = self
 	}
 	
 	@objc func vksignin() {
@@ -106,7 +108,6 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		}
 	}
 	
-	
 	@objc func facebookLogin() {
 		let manager = LoginManager()
 		let perms = ["public_profile", "email"]
@@ -123,6 +124,9 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		}
 	}
 	
+	@objc func mailRuLogin() {
+		MRMailSDK.sharedInstance().authorize()
+	}
 	
 	private func configureData() {
 		
@@ -397,6 +401,10 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			let fcb = socialButton("facebook_auth")
 			fcb.addTarget(self, action: #selector(facebookLogin), for: .touchUpInside)
 			socialButtonsStack.addArrangedSubview(fcb)
+			
+			let mailRub = socialButton("mailru")
+			mailRub.addTarget(self, action: #selector(mailRuLogin), for: .touchUpInside)
+			socialButtonsStack.addArrangedSubview(mailRub)
 		case .second:
 			socialButtonsStack.removeFromSuperview()
 			middleView.addSubview(smsInfo)
@@ -555,5 +563,16 @@ extension AuthViewController: VKSdkDelegate, VKSdkUIDelegate {
 	
 	func vkSdkUserAuthorizationFailed() {
 		print("vkSdkUserAuthorizationFailed")
+	}
+}
+
+extension AuthViewController: MRMailSDKDelegate {
+	func mrMailSDK(_ sdk: MRMailSDK, authorizationDidFinishWith result: MRSDKAuthorizationResult) {
+		guard let token = result.accessToken else { return }
+		onSignIn.perform(with: (token, .mailru))
+	}
+	
+	func mrMailSDK(_ sdk: MRMailSDK, authorizationDidFailWithError error: Error) {
+		print("Mail ru failed", error.localizedDescription)
 	}
 }
