@@ -242,7 +242,6 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	private func update() {
-		
 		func shouldBeRed(_ condition: Bool) -> Bool {
 			return condition && self.isValidating
 		}
@@ -364,10 +363,12 @@ class SmallFormViewController: FormViewController, HasForm {
 		let photoProps = PhotoPickerCell.Props(
 			canShowRedAlert: shouldBeRed(images.isEmpty),
 			images: images,
-			onPick: Command {
-				let picker = UIImagePickerController()
-				picker.delegate = self
-				self.present(picker, animated: true)
+			onPick: Command { [weak self] in
+				guard let self = self else { return }
+				let imagePickerController = ImagePickerController()
+				imagePickerController.preferredImageSize = CGSize(width: 500, height: 500)
+				imagePickerController.delegate = self
+				self.present(imagePickerController, animated: true)
 			}
 		)
 		
@@ -419,9 +420,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	private var dataSource: SectionedTableViewDataSource!
 	
 	private var genInfoSectionSource: FormTableViewDataSource!
-
 }
-
 
 extension SmallFormViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -440,7 +439,6 @@ extension SmallFormViewController: UITableViewDelegate {
 }
 
 extension SmallFormViewController {
-	
 	func cellConfigurators(from formGroups: [Group], title: String, section: Int) -> [CellConfiguratorType] {
 		
 		if !allSections.keys.contains(title) {
@@ -545,7 +543,6 @@ extension SmallFormViewController {
 	}
 }
 
-
 extension SmallFormViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		guard let image = info[.originalImage] as? UIImage else { return }
@@ -557,11 +554,29 @@ extension SmallFormViewController: UIImagePickerControllerDelegate, UINavigation
 	}
 }
 
+extension SmallFormViewController: ImagePickerDelegate {
+	func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+		imagePicker.resetAssets()
+	}
+	
+	func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+		images.forEach {
+			onPickImage.perform(with: $0)
+		}
+		self.images.insert(contentsOf: images, at: 0)
+		update()
+		reloadAndScroll(nil, 0)
+		imagePicker.dismiss(animated: true)
+	}
+	
+	func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+		imagePicker.dismiss(animated: true)
+	}
+}
 
 //MARK: - MiddleFormViewController
 
 class MiddleFormViewController: FormViewController {
-	
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
 	
 	override func viewDidLoad() {
@@ -583,14 +598,12 @@ class MiddleFormViewController: FormViewController {
 		
 		tableView.reloadData()
 	}
-	
 }
 
 
 //MARK: - FullFormViewController
 
 class FullFormViewController: FormViewController {
-	
 	private var dataSource: TableViewDataSource<BasicCell.Props, BasicCell>!
 	
 	override func viewDidLoad() {
@@ -612,5 +625,4 @@ class FullFormViewController: FormViewController {
 		
 		tableView.reloadData()
 	}
-	
 }

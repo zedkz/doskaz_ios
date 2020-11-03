@@ -88,5 +88,4 @@ class ProfileViewController: ProfileDrawerViewController {
 		)
 		alert.present(in: self)
 	}
-
 }

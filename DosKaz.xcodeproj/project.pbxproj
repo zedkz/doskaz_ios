@@ -31,6 +31,24 @@
 		4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */; };
 		4420ABF324727BE8007F70D6 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */; };
 		4420ABF424727BE8007F70D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */; };
+		44282717254DA0680052DD3D /* CameraMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282701254DA0680052DD3D /* CameraMan.swift */; };
+		44282718254DA0680052DD3D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282702254DA0680052DD3D /* CameraView.swift */; };
+		44282719254DA0680052DD3D /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282703254DA0680052DD3D /* ImagePickerController.swift */; };
+		4428271A254DA0680052DD3D /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282705254DA0680052DD3D /* TopView.swift */; };
+		4428271B254DA0680052DD3D /* ConstraintsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282707254DA0680052DD3D /* ConstraintsSetup.swift */; };
+		4428271C254DA0680052DD3D /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282709254DA0680052DD3D /* StackView.swift */; };
+		4428271D254DA0680052DD3D /* ButtonPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428270A254DA0680052DD3D /* ButtonPicker.swift */; };
+		4428271E254DA0680052DD3D /* ImageStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428270B254DA0680052DD3D /* ImageStack.swift */; };
+		4428271F254DA0680052DD3D /* BottomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428270C254DA0680052DD3D /* BottomContainerView.swift */; };
+		44282720254DA0680052DD3D /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428270D254DA0680052DD3D /* AssetManager.swift */; };
+		44282721254DA0680052DD3D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428270E254DA0680052DD3D /* Helper.swift */; };
+		44282722254DA0680052DD3D /* ImageGalleryViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282710254DA0680052DD3D /* ImageGalleryViewDataSource.swift */; };
+		44282723254DA0680052DD3D /* ImageGalleryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282711254DA0680052DD3D /* ImageGalleryLayout.swift */; };
+		44282724254DA0680052DD3D /* ImageGalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282712254DA0680052DD3D /* ImageGalleryViewCell.swift */; };
+		44282725254DA0680052DD3D /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282713254DA0680052DD3D /* ImageGalleryView.swift */; };
+		44282726254DA0680052DD3D /* VideoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282714254DA0680052DD3D /* VideoInfoView.swift */; };
+		44282727254DA0680052DD3D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282715254DA0680052DD3D /* LocationManager.swift */; };
+		44282728254DA0680052DD3D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282716254DA0680052DD3D /* Configuration.swift */; };
 		443C6F82248FB3A500DEB65C /* UpdateProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */; };
 		443C6F83248FB3A500DEB65C /* UpdateProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */; };
 		443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */; };
@@ -281,6 +299,24 @@
 		4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
 		4420ABED24727BE7007F70D6 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		4420ABEF24727BE7007F70D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		44282701254DA0680052DD3D /* CameraMan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraMan.swift; sourceTree = "<group>"; };
+		44282702254DA0680052DD3D /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		44282703254DA0680052DD3D /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
+		44282705254DA0680052DD3D /* TopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		44282707254DA0680052DD3D /* ConstraintsSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsSetup.swift; sourceTree = "<group>"; };
+		44282709254DA0680052DD3D /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		4428270A254DA0680052DD3D /* ButtonPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPicker.swift; sourceTree = "<group>"; };
+		4428270B254DA0680052DD3D /* ImageStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStack.swift; sourceTree = "<group>"; };
+		4428270C254DA0680052DD3D /* BottomContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomContainerView.swift; sourceTree = "<group>"; };
+		4428270D254DA0680052DD3D /* AssetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		4428270E254DA0680052DD3D /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		44282710254DA0680052DD3D /* ImageGalleryViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryViewDataSource.swift; sourceTree = "<group>"; };
+		44282711254DA0680052DD3D /* ImageGalleryLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryLayout.swift; sourceTree = "<group>"; };
+		44282712254DA0680052DD3D /* ImageGalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryViewCell.swift; sourceTree = "<group>"; };
+		44282713254DA0680052DD3D /* ImageGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
+		44282714254DA0680052DD3D /* VideoInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoInfoView.swift; sourceTree = "<group>"; };
+		44282715254DA0680052DD3D /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		44282716254DA0680052DD3D /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileInteractor.swift; sourceTree = "<group>"; };
 		443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilePresenter.swift; sourceTree = "<group>"; };
 		443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileRouter.swift; sourceTree = "<group>"; };
@@ -587,6 +623,71 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		442826FF254DA0680052DD3D /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				44282700254DA0680052DD3D /* CameraView */,
+				44282703254DA0680052DD3D /* ImagePickerController.swift */,
+				44282704254DA0680052DD3D /* TopView */,
+				44282706254DA0680052DD3D /* Extensions */,
+				44282708254DA0680052DD3D /* BottomView */,
+				4428270D254DA0680052DD3D /* AssetManager.swift */,
+				4428270E254DA0680052DD3D /* Helper.swift */,
+				4428270F254DA0680052DD3D /* ImageGallery */,
+				44282715254DA0680052DD3D /* LocationManager.swift */,
+				44282716254DA0680052DD3D /* Configuration.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		44282700254DA0680052DD3D /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				44282701254DA0680052DD3D /* CameraMan.swift */,
+				44282702254DA0680052DD3D /* CameraView.swift */,
+			);
+			path = CameraView;
+			sourceTree = "<group>";
+		};
+		44282704254DA0680052DD3D /* TopView */ = {
+			isa = PBXGroup;
+			children = (
+				44282705254DA0680052DD3D /* TopView.swift */,
+			);
+			path = TopView;
+			sourceTree = "<group>";
+		};
+		44282706254DA0680052DD3D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				44282707254DA0680052DD3D /* ConstraintsSetup.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		44282708254DA0680052DD3D /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				44282709254DA0680052DD3D /* StackView.swift */,
+				4428270A254DA0680052DD3D /* ButtonPicker.swift */,
+				4428270B254DA0680052DD3D /* ImageStack.swift */,
+				4428270C254DA0680052DD3D /* BottomContainerView.swift */,
+			);
+			path = BottomView;
+			sourceTree = "<group>";
+		};
+		4428270F254DA0680052DD3D /* ImageGallery */ = {
+			isa = PBXGroup;
+			children = (
+				44282710254DA0680052DD3D /* ImageGalleryViewDataSource.swift */,
+				44282711254DA0680052DD3D /* ImageGalleryLayout.swift */,
+				44282712254DA0680052DD3D /* ImageGalleryViewCell.swift */,
+				44282713254DA0680052DD3D /* ImageGalleryView.swift */,
+				44282714254DA0680052DD3D /* VideoInfoView.swift */,
+			);
+			path = ImageGallery;
+			sourceTree = "<group>";
+		};
 		443C6F79248FB3A500DEB65C /* UpdateProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,6 +800,7 @@
 		445CDC4E2402A6AA0072F4BC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				442826FF254DA0680052DD3D /* ImagePicker */,
 				44651F8E24B0DCA100296C0E /* HTMLString */,
 				44BA427D24AB381C008B5674 /* ImageViewer */,
 				44ABE676248E3DC000E34F95 /* IQKeyboardManagerSwift */,
@@ -1504,8 +1606,10 @@
 				44B8A4AA24750091002BFE6A /* ProfileCommentsViewController.swift in Sources */,
 				440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */,
 				448A4477240BF5D0007305D4 /* SearchResultsViewControllerInteractor.swift in Sources */,
+				44282724254DA0680052DD3D /* ImageGalleryViewCell.swift in Sources */,
 				44A5D95C2480E25E00372A90 /* FeedbackViewController.swift in Sources */,
 				44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */,
+				4428271D254DA0680052DD3D /* ButtonPicker.swift in Sources */,
 				448EBAD124696CA1006C9961 /* FormCells.swift in Sources */,
 				44ABE695248E3DC100E34F95 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				445C3F352403F62800131990 /* CategoryPickerViewController.swift in Sources */,
@@ -1516,6 +1620,7 @@
 				44BA428D24AB381D008B5674 /* RightNavItemDelegate.swift in Sources */,
 				44A059092473F70900926814 /* ProfileTasksViewController.swift in Sources */,
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
+				4428271A254DA0680052DD3D /* TopView.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
 				4492E33A24977C2500ED6C24 /* BlogCommentsViewController.swift in Sources */,
 				44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */,
@@ -1531,6 +1636,7 @@
 				4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */,
 				44A059072473E13D00926814 /* ProfileCommonViewController.swift in Sources */,
 				44BA428C24AB381D008B5674 /* ImageViewerOption.swift in Sources */,
+				44282728254DA0680052DD3D /* Configuration.swift in Sources */,
 				4404F216245C39AE00EB7184 /* BasicCell.swift in Sources */,
 				44593DFD2496331600B087ED /* BlogInteractor.swift in Sources */,
 				4486E89C23F6EBEF00E8AAB2 /* ViewController.swift in Sources */,
@@ -1565,8 +1671,10 @@
 				447768AF247E7997007BB003 /* VenuePhotosInteractor.swift in Sources */,
 				44ABE69A248E3DC100E34F95 /* IQUIView+Hierarchy.swift in Sources */,
 				44F0EE24243CC340000B3022 /* LanguageChoiceConfigurator.swift in Sources */,
+				44282726254DA0680052DD3D /* VideoInfoView.swift in Sources */,
 				448A447B240BF5D0007305D4 /* SearchResultsViewControllerModuleIO.swift in Sources */,
 				44BA429124AB381D008B5674 /* SimpleImageDatasource.swift in Sources */,
+				44282723254DA0680052DD3D /* ImageGalleryLayout.swift in Sources */,
 				44593E0624967D7700B087ED /* PostCollectionDelegate.swift in Sources */,
 				44653D8B24138610006EB35D /* DrawerView.swift in Sources */,
 				4420ABF324727BE8007F70D6 /* ProfileInteractor.swift in Sources */,
@@ -1581,6 +1689,7 @@
 				448A8A732431171000C81788 /* Sugar.swift in Sources */,
 				44ED11E824573EC5009B92BF /* VenueDescriptionViewController.swift in Sources */,
 				446E78C82468402000075A47 /* api_objects_requests.swift in Sources */,
+				44282718254DA0680052DD3D /* CameraView.swift in Sources */,
 				4404F21024597A0600EB7184 /* api_object_id.swift in Sources */,
 				445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */,
 				44ABE694248E3DC100E34F95 /* IQKeyboardManagerConstants.swift in Sources */,
@@ -1612,6 +1721,7 @@
 				448EBAD52469C8F8006C9961 /* UTableViewDataSource.swift in Sources */,
 				447768B3247E7D83007BB003 /* VenuePhotoCell.swift in Sources */,
 				444F35DF246EF548001C7A27 /* MoreViewController.swift in Sources */,
+				44282720254DA0680052DD3D /* AssetManager.swift in Sources */,
 				44ABE68D248E3DC100E34F95 /* IQPreviousNextView.swift in Sources */,
 				443C6F85248FB3A500DEB65C /* UpdateProfileViewController.swift in Sources */,
 				44B8A4AE247512D6002BFE6A /* ProfileAwardsEventsViewController.swift in Sources */,
@@ -1621,8 +1731,10 @@
 				447768AD247E7997007BB003 /* VenuePhotosRouter.swift in Sources */,
 				44B26BC52433CE2700E7B29C /* MoyaRequest.swift in Sources */,
 				44C3767624083F050050961F /* Font.swift in Sources */,
+				4428271B254DA0680052DD3D /* ConstraintsSetup.swift in Sources */,
 				44ED11EA24573F0E009B92BF /* VenueDescriptionView.swift in Sources */,
 				44989E262443B21100FAD014 /* GreetingRouter.swift in Sources */,
+				4428271E254DA0680052DD3D /* ImageStack.swift in Sources */,
 				44F0EE28243CF874000B3022 /* Decorator.swift in Sources */,
 				44565DA1246DC28000476016 /* BlogCell.swift in Sources */,
 				44ED11E424573EC5009B92BF /* VenueDescriptionRouter.swift in Sources */,
@@ -1635,6 +1747,7 @@
 				4404F25824602B0300EB7184 /* Filter.swift in Sources */,
 				448EBAC924693C8F006C9961 /* BigFormInteractor.swift in Sources */,
 				44BA429024AB381D008B5674 /* ImageViewerController.swift in Sources */,
+				4428271F254DA0680052DD3D /* BottomContainerView.swift in Sources */,
 				44B8E90D247D202C00AC90E3 /* PhoneFormatter.swift in Sources */,
 				44E8108A247FEA7C0007A8C3 /* VenueHistoryViewController.swift in Sources */,
 				445C3F392404432100131990 /* TableViewDataSource.swift in Sources */,
@@ -1657,11 +1770,13 @@
 				44B8A4B024751C51002BFE6A /* AwardsCollectionViewCell.swift in Sources */,
 				447768B5247E7F14007BB003 /* VenueCollectionDelegate.swift in Sources */,
 				44ED11D42455B9EA009B92BF /* VenueConfigurator.swift in Sources */,
+				44282719254DA0680052DD3D /* ImagePickerController.swift in Sources */,
 				44EE303C246DB5B100926817 /* BlogsInteractor.swift in Sources */,
 				448EBACF24696985006C9961 /* FormControllers.swift in Sources */,
 				4446C24124727EC3006B49EE /* api_profile.swift in Sources */,
 				44ED11D62455B9EA009B92BF /* VenuePresenter.swift in Sources */,
 				4499D76A249A012E00263A67 /* AuthPresenter.swift in Sources */,
+				44282727254DA0680052DD3D /* LocationManager.swift in Sources */,
 				44ADD39024922364006908A8 /* ContactInfoView.swift in Sources */,
 				44651F9424B0DCA100296C0E /* NSString+HTMLString.swift in Sources */,
 				4499D76D249A012E00263A67 /* AuthViewController.swift in Sources */,
@@ -1681,6 +1796,7 @@
 				44F0EE1F243CC340000B3022 /* LanguageChoicePresenter.swift in Sources */,
 				446F4D3C24A8D0DF0002CEB7 /* api_blog_categories.swift in Sources */,
 				4492C00924911459007F872F /* DetailViewContoller.swift in Sources */,
+				44282722254DA0680052DD3D /* ImageGalleryViewDataSource.swift in Sources */,
 				4492E33C24977CAF00ED6C24 /* api_blog_posts_id_comments.swift in Sources */,
 				4414DCA2247AD5D000A9717E /* TextViewCell.swift in Sources */,
 				44EE303E246DB5B100926817 /* BlogsViewController.swift in Sources */,
@@ -1688,8 +1804,10 @@
 				44E7311C24765F040022375C /* ComplaintPresenter.swift in Sources */,
 				44F93EB22485104200489994 /* LargeVenueView.swift in Sources */,
 				44BA428824AB381D008B5674 /* UIImageView_Extensions.swift in Sources */,
+				44282717254DA0680052DD3D /* CameraMan.swift in Sources */,
 				44593DFC2496331600B087ED /* BlogPresenter.swift in Sources */,
 				44EE3040246DB88D00926817 /* api_blog_posts.swift in Sources */,
+				4428271C254DA0680052DD3D /* StackView.swift in Sources */,
 				448EBACD24693C8F006C9961 /* BigFormViewController.swift in Sources */,
 				44651F9324B0DCA100296C0E /* HTMLString.swift in Sources */,
 				44AD6FC224632EA600E2B1B3 /* ObjectCategoryPickerViewController.swift in Sources */,
@@ -1718,6 +1836,8 @@
 				44ABE699248E3DC100E34F95 /* IQUITextFieldView+Additions.swift in Sources */,
 				4499D76C249A012E00263A67 /* AuthInteractor.swift in Sources */,
 				44ABE692248E3DC100E34F95 /* IQInvocation.swift in Sources */,
+				44282721254DA0680052DD3D /* Helper.swift in Sources */,
+				44282725254DA0680052DD3D /* ImageGalleryView.swift in Sources */,
 				4446C2432472814F006B49EE /* ProfileDrawerViewController.swift in Sources */,
 				447768AE247E7997007BB003 /* VenuePhotosPresenter.swift in Sources */,
 			);
