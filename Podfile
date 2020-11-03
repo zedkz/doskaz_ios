@@ -16,4 +16,6 @@ target 'DosKaz' do
 	pod 'Firebase/Auth', :binary => true
 	pod 'GoogleSignIn', :binary => true
 	pod 'VK-ios-sdk', :binary => true
+	pod 'FBSDKLoginKit', :binary => true
+	pod 'MRMailSDK', :binary => true
 end

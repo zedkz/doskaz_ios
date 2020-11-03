@@ -5,6 +5,16 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
+  - FBSDKCoreKit (7.1.1):
+    - FBSDKCoreKit/Basics (= 7.1.1)
+    - FBSDKCoreKit/Core (= 7.1.1)
+  - FBSDKCoreKit/Basics (7.1.1)
+  - FBSDKCoreKit/Core (7.1.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (7.1.1):
+    - FBSDKLoginKit/Login (= 7.1.1)
+  - FBSDKLoginKit/Login (7.1.1):
+    - FBSDKCoreKit (~> 7.1.1)
   - Firebase/Auth (6.31.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.9.0)
@@ -61,6 +71,9 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - MRMailSDK (1.4.3):
+    - MRMailSDK/Core (= 1.4.3)
+  - MRMailSDK/Core (1.4.3)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -70,17 +83,21 @@ PODS:
   - VK-ios-sdk (1.5.1)
 
 DEPENDENCIES:
+  - FBSDKLoginKit
   - Firebase/Auth
   - FontAwesome.swift
   - GoogleSignIn
   - Kingfisher (~> 5.0)
   - Moya (~> 14.0)
+  - MRMailSDK
   - VK-ios-sdk
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -93,6 +110,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kingfisher
     - Moya
+    - MRMailSDK
     - nanopb
     - PromisesObjC
     - VK-ios-sdk
@@ -100,6 +118,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  FBSDKLoginKit: 1a61d79e2b25e2fc0d03dccab1e34b38bbdf2546
   Firebase: 87483fa19acfdf99244523f2389e931927b91457
   FirebaseAuth: 09f086fae98643f1ef235674cf3ae171ce26f5ba
   FirebaseCore: 6fb954e350af0885803d5aa49865d15d9a6b264c
@@ -112,10 +132,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  MRMailSDK: 26428335f9964884abf6307df6aba98826caef54
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   VK-ios-sdk: 62a10b6571fbcda0657f455fedce7fedf55b4cd0
 
-PODFILE CHECKSUM: 938e36e10e19c883c4330b73ab58a00661181fce
+PODFILE CHECKSUM: 7cc203e989421e667f6fb19726e5e8a0e38d1f87
 
 COCOAPODS: 1.8.4
