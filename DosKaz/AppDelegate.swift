@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import VK_ios_sdk
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 		IQKeyboardManager.shared.enable = true
 		FirebaseApp.configure()
 		GIDSignIn.sharedInstance().clientID = "***REMOVED***.apps.googleusercontent.com"
@@ -29,6 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		-> Bool {
 			VKSdk.processOpen(url, fromApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
 			GIDSignIn.sharedInstance().handle(url)
+			ApplicationDelegate.shared.application(
+				application,
+				open: url,
+				sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+				annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+			)
 			return true
 	}
 	
@@ -83,3 +91,19 @@ class PortraitNavigationController: UINavigationController {
 		return false
 	}
 }
+
+
+ class dAppDelegate: UIResponder, UIApplicationDelegate {
+	
+	
+	func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool { ApplicationDelegate.shared.application(
+		app,
+		open: url,
+		sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+		annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+		)
+		
+	}
+	
+}
+

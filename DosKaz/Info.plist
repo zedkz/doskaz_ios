@@ -42,7 +42,17 @@
 				<string>vk***REMOVED***</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb***REMOVED***</string>
+			</array>
+		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>***REMOVED***</string>
+	<key>FacebookDisplayName</key>
+	<string>Doskaz.kz</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>

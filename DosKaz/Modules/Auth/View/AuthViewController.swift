@@ -11,6 +11,7 @@ import SharedCodeFramework
 import GoogleSignIn
 import AuthenticationServices
 import VK_ios_sdk
+import FBSDKLoginKit
 
 enum AuthViewPage {
 	case first, second, third(AuthOrigin), loading
@@ -104,6 +105,24 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			}
 		}
 	}
+	
+	
+	@objc func facebookLogin() {
+		let manager = LoginManager()
+		let perms = ["public_profile", "email"]
+		manager.logIn(permissions: perms, from: self) { [weak self] (result, error) in
+			guard let self = self else { return }
+			
+			if let error = error {
+				print("Facebook Log In Error:", error)
+				return
+			}
+			
+			guard let token = result?.token else { return }
+			self.onSignIn.perform(with: (token.tokenString, .facebook))
+		}
+	}
+	
 	
 	private func configureData() {
 		
@@ -373,8 +392,11 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 			
 			let vkb = socialButton("vk")
 			vkb.addTarget(self, action: #selector(vksignin), for: .touchUpInside)
-			
 			socialButtonsStack.addArrangedSubview(vkb)
+			
+			let fcb = socialButton("facebook_auth")
+			fcb.addTarget(self, action: #selector(facebookLogin), for: .touchUpInside)
+			socialButtonsStack.addArrangedSubview(fcb)
 		case .second:
 			socialButtonsStack.removeFromSuperview()
 			middleView.addSubview(smsInfo)

@@ -8,6 +8,7 @@
 
 import UIKit
 import VK_ios_sdk
+import FBSDKLoginKit
 
 // MARK: View input protocol
 
@@ -66,6 +67,7 @@ class ProfileViewController: ProfileDrawerViewController {
 				if VKSdk.isLoggedIn() {
 					VKSdk.forceLogout()
 				}
+				LoginManager().logOut()
 				
 				guard let kiwi = UIApplication.shared.keyWindow else { return }
 				let tabbarController = kiwi.rootViewController as? MainTabBarViewController
