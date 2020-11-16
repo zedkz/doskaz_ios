@@ -120,7 +120,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Ваша камера используется для фотографирования объекта млм здания</string>
+	<string>Ваша камера используется для фотографирования объекта или здания</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Ваша фото-библиотека используется для предоставления изображений объектов или зданий.</string>
 </dict>
