@@ -26,6 +26,8 @@
 		44073FA8247909120064A979 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44073FA7247909120064A979 /* TextCell.swift */; };
 		440AC3BB246C152E00AAC348 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AC3BA246C152E00AAC348 /* InstructionViewController.swift */; };
 		4414DCA2247AD5D000A9717E /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4414DCA1247AD5D000A9717E /* TextViewCell.swift */; };
+		44176E65255F1326005A1876 /* SharedCodeFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44176E62255F131C005A1876 /* SharedCodeFramework.xcframework */; };
+		44176E66255F1326005A1876 /* SharedCodeFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44176E62255F131C005A1876 /* SharedCodeFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4420ABF024727BE8007F70D6 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEA24727BE7007F70D6 /* ProfilePresenter.swift */; };
 		4420ABF124727BE8007F70D6 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEB24727BE7007F70D6 /* ProfileRouter.swift */; };
 		4420ABF224727BE8007F70D6 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */; };
@@ -83,8 +85,6 @@
 		445C3F362403F62800131990 /* CategoryPickerModuleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F302403F62800131990 /* CategoryPickerModuleIO.swift */; };
 		445C3F372403F62800131990 /* CategoryPickerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F312403F62800131990 /* CategoryPickerConfigurator.swift */; };
 		445C3F392404432100131990 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C3F382404432100131990 /* TableViewDataSource.swift */; };
-		445CDC4B24028D1D0072F4BC /* SharedCodeFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; };
-		445CDC4C24028D1D0072F4BC /* SharedCodeFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		445CDC502402A6D60072F4BC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */; };
 		445CDC542402D6530072F4BC /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC532402D6530072F4BC /* MainTabBarViewController.swift */; };
 		445CDC7F2402E5F90072F4BC /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CDC772402E5F90072F4BC /* MapRouter.swift */; };
@@ -259,13 +259,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		445CDC4D24028D1D0072F4BC /* Embed Frameworks */ = {
+		44176E67255F1326005A1876 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				445CDC4C24028D1D0072F4BC /* SharedCodeFramework.xcframework in Embed Frameworks */,
+				44176E66255F1326005A1876 /* SharedCodeFramework.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +294,7 @@
 		44073FA7247909120064A979 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		440AC3BA246C152E00AAC348 /* InstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		4414DCA1247AD5D000A9717E /* TextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
+		44176E62255F131C005A1876 /* SharedCodeFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SharedCodeFramework.xcframework; path = Externals/SharedCodeFramework.xcframework; sourceTree = "<group>"; };
 		4420ABEA24727BE7007F70D6 /* ProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		4420ABEB24727BE7007F70D6 /* ProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		4420ABEC24727BE7007F70D6 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
@@ -351,7 +352,6 @@
 		445C3F302403F62800131990 /* CategoryPickerModuleIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerModuleIO.swift; sourceTree = "<group>"; };
 		445C3F312403F62800131990 /* CategoryPickerConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerConfigurator.swift; sourceTree = "<group>"; };
 		445C3F382404432100131990 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
-		445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SharedCodeFramework.xcframework; path = Externals/SharedCodeFramework.xcframework; sourceTree = "<group>"; };
 		445CDC4F2402A6D60072F4BC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		445CDC532402D6530072F4BC /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		445CDC772402E5F90072F4BC /* MapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
@@ -536,7 +536,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				445CDC4B24028D1D0072F4BC /* SharedCodeFramework.xcframework in Frameworks */,
+				44176E65255F1326005A1876 /* SharedCodeFramework.xcframework in Frameworks */,
 				8919291CA8199B405B15BC10 /* Pods_DosKaz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1446,7 +1446,7 @@
 		45FCC4BE32D131198C776816 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				445CDC4A24028D1D0072F4BC /* SharedCodeFramework.xcframework */,
+				44176E62255F131C005A1876 /* SharedCodeFramework.xcframework */,
 				21AF8ECE245F0823553C2183 /* Pods_DosKaz.framework */,
 			);
 			name = Frameworks;
@@ -1473,8 +1473,8 @@
 				4486E89123F6EBEF00E8AAB2 /* Frameworks */,
 				4486E89223F6EBEF00E8AAB2 /* Resources */,
 				3A2C94A83D14995FEE1D5EB4 /* [CP] Embed Pods Frameworks */,
-				445CDC4D24028D1D0072F4BC /* Embed Frameworks */,
 				A3EF256F1876F24CE5A4E3A3 /* [CP] Copy Pods Resources */,
+				44176E67255F1326005A1876 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
