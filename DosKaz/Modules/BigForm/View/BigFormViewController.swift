@@ -196,4 +196,12 @@ enum FormType {
 	case small
 	case middle
 	case full
+	
+	var stringValue: String {
+		switch self {
+			case .small: return "small"
+			case .middle: return "middle"
+			case .full: return "full"
+		}
+	}
 }

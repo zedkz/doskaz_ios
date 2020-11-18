@@ -196,15 +196,7 @@ class SmallFormViewController: FormViewController, HasForm {
 	}
 	
 	private func update(with formAttrs: FormAttributes) {
-
-		var localDynamicDataSources = [FormTableViewDataSource]()
-		func addSection(for groups: [Group], title: String, section: Int) {
-			let configurators = cellConfigurators(from: groups, title: title, section: section)
-			let dataSource = FormTableViewDataSource(title, configurators)
-			localDynamicDataSources.append(dataSource)
-		}
-		
-		var value: Full {
+		var formType: Full {
 			switch self.formType {
 			case .small: return formAttrs.small
 			case .middle: return formAttrs.middle
@@ -213,32 +205,15 @@ class SmallFormViewController: FormViewController, HasForm {
 			}
 		}
 		
-		let formType = value
+		typealias Sources = [FormTableViewDataSource]
 		
-		//MARK: - Parking Section
-		addSection(for: formType.parking, title: l10n(.parking), section: 1)
-		
-		//MARK: - Entrance 1
-		addSection(for: formType.entrance, title: l10n(.entrance), section: 2)
-
-		//MARK: - Movement
-		addSection(for: formType.movement, title: l10n(.movement), section: 3)
-		
-		//MARK: - Service
-		addSection(for: formType.service, title: l10n(.service), section: 4)
-		
-		//MARK: - Toilet
-		addSection(for: formType.toilet, title: l10n(.toilet), section: 5)
-		
-		//MARK: - Navigation
-		addSection(for: formType.navigation, title: l10n(.navigation), section: 6)
-		
-		//MARK: - Service accessibility
-		addSection(for: formType.serviceAccessibility, title: l10n(.serviceAccessibility), section: 7)
+		let sources: Sources = formType.sections.enumerated().map { (index, section) in
+			let configurators = cellConfigurators(from: section.groups, title: section.title, section: index + 1)
+			return FormTableViewDataSource(section.displayTitle, configurators)
+		}
 		
 		//MARK: - Update main datasource
-		dataSource.replaceDatasources(with: [genInfoSectionSource] + localDynamicDataSources)
-		
+		dataSource.replaceDatasources(with: [genInfoSectionSource] + sources)
 	}
 	
 	private func update() {
@@ -520,7 +495,7 @@ extension SmallFormViewController {
 			onTitleTap: Command { [weak self] in
 				guard let self = self else { return }
 				let parameters = ZoneParameters(
-					type: "parking_small",
+					type: "\(title)_\(self.formType.stringValue)",
 					attributes: self.allSections[title] ?? ["": FormValue.not_provided]
 				)
 				self.showZoneScore(with: parameters)
@@ -538,7 +513,6 @@ extension SmallFormViewController {
 				return CellConfigurator<TextViewCell>(props: $0 as! TextViewCell.Props)
 			}
 		}
-		
 		return configurators
 	}
 }
