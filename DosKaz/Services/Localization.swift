@@ -59,7 +59,7 @@ enum LocalizableStringKeyValue: String, CaseIterable {
 	case addObject = "Добавить объект"
 	case formSmall = "Простая форма"
 	case formMedium = "Средняя форма"
-	case formFull = "Большая форма"
+	case formFull = "Сложная форма"
 	case fillTheField = "Поле должно быть заполнено"
 	case objName = "Наименование"
 	case objAddress = "Адрес"

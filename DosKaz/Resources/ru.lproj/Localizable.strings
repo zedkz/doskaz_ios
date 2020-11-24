@@ -41,7 +41,7 @@
 "addObject" = "Добавить объект";
 "formSmall" = "Простая форма";
 "formMedium" = "Средняя форма";
-"formFull" = "Большая форма";
+"formFull" = "Сложная форма";
 "fillTheField" = "Поле должно быть заполнено";
 "objName" = "Наименование";
 "objAddress" = "Адрес";
