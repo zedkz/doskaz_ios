@@ -35,7 +35,7 @@ extension SearchResultsViewControllerPresenter: SearchResultsViewControllerViewO
 		view.setupInitialState()
 		view.updateSearchResults = CommandWith<String> { searchText in
 			// TODO: id should not be fixed
-			self.interactor.search(for: searchText, with: 9103)
+			self.interactor.search(for: searchText, with: AppSettings.detectedCityId ?? 106724)
 		}
 		view.didTouchUpInside = { [weak self] in
 			guard let self = self else { return }

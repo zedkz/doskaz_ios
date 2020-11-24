@@ -48,6 +48,21 @@ extension AppSettings {
 		}
 	}
 	
+	static var detectedCityId: Int? {
+		get {
+			AppSettings.value(for: Keys.detectedCityId)
+		}
+		set {
+			AppSettings.updateDefaults(for: Keys.detectedCityId, value: newValue)
+		}
+	}
+	
+	static func currentCity(of cities: [City]) -> City? {
+		guard let cityId = AppSettings.detectedCityId else {
+			return nil
+		}
+		return cities.first(where: {$0.id == cityId})
+	}
 }
 
 extension Keys {
@@ -55,6 +70,7 @@ extension Keys {
 	static let token = "token"
 	static let isUserIntroducedToApp = "isUserIntroducedToApp"
 	static let disabilitiesCategory = "disabilitiesCategory"
+	static let detectedCityId = "detectedCityId"
 }
 
 

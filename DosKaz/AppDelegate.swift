@@ -19,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		let request = APIDetectCity { city in
+			AppSettings.detectedCityId = city.id
+		} onFailure: { error in
+			print("Detect city request error: ", error.localizedDescription)
+		}
+		request.dispatch()
+		
 		let mailRu = MRMailSDK.sharedInstance()
 		mailRu.initialize(
 			withClientID: "***REMOVED***",

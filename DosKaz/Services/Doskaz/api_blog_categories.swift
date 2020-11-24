@@ -18,3 +18,9 @@ struct BlogCategory: Codable {
 	let id: Int?
 	let title: String
 }
+
+struct APIDetectCity: DoskazRequest {
+	let onSuccess: (City) -> Void
+	let onFailure: (Error) -> Void
+	var path: String { "cities/detect" }
+}

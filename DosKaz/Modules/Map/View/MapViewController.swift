@@ -107,7 +107,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 	// MARK: Properties
 	var output: MapViewOutput!
 	private var mapView: MKMapView!
-	private let regionRadius: CLLocationDistance = 5000
 	private var searchController: UISearchController!
 	private let addButton = Button()
 	private let addComplaint = Button()
@@ -231,6 +230,40 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		onPressFilter.perform()
 	}
 	
+	@objc func didPressCities() {
+		func pick(from cities: [City]) {
+			weak var weakSelf = self
+			weakSelf?.pick(
+				with: OnPick { city in
+					AppSettings.detectedCityId = city.id
+					let bounds = city.bounds
+					if bounds.count == 2, bounds[0].count == 2, bounds[1].count == 2 {
+						let lat = (bounds[0][0] + bounds[1][0])/2
+						let lon = (bounds[0][1] + bounds[1][1])/2
+						let cityLocation = CLLocation(latitude: lat, longitude: lon)
+						weakSelf?.centerMapOnLocation(location: cityLocation, regionRadius: 22000)
+					}
+				},
+				currentValue: AppSettings.currentCity(of: cities),
+				choices: cities
+			)
+		}
+		
+		if let cities = CitiesStorage.shared.retrieveData() {
+			pick(from: cities)
+			return
+		}
+		
+		let citiesRequest = APICities { cities in
+			CitiesStorage.shared.store(cities)
+			pick(from: cities)
+		} onFailure: { error in
+			print(error.localizedDescription)
+		}
+		
+		citiesRequest.dispatch()
+	}
+	
 	func buildSearch(with command: CommandWith<SearchResults>) {
 		let resultsController = SearchResultsViewControllerModuleConfigurator().assembleModule()
 		resultsController.output.initView(with: command)
@@ -265,24 +298,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 			self?.onTouchComplain.perform()
 		}
 		
+		let cityButton = UIButton(type: .system)
+		cityButton.setImage(UIImage(named: "tab_map"), for: .normal)
+		cityButton.addTarget(self, action: #selector(didPressCities), for: .touchUpInside)
+		
 		let zoomToUser = MKUserTrackingBarButtonItem(mapView: mapView)
 		if let barView = zoomToUser.customView {
-			let box = UIView()
+			let box = UIStackView()
+			box.distribution = .fillEqually
+			box.axis = .vertical
 			mapView.addSubview(box)
 			box.addConstraintsProgrammatically
 				.pinEdgeToSupersSafe(.top, plus: 8)
 				.pinEdgeToSupersSafe(.trailing, plus: -8)
 				.set(my: .width, to: 34)
-				.set(my: .height, to: 38)
-			box.addSubview(barView)
-			barView.addConstraintsProgrammatically
-				.pinToSuper()
+				.set(my: .height, to: 38 * 2)
+			box.addArrangedSubview(barView)
+			box.addArrangedSubview(cityButton)
 		}
 	}
 	
 	// MARK: - Helper methods
 	
-	private func centerMapOnLocation(location: CLLocation, animated: Bool = false) {
+	private func centerMapOnLocation(location: CLLocation, regionRadius: CLLocationDistance = 5000, animated: Bool = false) {
 		let coordinateRegion = MKCoordinateRegion(
 			center: location.coordinate,
 			latitudinalMeters: regionRadius,
