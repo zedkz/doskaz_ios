@@ -17,7 +17,7 @@ extension AppSettings {
 			return Settings.Language(rawValue: rawLang)
 		}
 		set(newLanguage) {
-			AppSettings.updateDefaults(for: Keys.language, value: newLanguage!.rawValue)
+			AppSettings.updateDefaults(for: Keys.language, value: newLanguage?.rawValue)
 		}
 	}
 	
@@ -44,7 +44,7 @@ extension AppSettings {
 			AppSettings.value(for: Keys.disabilitiesCategory)
 		}
 		set {
-			AppSettings.updateDefaults(for: Keys.disabilitiesCategory, value: newValue!)
+			AppSettings.updateDefaults(for: Keys.disabilitiesCategory, value: newValue)
 		}
 	}
 	
