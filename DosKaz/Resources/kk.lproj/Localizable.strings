@@ -199,3 +199,16 @@
 "deleteAvatar" = "Аватарды өшіру";
 "choosePresetAvatar" = "Дайындардың ішінен таңдау";
 "chooseFromPhotoGallery" = "Фото галереядан жүктеңіз";
+"signOut" = "Выйти из профиля?";
+"reviewCreated" = "написал(а) отзыв";
+"verificationConfirmed" = "подтвердил(а) объект";
+"verificationRejected" = "не подтвердил(а)";
+"objectAddSucceeded" = "Ваш запрос принят. Объект появиться на карте в течение суток после проверки модератором.";
+"award_issued" = "Вам выдана награда";
+"currentLevel" = "Поздравляем, вы достигли уровень:";
+"nextLevel" = "Баллов до следующего уровня:";
+"abilityStatusChange" = "Теперь вы можете сменить статус.";
+"abilityAvatarUpload" = "Теперь вы можете сменить аватар.";
+"hasCommented" = "прокомментировал(а) ваш объект";
+"hasCommentedBlog" = "ответил(а) на ваш комментарий к посту";
+"youAddedObject" = "Вы добавлили объект";

@@ -43,3 +43,37 @@ extension UISearchBar {
 		
 	}
 }
+
+//extension UISearchBar {
+//	var textField: UITextField? {
+//		if #available(iOS 13.0, *) {
+//			return searchTextField
+//		} else {
+//			return value(forKey: "searchField") as? UITextField
+//		}
+//	}
+//
+//	func customize() {
+//		layer.shadowOffset = CGSize(width: 0, height: 0)
+//		layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.17)
+//			.withAlphaComponent(0.3)
+//			.cgColor
+//		layer.shadowOpacity = 0.6
+//		layer.shadowRadius = 0.7
+//
+//		setImage(UIImage(named: "clear_search"), for: .clear, state: .normal)
+//		setImage(UIImage(), for: .search, state: .normal)
+//		showsCancelButton = false
+//
+//		textField?.backgroundColor = UIColor(named: "CategoryPickerHeaderBackground")
+//		textField?.textColor = .black
+//		textField?.leftViewMode = .never
+//	}
+//
+//	func set(text: String = l10n(.searchPlaceholder)) {
+//		textField?.attributedPlaceholder = NSAttributedString(
+//			string: text,
+//			attributes: [.foregroundColor: UIColor.systemGray]
+//		)
+//	}
+//}
