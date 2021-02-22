@@ -57,7 +57,7 @@ class LocationPickerController: UIViewController, CLLocationManagerDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		mapView.mapType = .hybrid
 		locationManager.delegate = self
 		locationManager.startUpdatingLocation()
 		

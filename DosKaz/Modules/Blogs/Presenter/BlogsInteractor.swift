@@ -11,6 +11,7 @@ protocol BlogsInteractorInput {
 	func loadPosts(with searchText: String?, categoryId: Int?)
 	func resetPaginator() -> Void
 	func loadBlogCategories()
+	func searchPosts(with searchText: String?, categoryId: Int?)
 }
 
 // MARK: Implementation
@@ -21,6 +22,26 @@ class BlogsInteractor: BlogsInteractorInput {
 	
 	let paginator = BlogPaginator()
 	
+	func searchPosts(with searchText: String?, categoryId: Int?) {
+		let onSuccess = { [weak self] (blogResponse: BlogResponse) -> Void in
+			self?.output.didLoadSearch(blogResponse)
+		}
+
+		let onFailure = { [weak self] (error: Error) -> Void in
+			self?.output.didFailLoadBlogResponse(with: error)
+		}
+
+		let request = APIBlogPosts(
+			onSuccess: onSuccess,
+			onFailure: onFailure,
+			page: 1,
+			search: searchText,
+			categoryId: categoryId
+		)
+
+		request.dispatch()
+	}
+
 	func resetPaginator() -> Void {
 		paginator.reset()
 	}

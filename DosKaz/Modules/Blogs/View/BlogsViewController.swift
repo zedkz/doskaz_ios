@@ -31,17 +31,8 @@ extension BlogsViewController: BlogsViewInput {
 	}
 	
 	func updateTable(with cellsProps: [BlogCell.Props]) {
-		let newItemsCount = cellsProps.count - dataSource.cellsProps.count
 		dataSource.cellsProps = cellsProps
 		tableView.reloadData()
-		let latestItemCount = cellsProps.count
-		
-		let indexPaths = stride(from: latestItemCount - newItemsCount, to: latestItemCount, by: 1)
-			.map { IndexPath(row: $0, section: 0) }
-		
-		if let first = indexPaths.first {
-			tableView.scrollToRow(at: first, at: .bottom, animated: true)
-		}
 	}
 	
 	func showActionSheet(with blogCategories: [BlogCategory]) {
@@ -132,7 +123,7 @@ class BlogsViewController: TableViewController, UITableViewDelegate {
 		let inset = scrollView.contentInset
 		let y = offset.y + bounds.size.height - inset.bottom
 		
-		let reload_distance:CGFloat = 10.0
+		let reload_distance:CGFloat = -150.0
 		guard offset.y > 0 else { return }
 		if y > (contentSize.height + reload_distance) {
 			onScrollToBottom.perform()

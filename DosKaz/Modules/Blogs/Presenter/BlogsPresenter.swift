@@ -34,7 +34,7 @@ extension BlogsPresenter: BlogsViewOutput {
 			self.interactor.resetPaginator()
 			self.currentQuery = query.isEmpty ? nil : query
 			self.currentCategory = nil
-			self.interactor.loadPosts(with: self.currentQuery, categoryId: nil)
+			self.interactor.searchPosts(with: self.currentQuery, categoryId: nil)
 		}
 		interactor.loadPosts(with: self.currentQuery, categoryId: nil)
 		view.onSelect = CommandWith<Item> { [weak self] blog in
@@ -65,12 +65,26 @@ protocol BlogsInteractorOutput: class {
 	func didload(_ blogResponse: BlogResponse)
 	func didFailLoadBlogResponse(with error: Error)
 	func didLoad(_ blogCategories: [BlogCategory])
+	func didLoadSearch(_ response: BlogResponse)
 }
 
 extension BlogsPresenter: BlogsInteractorOutput {
+	func didLoadSearch(_ response: BlogResponse) {
+		let cellsProps = response.items.map {
+			BlogCell.Props(
+				item: $0,
+				title: $0.title,
+				imageURL: $0.image,
+				content: $0.annotation ?? "",
+				lastLine: $0.datePublished + "  " + $0.categoryName
+			)
+		}
+		view.updateTable(with: cellsProps)
+	}
+
 	func didload(_ blogResponse: BlogResponse) {
-		self.items.append(contentsOf: blogResponse.items)
-		let cellsProps = self.items.map {
+		items.append(contentsOf: blogResponse.items)
+		let cellsProps = items.map {
 			BlogCell.Props(
 				item: $0,
 				title: $0.title,
