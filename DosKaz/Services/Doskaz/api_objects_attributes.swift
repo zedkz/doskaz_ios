@@ -38,6 +38,7 @@ struct Full: Codable {
 	let toilet: [Group]
 	let navigation: [Group]
 	let serviceAccessibility: [Group]
+	let kidsAccessibility: [Group]
 	
 	struct Section {
 		let title: String
@@ -53,7 +54,8 @@ struct Full: Codable {
 			Section(title: "service", displayTitle: l10n(.service), groups: service),
 			Section(title: "toilet", displayTitle: l10n(.toilet), groups: toilet),
 			Section(title: "navigation", displayTitle: l10n(.navigation), groups: navigation),
-			Section(title: "serviceAccessibility", displayTitle: l10n(.serviceAccessibility), groups: serviceAccessibility)
+			Section(title: "serviceAccessibility", displayTitle: l10n(.serviceAccessibility), groups: serviceAccessibility),
+			Section(title: "kidsAccessibility", displayTitle: l10n(.kidsAccessibility), groups: kidsAccessibility)
 		]
 	}
 }
