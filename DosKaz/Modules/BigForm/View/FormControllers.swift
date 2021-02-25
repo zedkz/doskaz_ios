@@ -132,6 +132,11 @@ class SmallFormViewController: FormViewController, HasForm {
 			attributes: allSections[l10n(.serviceAccessibility)] ?? [:],
 			comment: "dsf"
 		)
+		
+		let kidsAccessibility = FormSection(
+			attributes: allSections[l10n(.kidsAccessibility)] ?? [:],
+			comment: "No comments"
+		)
 				
 		let form = FullForm(
 			form: "small",
@@ -142,7 +147,8 @@ class SmallFormViewController: FormViewController, HasForm {
 			service: service,
 			toilet: toilet,
 			navigation: navigation,
-			serviceAccessibility: serviceAccessibility
+			serviceAccessibility: serviceAccessibility,
+			kidsAccessibility: kidsAccessibility
 		)
 		
 		if let validated = validated(form) {

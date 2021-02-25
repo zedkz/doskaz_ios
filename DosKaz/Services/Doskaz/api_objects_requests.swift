@@ -42,6 +42,7 @@ struct FullForm: Codable {
 	let toilet: FormSection
 	let navigation: FormSection
 	let serviceAccessibility: FormSection
+	let kidsAccessibility: FormSection
 }
 
 // MARK: - First
