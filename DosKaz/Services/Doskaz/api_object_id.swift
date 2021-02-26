@@ -110,6 +110,7 @@ struct Review: Codable {
 struct ScoreByZones: Codable {
 	let parking, entrance, movement, service: OverallScore
 	let toilet, navigation, serviceAccessibility: OverallScore
+	let kidsAccessibility: OverallScore
 }
 
 

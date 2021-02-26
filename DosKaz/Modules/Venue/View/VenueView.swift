@@ -60,9 +60,11 @@ class UIVenueView: UIView {
 				Props(score: scoreByZones.parking, text: l10n(.parking)),
 				Props(score: scoreByZones.entrance, text: l10n(.entrance)),
 				Props(score: scoreByZones.movement, text: l10n(.movement)),
+				Props(score: scoreByZones.service, text: l10n(.service)),
 				Props(score: scoreByZones.navigation, text: l10n(.navigation)),
 				Props(score: scoreByZones.serviceAccessibility, text: l10n(.serviceAccessibility)),
 				Props(score: scoreByZones.toilet, text: l10n(.toilet)),
+				Props(score: scoreByZones.kidsAccessibility, text: l10n(.kidsAccessibility))
 			]
 			
 			dataSource.cellsProps = [firstCellProps] + cellsProps
@@ -223,6 +225,7 @@ class AccessibilityCell: UITableViewCell {
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
+		textLabel?.numberOfLines = 0
 	}
 	
 	required init?(coder: NSCoder) {
@@ -234,6 +237,9 @@ class AccessibilityCell: UITableViewCell {
 		if !isMainCell {
 			self.imageView?.frame.origin.x += 8
 			self.textLabel?.frame.origin.x += 16
+			if let width = textLabel?.frame.size.width {
+				textLabel?.frame.size.width = width - 8
+			}
 		}
 	}
 }
