@@ -42,7 +42,7 @@ extension VenuePhotosPresenter: VenuePhotosViewOutput {
 	}
 	
 	func didPressAddPhotos() {
-		router.showPhotoUploader(with: view) {
+		router.showPhotoUploader(with: view, id: objectId) {
 			print("dismissed")
 		}
 	}

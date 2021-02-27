@@ -9,6 +9,7 @@
 import UIKit
 
 class PhotoUploaderViewController: UIViewController {
+	var id: Int?
 	var onDismiss: () -> Void = { }
 	
 	override func viewDidLoad() {
