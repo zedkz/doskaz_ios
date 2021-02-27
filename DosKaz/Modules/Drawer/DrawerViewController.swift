@@ -195,8 +195,8 @@ extension DrawerViewController: UITabBarDelegate {
 			}
 			show(viewController: vc)
 		case 1:
-			if let venuePhotos = currentDoskazVenue?.photos {
-				photos.output.initView(with: venuePhotos)
+			if let venuePhotos = currentDoskazVenue?.photos, let id = currentDoskazVenue.id {
+				photos.output.initView(with: venuePhotos, objectId: id)
 			}
 			show(viewController: photos)
 		case 2:

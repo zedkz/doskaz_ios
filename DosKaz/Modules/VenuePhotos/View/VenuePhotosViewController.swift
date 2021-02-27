@@ -21,12 +21,18 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 	var output: VenuePhotosViewOutput!
 	
 	private let titleLabel = UILabel()
+	private let addButton = UIButton(type: .system)
 	
 	private let collectionView = ContentSizedCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 	private var collectionDataSource: CollectionViewDataSource<VenuePhotoCell.Props,VenuePhotoCell>!
 	private var delegate = VenueCollectionDelegate()
 	
 	func setupInitialState() {
+		addButton.addTarget(self, action: #selector(addPhotos), for: .touchUpInside)
+		addButton.setTitle("+", for: .normal)
+		addButton.decorate(with: Style.systemFont(size: 20, weight: .bold))
+
+		view.addSubview(addButton)
 		view.backgroundColor = .white
 		view.addSubview(titleLabel)
 		view.addSubview(collectionView)
@@ -37,14 +43,20 @@ class VenuePhotosViewController: UIViewController, VenuePhotosViewInput {
 			.pinEdgeToSupersSafe(.bottom, plus: -16)
 			.set(my: .height, .greaterThanOrEqual, to: 90)
 		titleLabel.addConstraintsProgrammatically
-			.pinEdgeToSupersSafe(.trailing, plus: -16)
 			.pinEdgeToSupersSafe(.leading, plus: 16)
 			.pinEdgeToSupersSafe(.top, plus: 16)
+		addButton.addConstraintsProgrammatically
+			.pinEdgeToSupersSafe(.trailing, plus: -16)
+			.pin(my: .bottom, andOf: titleLabel)
 		
 		titleLabel.text = l10n(.photo).uppercased()
 		titleLabel.decorate(with: Style.systemFont(size: 14, weight: .bold))
 		
 		configureCollectionView()
+	}
+	
+	@objc func addPhotos() {
+		output.didPressAddPhotos()
 	}
 	
 	private func configureCollectionView() {

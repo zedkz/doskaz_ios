@@ -51,6 +51,7 @@
 		44282726254DA0680052DD3D /* VideoInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282714254DA0680052DD3D /* VideoInfoView.swift */; };
 		44282727254DA0680052DD3D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282715254DA0680052DD3D /* LocationManager.swift */; };
 		44282728254DA0680052DD3D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44282716254DA0680052DD3D /* Configuration.swift */; };
+		442B46D025EA8DA100371D45 /* PhotoUploaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B46CF25EA8DA100371D45 /* PhotoUploaderViewController.swift */; };
 		443C6F82248FB3A500DEB65C /* UpdateProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */; };
 		443C6F83248FB3A500DEB65C /* UpdateProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */; };
 		443C6F84248FB3A500DEB65C /* UpdateProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */; };
@@ -318,6 +319,7 @@
 		44282714254DA0680052DD3D /* VideoInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoInfoView.swift; sourceTree = "<group>"; };
 		44282715254DA0680052DD3D /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		44282716254DA0680052DD3D /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		442B46CF25EA8DA100371D45 /* PhotoUploaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploaderViewController.swift; sourceTree = "<group>"; };
 		443C6F7C248FB3A500DEB65C /* UpdateProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileInteractor.swift; sourceTree = "<group>"; };
 		443C6F7D248FB3A500DEB65C /* UpdateProfilePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfilePresenter.swift; sourceTree = "<group>"; };
 		443C6F7E248FB3A500DEB65C /* UpdateProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileRouter.swift; sourceTree = "<group>"; };
@@ -946,6 +948,7 @@
 			children = (
 				447768AB247E7996007BB003 /* View */,
 				447768A6247E7996007BB003 /* Presenter */,
+				442B46CF25EA8DA100371D45 /* PhotoUploaderViewController.swift */,
 			);
 			path = VenuePhotos;
 			sourceTree = "<group>";
@@ -1622,6 +1625,7 @@
 				44ED11D52455B9EA009B92BF /* VenueRouter.swift in Sources */,
 				4428271A254DA0680052DD3D /* TopView.swift in Sources */,
 				44ED11CA2451883D009B92BF /* api_objects_map.swift in Sources */,
+				442B46D025EA8DA100371D45 /* PhotoUploaderViewController.swift in Sources */,
 				4492E33A24977C2500ED6C24 /* BlogCommentsViewController.swift in Sources */,
 				44EE303D246DB5B100926817 /* BlogsPresenter.swift in Sources */,
 				4492C00C24914348007F872F /* DetailViewCell.swift in Sources */,

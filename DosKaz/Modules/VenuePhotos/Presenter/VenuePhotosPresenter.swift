@@ -13,6 +13,7 @@ class VenuePhotosPresenter {
 	var router: VenuePhotosRouterInput!
 
 	var photos = [Photo]()
+	var objectId: Int?
 }
 
 // MARK: ViewController output protocol
@@ -20,12 +21,14 @@ class VenuePhotosPresenter {
 protocol VenuePhotosViewOutput {
 	func viewIsReady()
 	func viewWillAppear()
-	func initView(with photos: [Photo])
+	func initView(with photos: [Photo], objectId: Int)
+	func didPressAddPhotos()
 }
 
 extension VenuePhotosPresenter: VenuePhotosViewOutput {
 	
-	func initView(with photos: [Photo]) {
+	func initView(with photos: [Photo], objectId: Int) {
+		self.objectId = objectId
 		self.photos = photos
 	}
 	
@@ -36,6 +39,12 @@ extension VenuePhotosPresenter: VenuePhotosViewOutput {
 	
 	func viewWillAppear() {
 		view.update(photos)
+	}
+	
+	func didPressAddPhotos() {
+		router.showPhotoUploader(with: view) {
+			print("dismissed")
+		}
 	}
 
 }
