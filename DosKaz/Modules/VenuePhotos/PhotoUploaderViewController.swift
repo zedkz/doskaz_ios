@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PhotoUploaderViewController: UIViewController {
+class PhotoUploaderViewController: UIViewController, HasSpinner {
 	var id: Int?
 	var onDismiss: () -> Void = { }
 	var paths = [String]()
+	var spinner = SpinnerViewController()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,7 +49,7 @@ class PhotoUploaderViewController: UIViewController {
 			}
 		}
 		
-		let onFailure = { [weak self] (error: Error) -> Void in
+		let onFailure = {(error: Error) -> Void in
 			group.leave()
 			print(error.localizedDescription)
 		}
@@ -68,6 +69,8 @@ class PhotoUploaderViewController: UIViewController {
 				return
 			}
 			
+			self.removeSpinner()
+			
 			GenericAlertPresenter(title: l10n(.succeedFormMessage), actions: [Action(title: "OK") {
 				self.close()
 			}])
@@ -75,6 +78,7 @@ class PhotoUploaderViewController: UIViewController {
 			
 		} onFailure: { [weak self] error in
 			print(error.localizedDescription)
+			self?.removeSpinner()
 			self?.paths.removeAll()
 		}
 		.dispatch()
@@ -90,6 +94,7 @@ extension PhotoUploaderViewController: ImagePickerDelegate {
 	func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
 		let group = DispatchGroup()
 		
+		createSpinnerView()
 		images.forEach { image in
 			uploadImage(image, group: group)
 		}
