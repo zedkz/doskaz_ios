@@ -11,6 +11,7 @@ import UIKit
 class PhotoUploaderViewController: UIViewController {
 	var id: Int?
 	var onDismiss: () -> Void = { }
+	var paths = [String]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -35,21 +36,24 @@ class PhotoUploaderViewController: UIViewController {
 		}
 	}
 	
-	func uploadImage(_ image: UIImage) {
+	func uploadImage(_ image: UIImage, group: DispatchGroup) {
 		guard let data = image.jpegData(compressionQuality: 0.8) else {
 			return
 		}
 			
 		let onSuccess = { [weak self] (uploadResponse: UploadResponse) -> Void in
+			group.leave()
 			if let path = uploadResponse.path {
-				self?.add(photos: [path])
+				self?.paths.append(path)
 			}
 		}
 		
 		let onFailure = { [weak self] (error: Error) -> Void in
+			group.leave()
 			print(error.localizedDescription)
 		}
 		
+		group.enter()
 		APIUpload(onSuccess: onSuccess, onFailure: onFailure, image: data).dispatch()
 	}
 	
@@ -75,8 +79,18 @@ extension PhotoUploaderViewController: ImagePickerDelegate {
 	}
 	
 	func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-		if let image = images.first {
-			uploadImage(image)
+		let group = DispatchGroup()
+		
+		images.forEach { image in
+			uploadImage(image, group: group)
+		}
+
+		group.notify(queue: .main) { [weak self] in
+			guard let self = self else {
+				return
+			}
+			
+			self.add(photos: self.paths)
 		}
 	}
 	
