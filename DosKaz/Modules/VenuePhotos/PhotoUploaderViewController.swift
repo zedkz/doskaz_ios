@@ -34,6 +34,38 @@ class PhotoUploaderViewController: UIViewController {
 			self?.onDismiss()
 		}
 	}
+	
+	func uploadImage(_ image: UIImage) {
+		guard let data = image.jpegData(compressionQuality: 0.8) else {
+			return
+		}
+			
+		let onSuccess = { [weak self] (uploadResponse: UploadResponse) -> Void in
+			if let path = uploadResponse.path {
+				self?.add(photos: [path])
+			}
+		}
+		
+		let onFailure = { [weak self] (error: Error) -> Void in
+			print(error.localizedDescription)
+		}
+		
+		APIUpload(onSuccess: onSuccess, onFailure: onFailure, image: data).dispatch()
+	}
+	
+	func add(photos: [String]) {
+		guard let id = id else {
+			return
+		}
+		
+		AddPhotosRequest(objectId: id, params: AddPhotosRequest.Params(photos: photos)) { [weak self] _ in
+			print("photo added")
+			self?.close()
+		} onFailure: { error in
+			print(error.localizedDescription)
+		}
+		.dispatch()
+	}
 }
 
 
@@ -43,8 +75,9 @@ extension PhotoUploaderViewController: ImagePickerDelegate {
 	}
 	
 	func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-		print(images.count)
-
+		if let image = images.first {
+			uploadImage(image)
+		}
 	}
 	
 	func cancelButtonDidPress(_ imagePicker: ImagePickerController) {

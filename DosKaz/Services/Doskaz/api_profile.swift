@@ -69,3 +69,30 @@ enum Ability: String, Codable {
 		}
 	}
 }
+
+// MARK: Add photos to a venue
+
+struct AddPhotosRequest: DoskazRequest {
+	let objectId: Int
+	let params: Params
+	
+	var onSuccess = { (result: Empty) -> Void in
+		debugPrint(result)
+	}
+	
+	var onFailure = { (error: MoyaError) -> Void in
+		debugPrint(error)
+	}
+	
+	var path: String { "objects/\(objectId)/addPhotos" }
+	var method: Method = .post
+	var task: Task { .requestJSONEncodable(params) }
+	
+	var authorizationType: AuthorizationType? = .bearer
+	
+	struct Params: Codable {
+		let photos: [String]
+	}
+}
+
+
