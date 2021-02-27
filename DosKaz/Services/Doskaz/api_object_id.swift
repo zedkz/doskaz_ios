@@ -90,6 +90,8 @@ struct DataClass: Codable {
 			return l10n(.verificationRejected)
 		case "verification_confirmed":
 			return l10n(.verificationConfirmed)
+		case "supplemented":
+			return l10n(.supplementedVenue)
 		default:
 			return type
 		}
