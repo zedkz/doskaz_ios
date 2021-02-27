@@ -20,6 +20,7 @@ class VenuePhotosRouter: VenuePhotosRouterInput {
 		photoUploader.onDismiss = onDismiss
 		photoUploader.id = id
 		let nav = UINavigationController(rootViewController: photoUploader)
+		nav.modalPresentationStyle = .fullScreen
 		viewController.present(nav, animated: true, completion: nil)
 	}
 }

@@ -347,6 +347,7 @@ class SmallFormViewController: FormViewController, HasForm {
 			onPick: Command { [weak self] in
 				guard let self = self else { return }
 				let imagePickerController = ImagePickerController()
+				imagePickerController.modalPresentationStyle = .fullScreen
 				imagePickerController.preferredImageSize = CGSize(width: 500, height: 500)
 				imagePickerController.delegate = self
 				self.present(imagePickerController, animated: true)
