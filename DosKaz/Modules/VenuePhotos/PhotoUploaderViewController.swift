@@ -64,7 +64,15 @@ class PhotoUploaderViewController: UIViewController {
 		
 		AddPhotosRequest(objectId: id, params: AddPhotosRequest.Params(photos: photos)) { [weak self] _ in
 			print("photo added")
-			self?.close()
+			guard let self = self else {
+				return
+			}
+			
+			GenericAlertPresenter(title: l10n(.succeedFormMessage), actions: [Action(title: "OK") {
+				self.close()
+			}])
+			.present(in: self)
+			
 		} onFailure: { [weak self] error in
 			print(error.localizedDescription)
 			self?.paths.removeAll()
