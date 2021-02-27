@@ -65,8 +65,9 @@ class PhotoUploaderViewController: UIViewController {
 		AddPhotosRequest(objectId: id, params: AddPhotosRequest.Params(photos: photos)) { [weak self] _ in
 			print("photo added")
 			self?.close()
-		} onFailure: { error in
+		} onFailure: { [weak self] error in
 			print(error.localizedDescription)
+			self?.paths.removeAll()
 		}
 		.dispatch()
 	}
