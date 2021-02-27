@@ -63,6 +63,7 @@ struct Zones: Codable {
 	let parking, entrance1: [String: FormValue]
 	let movement, service, toilet, navigation: [String: FormValue]
 	let serviceAccessibility: [String: FormValue]
+	let kidsAccessibility: [String: FormValue]
 }
 
 // MARK: - Entrance1

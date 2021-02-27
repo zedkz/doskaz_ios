@@ -68,7 +68,8 @@ class DetailViewContoller: TableViewController, UITableViewDelegate {
 			FormTableViewDataSource(l10n(.service), items(formType.service, l10n(.service), zones.service)),
 			FormTableViewDataSource(l10n(.toilet), items(formType.toilet, l10n(.toilet), zones.toilet)),
 			FormTableViewDataSource(l10n(.navigation), items(formType.navigation, l10n(.navigation), zones.navigation)),
-			FormTableViewDataSource(l10n(.serviceAccessibility), items(formType.serviceAccessibility, l10n(.serviceAccessibility), zones.serviceAccessibility))
+			FormTableViewDataSource(l10n(.serviceAccessibility), items(formType.serviceAccessibility, l10n(.serviceAccessibility), zones.serviceAccessibility)),
+			FormTableViewDataSource(l10n(.kidsAccessibility), items(formType.kidsAccessibility, l10n(.kidsAccessibility), zones.kidsAccessibility))
 		])
 		
 		tableView.dataSource = dataSource
