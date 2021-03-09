@@ -507,15 +507,6 @@ extension AuthViewController: ASAuthorizationControllerDelegate, ASAuthorization
 				return
 			}
 			
-			let userIdentifier = appleIDCredential.user
-			let fullName = appleIDCredential.fullName
-			let email = appleIDCredential.email
-			
-			print(idTokenString)
-			print(userIdentifier)
-			print(fullName ?? "name is nil")
-			print(email ?? "email is nil")
-			
 			onSignInWithApple.perform(with: idTokenString)
 		}
 	}

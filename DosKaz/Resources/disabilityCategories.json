@@ -36,8 +36,8 @@
 	},
 	{
 		"key":"babyCarriage",
-		"title":"Люди с детскими колясками",
-		"kazTitle":"Бесік арбасы бар адамдар",
+		"title":"Люди с детскими колясками, дети до 7 лет",
+		"kazTitle":"Бесік арбасы бар адамдар, 7 жасқа дейінгі балалар",
 		"categoryForAPI":"movement",
 		"icon":"baby_carriage"
 	},
