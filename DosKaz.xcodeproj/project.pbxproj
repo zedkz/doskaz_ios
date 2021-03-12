@@ -210,7 +210,6 @@
 		44C3767624083F050050961F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C3767524083F050050961F /* Font.swift */; };
 		44C8CE50249B985C00DF195D /* AuthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C8CE4F249B985C00DF195D /* AuthInfoView.swift */; };
 		44C8CE52249BA5B400DF195D /* api_accessToken_phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */; };
-		44CD736F2498D1CC00BABC4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */; };
 		44E3829D2494F46D007C97DB /* RegionalRepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E3829C2494F46D007C97DB /* RegionalRepCell.swift */; };
 		44E7311A24765F040022375C /* ComplaintConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311424765F040022375C /* ComplaintConfigurator.swift */; };
 		44E7311B24765F040022375C /* ComplaintInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E7311524765F040022375C /* ComplaintInteractor.swift */; };
@@ -482,7 +481,6 @@
 		44C3767524083F050050961F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		44C8CE4F249B985C00DF195D /* AuthInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfoView.swift; sourceTree = "<group>"; };
 		44C8CE51249BA5B400DF195D /* api_accessToken_phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api_accessToken_phone.swift; sourceTree = "<group>"; };
-		44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44CD73702498DEEC00BABC4E /* DosKaz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DosKaz.entitlements; sourceTree = "<group>"; };
 		44E3829C2494F46D007C97DB /* RegionalRepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalRepCell.swift; sourceTree = "<group>"; };
 		44E7311424765F040022375C /* ComplaintConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplaintConfigurator.swift; sourceTree = "<group>"; };
@@ -996,7 +994,6 @@
 			isa = PBXGroup;
 			children = (
 				44CD73702498DEEC00BABC4E /* DosKaz.entitlements */,
-				44CD736E2498D1CB00BABC4E /* GoogleService-Info.plist */,
 				4486E8A523F6EBF100E8AAB2 /* Info.plist */,
 				4486E89723F6EBEF00E8AAB2 /* AppDelegate.swift */,
 				44C376702407EA910050961F /* Resources */,
@@ -1536,7 +1533,6 @@
 				4486E8A123F6EBF100E8AAB2 /* Assets.xcassets in Resources */,
 				447BA20724ADE3A8007AE326 /* Localizable.strings in Resources */,
 				4486E89F23F6EBEF00E8AAB2 /* Main.storyboard in Resources */,
-				44CD736F2498D1CC00BABC4E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

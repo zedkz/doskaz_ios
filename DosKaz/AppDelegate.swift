@@ -28,18 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let mailRu = MRMailSDK.sharedInstance()
 		mailRu.initialize(
-			withClientID: "***REMOVED***",
-			redirectURI: "***REMOVED***://"
+			withClientID: "[mail_ru_client_id]",
+			redirectURI: "sample_auth_callback://"
 		)
-		mailRu.clientSecret = "***REMOVED***"
-		mailRu.returnScheme = "***REMOVED***"
+		mailRu.clientSecret = "[mail_ru_secret_id]"
+		mailRu.returnScheme = "sample_auth_callback"
 		mailRu.resultType = .token
 		
 		ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 		IQKeyboardManager.shared.enable = true
 		FirebaseApp.configure()
-		GIDSignIn.sharedInstance().clientID = "***REMOVED***.apps.googleusercontent.com"
-		GIDSignIn.sharedInstance()?.serverClientID = "***REMOVED***.apps.googleusercontent.com"
+		GIDSignIn.sharedInstance().clientID = "[google_client_id].apps.googleusercontent.com"
+		GIDSignIn.sharedInstance()?.serverClientID = "[google_server_client_id].apps.googleusercontent.com"
 		setRootViewController()
 		return true
 	}

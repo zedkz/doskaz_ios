@@ -87,7 +87,7 @@ class AuthViewController: UIViewController, AuthViewInput, UITextFieldDelegate {
 		GIDSignIn.sharedInstance()?.presentingViewController = self
 		GIDSignIn.sharedInstance().delegate = self
 		
-		let vk = VKSdk.initialize(withAppId: "***REMOVED***")
+		let vk = VKSdk.initialize(withAppId: "[vk_app_id]")
 		vk?.register(self)
 		vk?.uiDelegate = self
 		MRMailSDK.sharedInstance().delegate = self

@@ -21,7 +21,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>***REMOVED***</string>
+				<string>sample_auth_callback</string>
 			</array>
 		</dict>
 		<dict>
@@ -29,7 +29,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.***REMOVED***</string>
+				<string>[firebase_reverse_client_id]</string>
 			</array>
 		</dict>
 		<dict>
@@ -37,7 +37,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.***REMOVED***</string>
+				<string>com.googleusercontent.apps.[google_client_id]</string>
 			</array>
 		</dict>
 		<dict>
@@ -45,20 +45,20 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>vk***REMOVED***</string>
+				<string>vk[app_id]</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb***REMOVED***</string>
+				<string>fb[APP_ID]</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
-	<string>***REMOVED***</string>
+	<string>[APP_ID]</string>
 	<key>FacebookDisplayName</key>
 	<string>Doskaz.kz</string>
 	<key>LSApplicationQueriesSchemes</key>
